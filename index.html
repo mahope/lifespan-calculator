@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levetidsberegner - Hvor lang tid har du tilbage?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🕰️ Levetidsberegner</h1>
+            <p class="subtitle">Beregn hvor mange år du statistisk set har tilbage baseret på din alder, køn og lokation</p>
+        </header>
+
+        <main>
+            <div class="form-section">
+                <h2>Indtast dine oplysninger</h2>
+                
+                <form id="lifespanForm">
+                    <div class="input-group">
+                        <label for="age">Din alder:</label>
+                        <input type="number" id="age" name="age" min="0" max="120" required>
+                        <span class="unit">år</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="gender">Køn:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Vælg køn</option>
+                            <option value="male">Mand</option>
+                            <option value="female">Kvinde</option>
+                        </select>
+                    </div>
+
+                    <div class="location-section">
+                        <h3>📍 Din lokation</h3>
+                        <button type="button" id="getLocationBtn" class="location-btn">
+                            Find min lokation automatisk
+                        </button>
+                        <div id="locationStatus" class="location-status"></div>
+                        <div id="locationInfo" class="location-info"></div>
+                    </div>
+
+                    <button type="submit" id="calculateBtn" class="calculate-btn" disabled>
+                        Beregn min resterende levetid
+                    </button>
+                </form>
+            </div>
+
+            <div id="results" class="results-section" style="display: none;">
+                <h2>📊 Dine resultater</h2>
+                <div class="result-card">
+                    <div class="main-result">
+                        <div class="years-left">
+                            <span id="yearsLeft" class="big-number">--</span>
+                            <span class="label">år tilbage</span>
+                        </div>
+                        <div class="life-expectancy">
+                            <span>Forventet levetid: </span>
+                            <span id="lifeExpectancy" class="highlight">-- år</span>
+                        </div>
+                    </div>
+                    
+                    <div class="additional-info">
+                        <div class="info-item">
+                            <span class="icon">📅</span>
+                            <div>
+                                <strong>Estimeret slutdato:</strong>
+                                <span id="endDate">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">🌍</span>
+                            <div>
+                                <strong>Baseret på data fra:</strong>
+                                <span id="dataSource">--</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <p><strong>Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data. 
+                        Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Data baseret på WHO og nationale statistikker. Opdateret 2024.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

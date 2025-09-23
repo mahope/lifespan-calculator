@@ -3,92 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levetidsberegner - Hvor lang tid har du tilbage?</title>
+    <title>Levetidsberegner - Beregn din resterende levetid baseret på statistik</title>
+    <meta name="description" content="Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling.">
+    <meta name="keywords" content="levetidsberegner, resterende levetid, statistik, dødsalderen, levetid beregner, hvor længe lever jeg, lifespan calculator dansk">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Levetidsberegner - Hvor lang tid har du tilbage?">
+    <meta property="og:description" content="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com">
+    <link rel="canonical" href="https://yourdomain.com">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
+    <div class="app-container">
+        <header class="header">
             <h1>🕰️ Levetidsberegner</h1>
             <p class="subtitle">Beregn hvor mange år du statistisk set har tilbage baseret på din alder, køn og lokation</p>
         </header>
 
-        <main>
+        <main class="main-content">
             <div class="form-section">
-                <h2>Indtast dine oplysninger</h2>
-                
+                <h2>Levetidsberegner</h2>
+
+                <div class="mode-selection">
+                    <h3>Vælg beregningsmåde</h3>
+                    <div class="mode-buttons">
+                        <button type="button" class="mode-btn active" data-mode="simple">
+                            <span class="mode-icon">⚡</span>
+                            <div class="mode-content">
+                                <div class="mode-title">Simpel</div>
+                                <div class="mode-desc">Hurtig beregning baseret på grunddata</div>
+                            </div>
+                        </button>
+                        <button type="button" class="mode-btn" data-mode="advanced">
+                            <span class="mode-icon">🎯</span>
+                            <div class="mode-content">
+                                <div class="mode-title">Avanceret</div>
+                                <div class="mode-desc">Detaljeret analyse med livsstilsfaktorer</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0% udfyldt</div>
+                </div>
+
                 <form id="lifespanForm">
-                    <div class="input-group">
+                    <div class="input-group" id="ageGroup">
                         <label for="age">Din alder:</label>
                         <input type="number" id="age" name="age" min="0" max="120" required>
                         <span class="unit">år</span>
                     </div>
 
+                    <div class="input-group hidden" id="birthdateGroup">
+                        <label for="birthdate">Din fødselsdato:</label>
+                        <input type="date" id="birthdate" name="birthdate" max="">
+                        <span class="unit">📅</span>
+                    </div>
+
                     <div class="input-group">
-                        <label for="gender">Køn:</label>
-                        <select id="gender" name="gender" required>
-                            <option value="">Vælg køn</option>
-                            <option value="male">Mand</option>
-                            <option value="female">Kvinde</option>
-                        </select>
+                        <label>Køn:</label>
+                        <div class="gender-buttons">
+                            <button type="button" class="gender-btn" data-gender="male">
+                                <span class="gender-icon">👨</span>
+                                <span class="gender-text">Mand</span>
+                            </button>
+                            <button type="button" class="gender-btn" data-gender="female">
+                                <span class="gender-icon">👩</span>
+                                <span class="gender-text">Kvinde</span>
+                            </button>
+                        </div>
+                        <input type="hidden" id="gender" name="gender" required>
                     </div>
 
                     <div class="location-section">
-                        <h3>📍 Din lokation</h3>
+                        <p class="location-description">
+                            🌍 Vi prøver automatisk at finde din lokation for præcise beregninger.
+                            Hvis dette ikke virker, kan du klikke nedenfor:
+                        </p>
                         <button type="button" id="getLocationBtn" class="location-btn">
-                            Find min lokation automatisk
+                            Find min lokation manuelt
                         </button>
-                        <div id="locationStatus" class="location-status"></div>
-                        <div id="locationInfo" class="location-info"></div>
+                    </div>
+
+                    <div class="lifestyle-section">
+                        <h3>🌱 Livsstilsfaktorer</h3>
+                        <p class="lifestyle-description">
+                            Juster disse faktorer for at se hvordan din livsstil påvirker din levetid:
+                        </p>
+
+                        <div class="lifestyle-grid">
+                            <div class="lifestyle-factor">
+                                <div class="factor-header">
+                                    <span class="factor-icon">😭</span>
+                                    <label for="smoking">Rygning</label>
+                                    <span class="factor-impact" id="smokingImpact">0 år</span>
+                                </div>
+                                <div class="factor-options">
+                                    <button type="button" class="factor-btn active" data-factor="smoking" data-value="0">
+                                        🙅 Ryger ikke
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="smoking" data-value="-5">
+                                        😭 Læt (1-10/dag)
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="smoking" data-value="-10">
+                                        😭 Kraftig (10+/dag)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="lifestyle-factor">
+                                <div class="factor-header">
+                                    <span class="factor-icon">🏃‍♂️</span>
+                                    <label for="exercise">Motion</label>
+                                    <span class="factor-impact" id="exerciseImpact">0 år</span>
+                                </div>
+                                <div class="factor-options">
+                                    <button type="button" class="factor-btn active" data-factor="exercise" data-value="0">
+                                        🛋️ Ingen motion
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="exercise" data-value="2">
+                                        🚶 Let (1-3 t/uge)
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="exercise" data-value="4">
+                                        🏃 Moderat (4-6 t/uge)
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="exercise" data-value="6">
+                                        🏋️ Intensiv (7+ t/uge)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="lifestyle-factor">
+                                <div class="factor-header">
+                                    <span class="factor-icon">🍎</span>
+                                    <label for="diet">Kost</label>
+                                    <span class="factor-impact" id="dietImpact">0 år</span>
+                                </div>
+                                <div class="factor-options">
+                                    <button type="button" class="factor-btn" data-factor="diet" data-value="-2">
+                                        🍔 Usund
+                                    </button>
+                                    <button type="button" class="factor-btn active" data-factor="diet" data-value="0">
+                                        🍽️ Gennemsnitlig
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="diet" data-value="3">
+                                        🍎 Sund
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="diet" data-value="5">
+                                        🥗 Meget sund
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="lifestyle-factor">
+                                <div class="factor-header">
+                                    <span class="factor-icon">🍺</span>
+                                    <label for="alcohol">Alkohol</label>
+                                    <span class="factor-impact" id="alcoholImpact">0 år</span>
+                                </div>
+                                <div class="factor-options">
+                                    <button type="button" class="factor-btn active" data-factor="alcohol" data-value="0">
+                                        🙅 Drikker ikke
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="alcohol" data-value="-1">
+                                        🍷 Let (1-7 genstande/uge)
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="alcohol" data-value="-3">
+                                        🍺 Moderat-meget (8+ genstande/uge)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="lifestyle-factor">
+                                <div class="factor-header">
+                                    <span class="factor-icon">😴</span>
+                                    <label for="sleep">Søvn</label>
+                                    <span class="factor-impact" id="sleepImpact">0 år</span>
+                                </div>
+                                <div class="factor-options">
+                                    <button type="button" class="factor-btn" data-factor="sleep" data-value="-2">
+                                        😵 Dårlig (<6t)
+                                    </button>
+                                    <button type="button" class="factor-btn active" data-factor="sleep" data-value="0">
+                                        😴 Normal (6-8t)
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="sleep" data-value="2">
+                                        😌 God (8+ t)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="lifestyle-factor">
+                                <div class="factor-header">
+                                    <span class="factor-icon">😰</span>
+                                    <label for="stress">Stress</label>
+                                    <span class="factor-impact" id="stressImpact">0 år</span>
+                                </div>
+                                <div class="factor-options">
+                                    <button type="button" class="factor-btn" data-factor="stress" data-value="3">
+                                        😌 Lavt
+                                    </button>
+                                    <button type="button" class="factor-btn active" data-factor="stress" data-value="0">
+                                        😐 Moderat
+                                    </button>
+                                    <button type="button" class="factor-btn" data-factor="stress" data-value="-4">
+                                        😰 Højt
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lifestyle-summary">
+                            <div class="lifestyle-total">
+                                <span class="total-label">Livsstils påvirkning:</span>
+                                <span class="total-value" id="lifestyleTotal">+0 år</span>
+                            </div>
+                            <div class="lifestyle-score">
+                                <div class="score-bar">
+                                    <div class="score-fill" id="scoreFill"></div>
+                                </div>
+                                <span class="score-text" id="scoreText">Gennemsnitlig livsstil</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-preview" id="achievementPreview" style="display: none;">
+                        <div class="achievement-badge">
+                            <span class="achievement-icon" id="achievementIcon">🏆</span>
+                            <div class="achievement-text">
+                                <div class="achievement-title" id="achievementTitle">Godt valg!</div>
+                                <div class="achievement-desc" id="achievementDesc">Du har gjort en sund beslutning</div>
+                            </div>
+                        </div>
                     </div>
 
                     <button type="submit" id="calculateBtn" class="calculate-btn" disabled>
-                        Beregn min resterende levetid
+                        📈 Beregn min resterende levetid
                     </button>
                 </form>
             </div>
 
-            <div id="results" class="results-section" style="display: none;">
-                <h2>📊 Dine resultater</h2>
-                <div class="result-card">
-                    <div class="main-result">
-                        <div class="years-left">
-                            <span id="yearsLeft" class="big-number">--</span>
-                            <span class="label">år tilbage</span>
+            <div id="results" class="results-section">
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="timer-title">Din resterende tid</div>
+                    <div class="countdown-display">
+                        <div class="time-unit">
+                            <span class="time-value" id="years">--</span>
+                            <span class="time-label">år</span>
                         </div>
-                        <div class="life-expectancy">
-                            <span>Forventet levetid: </span>
-                            <span id="lifeExpectancy" class="highlight">-- år</span>
+                        <div class="time-unit">
+                            <span class="time-value" id="days">--</span>
+                            <span class="time-label">dage</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-value" id="hours">--</span>
+                            <span class="time-label">timer</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-value" id="minutes">--</span>
+                            <span class="time-label">min</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-value" id="seconds">--</span>
+                            <span class="time-label">sek</span>
                         </div>
                     </div>
-                    
-                    <div class="additional-info">
-                        <div class="info-item">
-                            <span class="icon">📅</span>
-                            <div>
-                                <strong>Estimeret slutdato:</strong>
-                                <span id="endDate">--</span>
+                </div>
+
+                <div class="life-overview">
+                    <div class="life-progress">
+                        <h3>🌍 Dit livsforløb</h3>
+                        <div class="life-bar-container">
+                            <div class="life-bar">
+                                <div class="life-lived" id="lifeLived"></div>
+                                <div class="life-remaining" id="lifeRemaining"></div>
+                            </div>
+                            <div class="life-markers">
+                                <div class="life-marker birth">
+                                    <span class="marker-icon">🎆</span>
+                                    <span class="marker-label">Født</span>
+                                </div>
+                                <div class="life-marker current" id="currentMarker">
+                                    <span class="marker-icon">👤</span>
+                                    <span class="marker-label">Nu</span>
+                                </div>
+                                <div class="life-marker future" id="futureMarker">
+                                    <span class="marker-icon">✨</span>
+                                    <span class="marker-label">Estimat</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <span class="icon">🌍</span>
-                            <div>
-                                <strong>Baseret på data fra:</strong>
-                                <span id="dataSource">--</span>
+                        <div class="life-stats">
+                            <div class="stat-item">
+                                <span class="stat-value" id="lifePercentage">--</span>
+                                <span class="stat-label">% af livet levet</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="daysLived">--</span>
+                                <span class="stat-label">dage levet</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="heartbeats">--</span>
+                                <span class="stat-label">hjerteslag</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="disclaimer">
-                        <p><strong>Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data. 
-                        Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt.</p>
+                </div>
+
+                <div class="fun-facts">
+                    <h3>🎉 Sjove fakta om dit liv</h3>
+                    <div class="facts-grid">
+                        <div class="fact-card" data-tooltip="Du har set solen stå op og gå ned hver dag i dit liv">
+                            <div class="fact-icon">🌅</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="sunrises">--</div>
+                                <div class="fact-label">solop- og nedgange oplevet</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Baseret på et gennemsnit af 16.000 ord dagligt">
+                            <div class="fact-icon">💬</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="wordsSpoken">--</div>
+                                <div class="fact-label">ord talt</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Hjertet slår cirka 100.000 gange om dagen">
+                            <div class="fact-icon">❤️</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="heartbeats">--</div>
+                                <div class="fact-label">hjerteslag</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Gennemsnitligt 8 timer søvn per nat">
+                            <div class="fact-icon">🛏️</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="sleepHours">--</div>
+                                <div class="fact-label">timer sovet</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Du blinker cirka 15-20 gange i minuttet">
+                            <div class="fact-icon">👁️</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="blinks">--</div>
+                                <div class="fact-label">gange blinket</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Baseret på 12-16 vejrtrækninger per minut">
+                            <div class="fact-icon">🌬️</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="breaths">--</div>
+                                <div class="fact-label">vejrtrækninger</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Baseret på gennemsnitligt 6.000-8.000 skridt dagligt">
+                            <div class="fact-icon">👣</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="steps">--</div>
+                                <div class="fact-label">skridt gået</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Cirka 3 måltider om dagen gennem livet">
+                            <div class="fact-icon">🍽️</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="meals">--</div>
+                                <div class="fact-label">måltider spist</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Gennemsnitlig dansker drikker 3,4 kopper kaffe dagligt">
+                            <div class="fact-icon">☕</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="coffeeCups">--</div>
+                                <div class="fact-label">kopper kaffe</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Mennesker ler gennemsnitligt 17 gange om dagen">
+                            <div class="fact-icon">😄</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="laughs">--</div>
+                                <div class="fact-label">gange grinet</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Baseret på 2 liter vand dagligt">
+                            <div class="fact-icon">💧</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="waterLiters">--</div>
+                                <div class="fact-label">liter vand drukket</div>
+                            </div>
+                        </div>
+                        <div class="fact-card" data-tooltip="Du rejser med jorden omkring solen hvert år">
+                            <div class="fact-icon">🚀</div>
+                            <div class="fact-content">
+                                <div class="fact-number" id="spaceKm">--</div>
+                                <div class="fact-label">km rejst gennem rummet</div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="results-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">År tilbage:</span>
+                        <span class="summary-value" id="yearsLeft">-- år</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Justeret levetid:</span>
+                        <span class="summary-value" id="lifeExpectancy">-- år</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Livsstils påvirkning:</span>
+                        <span class="summary-value" id="lifestyleImpactDisplay">-- år</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Estimeret slutdato:</span>
+                        <span class="summary-value" id="endDate">--</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Baseret på data fra:</span>
+                        <span class="summary-value" id="dataSource">--</span>
+                    </div>
+                </div>
+
+                <div class="achievements-section">
+                    <h3>🏆 Dine achievements</h3>
+                    <div class="achievements-grid" id="achievementsGrid">
+                        <!-- Achievements will be populated here -->
+                    </div>
+                </div>
+
+                <div class="what-if-section">
+                    <h3>🔮 Hvad hvis scenarioer</h3>
+                    <p>Se hvordan ændringer i din livsstil kan påvirke din levetid:</p>
+                    <div class="scenario-buttons">
+                        <button class="scenario-btn" data-scenario="quit-smoking">
+                            🙅 Hvis jeg stopper med at ryge
+                        </button>
+                        <button class="scenario-btn" data-scenario="more-exercise">
+                            🏃 Hvis jeg dyrker mere motion
+                        </button>
+                        <button class="scenario-btn" data-scenario="healthy-diet">
+                            🍎 Hvis jeg spiser sundere
+                        </button>
+                        <button class="scenario-btn" data-scenario="less-stress">
+                            😌 Hvis jeg reducerer stress
+                        </button>
+                    </div>
+                    <div class="scenario-result" id="scenarioResult" style="display: none;">
+                        <div class="scenario-impact">
+                            <span class="scenario-text" id="scenarioText"></span>
+                            <span class="scenario-change" id="scenarioChange"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="shareBtn" class="btn btn-primary">
+                        📤 Del resultater
+                    </button>
+                    <button id="newCalculationBtn" class="btn btn-secondary">
+                        🔄 Ny beregning
+                    </button>
+                </div>
+
+                <div class="disclaimer">
+                    <p><strong>Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data.
+                    Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt.</p>
+                </div>
+
+                <div class="extended-disclaimer">
+                    <h4>⚠️ Vigtige disclaimere:</h4>
+                    <ul>
+                        <li><strong>Kun statistiske gennemsnit:</strong> Beregningerne er baseret på WHO og nationale statistikker og repræsenterer befolkningsgennemsnit</li>
+                        <li><strong>Individuelle faktorer ignoreres:</strong> Livsstil, genetik, eksisterende helbredstilstande, socioøkonomisk status mv. påvirker ikke beregningen</li>
+                        <li><strong>Teknologiske fremskridt:</strong> Fremtidens medicinske gennembrud og behandlinger kan forlænge levetiden betydeligt</li>
+                        <li><strong>Ikke medicinsk rådgivning:</strong> Dette værktøj skal ikke bruges til sundhedsrelaterede beslutninger</li>
+                        <li><strong>Kun til underholdning:</strong> Resultaterne skal tages med et gran salt og bruges til reflektion, ikke som faktuelle forudsigelser</li>
+                    </ul>
                 </div>
             </div>
         </main>
 
-        <footer>
-            <p>Data baseret på WHO og nationale statistikker. Opdateret 2024.</p>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Om Levetidsberegneren</h3>
+                    <p>Vores gratis levetidsberegner hjælper dig med at få et statistisk indblik i din forventede resterende levetid. Værktøjet anvender data fra Verdenssundhedsorganisationen (WHO) og nationale statistikker fra over 12 lande for at give dig et estimat baseret på din alder, køn og geografiske placering.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Hvordan fungerer det?</h3>
+                    <p>Levetidsberegneren bruger automatisk IP-lokation til at bestemme dit land uden at bede om tilladelse til GPS. Derefter krydses dine personlige data med officielle levetidsstatistikker for at beregne dit personlige estimat. Resultatet inkluderer en live nedtælling og mulighed for at dele dine resultater.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Datakilder og nøjagtighed</h3>
+                    <p>Alle data stammer fra troværdige kilder som WHO, nationale sundhedsmyndigheder og demografiske institutter. Statistikkerne opdateres årligt og afspejler de seneste tilgængelige data. Dog skal det understreges, at dette kun er gennemsnitstal og ikke forudsiger individuelle livsforløb.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Privatlivspolitik</h3>
+                    <p>Vi respekterer dit privatliv. Ingen personlige data gemmes eller deles. Al behandling sker lokalt i din browser, og vi bruger kun din IP-adresse til at bestemme dit land - ikke til tracking eller analyse. Der anvendes ingen cookies eller tredjepartsscripts.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Understøttede lande</h3>
+                    <p>Værktøjet indeholder specifik data for Danmark, Sverige, Norge, Tyskland, Storbritannien, USA, Frankrig, Holland, Finland, Island, Schweiz og Japan. For andre lande anvendes verdensgennemsnittet baseret på WHO's globale statistikker.</p>
+                </div>
+
+                <div class="footer-bottom">
+                    <p><strong>Data baseret på WHO og nationale statistikker. Opdateret 2024.</strong></p>
+                    <p><em>Denne tjeneste er kun til informative og underholdende formål. Søg professionel medicinsk rådgivning for sundhedsrelaterede spørgsmål.</em></p>
+                    <div class="developer-credit">
+                        <p>🌐 Udviklet af <a href="https://mahope.dk" target="_blank" rel="noopener">Mads Holst Jensen - Mahope.dk</a></p>
+                        <p class="developer-description">Specialiseret i WordPress webudvikling, design og SEO-optimering</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 

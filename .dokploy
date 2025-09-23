@@ -1,0 +1,10 @@
+{
+  "name": "lifespan-calculator",
+  "type": "static",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "nodeVersion": "18",
+  "buildPath": "/",
+  "domain": "",
+  "env": {}
+}

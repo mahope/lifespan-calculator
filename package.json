@@ -1,0 +1,26 @@
+{
+  "name": "lifespan-calculator",
+  "version": "1.0.0",
+  "description": "Danish Lifespan Calculator - Interactive web tool calculating remaining lifespan",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploying static files'"
+  },
+  "keywords": [
+    "lifespan",
+    "calculator",
+    "danish",
+    "statistics",
+    "health"
+  ],
+  "author": "Mads Holst Jensen <mahope.dk>",
+  "license": "MIT",
+  "homepage": "https://github.com/mahope/lifespan-calculator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahope/lifespan-calculator.git"
+  }
+}

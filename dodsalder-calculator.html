@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dødsalder Calculator - Beregn din statistiske dødsalder</title>
+    <meta name="description" content="Beregn din statistiske dødsalder med vores præcise calculator. Baseret på WHO data og danske sundhedsstatistikker. Find ud af hvornår du statistisk set vil dø.">
+    <meta name="keywords" content="dødsalder calculator, hvornår dør jeg, dødsalder beregning, forventet dødsalder, mortality calculator dansk">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dødsalder Calculator - Beregn din forventede dødsalder">
+    <meta property="og:description" content="Få et statistisk estimat af din dødsalder baseret på alder, køn, land og livsstilsfaktorer.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .landing-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        .warning-box {
+            background: #fef5e7;
+            border: 2px solid #fbd38d;
+            color: #744210;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        .methodology-section {
+            background: #f7fafc;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            border-radius: 12px;
+        }
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .country-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #e53e3e;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #c53030;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(229,62,62,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-hero">
+        <h1>⚰️ Dødsalder Calculator</h1>
+        <p class="subtitle">Beregn din statistiske dødsalder baseret på videnskabelige data</p>
+        <a href="index.html" class="cta-button">📅 Beregn min dødsalder</a>
+    </div>
+
+    <div class="content-section">
+        <div class="warning-box">
+            <h3>⚠️ Vigtig disclaimer</h3>
+            <p><strong>Dette er kun statistiske estimater!</strong> Resultatet forudsiger ikke din faktiske dødsalder og skal kun bruges til informative og underholdende formål. Mange faktorer kan påvirke din faktiske levetid, herunder genetik, livsstil, medicinske fremskridt og tilfældigheder.</p>
+        </div>
+
+        <h2>🧮 Hvordan beregner vi din dødsalder?</h2>
+        <p>Vores dødsalder calculator bruger de seneste statistikker fra:</p>
+        <ul>
+            <li><strong>WHO (Verdenssundhedsorganisationen)</strong> - Globale levetidsdata</li>
+            <li><strong>Danmarks Statistik</strong> - Danske sundhedsstatistikker</li>
+            <li><strong>Nationale sundhedsmyndigheder</strong> - Fra 12+ lande</li>
+            <li><strong>Demografiske institutter</strong> - Opdaterede dødeligheidstabeller</li>
+        </ul>
+
+        <div class="methodology-section">
+            <h3>📊 Vores metodologi</h3>
+            <p>Calculatoren tager udgangspunkt i <strong>aktuel-statistiske tabeller</strong> som viser gennemsnitslevetiden for forskellige demografiske grupper:</p>
+            <ol>
+                <li><strong>Base-beregning:</strong> Din alder + gennemsnitslevetid for dit køn og land</li>
+                <li><strong>Geografisk justering:</strong> Landespecifikke sundhedsstatistikker</li>
+                <li><strong>Livsstilsfaktorer (avanceret):</strong> Rygning, motion, kost, alkohol, søvn, stress</li>
+                <li><strong>Slutresultat:</strong> Estimeret dødsalder og resterende levetid</li>
+            </ol>
+        </div>
+
+        <h2>🌍 Understøttede lande og deres gennemsnitslevetider</h2>
+        <div class="country-grid">
+            <div class="country-item"><strong>🇩🇰 Danmark</strong><br>♂️ 78.9 | ♀️ 82.7 år</div>
+            <div class="country-item"><strong>🇸🇪 Sverige</strong><br>♂️ 80.8 | ♀️ 84.3 år</div>
+            <div class="country-item"><strong>🇳🇴 Norge</strong><br>♂️ 80.5 | ♀️ 84.2 år</div>
+            <div class="country-item"><strong>🇩🇪 Tyskland</strong><br>♂️ 78.6 | ♀️ 83.4 år</div>
+            <div class="country-item"><strong>🇬🇧 Storbritannien</strong><br>♂️ 79.4 | ♀️ 83.1 år</div>
+            <div class="country-item"><strong>🇺🇸 USA</strong><br>♂️ 76.3 | ♀️ 81.4 år</div>
+            <div class="country-item"><strong>🇫🇷 Frankrig</strong><br>♂️ 79.7 | ♀️ 85.6 år</div>
+            <div class="country-item"><strong>🇳🇱 Holland</strong><br>♂️ 80.2 | ♀️ 83.9 år</div>
+            <div class="country-item"><strong>🇫🇮 Finland</strong><br>♂️ 78.7 | ♀️ 84.5 år</div>
+            <div class="country-item"><strong>🇮🇸 Island</strong><br>♂️ 81.3 | ♀️ 84.1 år</div>
+            <div class="country-item"><strong>🇨🇭 Schweiz</strong><br>♂️ 81.9 | ♀️ 85.6 år</div>
+            <div class="country-item"><strong>🇯🇵 Japan</strong><br>♂️ 81.6 | ♀️ 87.7 år</div>
+        </div>
+
+        <h2>🎯 Hvad påvirker din dødsalder?</h2>
+        <p>Mange faktorer kan påvirke hvornår du statistisk set vil dø:</p>
+
+        <h3>✅ Positive faktorer (forlænger livet):</h3>
+        <ul>
+            <li>Regelmæssig motion og fysisk aktivitet</li>
+            <li>Sund og varieret kost</li>
+            <li>Ikke-rygning</li>
+            <li>Moderat alkoholforbrug eller abstinens</li>
+            <li>Tilstrækkelig søvn (7-9 timer)</li>
+            <li>Lavt stressniveau</li>
+            <li>Sociale relationer og netværk</li>
+        </ul>
+
+        <h3>❌ Negative faktorer (forkorter livet):</h3>
+        <ul>
+            <li>Rygning og tobaksbruge</li>
+            <li>Overforbrug af alkohol</li>
+            <li>Fedme og overvægt</li>
+            <li>Fysisk inaktivitet</li>
+            <li>Kronisk stress</li>
+            <li>Dårlig søvnkvalitet</li>
+            <li>Isolation og ensomhed</li>
+        </ul>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="cta-button">🔍 Beregn din dødsalder nu</a>
+            <p><small>Gratis og anonymt - ingen data gemmes</small></p>
+        </div>
+
+        <div class="warning-box">
+            <h3>🏥 Søg professionel hjælp</h3>
+            <p>Hvis du har bekymringer om dit helbred eller levetid, skal du kontakte din læge eller en sundhedsprofessionel. Denne calculator erstatter ikke medicinsk rådgivning.</p>
+        </div>
+    </div>
+</body>
+</html>

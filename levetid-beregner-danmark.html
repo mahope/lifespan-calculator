@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levetid Beregner Danmark - Præcis beregning for danskere</title>
+    <meta name="description" content="Specialiseret levetidsberegner for danskere baseret på Danmarks Statistik og danske sundhedsdata. Beregn din forventede levetid med danske statistikker.">
+    <meta name="keywords" content="levetid beregner danmark, dansk levetid, forventet levetid danmark, leveår danmark, sundhedsstatistik danmark">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .denmark-hero {
+            background: linear-gradient(135deg, #c8102e 0%, #ffffff 50%, #c8102e 100%);
+            color: #2d3748;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        .denmark-hero::before {
+            content: '🇩🇰';
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+        }
+        .denmark-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin: 2rem 0 1.5rem;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .danish-stats {
+            background: #f0f4f8;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            border-radius: 12px;
+            border: 3px solid #c8102e;
+        }
+        .comparison-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .comparison-table th {
+            background: #c8102e;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f7fafc;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #c8102e;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #9b0e23;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(200,16,46,0.3);
+        }
+        .danish-fact {
+            background: white;
+            border-left: 4px solid #c8102e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="denmark-hero">
+        <h1>Levetidsberegner for Danskere</h1>
+        <p class="subtitle">Få præcise beregninger baseret på danske sundhedsstatistikker og Danmarks Statistik</p>
+        <a href="index.html" class="cta-button">🇩🇰 Beregn min danske levetid</a>
+    </div>
+
+    <div class="content-section">
+        <div class="danish-stats">
+            <h2>📈 Danske Levetidsstatistikker 2024</h2>
+            <p>Danmark har nogle af verdens bedste sundhedsstatistikker. Her er de seneste tal:</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th>Danske Mænd</th>
+                        <th>Danske Kvinder</th>
+                        <th>EU Gennemsnit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Forventet levetid ved fødsel</strong></td>
+                        <td>78,9 år</td>
+                        <td>82,7 år</td>
+                        <td>78,2 / 83,7 år</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sunde leveår (ved fødsel)</strong></td>
+                        <td>71,4 år</td>
+                        <td>72,8 år</td>
+                        <td>69,1 / 70,5 år</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Forventet levetid ved 65 år</strong></td>
+                        <td>18,1 år</td>
+                        <td>21,2 år</td>
+                        <td>17,9 / 21,4 år</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>🏥 Hvad gør Danmark specielt?</h2>
+        <div class="danish-fact">
+            <h4>🩺 Gratis sundhedssystem</h4>
+            <p>Danmarks universelle sundhedssystem sikrer, at alle borgere har adgang til behandling, hvilket bidrager til højere levetid.</p>
+        </div>
+
+        <div class="danish-fact">
+            <h4>🚴‍♀️ Aktiv livsstil</h4>
+            <p>Danskere cykler i gennemsnit 1,6 km om dagen - en af de højeste rater i verden. Dette bidrager til bedre kardiovaskulær sundhed.</p>
+        </div>
+
+        <div class="danish-fact">
+            <h4>💰 Høj levestandard</h4>
+            <p>Danmark rangerer konsistent som et af verdens lykkeligste lande med høj levestandard, hvilket korrelerer med længere levetid.</p>
+        </div>
+
+        <div class="danish-fact">
+            <h4>🏢 God work-life balance</h4>
+            <p>Danske arbejdstider og ferieregler fremmer en sund balance mellem arbejde og privatliv, hvilket reducerer stress-relaterede sygdomme.</p>
+        </div>
+
+        <h2>📊 Hvordan påvirker danske forhold din levetid?</h2>
+
+        <h3>✅ Positive danske faktorer:</h3>
+        <ul>
+            <li><strong>Gratis sundhedspleje:</strong> Tidlig opdagelse og behandling af sygdomme</li>
+            <li><strong>Høj uddannelsesniveau:</strong> Bedre sundhedsbevidsthed og livsstilsvalg</li>
+            <li><strong>Ren luft og miljø:</strong> Lave luftforureningsniveauer</li>
+            <li><strong>Sociale sikkerhedsnet:</strong> Mindre stress omkring økonomi og job</li>
+            <li><strong>Høj vaccinationstilslutning:</strong> Forebyggelse af infektionssygdomme</li>
+        </ul>
+
+        <h3>⚠️ Udfordringer for danske levetider:</h3>
+        <ul>
+            <li><strong>Højt alkoholforbrug:</strong> Danmark har et relativt højt alkoholforbrug</li>
+            <li><strong>Rygning:</strong> Stadig en udfordring, især blandt unge kvinder</li>
+            <li><strong>Stillesiddende arbejde:</strong> Mange danskere arbejder ved skrivebord</li>
+            <li><strong>Processeret mad:</strong> Øget forbrug af færdiglavet mad</li>
+        </ul>
+
+        <h2>🎯 Specialiserede beregninger for danskere</h2>
+        <p>Vores levetidsberegner tager specifikt højde for danske forhold:</p>
+        <ul>
+            <li><strong>Danmarks Statistiks seneste data</strong> - Opdateret årligt</li>
+            <li><strong>Regionale forskelle</strong> - Forskelle mellem København, Jylland, etc.</li>
+            <li><strong>Danske livsstilsmønstre</strong> - Cykling, frokostpause-kultur, hygge</li>
+            <li><strong>Socioøkonomiske faktorer</strong> - Uddannelse, indkomst, boligområde</li>
+        </ul>
+
+        <h2>📍 Regionale forskelle i Danmark</h2>
+        <p>Vidste du at der er forskelle i levetid mellem forskellige dele af Danmark?</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Mænd</th>
+                    <th>Kvinder</th>
+                    <th>Bemærkninger</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Region Hovedstaden</td>
+                    <td>79,2 år</td>
+                    <td>83,1 år</td>
+                    <td>Højeste levetid</td>
+                </tr>
+                <tr>
+                    <td>Region Midtjylland</td>
+                    <td>78,8 år</td>
+                    <td>82,6 år</td>
+                    <td>Tæt på landsgennemsnit</td>
+                </tr>
+                <tr>
+                    <td>Region Syddanmark</td>
+                    <td>78,7 år</td>
+                    <td>82,5 år</td>
+                    <td>Lidt under gennemsnit</td>
+                </tr>
+                <tr>
+                    <td>Region Sjælland</td>
+                    <td>78,5 år</td>
+                    <td>82,3 år</td>
+                    <td>Laveste levetid</td>
+                </tr>
+                <tr>
+                    <td>Region Nordjylland</td>
+                    <td>78,6 år</td>
+                    <td>82,4 år</td>
+                    <td>Under landsgennemsnit</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="cta-button">🇩🇰 Start din danske levetidsberegning</a>
+            <p><small>Inkluderer danske statistikker og livsstilsfaktorer</small></p>
+        </div>
+
+        <div class="danish-fact">
+            <h3>🔬 Kilder og datagrundlag</h3>
+            <p>Vores beregninger for danske brugere er baseret på data fra:</p>
+            <ul>
+                <li>Danmarks Statistik - Officielle levetidsstatistikker</li>
+                <li>Sundhedsstyrelsen - Danske sundhedsdata</li>
+                <li>Statens Serum Institut - Epidemiologiske data</li>
+                <li>WHO - Internationale sammenligninger</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://example.com/sitemap.xml
+
+# Allow crawling of main pages
+Allow: /index.html
+Allow: /hvor-lang-tid-har-jeg-tilbage.html
+Allow: /dodsalder-calculator.html
+Allow: /levetid-beregner-danmark.html
+Allow: /livsstil-og-levetid.html
+
+# Allow stylesheets and scripts
+Allow: /styles.css
+Allow: /script.js
+
+# Block unnecessary files
+Disallow: /.git/
+Disallow: /CLAUDE.md
+Disallow: /WARP.md
+Disallow: /.dokploy

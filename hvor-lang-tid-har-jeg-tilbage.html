@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hvor lang tid har jeg tilbage at leve? - Præcis beregning baseret på statistik</title>
+    <meta name="description" content="Find ud af hvor lang tid du har tilbage at leve med vores præcise levetidsberegner. Baseret på WHO statistikker og danske sundhedsdata. Gratis og anonymt.">
+    <meta name="keywords" content="hvor lang tid har jeg tilbage at leve, resterende levetid, dødsalder beregning, levetid statistik, hvor længe lever jeg">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hvor lang tid har jeg tilbage at leve? - Gratis beregning">
+    <meta property="og:description" content="Beregn din resterende levetid baseret på alder, køn og geografisk placering. Præcise statistikker fra WHO og danske myndigheder.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="da_DK">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Levetidsberegner - Hvor lang tid har jeg tilbage",
+        "description": "Beregn din resterende levetid baseret på statistiske data",
+        "url": "https://example.com/hvor-lang-tid-har-jeg-tilbage.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .landing-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .landing-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        .landing-hero .subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .cta-button {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .cta-button:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .question-box {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-hero">
+        <h1>Hvor lang tid har jeg tilbage at leve?</h1>
+        <p class="subtitle">Få et præcist svar baseret på videnskabelige statistikker og din personlige profil</p>
+        <a href="index.html" class="cta-button">🕰️ Beregn din resterende levetid nu</a>
+    </div>
+
+    <div class="content-section">
+        <div class="question-box">
+            <h2>💭 Hvorfor vil du vide hvor lang tid du har tilbage?</h2>
+            <p>Det er et af de mest fundamentale spørgsmål, vi som mennesker stiller os selv. Måske vil du:</p>
+            <ul>
+                <li><strong>Planlægge din fremtid</strong> - Pension, økonomi, livsmål</li>
+                <li><strong>Prioritere bedre</strong> - Fokusere på det der virkelig betyder noget</li>
+                <li><strong>Leve sundere</strong> - Forstå hvordan livsstil påvirker levetid</li>
+                <li><strong>Være nysgerrig</strong> - Sammenligne med statistikker</li>
+            </ul>
+        </div>
+
+        <h2>📊 Hvad kan du forvente at få svar på?</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">12+</span>
+                <p>Lande med præcis data inkluderet</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">WHO</span>
+                <p>Officielle data fra Verdenssundhedsorganisationen</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">2024</span>
+                <p>Seneste tilgængelige statistikker</p>
+            </div>
+        </div>
+
+        <h2>🎯 Hvordan fungerer beregningen?</h2>
+        <p>Vores avancerede levetidsberegner tager højde for:</p>
+        <ul>
+            <li><strong>Din alder</strong> - Præcis til dato hvis du vælger avanceret mode</li>
+            <li><strong>Dit køn</strong> - Mænd og kvinder har forskellige levetidsstatistikker</li>
+            <li><strong>Din geografiske placering</strong> - Automatisk detekteret via IP</li>
+            <li><strong>Livsstilsfaktorer</strong> - Rygning, motion, kost, søvn og stress (valgfrit)</li>
+        </ul>
+
+        <div class="question-box">
+            <h3>🧮 Hvad får du ud af beregningen?</h3>
+            <ul>
+                <li><strong>Live nedtælling</strong> - Se din resterende tid tælle ned i realtid</li>
+                <li><strong>Sjove fakta</strong> - Hvor mange hjerteslag, skridt og kopper kaffe du har tilbage</li>
+                <li><strong>Visuel tidslinje</strong> - Se hvor meget af dit liv du har levet vs. resterende</li>
+                <li><strong>Delbare resultater</strong> - Send dit resultat til venner og familie</li>
+            </ul>
+        </div>
+
+        <h2>🔒 Er det sikkert og privat?</h2>
+        <p>Absolut! Vi gemmer ingen personlige data. Alle beregninger sker lokalt i din browser, og vi bruger kun din IP-adresse til at bestemme dit land - ikke til tracking eller analyse.</p>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="cta-button">🚀 Start din beregning nu - Det tager kun 2 minutter</a>
+        </div>
+
+        <h2>❓ Ofte stillede spørgsmål</h2>
+        <div class="question-box">
+            <h4>Er resultatet 100% nøjagtigt?</h4>
+            <p>Nej, det er statistiske estimater baseret på gennemsnitsdata. Mange faktorer som genetik, fremtidens medicinske fremskridt og individuelle forskelle kan påvirke din faktiske levetid.</p>
+        </div>
+
+        <div class="question-box">
+            <h4>Kan jeg forbedre min resterende levetid?</h4>
+            <p>Ja! Vores avancerede mode viser hvordan forskellige livsstilsændringer kan påvirke din forventede levetid. Motion, sund kost og ikke-rygning kan gøre en betydelig forskel.</p>
+        </div>
+    </div>
+
+    <script>
+        // Redirect to main calculator after 30 seconds if no interaction
+        setTimeout(() => {
+            if (!document.hidden) {
+                window.location.href = 'index.html';
+            }
+        }, 30000);
+    </script>
+</body>
+</html>

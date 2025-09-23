@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livsstil og Levetid - Hvor meget påvirker dine vaner din levetid?</title>
+    <meta name="description" content="Lær hvordan din livsstil påvirker din levetid. Beregn hvor mange år du kan vinde eller tabe gennem rygning, motion, kost og andre livsstilsfaktorer.">
+    <meta name="keywords" content="livsstil levetid, motion levetid, rygning levetid, kost levetid, alkohol levetid, søvn levetid, stress levetid">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .lifestyle-hero {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .lifestyle-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .impact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid #48bb78;
+            transition: transform 0.3s ease;
+        }
+        .impact-card:hover {
+            transform: translateY(-5px);
+        }
+        .impact-card.negative {
+            border-left-color: #e53e3e;
+        }
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .impact-number.positive { color: #48bb78; }
+        .impact-number.negative { color: #e53e3e; }
+        .cta-button {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(72,187,120,0.3);
+        }
+        .research-box {
+            background: #edf2f7;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #4299e1;
+        }
+    </style>
+</head>
+<body>
+    <div class="lifestyle-hero">
+        <h1>🏃‍♀️ Livsstil & Levetid</h1>
+        <p class="subtitle">Discover hvordan dine daglige vaner påvirker hvor længe du lever</p>
+        <a href="index.html" class="cta-button">🧮 Beregn din livsstils-påvirkning</a>
+    </div>
+
+    <div class="content-section">
+        <h2>💪 Hvor meget kan din livsstil ændre din levetid?</h2>
+        <p>Forskuing viser at op til <strong>70% af din levetid</strong> er påvirket af faktorer du selv kan kontrollere. Her er hvor stor forskel dine valg kan gøre:</p>
+
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="impact-number positive">+7-10 år</div>
+                <h3>🚫 Ikke-rygning</h3>
+                <p>Rygere har i gennemsnit 7-10 års kortere levetid. At holde op med at ryge er den mest effektive måde at forlænge dit liv på.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-number positive">+3-5 år</div>
+                <h3>🏃‍♂️ Regelmæssig motion</h3>
+                <p>30 minutter moderat motion 5 dage om ugen kan forlænge dit liv med 3-5 år og reducere risikoen for hjertesygdomme med 40%.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-number positive">+2-3 år</div>
+                <h3>🥗 Sund kost</h3>
+                <p>Middelhavsdiæt med frugt, grøntsager, fisk og nødder kan tilføje 2-3 år til dit liv og reducere kræftrisikoen.</p>
+            </div>
+
+            <div class="impact-card negative">
+                <div class="impact-number negative">-2-4 år</div>
+                <h3>🍺 Overdrevent alkoholforbrug</h3>
+                <p>Mere end 2 genstande om dagen for mænd (1 for kvinder) kan reducere levetiden med 2-4 år gennem leverskader og kræft.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-number positive">+1-2 år</div>
+                <h3>😴 Tilstrækkelig søvn</h3>
+                <p>7-9 timers kvalitetssøvn per nat styrker immunforsvaret og kan forlænge livet med 1-2 år.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-number positive">+1-3 år</div>
+                <h3>🧘‍♀️ Stress management</h3>
+                <p>Kronisk stress påvirker hjertet og immunsystemet. Stresshåndtering kan tilføje 1-3 år til dit liv.</p>
+            </div>
+        </div>
+
+        <div class="research-box">
+            <h3>📚 Videnskabelig forskning</h3>
+            <p><strong>Harvard T.H. Chan School studiet (2018)</strong> fulgte 123.000 personer i 30 år og fandt at mennesker med 5 sunde vaner levede 12-14 år længere:</p>
+            <ol>
+                <li>Aldrig røget eller holdt op</li>
+                <li>BMI mellem 18,5-24,9</li>
+                <li>Minimum 30 min motion dagligt</li>
+                <li>Moderat alkoholforbrug</li>
+                <li>Sund kost score</li>
+            </ol>
+        </div>
+
+        <h2>🎯 Kombiner dine indsatser for maksimal effekt</h2>
+        <p>De største gevinster kommer når du kombinerer flere sunde vaner:</p>
+
+        <table class="comparison-table" style="width: 100%; margin: 2rem 0; border-collapse: collapse;">
+            <thead style="background: #48bb78; color: white;">
+                <tr>
+                    <th style="padding: 1rem;">Antal sunde vaner</th>
+                    <th style="padding: 1rem;">Ekstra leveår (mænd)</th>
+                    <th style="padding: 1rem;">Ekstra leveår (kvinder)</th>
+                    <th style="padding: 1rem;">Eksempel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #f7fafc;">
+                    <td style="padding: 1rem;">0 sunde vaner</td>
+                    <td style="padding: 1rem;">Baseline</td>
+                    <td style="padding: 1rem;">Baseline</td>
+                    <td style="padding: 1rem;">Ryger, inaktiv, dårlig kost</td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem;">1-2 sunde vaner</td>
+                    <td style="padding: 1rem;">+2-4 år</td>
+                    <td style="padding: 1rem;">+1-3 år</td>
+                    <td style="padding: 1rem;">Ikke-ryger + motion</td>
+                </tr>
+                <tr style="background: #f7fafc;">
+                    <td style="padding: 1rem;">3-4 sunde vaner</td>
+                    <td style="padding: 1rem;">+7-9 år</td>
+                    <td style="padding: 1rem;">+6-8 år</td>
+                    <td style="padding: 1rem;">+ sund kost + normal vægt</td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem;"><strong>5 sunde vaner</strong></td>
+                    <td style="padding: 1rem;"><strong>+12-14 år</strong></td>
+                    <td style="padding: 1rem;"><strong>+12-14 år</strong></td>
+                    <td style="padding: 1rem;">Optimal livsstil</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>⚡ Start med de vigtigste ændringer</h2>
+        <p>Du behøver ikke ændre alt på én gang. Start med dem der giver størst effekt:</p>
+
+        <h3>🏆 TOP 3 prioriteter (størst påvirkning):</h3>
+        <ol>
+            <li><strong>Hold op med at ryge</strong> - Største enkeltfaktor</li>
+            <li><strong>Kom i gang med motion</strong> - 30 min/dag, 5 dage/uge</li>
+            <li><strong>Spis mere frugt og grønt</strong> - Mindst 5 portioner dagligt</li>
+        </ol>
+
+        <h3>🎖️ Næste niveau (moderate forbedringer):</h3>
+        <ol start="4">
+            <li><strong>Reducer alkohol</strong> - Max 1-2 genstande per dag</li>
+            <li><strong>Forbedre søvn</strong> - Fast søvnrytme, 7-9 timer</li>
+            <li><strong>Håndter stress</strong> - Meditation, yoga, hobbyer</li>
+        </ol>
+
+        <div class="research-box">
+            <h3>🧬 Hvad med genetik?</h3>
+            <p>Selvom dine gener spiller en rolle, er deres indflydelse mindre end mange tror:</p>
+            <ul>
+                <li><strong>Genetik:</strong> ~20-30% af din levetid</li>
+                <li><strong>Livsstil:</strong> ~70-80% af din levetid</li>
+            </ul>
+            <p>Dette betyder at selv med "dårlige" gener kan du stadig leve et langt, sundt liv gennem de rigtige valg!</p>
+        </div>
+
+        <h2>📊 Test din livsstils-påvirkning</h2>
+        <p>Vores avancerede levetidsberegner inkluderer alle disse faktorer:</p>
+        <ul>
+            <li>🚬 <strong>Rygerstatus</strong> - Nuværende, tidligere eller aldrig</li>
+            <li>🏃‍♀️ <strong>Motionsniveau</strong> - Fra inaktiv til meget aktiv</li>
+            <li>🥗 <strong>Kostkvalitet</strong> - Fra dårlig til optimal</li>
+            <li>🍷 <strong>Alkoholforbrug</strong> - Från abstinent til overdrevent</li>
+            <li>😴 <strong>Søvnkvalitet</strong> - Timer og kvalitet</li>
+            <li>😤 <strong>Stressniveau</strong> - Fra lavt til højt</li>
+        </ul>
+
+        <div style="text-align: center; margin: 4rem 0;">
+            <a href="index.html" class="cta-button">🎯 Beregn hvordan din livsstil påvirker din levetid</a>
+            <p><small>Få konkrete anbefalinger til forbedringer</small></p>
+        </div>
+
+        <div class="research-box">
+            <h3>💡 Bonus tip: Social påvirkning</h3>
+            <p>Vidste du at <strong>ensomhed kan reducere levetiden med op til 15 år</strong>? Sociale relationer og venskaber er næsten lige så vigtige som fysisk sundhed for et langt liv!</p>
+        </div>
+    </div>
+</body>
+</html>

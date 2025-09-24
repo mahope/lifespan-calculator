@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://levetidsberegner.dk/sitemap.xml
 
 # Allow crawling of main pages
 Allow: /index.html

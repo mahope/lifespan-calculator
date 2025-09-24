@@ -798,6 +798,18 @@ class LifespanCalculator {
             document.querySelector('.what-if-section').style.display = 'none';
         }
 
+        // Track calculation completion
+        if (typeof window.plausible === 'function') {
+            window.plausible('Calculator Used', {
+                props: {
+                    mode: this.currentMode,
+                    gender: data.gender,
+                    country: data.country,
+                    age_group: this.getAgeGroupForAnalytics(data.age)
+                }
+            });
+        }
+
         // Show results section and hide form
         const resultsSection = document.getElementById('results');
         const formSection = document.querySelector('.form-section');
@@ -1032,6 +1044,16 @@ class LifespanCalculator {
     shareResults() {
         if (!this.resultData) return;
 
+        // Track sharing event
+        if (typeof window.plausible === 'function') {
+            window.plausible('Results Shared', {
+                props: {
+                    mode: this.currentMode,
+                    share_method: navigator.share ? 'web_share_api' : 'fallback'
+                }
+            });
+        }
+
         const shareUrl = this.generateShareableUrl();
         const shareText = `🕰️ Jeg har ${Math.round(this.resultData.yearsLeft)} år tilbage at leve ifølge Levetidsberegneren! Hvad med dig? Tjek det her:`;
 
@@ -1194,6 +1216,18 @@ class LifespanCalculator {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Helper function for analytics age groups
+    getAgeGroupForAnalytics(age) {
+        if (age < 18) return '0-17';
+        if (age < 25) return '18-24';
+        if (age < 35) return '25-34';
+        if (age < 45) return '35-44';
+        if (age < 55) return '45-54';
+        if (age < 65) return '55-64';
+        if (age < 75) return '65-74';
+        return '75+';
+    }
+
     addContextualMessage(data) {
         // This could be expanded to show different messages based on the results
         if (data.yearsLeft <= 0) {
@@ -1237,7 +1271,7 @@ const Utils = {
     calculateLifePercentage: (age, lifeExpectancy) => {
         return Math.round((age / lifeExpectancy) * 100);
     },
-    
+
     // Function to get age category
     getAgeCategory: (age) => {
         if (age < 18) return 'barn/teenager';
@@ -1247,3 +1281,8 @@ const Utils = {
         return 'ældre';
     }
 };
+
+// Initialize the calculator when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    new LifespanCalculator();
+});

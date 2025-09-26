@@ -4,11 +4,11 @@
   "description": "Danish Lifespan Calculator - Interactive web tool calculating remaining lifespan",
   "main": "index.html",
   "scripts": {
-    "start": "python -m http.server 8000",
-    "serve": "npx serve .",
-    "dev": "tailwindcss -i ./input.css -o ./styles.css --watch",
-    "build": "tailwindcss -i ./input.css -o ./styles.css --minify",
-    "build:watch": "tailwindcss -i ./input.css -o ./styles.css --watch",
+    "start": "serve -s . -l 3000",
+    "serve": "serve -s . -l 3000",
+    "dev": "tailwindcss -i ./app.css -o ./styles.css --watch",
+    "build": "tailwindcss -i ./app.css -o ./styles.css --minify",
+    "build:watch": "tailwindcss -i ./app.css -o ./styles.css --watch",
     "deploy": "npm run build && echo 'Deploying static files'"
   },
   "keywords": [
@@ -28,6 +28,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
+    "serve": "^14.2.5",
     "tailwindcss": "^3.4.17"
   }
 }

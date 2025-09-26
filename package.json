@@ -6,8 +6,10 @@
   "scripts": {
     "start": "python -m http.server 8000",
     "serve": "npx serve .",
-    "build": "echo 'No build process needed for static site'",
-    "deploy": "echo 'Deploying static files'"
+    "dev": "tailwindcss -i ./input.css -o ./styles.css --watch",
+    "build": "tailwindcss -i ./input.css -o ./styles.css --minify",
+    "build:watch": "tailwindcss -i ./input.css -o ./styles.css --watch",
+    "deploy": "npm run build && echo 'Deploying static files'"
   },
   "keywords": [
     "lifespan",
@@ -22,5 +24,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mahope/lifespan-calculator.git"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
   }
 }

@@ -14,71 +14,85 @@
     <script defer data-domain="levetidsberegner.dk" src="https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"></script>
     <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
-<body>
-    <div class="app-container">
+<body class="min-h-screen bg-background font-sans antialiased">
+    <div class="flex min-h-screen flex-col">
         <!-- Header Navigation -->
-        <header class="header">
-            <nav>
-                <h1><a href="index.html">🕰️ Levetidsberegner</a></h1>
-                <div>
-                    <a href="index.html">Beregner</a>
-                    <a href="livsstil-og-levetid.html">Livsstil</a>
-                    <a href="levetid-beregner-danmark.html" style="color: var(--accent-color);">Danmark</a>
-                    <a href="hvor-lang-tid-har-jeg-tilbage.html">Info</a>
+        <header class="border-b bg-card">
+            <nav class="container flex items-center justify-between py-4">
+                <h1><a href="index.html" class="text-xl font-bold text-foreground">🕰️ Levetidsberegner</a></h1>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-muted-foreground hover:text-foreground">Beregner</a>
+                    <a href="livsstil-og-levetid.html" class="text-muted-foreground hover:text-foreground">Livsstil</a>
+                    <a href="levetid-beregner-danmark.html" class="text-primary">Danmark</a>
+                    <a href="hvor-lang-tid-har-jeg-tilbage.html" class="text-muted-foreground hover:text-foreground">Info</a>
                 </div>
             </nav>
         </header>
 
-        <main class="main-content">
-            <div class="landing-hero danish-hero">
-                <div class="danish-flag">🇩🇰</div>
-                <h1>Levetidsberegner for Danskere</h1>
-                <p>Få præcise beregninger baseret på danske sundhedsstatistikker og Danmarks Statistik</p>
-                <a href="index.html" class="cta-button danish-cta">🇩🇰 Beregn min danske levetid</a>
+        <main class="flex-1">
+            <div class="bg-card px-4 py-16 text-center sm:px-6 lg:px-8">
+                <div class="container">
+                    <div class="text-8xl mb-4">🇩🇰</div>
+                    <h1 class="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">Levetidsberegner for Danskere</h1>
+                    <p class="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground sm:text-xl">Få præcise beregninger baseret på danske sundhedsstatistikker og Danmarks Statistik</p>
+                    <a href="index.html" class="btn btn-primary text-lg py-3 px-6">🇩🇰 Beregn min danske levetid</a>
+                </div>
             </div>
 
-    <div class="content-section">
-        <div class="question-box" style="border-left-color: #c8102e;">
-            <h2>📈 Danske Levetidsstatistikker 2024</h2>
-            <p>Danmark har nogle af verdens bedste sundhedsstatistikker. Her er de seneste tal:</p>
+            <div class="container py-8 space-y-8">
+                <div class="card bg-red-50 border-red-200 border-l-4 border-l-red-600">
+                    <div class="card-content space-y-4">
+                        <h2 class="text-2xl font-bold text-foreground flex items-center gap-2">
+                            <span>📈</span> Danske Levetidsstatistikker 2024
+                        </h2>
+                        <p class="text-muted-foreground">Danmark har nogle af verdens bedste sundhedsstatistikker. Her er de seneste tal:</p>
 
-            <table class="comparison-table" style="margin-top: 2rem;">
-                <thead>
-                    <tr>
-                        <th>Kategori</th>
-                        <th>Danske Mænd</th>
-                        <th>Danske Kvinder</th>
-                        <th>EU Gennemsnit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Forventet levetid ved fødsel</strong></td>
-                        <td>78,9 år</td>
-                        <td>82,7 år</td>
-                        <td>78,2 / 83,7 år</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Sunde leveår (ved fødsel)</strong></td>
-                        <td>71,4 år</td>
-                        <td>72,8 år</td>
-                        <td>69,1 / 70,5 år</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Forventet levetid ved 65 år</strong></td>
-                        <td>18,1 år</td>
-                        <td>21,2 år</td>
-                        <td>17,9 / 21,4 år</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-red-600 text-white">
+                                        <th class="p-4 text-left font-semibold">Kategori</th>
+                                        <th class="p-4 text-left font-semibold">Danske Mænd</th>
+                                        <th class="p-4 text-left font-semibold">Danske Kvinder</th>
+                                        <th class="p-4 text-left font-semibold">EU Gennemsnit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-gray-50">
+                                        <td class="p-4 font-semibold">Forventet levetid ved fødsel</td>
+                                        <td class="p-4 text-blue-600 font-bold">78,9 år</td>
+                                        <td class="p-4 text-pink-600 font-bold">82,7 år</td>
+                                        <td class="p-4 text-sm text-muted-foreground">78,2 / 83,7 år</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-semibold">Sunde leveår (ved fødsel)</td>
+                                        <td class="p-4 text-blue-600 font-bold">71,4 år</td>
+                                        <td class="p-4 text-pink-600 font-bold">72,8 år</td>
+                                        <td class="p-4 text-sm text-muted-foreground">69,1 / 70,5 år</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="p-4 font-semibold">Forventet levetid ved 65 år</td>
+                                        <td class="p-4 text-blue-600 font-bold">18,1 år</td>
+                                        <td class="p-4 text-pink-600 font-bold">21,2 år</td>
+                                        <td class="p-4 text-sm text-muted-foreground">17,9 / 21,4 år</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-        <h2>🏥 Hvad gør Danmark specielt?</h2>
-        <div class="question-box" style="border-left-color: #c8102e;">
-            <h4>🩺 Gratis sundhedssystem</h4>
-            <p>Danmarks universelle sundhedssystem sikrer, at alle borgere har adgang til behandling, hvilket bidrager til højere levetid.</p>
-        </div>
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-bold text-foreground">🏥 Hvad gør Danmark specielt?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="card bg-red-50 border-red-200 border-l-4 border-l-red-600">
+                            <div class="card-content space-y-2">
+                                <h4 class="text-lg font-semibold text-foreground flex items-center gap-2">
+                                    <span>🩺</span> Gratis sundhedssystem
+                                </h4>
+                                <p class="text-muted-foreground text-sm">Danmarks universelle sundhedssystem sikrer, at alle borgere har adgang til behandling, hvilket bidrager til højere levetid.</p>
+                            </div>
+                        </div>
 
         <div class="question-box" style="border-left-color: #c8102e;">
             <h4>🚴‍♀️ Aktiv livsstil</h4>

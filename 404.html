@@ -4,41 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Side ikke fundet - Levetidsberegner</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            color: white;
-            text-align: center;
-        }
-        .container {
-            max-width: 500px;
-            padding: 2rem;
-        }
-        h1 { font-size: 3rem; margin-bottom: 1rem; }
-        p { font-size: 1.2rem; margin-bottom: 2rem; }
-        a {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        a:hover { background: rgba(255,255,255,0.3); }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <h1>404</h1>
-        <p>Siden blev ikke fundet</p>
-        <a href="/">← Tilbage til Levetidsberegneren</a>
+<body class="min-h-screen bg-background font-sans antialiased">
+    <div class="flex min-h-screen flex-col items-center justify-center">
+        <div class="container max-w-lg text-center space-y-6">
+            <div class="card">
+                <div class="card-content space-y-6">
+                    <h1 class="text-6xl font-bold text-primary">404</h1>
+                    <p class="text-xl text-muted-foreground">Siden blev ikke fundet</p>
+                    <a href="/" class="btn btn-primary">← Tilbage til Levetidsberegneren</a>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         // Redirect to home after 3 seconds

@@ -38,17 +38,17 @@
     <script defer data-domain="levetidsberegner.dk" src="https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"></script>
     <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 </head>
-<body>
-    <div class="app-container">
+<body class="min-h-screen bg-background font-sans antialiased">
+    <div class="flex min-h-screen flex-col">
         <!-- Header Navigation -->
-        <header class="header">
-            <nav>
-                <h1><a href="index.html">🕰️ Levetidsberegner</a></h1>
-                <div>
-                    <a href="index.html">Beregner</a>
-                    <a href="livsstil-og-levetid.html">Livsstil</a>
-                    <a href="levetid-beregner-danmark.html">Danmark</a>
-                    <a href="hvor-lang-tid-har-jeg-tilbage.html" style="color: var(--accent-color);">Info</a>
+        <header class="border-b bg-card">
+            <nav class="container flex items-center justify-between py-4">
+                <h1><a href="index.html" class="text-xl font-bold text-foreground">🕰️ Levetidsberegner</a></h1>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-muted-foreground hover:text-foreground">Beregner</a>
+                    <a href="livsstil-og-levetid.html" class="text-muted-foreground hover:text-foreground">Livsstil</a>
+                    <a href="levetid-beregner-danmark.html" class="text-muted-foreground hover:text-foreground">Danmark</a>
+                    <a href="hvor-lang-tid-har-jeg-tilbage.html" class="text-primary">Info</a>
                 </div>
             </nav>
         </header>

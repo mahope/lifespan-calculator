@@ -1,22 +1,21 @@
 {
   "name": "lifespan-calculator",
   "version": "1.0.0",
-  "description": "Danish Lifespan Calculator - Interactive web tool calculating remaining lifespan",
-  "main": "index.html",
+  "description": "Danish Lifespan Calculator - Interactive React web application",
+  "type": "module",
   "scripts": {
-    "start": "serve -s . -l 3000",
-    "serve": "serve -s . -l 3000",
-    "dev": "tailwindcss -i ./app.css -o ./styles.css --watch",
-    "build": "tailwindcss -i ./app.css -o ./styles.css --minify",
-    "build:watch": "tailwindcss -i ./app.css -o ./styles.css --watch",
-    "deploy": "npm run build && echo 'Deploying static files'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite preview --port 3000"
   },
   "keywords": [
     "lifespan",
     "calculator",
     "danish",
     "statistics",
-    "health"
+    "health",
+    "react"
   ],
   "author": "Mads Holst Jensen <mahope.dk>",
   "license": "MIT",
@@ -25,10 +24,19 @@
     "type": "git",
     "url": "https://github.com/mahope/lifespan-calculator.git"
   },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "react-helmet-async": "^2.0.4"
+  },
   "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "serve": "^14.2.5",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.1"
   }
 }

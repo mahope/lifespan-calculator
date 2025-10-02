@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
+import ThemeToggle from '../components/ThemeToggle';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { achievements } from '../utils/lifeExpectancyData';
 
@@ -475,7 +476,7 @@ const HomePage = () => {
 
               {/* Disclaimers */}
               <div className="space-y-3">
-                <div className="card border-yellow-200 bg-yellow-50/50">
+                <div className="card border-yellow-200 dark:border-yellow-800 bg-yellow-50/50 dark:bg-yellow-950/20">
                   <div className="card-content">
                     <p className="text-sm text-muted-foreground">
                       <strong className="text-foreground">Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data.
@@ -484,7 +485,7 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <div className="card border-orange-200 bg-orange-50/50">
+                <div className="card border-orange-200 dark:border-orange-800 bg-orange-50/50 dark:bg-orange-950/20">
                   <div className="card-content space-y-2">
                     <h4 className="text-sm font-semibold text-foreground">Vigtige disclaimere</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
@@ -501,6 +502,7 @@ const HomePage = () => {
       </main>
 
       <Footer />
+      <ThemeToggle />
     </div>
   );
 };

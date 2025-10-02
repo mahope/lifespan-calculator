@@ -277,21 +277,21 @@ const HomePage = () => {
                                 className={`factor-btn ${lifestyleFactors.smoking === 0 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('smoking', 0)}
                               >
-                                🙅 Ryger ikke
+                                Ryger ikke
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.smoking === -5 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('smoking', -5)}
                               >
-                                😟 Let (1-10/dag)
+                                Let (1-10/dag)
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.smoking === -10 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('smoking', -10)}
                               >
-                                😰 Kraftig (10+/dag)
+                                Kraftig (10+/dag)
                               </button>
                             </div>
                           </div>
@@ -313,28 +313,28 @@ const HomePage = () => {
                                 className={`factor-btn ${lifestyleFactors.exercise === 0 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('exercise', 0)}
                               >
-                                🛋️ Ingen motion
+                                Ingen
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.exercise === 2 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('exercise', 2)}
                               >
-                                🚶 Let (1-3 t/uge)
+                                Let (1-3 t/uge)
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.exercise === 4 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('exercise', 4)}
                               >
-                                🏃 Moderat (4-6 t/uge)
+                                Moderat (4-6 t/uge)
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.exercise === 6 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('exercise', 6)}
                               >
-                                🏋️ Intensiv (7+ t/uge)
+                                Intensiv (7+ t/uge)
                               </button>
                             </div>
                           </div>
@@ -356,28 +356,157 @@ const HomePage = () => {
                                 className={`factor-btn ${lifestyleFactors.diet === -2 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('diet', -2)}
                               >
-                                🍔 Usund
+                                Usund
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.diet === 0 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('diet', 0)}
                               >
-                                🍽️ Gennemsnitlig
+                                Gennemsnitlig
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.diet === 3 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('diet', 3)}
                               >
-                                🍎 Sund
+                                Sund
                               </button>
                               <button
                                 type="button"
                                 className={`factor-btn ${lifestyleFactors.diet === 5 ? 'active' : ''}`}
                                 onClick={() => selectLifestyleFactor('diet', 5)}
                               >
-                                🥗 Meget sund
+                                Meget sund
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Alcohol */}
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-xl">🍷</span>
+                                <label className="font-medium">Alkohol</label>
+                              </div>
+                              <span className="text-sm font-medium">
+                                {lifestyleFactors.alcohol > 0 ? `+${lifestyleFactors.alcohol}` : lifestyleFactors.alcohol} år
+                              </span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.alcohol === 0 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('alcohol', 0)}
+                              >
+                                Ingen
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.alcohol === -1 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('alcohol', -1)}
+                              >
+                                Let (1-7/uge)
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.alcohol === -3 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('alcohol', -3)}
+                              >
+                                Moderat (8-14/uge)
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.alcohol === -6 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('alcohol', -6)}
+                              >
+                                Kraftig (15+/uge)
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Sleep */}
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-xl">😴</span>
+                                <label className="font-medium">Søvn</label>
+                              </div>
+                              <span className="text-sm font-medium">
+                                {lifestyleFactors.sleep > 0 ? `+${lifestyleFactors.sleep}` : lifestyleFactors.sleep} år
+                              </span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.sleep === -2 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('sleep', -2)}
+                              >
+                                &lt;5 timer
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.sleep === -1 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('sleep', -1)}
+                              >
+                                5-6 timer
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.sleep === 2 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('sleep', 2)}
+                              >
+                                7-8 timer
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.sleep === 0 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('sleep', 0)}
+                              >
+                                9+ timer
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Stress */}
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-xl">😰</span>
+                                <label className="font-medium">Stress</label>
+                              </div>
+                              <span className="text-sm font-medium">
+                                {lifestyleFactors.stress > 0 ? `+${lifestyleFactors.stress}` : lifestyleFactors.stress} år
+                              </span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.stress === 2 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('stress', 2)}
+                              >
+                                Lavt
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.stress === 0 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('stress', 0)}
+                              >
+                                Moderat
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.stress === -2 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('stress', -2)}
+                              >
+                                Højt
+                              </button>
+                              <button
+                                type="button"
+                                className={`factor-btn ${lifestyleFactors.stress === -4 ? 'active' : ''}`}
+                                onClick={() => selectLifestyleFactor('stress', -4)}
+                              >
+                                Meget højt
                               </button>
                             </div>
                           </div>

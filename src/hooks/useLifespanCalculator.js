@@ -73,6 +73,16 @@ export const useLifespanCalculator = () => {
     const endDate = new Date(now.getFullYear() + remainingYears, now.getMonth(), now.getDate());
     const timeRemaining = endDate - now;
 
+    // Calculate initial countdown values
+    const totalSeconds = Math.floor(timeRemaining / 1000);
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const totalHours = Math.floor(totalMinutes / 60);
+    const totalDays = Math.floor(totalHours / 24);
+    const years = Math.floor(totalDays / 365.25);
+    const hours = totalHours % 24;
+    const minutes = totalMinutes % 60;
+    const seconds = totalSeconds % 60;
+
     const result = {
       remainingYears: remainingYears.toFixed(1),
       remainingDays: Math.floor(timeRemaining / (1000 * 60 * 60 * 24)),
@@ -85,6 +95,14 @@ export const useLifespanCalculator = () => {
       lifePercentage: ((age / adjustedLifeExpectancy) * 100).toFixed(1),
       daysLived: Math.floor((now - new Date(now.getFullYear() - age, now.getMonth(), now.getDate())) / (1000 * 60 * 60 * 24)),
       heartbeats: Math.floor(age * 365.25 * 24 * 60 * 70), // ~70 bpm average
+      // Initialize countdown with calculated values
+      countdown: {
+        years,
+        days: totalDays,
+        hours,
+        minutes,
+        seconds
+      },
       // Fun facts calculations
       sunrises: Math.floor(age * 365.25),
       wordsSpoken: Math.floor(age * 365.25 * 16000),

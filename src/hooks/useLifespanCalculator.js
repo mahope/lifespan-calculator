@@ -150,14 +150,29 @@ export const useLifespanCalculator = () => {
         const timeRemaining = endDate - now;
 
         if (timeRemaining > 0) {
-          const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+          // Calculate total time units from milliseconds
+          const totalSeconds = Math.floor(timeRemaining / 1000);
+          const totalMinutes = Math.floor(totalSeconds / 60);
+          const totalHours = Math.floor(totalMinutes / 60);
+          const totalDays = Math.floor(totalHours / 24);
+
+          // Calculate years (approximation)
+          const years = Math.floor(totalDays / 365.25);
+
+          // Calculate remaining time components
+          const hours = totalHours % 24;
+          const minutes = totalMinutes % 60;
+          const seconds = totalSeconds % 60;
 
           return {
             ...prev,
-            countdown: { days, hours, minutes, seconds }
+            countdown: {
+              years,
+              days: totalDays,
+              hours,
+              minutes,
+              seconds
+            }
           };
         }
         return prev;

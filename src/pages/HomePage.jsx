@@ -406,14 +406,14 @@ const HomePage = () => {
             <div className="mx-auto max-w-6xl space-y-8">
               {/* Countdown Timer */}
               <div className="countdown-timer">
-                <h2 className="mb-6 text-2xl font-bold text-center">Din resterende tid</h2>
-                <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <h2 className="mb-6 text-2xl font-semibold text-center">Din resterende tid</h2>
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                   <div className="time-unit">
-                    <span className="time-value">{resultData?.remainingYears || '--'}</span>
+                    <span className="time-value">{resultData?.countdown?.years || resultData?.remainingYears || '--'}</span>
                     <span className="time-label">år</span>
                   </div>
                   <div className="time-unit">
-                    <span className="time-value">{resultData?.remainingDays || '--'}</span>
+                    <span className="time-value">{resultData?.countdown?.days || '--'}</span>
                     <span className="time-label">dage</span>
                   </div>
                   <div className="time-unit">

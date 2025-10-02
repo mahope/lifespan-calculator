@@ -228,18 +228,24 @@ const HomePage = () => {
                     </div>
 
                     {/* Location */}
-                    <div className="space-y-2">
-                      <p className="text-sm text-muted-foreground">
-                        {userLocation ? `Lokation: ${userLocation}` : 'Vi finder automatisk din lokation'}
+                    {userLocation ? (
+                      <p className="text-xs text-muted-foreground">
+                        📍 {userLocation}
                       </p>
-                      <button
-                        type="button"
-                        onClick={getUserLocation}
-                        className="btn btn-outline w-full"
-                      >
-                        Find lokation manuelt
-                      </button>
-                    </div>
+                    ) : (
+                      <div className="space-y-2">
+                        <p className="text-sm text-muted-foreground">
+                          Vi finder automatisk din lokation
+                        </p>
+                        <button
+                          type="button"
+                          onClick={getUserLocation}
+                          className="btn btn-outline w-full"
+                        >
+                          Find lokation manuelt
+                        </button>
+                      </div>
+                    )}
 
                     {/* Lifestyle Factors (Advanced Mode) */}
                     {currentMode === 'advanced' && (

@@ -128,12 +128,12 @@ const HomePage = () => {
         ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
       />
 
-      <header className="border-b bg-card px-4 py-8 text-center sm:px-6 lg:px-8">
+      <header className="border-b bg-background px-4 py-12 text-center sm:px-6 lg:px-8">
         <div className="container">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            🕰️ Levetidsberegner
+          <h1 className="mb-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            Levetidsberegner
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
+          <p className="mx-auto max-w-xl text-base text-muted-foreground">
             Beregn hvor mange år du statistisk set har tilbage baseret på din alder, køn og lokation
           </p>
         </div>
@@ -149,18 +149,17 @@ const HomePage = () => {
                 </div>
                 <div className="card-content space-y-6">
                   {/* Mode Selection */}
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-semibold">Vælg beregningsmåde</h3>
-                    <div className="space-y-3">
+                  <div className="space-y-2">
+                    <h3 className="text-sm font-medium">Beregningsmåde</h3>
+                    <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
                         className={`mode-btn ${currentMode === 'simple' ? 'active' : ''}`}
                         onClick={() => selectMode('simple')}
                       >
-                        <span className="text-2xl">⚡</span>
-                        <div className="flex-1">
-                          <div className="font-medium">Simpel</div>
-                          <div className="text-sm text-muted-foreground">Hurtig beregning baseret på grunddata</div>
+                        <div className="text-left w-full">
+                          <div className="font-medium text-sm">Simpel</div>
+                          <div className="text-xs text-muted-foreground">Hurtig beregning</div>
                         </div>
                       </button>
                       <button
@@ -168,10 +167,9 @@ const HomePage = () => {
                         className={`mode-btn ${currentMode === 'advanced' ? 'active' : ''}`}
                         onClick={() => selectMode('advanced')}
                       >
-                        <span className="text-2xl">🎯</span>
-                        <div className="flex-1">
-                          <div className="font-medium">Avanceret</div>
-                          <div className="text-sm text-muted-foreground">Detaljeret analyse med livsstilsfaktorer</div>
+                        <div className="text-left w-full">
+                          <div className="font-medium text-sm">Avanceret</div>
+                          <div className="text-xs text-muted-foreground">Med livsstil</div>
                         </div>
                       </button>
                     </div>
@@ -209,38 +207,36 @@ const HomePage = () => {
 
                     {/* Gender Selection */}
                     <div className="space-y-2">
-                      <label className="label">Køn:</label>
-                      <div className="grid grid-cols-2 gap-4">
+                      <label className="label">Køn</label>
+                      <div className="grid grid-cols-2 gap-3">
                         <button
                           type="button"
                           className={`gender-btn ${formData.gender === 'male' ? 'active' : ''}`}
                           onClick={() => selectGender('male')}
                         >
-                          <span className="text-2xl">👨</span>
-                          <span>Mand</span>
+                          <span className="text-sm font-medium">Mand</span>
                         </button>
                         <button
                           type="button"
                           className={`gender-btn ${formData.gender === 'female' ? 'active' : ''}`}
                           onClick={() => selectGender('female')}
                         >
-                          <span className="text-2xl">👩</span>
-                          <span>Kvinde</span>
+                          <span className="text-sm font-medium">Kvinde</span>
                         </button>
                       </div>
                     </div>
 
                     {/* Location */}
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                       <p className="text-sm text-muted-foreground">
-                        🌍 {userLocation ? `Placering fundet: ${userLocation}` : 'Vi prøver automatisk at finde din lokation for præcise beregninger.'}
+                        {userLocation ? `Lokation: ${userLocation}` : 'Vi finder automatisk din lokation'}
                       </p>
                       <button
                         type="button"
                         onClick={getUserLocation}
                         className="btn btn-outline w-full"
                       >
-                        Find min lokation manuelt
+                        Find lokation manuelt
                       </button>
                     </div>
 
@@ -393,10 +389,10 @@ const HomePage = () => {
 
                     <button
                       type="submit"
-                      className="btn btn-primary w-full text-lg py-3"
+                      className="btn btn-primary w-full"
                       disabled={!formData.age || !formData.gender}
                     >
-                      📈 Beregn min resterende levetid
+                      Beregn levetid
                     </button>
                   </form>
                 </div>
@@ -436,83 +432,65 @@ const HomePage = () => {
 
               {/* Life Progress Bar */}
               <div className="card">
-                <div className="card-content">
-                  <h3 className="mb-4 text-xl font-semibold">🌍 Dit livsforløb</h3>
-                  <div className="space-y-4">
-                    <div className="life-bar">
-                      <div
-                        className="life-lived"
-                        style={{ width: `${resultData?.lifePercentage}%` }}
-                      ></div>
-                      <div
-                        className="life-remaining"
-                        style={{ width: `${100 - resultData?.lifePercentage}%` }}
-                      ></div>
+                <div className="card-header">
+                  <h3 className="text-lg font-semibold">Dit livsforløb</h3>
+                </div>
+                <div className="card-content space-y-4">
+                  <div className="life-bar">
+                    <div
+                      className="life-lived"
+                      style={{ width: `${resultData?.lifePercentage}%` }}
+                    ></div>
+                    <div
+                      className="life-remaining"
+                      style={{ width: `${100 - resultData?.lifePercentage}%` }}
+                    ></div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="text-center space-y-1">
+                      <div className="text-xl font-semibold">{resultData?.lifePercentage}%</div>
+                      <div className="text-xs text-muted-foreground">Levet</div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-                      <div className="text-center space-y-1">
-                        <div className="text-2xl font-bold text-primary">{resultData?.lifePercentage}%</div>
-                        <div className="text-sm text-muted-foreground">% af livet levet</div>
-                      </div>
-                      <div className="text-center space-y-1">
-                        <div className="text-2xl font-bold text-primary">{resultData?.daysLived?.toLocaleString()}</div>
-                        <div className="text-sm text-muted-foreground">dage levet</div>
-                      </div>
-                      <div className="text-center space-y-1">
-                        <div className="text-2xl font-bold text-primary">{resultData?.heartbeats?.toLocaleString()}</div>
-                        <div className="text-sm text-muted-foreground">hjerteslag</div>
-                      </div>
+                    <div className="text-center space-y-1">
+                      <div className="text-xl font-semibold">{resultData?.daysLived?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Dage</div>
+                    </div>
+                    <div className="text-center space-y-1">
+                      <div className="text-xl font-semibold">{resultData?.heartbeats?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Hjerteslag</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button onClick={shareResults} className="btn btn-primary">
-                  📤 Del resultater
+                  Del resultater
                 </button>
-                <button onClick={resetCalculation} className="btn btn-secondary">
-                  🔄 Ny beregning
+                <button onClick={resetCalculation} className="btn btn-outline">
+                  Ny beregning
                 </button>
               </div>
 
               {/* Disclaimers */}
-              <div className="space-y-4">
-                <div className="card bg-yellow-50 border-yellow-200">
+              <div className="space-y-3">
+                <div className="card border-yellow-200 bg-yellow-50/50">
                   <div className="card-content">
-                    <p className="text-sm">
-                      <strong>Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data.
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-foreground">Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data.
                       Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt.
                     </p>
                   </div>
                 </div>
 
-                <div className="card bg-orange-50 border-orange-200">
-                  <div className="card-content space-y-3">
-                    <h4 className="font-semibold text-foreground">⚠️ Vigtige disclaimere:</h4>
+                <div className="card border-orange-200 bg-orange-50/50">
+                  <div className="card-content space-y-2">
+                    <h4 className="text-sm font-semibold text-foreground">Vigtige disclaimere</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex gap-2">
-                        <span className="text-orange-600">•</span>
-                        <div>
-                          <strong>Kun statistiske gennemsnit:</strong> Beregningerne er baseret på WHO og nationale
-                          statistikker og repræsenterer befolkningsgennemsnit
-                        </div>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-orange-600">•</span>
-                        <div>
-                          <strong>Individuelle faktorer ignoreres:</strong> Livsstil, genetik, eksisterende
-                          helbredstilstande, socioøkonomisk status mv. påvirker ikke beregningen
-                        </div>
-                      </li>
-                      <li className="flex gap-2">
-                        <span className="text-orange-600">•</span>
-                        <div>
-                          <strong>Kun til underholdning:</strong> Resultaterne skal tages med et gran salt og bruges til
-                          reflektion, ikke som faktuelle forudsigelser
-                        </div>
-                      </li>
+                      <li>• Baseret på WHO og nationale statistikker</li>
+                      <li>• Individuelle faktorer påvirker ikke beregningen</li>
+                      <li>• Kun til underholdning og reflektion</li>
                     </ul>
                   </div>
                 </div>

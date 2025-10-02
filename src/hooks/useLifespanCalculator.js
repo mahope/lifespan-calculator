@@ -136,14 +136,17 @@ export const useLifespanCalculator = () => {
 
   // Start countdown timer
   const startCountdown = useCallback(() => {
+    // Clear any existing interval
     if (countdownInterval) {
       clearInterval(countdownInterval);
     }
 
     const interval = setInterval(() => {
-      if (resultData) {
+      setResultData(prev => {
+        if (!prev || !prev.remainingYears) return prev;
+
         const now = new Date();
-        const endDate = new Date(now.getFullYear() + parseFloat(resultData.remainingYears), now.getMonth(), now.getDate());
+        const endDate = new Date(now.getFullYear() + parseFloat(prev.remainingYears), now.getMonth(), now.getDate());
         const timeRemaining = endDate - now;
 
         if (timeRemaining > 0) {
@@ -152,16 +155,17 @@ export const useLifespanCalculator = () => {
           const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-          setResultData(prev => ({
+          return {
             ...prev,
             countdown: { days, hours, minutes, seconds }
-          }));
+          };
         }
-      }
+        return prev;
+      });
     }, 1000);
 
     setCountdownInterval(interval);
-  }, [resultData, countdownInterval]);
+  }, [countdownInterval]);
 
   // Cleanup countdown on unmount
   useEffect(() => {
@@ -175,12 +179,14 @@ export const useLifespanCalculator = () => {
   // Auto-detect location on mount
   useEffect(() => {
     tryAutoLocationDetection();
-  }, [tryAutoLocationDetection]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Update achievements when lifestyle factors change
   useEffect(() => {
     checkAchievements();
-  }, [checkAchievements]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lifestyleFactors]);
 
   return {
     userLocation,

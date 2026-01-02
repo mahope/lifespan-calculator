@@ -13,7 +13,17 @@ export const useLifespanCalculator = () => {
     diet: 0,
     alcohol: 0,
     sleep: 0,
-    stress: 0
+    stress: 0,
+    health: 0,
+    bmi: 0,
+    social: 0,
+    mental: 0,
+    work: 0,
+    environment: 0,
+    education: 0,
+    income: 0,
+    commute: 0,
+    screentime: 0
   });
   const [userAchievements, setUserAchievements] = useState([]);
 
@@ -79,6 +89,7 @@ export const useLifespanCalculator = () => {
     const totalHours = Math.floor(totalMinutes / 60);
     const totalDays = Math.floor(totalHours / 24);
     const years = Math.floor(totalDays / 365.25);
+    const days = Math.floor(totalDays % 365.25); // Days remaining in the current year
     const hours = totalHours % 24;
     const minutes = totalMinutes % 60;
     const seconds = totalSeconds % 60;
@@ -98,7 +109,7 @@ export const useLifespanCalculator = () => {
       // Initialize countdown with calculated values
       countdown: {
         years,
-        days: totalDays,
+        days,
         hours,
         minutes,
         seconds
@@ -178,6 +189,7 @@ export const useLifespanCalculator = () => {
           const years = Math.floor(totalDays / 365.25);
 
           // Calculate remaining time components
+          const days = Math.floor(totalDays % 365.25); // Days remaining in the current year
           const hours = totalHours % 24;
           const minutes = totalMinutes % 60;
           const seconds = totalSeconds % 60;
@@ -186,7 +198,7 @@ export const useLifespanCalculator = () => {
             ...prev,
             countdown: {
               years,
-              days: totalDays,
+              days,
               hours,
               minutes,
               seconds

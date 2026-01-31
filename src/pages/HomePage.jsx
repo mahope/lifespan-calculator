@@ -25,7 +25,8 @@ const HomePage = () => {
   const [formData, setFormData] = useState({
     age: '',
     gender: '',
-    birthdate: ''
+    birthdate: '',
+    useBirthdate: false
   });
   const [showResults, setShowResults] = useState(false);
   const [formProgress, setFormProgress] = useState(0);
@@ -34,7 +35,8 @@ const HomePage = () => {
   // Update form progress
   useEffect(() => {
     let progress = 0;
-    if (formData.age) progress += 40;
+    // Check if age or birthdate is filled (depending on mode)
+    if (formData.useBirthdate ? formData.birthdate : formData.age) progress += 40;
     if (formData.gender) progress += 40;
     if (userLocation) progress += 20;
     setFormProgress(progress);
@@ -65,7 +67,15 @@ const HomePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const result = calculateLifespan(parseInt(formData.age), formData.gender);
+    
+    // Use birthdate if available, otherwise use age
+    let result;
+    if (formData.useBirthdate && formData.birthdate) {
+      result = calculateLifespan(formData.birthdate, formData.gender);
+    } else {
+      result = calculateLifespan(parseInt(formData.age), formData.gender);
+    }
+    
     setShowResults(true);
     startCountdown();
 
@@ -73,9 +83,10 @@ const HomePage = () => {
     if (window.plausible) {
       window.plausible('Calculate Lifespan', {
         props: {
-          age: formData.age,
+          age: formData.useBirthdate ? 'birthdate' : formData.age,
           gender: formData.gender,
-          location: userLocation || 'Unknown'
+          location: userLocation || 'Unknown',
+          usedBirthdate: formData.useBirthdate
         }
       });
     }
@@ -84,7 +95,7 @@ const HomePage = () => {
   const resetCalculation = () => {
     setShowResults(false);
     setResultData(null);
-    setFormData({ age: '', gender: '', birthdate: '' });
+    setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
   };
 
   const shareResults = () => {
@@ -184,24 +195,73 @@ const HomePage = () => {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Age Input */}
-                    <div className="space-y-2">
-                      <label htmlFor="age" className="label">Din alder:</label>
-                      <div className="flex items-center space-x-2">
-                        <input
-                          type="number"
-                          id="age"
-                          name="age"
-                          min="0"
-                          max="120"
-                          required
-                          className="input flex-1"
-                          value={formData.age}
-                          onChange={handleInputChange}
-                        />
-                        <span className="text-sm text-muted-foreground">år</span>
+                    {/* Age Input Method Toggle */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <label className="label">Hvordan vil du angive din alder?</label>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button
+                          type="button"
+                          className={`mode-btn ${!formData.useBirthdate ? 'active' : ''}`}
+                          onClick={() => setFormData(prev => ({ ...prev, useBirthdate: false, birthdate: '' }))}
+                        >
+                          <div className="text-left w-full">
+                            <div className="font-medium text-sm">Alder</div>
+                            <div className="text-xs text-muted-foreground">Hurtig</div>
+                          </div>
+                        </button>
+                        <button
+                          type="button"
+                          className={`mode-btn ${formData.useBirthdate ? 'active' : ''}`}
+                          onClick={() => setFormData(prev => ({ ...prev, useBirthdate: true, age: '' }))}
+                        >
+                          <div className="text-left w-full">
+                            <div className="font-medium text-sm">Fødselsdato</div>
+                            <div className="text-xs text-muted-foreground">Mere præcis</div>
+                          </div>
+                        </button>
                       </div>
                     </div>
+
+                    {/* Age or Birthdate Input */}
+                    {!formData.useBirthdate ? (
+                      <div className="space-y-2">
+                        <label htmlFor="age" className="label">Din alder:</label>
+                        <div className="flex items-center space-x-2">
+                          <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            min="0"
+                            max="120"
+                            required={!formData.useBirthdate}
+                            className="input flex-1"
+                            value={formData.age}
+                            onChange={handleInputChange}
+                          />
+                          <span className="text-sm text-muted-foreground">år</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        <label htmlFor="birthdate" className="label">Din fødselsdato:</label>
+                        <input
+                          type="date"
+                          id="birthdate"
+                          name="birthdate"
+                          required={formData.useBirthdate}
+                          max={new Date().toISOString().split('T')[0]}
+                          min="1900-01-01"
+                          className="input w-full"
+                          value={formData.birthdate}
+                          onChange={handleInputChange}
+                        />
+                        <p className="text-xs text-muted-foreground">
+                          🎯 Med fødselsdato får du præcis alder og mere nøjagtige fun facts
+                        </p>
+                      </div>
+                    )}
 
                     {/* Gender Selection */}
                     <div className="space-y-2">
@@ -932,7 +992,7 @@ const HomePage = () => {
                     <button
                       type="submit"
                       className="btn btn-primary w-full"
-                      disabled={!formData.age || !formData.gender}
+                      disabled={(!formData.useBirthdate && !formData.age) || (formData.useBirthdate && !formData.birthdate) || !formData.gender}
                     >
                       Beregn levetid
                     </button>
@@ -976,8 +1036,24 @@ const HomePage = () => {
               <div className="card">
                 <div className="card-header">
                   <h3 className="text-lg font-semibold">Dit livsforløb</h3>
+                  {resultData?.hasPreciseBirthdate && (
+                    <span className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
+                      🎯 Præcis beregning
+                    </span>
+                  )}
                 </div>
                 <div className="card-content space-y-4">
+                  {/* Show precise age if birthdate was used */}
+                  {resultData?.hasPreciseBirthdate && (
+                    <div className="text-center p-3 bg-muted/50 rounded-lg">
+                      <div className="text-sm text-muted-foreground">Din præcise alder</div>
+                      <div className="text-lg font-semibold">{resultData?.displayAge}</div>
+                      {resultData?.birthdate && (
+                        <div className="text-xs text-muted-foreground mt-1">Født: {resultData.birthdate}</div>
+                      )}
+                    </div>
+                  )}
+                  
                   <div className="life-bar">
                     <div
                       className="life-lived"
@@ -995,12 +1071,82 @@ const HomePage = () => {
                     </div>
                     <div className="text-center space-y-1">
                       <div className="text-xl font-semibold">{resultData?.daysLived?.toLocaleString()}</div>
-                      <div className="text-xs text-muted-foreground">Dage</div>
+                      <div className="text-xs text-muted-foreground">Dage levet</div>
                     </div>
                     <div className="text-center space-y-1">
                       <div className="text-xl font-semibold">{resultData?.heartbeats?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Hjerteslag</div>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Fun Facts Section */}
+              <div className="card">
+                <div className="card-header">
+                  <h3 className="text-lg font-semibold">🎉 Fun Facts om dit liv</h3>
+                </div>
+                <div className="card-content">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">🌅</div>
+                      <div className="text-lg font-semibold">{resultData?.sunrises?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Solopgange set</div>
+                    </div>
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">💨</div>
+                      <div className="text-lg font-semibold">{resultData?.breaths?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Åndedrætninger</div>
+                    </div>
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">👣</div>
+                      <div className="text-lg font-semibold">{resultData?.steps?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Skridt taget</div>
+                    </div>
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">😴</div>
+                      <div className="text-lg font-semibold">{resultData?.sleepHours?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Timer sovet</div>
+                    </div>
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">😊</div>
+                      <div className="text-lg font-semibold">{resultData?.laughs?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Gange grint</div>
+                    </div>
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">🍽️</div>
+                      <div className="text-lg font-semibold">{resultData?.meals?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Måltider spist</div>
+                    </div>
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">💧</div>
+                      <div className="text-lg font-semibold">{resultData?.waterLiters?.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Liter vand drukket</div>
+                    </div>
+                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                      <div className="text-2xl mb-1">🚀</div>
+                      <div className="text-lg font-semibold">{(resultData?.spaceKm / 1000000000)?.toFixed(1)} mia</div>
+                      <div className="text-xs text-muted-foreground">km rejst i rummet</div>
+                    </div>
+                    {resultData?.hasPreciseBirthdate && (
+                      <>
+                        <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
+                          <div className="text-2xl mb-1">🌙</div>
+                          <div className="text-lg font-semibold">{resultData?.fullMoons?.toLocaleString()}</div>
+                          <div className="text-xs text-muted-foreground">Fuldmåner oplevet</div>
+                        </div>
+                        <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
+                          <div className="text-2xl mb-1">🍂</div>
+                          <div className="text-lg font-semibold">{resultData?.seasons?.toLocaleString()}</div>
+                          <div className="text-xs text-muted-foreground">Årstider oplevet</div>
+                        </div>
+                        <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
+                          <div className="text-2xl mb-1">⏱️</div>
+                          <div className="text-lg font-semibold">{resultData?.secondsLived?.toLocaleString()}</div>
+                          <div className="text-xs text-muted-foreground">Sekunder levet</div>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

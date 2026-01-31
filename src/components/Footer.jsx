@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-muted/50 border-t mt-16">
-      <div className="container py-12">
+    <footer className="bg-muted/50 border-t mt-8 sm:mt-16">
+      <div className="container py-8 sm:py-12">
         <div className="footer-grid">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Om Levetidsberegneren</h3>
@@ -59,24 +59,24 @@ const Footer = () => {
 
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Relaterede sider</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               <li>
-                <Link to="/hvor-lang-tid-har-jeg-tilbage" className="text-primary hover:underline text-sm">
+                <Link to="/hvor-lang-tid-har-jeg-tilbage" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
                   📅 Hvor lang tid har jeg tilbage at leve?
                 </Link>
               </li>
               <li>
-                <Link to="/dodsalder-calculator" className="text-primary hover:underline text-sm">
+                <Link to="/dodsalder-calculator" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
                   ⚰️ Dødsalder Calculator
                 </Link>
               </li>
               <li>
-                <Link to="/livsstil-og-levetid" className="text-primary hover:underline text-sm">
+                <Link to="/livsstil-og-levetid" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
                   💪 Livsstil og Levetid
                 </Link>
               </li>
               <li>
-                <Link to="/levetid-beregner-danmark" className="text-primary hover:underline text-sm">
+                <Link to="/levetid-beregner-danmark" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
                   🇩🇰 Dansk Levetidsberegner
                 </Link>
               </li>

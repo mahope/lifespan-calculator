@@ -27,26 +27,26 @@ const PromoBanner = () => {
 
   return (
     <div className="bg-gradient-to-br from-[hsl(var(--gradient-from))]/5 to-[hsl(var(--gradient-to))]/5 border-t">
-      <div className="container py-12">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold mb-2">Andre nyttige værktøjer</h2>
-          <p className="text-muted-foreground">Tjek mine andre gratis tools og services</p>
+      <div className="container py-8 sm:py-12">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-2">Andre nyttige værktøjer</h2>
+          <p className="text-sm sm:text-base text-muted-foreground">Tjek mine andre gratis tools og services</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {promos.map((promo, index) => (
             <a
               key={index}
               href={promo.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="card hover:scale-105 hover:shadow-xl transition-all duration-300 group overflow-hidden"
+              className="promo-card group"
             >
-              <div className="card-content pt-6">
-                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+              <div className="card-content pt-4 sm:pt-6">
+                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform group-hover:scale-110 transition-transform duration-300">
                   {promo.emoji}
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-primary group-hover:text-primary/80 transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-primary group-hover:text-primary/80 transition-colors">
                   {promo.title}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-3">

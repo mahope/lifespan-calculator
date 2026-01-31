@@ -70,38 +70,42 @@
 }
 
 @layer components {
-  /* Clean, minimal buttons */
+  /* Clean, minimal buttons with proper touch targets */
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+    @apply active:scale-[0.98]; /* Touch feedback */
+    @apply min-h-[44px]; /* Minimum touch target */
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:scale-105 h-11 px-6 py-2;
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg h-11 sm:h-12 px-6 py-2;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md h-11 px-6 py-2;
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md h-11 sm:h-12 px-6 py-2;
   }
 
   .btn-outline {
-    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 h-11 px-6 py-2;
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 h-11 sm:h-12 px-6 py-2;
   }
 
   .btn-ghost {
-    @apply hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2;
+    @apply hover:bg-accent hover:text-accent-foreground h-11 sm:h-12 px-6 py-2;
   }
 
-  /* Minimal cards */
+  /* Minimal cards with responsive padding */
   .card {
-    @apply rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow duration-200;
+    @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow duration-200;
   }
 
   .card-header {
-    @apply flex flex-col space-y-1.5 p-6;
+    @apply flex flex-col space-y-1.5 p-4 sm:p-6;
   }
 
   .card-title {
-    @apply text-2xl font-semibold leading-none tracking-tight;
+    @apply text-xl sm:text-2xl font-semibold leading-none tracking-tight;
   }
 
   .card-description {
@@ -109,16 +113,28 @@
   }
 
   .card-content {
-    @apply p-6 pt-0;
+    @apply p-4 sm:p-6 pt-0;
   }
 
   .card-footer {
-    @apply flex items-center p-6 pt-0;
+    @apply flex items-center p-4 sm:p-6 pt-0;
   }
 
-  /* Clean input fields */
+  /* Clean input fields with proper touch targets */
   .input {
-    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply flex h-11 sm:h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base sm:text-sm;
+    @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
+    @apply placeholder:text-muted-foreground;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+    @apply transition-colors duration-200;
+  }
+
+  /* Prevent zoom on input focus on iOS */
+  @media (max-width: 640px) {
+    .input {
+      font-size: 16px; /* Prevents iOS zoom */
+    }
   }
 
   .label {
@@ -162,28 +178,48 @@
   /* Minimal mode selector */
   .mode-btn {
     @apply flex items-center gap-3 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-sm transition-all duration-200 cursor-pointer text-left;
+    @apply min-h-[56px]; /* Better touch target */
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply active:scale-[0.98]; /* Touch feedback */
   }
 
   .mode-btn.active {
     @apply bg-primary text-primary-foreground border-primary shadow-md;
   }
 
+  .mode-btn.active .text-muted-foreground {
+    @apply text-primary-foreground/80;
+  }
+
   /* Clean gender selector */
   .gender-btn {
     @apply flex flex-col items-center justify-center gap-2 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-sm transition-all duration-200 cursor-pointer flex-1;
+    @apply min-h-[60px]; /* Better touch target */
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply active:scale-[0.98]; /* Touch feedback */
   }
 
   .gender-btn.active {
     @apply bg-primary text-primary-foreground border-primary shadow-md;
   }
 
-  /* Simple factor buttons */
+  /* Simple factor buttons - improved touch targets */
   .factor-btn {
-    @apply px-3 py-2 text-sm bg-card border rounded-md hover:bg-accent hover:border-primary/30 transition-all duration-150 cursor-pointer;
+    @apply px-3 py-2.5 text-sm bg-card border rounded-md hover:bg-accent hover:border-primary/30 transition-all duration-150 cursor-pointer;
+    @apply min-h-[44px] min-w-[44px]; /* Accessibility: minimum touch target */
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply active:scale-95; /* Touch feedback */
   }
 
   .factor-btn.active {
-    @apply bg-primary text-primary-foreground border-primary;
+    @apply bg-primary text-primary-foreground border-primary shadow-sm;
+  }
+
+  /* Mobile optimizations for factor buttons */
+  @media (max-width: 640px) {
+    .factor-btn {
+      @apply px-2.5 py-3 text-xs flex-1 text-center;
+    }
   }
 
   /* Clean life bar */
@@ -201,23 +237,23 @@
 
   /* Minimal countdown timer */
   .countdown-timer {
-    @apply bg-gradient-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-lg p-8 text-center shadow-lg;
+    @apply bg-gradient-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-xl p-6 sm:p-8 text-center shadow-lg;
   }
 
   .countdown-timer h2 {
-    @apply text-white text-2xl font-semibold mb-6;
+    @apply text-white text-xl sm:text-2xl font-semibold mb-4 sm:mb-6;
   }
 
   .time-unit {
-    @apply flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-lg p-3 min-w-[70px] hover:bg-white/20 transition-all duration-200;
+    @apply flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 min-w-[56px] sm:min-w-[70px] hover:bg-white/20 transition-all duration-200;
   }
 
   .time-value {
-    @apply text-3xl font-bold text-white;
+    @apply text-xl sm:text-2xl md:text-3xl font-bold text-white tabular-nums;
   }
 
   .time-label {
-    @apply text-xs text-white/80 uppercase tracking-wide mt-1;
+    @apply text-[10px] sm:text-xs text-white/80 uppercase tracking-wide mt-0.5 sm:mt-1;
   }
 
   /* Clean progress indicator */
@@ -230,16 +266,46 @@
   }
 
   .lifestyle-grid {
-    @apply grid grid-cols-1 gap-4;
+    @apply grid grid-cols-1 gap-6;
+  }
+
+  /* Lifestyle factor item styling */
+  .lifestyle-grid > div {
+    @apply pb-4 border-b border-border/50 last:border-b-0 last:pb-0;
   }
 
   .footer-grid {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+    @apply grid grid-cols-1 gap-8;
+  }
+
+  @media (min-width: 640px) {
+    .footer-grid {
+      @apply grid-cols-2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      @apply grid-cols-3;
+    }
   }
 
   /* Header gradient */
   .header-gradient {
     @apply bg-gradient-to-r from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] text-white;
+  }
+
+  /* Promo cards in banner */
+  .promo-card {
+    @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-sm;
+    @apply hover:shadow-xl transition-all duration-300 overflow-hidden;
+    @apply active:scale-[0.98]; /* Touch feedback */
+  }
+
+  @media (hover: hover) {
+    .promo-card:hover {
+      @apply scale-105;
+    }
   }
 
   /* Result card animations */
@@ -251,14 +317,32 @@
     @apply hover:scale-105 transition-transform duration-200;
   }
 
-  /* Responsive adjustments */
+  /* Global touch-friendly adjustments for mobile */
   @media (max-width: 640px) {
-    .time-unit {
-      @apply min-w-[60px] p-2;
+    /* Ensure adequate spacing in forms */
+    .card-content .space-y-6 > * {
+      @apply scroll-mt-4;
     }
+  }
 
-    .time-value {
-      @apply text-2xl;
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better focus visibility for keyboard navigation */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
 }

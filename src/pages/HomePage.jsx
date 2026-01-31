@@ -126,12 +126,12 @@ const HomePage = () => {
         ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
       />
 
-      <header className="header-gradient px-4 py-12 text-center sm:px-6 lg:px-8 shadow-lg">
+      <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">
         <div className="container animate-fadeIn">
-          <h1 className="mb-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h1 className="mb-2 sm:mb-3 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
             ⏳ Levetidsberegner
           </h1>
-          <p className="mx-auto max-w-xl text-base text-white/90">
+          <p className="mx-auto max-w-xl text-sm sm:text-base text-white/90">
             Beregn hvor mange år du statistisk set har tilbage baseret på din alder, køn og lokation
           </p>
         </div>

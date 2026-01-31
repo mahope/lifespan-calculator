@@ -20,8 +20,8 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed bottom-6 right-6 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all z-50"
-      aria-label="Toggle theme"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 p-3 min-w-[48px] min-h-[48px] rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 z-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      aria-label={theme === 'light' ? 'Skift til mørk tilstand' : 'Skift til lys tilstand'}
     >
       {theme === 'light' ? (
         <svg

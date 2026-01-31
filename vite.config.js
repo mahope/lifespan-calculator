@@ -10,6 +10,19 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    // Optimizations
+    minify: 'esbuild',
+    target: 'esnext',
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // Split react-router into its own chunk
+          if (id.includes('react-router') || id.includes('@remix-run')) {
+            return 'router'
+          }
+        }
+      }
+    }
   }
 })

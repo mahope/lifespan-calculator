@@ -7,36 +7,36 @@
     <!-- Main Calculator -->
     <url>
         <loc>https://levetidsberegner.dk/</loc>
-        <lastmod>2024-09-24</lastmod>
+        <lastmod>2025-06-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <!-- Landing Pages -->
     <url>
-        <loc>https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage.html</loc>
-        <lastmod>2024-09-24</lastmod>
+        <loc>https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage</loc>
+        <lastmod>2025-06-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://levetidsberegner.dk/dodsalder-calculator.html</loc>
-        <lastmod>2024-09-24</lastmod>
+        <loc>https://levetidsberegner.dk/dodsalder-calculator</loc>
+        <lastmod>2025-06-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://levetidsberegner.dk/levetid-beregner-danmark.html</loc>
-        <lastmod>2024-09-24</lastmod>
+        <loc>https://levetidsberegner.dk/levetid-beregner-danmark</loc>
+        <lastmod>2025-06-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://levetidsberegner.dk/livsstil-og-levetid.html</loc>
-        <lastmod>2024-09-24</lastmod>
+        <loc>https://levetidsberegner.dk/livsstil-og-levetid</loc>
+        <lastmod>2025-06-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

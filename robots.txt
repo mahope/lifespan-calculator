@@ -5,18 +5,15 @@ Allow: /
 Sitemap: https://levetidsberegner.dk/sitemap.xml
 
 # Allow crawling of main pages
-Allow: /index.html
-Allow: /hvor-lang-tid-har-jeg-tilbage.html
-Allow: /dodsalder-calculator.html
-Allow: /levetid-beregner-danmark.html
-Allow: /livsstil-og-levetid.html
-
-# Allow stylesheets and scripts
-Allow: /styles.css
-Allow: /script.js
+Allow: /
+Allow: /hvor-lang-tid-har-jeg-tilbage
+Allow: /dodsalder-calculator
+Allow: /levetid-beregner-danmark
+Allow: /livsstil-og-levetid
 
 # Block unnecessary files
 Disallow: /.git/
 Disallow: /CLAUDE.md
 Disallow: /WARP.md
 Disallow: /.dokploy
+Disallow: /node_modules/

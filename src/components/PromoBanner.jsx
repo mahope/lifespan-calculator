@@ -17,6 +17,13 @@ const PromoBanner = () => {
       highlight: 'Glem aldrig noget igen'
     },
     {
+      title: 'Bouldering Lingo',
+      description: 'Lær klatretermer og bouldering-slang på dansk og engelsk',
+      emoji: '🧗',
+      url: 'https://boulder.holstjensen.eu',
+      highlight: 'Fra crimp til dyno - bliv klogere på klatring'
+    },
+    {
       title: 'Mahope.dk',
       description: 'Freelance webudvikling og digitale løsninger',
       emoji: '💼',

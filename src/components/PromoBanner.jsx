@@ -3,6 +3,20 @@ import React from 'react';
 const PromoBanner = () => {
   const promos = [
     {
+      title: 'Beregner.dk',
+      description: 'Gratis online beregnere til el, løn, BMI, feriepenge, børnepenge og SU',
+      emoji: '🧮',
+      url: 'https://beregner.holstjensen.eu',
+      highlight: 'Beregn alt fra elforbrug til nettoløn'
+    },
+    {
+      title: 'WhiteNoise.dk',
+      description: 'Alt om hvid støj til bedre søvn for babyer og voksne',
+      emoji: '😴',
+      url: 'https://whitenoise.dk',
+      highlight: 'Find den bedste white noise speaker'
+    },
+    {
       title: 'QRtool.dk',
       description: 'Gratis QR-kode generator med logo, farver og avancerede features',
       emoji: '📱',
@@ -15,13 +29,6 @@ const PromoBanner = () => {
       emoji: '🎒',
       url: 'https://pakkeliste.com',
       highlight: 'Glem aldrig noget igen'
-    },
-    {
-      title: 'Bouldering Lingo',
-      description: 'Lær klatretermer og bouldering-slang på dansk og engelsk',
-      emoji: '🧗',
-      url: 'https://boulder.holstjensen.eu',
-      highlight: 'Fra crimp til dyno - bliv klogere på klatring'
     },
     {
       title: 'Mahope.dk',

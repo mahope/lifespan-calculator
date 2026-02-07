@@ -38,11 +38,5 @@
   </div>
 </div>
 <script>(function(){try{var k=consent:v1;var s=localStorage.getItem(k);var b=document.getElementById(cookie-consent-banner);function hide(){b&&(b.style.display=none)}function show(){b&&(b.style.display=block)}if(!s){show()}document.getElementById(cookie-accept)?.addEventListener(click,function(){localStorage.setItem(k,accepted);hide()});document.getElementById(cookie-decline)?.addEventListener(click,function(){localStorage.setItem(k,declined);hide()});}catch(e){console.warn(e)}})();</script>
-<section data-seo-explainer style="max-width:960px;margin:2rem auto;padding:0 1rem;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#374151">
-  <h2 style="font-size:1.25rem;margin-bottom:.5rem">Om dette værktøj</h2>
-  <p>Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og uden installation løse en konkret opgave direkte i din browser. Alt kører lokalt hos dig – vi gemmer ikke dine indtastninger, og du kan frit bruge resultatet, som du vil.</p>
-  <p>Værktøjet er udviklet med fokus på enkelhed, hastighed og pålidelighed. Vi forklarer, hvordan beregningen fungerer, giver tips til bedre resultater og linker til relevante kilder. På den måde kan du både forstå metoden og bruge den sikkert i praksis. Hvis du har forslag til forbedringer eller nye funktioner, hører vi meget gerne fra dig.</p>
-  <p>Formålet er at samle små, nyttige værktøjer ét sted, så du ikke behøver at installere apps eller oprette en konto. Vi prioriterer tilgængelighed, så siden virker på mobil, tablet og computer. Har du brug for at dele resultatet, kan du ofte kopiere det direkte eller downloade en fil.</p>
-</section>
   </body>
 </html>

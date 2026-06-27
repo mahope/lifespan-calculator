@@ -1081,6 +1081,26 @@ const HomePage = () => {
                 </div>
               </div>
 
+              {/* Livsforsikring CTA — high-intent moment: user just saw remaining lifespan */}
+              <a
+                href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner"
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+                className="card block group"
+              >
+                <div className="card-content py-5">
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-2">Annonce</div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">🛡️</span>
+                    <div>
+                      <h3 className="text-base font-semibold mb-1 group-hover:text-primary transition-colors">Sikr dine kære med en livsforsikring</h3>
+                      <p className="text-sm text-muted-foreground">Sammenlign livsforsikringer på Findforsikring.dk — Danmarks største forsikringsportal — og find den rette dækning til din familie.</p>
+                      <span className="inline-flex items-center gap-1 text-sm font-medium text-primary mt-2">Sammenlign livsforsikringer →</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
               {/* Fun Facts Section */}
               <div className="card">
                 <div className="card-header">

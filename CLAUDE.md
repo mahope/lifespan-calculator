@@ -4,59 +4,88 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Danish lifespan calculator web application. Pure frontend - no build process or dependencies required.
+Danish lifespan calculator web application. A React single-page app built with
+Vite, styled with Tailwind CSS, and deployed as static assets.
+
+Tech stack (kept current):
+- React 19 + React DOM 19
+- React Router 7 (client-side routing)
+- react-helmet-async 3 (per-page `<title>`/meta for SEO)
+- Vite 8 (Rolldown/Oxc-based build, `oxc` minifier)
+- Tailwind CSS 4 (CSS-first config via `@theme` in `src/index.css`, `@tailwindcss/postcss`)
+- Node.js >= 20.19 (see `engines` in `package.json`)
+
+> Note: the pre-React vanilla-JS version (`script.js`, standalone HTML pages) is
+> preserved under `backup/` for reference and is not part of the build.
 
 ## Development Commands
 
-### Running the Application
 ```bash
-# Open directly in browser (no build process needed)
-start index.html
-
-# Or serve via HTTP server for testing
-python -m http.server 8000
-# OR
-npx serve .
+npm install        # install dependencies
+npm run dev        # start Vite dev server (http://localhost:5173)
+npm run build      # production build to dist/
+npm run preview    # serve the production build locally (http://localhost:4173)
 ```
 
 ### Validation
 ```bash
-# Check JavaScript syntax
-node -c script.js
+npm run build      # acts as a smoke test - fails on broken imports/JSX/CSS
 ```
 
 ## Architecture
 
-### Core Structure
-- **LifespanCalculator class** (`script.js:19`): Main application logic handling geolocation, calculations, and UI updates
-- **lifeExpectancyData object** (`script.js:2`): Static country-specific life expectancy data with Danish translations
-- **Utils object** (`script.js:243`): Helper functions for time conversions and age categorization
+### Core Structure (`src/`)
+- **`main.jsx`**: App entry - mounts React into `#root`, wraps app in
+  `HelmetProvider` + `BrowserRouter`.
+- **`App.jsx`**: Route definitions. Pages are lazy-loaded via `React.lazy` +
+  `Suspense`.
+- **`pages/`**: One component per route (HomePage, HvorLangTidPage,
+  DodsalderPage, LivsstilPage, DanmarkPage, NotFoundPage).
+- **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
+  ShareCard, ShareModal).
+- **`hooks/useLifespanCalculator.js`**: Core calculation logic (age, remaining
+  time, geolocation-driven country lookup).
+- **`utils/lifeExpectancyData.js`**: Static country life-expectancy data with
+  Danish translations, plus lookup/formatting helpers.
+- **`index.css`**: Tailwind v4 entry - `@import 'tailwindcss'`, `@theme` design
+  tokens, `@utility` component classes, and the light/dark CSS variables.
 
 ### Key Technical Points
-- **Language**: Danish interface with English API calls
-- **Geolocation flow**: Browser API → OpenStreetMap Nominatim → country mapping → calculation
-- **Error handling**: Graceful fallback to world averages when location fails
-- **HTTPS requirement**: Geolocation API requires HTTPS in production (use localhost for development)
+- **Language**: Danish interface with English API calls.
+- **Geolocation flow**: Browser API -> OpenStreetMap Nominatim -> country
+  mapping -> calculation, with graceful fallback to world averages.
+- **Dark mode**: `class` strategy - `.dark` is toggled on `<html>`; Tailwind v4
+  `@custom-variant dark` in `index.css` drives the theming.
+- **HTTPS requirement**: Geolocation API requires HTTPS in production (use
+  localhost for development).
 
 ### Data Flow
-1. User inputs age/gender → enables location detection
-2. Geolocation API gets coordinates → Nominatim API resolves to country
-3. Country mapped to life expectancy data → calculation performed
+1. User inputs age/gender -> enables location detection
+2. Geolocation API gets coordinates -> Nominatim API resolves to country
+3. Country mapped to life expectancy data -> calculation performed
 4. Results displayed with contextual messaging
 
 ## Common Tasks
 
 ### Adding Countries
-Update `lifeExpectancyData` object in `script.js:2`. Country names must match Nominatim API response format.
-
-### Modifying Life Expectancy Data
-All data in `lifeExpectancyData` constant. Include `male`, `female` values plus localized `country` name for display.
+Update the data in `src/utils/lifeExpectancyData.js`. Country names must match
+the Nominatim API response format. Include `male`, `female` values plus a
+localized `country` name for display.
 
 ### Styling Changes
-CSS uses custom properties for colors, mobile-first approach. Main color scheme: gradients from #667eea to #764ba2.
+Design tokens live as CSS variables and `@theme` entries in `src/index.css`.
+Reusable component classes are defined with Tailwind v4 `@utility`. Mobile-first;
+main color scheme uses HSL custom properties (see `:root` / `.dark`).
+
+## Deployment
+Built with Nixpacks (`nixpacks.toml`): `npm ci` -> `npm run build` -> serve
+`dist/` (`.dokploy` pins the Node version). The build output is also committed
+under `dist/`.
 
 ## File Structure
-- `index.html` - Single page with semantic HTML structure
-- `script.js` - ES6+ class-based architecture with utility functions
-- `styles.css` - Modern responsive CSS with flexbox and animations
-- `README.md` - Comprehensive Danish documentation
+- `index.html` - Vite entry HTML (also hosts static footer, cookie-consent
+  banner, and SEO copy outside the React root)
+- `src/` - React application source (see Architecture above)
+- `dist/` - built static assets
+- `backup/` - legacy vanilla-JS version (not built)
+- `*.html` (root) - standalone legal/policy pages

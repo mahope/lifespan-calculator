@@ -1,7 +1,374 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap')
+layer(base);
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin: spin 1s linear infinite;
+  --animate-bounce: bounce 1s infinite;
+  --animate-fadeIn: fadeIn 0.5s ease-in-out;
+  --animate-slideUp: slideUp 0.4s ease-out;
+  --animate-scaleIn: scaleIn 0.3s ease-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility btn {
+  /* Clean, minimal buttons with proper touch targets */
+  @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200;
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  @apply disabled:pointer-events-none disabled:opacity-50;
+  @apply active:scale-[0.98]; /* Touch feedback */
+  @apply min-h-[44px]; /* Minimum touch target */
+}
+
+@utility btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg h-11 sm:h-12 px-6 py-2;
+}
+
+@utility btn-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md h-11 sm:h-12 px-6 py-2;
+}
+
+@utility btn-outline {
+  @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 h-11 sm:h-12 px-6 py-2;
+}
+
+@utility btn-ghost {
+  @apply hover:bg-accent hover:text-accent-foreground h-11 sm:h-12 px-6 py-2;
+}
+
+@utility card {
+  /* Minimal cards with responsive padding */
+  @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-xs hover:shadow-md transition-shadow duration-200;
+}
+
+@utility card-header {
+  @apply flex flex-col space-y-1.5 p-4 sm:p-6;
+}
+
+@utility card-title {
+  @apply text-xl sm:text-2xl font-semibold leading-none tracking-tight;
+}
+
+@utility card-description {
+  @apply text-sm text-muted-foreground;
+}
+
+@utility card-content {
+  @apply p-4 sm:p-6 pt-0;
+  @media (max-width: 640px) {
+    /* Ensure adequate spacing in forms */
+    & .space-y-6 > * {
+      @apply scroll-mt-4;
+    }
+  }
+}
+
+@utility card-footer {
+  @apply flex items-center p-4 sm:p-6 pt-0;
+}
+
+@utility input {
+  /* Clean input fields with proper touch targets */
+  @apply flex h-11 sm:h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base sm:text-sm;
+  @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
+  @apply placeholder:text-muted-foreground;
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+  @apply transition-colors duration-200;
+  @media (max-width: 640px) {
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+}
+
+@utility label {
+  /* Prevent zoom on input focus on iOS */
+  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+}
+
+@utility badge {
+  /* Simple badges */
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors;
+}
+
+@utility badge-default {
+  @apply border-transparent bg-primary text-primary-foreground;
+}
+
+@utility badge-secondary {
+  @apply border-transparent bg-secondary text-secondary-foreground;
+}
+
+@utility badge-outline {
+  @apply text-foreground;
+}
+
+@utility progress {
+  /* Clean progress bar */
+  @apply relative h-2 w-full overflow-hidden rounded-full bg-secondary shadow-inner;
+}
+
+@utility progress-bar {
+  @apply h-full w-full flex-1 bg-linear-to-r from-primary to-primary/80 transition-all duration-300;
+}
+
+@utility separator {
+  @apply shrink-0 bg-border h-px w-full my-6;
+}
+
+@utility container {
+  @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility mode-btn {
+  /* Minimal mode selector */
+  @apply flex items-center gap-3 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-xs transition-all duration-200 cursor-pointer text-left;
+  @apply min-h-[56px]; /* Better touch target */
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  @apply active:scale-[0.98]; /* Touch feedback */
+
+  &.active {
+    @apply bg-primary text-primary-foreground border-primary shadow-md;
+  }
+
+  &.active .text-muted-foreground {
+    @apply text-primary-foreground/80;
+  }
+}
+
+@utility active {
+  &.mode-btn {
+    @apply bg-primary text-primary-foreground border-primary shadow-md;
+  }
+
+  &.mode-btn .text-muted-foreground {
+    @apply text-primary-foreground/80;
+  }
+
+  &.gender-btn {
+    @apply bg-primary text-primary-foreground border-primary shadow-md;
+  }
+
+  &.factor-btn {
+    @apply bg-primary text-primary-foreground border-primary shadow-xs;
+  }
+}
+
+@utility text-muted-foreground {
+  .mode-btn.active & {
+    @apply text-primary-foreground/80;
+  }
+}
+
+@utility gender-btn {
+  /* Clean gender selector */
+  @apply flex flex-col items-center justify-center gap-2 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-xs transition-all duration-200 cursor-pointer flex-1;
+  @apply min-h-[60px]; /* Better touch target */
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  @apply active:scale-[0.98]; /* Touch feedback */
+
+  &.active {
+    @apply bg-primary text-primary-foreground border-primary shadow-md;
+  }
+}
+
+@utility factor-btn {
+  /* Simple factor buttons - improved touch targets */
+  @apply px-3 py-2.5 text-sm bg-card border rounded-md hover:bg-accent hover:border-primary/30 transition-all duration-150 cursor-pointer;
+  @apply min-h-[44px] min-w-[44px]; /* Accessibility: minimum touch target */
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  @apply active:scale-95; /* Touch feedback */
+
+  &.active {
+    @apply bg-primary text-primary-foreground border-primary shadow-xs;
+  }
+  @media (max-width: 640px) {
+    @apply px-2.5 py-3 text-xs flex-1 text-center;
+  }
+}
+
+@utility life-bar {
+  /* Mobile optimizations for factor buttons */
+
+  /* Clean life bar */
+  @apply h-6 bg-secondary rounded-full overflow-hidden flex shadow-inner;
+}
+
+@utility life-lived {
+  @apply bg-linear-to-r from-primary to-primary/80 h-full transition-all duration-500;
+}
+
+@utility life-remaining {
+  @apply bg-muted h-full;
+}
+
+@utility countdown-timer {
+  /* Minimal countdown timer */
+  @apply bg-linear-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-xl p-6 sm:p-8 text-center shadow-lg;
+
+  & h2 {
+    @apply text-white text-xl sm:text-2xl font-semibold mb-4 sm:mb-6;
+  }
+}
+
+@utility time-unit {
+  @apply flex flex-col items-center bg-white/10 backdrop-blur-xs rounded-lg p-2 sm:p-3 min-w-[56px] sm:min-w-[70px] hover:bg-white/20 transition-all duration-200;
+}
+
+@utility time-value {
+  @apply text-xl sm:text-2xl md:text-3xl font-bold text-white tabular-nums;
+}
+
+@utility time-label {
+  @apply text-[10px] sm:text-xs text-white/80 uppercase tracking-wide mt-0.5 sm:mt-1;
+}
+
+@utility form-progress {
+  /* Clean progress indicator */
+  @apply mb-6;
+}
+
+@utility progress-fill {
+  @apply h-2 bg-linear-to-r from-primary to-primary/80 rounded-full transition-all duration-300;
+}
+
+@utility lifestyle-grid {
+  @apply grid grid-cols-1 gap-6;
+
+  /* Lifestyle factor item styling */
+  & > div {
+    @apply pb-4 border-b border-border/50 last:border-b-0 last:pb-0;
+  }
+}
+
+@utility footer-grid {
+  @apply grid grid-cols-1 gap-8;
+
+  @media (min-width: 640px) {
+    @apply grid-cols-2;
+  }
+
+  @media (min-width: 1024px) {
+    @apply grid-cols-3;
+  }
+}
+
+@utility header-gradient {
+  /* Header gradient */
+  @apply bg-linear-to-r from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] text-white;
+}
+
+@utility promo-card {
+  /* Promo cards in banner */
+  @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-xs;
+  @apply hover:shadow-xl transition-all duration-300 overflow-hidden;
+  @apply active:scale-[0.98]; /* Touch feedback */
+
+  @media (hover: hover) {
+    &:hover {
+      @apply scale-105;
+    }
+  }
+}
+
+@utility result-card {
+  /* Result card animations */
+  @apply animate-scaleIn;
+}
+
+@utility stat-item {
+  @apply hover:scale-105 transition-transform duration-200;
+}
+
+@utility space-y-6 {
+  @media (max-width: 640px) {
+    /* Ensure adequate spacing in forms */
+    .card-content & > * {
+      @apply scroll-mt-4;
+    }
+  }
+}
 
 @layer base {
   :root {
@@ -70,260 +437,7 @@
 }
 
 @layer components {
-  /* Clean, minimal buttons with proper touch targets */
-  .btn {
-    @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200;
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-    @apply disabled:pointer-events-none disabled:opacity-50;
-    @apply active:scale-[0.98]; /* Touch feedback */
-    @apply min-h-[44px]; /* Minimum touch target */
-  }
-
-  .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg h-11 sm:h-12 px-6 py-2;
-  }
-
-  .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md h-11 sm:h-12 px-6 py-2;
-  }
-
-  .btn-outline {
-    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 h-11 sm:h-12 px-6 py-2;
-  }
-
-  .btn-ghost {
-    @apply hover:bg-accent hover:text-accent-foreground h-11 sm:h-12 px-6 py-2;
-  }
-
-  /* Minimal cards with responsive padding */
-  .card {
-    @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow duration-200;
-  }
-
-  .card-header {
-    @apply flex flex-col space-y-1.5 p-4 sm:p-6;
-  }
-
-  .card-title {
-    @apply text-xl sm:text-2xl font-semibold leading-none tracking-tight;
-  }
-
-  .card-description {
-    @apply text-sm text-muted-foreground;
-  }
-
-  .card-content {
-    @apply p-4 sm:p-6 pt-0;
-  }
-
-  .card-footer {
-    @apply flex items-center p-4 sm:p-6 pt-0;
-  }
-
-  /* Clean input fields with proper touch targets */
-  .input {
-    @apply flex h-11 sm:h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base sm:text-sm;
-    @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
-    @apply placeholder:text-muted-foreground;
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-    @apply disabled:cursor-not-allowed disabled:opacity-50;
-    @apply transition-colors duration-200;
-  }
-
-  /* Prevent zoom on input focus on iOS */
-  @media (max-width: 640px) {
-    .input {
-      font-size: 16px; /* Prevents iOS zoom */
-    }
-  }
-
-  .label {
-    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
-  }
-
-  /* Simple badges */
-  .badge {
-    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors;
-  }
-
-  .badge-default {
-    @apply border-transparent bg-primary text-primary-foreground;
-  }
-
-  .badge-secondary {
-    @apply border-transparent bg-secondary text-secondary-foreground;
-  }
-
-  .badge-outline {
-    @apply text-foreground;
-  }
-
-  /* Clean progress bar */
-  .progress {
-    @apply relative h-2 w-full overflow-hidden rounded-full bg-secondary shadow-inner;
-  }
-
-  .progress-bar {
-    @apply h-full w-full flex-1 bg-gradient-to-r from-primary to-primary/80 transition-all duration-300;
-  }
-
-  .separator {
-    @apply shrink-0 bg-border h-[1px] w-full my-6;
-  }
-
-  .container {
-    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
-  }
-
-  /* Minimal mode selector */
-  .mode-btn {
-    @apply flex items-center gap-3 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-sm transition-all duration-200 cursor-pointer text-left;
-    @apply min-h-[56px]; /* Better touch target */
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-    @apply active:scale-[0.98]; /* Touch feedback */
-  }
-
-  .mode-btn.active {
-    @apply bg-primary text-primary-foreground border-primary shadow-md;
-  }
-
-  .mode-btn.active .text-muted-foreground {
-    @apply text-primary-foreground/80;
-  }
-
-  /* Clean gender selector */
-  .gender-btn {
-    @apply flex flex-col items-center justify-center gap-2 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-sm transition-all duration-200 cursor-pointer flex-1;
-    @apply min-h-[60px]; /* Better touch target */
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-    @apply active:scale-[0.98]; /* Touch feedback */
-  }
-
-  .gender-btn.active {
-    @apply bg-primary text-primary-foreground border-primary shadow-md;
-  }
-
-  /* Simple factor buttons - improved touch targets */
-  .factor-btn {
-    @apply px-3 py-2.5 text-sm bg-card border rounded-md hover:bg-accent hover:border-primary/30 transition-all duration-150 cursor-pointer;
-    @apply min-h-[44px] min-w-[44px]; /* Accessibility: minimum touch target */
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-    @apply active:scale-95; /* Touch feedback */
-  }
-
-  .factor-btn.active {
-    @apply bg-primary text-primary-foreground border-primary shadow-sm;
-  }
-
-  /* Mobile optimizations for factor buttons */
-  @media (max-width: 640px) {
-    .factor-btn {
-      @apply px-2.5 py-3 text-xs flex-1 text-center;
-    }
-  }
-
-  /* Clean life bar */
-  .life-bar {
-    @apply h-6 bg-secondary rounded-full overflow-hidden flex shadow-inner;
-  }
-
-  .life-lived {
-    @apply bg-gradient-to-r from-primary to-primary/80 h-full transition-all duration-500;
-  }
-
-  .life-remaining {
-    @apply bg-muted h-full;
-  }
-
-  /* Minimal countdown timer */
-  .countdown-timer {
-    @apply bg-gradient-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-xl p-6 sm:p-8 text-center shadow-lg;
-  }
-
-  .countdown-timer h2 {
-    @apply text-white text-xl sm:text-2xl font-semibold mb-4 sm:mb-6;
-  }
-
-  .time-unit {
-    @apply flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 min-w-[56px] sm:min-w-[70px] hover:bg-white/20 transition-all duration-200;
-  }
-
-  .time-value {
-    @apply text-xl sm:text-2xl md:text-3xl font-bold text-white tabular-nums;
-  }
-
-  .time-label {
-    @apply text-[10px] sm:text-xs text-white/80 uppercase tracking-wide mt-0.5 sm:mt-1;
-  }
-
-  /* Clean progress indicator */
-  .form-progress {
-    @apply mb-6;
-  }
-
-  .progress-fill {
-    @apply h-2 bg-gradient-to-r from-primary to-primary/80 rounded-full transition-all duration-300;
-  }
-
-  .lifestyle-grid {
-    @apply grid grid-cols-1 gap-6;
-  }
-
-  /* Lifestyle factor item styling */
-  .lifestyle-grid > div {
-    @apply pb-4 border-b border-border/50 last:border-b-0 last:pb-0;
-  }
-
-  .footer-grid {
-    @apply grid grid-cols-1 gap-8;
-  }
-
-  @media (min-width: 640px) {
-    .footer-grid {
-      @apply grid-cols-2;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .footer-grid {
-      @apply grid-cols-3;
-    }
-  }
-
-  /* Header gradient */
-  .header-gradient {
-    @apply bg-gradient-to-r from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] text-white;
-  }
-
-  /* Promo cards in banner */
-  .promo-card {
-    @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-sm;
-    @apply hover:shadow-xl transition-all duration-300 overflow-hidden;
-    @apply active:scale-[0.98]; /* Touch feedback */
-  }
-
-  @media (hover: hover) {
-    .promo-card:hover {
-      @apply scale-105;
-    }
-  }
-
-  /* Result card animations */
-  .result-card {
-    @apply animate-scaleIn;
-  }
-
-  .stat-item {
-    @apply hover:scale-105 transition-transform duration-200;
-  }
-
   /* Global touch-friendly adjustments for mobile */
-  @media (max-width: 640px) {
-    /* Ensure adequate spacing in forms */
-    .card-content .space-y-6 > * {
-      @apply scroll-mt-4;
-    }
-  }
 
   /* Smooth scrolling */
   html {
@@ -332,7 +446,7 @@
 
   /* Better focus visibility for keyboard navigation */
   *:focus-visible {
-    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+    @apply outline-hidden ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
 
   /* Reduced motion preference */

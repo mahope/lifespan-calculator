@@ -15,7 +15,7 @@ const ShareCard = ({ resultData }) => {
   }
 
   return (
-    <div className="relative bg-gradient-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-lg p-8 text-white shadow-lg overflow-hidden">
+    <div className="relative bg-linear-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-lg p-8 text-white shadow-lg overflow-hidden">
       {/* Decorative circles */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16" />
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12" />
@@ -29,19 +29,19 @@ const ShareCard = ({ resultData }) => {
         </div>
 
         {/* Main stat */}
-        <div className="text-center py-6 bg-white/10 backdrop-blur-sm rounded-lg">
+        <div className="text-center py-6 bg-white/10 backdrop-blur-xs rounded-lg">
           <div className="text-6xl font-bold mb-2">{resultData.remainingYears}</div>
           <div className="text-lg text-white/90">år tilbage</div>
         </div>
 
         {/* Details grid */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+          <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
             <div className="text-2xl font-bold">{resultData.adjustedLifeExpectancy}</div>
             <div className="text-sm text-white/80">Forventet alder</div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+          <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
             <div className="text-2xl font-bold">{resultData.remainingDays}</div>
             <div className="text-sm text-white/80">Dage tilbage</div>
           </div>
@@ -49,7 +49,7 @@ const ShareCard = ({ resultData }) => {
 
         {/* Lifestyle impact */}
         {resultData.lifestyleImpact !== 0 && (
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+          <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
             <div className="text-sm text-white/80 mb-1">Livsstil påvirkning</div>
             <div className={`text-3xl font-bold ${resultData.lifestyleImpact > 0 ? 'text-green-300' : 'text-orange-300'}`}>
               {resultData.lifestyleImpact > 0 ? '+' : ''}{resultData.lifestyleImpact} år

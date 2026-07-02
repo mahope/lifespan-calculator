@@ -183,7 +183,7 @@ Beregn din egen: ${shareUrl}`;
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 animate-fadeIn"
+        className="fixed inset-0 bg-black/50 backdrop-blur-xs z-40 animate-fadeIn"
         onClick={onClose}
       />
 

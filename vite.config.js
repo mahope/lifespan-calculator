@@ -11,8 +11,8 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
-    // Optimizations
-    minify: 'esbuild',
+    // Optimizations (Vite 8 uses Rolldown + Oxc by default)
+    minify: 'oxc',
     target: 'esnext',
     rollupOptions: {
       output: {

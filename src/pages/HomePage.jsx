@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
@@ -40,6 +40,16 @@ const HomePage = () => {
   const [formProgress, setFormProgress] = useState(0);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [autoSubmit, setAutoSubmit] = useState(false);
+  const resultsHeadingRef = useRef(null);
+
+  // Move focus to the results heading when the results appear, so keyboard and
+  // screen-reader users follow the view change instead of being stranded on the
+  // now-hidden form.
+  useEffect(() => {
+    if (showResults && resultsHeadingRef.current) {
+      resultsHeadingRef.current.focus();
+    }
+  }, [showResults]);
 
   // Update form progress
   useEffect(() => {
@@ -194,9 +204,11 @@ const HomePage = () => {
                   {/* Mode Selection */}
                   <div className="space-y-2">
                     <h3 className="text-sm font-medium">Beregningsmåde</h3>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Beregningsmåde">
                       <button
                         type="button"
+                        role="radio"
+                        aria-checked={currentMode === 'simple'}
                         className={`mode-btn ${currentMode === 'simple' ? 'active' : ''}`}
                         onClick={() => selectMode('simple')}
                       >
@@ -207,6 +219,8 @@ const HomePage = () => {
                       </button>
                       <button
                         type="button"
+                        role="radio"
+                        aria-checked={currentMode === 'advanced'}
                         className={`mode-btn ${currentMode === 'advanced' ? 'active' : ''}`}
                         onClick={() => selectMode('advanced')}
                       >
@@ -234,9 +248,11 @@ const HomePage = () => {
                       <div className="flex items-center justify-between">
                         <label className="label">Hvordan vil du angive din alder?</label>
                       </div>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Hvordan vil du angive din alder?">
                         <button
                           type="button"
+                          role="radio"
+                          aria-checked={!formData.useBirthdate}
                           className={`mode-btn ${!formData.useBirthdate ? 'active' : ''}`}
                           onClick={() => setFormData(prev => ({ ...prev, useBirthdate: false, birthdate: '' }))}
                         >
@@ -247,6 +263,8 @@ const HomePage = () => {
                         </button>
                         <button
                           type="button"
+                          role="radio"
+                          aria-checked={formData.useBirthdate}
                           className={`mode-btn ${formData.useBirthdate ? 'active' : ''}`}
                           onClick={() => setFormData(prev => ({ ...prev, useBirthdate: true, age: '' }))}
                         >
@@ -300,9 +318,11 @@ const HomePage = () => {
                     {/* Gender Selection */}
                     <div className="space-y-2">
                       <label className="label">Køn</label>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Køn">
                         <button
                           type="button"
+                          role="radio"
+                          aria-checked={formData.gender === 'male'}
                           className={`gender-btn ${formData.gender === 'male' ? 'active' : ''}`}
                           onClick={() => selectGender('male')}
                         >
@@ -310,6 +330,8 @@ const HomePage = () => {
                         </button>
                         <button
                           type="button"
+                          role="radio"
+                          aria-checked={formData.gender === 'female'}
                           className={`gender-btn ${formData.gender === 'female' ? 'active' : ''}`}
                           onClick={() => selectGender('female')}
                         >
@@ -1041,8 +1063,19 @@ const HomePage = () => {
             <div className="mx-auto max-w-6xl space-y-8">
               {/* Countdown Timer */}
               <div className="countdown-timer">
-                <h2 className="mb-6 text-2xl font-semibold text-center">Din resterende tid</h2>
-                <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <h2
+                  ref={resultsHeadingRef}
+                  tabIndex={-1}
+                  className="mb-6 text-2xl font-semibold text-center outline-none"
+                >
+                  Din resterende tid
+                </h2>
+                {/* Announced once for screen readers; the ticking grid below is
+                    hidden from assistive tech to avoid per-second spam. */}
+                <p className="sr-only" aria-live="polite">
+                  Du har statistisk {resultData?.remainingYears} år tilbage at leve.
+                </p>
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4" aria-hidden="true">
                   <div className="time-unit">
                     <span className="time-value">{resultData?.countdown?.years || resultData?.remainingYears || '--'}</span>
                     <span className="time-label">år</span>

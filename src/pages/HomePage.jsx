@@ -1,5 +1,18 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import {
+  Hourglass,
+  MapPin,
+  Zap,
+  SlidersHorizontal,
+  Hash,
+  CalendarDays,
+  Sparkles,
+  Clock,
+  RefreshCw,
+  Share2,
+} from 'lucide-react';
+import SectionHeader from '../components/SectionHeader';
 import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
@@ -199,13 +212,16 @@ const HomePage = () => {
         ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
       />
 
-      <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">
+      <header className="header-gradient px-4 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
         <div className="container animate-fadeIn">
-          <h1 className="mb-2 sm:mb-3 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            ⏳ Levetidsberegner
+          <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur-sm">
+            <Hourglass className="h-7 w-7" strokeWidth={2} />
+          </span>
+          <h1 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            Levetidsberegner
           </h1>
-          <p className="mx-auto max-w-xl text-sm sm:text-base text-white/90">
-            Beregn hvor mange år du statistisk set har tilbage baseret på din alder, køn og lokation
+          <p className="mx-auto max-w-xl text-sm text-white/90 sm:text-base">
+            Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler.
           </p>
         </div>
       </header>
@@ -215,9 +231,12 @@ const HomePage = () => {
           <div className="container py-8">
             <div className="mx-auto max-w-2xl">
               <div className="card animate-slideUp">
-                <div className="card-header">
-                  <h2 className="card-title">Levetidsberegner</h2>
-                </div>
+                <SectionHeader
+                  icon={Hourglass}
+                  level={2}
+                  title="Beregn din levetid"
+                  description="Udfyld felterne — det tager ti sekunder."
+                />
                 <div className="card-content space-y-6">
                   {/* Mode Selection */}
                   <div className="space-y-2">
@@ -230,6 +249,7 @@ const HomePage = () => {
                         className={`mode-btn ${currentMode === 'simple' ? 'active' : ''}`}
                         onClick={() => selectMode('simple')}
                       >
+                        <Zap className="h-5 w-5 shrink-0" strokeWidth={2} />
                         <div className="text-left w-full">
                           <div className="font-medium text-sm">Simpel</div>
                           <div className="text-xs text-muted-foreground">Hurtig beregning</div>
@@ -242,6 +262,7 @@ const HomePage = () => {
                         className={`mode-btn ${currentMode === 'advanced' ? 'active' : ''}`}
                         onClick={() => selectMode('advanced')}
                       >
+                        <SlidersHorizontal className="h-5 w-5 shrink-0" strokeWidth={2} />
                         <div className="text-left w-full">
                           <div className="font-medium text-sm">Avanceret</div>
                           <div className="text-xs text-muted-foreground">Med livsstil</div>
@@ -274,6 +295,7 @@ const HomePage = () => {
                           className={`mode-btn ${!formData.useBirthdate ? 'active' : ''}`}
                           onClick={() => setFormData(prev => ({ ...prev, useBirthdate: false, birthdate: '' }))}
                         >
+                          <Hash className="h-5 w-5 shrink-0" strokeWidth={2} />
                           <div className="text-left w-full">
                             <div className="font-medium text-sm">Alder</div>
                             <div className="text-xs text-muted-foreground">Hurtig</div>
@@ -286,6 +308,7 @@ const HomePage = () => {
                           className={`mode-btn ${formData.useBirthdate ? 'active' : ''}`}
                           onClick={() => setFormData(prev => ({ ...prev, useBirthdate: true, age: '' }))}
                         >
+                          <CalendarDays className="h-5 w-5 shrink-0" strokeWidth={2} />
                           <div className="text-left w-full">
                             <div className="font-medium text-sm">Fødselsdato</div>
                             <div className="text-xs text-muted-foreground">Mere præcis</div>
@@ -360,8 +383,8 @@ const HomePage = () => {
 
                     {/* Location */}
                     {userLocation ? (
-                      <p className="text-xs text-muted-foreground">
-                        📍 {userLocation}
+                      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <MapPin className="h-3.5 w-3.5" /> {userLocation}
                       </p>
                     ) : (
                       <div className="space-y-2">
@@ -371,9 +394,9 @@ const HomePage = () => {
                         <button
                           type="button"
                           onClick={getUserLocation}
-                          className="btn btn-outline w-full"
+                          className="btn btn-outline w-full gap-2"
                         >
-                          📍 Brug min placering
+                          <MapPin className="h-4 w-4" /> Brug min placering
                         </button>
                       </div>
                     )}
@@ -1084,9 +1107,9 @@ const HomePage = () => {
                 <h2
                   ref={resultsHeadingRef}
                   tabIndex={-1}
-                  className="mb-6 text-2xl font-semibold text-center outline-none"
+                  className="mb-6 flex items-center justify-center gap-2 text-2xl font-semibold outline-none"
                 >
-                  Din resterende tid
+                  <Clock className="h-6 w-6" strokeWidth={2} /> Din resterende tid
                 </h2>
                 {/* Announced once for screen readers; the ticking grid below is
                     hidden from assistive tech to avoid per-second spam. */}
@@ -1195,9 +1218,7 @@ const HomePage = () => {
 
               {/* Fun Facts Section */}
               <div className="card">
-                <div className="card-header">
-                  <h3 className="text-lg font-semibold">🎉 Fun Facts om dit liv</h3>
-                </div>
+                <SectionHeader icon={Sparkles} tone="amber" title="Fun facts om dit liv" />
                 <div className="card-content">
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
@@ -1275,12 +1296,11 @@ const HomePage = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button onClick={shareResults} className="btn btn-primary flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                  </svg>
+                  <Share2 className="h-5 w-5" strokeWidth={2} />
                   Del resultater
                 </button>
-                <button onClick={resetCalculation} className="btn btn-outline">
+                <button onClick={resetCalculation} className="btn btn-outline flex items-center justify-center gap-2">
+                  <RefreshCw className="h-4 w-4" strokeWidth={2} />
                   Ny beregning
                 </button>
               </div>

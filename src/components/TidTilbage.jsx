@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Hourglass } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 
 // "Tider tilbage" — translate the remaining-time estimate into finite, concrete
 // moments. Leans entirely on numbers the calculation already produced.
@@ -27,12 +29,11 @@ const TidTilbage = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">⌛ Tider tilbage</h3>
-        <p className="card-description">
-          Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem.
-        </p>
-      </div>
+      <SectionHeader
+        icon={Hourglass}
+        title="Tider tilbage"
+        description="Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem."
+      />
       <div className="card-content space-y-6">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {moments.map((m) => (

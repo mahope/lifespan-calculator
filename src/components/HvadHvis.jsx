@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Wand2 } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { LIFESTYLE_META } from '../utils/lifestyleFactors';
 import { projectedExpectancy } from '../utils/lifeTableDK';
 
@@ -27,10 +29,12 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">🔮 Hvad hvis?</h3>
-        <p className="card-description">Vælg ændringer og se effekten på dit estimat med det samme.</p>
-      </div>
+      <SectionHeader
+        icon={Wand2}
+        tone="violet"
+        title="Hvad hvis?"
+        description="Vælg ændringer og se effekten på dit estimat med det samme."
+      />
       <div className="card-content space-y-4">
         <div className="flex flex-wrap gap-2" role="group" aria-label="Hypotetiske livsstilsændringer">
           {options.map((m) => (

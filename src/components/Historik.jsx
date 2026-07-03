@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { LineChart } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { loadHistory } from '../utils/history';
 
 // "Din historik" — shows how the user's estimate has moved across past visits
@@ -29,12 +31,11 @@ const Historik = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">📈 Din historik</h3>
-        <p className="card-description">
-          Sådan har dit estimat udviklet sig ({history.length} beregninger, gemt lokalt).
-        </p>
-      </div>
+      <SectionHeader
+        icon={LineChart}
+        title="Din historik"
+        description={`Sådan har dit estimat udviklet sig (${history.length} beregninger, gemt lokalt).`}
+      />
       <div className="card-content space-y-2">
         {history.slice(-6).map((h) => (
           <div

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Dices } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { survivalProbability } from '../utils/lifeTableDK';
 
 const TARGETS = [80, 90, 95, 100];
@@ -21,12 +23,11 @@ const Sandsynlighed = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">🎲 Chance for at nå…</h3>
-        <p className="card-description">
-          Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler.
-        </p>
-      </div>
+      <SectionHeader
+        icon={Dices}
+        title="Chance for at nå…"
+        description="Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler."
+      />
       <div className="card-content space-y-3">
         {rows.map((r) => (
           <div key={r.age} className="space-y-1">

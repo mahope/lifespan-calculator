@@ -1,4 +1,6 @@
 import React from 'react';
+import { Sprout } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { topImprovements } from '../utils/lifestyleFactors';
 
 // "Sådan kan du vinde flere år" — ranks the changes that would lift this user's
@@ -10,10 +12,12 @@ const Coaching = ({ lifestyleFactors }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">🌱 Sådan kan du vinde flere år</h3>
-        <p className="card-description">Livsstilsændringer, der kan give dig flere leveår.</p>
-      </div>
+      <SectionHeader
+        icon={Sprout}
+        tone="green"
+        title="Sådan kan du vinde flere år"
+        description="Livsstilsændringer, der kan give dig flere leveår."
+      />
       <div className="card-content">
         <ul className="divide-y divide-border/60">
           {items.map((i) => (

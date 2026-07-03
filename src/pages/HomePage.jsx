@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import ShareModal from '../components/ShareModal';
 import PromoBanner from '../components/PromoBanner';
+import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { achievements } from '../utils/lifeExpectancyData';
 
@@ -1080,6 +1081,9 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Life in weeks */}
+              <LifeInWeeksGrid resultData={resultData} />
 
               {/* Livsforsikring CTA — high-intent moment: user just saw remaining lifespan */}
               <a

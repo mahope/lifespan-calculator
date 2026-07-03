@@ -8,6 +8,7 @@ import PromoBanner from '../components/PromoBanner';
 import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import TidTilbage from '../components/TidTilbage';
 import Milepaele from '../components/Milepaele';
+import Sammenlign from '../components/Sammenlign';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
 
@@ -1110,6 +1111,9 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Compare to average */}
+              <Sammenlign resultData={resultData} />
 
               {/* Life in weeks */}
               <LifeInWeeksGrid resultData={resultData} />

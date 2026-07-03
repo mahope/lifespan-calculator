@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { getLifeExpectancyForCountry, formatCountryName } from '../utils/lifeExpectancyData';
-import { calculatePreciseAge, breakdownRemaining, lifePercent } from '../utils/lifespanMath';
+import {
+  calculatePreciseAge,
+  breakdownRemaining,
+  lifePercent,
+  boundLifestyleAdjustment,
+} from '../utils/lifespanMath';
 
 // Stable, fixed order of the lifestyle factors — used for both the initial state
 // and for packing/unpacking factors into a shareable URL.
@@ -78,7 +83,8 @@ export const useLifespanCalculator = () => {
     }
     
     const baseLifeExpectancy = getLifeExpectancyForCountry(lifeExpectancyForLocation || 'World', gender);
-    const lifestyleAdjustment = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
+    const rawLifestyleAdjustment = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
+    const lifestyleAdjustment = Math.round(boundLifestyleAdjustment(rawLifestyleAdjustment));
     const adjustedLifeExpectancy = baseLifeExpectancy + lifestyleAdjustment;
     const remainingYears = Math.max(0, adjustedLifeExpectancy - age);
 

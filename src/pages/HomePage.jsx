@@ -10,6 +10,7 @@ import TidTilbage from '../components/TidTilbage';
 import Milepaele from '../components/Milepaele';
 import Sammenlign from '../components/Sammenlign';
 import Pension from '../components/Pension';
+import Sandsynlighed from '../components/Sandsynlighed';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
 import { boundLifestyleAdjustment } from '../utils/lifespanMath';
@@ -1149,6 +1150,9 @@ const HomePage = () => {
                 </div>
               </div>
 
+              {/* Probability of reaching ages */}
+              <Sandsynlighed resultData={resultData} />
+
               {/* Compare to average */}
               <Sammenlign resultData={resultData} />
 
@@ -1282,7 +1286,7 @@ const HomePage = () => {
                   <div className="card-content space-y-2">
                     <h4 className="text-sm font-semibold text-foreground">Vigtige disclaimere</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Baseret på WHO og nationale statistikker</li>
+                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025)</li>
                       <li>• Individuelle faktorer påvirker ikke beregningen</li>
                       <li>• Kun til underholdning og reflektion</li>
                     </ul>

@@ -12,6 +12,7 @@ import Sammenlign from '../components/Sammenlign';
 import Pension from '../components/Pension';
 import Sandsynlighed from '../components/Sandsynlighed';
 import KropsAlder from '../components/KropsAlder';
+import Coaching from '../components/Coaching';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
 import { boundLifestyleAdjustment } from '../utils/lifespanMath';
@@ -1162,6 +1163,9 @@ const HomePage = () => {
 
               {/* Pension & working years */}
               <Pension resultData={resultData} />
+
+              {/* Lifestyle coaching (advanced mode) */}
+              {currentMode === 'advanced' && <Coaching lifestyleFactors={lifestyleFactors} />}
 
               {/* Life in weeks */}
               <LifeInWeeksGrid resultData={resultData} />

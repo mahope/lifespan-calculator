@@ -6,9 +6,11 @@ import { loadHistory } from '../utils/history';
 const Historik = ({ resultData }) => {
   const [history, setHistory] = useState([]);
 
+  // Depend on endTimestamp (stable across countdown ticks, which only replace
+  // `countdown`) so history is re-read on a genuinely new calculation, not every second.
   useEffect(() => {
     setHistory(loadHistory());
-  }, [resultData]);
+  }, [resultData?.endTimestamp]);
 
   if (history.length < 2) return null;
 
@@ -34,9 +36,9 @@ const Historik = ({ resultData }) => {
         </p>
       </div>
       <div className="card-content space-y-2">
-        {history.slice(-6).map((h, i) => (
+        {history.slice(-6).map((h) => (
           <div
-            key={`${h.ts}-${i}`}
+            key={h.ts}
             className="flex items-center justify-between border-b border-border/40 pb-1 text-sm last:border-0"
           >
             <span className="text-muted-foreground">{fmtDate(h.ts)}</span>

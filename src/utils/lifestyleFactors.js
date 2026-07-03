@@ -61,8 +61,15 @@ export const LIFESTYLE_META = [
   { key: 'sleep', label: 'Sov 7-8 timer', icon: '😴', best: 2 },
   { key: 'stress', label: 'Reducér dit stressniveau', icon: '😰', best: 2 },
   { key: 'mental', label: 'Passe på din mentale sundhed', icon: '🧠', best: 2 },
+  { key: 'commute', label: 'Cykl eller gå i stedet for at pendle', icon: '🚲', best: 1 },
+  { key: 'work', label: 'Vælg et mindre belastende arbejdsmiljø', icon: '💼', best: 1 },
+  { key: 'environment', label: 'Bo et sted med renere luft', icon: '🌍', best: 1 },
   { key: 'screentime', label: 'Mindre skærmtid i fritiden', icon: '📱', best: 1 },
 ];
+
+// Note: purely socioeconomic factors (education, income) and pre-existing health
+// conditions are intentionally excluded — they are not actionable "lifestyle
+// changes", so the coaching copy is scoped to behavioural factors only.
 
 /**
  * The lifestyle changes that would raise the estimate most for this user,

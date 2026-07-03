@@ -12,7 +12,7 @@ const Coaching = ({ lifestyleFactors }) => {
     <div className="card">
       <div className="card-header">
         <h3 className="text-lg font-semibold">🌱 Sådan kan du vinde flere år</h3>
-        <p className="card-description">De ændringer, der ville løfte dit estimat mest.</p>
+        <p className="card-description">Livsstilsændringer, der kan give dig flere leveår.</p>
       </div>
       <div className="card-content">
         <ul className="divide-y divide-border/60">

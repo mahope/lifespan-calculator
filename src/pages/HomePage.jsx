@@ -11,6 +11,7 @@ import Milepaele from '../components/Milepaele';
 import Sammenlign from '../components/Sammenlign';
 import Pension from '../components/Pension';
 import Sandsynlighed from '../components/Sandsynlighed';
+import KropsAlder from '../components/KropsAlder';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
 import { boundLifestyleAdjustment } from '../utils/lifespanMath';
@@ -1100,6 +1101,9 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Biological age (advanced mode) */}
+              <KropsAlder resultData={resultData} />
 
               {/* Life Progress Bar */}
               <div className="card">

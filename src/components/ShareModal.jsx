@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { toPng } from 'html-to-image';
 import ShareCard from './ShareCard';
 
 const ShareModal = ({ isOpen, onClose, resultData }) => {
@@ -114,67 +115,27 @@ Beregn din egen: ${shareUrl}`;
     }
   };
 
-  // Download as image
+  // Download the actual preview card as a PNG (so download == preview).
   const downloadImage = async () => {
+    if (!shareCardRef.current) return;
     setIsGenerating(true);
 
     try {
-      // We'll use html2canvas when available, for now create a simple download
-      // This will be enhanced in the next step
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-
-      canvas.width = 1200;
-      canvas.height = 630;
-
-      // Gradient background
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, '#4F46E5');
-      gradient.addColorStop(1, '#7C3AED');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Text
-      ctx.fillStyle = 'white';
-      ctx.font = 'bold 48px Inter, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('🕐 Mine Levetidsresultater', canvas.width / 2, 150);
-
-      ctx.font = 'bold 72px Inter, sans-serif';
-      ctx.fillText(`${resultData.remainingYears} år tilbage`, canvas.width / 2, 280);
-
-      ctx.font = '32px Inter, sans-serif';
-      ctx.fillText(`Forventet levetid: ${resultData.adjustedLifeExpectancy} år`, canvas.width / 2, 380);
-
-      if (resultData.lifestyleImpact !== 0) {
-        ctx.fillText(
-          `Livsstil: ${resultData.lifestyleImpact > 0 ? '+' : ''}${resultData.lifestyleImpact} år`,
-          canvas.width / 2,
-          450
-        );
-      }
-
-      ctx.font = '24px Inter, sans-serif';
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-      ctx.fillText('levetidsberegner.dk', canvas.width / 2, 550);
-
-      // Download
-      canvas.toBlob((blob) => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'levetidsresultater.png';
-        a.click();
-        URL.revokeObjectURL(url);
-
-        if (window.plausible) {
-          window.plausible('Share', { props: { method: 'download-image' } });
-        }
-
-        setIsGenerating(false);
+      const dataUrl = await toPng(shareCardRef.current, {
+        pixelRatio: 2,
+        cacheBust: true,
       });
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = 'levetidsresultater.png';
+      a.click();
+
+      if (window.plausible) {
+        window.plausible('Share', { props: { method: 'download-image' } });
+      }
     } catch (err) {
       console.error('Failed to generate image:', err);
+    } finally {
       setIsGenerating(false);
     }
   };

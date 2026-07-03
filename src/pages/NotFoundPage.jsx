@@ -95,7 +95,7 @@ const NotFoundPage = () => {
 
             <div className="pt-4 sm:pt-6">
               <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
-                <Home className="h-5 w-5" /> Gå til forsiden
+                <Home className="h-5 w-5" aria-hidden="true" /> Gå til forsiden
               </Link>
             </div>
           </div>

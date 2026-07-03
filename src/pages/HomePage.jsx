@@ -13,6 +13,7 @@ import {
   Share2,
 } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
@@ -212,19 +213,11 @@ const HomePage = () => {
         ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
       />
 
-      <header className="header-gradient px-4 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-        <div className="container animate-fadeIn">
-          <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur-sm">
-            <Hourglass className="h-7 w-7" strokeWidth={2} />
-          </span>
-          <h1 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Levetidsberegner
-          </h1>
-          <p className="mx-auto max-w-xl text-sm text-white/90 sm:text-base">
-            Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler.
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        icon={Hourglass}
+        title="Levetidsberegner"
+        subtitle="Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler."
+      />
 
       <main className="flex-1">
         {!showResults ? (

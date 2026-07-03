@@ -1,5 +1,17 @@
 import React from 'react';
+import {
+  HeartPulse,
+  Activity,
+  Apple,
+  Moon,
+  CigaretteOff,
+  Brain,
+  Wine,
+  Target,
+  BarChart3,
+} from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
@@ -21,16 +33,11 @@ const LivsstilPage = () => {
         ]}
       />
 
-      <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">
-        <div className="container animate-fadeIn">
-          <h1 className="mb-2 sm:mb-3 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            💪 Livsstil og Levetid
-          </h1>
-          <p className="mx-auto max-w-xl text-sm sm:text-base text-white/90">
-            Oplev hvordan dine daglige valg påvirker din levetid og lær at optimere din livsstil for et længere, sundere liv
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        icon={HeartPulse}
+        title="Livsstil og Levetid"
+        subtitle="Oplev hvordan dine daglige valg påvirker din levetid og lær at optimere din livsstil for et længere, sundere liv"
+      />
 
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
@@ -47,7 +54,9 @@ const LivsstilPage = () => {
                   <div className="space-y-6">
                     <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">🏃‍♂️</span>
+                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                          <Activity className="h-5 w-5" aria-hidden="true" />
+                        </span>
                         <h3 className="text-lg sm:text-xl font-semibold">Motion og fysisk aktivitet</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
@@ -67,7 +76,9 @@ const LivsstilPage = () => {
 
                     <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">🍎</span>
+                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                          <Apple className="h-5 w-5" aria-hidden="true" />
+                        </span>
                         <h3 className="text-lg sm:text-xl font-semibold">Ernæring og kost</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
@@ -87,7 +98,9 @@ const LivsstilPage = () => {
 
                     <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">😴</span>
+                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
+                          <Moon className="h-5 w-5" aria-hidden="true" />
+                        </span>
                         <h3 className="text-lg sm:text-xl font-semibold">Søvn og hvile</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
@@ -109,7 +122,9 @@ const LivsstilPage = () => {
                   <div className="space-y-6">
                     <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">🚭</span>
+                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400">
+                          <CigaretteOff className="h-5 w-5" aria-hidden="true" />
+                        </span>
                         <h3 className="text-lg sm:text-xl font-semibold">Rygning og tobak</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
@@ -129,7 +144,9 @@ const LivsstilPage = () => {
 
                     <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">🧘‍♀️</span>
+                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
+                          <Brain className="h-5 w-5" aria-hidden="true" />
+                        </span>
                         <h3 className="text-lg sm:text-xl font-semibold">Stress og mental sundhed</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
@@ -149,7 +166,9 @@ const LivsstilPage = () => {
 
                     <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">🍷</span>
+                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                          <Wine className="h-5 w-5" aria-hidden="true" />
+                        </span>
                         <h3 className="text-lg sm:text-xl font-semibold">Alkohol</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
@@ -200,15 +219,15 @@ const LivsstilPage = () => {
             <div className="card border-green-500/20 bg-green-500/5">
               <div className="card-content">
                 <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
-                  <span>🎯</span> Start i dag
+                  <Target className="h-5 w-5 shrink-0 text-green-600 dark:text-green-400" aria-hidden="true" /> Start i dag
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground mb-4">
                   Du behøver ikke at ændre alt på én gang. Start med én livsstilsændring ad gangen og byg gradvist
                   sundere vaner op. Selv små forbedringer kan have betydelig påvirkning på din levetid og livskvalitet.
                 </p>
                 <div className="text-center">
-                  <Link to="/" className="btn btn-primary">
-                    📊 Se hvordan din livsstil påvirker din levetid
+                  <Link to="/" className="btn btn-primary gap-2">
+                    <BarChart3 className="h-5 w-5" aria-hidden="true" /> Se hvordan din livsstil påvirker din levetid
                   </Link>
                 </div>
               </div>

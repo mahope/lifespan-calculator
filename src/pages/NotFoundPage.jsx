@@ -1,5 +1,16 @@
 import React from 'react';
+import {
+  SearchX,
+  Compass,
+  Clock,
+  CalendarClock,
+  Skull,
+  HeartPulse,
+  MapPin,
+  Home,
+} from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import { Link } from 'react-router-dom';
@@ -14,21 +25,20 @@ const NotFoundPage = () => {
         canonicalUrl="/404"
       />
 
-      <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">
-        <div className="container animate-fadeIn">
-          <h1 className="mb-2 sm:mb-3 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            🔍 Side ikke fundet
-          </h1>
-          <p className="mx-auto max-w-xl text-sm sm:text-base text-white/90">
-            Den side du leder efter eksisterer ikke eller er blevet flyttet
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        icon={SearchX}
+        title="Side ikke fundet"
+        subtitle="Den side du leder efter eksisterer ikke eller er blevet flyttet"
+      />
 
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
           <div className="mx-auto max-w-2xl text-center space-y-6 sm:space-y-8">
-            <div className="text-7xl sm:text-9xl animate-bounce">🤔</div>
+            <div className="flex justify-center">
+              <span className="inline-grid h-24 w-24 place-items-center rounded-3xl bg-primary/10 text-primary">
+                <Compass className="h-12 w-12" strokeWidth={1.75} />
+              </span>
+            </div>
 
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl font-bold">Hmm, denne side findes ikke</h2>
@@ -43,7 +53,7 @@ const NotFoundPage = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <Link to="/" className="card hover:shadow-md hover:border-primary/50 transition-all">
                   <div className="card-content text-center space-y-2 py-4">
-                    <div className="text-2xl sm:text-3xl">🕰️</div>
+                    <Clock className="mx-auto h-7 w-7 text-primary" />
                     <div className="font-medium">Levetidsberegner</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Beregn din resterende levetid</div>
                   </div>
@@ -51,7 +61,7 @@ const NotFoundPage = () => {
 
                 <Link to="/hvor-lang-tid-har-jeg-tilbage" className="card hover:shadow-md hover:border-primary/50 transition-all">
                   <div className="card-content text-center space-y-2 py-4">
-                    <div className="text-2xl sm:text-3xl">📅</div>
+                    <CalendarClock className="mx-auto h-7 w-7 text-primary" />
                     <div className="font-medium">Hvor lang tid har jeg tilbage?</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Lær om resterende levetid</div>
                   </div>
@@ -59,7 +69,7 @@ const NotFoundPage = () => {
 
                 <Link to="/dodsalder-calculator" className="card hover:shadow-md hover:border-primary/50 transition-all">
                   <div className="card-content text-center space-y-2 py-4">
-                    <div className="text-2xl sm:text-3xl">⚰️</div>
+                    <Skull className="mx-auto h-7 w-7 text-primary" />
                     <div className="font-medium">Dødsalder Calculator</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Beregn din statistiske dødsalder</div>
                   </div>
@@ -67,7 +77,7 @@ const NotFoundPage = () => {
 
                 <Link to="/livsstil-og-levetid" className="card hover:shadow-md hover:border-primary/50 transition-all">
                   <div className="card-content text-center space-y-2 py-4">
-                    <div className="text-2xl sm:text-3xl">💪</div>
+                    <HeartPulse className="mx-auto h-7 w-7 text-primary" />
                     <div className="font-medium">Livsstil og Levetid</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Optimer din livsstil</div>
                   </div>
@@ -75,7 +85,7 @@ const NotFoundPage = () => {
 
                 <Link to="/levetid-beregner-danmark" className="card hover:shadow-md hover:border-primary/50 transition-all sm:col-span-2">
                   <div className="card-content text-center space-y-2 py-4">
-                    <div className="text-2xl sm:text-3xl">🇩🇰</div>
+                    <MapPin className="mx-auto h-7 w-7 text-primary" />
                     <div className="font-medium">Dansk Levetidsberegner</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Specialiseret til Danmark med data fra Danmarks Statistik</div>
                   </div>
@@ -84,8 +94,8 @@ const NotFoundPage = () => {
             </div>
 
             <div className="pt-4 sm:pt-6">
-              <Link to="/" className="btn btn-primary text-base sm:text-lg px-6 sm:px-8 py-3">
-                🏠 Gå til forsiden
+              <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
+                <Home className="h-5 w-5" /> Gå til forsiden
               </Link>
             </div>
           </div>

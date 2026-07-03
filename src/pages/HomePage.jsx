@@ -16,6 +16,7 @@ import Coaching from '../components/Coaching';
 import Historik from '../components/Historik';
 import HvadHvis from '../components/HvadHvis';
 import ParMode from '../components/ParMode';
+import Forsikringsbehov from '../components/Forsikringsbehov';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
@@ -1189,25 +1190,8 @@ const HomePage = () => {
               {/* Life in weeks */}
               <LifeInWeeksGrid resultData={resultData} />
 
-              {/* Livsforsikring CTA — high-intent moment: user just saw remaining lifespan */}
-              <a
-                href="https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner"
-                target="_blank"
-                rel="sponsored noopener noreferrer"
-                className="card block group"
-              >
-                <div className="card-content py-5">
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-2">Annonce</div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">🛡️</span>
-                    <div>
-                      <h3 className="text-base font-semibold mb-1 group-hover:text-primary transition-colors">Sikr dine kære med en livsforsikring</h3>
-                      <p className="text-sm text-muted-foreground">Sammenlign livsforsikringer på Findforsikring.dk — Danmarks største forsikringsportal — og find den rette dækning til din familie.</p>
-                      <span className="inline-flex items-center gap-1 text-sm font-medium text-primary mt-2">Sammenlign livsforsikringer →</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
+              {/* Value-first livsforsikring CTA — high-intent moment */}
+              <Forsikringsbehov resultData={resultData} />
 
               {/* Fun Facts Section */}
               <div className="card">

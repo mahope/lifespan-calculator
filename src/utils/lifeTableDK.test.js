@@ -4,7 +4,46 @@ import {
   survivalProbability,
   biologicalAge,
   projectedExpectancy,
+  jointLifeStats,
 } from './lifeTableDK';
+
+describe('jointLifeStats', () => {
+  it('returns a horizon row per target with valid probabilities', () => {
+    const s = jointLifeStats(40, 'male', 38, 'female', [10, 20, 30]);
+    expect(s.at).toHaveLength(3);
+    for (const r of s.at) {
+      expect(r.both).toBeGreaterThanOrEqual(0);
+      expect(r.both).toBeLessThanOrEqual(1);
+      // "at least one" is always >= "both"
+      expect(r.either).toBeGreaterThanOrEqual(r.both);
+      expect(r.either).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it('has decreasing joint-survival as the horizon grows', () => {
+    const s = jointLifeStats(50, 'male', 50, 'female', [10, 20, 30]);
+    expect(s.at[1].both).toBeLessThan(s.at[0].both);
+    expect(s.at[2].both).toBeLessThan(s.at[1].both);
+  });
+
+  it('gives a positive, plausible expected-years-together figure', () => {
+    const s = jointLifeStats(40, 'male', 40, 'female');
+    expect(s.expectedTogether).toBeGreaterThan(20);
+    expect(s.expectedTogether).toBeLessThan(60);
+  });
+
+  it('yields fewer expected years together for an older couple', () => {
+    const young = jointLifeStats(35, 'male', 35, 'female').expectedTogether;
+    const old = jointLifeStats(70, 'male', 70, 'female').expectedTogether;
+    expect(old).toBeLessThan(young);
+  });
+
+  it('does not count beyond the table (no clamp overcount at the top age)', () => {
+    // At age 99 there is no future coverage → expected years together is ~0,
+    // not the ~70 the old fixed loop produced via clamping.
+    expect(jointLifeStats(99, 'male', 99, 'female').expectedTogether).toBe(0);
+  });
+});
 
 describe('projectedExpectancy', () => {
   it('equals age + e_x with no lifestyle factors', () => {

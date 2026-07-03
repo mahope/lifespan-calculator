@@ -15,6 +15,7 @@ import KropsAlder from '../components/KropsAlder';
 import Coaching from '../components/Coaching';
 import Historik from '../components/Historik';
 import HvadHvis from '../components/HvadHvis';
+import ParMode from '../components/ParMode';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
@@ -1178,6 +1179,9 @@ const HomePage = () => {
 
               {/* Pension & working years */}
               <Pension resultData={resultData} />
+
+              {/* Couples / joint-life */}
+              <ParMode resultData={resultData} />
 
               {/* Lifestyle coaching (advanced mode) */}
               {currentMode === 'advanced' && <Coaching lifestyleFactors={lifestyleFactors} />}

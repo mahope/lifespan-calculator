@@ -15,6 +15,10 @@ const DodsalderPage = () => {
         ogTitle="Dødsalder Calculator - Hvornår dør jeg statistisk?"
         ogDescription="Få et statistisk estimat af din dødsalder baseret på demografiske data og livsstilsfaktorer"
         canonicalUrl="/dodsalder-calculator"
+        breadcrumbs={[
+          { name: 'Forside', url: '/' },
+          { name: 'Dødsalder Calculator', url: '/dodsalder-calculator' },
+        ]}
       />
 
       <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">

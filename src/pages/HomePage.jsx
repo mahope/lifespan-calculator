@@ -14,6 +14,7 @@ import Sandsynlighed from '../components/Sandsynlighed';
 import KropsAlder from '../components/KropsAlder';
 import Coaching from '../components/Coaching';
 import Historik from '../components/Historik';
+import HvadHvis from '../components/HvadHvis';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
@@ -1168,6 +1169,9 @@ const HomePage = () => {
 
               {/* Probability of reaching ages */}
               <Sandsynlighed resultData={resultData} />
+
+              {/* What-if scenarios */}
+              <HvadHvis resultData={resultData} lifestyleFactors={lifestyleFactors} />
 
               {/* Compare to average */}
               <Sammenlign resultData={resultData} />

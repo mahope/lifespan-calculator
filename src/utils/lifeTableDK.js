@@ -4,6 +4,8 @@
 //   SURVIVORS (l_x, TAVLE=1): of 100,000 born, how many are still alive at age x.
 // Index = age (0..99). Regenerate by curling the HISB8 CSV for TAVLE=3 and =1.
 
+import { boundLifestyleAdjustment } from './lifespanMath';
+
 export const LIFE_TABLE_DK = {
   remaining: {
     male: [80.25, 79.56, 78.58, 77.59, 76.60, 75.60, 74.61, 73.61, 72.61, 71.62, 70.62, 69.62, 68.63, 67.63, 66.64, 65.65, 64.66, 63.67, 62.68, 61.70, 60.72, 59.74, 58.75, 57.77, 56.79, 55.82, 54.84, 53.87, 52.89, 51.91, 50.92, 49.95, 48.97, 48.01, 47.04, 46.06, 45.10, 44.13, 43.16, 42.19, 41.23, 40.27, 39.30, 38.36, 37.41, 36.44, 35.50, 34.56, 33.62, 32.68, 31.75, 30.82, 29.92, 29.01, 28.11, 27.23, 26.34, 25.44, 24.57, 23.71, 22.85, 22.00, 21.16, 20.35, 19.52, 18.72, 17.94, 17.19, 16.42, 15.70, 14.98, 14.28, 13.58, 12.91, 12.24, 11.56, 10.92, 10.27, 9.64, 9.04, 8.45, 7.86, 7.32, 6.80, 6.30, 5.79, 5.31, 4.87, 4.53, 4.15, 3.80, 3.53, 3.22, 2.98, 2.77, 2.55, 2.38, 2.10, 1.97, 1.84],
@@ -26,6 +28,23 @@ export function remainingLifeExpectancy(age, gender) {
   if (age >= t.length - 1) return t[t.length - 1];
   const lo = Math.floor(age);
   return t[lo] + (t[lo + 1] - t[lo]) * (age - lo);
+}
+
+/**
+ * Projected expected age at death for a given age/gender and a set of lifestyle
+ * factors: age + max(0, e_x + bounded lifestyle adjustment). Mirrors the hook's
+ * calculation so "what-if" scenarios stay consistent with the main result.
+ * @param {number} age
+ * @param {'male'|'female'} gender
+ * @param {Record<string, number>} factors
+ */
+export function projectedExpectancy(age, gender, factors) {
+  const sum = Object.values(factors || {}).reduce((s, v) => s + (v || 0), 0);
+  const remaining = Math.max(
+    0,
+    remainingLifeExpectancy(age, gender) + Math.round(boundLifestyleAdjustment(sum))
+  );
+  return age + remaining;
 }
 
 /**

@@ -2,7 +2,8 @@ import React from 'react';
 
 // Standard card header: a tinted "icon chip" holding a real (lucide) icon next to
 // the title/description. Replaces the emoji-in-heading pattern across the app.
-const SectionHeader = ({ icon: Icon, title, description, tone = 'primary' }) => {
+const SectionHeader = ({ icon: Icon, title, description, tone = 'primary', level = 3 }) => {
+  const Heading = `h${level}`;
   const tones = {
     primary: 'bg-primary/10 text-primary',
     green: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
@@ -25,7 +26,7 @@ const SectionHeader = ({ icon: Icon, title, description, tone = 'primary' }) => 
           </span>
         )}
         <div className="min-w-0">
-          <h3 className="text-base font-semibold leading-tight sm:text-lg">{title}</h3>
+          <Heading className="text-base font-semibold leading-tight sm:text-lg">{title}</Heading>
           {description && <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>}
         </div>
       </div>

@@ -233,6 +233,7 @@ const HomePage = () => {
               <div className="card animate-slideUp">
                 <SectionHeader
                   icon={Hourglass}
+                  level={2}
                   title="Beregn din levetid"
                   description="Udfyld felterne — det tager ti sekunder."
                 />

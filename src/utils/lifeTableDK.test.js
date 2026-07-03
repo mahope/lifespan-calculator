@@ -37,6 +37,12 @@ describe('jointLifeStats', () => {
     const old = jointLifeStats(70, 'male', 70, 'female').expectedTogether;
     expect(old).toBeLessThan(young);
   });
+
+  it('does not count beyond the table (no clamp overcount at the top age)', () => {
+    // At age 99 there is no future coverage → expected years together is ~0,
+    // not the ~70 the old fixed loop produced via clamping.
+    expect(jointLifeStats(99, 'male', 99, 'female').expectedTogether).toBe(0);
+  });
 });
 
 describe('projectedExpectancy', () => {

@@ -13,7 +13,9 @@ const ParMode = ({ resultData }) => {
   if (!Number.isFinite(age)) return null;
 
   const pAge = parseInt(partnerAge, 10);
-  const valid = Number.isFinite(pAge) && pAge >= 0 && pAge <= 120;
+  // The life table covers ages 0–99; cap here so we never produce clamped
+  // (100 %-survival) nonsense for ages beyond the data.
+  const valid = Number.isFinite(pAge) && pAge >= 0 && pAge <= 99;
   const stats = valid ? jointLifeStats(age, gender, pAge, partnerGender) : null;
   const pct = (x) => `${Math.round(x * 100)}%`;
 
@@ -35,7 +37,7 @@ const ParMode = ({ resultData }) => {
               id="partnerAge"
               type="number"
               min="0"
-              max="120"
+              max="99"
               className="input w-full"
               value={partnerAge}
               onChange={(e) => setPartnerAge(e.target.value)}

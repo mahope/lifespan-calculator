@@ -64,8 +64,12 @@ export function jointLifeStats(age1, g1, age2, g2, targets = [10, 20, 30]) {
     const p2 = survivalProbability(age2, age2 + t, g2);
     return { years: t, both: p1 * p2, either: 1 - (1 - p1) * (1 - p2) };
   });
+  // Sum only over years the table actually covers (up to age 99 for both), so we
+  // neither truncate early for young couples nor overcount past 99 where
+  // survivalProbability clamps to a constant.
   let expectedTogether = 0;
-  for (let t = 1; t <= 70; t++) {
+  const maxT = 99 - Math.max(age1, age2);
+  for (let t = 1; t <= maxT; t++) {
     const p1 = survivalProbability(age1, age1 + t, g1);
     const p2 = survivalProbability(age2, age2 + t, g2);
     expectedTogether += p1 * p2;

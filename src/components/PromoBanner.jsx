@@ -40,7 +40,7 @@ const PromoBanner = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-[hsl(var(--gradient-from))]/5 to-[hsl(var(--gradient-to))]/5 border-t">
+    <div className="bg-linear-to-br from-[hsl(var(--gradient-from))]/5 to-[hsl(var(--gradient-to))]/5 border-t">
       <div className="container py-8 sm:py-12">
         <div className="text-center mb-6 sm:mb-8">
           <h2 className="text-xl sm:text-2xl font-bold mb-2">Andre nyttige værktøjer</h2>

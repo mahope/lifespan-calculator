@@ -98,7 +98,7 @@ const Footer = () => {
               <a
                 href="https://mahope.dk"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
                 Mads Holst Jensen - Mahope.dk

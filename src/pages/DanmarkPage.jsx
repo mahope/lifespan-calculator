@@ -15,6 +15,10 @@ const DanmarkPage = () => {
         ogTitle="Dansk Levetidsberegner - Præcise data fra Danmarks Statistik"
         ogDescription="Specialiseret levetidsberegner med data fra Danmarks Statistik og danske sundhedsmyndigheder"
         canonicalUrl="/levetid-beregner-danmark"
+        breadcrumbs={[
+          { name: 'Forside', url: '/' },
+          { name: 'Levetidsberegner Danmark', url: '/levetid-beregner-danmark' },
+        ]}
       />
 
       <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">

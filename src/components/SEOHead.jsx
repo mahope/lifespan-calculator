@@ -8,7 +8,8 @@ const SEOHead = ({
   ogTitle,
   ogDescription,
   ogImage = 'https://levetidsberegner.dk/og-image.png',
-  canonicalUrl = 'https://levetidsberegner.dk'
+  canonicalUrl = 'https://levetidsberegner.dk',
+  breadcrumbs
 }) => {
   const fullCanonicalUrl = canonicalUrl.startsWith('http')
     ? canonicalUrl
@@ -37,6 +38,23 @@ const SEOHead = ({
     },
     "inLanguage": "da-DK"
   };
+
+  // Optional BreadcrumbList structured data (Forside -> ... -> current page).
+  const breadcrumbData =
+    breadcrumbs && breadcrumbs.length
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": breadcrumbs.map((crumb, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": crumb.name,
+            "item": crumb.url.startsWith('http')
+              ? crumb.url
+              : `https://levetidsberegner.dk${crumb.url}`,
+          })),
+        }
+      : null;
 
   return (
     <Helmet>
@@ -72,6 +90,11 @@ const SEOHead = ({
       <script type="application/ld+json">
         {JSON.stringify(structuredData)}
       </script>
+      {breadcrumbData && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbData)}
+        </script>
+      )}
     </Helmet>
   );
 };

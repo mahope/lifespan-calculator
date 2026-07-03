@@ -15,6 +15,10 @@ const LivsstilPage = () => {
         ogTitle="Livsstil og Levetid - Forlæng dit liv med de rigtige valg"
         ogDescription="Videnskabsbaseret guide til hvordan du kan forlænge dit liv gennem livsstilsændringer"
         canonicalUrl="/livsstil-og-levetid"
+        breadcrumbs={[
+          { name: 'Forside', url: '/' },
+          { name: 'Livsstil og Levetid', url: '/livsstil-og-levetid' },
+        ]}
       />
 
       <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">

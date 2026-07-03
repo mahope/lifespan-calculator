@@ -15,6 +15,10 @@ const HvorLangTidPage = () => {
         ogTitle="Hvor lang tid har jeg tilbage at leve?"
         ogDescription="Beregn din statistiske resterende levetid med vores præcise levetidsberegner baseret på danske data"
         canonicalUrl="/hvor-lang-tid-har-jeg-tilbage"
+        breadcrumbs={[
+          { name: 'Forside', url: '/' },
+          { name: 'Hvor lang tid har jeg tilbage', url: '/hvor-lang-tid-har-jeg-tilbage' },
+        ]}
       />
 
       <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">

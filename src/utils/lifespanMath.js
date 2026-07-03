@@ -35,6 +35,23 @@ export function calculatePreciseAge(birthdate, now = new Date()) {
 }
 
 /**
+ * Bound the summed lifestyle adjustment to a plausible range.
+ * Full credit up to ±8 years, then diminishing returns, hard-capped at +12 / -15.
+ * This keeps the (illustrative) additive model from producing absurd estimates
+ * when many factors are stacked. See #6 — a proper hazard model is #23.
+ * @param {number} sum - raw sum of the factor deltas
+ */
+export function boundLifestyleAdjustment(sum) {
+  const SOFT = 8;
+  const MAX_POS = 12;
+  const MAX_NEG = -15;
+  let v = sum;
+  if (v > SOFT) v = SOFT + (v - SOFT) * 0.3;
+  else if (v < -SOFT) v = -SOFT + (v + SOFT) * 0.3;
+  return Math.max(MAX_NEG, Math.min(MAX_POS, v));
+}
+
+/**
  * Upcoming round-number life milestones, soonest first.
  * @param {number} daysLived - whole days lived so far
  * @param {number} [limit=4]

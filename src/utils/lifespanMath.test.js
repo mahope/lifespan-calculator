@@ -4,7 +4,37 @@ import {
   breakdownRemaining,
   lifePercent,
   upcomingMilestones,
+  boundLifestyleAdjustment,
 } from './lifespanMath';
+
+describe('boundLifestyleAdjustment', () => {
+  it('passes small adjustments through unchanged', () => {
+    expect(boundLifestyleAdjustment(0)).toBe(0);
+    expect(boundLifestyleAdjustment(4)).toBe(4);
+    expect(boundLifestyleAdjustment(-6)).toBe(-6);
+    expect(boundLifestyleAdjustment(8)).toBe(8);
+  });
+
+  it('applies diminishing returns beyond the soft threshold', () => {
+    // 8 + (10-8)*0.3 = 8.6
+    expect(boundLifestyleAdjustment(10)).toBeCloseTo(8.6, 5);
+  });
+
+  it('hard-caps extreme positive and negative stacks', () => {
+    expect(boundLifestyleAdjustment(31)).toBe(12); // was producing +31 in the UI
+    expect(boundLifestyleAdjustment(1000)).toBe(12);
+    expect(boundLifestyleAdjustment(-100)).toBe(-15);
+  });
+
+  it('is monotonic (more positive input never lowers the result)', () => {
+    let prev = -Infinity;
+    for (let s = -40; s <= 40; s++) {
+      const v = boundLifestyleAdjustment(s);
+      expect(v).toBeGreaterThanOrEqual(prev);
+      prev = v;
+    }
+  });
+});
 
 describe('calculatePreciseAge', () => {
   it('computes a whole-year age on an exact birthday', () => {

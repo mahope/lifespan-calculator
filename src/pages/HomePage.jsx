@@ -11,6 +11,7 @@ import Milepaele from '../components/Milepaele';
 import Sammenlign from '../components/Sammenlign';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
+import { boundLifestyleAdjustment } from '../utils/lifespanMath';
 
 const HomePage = () => {
   const {
@@ -156,7 +157,9 @@ const HomePage = () => {
     setIsShareModalOpen(true);
   };
 
-  const lifestyleTotal = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
+  // Bounded to match what the calculation actually applies (see #6).
+  const rawLifestyleTotal = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
+  const lifestyleTotal = Math.round(boundLifestyleAdjustment(rawLifestyleTotal));
 
   return (
     <div className="flex min-h-screen flex-col">

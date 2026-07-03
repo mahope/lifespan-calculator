@@ -35,6 +35,19 @@ export function calculatePreciseAge(birthdate, now = new Date()) {
 }
 
 /**
+ * Percentage of the statistical life already lived, clamped to [0, 100].
+ * Guards against division by zero and against values > 100 for people who have
+ * already reached/passed their statistical life expectancy.
+ * @param {number} age
+ * @param {number} expectancy
+ */
+export function lifePercent(age, expectancy) {
+  if (!expectancy || expectancy <= 0) return 0;
+  const pct = (age / expectancy) * 100;
+  return Math.min(100, Math.max(0, pct));
+}
+
+/**
  * Break a remaining-time interval (in milliseconds) into countdown units.
  * Never goes negative — a past instant yields all zeros.
  * @param {number} msRemaining

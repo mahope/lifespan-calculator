@@ -38,11 +38,10 @@ const HomePage = () => {
   useEffect(() => {
     let progress = 0;
     // Check if age or birthdate is filled (depending on mode)
-    if (formData.useBirthdate ? formData.birthdate : formData.age) progress += 40;
-    if (formData.gender) progress += 40;
-    if (userLocation) progress += 20;
+    if (formData.useBirthdate ? formData.birthdate : formData.age) progress += 50;
+    if (formData.gender) progress += 50;
     setFormProgress(progress);
-  }, [formData, userLocation]);
+  }, [formData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -271,14 +270,14 @@ const HomePage = () => {
                     ) : (
                       <div className="space-y-2">
                         <p className="text-sm text-muted-foreground">
-                          Vi finder automatisk din lokation
+                          Beregningen bruger danske gennemsnit. Vil du bruge din faktiske placering?
                         </p>
                         <button
                           type="button"
                           onClick={getUserLocation}
                           className="btn btn-outline w-full"
                         >
-                          Find lokation manuelt
+                          📍 Brug min placering
                         </button>
                       </div>
                     )}

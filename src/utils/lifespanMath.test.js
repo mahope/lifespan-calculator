@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { calculatePreciseAge, breakdownRemaining } from './lifespanMath';
+import { calculatePreciseAge, breakdownRemaining, lifePercent } from './lifespanMath';
 
 describe('calculatePreciseAge', () => {
   it('computes a whole-year age on an exact birthday', () => {
@@ -45,6 +45,27 @@ describe('calculatePreciseAge', () => {
     const r = calculatePreciseAge(new Date(1985, 4, 20), new Date(2026, 0, 1));
     expect(r.birthDate.getFullYear()).toBe(1985);
     expect(r.birthDate.getMonth()).toBe(4);
+  });
+});
+
+describe('lifePercent', () => {
+  it('computes a normal percentage', () => {
+    expect(lifePercent(40, 80)).toBe(50);
+    expect(lifePercent(30, 78.9)).toBeCloseTo(38.02, 1);
+  });
+
+  it('clamps to 100 when age has reached/passed expectancy', () => {
+    expect(lifePercent(90, 78)).toBe(100);
+    expect(lifePercent(78, 78)).toBe(100);
+  });
+
+  it('returns 0 for a non-positive expectancy (no divide-by-zero)', () => {
+    expect(lifePercent(40, 0)).toBe(0);
+    expect(lifePercent(40, -5)).toBe(0);
+  });
+
+  it('never returns a negative percentage', () => {
+    expect(lifePercent(-3, 80)).toBe(0);
   });
 });
 

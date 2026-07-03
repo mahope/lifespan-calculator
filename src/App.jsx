@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // Lazy load pages for better initial load time
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -22,16 +23,18 @@ const PageLoader = () => (
 function App() {
   return (
     <div className="min-h-screen bg-background font-sans antialiased">
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/hvor-lang-tid-har-jeg-tilbage" element={<HvorLangTidPage />} />
-          <Route path="/dodsalder-calculator" element={<DodsalderPage />} />
-          <Route path="/livsstil-og-levetid" element={<LivsstilPage />} />
-          <Route path="/levetid-beregner-danmark" element={<DanmarkPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/hvor-lang-tid-har-jeg-tilbage" element={<HvorLangTidPage />} />
+            <Route path="/dodsalder-calculator" element={<DodsalderPage />} />
+            <Route path="/livsstil-og-levetid" element={<LivsstilPage />} />
+            <Route path="/levetid-beregner-danmark" element={<DanmarkPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </div>
   )
 }

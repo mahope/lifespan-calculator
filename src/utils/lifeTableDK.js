@@ -29,6 +29,27 @@ export function remainingLifeExpectancy(age, gender) {
 }
 
 /**
+ * "Biological age": the chronological age whose baseline remaining life expectancy
+ * equals the user's (lifestyle-adjusted) remaining years. e_x decreases with age,
+ * so more adjusted remaining maps to a younger body age. Interpolated.
+ * @param {number} adjustedRemaining
+ * @param {'male'|'female'} gender
+ */
+export function biologicalAge(adjustedRemaining, gender) {
+  const t = pick('remaining', gender);
+  if (!Number.isFinite(adjustedRemaining)) return 0;
+  if (adjustedRemaining >= t[0]) return 0;
+  if (adjustedRemaining <= t[t.length - 1]) return t.length - 1;
+  for (let a = 0; a < t.length - 1; a++) {
+    if (t[a] >= adjustedRemaining && adjustedRemaining >= t[a + 1]) {
+      const span = t[a] - t[a + 1];
+      return span === 0 ? a : a + (t[a] - adjustedRemaining) / span;
+    }
+  }
+  return t.length - 1;
+}
+
+/**
  * Probability (0..1) of surviving from `fromAge` to `toAge`, conditional on being
  * alive at `fromAge`: l(toAge) / l(fromAge). Interpolated; clamped to [0, 1].
  */

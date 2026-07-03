@@ -1,5 +1,30 @@
 import { describe, it, expect } from 'vitest';
-import { remainingLifeExpectancy, survivalProbability, biologicalAge } from './lifeTableDK';
+import {
+  remainingLifeExpectancy,
+  survivalProbability,
+  biologicalAge,
+  projectedExpectancy,
+} from './lifeTableDK';
+
+describe('projectedExpectancy', () => {
+  it('equals age + e_x with no lifestyle factors', () => {
+    const p = projectedExpectancy(40, 'male', {});
+    expect(p).toBeCloseTo(40 + remainingLifeExpectancy(40, 'male'), 5);
+  });
+
+  it('adds a positive lifestyle adjustment', () => {
+    const base = projectedExpectancy(40, 'male', {});
+    const better = projectedExpectancy(40, 'male', { exercise: 6 });
+    expect(better - base).toBeCloseTo(6, 5);
+  });
+
+  it('treats missing/empty factors the same as all-zero', () => {
+    expect(projectedExpectancy(50, 'female', undefined)).toBeCloseTo(
+      projectedExpectancy(50, 'female', { a: 0, b: 0 }),
+      5
+    );
+  });
+});
 
 describe('biologicalAge', () => {
   it('returns ~chronological age when remaining equals the baseline e_x', () => {

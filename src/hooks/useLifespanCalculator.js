@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { getLifeExpectancyForCountry, formatCountryName } from '../utils/lifeExpectancyData';
 
 // Helper function to calculate precise age from birthdate
@@ -44,7 +44,7 @@ const calculatePreciseAge = (birthdate) => {
 export const useLifespanCalculator = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [lifeExpectancyForLocation, setLifeExpectancyForLocation] = useState(null);
-  const [countdownInterval, setCountdownInterval] = useState(null);
+  const countdownRef = useRef(null);
   const [resultData, setResultData] = useState(null);
   const [currentMode, setCurrentMode] = useState('simple');
   const [lifestyleFactors, setLifestyleFactors] = useState({
@@ -175,6 +175,7 @@ export const useLifespanCalculator = () => {
       adjustedLifeExpectancy: adjustedLifeExpectancy.toFixed(1),
       lifestyleImpact: lifestyleAdjustment,
       endDate: exactEndDate.toLocaleDateString('da-DK'),
+      endTimestamp: exactEndDate.getTime(),
       dataSource: formatCountryName(lifeExpectancyForLocation || 'World'),
       age: typeof age === 'number' ? age.toFixed(2) : age,
       displayAge: preciseAgeData 
@@ -255,22 +256,20 @@ export const useLifespanCalculator = () => {
     setUserAchievements(newAchievements);
   }, [lifestyleFactors]);
 
-  // Start countdown timer
+  // Start countdown timer. Counts against the exact end instant stored on the
+  // result (endTimestamp) rather than re-parsing a localized date string, so the
+  // seconds/minutes/hours stay accurate to the true computed moment.
   const startCountdown = useCallback(() => {
     // Clear any existing interval
-    if (countdownInterval) {
-      clearInterval(countdownInterval);
+    if (countdownRef.current) {
+      clearInterval(countdownRef.current);
     }
 
-    const interval = setInterval(() => {
+    countdownRef.current = setInterval(() => {
       setResultData(prev => {
-        if (!prev || !prev.endDate) return prev;
+        if (!prev || !prev.endTimestamp) return prev;
 
-        const now = new Date();
-        // Parse the Danish date format (dd.mm.yyyy or dd-mm-yyyy)
-        const dateParts = prev.endDate.split(/[.\-\/]/);
-        const endDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
-        const timeRemaining = endDate - now;
+        const timeRemaining = prev.endTimestamp - Date.now();
 
         if (timeRemaining > 0) {
           // Calculate total time units from milliseconds
@@ -302,18 +301,16 @@ export const useLifespanCalculator = () => {
         return prev;
       });
     }, 1000);
-
-    setCountdownInterval(interval);
-  }, [countdownInterval]);
+  }, []);
 
   // Cleanup countdown on unmount
   useEffect(() => {
     return () => {
-      if (countdownInterval) {
-        clearInterval(countdownInterval);
+      if (countdownRef.current) {
+        clearInterval(countdownRef.current);
       }
     };
-  }, [countdownInterval]);
+  }, []);
 
   // Auto-detect location on mount
   useEffect(() => {

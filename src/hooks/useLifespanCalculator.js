@@ -1,45 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { getLifeExpectancyForCountry, formatCountryName } from '../utils/lifeExpectancyData';
-
-// Helper function to calculate precise age from birthdate
-const calculatePreciseAge = (birthdate) => {
-  const birth = new Date(birthdate);
-  const now = new Date();
-  
-  // Calculate total days lived
-  const msPerDay = 1000 * 60 * 60 * 24;
-  const totalDaysLived = Math.floor((now - birth) / msPerDay);
-  
-  // Calculate years, months, days
-  let years = now.getFullYear() - birth.getFullYear();
-  let months = now.getMonth() - birth.getMonth();
-  let days = now.getDate() - birth.getDate();
-  
-  // Adjust for negative days
-  if (days < 0) {
-    months--;
-    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-    days += prevMonth.getDate();
-  }
-  
-  // Adjust for negative months
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
-  
-  // Calculate precise age as decimal for life expectancy calculations
-  const preciseAge = totalDaysLived / 365.25;
-  
-  return {
-    years,
-    months,
-    days,
-    totalDaysLived,
-    preciseAge,
-    birthDate: birth
-  };
-};
+import { calculatePreciseAge, breakdownRemaining } from '../utils/lifespanMath';
 
 export const useLifespanCalculator = () => {
   const [userLocation, setUserLocation] = useState(null);
@@ -154,17 +115,6 @@ export const useLifespanCalculator = () => {
     
     const timeRemaining = exactEndDate - now;
 
-    // Calculate initial countdown values
-    const totalSeconds = Math.floor(timeRemaining / 1000);
-    const totalMinutes = Math.floor(totalSeconds / 60);
-    const totalHours = Math.floor(totalMinutes / 60);
-    const totalDays = Math.floor(totalHours / 24);
-    const years = Math.floor(totalDays / 365.25);
-    const days = Math.floor(totalDays % 365.25); // Days remaining in the current year
-    const hours = totalHours % 24;
-    const minutes = totalMinutes % 60;
-    const seconds = totalSeconds % 60;
-
     // Calculate fun facts based on exact days lived
     const minutesLived = daysLived * 24 * 60;
     const hoursLived = daysLived * 24;
@@ -194,13 +144,7 @@ export const useLifespanCalculator = () => {
       heartbeats: Math.floor(minutesLived * 70),
       
       // Initialize countdown with calculated values
-      countdown: {
-        years,
-        days,
-        hours,
-        minutes,
-        seconds
-      },
+      countdown: breakdownRemaining(timeRemaining),
       
       // Fun facts calculations - now based on exact days lived
       sunrises: daysLived,
@@ -272,31 +216,7 @@ export const useLifespanCalculator = () => {
         const timeRemaining = prev.endTimestamp - Date.now();
 
         if (timeRemaining > 0) {
-          // Calculate total time units from milliseconds
-          const totalSeconds = Math.floor(timeRemaining / 1000);
-          const totalMinutes = Math.floor(totalSeconds / 60);
-          const totalHours = Math.floor(totalMinutes / 60);
-          const totalDays = Math.floor(totalHours / 24);
-
-          // Calculate years (approximation)
-          const years = Math.floor(totalDays / 365.25);
-
-          // Calculate remaining time components
-          const days = Math.floor(totalDays % 365.25); // Days remaining in the current year
-          const hours = totalHours % 24;
-          const minutes = totalMinutes % 60;
-          const seconds = totalSeconds % 60;
-
-          return {
-            ...prev,
-            countdown: {
-              years,
-              days,
-              hours,
-              minutes,
-              seconds
-            }
-          };
+          return { ...prev, countdown: breakdownRemaining(timeRemaining) };
         }
         return prev;
       });

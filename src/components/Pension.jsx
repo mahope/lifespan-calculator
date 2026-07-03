@@ -1,4 +1,6 @@
 import React from 'react';
+import { Briefcase } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { folkepensionAge } from '../utils/pension';
 
 // "Pension & arbejdsår" — from the user's cohort + estimate: statutory pension
@@ -24,12 +26,11 @@ const Pension = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">🏖️ Pension & arbejdsår</h3>
-        <p className="card-description">
-          Baseret på din årgang ({birthYear}) og den danske folkepensionsalder.
-        </p>
-      </div>
+      <SectionHeader
+        icon={Briefcase}
+        title="Pension & arbejdsår"
+        description={`Baseret på din årgang (${birthYear}) og den danske folkepensionsalder.`}
+      />
       <div className="card-content space-y-4">
         <div className="grid grid-cols-3 gap-3 text-center">
           <div className="rounded-lg bg-muted/30 p-3">

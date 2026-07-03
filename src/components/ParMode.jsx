@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { HeartHandshake } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { jointLifeStats } from '../utils/lifeTableDK';
 
 // "Jer to sammen" — enter a partner's age/gender and see joint-life odds and the
@@ -21,12 +23,12 @@ const ParMode = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">💞 Jer to sammen</h3>
-        <p className="card-description">
-          Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen.
-        </p>
-      </div>
+      <SectionHeader
+        icon={HeartHandshake}
+        tone="rose"
+        title="Jer to sammen"
+        description="Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen."
+      />
       <div className="card-content space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
           <div className="flex-1 space-y-1">

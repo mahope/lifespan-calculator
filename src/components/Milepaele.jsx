@@ -1,4 +1,6 @@
 import React from 'react';
+import { Milestone } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { upcomingMilestones } from '../utils/lifespanMath';
 
 // "Dine næste milepæle" — round-number life landmarks with a countdown of days
@@ -18,10 +20,11 @@ const Milepaele = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">🎯 Dine næste milepæle</h3>
-        <p className="card-description">Runde tal er tættere på, end du tror.</p>
-      </div>
+      <SectionHeader
+        icon={Milestone}
+        title="Dine næste milepæle"
+        description="Runde tal er tættere på, end du tror."
+      />
       <div className="card-content">
         <ul className="divide-y divide-border/60">
           {milestones.map((m) => (

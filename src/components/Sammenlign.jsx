@@ -1,4 +1,6 @@
 import React from 'react';
+import { BarChart3 } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 import { getLifeExpectancyForCountry } from '../utils/lifeExpectancyData';
 
 // "Sammenlign med gennemsnittet" — the user's adjusted estimate against the
@@ -31,10 +33,11 @@ const Sammenlign = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">📊 Sammenlign med gennemsnittet</h3>
-        <p className="card-description">Din forventede alder ({you.toFixed(1)} år) sat i perspektiv.</p>
-      </div>
+      <SectionHeader
+        icon={BarChart3}
+        title="Sammenlign med gennemsnittet"
+        description={`Din forventede alder (${you.toFixed(1)} år) sat i perspektiv.`}
+      />
       <div className="card-content space-y-4">
         <div className="space-y-3">
           {rows.map((r) => (

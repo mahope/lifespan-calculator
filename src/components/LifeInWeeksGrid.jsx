@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { CalendarDays } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 
 const WEEKS_PER_YEAR = 52;
 
@@ -147,14 +149,17 @@ const LifeInWeeksGrid = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-header">
-        <h3 className="text-lg font-semibold">🗓️ Dit liv i uger</h3>
-        <p className="card-description">
-          Hver firkant er én uge. Du har levet ca. {weeksLived.toLocaleString('da-DK')} uger
-          ({livedYears} år) — statistisk venter der dig ca.{' '}
-          {Math.max(0, expectedWeeks - weeksLived).toLocaleString('da-DK')} uger endnu.
-        </p>
-      </div>
+      <SectionHeader
+        icon={CalendarDays}
+        title="Dit liv i uger"
+        description={
+          <>
+            Hver firkant er én uge. Du har levet ca. {weeksLived.toLocaleString('da-DK')} uger (
+            {livedYears} år) — statistisk venter der dig ca.{' '}
+            {Math.max(0, expectedWeeks - weeksLived).toLocaleString('da-DK')} uger endnu.
+          </>
+        }
+      />
       <div className="card-content space-y-4">
         <div
           ref={wrapRef}

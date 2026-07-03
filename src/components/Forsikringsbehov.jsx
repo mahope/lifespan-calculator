@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ShieldCheck } from 'lucide-react';
 import { estimateCover } from '../utils/insurance';
 
 const AFFILIATE_URL =
@@ -25,8 +26,11 @@ const Forsikringsbehov = ({ resultData }) => {
           Annonce · værktøj
         </div>
         <div className="flex items-start gap-3">
-          <span className="text-2xl" aria-hidden="true">
-            🛡️
+          <span
+            className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"
+            aria-hidden="true"
+          >
+            <ShieldCheck size={20} strokeWidth={2} />
           </span>
           <div className="flex-1">
             <h3 className="mb-1 text-base font-semibold">

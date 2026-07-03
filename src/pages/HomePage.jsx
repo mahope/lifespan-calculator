@@ -5,6 +5,7 @@ import ThemeToggle from '../components/ThemeToggle';
 import ShareModal from '../components/ShareModal';
 import PromoBanner from '../components/PromoBanner';
 import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
+import TidTilbage from '../components/TidTilbage';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { achievements } from '../utils/lifeExpectancyData';
 
@@ -101,29 +102,6 @@ const HomePage = () => {
 
   const shareResults = () => {
     setIsShareModalOpen(true);
-  };
-
-  const showScenario = (scenario) => {
-    // Show what-if scenarios
-    const scenarios = {
-      'quit-smoking': { text: 'Hvis du stopper med at ryge', change: '+5 år' },
-      'more-exercise': { text: 'Hvis du dyrker mere motion', change: '+3 år' },
-      'healthy-diet': { text: 'Hvis du spiser sundere', change: '+4 år' },
-      'less-stress': { text: 'Hvis du reducerer stress', change: '+2 år' }
-    };
-
-    const scenarioData = scenarios[scenario];
-    if (scenarioData) {
-      const scenarioResult = document.getElementById('scenarioResult');
-      const scenarioText = document.getElementById('scenarioText');
-      const scenarioChange = document.getElementById('scenarioChange');
-
-      if (scenarioResult && scenarioText && scenarioChange) {
-        scenarioText.textContent = scenarioData.text;
-        scenarioChange.textContent = scenarioData.change;
-        scenarioResult.classList.remove('hidden');
-      }
-    }
   };
 
   const lifestyleTotal = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
@@ -1174,6 +1152,9 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Tider tilbage */}
+              <TidTilbage resultData={resultData} />
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

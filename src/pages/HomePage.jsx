@@ -6,6 +6,7 @@ import ShareModal from '../components/ShareModal';
 import PromoBanner from '../components/PromoBanner';
 import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import TidTilbage from '../components/TidTilbage';
+import Milepaele from '../components/Milepaele';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 
 const HomePage = () => {
@@ -1151,6 +1152,9 @@ const HomePage = () => {
 
               {/* Tider tilbage */}
               <TidTilbage resultData={resultData} />
+
+              {/* Milepæle */}
+              <Milepaele resultData={resultData} />
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

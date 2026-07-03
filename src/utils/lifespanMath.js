@@ -35,6 +35,60 @@ export function calculatePreciseAge(birthdate, now = new Date()) {
 }
 
 /**
+ * Upcoming round-number life milestones, soonest first.
+ * @param {number} daysLived - whole days lived so far
+ * @param {number} [limit=4]
+ * @returns {{day:number, daysUntil:number, icon:string, label:string}[]}
+ */
+export function upcomingMilestones(daysLived, limit = 4) {
+  const HEARTBEATS_PER_DAY = 70 * 60 * 24; // 100,800
+  const SECONDS_PER_DAY = 86400;
+  const da = (n) => n.toLocaleString('da-DK');
+  const candidates = [];
+
+  // Next two round-thousand day counts
+  const nextThousand = (Math.floor(daysLived / 1000) + 1) * 1000;
+  candidates.push({ day: nextThousand, icon: '📅', label: `${da(nextThousand)} dage levet` });
+  candidates.push({ day: nextThousand + 1000, icon: '📅', label: `${da(nextThousand + 1000)} dage levet` });
+
+  // Big round day landmarks
+  [10000, 15000, 20000, 25000, 30000, 35000].forEach((d) =>
+    candidates.push({ day: d, icon: '🎯', label: `${da(d)} dage levet` })
+  );
+
+  // Billion seconds lived
+  [1, 1.5, 2, 2.5, 3].forEach((b) =>
+    candidates.push({
+      day: Math.round((b * 1e9) / SECONDS_PER_DAY),
+      icon: '⏱️',
+      label: `${String(b).replace('.', ',')} mia. sekunder levet`,
+    })
+  );
+
+  // Billion heartbeats
+  [1, 2, 3].forEach((b) =>
+    candidates.push({
+      day: Math.round((b * 1e9) / HEARTBEATS_PER_DAY),
+      icon: '❤️',
+      label: `${b} mia. hjerteslag`,
+    })
+  );
+
+  // Round-number ages
+  [30, 40, 50, 60, 70, 80, 90, 100].forEach((a) =>
+    candidates.push({ day: Math.round(a * 365.25), icon: '🎂', label: `Du fylder ${a}` })
+  );
+
+  const seen = new Set();
+  return candidates
+    .filter((m) => m.day > daysLived)
+    .filter((m) => (seen.has(m.day) ? false : seen.add(m.day)))
+    .sort((a, b) => a.day - b.day)
+    .slice(0, limit)
+    .map((m) => ({ ...m, daysUntil: m.day - daysLived }));
+}
+
+/**
  * Percentage of the statistical life already lived, clamped to [0, 100].
  * Guards against division by zero and against values > 100 for people who have
  * already reached/passed their statistical life expectancy.

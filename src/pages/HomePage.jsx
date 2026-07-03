@@ -9,6 +9,7 @@ import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import TidTilbage from '../components/TidTilbage';
 import Milepaele from '../components/Milepaele';
 import Sammenlign from '../components/Sammenlign';
+import Pension from '../components/Pension';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
 import { boundLifestyleAdjustment } from '../utils/lifespanMath';
@@ -1150,6 +1151,9 @@ const HomePage = () => {
 
               {/* Compare to average */}
               <Sammenlign resultData={resultData} />
+
+              {/* Pension & working years */}
+              <Pension resultData={resultData} />
 
               {/* Life in weeks */}
               <LifeInWeeksGrid resultData={resultData} />

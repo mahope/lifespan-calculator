@@ -1,10 +1,13 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { getLifeExpectancyForCountry, formatCountryName } from '../utils/lifeExpectancyData';
-import { calculatePreciseAge, breakdownRemaining } from '../utils/lifespanMath';
+import { calculatePreciseAge, breakdownRemaining, lifePercent } from '../utils/lifespanMath';
 
 export const useLifespanCalculator = () => {
   const [userLocation, setUserLocation] = useState(null);
-  const [lifeExpectancyForLocation, setLifeExpectancyForLocation] = useState(null);
+  // Default to Danish averages (this is a Danish site). We no longer probe a
+  // third-party IP-geolocation service on mount — location is only resolved when
+  // the user explicitly asks for it (privacy / GDPR).
+  const [lifeExpectancyForLocation, setLifeExpectancyForLocation] = useState('Denmark');
   const countdownRef = useRef(null);
   const [resultData, setResultData] = useState(null);
   const [currentMode, setCurrentMode] = useState('simple');
@@ -28,21 +31,7 @@ export const useLifespanCalculator = () => {
   });
   const [userAchievements, setUserAchievements] = useState([]);
 
-  // Try to detect location automatically
-  const tryAutoLocationDetection = useCallback(async () => {
-    try {
-      const response = await fetch('https://ipapi.co/json/');
-      const data = await response.json();
-      if (data.country_name) {
-        setUserLocation(data.country_name);
-        setLifeExpectancyForLocation(data.country_name);
-      }
-    } catch (error) {
-      console.log('Could not auto-detect location:', error);
-    }
-  }, []);
-
-  // Get user location manually
+  // Get user location manually (only on explicit user action)
   const getUserLocation = useCallback(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -132,7 +121,7 @@ export const useLifespanCalculator = () => {
         ? `${preciseAgeData.years} år, ${preciseAgeData.months} mdr, ${preciseAgeData.days} dage`
         : `${Math.floor(age)} år`,
       gender,
-      lifePercentage: ((age / adjustedLifeExpectancy) * 100).toFixed(1),
+      lifePercentage: lifePercent(age, adjustedLifeExpectancy).toFixed(1),
       daysLived,
       hoursLived,
       minutesLived,
@@ -230,12 +219,6 @@ export const useLifespanCalculator = () => {
         clearInterval(countdownRef.current);
       }
     };
-  }, []);
-
-  // Auto-detect location on mount
-  useEffect(() => {
-    tryAutoLocationDetection();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Update achievements when lifestyle factors change

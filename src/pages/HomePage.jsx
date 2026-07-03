@@ -13,6 +13,8 @@ import Pension from '../components/Pension';
 import Sandsynlighed from '../components/Sandsynlighed';
 import KropsAlder from '../components/KropsAlder';
 import Coaching from '../components/Coaching';
+import Historik from '../components/Historik';
+import { saveEntry } from '../utils/history';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
 import { boundLifestyleAdjustment } from '../utils/lifespanMath';
@@ -66,13 +68,22 @@ const HomePage = () => {
 
   // Run the calculation from the current form state and reveal the results.
   const runCalculation = useCallback(() => {
-    if (formData.useBirthdate && formData.birthdate) {
-      calculateLifespan(formData.birthdate, formData.gender);
-    } else {
-      calculateLifespan(parseInt(formData.age), formData.gender);
-    }
+    const result =
+      formData.useBirthdate && formData.birthdate
+        ? calculateLifespan(formData.birthdate, formData.gender)
+        : calculateLifespan(parseInt(formData.age), formData.gender);
     setShowResults(true);
     startCountdown();
+    // Persist to local history (captures the returned result, so the per-second
+    // countdown updates don't trigger saves).
+    if (result) {
+      saveEntry({
+        ts: Date.now(),
+        age: Math.round(parseFloat(result.age)),
+        gender: result.gender,
+        expected: result.adjustedLifeExpectancy,
+      });
+    }
   }, [formData, calculateLifespan, startCountdown]);
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
@@ -1265,6 +1276,9 @@ const HomePage = () => {
 
               {/* Milepæle */}
               <Milepaele resultData={resultData} />
+
+              {/* Historik (repeat visits) */}
+              <Historik resultData={resultData} />
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center">

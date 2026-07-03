@@ -1,5 +1,16 @@
 import React from 'react';
+import {
+  CalendarClock,
+  Check,
+  Target,
+  Wallet,
+  Activity,
+  Clock,
+  Cake,
+  Calculator,
+} from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
@@ -21,16 +32,11 @@ const HvorLangTidPage = () => {
         ]}
       />
 
-      <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">
-        <div className="container animate-fadeIn">
-          <h1 className="mb-2 sm:mb-3 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            📅 Hvor lang tid har jeg tilbage?
-          </h1>
-          <p className="mx-auto max-w-xl text-sm sm:text-base text-white/90">
-            Få et statistisk estimat af din resterende levetid baseret på videnskabelige data
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        icon={CalendarClock}
+        title="Hvor lang tid har jeg tilbage?"
+        subtitle="Få et statistisk estimat af din resterende levetid baseret på videnskabelige data"
+      />
 
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
@@ -47,19 +53,19 @@ const HvorLangTidPage = () => {
                 <h3 className="text-lg sm:text-xl font-semibold">Faktorer der påvirker din resterende levetid:</h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-3">
-                    <span className="text-green-500 dark:text-green-400 mt-0.5">✓</span>
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                     <span><strong className="text-foreground">Alder:</strong> Jo ældre du er, jo færre år har du statistisk tilbage</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-green-500 dark:text-green-400 mt-0.5">✓</span>
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                     <span><strong className="text-foreground">Køn:</strong> Kvinder lever generelt længere end mænd i de fleste lande</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-green-500 dark:text-green-400 mt-0.5">✓</span>
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                     <span><strong className="text-foreground">Geografisk placering:</strong> Forskellige lande har forskellige levetidsforventninger</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-green-500 dark:text-green-400 mt-0.5">✓</span>
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                     <span><strong className="text-foreground">Livsstil:</strong> Motion, kost, rygning og andre faktorer påvirker betydeligt</span>
                   </li>
                 </ul>
@@ -72,7 +78,7 @@ const HvorLangTidPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                     <h4 className="font-medium text-primary flex items-center gap-2">
-                      <span>🎯</span> Målsætning og prioritering
+                      <Target className="h-5 w-5 shrink-0" aria-hidden="true" /> Målsætning og prioritering
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       At kende din forventede resterende levetid kan hjælpe dig med at prioritere mål og drømme i dit liv.
@@ -80,7 +86,7 @@ const HvorLangTidPage = () => {
                   </div>
                   <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                     <h4 className="font-medium text-primary flex items-center gap-2">
-                      <span>💰</span> Finansiel planlægning
+                      <Wallet className="h-5 w-5 shrink-0" aria-hidden="true" /> Finansiel planlægning
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       Pensionsopsparing og økonomiske beslutninger kan træffes mere informeret.
@@ -88,7 +94,7 @@ const HvorLangTidPage = () => {
                   </div>
                   <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                     <h4 className="font-medium text-primary flex items-center gap-2">
-                      <span>🏃‍♂️</span> Sundhedsmotivation
+                      <Activity className="h-5 w-5 shrink-0" aria-hidden="true" /> Sundhedsmotivation
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       Indsigt i hvordan livsstil påvirker levetid kan motivere til sundere valg.
@@ -96,7 +102,7 @@ const HvorLangTidPage = () => {
                   </div>
                   <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
                     <h4 className="font-medium text-primary flex items-center gap-2">
-                      <span>⏰</span> Tidsperspektiv
+                      <Clock className="h-5 w-5 shrink-0" aria-hidden="true" /> Tidsperspektiv
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       At forstå livets begrænsninger kan føre til mere bevidste valg om hvordan vi bruger vores tid.
@@ -108,7 +114,9 @@ const HvorLangTidPage = () => {
 
             <div className="card border-primary/20 bg-primary/5">
               <div className="card-content space-y-4">
-                <h3 className="text-lg sm:text-xl font-semibold">🎂 Prøv med din fødselsdato</h3>
+                <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+                  <Cake className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" /> Prøv med din fødselsdato
+                </h3>
                 <p className="text-muted-foreground">
                   For den mest præcise beregning kan du indtaste din fødselsdato i stedet for bare din alder. 
                   Dette giver dig ekstra fun facts som antallet af fuldmåner du har oplevet og præcis hvor mange sekunder du har levet!
@@ -117,8 +125,8 @@ const HvorLangTidPage = () => {
             </div>
 
             <div className="text-center">
-              <Link to="/" className="btn btn-primary text-base sm:text-lg px-6 sm:px-8 py-3">
-                🧮 Beregn din resterende levetid nu
+              <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
+                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din resterende levetid nu
               </Link>
             </div>
           </div>

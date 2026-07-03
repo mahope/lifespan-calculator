@@ -1,5 +1,18 @@
 import React from 'react';
+import {
+  Skull,
+  BarChart3,
+  Dna,
+  Sprout,
+  AlertTriangle,
+  Dumbbell,
+  X,
+  Check,
+  Lightbulb,
+  Calculator,
+} from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
@@ -21,16 +34,11 @@ const DodsalderPage = () => {
         ]}
       />
 
-      <header className="header-gradient px-4 py-8 sm:py-12 text-center sm:px-6 lg:px-8 shadow-lg">
-        <div className="container animate-fadeIn">
-          <h1 className="mb-2 sm:mb-3 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            ⚰️ Dødsalder Calculator
-          </h1>
-          <p className="mx-auto max-w-xl text-sm sm:text-base text-white/90">
-            Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer
-          </p>
-        </div>
-      </header>
+      <PageHeader
+        icon={Skull}
+        title="Dødsalder Calculator"
+        subtitle="Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer"
+      />
 
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
@@ -47,7 +55,9 @@ const DodsalderPage = () => {
                 <h3 className="text-lg sm:text-xl font-semibold">Hvordan fungerer beregningen?</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg">
-                    <span className="text-2xl">📊</span>
+                    <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+                      <BarChart3 className="h-5 w-5" aria-hidden="true" />
+                    </span>
                     <div>
                       <h4 className="font-medium text-foreground">Demografiske data</h4>
                       <p className="text-sm text-muted-foreground">
@@ -56,7 +66,9 @@ const DodsalderPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg">
-                    <span className="text-2xl">🧬</span>
+                    <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
+                      <Dna className="h-5 w-5" aria-hidden="true" />
+                    </span>
                     <div>
                       <h4 className="font-medium text-foreground">Biologiske faktorer</h4>
                       <p className="text-sm text-muted-foreground">
@@ -65,7 +77,9 @@ const DodsalderPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg">
-                    <span className="text-2xl">🌱</span>
+                    <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                      <Sprout className="h-5 w-5" aria-hidden="true" />
+                    </span>
                     <div>
                       <h4 className="font-medium text-foreground">Livsstilsjusteringer</h4>
                       <p className="text-sm text-muted-foreground">
@@ -83,54 +97,54 @@ const DodsalderPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h4 className="font-medium text-destructive flex items-center gap-2">
-                      <span>⚠️</span> Faktorer der forkorter livet:
+                      <AlertTriangle className="h-5 w-5 shrink-0" aria-hidden="true" /> Faktorer der forkorter livet:
                     </h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li className="flex items-center gap-2">
-                        <span className="text-destructive">❌</span>
+                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
                         <span>Rygning (reducerer levetid med 7-10 år)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-destructive">❌</span>
+                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
                         <span>Overforbrug af alkohol</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-destructive">❌</span>
+                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
                         <span>Fedme og usund kost</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-destructive">❌</span>
+                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
                         <span>Kronisk stress</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-destructive">❌</span>
+                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
                         <span>Mangel på motion</span>
                       </li>
                     </ul>
                   </div>
                   <div className="space-y-4">
                     <h4 className="font-medium text-green-600 dark:text-green-400 flex items-center gap-2">
-                      <span>💪</span> Faktorer der forlænger livet:
+                      <Dumbbell className="h-5 w-5 shrink-0" aria-hidden="true" /> Faktorer der forlænger livet:
                     </h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li className="flex items-center gap-2">
-                        <span className="text-green-500 dark:text-green-400">✓</span>
+                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                         <span>Regelmæssig motion (tilføjer 3-7 år)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-green-500 dark:text-green-400">✓</span>
+                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                         <span>Mediterran kost</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-green-500 dark:text-green-400">✓</span>
+                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                         <span>Sociale forbindelser</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-green-500 dark:text-green-400">✓</span>
+                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                         <span>Tilstrækkelig søvn (7-9 timer)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span className="text-green-500 dark:text-green-400">✓</span>
+                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                         <span>Stressmanagement</span>
                       </li>
                     </ul>
@@ -142,7 +156,7 @@ const DodsalderPage = () => {
             <div className="card border-primary/20 bg-primary/5">
               <div className="card-content">
                 <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
-                  <span>💡</span> Vigtig påmindelse
+                  <Lightbulb className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" /> Vigtig påmindelse
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   En dødsalder calculator giver kun et statistisk estimat baseret på befolkningsdata. Din faktiske levetid
@@ -154,8 +168,8 @@ const DodsalderPage = () => {
             </div>
 
             <div className="text-center">
-              <Link to="/" className="btn btn-primary text-base sm:text-lg px-6 sm:px-8 py-3">
-                🧮 Beregn din dødsalder nu
+              <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
+                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din dødsalder nu
               </Link>
             </div>
           </div>

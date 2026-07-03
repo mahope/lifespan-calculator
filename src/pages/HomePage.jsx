@@ -7,7 +7,6 @@ import PromoBanner from '../components/PromoBanner';
 import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import TidTilbage from '../components/TidTilbage';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
-import { achievements } from '../utils/lifeExpectancyData';
 
 const HomePage = () => {
   const {
@@ -15,7 +14,6 @@ const HomePage = () => {
     resultData,
     currentMode,
     lifestyleFactors,
-    userAchievements,
     setCurrentMode,
     getUserLocation,
     calculateLifespan,
@@ -70,11 +68,10 @@ const HomePage = () => {
     e.preventDefault();
     
     // Use birthdate if available, otherwise use age
-    let result;
     if (formData.useBirthdate && formData.birthdate) {
-      result = calculateLifespan(formData.birthdate, formData.gender);
+      calculateLifespan(formData.birthdate, formData.gender);
     } else {
-      result = calculateLifespan(parseInt(formData.age), formData.gender);
+      calculateLifespan(parseInt(formData.age), formData.gender);
     }
     
     setShowResults(true);

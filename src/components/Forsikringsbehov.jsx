@@ -51,7 +51,7 @@ const Forsikringsbehov = ({ resultData }) => {
               className="input w-full"
               value={income}
               onChange={(e) => setIncome(e.target.value)}
-              placeholder="fx 500.000"
+              placeholder="fx 500000"
             />
           </div>
           <div className="space-y-1">
@@ -63,9 +63,11 @@ const Forsikringsbehov = ({ resultData }) => {
               type="number"
               min="0"
               max="40"
+              step="1"
               className="input w-full"
               value={years}
               onChange={(e) => setYears(e.target.value)}
+              placeholder="fx 10"
             />
           </div>
         </div>

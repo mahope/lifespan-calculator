@@ -33,6 +33,7 @@
     "url": "https://github.com/mahope/lifespan-calculator.git"
   },
   "dependencies": {
+    "html-to-image": "^1.11.13",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-helmet-async": "^3.0.0",

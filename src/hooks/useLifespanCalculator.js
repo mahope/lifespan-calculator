@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { getLifeExpectancyForCountry, formatCountryName } from '../utils/lifeExpectancyData';
 import {
   calculatePreciseAge,
   breakdownRemaining,
   lifePercent,
   boundLifestyleAdjustment,
 } from '../utils/lifespanMath';
+import { remainingLifeExpectancy } from '../utils/lifeTableDK';
 
 // Stable, fixed order of the lifestyle factors — used for both the initial state
 // and for packing/unpacking factors into a shareable URL.
@@ -82,11 +82,14 @@ export const useLifespanCalculator = () => {
       daysLived = Math.floor(age * 365.25);
     }
     
-    const baseLifeExpectancy = getLifeExpectancyForCountry(lifeExpectancyForLocation || 'World', gender);
+    // Age-conditional remaining life expectancy (e_x) from the Danish period life
+    // table, so older users get a realistic estimate instead of "LE-at-birth − age".
+    const genderKey = gender === 'female' ? 'female' : 'male';
     const rawLifestyleAdjustment = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
     const lifestyleAdjustment = Math.round(boundLifestyleAdjustment(rawLifestyleAdjustment));
-    const adjustedLifeExpectancy = baseLifeExpectancy + lifestyleAdjustment;
-    const remainingYears = Math.max(0, adjustedLifeExpectancy - age);
+    const remainingBase = remainingLifeExpectancy(age, genderKey);
+    const remainingYears = Math.max(0, remainingBase + lifestyleAdjustment);
+    const adjustedLifeExpectancy = age + remainingYears; // expected age at death
 
     // Calculate end date more precisely if we have birthdate
     if (preciseAgeData) {
@@ -113,7 +116,7 @@ export const useLifespanCalculator = () => {
       lifestyleImpact: lifestyleAdjustment,
       endDate: exactEndDate.toLocaleDateString('da-DK'),
       endTimestamp: exactEndDate.getTime(),
-      dataSource: formatCountryName(lifeExpectancyForLocation || 'World'),
+      dataSource: 'Danmarks Statistik (2024-2025)',
       age: typeof age === 'number' ? age.toFixed(2) : age,
       displayAge: preciseAgeData 
         ? `${preciseAgeData.years} år, ${preciseAgeData.months} mdr, ${preciseAgeData.days} dage`
@@ -154,7 +157,7 @@ export const useLifespanCalculator = () => {
 
     setResultData(result);
     return result;
-  }, [lifeExpectancyForLocation, lifestyleFactors]);
+  }, [lifestyleFactors]);
 
   // Update lifestyle factors
   const updateLifestyleFactor = useCallback((factor, value) => {

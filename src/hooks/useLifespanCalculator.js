@@ -2,6 +2,13 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { getLifeExpectancyForCountry, formatCountryName } from '../utils/lifeExpectancyData';
 import { calculatePreciseAge, breakdownRemaining, lifePercent } from '../utils/lifespanMath';
 
+// Stable, fixed order of the lifestyle factors — used for both the initial state
+// and for packing/unpacking factors into a shareable URL.
+export const LIFESTYLE_KEYS = [
+  'smoking', 'exercise', 'diet', 'alcohol', 'sleep', 'stress', 'health', 'bmi',
+  'social', 'mental', 'work', 'environment', 'education', 'income', 'commute', 'screentime',
+];
+
 export const useLifespanCalculator = () => {
   const [userLocation, setUserLocation] = useState(null);
   // Default to Danish averages (this is a Danish site). We no longer probe a
@@ -11,24 +18,9 @@ export const useLifespanCalculator = () => {
   const countdownRef = useRef(null);
   const [resultData, setResultData] = useState(null);
   const [currentMode, setCurrentMode] = useState('simple');
-  const [lifestyleFactors, setLifestyleFactors] = useState({
-    smoking: 0,
-    exercise: 0,
-    diet: 0,
-    alcohol: 0,
-    sleep: 0,
-    stress: 0,
-    health: 0,
-    bmi: 0,
-    social: 0,
-    mental: 0,
-    work: 0,
-    environment: 0,
-    education: 0,
-    income: 0,
-    commute: 0,
-    screentime: 0
-  });
+  const [lifestyleFactors, setLifestyleFactors] = useState(() =>
+    Object.fromEntries(LIFESTYLE_KEYS.map((k) => [k, 0]))
+  );
   const [userAchievements, setUserAchievements] = useState([]);
 
   // Get user location manually (only on explicit user action)
@@ -166,6 +158,11 @@ export const useLifespanCalculator = () => {
     }));
   }, []);
 
+  // Bulk-apply factors (used when hydrating from a shared URL).
+  const applyLifestyleFactors = useCallback((partial) => {
+    setLifestyleFactors(prev => ({ ...prev, ...partial }));
+  }, []);
+
   // Check achievements
   const checkAchievements = useCallback(() => {
     const newAchievements = [];
@@ -238,6 +235,7 @@ export const useLifespanCalculator = () => {
     getUserLocation,
     calculateLifespan,
     updateLifestyleFactor,
+    applyLifestyleFactors,
     startCountdown,
     setResultData
   };

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
@@ -7,7 +8,8 @@ import PromoBanner from '../components/PromoBanner';
 import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import TidTilbage from '../components/TidTilbage';
 import Milepaele from '../components/Milepaele';
-import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
+import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
+import { buildShareParams, parseLifestyle } from '../utils/shareState';
 
 const HomePage = () => {
   const {
@@ -19,9 +21,12 @@ const HomePage = () => {
     getUserLocation,
     calculateLifespan,
     updateLifestyleFactor,
+    applyLifestyleFactors,
     startCountdown,
     setResultData
   } = useLifespanCalculator();
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [formData, setFormData] = useState({
     age: '',
@@ -32,6 +37,7 @@ const HomePage = () => {
   const [showResults, setShowResults] = useState(false);
   const [formProgress, setFormProgress] = useState(0);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [autoSubmit, setAutoSubmit] = useState(false);
 
   // Update form progress
   useEffect(() => {
@@ -41,6 +47,48 @@ const HomePage = () => {
     if (formData.gender) progress += 50;
     setFormProgress(progress);
   }, [formData]);
+
+  // Run the calculation from the current form state and reveal the results.
+  const runCalculation = useCallback(() => {
+    if (formData.useBirthdate && formData.birthdate) {
+      calculateLifespan(formData.birthdate, formData.gender);
+    } else {
+      calculateLifespan(parseInt(formData.age), formData.gender);
+    }
+    setShowResults(true);
+    startCountdown();
+  }, [formData, calculateLifespan, startCountdown]);
+
+  // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
+  useEffect(() => {
+    const g = searchParams.get('g');
+    const a = searchParams.get('a');
+    const bd = searchParams.get('b');
+    if (!g || (!a && !bd)) return;
+
+    const mode = searchParams.get('m') === 'advanced' ? 'advanced' : 'simple';
+    setCurrentMode(mode);
+    if (bd) {
+      setFormData({ age: '', gender: g, birthdate: bd, useBirthdate: true });
+    } else {
+      setFormData({ age: a, gender: g, birthdate: '', useBirthdate: false });
+    }
+    if (mode === 'advanced') {
+      const parsed = parseLifestyle(searchParams.get('lf'), LIFESTYLE_KEYS);
+      if (parsed) applyLifestyleFactors(parsed);
+    }
+    setAutoSubmit(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Once the hydrated state has settled, auto-run the calculation once.
+  useEffect(() => {
+    if (!autoSubmit) return;
+    const hasInput = formData.useBirthdate ? formData.birthdate : formData.age;
+    if (!formData.gender || !hasInput) return;
+    runCalculation();
+    setAutoSubmit(false);
+  }, [autoSubmit, formData, runCalculation]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,16 +115,21 @@ const HomePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Use birthdate if available, otherwise use age
-    if (formData.useBirthdate && formData.birthdate) {
-      calculateLifespan(formData.birthdate, formData.gender);
-    } else {
-      calculateLifespan(parseInt(formData.age), formData.gender);
-    }
-    
-    setShowResults(true);
-    startCountdown();
+
+    runCalculation();
+
+    // Reflect the inputs in the URL so the result is shareable / reloadable.
+    setSearchParams(
+      buildShareParams({
+        gender: formData.gender,
+        age: formData.age,
+        birthdate: formData.birthdate,
+        useBirthdate: formData.useBirthdate,
+        mode: currentMode,
+        lifestyle: lifestyleFactors,
+        keys: LIFESTYLE_KEYS,
+      })
+    );
 
     // Track analytics
     if (window.plausible) {
@@ -95,6 +148,7 @@ const HomePage = () => {
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
+    setSearchParams({});
   };
 
   const shareResults = () => {

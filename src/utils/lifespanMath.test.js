@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { calculatePreciseAge, breakdownRemaining, lifePercent } from './lifespanMath';
+import {
+  calculatePreciseAge,
+  breakdownRemaining,
+  lifePercent,
+  upcomingMilestones,
+} from './lifespanMath';
 
 describe('calculatePreciseAge', () => {
   it('computes a whole-year age on an exact birthday', () => {
@@ -45,6 +50,38 @@ describe('calculatePreciseAge', () => {
     const r = calculatePreciseAge(new Date(1985, 4, 20), new Date(2026, 0, 1));
     expect(r.birthDate.getFullYear()).toBe(1985);
     expect(r.birthDate.getMonth()).toBe(4);
+  });
+});
+
+describe('upcomingMilestones', () => {
+  it('returns only future milestones, soonest first', () => {
+    const ms = upcomingMilestones(5000, 4);
+    expect(ms).toHaveLength(4);
+    expect(ms.every((m) => m.day > 5000)).toBe(true);
+    for (let i = 1; i < ms.length; i++) {
+      expect(ms[i].day).toBeGreaterThanOrEqual(ms[i - 1].day);
+    }
+  });
+
+  it('leads with the next round-thousand day count', () => {
+    const ms = upcomingMilestones(5000, 4);
+    expect(ms[0].day).toBe(6000);
+    expect(ms[0].daysUntil).toBe(1000);
+  });
+
+  it('computes daysUntil as target minus daysLived', () => {
+    const ms = upcomingMilestones(12345, 3);
+    ms.forEach((m) => expect(m.daysUntil).toBe(m.day - 12345));
+  });
+
+  it('has no duplicate day targets', () => {
+    const ms = upcomingMilestones(0, 8);
+    const days = ms.map((m) => m.day);
+    expect(new Set(days).size).toBe(days.length);
+  });
+
+  it('respects the limit', () => {
+    expect(upcomingMilestones(1000, 2)).toHaveLength(2);
   });
 });
 

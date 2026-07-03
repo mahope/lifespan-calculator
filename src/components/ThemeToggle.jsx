@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState('light');
+  // Initialize from the class the pre-paint script in index.html already applied,
+  // so the toggle reflects the real theme and there is no flash.
+  const [theme, setTheme] = useState(() =>
+    typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+      ? 'dark'
+      : 'light'
+  );
 
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+    // Keep in sync if another tab changed the saved preference.
+    const onStorage = (e) => {
+      if (e.key === 'theme' && e.newValue) {
+        setTheme(e.newValue);
+        document.documentElement.classList.toggle('dark', e.newValue === 'dark');
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
   }, []);
 
   const toggleTheme = () => {

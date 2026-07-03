@@ -7,11 +7,15 @@ const SEOHead = ({
   keywords = 'levetid, beregner, danmark, statistik, dødsalder, forventet levetid',
   ogTitle,
   ogDescription,
+  ogImage = 'https://levetidsberegner.dk/og-image.png',
   canonicalUrl = 'https://levetidsberegner.dk'
 }) => {
-  const fullCanonicalUrl = canonicalUrl.startsWith('http') 
-    ? canonicalUrl 
+  const fullCanonicalUrl = canonicalUrl.startsWith('http')
+    ? canonicalUrl
     : `https://levetidsberegner.dk${canonicalUrl}`;
+  const fullOgImage = ogImage.startsWith('http')
+    ? ogImage
+    : `https://levetidsberegner.dk${ogImage}`;
     
   // Structured data for SEO
   const structuredData = {
@@ -50,11 +54,16 @@ const SEOHead = ({
       <meta property="og:url" content={fullCanonicalUrl} />
       <meta property="og:site_name" content="Levetidsberegner" />
       <meta property="og:locale" content="da_DK" />
+      <meta property="og:image" content={fullOgImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={ogTitle || title} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={ogTitle || title} />
       <meta name="twitter:description" content={ogDescription || description} />
+      <meta name="twitter:image" content={fullOgImage} />
 
       {/* Canonical URL */}
       <link rel="canonical" href={fullCanonicalUrl} />

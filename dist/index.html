@@ -2,8 +2,21 @@
 <html lang="da">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2563eb" />
+    <!-- Apply theme before first paint to avoid a flash of the wrong theme (FOUC) -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <title>Dansk Levetidsberegner - Beregn din forventede levetid</title>
     <meta name="description" content="Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik." />
     <meta name="keywords" content="levetid, beregner, danmark, statistik, dødsalder, forventet levetid" />
@@ -15,10 +28,10 @@
     <!-- Plausible Analytics -->
     <script defer data-domain="levetidsberegner.dk" src="https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"></script>
     <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-    <script type="module" crossorigin src="/assets/index-CTC8T9_r.js"></script>
+    <script type="module" crossorigin src="/assets/index-n7KvWoMN.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-Bh1tDfsg.js">
     <link rel="modulepreload" crossorigin href="/assets/router-DNyM5NJC.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-BOv0o3db.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-M5MUPGGz.css">
   </head>
   <body>
     <div id="root"></div>

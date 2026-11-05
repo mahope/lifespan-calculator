@@ -1,8 +1,9 @@
 // Metadata for the lifestyle factors: the best achievable option per factor and,
 // where there is a citation, the source's own figure (`figure`, with range and
 // reference group as published) shown next to the site's coefficient (`best`),
-// since the two can differ (recalibration is tracked separately). Used to suggest the highest-impact improvements (#27). This is a
-// first step toward a fully data-driven factor config (#7).
+// since the two can differ (recalibration is tracked separately).
+// Used to suggest the highest-impact improvements (#27). This is a first step
+// toward a fully data-driven factor config (#7).
 
 export const LIFESTYLE_META = [
   {

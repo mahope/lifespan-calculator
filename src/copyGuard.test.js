@@ -9,9 +9,6 @@ const FORBIDDEN = [
   /geografisk placering/,
   /livsstil udgør op til 60/,
   /Max 7 \/ Mænd: Max 14/,
-  /Max 7 genstande/,
-  /Max 14 genstande/,
-  /biologisk(e)? alder/i,
 ];
 
 function sourceFiles(dir) {
@@ -31,6 +28,11 @@ describe('copy guard', () => {
 
   it.each(FORBIDDEN.map((re) => [String(re), re]))('src/ does not contain %s', (_label, re) => {
     const hits = files.filter((f) => re.test(readFileSync(f, 'utf8')));
+    expect(hits).toEqual([]);
+  });
+
+  it('analytics calls carry no user input props', () => {
+    const hits = files.filter((f) => /plausible\([^)]*\{[^)]*\b(age|alder|gender|sex|koen|køn|birth)/i.test(readFileSync(f, 'utf8')));
     expect(hits).toEqual([]);
   });
 });

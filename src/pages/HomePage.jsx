@@ -26,7 +26,6 @@ import Sammenlign from '../components/Sammenlign';
 import Pension from '../components/Pension';
 import Sandsynlighed from '../components/Sandsynlighed';
 import KropsAlder from '../components/KropsAlder';
-import OmTallene from '../components/OmTallene';
 import Coaching from '../components/Coaching';
 import Historik from '../components/Historik';
 import HvadHvis from '../components/HvadHvis';
@@ -1064,7 +1063,7 @@ const HomePage = () => {
                 <Countdown key={resultData?.endTimestamp} endTimestamp={resultData?.endTimestamp} />
               </div>
 
-              {/* Biological age (advanced mode) */}
+              {/* Statistical risk age (advanced mode) */}
               <KropsAlder resultData={resultData} />
 
               {/* Life Progress Bar */}
@@ -1232,7 +1231,10 @@ const HomePage = () => {
               {/* Disclaimers */}
               <div className="card border-yellow-200 dark:border-yellow-800 bg-yellow-50/50 dark:bg-yellow-950/20">
                 <div className="card-content">
-                  <OmTallene />
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Det her er statistik, ikke en prognose for dig, og ikke medicinsk rådgivning.{' '}
+                    <a href="#om-tallene" className="text-primary hover:underline">Læs mere under Om tallene</a>.
+                  </p>
                 </div>
               </div>
             </div>

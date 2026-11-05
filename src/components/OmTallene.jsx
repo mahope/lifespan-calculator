@@ -1,10 +1,10 @@
 import React from 'react';
 import { dataSource } from '../utils/dataSource';
 
-// "Om tallene" — the one disclaimer text, shown on the result page and in the
-// footer. Period and update date come from `dataSource`.
+// "Om tallene" — the one disclaimer text, shown in the footer (the result
+// page links to it). Period and update date come from `dataSource`.
 const OmTallene = ({ className = '' }) => (
-  <section className={`space-y-3 text-sm leading-relaxed text-muted-foreground ${className}`}>
+  <section id="om-tallene" className={`space-y-3 text-sm leading-relaxed text-muted-foreground ${className}`}>
     <h3 className="text-lg font-semibold text-foreground">Om tallene</h3>
     <p>
       Det her er statistik, ikke en prognose for dig. Beregningen bygger på Danmarks Statistiks dødelighedstavler for{' '}

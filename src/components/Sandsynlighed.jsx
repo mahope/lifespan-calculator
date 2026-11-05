@@ -2,6 +2,7 @@ import React from 'react';
 import { Dices } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { survivalProbability } from '../utils/lifeTableDK';
+import { dataSource } from '../utils/dataSource';
 
 const TARGETS = [80, 90, 95, 100];
 
@@ -44,7 +45,7 @@ const Sandsynlighed = ({ resultData }) => {
           </div>
         ))}
         <p className="text-center text-xs text-muted-foreground">
-          Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) — en
+          Baseret på danske dødelighedstavler ({dataSource.label}) — en
           befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg.
         </p>
       </div>

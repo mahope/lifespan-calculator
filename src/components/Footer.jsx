@@ -23,7 +23,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <OmTallene className="md:col-span-2" />
+          <OmTallene className="md:col-span-2 lg:col-span-3" />
 
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Privatlivspolitik</h3>

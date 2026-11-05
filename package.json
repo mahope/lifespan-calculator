@@ -39,7 +39,7 @@
     "html-to-image": "^1.11.13",
     "lucide-react": "^1.66.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react-dom": "^19.3.1",
     "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.18.3"
   },
@@ -48,7 +48,7 @@
     "@playwright/test": "1.64.1",
     "@tailwindcss/postcss": "^4.3.2",
     "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.0.3",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",

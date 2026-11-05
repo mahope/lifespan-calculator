@@ -1,4 +1,3 @@
-/* global fetch, console */
 // Head-tag check against the built site (`npm run build` first), not part of the
 // vitest gate because Playwright is deliberately not a repo dependency.
 //   E2E_PLAYWRIGHT=/path/to/node_modules/playwright/index.mjs node scripts/e2e-head.mjs

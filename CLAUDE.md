@@ -100,9 +100,10 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
 - Before finishing: run the gate above.
 
 ## File Structure
-- `index.html` - Vite entry HTML (also hosts static footer, cookie-consent
-  banner, and SEO copy outside the React root)
+- `index.html` - Vite entry HTML (meta tags, theme bootstrap and analytics script; no page copy outside the React root)
 - `src/` - React application source (see Architecture above)
-- `public/` - static assets copied as-is into the build
+- `public/` - static assets copied as-is into the build, including the standalone
+  policy pages `privatlivspolitik.html` and `cookiepolitik.html` (served at the clean
+  URLs `/privatlivspolitik` and `/cookiepolitik`; link to them with plain `<a href>`,
+  never the router `Link`)
 - `Dockerfile` - production image (build + `serve`)
-- `*.html` (root) - standalone legal/policy pages

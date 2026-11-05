@@ -1,35 +1,42 @@
 import React from 'react';
 import { BarChart3 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import { getLifeExpectancyForCountry } from '../utils/lifeExpectancyData';
+import { getLifeExpectancyForCountry, lifeExpectancyData } from '../utils/lifeExpectancyData';
+import { compareWithDanishAverage, verdictFor } from '../utils/compareAverage';
 
-// "Sammenlign med gennemsnittet" — the user's adjusted estimate against the
-// Danish average and a couple of reference countries. Uses the static country
-// dataset only (an honest, percentile-free comparison).
+// "Sammenlign med gennemsnittet" — the user's estimate against the Danish
+// average for the same age and sex (no lifestyle adjustment), plus context rows
+// with life expectancy at birth. Percentile-free on purpose.
 const Sammenlign = ({ resultData }) => {
   if (!resultData) return null;
 
-  const gender = resultData.gender;
-  const you = parseFloat(resultData.adjustedLifeExpectancy);
-  if (!Number.isFinite(you) || !gender) return null;
+  const gender = resultData.gender === 'female' ? 'female' : 'male';
+  const age = parseFloat(resultData.age);
+  const lifestyle = Number(resultData.lifestyleImpact) || 0;
+  if (!Number.isFinite(age)) return null;
 
-  const dkAvg = getLifeExpectancyForCountry('Denmark', gender);
+  const { you, average, diff } = compareWithDanishAverage(age, gender, lifestyle);
+  const verdict = verdictFor(diff);
+  const sexLabel = gender === 'female' ? 'kvinde' : 'mand';
+  const dk = lifeExpectancyData.Denmark;
   const rows = [
     { label: 'Dig', value: you, you: true },
-    { label: 'Danmark (gennemsnit)', value: dkAvg },
-    { label: 'Japan (højest i verden)', value: getLifeExpectancyForCountry('Japan', gender) },
-    { label: 'Verdensgennemsnit', value: getLifeExpectancyForCountry('World', gender) },
+    { label: `Gennemsnitlig dansk ${sexLabel} på ${Math.floor(age)}`, value: average },
+    {
+      label: 'Danmark ved fødslen',
+      value: getLifeExpectancyForCountry('Denmark', gender),
+      note: `${dk.source}, ${dk.year}`,
+    },
+    ...['Japan', 'World'].map((k) => {
+      const c = lifeExpectancyData[k];
+      return {
+        label: `${k === 'Japan' ? 'Japan' : 'Verdensgennemsnit'} ved fødslen`,
+        value: getLifeExpectancyForCountry(k, gender),
+        note: `${c.source}, ${c.year}`,
+      };
+    }),
   ];
   const max = Math.max(...rows.map((r) => r.value));
-
-  const diff = you - dkAvg;
-  const absDiff = Math.abs(diff).toFixed(1);
-  const verdict =
-    diff >= 0.05
-      ? `Du ligger ca. ${absDiff} år over det danske gennemsnit 🎉`
-      : diff <= -0.05
-        ? `Du ligger ca. ${absDiff} år under det danske gennemsnit`
-        : 'Du ligger lige omkring det danske gennemsnit';
 
   return (
     <div className="card">
@@ -43,7 +50,10 @@ const Sammenlign = ({ resultData }) => {
           {rows.map((r) => (
             <div key={r.label} className="space-y-1">
               <div className="flex items-center justify-between text-sm">
-                <span className={r.you ? 'font-semibold' : 'text-muted-foreground'}>{r.label}</span>
+                <span className={r.you ? 'font-semibold' : 'text-muted-foreground'}>
+                  {r.label}
+                  {r.note && <span className="block text-xs">{r.note}</span>}
+                </span>
                 <span className={r.you ? 'font-semibold text-primary' : 'text-muted-foreground'}>
                   {r.value.toFixed(1)} år
                 </span>
@@ -59,7 +69,7 @@ const Sammenlign = ({ resultData }) => {
             </div>
           ))}
         </div>
-        <p className="text-center text-sm font-medium">{verdict}</p>
+        <p className="text-center text-sm font-medium">{verdict.text}</p>
       </div>
     </div>
   );

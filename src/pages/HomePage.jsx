@@ -31,6 +31,7 @@ import Historik from '../components/Historik';
 import HvadHvis from '../components/HvadHvis';
 import ParMode from '../components/ParMode';
 import Forsikringsbehov from '../components/Forsikringsbehov';
+import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
@@ -1140,6 +1141,9 @@ const HomePage = () => {
 
               {/* Value-first livsforsikring CTA — high-intent moment */}
               <Forsikringsbehov resultData={resultData} />
+
+              {/* Calm will / power of attorney pointer (advertising) */}
+              <PraktiskePapirer resultData={resultData} />
 
               {/* Fun Facts Section */}
               <div className="card">

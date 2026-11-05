@@ -1,0 +1,405 @@
+{
+ "evaluatedAt": "2026-11-05T12:00 Europe/Copenhagen",
+ "node": "v24.13.0",
+ "cases": {
+  "male40": {
+   "input": {
+    "ageOrBirthdate": 40,
+    "gender": "male",
+    "factors": {}
+   },
+   "remainingBase": 41.23,
+   "lifestyleAdjustment": 0,
+   "remainingYears": "41.2",
+   "remainingDays": 14974,
+   "remainingDaysIfFractionNotTruncated": 15059,
+   "adjustedLifeExpectancy": "81.2",
+   "endDate": "5.11.2067",
+   "age": "40.00",
+   "displayAge": "40 år",
+   "daysLived": 14610,
+   "lifePercentage": "49.2",
+   "countdown": {
+    "years": 40,
+    "days": 364,
+    "hours": 12,
+    "minutes": 0,
+    "seconds": 0
+   },
+   "sandsynlighed": [
+    {
+     "age": 80,
+     "pct": 62
+    },
+    {
+     "age": 90,
+     "pct": 23
+    },
+    {
+     "age": 95,
+     "pct": 7
+    },
+    {
+     "age": 100,
+     "pct": 1
+    }
+   ],
+   "sammenlign": {
+    "you": 81.2,
+    "dkAvgInFile": 78.9,
+    "diff": 2.3,
+    "verdict": "over (2.3)"
+   },
+   "pension": {
+    "birthYearDerived": 1986,
+    "pensionAge": 70,
+    "workingYearsLeft": 30,
+    "retirementYears": 11
+   }
+  },
+  "female65": {
+   "input": {
+    "ageOrBirthdate": 65,
+    "gender": "female",
+    "factors": {}
+   },
+   "remainingBase": 21.39,
+   "lifestyleAdjustment": 0,
+   "remainingYears": "21.4",
+   "remainingDays": 7669,
+   "remainingDaysIfFractionNotTruncated": 7812,
+   "adjustedLifeExpectancy": "86.4",
+   "endDate": "5.11.2047",
+   "age": "65.00",
+   "displayAge": "65 år",
+   "daysLived": 23741,
+   "lifePercentage": "75.2",
+   "countdown": {
+    "years": 20,
+    "days": 364,
+    "hours": 12,
+    "minutes": 0,
+    "seconds": 0
+   },
+   "sandsynlighed": [
+    {
+     "age": 80,
+     "pct": 77
+    },
+    {
+     "age": 90,
+     "pct": 38
+    },
+    {
+     "age": 95,
+     "pct": 15
+    },
+    {
+     "age": 100,
+     "pct": 4
+    }
+   ],
+   "sammenlign": {
+    "you": 86.4,
+    "dkAvgInFile": 82.7,
+    "diff": 3.7,
+    "verdict": "over (3.7)"
+   },
+   "pension": {
+    "birthYearDerived": 1961,
+    "pensionAge": 67,
+    "workingYearsLeft": 2,
+    "retirementYears": 19
+   }
+  },
+  "male_born_1985_06_15": {
+   "input": {
+    "ageOrBirthdate": "1985-06-15",
+    "gender": "male",
+    "factors": {}
+   },
+   "remainingBase": 39.8909,
+   "lifestyleAdjustment": 0,
+   "remainingYears": "39.9",
+   "remainingDays": 14568,
+   "remainingDaysIfFractionNotTruncated": 14570,
+   "adjustedLifeExpectancy": "81.3",
+   "endDate": "25.9.2066",
+   "age": "41.39",
+   "displayAge": "41 år, 4 mdr, 21 dage",
+   "daysLived": 15118,
+   "lifePercentage": "50.9",
+   "countdown": {
+    "years": 39,
+    "days": 323,
+    "hours": 13,
+    "minutes": 0,
+    "seconds": 0
+   },
+   "sandsynlighed": [
+    {
+     "age": 80,
+     "pct": 62
+    },
+    {
+     "age": 90,
+     "pct": 23
+    },
+    {
+     "age": 95,
+     "pct": 7
+    },
+    {
+     "age": 100,
+     "pct": 1
+    }
+   ],
+   "sammenlign": {
+    "you": 81.3,
+    "dkAvgInFile": 78.9,
+    "diff": 2.4,
+    "verdict": "over (2.4)"
+   },
+   "pension": {
+    "birthYearDerived": 1985,
+    "pensionAge": 70,
+    "workingYearsLeft": 29,
+    "retirementYears": 11
+   }
+  }
+ },
+ "diagnostics": {
+  "p99_vs_p100_male40": {
+   "p99": 0.014151662718705204,
+   "p100": 0.014151662718705204
+  },
+  "p99_vs_p100_female60": {
+   "p99": 0.04284324290392442,
+   "p100": 0.04284324290392442
+  },
+  "age99_5_prob_to_100": 1,
+  "heavySmokerFlatMinus9": [
+   {
+    "age": 30,
+    "e_x_male": 50.92,
+    "remainingAfter": 41.92
+   },
+   {
+    "age": 50,
+    "e_x_male": 31.75,
+    "remainingAfter": 22.75
+   },
+   {
+    "age": 70,
+    "e_x_male": 14.98,
+    "remainingAfter": 5.98
+   },
+   {
+    "age": 80,
+    "e_x_male": 8.45,
+    "remainingAfter": 0
+   },
+   {
+    "age": 85,
+    "e_x_male": 5.79,
+    "remainingAfter": 0
+   },
+   {
+    "age": 90,
+    "e_x_male": 3.8,
+    "remainingAfter": 0
+   }
+  ],
+  "biologicalAgeDelta": [
+   {
+    "age": 25,
+    "adj+6": 6,
+    "adj-6": -6
+   },
+   {
+    "age": 40,
+    "adj+6": 6,
+    "adj-6": -6
+   },
+   {
+    "age": 55,
+    "adj+6": 7,
+    "adj-6": -7
+   },
+   {
+    "age": 70,
+    "adj+6": 8,
+    "adj-6": -9
+   },
+   {
+    "age": 85,
+    "adj+6": 10,
+    "adj-6": -14
+   }
+  ],
+  "pensionBirthYearBoundary": [
+   {
+    "born": "1970-12-20",
+    "trueBirthYear": 1970,
+    "derivedBirthYear": 1971,
+    "folkepensionAgeTrue": 69,
+    "folkepensionAgeShown": 70
+   },
+   {
+    "born": "1970-11-06",
+    "trueBirthYear": 1970,
+    "derivedBirthYear": 1971,
+    "folkepensionAgeTrue": 69,
+    "folkepensionAgeShown": 70
+   },
+   {
+    "born": "1971-11-20",
+    "trueBirthYear": 1971,
+    "derivedBirthYear": 1972,
+    "folkepensionAgeTrue": 70,
+    "folkepensionAgeShown": 70
+   },
+   {
+    "born": "1962-12-24",
+    "trueBirthYear": 1962,
+    "derivedBirthYear": 1963,
+    "folkepensionAgeTrue": 67,
+    "folkepensionAgeShown": 68
+   },
+   {
+    "born": "1966-12-31",
+    "trueBirthYear": 1966,
+    "derivedBirthYear": 1967,
+    "folkepensionAgeTrue": 68,
+    "folkepensionAgeShown": 69
+   }
+  ],
+  "dateCtorFraction": {
+   "years": 41.23,
+   "endDate": "2067-11-04T23:00:00.000Z",
+   "expectedIfFractionKept": "2068-01-27T23:00:00.000Z"
+  },
+  "birthdateParse": {
+   "iso": "1985-06-15T00:00:00.000Z",
+   "localString": "Sat Jun 15 1985 02:00:00 GMT+0200 (Centraleuropæisk sommertid)"
+  },
+  "expectedAgeAtDeath": [
+   {
+    "age": 0,
+    "g": "male",
+    "e_x": 80.25,
+    "ageAtDeath": 80.25
+   },
+   {
+    "age": 0,
+    "g": "female",
+    "e_x": 83.9,
+    "ageAtDeath": 83.9
+   },
+   {
+    "age": 20,
+    "g": "male",
+    "e_x": 60.72,
+    "ageAtDeath": 80.72
+   },
+   {
+    "age": 40,
+    "g": "male",
+    "e_x": 41.23,
+    "ageAtDeath": 81.23
+   },
+   {
+    "age": 40,
+    "g": "female",
+    "e_x": 44.67,
+    "ageAtDeath": 84.67
+   },
+   {
+    "age": 65,
+    "g": "male",
+    "e_x": 18.72,
+    "ageAtDeath": 83.72
+   },
+   {
+    "age": 65,
+    "g": "female",
+    "e_x": 21.39,
+    "ageAtDeath": 86.39
+   },
+   {
+    "age": 80,
+    "g": "male",
+    "e_x": 8.45,
+    "ageAtDeath": 88.45
+   },
+   {
+    "age": 99,
+    "g": "male",
+    "e_x": 1.84,
+    "ageAtDeath": 100.84
+   },
+   {
+    "age": 99.5,
+    "g": "male",
+    "e_x": 1.84,
+    "ageAtDeath": 101.34
+   },
+   {
+    "age": 120,
+    "g": "female",
+    "e_x": 2.18,
+    "ageAtDeath": 122.18
+   }
+  ],
+  "sammenlignApplesToOranges": [
+   {
+    "age": 0,
+    "g": "male",
+    "you": 80.3,
+    "dkAvgFile": 78.9,
+    "diff": 1.3
+   },
+   {
+    "age": 40,
+    "g": "male",
+    "you": 81.2,
+    "dkAvgFile": 78.9,
+    "diff": 2.3
+   },
+   {
+    "age": 65,
+    "g": "male",
+    "you": 83.7,
+    "dkAvgFile": 78.9,
+    "diff": 4.8
+   },
+   {
+    "age": 80,
+    "g": "male",
+    "you": 88.5,
+    "dkAvgFile": 78.9,
+    "diff": 9.5
+   },
+   {
+    "age": 65,
+    "g": "female",
+    "you": 86.4,
+    "dkAvgFile": 82.7,
+    "diff": 3.7
+   },
+   {
+    "age": 80,
+    "g": "female",
+    "you": 90,
+    "dkAvgFile": 82.7,
+    "diff": 7.3
+   }
+  ],
+  "bound": {
+   "bestEverRaw": 32,
+   "bestEverBounded": 12,
+   "worstEverRaw": -50,
+   "worstEverBounded": -15
+  }
+ }
+}

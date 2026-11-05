@@ -1,0 +1,160 @@
+{
+ "id": "LABY21",
+ "text": "Life expectancy for new born babies",
+ "description": "Life expectancy for new born babies by municipality groups, sex and time",
+ "unit": "Years",
+ "suppressedDataValue": "0",
+ "updated": "2026-02-12T08:00:00",
+ "active": true,
+ "contacts": [
+  {
+   "name": "Jørn Korsbø Petersen",
+   "phone": "+4520116864",
+   "mail": "jkp@dst.dk"
+  }
+ ],
+ "documentation": {
+  "id": "4a12721d-a8b0-4bde-82d7-1d1c6f319de3",
+  "url": "https://www.dst.dk/documentationofstatistics/4a12721d-a8b0-4bde-82d7-1d1c6f319de3"
+ },
+ "footnote": null,
+ "variables": [
+  {
+   "id": "KOMGRP",
+   "text": "municipality groups",
+   "elimination": true,
+   "time": false,
+   "map": "denmark_municipalitygroups_24",
+   "values": [
+    {
+     "id": "000",
+     "text": "All Denmark"
+    },
+    {
+     "id": "1",
+     "text": "Capital municipalities"
+    },
+    {
+     "id": "2",
+     "text": "Metropolitan municipalities"
+    },
+    {
+     "id": "3",
+     "text": "Provincial municipalities"
+    },
+    {
+     "id": "4",
+     "text": "Commuter municipalities"
+    },
+    {
+     "id": "5",
+     "text": "Rural municipalities"
+    }
+   ]
+  },
+  {
+   "id": "KØN",
+   "text": "sex",
+   "elimination": true,
+   "time": false,
+   "values": [
+    {
+     "id": "TOT",
+     "text": "Total"
+    },
+    {
+     "id": "M",
+     "text": "Men"
+    },
+    {
+     "id": "K",
+     "text": "Women"
+    }
+   ]
+  },
+  {
+   "id": "Tid",
+   "text": "time",
+   "elimination": false,
+   "time": true,
+   "values": [
+    {
+     "id": "2006:2007",
+     "text": "2006:2007"
+    },
+    {
+     "id": "2007:2008",
+     "text": "2007:2008"
+    },
+    {
+     "id": "2008:2009",
+     "text": "2008:2009"
+    },
+    {
+     "id": "2009:2010",
+     "text": "2009:2010"
+    },
+    {
+     "id": "2010:2011",
+     "text": "2010:2011"
+    },
+    {
+     "id": "2011:2012",
+     "text": "2011:2012"
+    },
+    {
+     "id": "2012:2013",
+     "text": "2012:2013"
+    },
+    {
+     "id": "2013:2014",
+     "text": "2013:2014"
+    },
+    {
+     "id": "2014:2015",
+     "text": "2014:2015"
+    },
+    {
+     "id": "2015:2016",
+     "text": "2015:2016"
+    },
+    {
+     "id": "2016:2017",
+     "text": "2016:2017"
+    },
+    {
+     "id": "2017:2018",
+     "text": "2017:2018"
+    },
+    {
+     "id": "2018:2019",
+     "text": "2018:2019"
+    },
+    {
+     "id": "2019:2020",
+     "text": "2019:2020"
+    },
+    {
+     "id": "2020:2021",
+     "text": "2020:2021"
+    },
+    {
+     "id": "2021:2022",
+     "text": "2021:2022"
+    },
+    {
+     "id": "2022:2023",
+     "text": "2022:2023"
+    },
+    {
+     "id": "2023:2024",
+     "text": "2023:2024"
+    },
+    {
+     "id": "2024:2025",
+     "text": "2024:2025"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "male 40-90": {
+  "slope_per_year": 0.1028,
+  "doubling_years": 6.7
+ },
+ "male 30-60": {
+  "slope_per_year": 0.0891,
+  "doubling_years": 7.8
+ },
+ "male 60-90": {
+  "slope_per_year": 0.1037,
+  "doubling_years": 6.7
+ },
+ "female 40-90": {
+  "slope_per_year": 0.1099,
+  "doubling_years": 6.3
+ },
+ "female 30-60": {
+  "slope_per_year": 0.0978,
+  "doubling_years": 7.1
+ },
+ "female 60-90": {
+  "slope_per_year": 0.1102,
+  "doubling_years": 6.3
+ }
+}

@@ -1,0 +1,140 @@
+{
+ "retrieved": "2026-11-05",
+ "source": "https://api.statbank.dk/v1/tables?lang=en&format=JSON",
+ "n_tables_total": 2319,
+ "matches": [
+  {
+   "id": "FRDK426",
+   "text": "Assumptions of mortality for the population projection 2026",
+   "firstPeriod": "2026",
+   "latestPeriod": "2069",
+   "updated": "2026-06-12T08:00:00",
+   "variables": [
+    "sex",
+    "age",
+    "life table",
+    "time"
+   ]
+  },
+  {
+   "id": "HISB7",
+   "text": "Life expectancy for new born babies",
+   "firstPeriod": "1840:1849",
+   "latestPeriod": "2024:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "sex",
+    "time"
+   ]
+  },
+  {
+   "id": "HISBR",
+   "text": "Life expectancy for new born babies",
+   "firstPeriod": "2000:2001",
+   "latestPeriod": "2024:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "region",
+    "sex",
+    "time"
+   ]
+  },
+  {
+   "id": "LABY21",
+   "text": "Life expectancy for new born babies",
+   "firstPeriod": "2006:2007",
+   "latestPeriod": "2024:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "municipality groups",
+    "sex",
+    "time"
+   ]
+  },
+  {
+   "id": "HISB77",
+   "text": "Life expectancy for new born babies",
+   "firstPeriod": "2000:2001",
+   "latestPeriod": "2024:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "region",
+    "sex",
+    "time"
+   ]
+  },
+  {
+   "id": "HISBK",
+   "text": "Life expectancy for new born babies",
+   "firstPeriod": "2000:2004",
+   "latestPeriod": "2021:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "region",
+    "sex",
+    "time"
+   ]
+  },
+  {
+   "id": "HISB8",
+   "text": "Life table (2 years tables)",
+   "firstPeriod": "1981:1982",
+   "latestPeriod": "2024:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "age",
+    "sex",
+    "life table",
+    "time"
+   ]
+  },
+  {
+   "id": "HISB9",
+   "text": "Life table (5 years tables)",
+   "firstPeriod": "1901:1905",
+   "latestPeriod": "2021:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "age",
+    "sex",
+    "life table",
+    "time"
+   ]
+  },
+  {
+   "id": "LIGEHI1",
+   "text": "Gender equality indicator of life expectancy for new born babies",
+   "firstPeriod": "1901:1905",
+   "latestPeriod": "2024:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "indicator",
+    "time"
+   ]
+  },
+  {
+   "id": "LIGEHI2",
+   "text": "Gender equality indicator of remaining life expectancy for 50-year-olds",
+   "firstPeriod": "1996:2000",
+   "latestPeriod": "2021:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "indicator",
+    "family type",
+    "time"
+   ]
+  },
+  {
+   "id": "LIGEHI4",
+   "text": "Gender equality indicator on life expectancy for people aged 30 years",
+   "firstPeriod": "2012:2016",
+   "latestPeriod": "2021:2025",
+   "updated": "2026-02-12T08:00:00",
+   "variables": [
+    "indicator",
+    "highest education completed",
+    "time"
+   ]
+  }
+ ]
+}

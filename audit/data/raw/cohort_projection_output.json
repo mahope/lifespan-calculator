@@ -1,0 +1,127 @@
+{
+ "note": "cohort = diagonal of DST FRDK426 q_x(age+k, 2026+k); mortality held at 2069 beyond 2069",
+ "formula_check_period_e_from_q_vs_DST_e_2026": {
+  "male/0": {
+   "from_q": 81.253,
+   "dst_e": 81.3
+  },
+  "male/20": {
+   "from_q": 61.566,
+   "dst_e": 61.6
+  },
+  "male/40": {
+   "from_q": 41.983,
+   "dst_e": 42.0
+  },
+  "male/60": {
+   "from_q": 23.491,
+   "dst_e": 23.5
+  },
+  "male/80": {
+   "from_q": 8.86,
+   "dst_e": 8.9
+  },
+  "female/0": {
+   "from_q": 84.928,
+   "dst_e": 84.9
+  },
+  "female/20": {
+   "from_q": 65.18,
+   "dst_e": 65.2
+  },
+  "female/40": {
+   "from_q": 45.391,
+   "dst_e": 45.4
+  },
+  "female/60": {
+   "from_q": 26.375,
+   "dst_e": 26.4
+  },
+  "female/80": {
+   "from_q": 10.447,
+   "dst_e": 10.4
+  }
+ },
+ "rows": [
+  {
+   "sex": "male",
+   "age": 20,
+   "site_period_ex_HISB8_2024_25": 60.72,
+   "dst_projection_period_ex_2026": 61.6,
+   "dst_projection_period_ex_2040": 64.2,
+   "dst_projection_period_ex_2069": 68.2,
+   "cohort_ex_computed_from_q_path": 67.78,
+   "cohort_minus_site_period": 7.06
+  },
+  {
+   "sex": "male",
+   "age": 40,
+   "site_period_ex_HISB8_2024_25": 41.23,
+   "dst_projection_period_ex_2026": 42.0,
+   "dst_projection_period_ex_2040": 44.4,
+   "dst_projection_period_ex_2069": 48.3,
+   "cohort_ex_computed_from_q_path": 46.84,
+   "cohort_minus_site_period": 5.61
+  },
+  {
+   "sex": "male",
+   "age": 60,
+   "site_period_ex_HISB8_2024_25": 22.85,
+   "dst_projection_period_ex_2026": 23.5,
+   "dst_projection_period_ex_2040": 25.7,
+   "dst_projection_period_ex_2069": 29.0,
+   "cohort_ex_computed_from_q_path": 25.88,
+   "cohort_minus_site_period": 3.03
+  },
+  {
+   "sex": "male",
+   "age": 80,
+   "site_period_ex_HISB8_2024_25": 8.45,
+   "dst_projection_period_ex_2026": 8.9,
+   "dst_projection_period_ex_2040": 9.7,
+   "dst_projection_period_ex_2069": 11.4,
+   "cohort_ex_computed_from_q_path": 9.14,
+   "cohort_minus_site_period": 0.69
+  },
+  {
+   "sex": "female",
+   "age": 20,
+   "site_period_ex_HISB8_2024_25": 64.38,
+   "dst_projection_period_ex_2026": 65.2,
+   "dst_projection_period_ex_2040": 67.2,
+   "dst_projection_period_ex_2069": 70.4,
+   "cohort_ex_computed_from_q_path": 70.14,
+   "cohort_minus_site_period": 5.76
+  },
+  {
+   "sex": "female",
+   "age": 40,
+   "site_period_ex_HISB8_2024_25": 44.67,
+   "dst_projection_period_ex_2026": 45.4,
+   "dst_projection_period_ex_2040": 47.3,
+   "dst_projection_period_ex_2069": 50.5,
+   "cohort_ex_computed_from_q_path": 49.43,
+   "cohort_minus_site_period": 4.76
+  },
+  {
+   "sex": "female",
+   "age": 60,
+   "site_period_ex_HISB8_2024_25": 25.74,
+   "dst_projection_period_ex_2026": 26.4,
+   "dst_projection_period_ex_2040": 28.1,
+   "dst_projection_period_ex_2069": 30.8,
+   "cohort_ex_computed_from_q_path": 28.41,
+   "cohort_minus_site_period": 2.67
+  },
+  {
+   "sex": "female",
+   "age": 80,
+   "site_period_ex_HISB8_2024_25": 9.99,
+   "dst_projection_period_ex_2026": 10.4,
+   "dst_projection_period_ex_2040": 11.2,
+   "dst_projection_period_ex_2069": 12.8,
+   "cohort_ex_computed_from_q_path": 10.87,
+   "cohort_minus_site_period": 0.88
+  }
+ ]
+}

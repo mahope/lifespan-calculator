@@ -1,0 +1,18 @@
+{
+ "40m+40f": {
+  "code_expectedTogether": 36.26,
+  "trapezoid_complete": 36.76
+ },
+ "35m+35f": {
+  "code_expectedTogether": 41.03,
+  "trapezoid_complete": 41.53
+ },
+ "70m+70f": {
+  "code_expectedTogether": 11.29,
+  "trapezoid_complete": 11.79
+ },
+ "single_male40": {
+  "curtate_sum": 40.71,
+  "e_x_table": 41.23
+ }
+}

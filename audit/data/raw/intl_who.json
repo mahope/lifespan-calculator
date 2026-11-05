@@ -1,0 +1,330 @@
+{
+ "retrieved": "2026-11-05T13:07Z",
+ "url": "https://ghoapi.azureedge.net/api/WHOSIS_000001?$filter=SpatialDimType%20eq%20'COUNTRY'%20and%20(SpatialDim%20eq%20'DNK'%20or%20SpatialDim%20eq%20'SWE'%20or%20SpatialDim%20eq%20'NOR'%20or%20SpatialDim%20eq%20'DEU'%20or%20SpatialDim%20eq%20'GBR'%20or%20SpatialDim%20eq%20'USA'%20or%20SpatialDim%20eq%20'FRA'%20or%20SpatialDim%20eq%20'NLD'%20or%20SpatialDim%20eq%20'FIN'%20or%20SpatialDim%20eq%20'ISL'%20or%20SpatialDim%20eq%20'CHE'%20or%20SpatialDim%20eq%20'JPN')%20and%20TimeDim%20ge%202019",
+ "data": {
+  "DNK": {
+   "2020": {
+    "SEX_FMLE": 83.2,
+    "SEX_MLE": 79.6,
+    "SEX_BTSX": 81.4
+   },
+   "2022": {
+    "SEX_FMLE": 82.8,
+    "SEX_MLE": 79.4,
+    "SEX_BTSX": 81.1
+   },
+   "2023": {
+    "SEX_FMLE": 83.9,
+    "SEX_MLE": 80.4,
+    "SEX_BTSX": 82.1
+   },
+   "2019": {
+    "SEX_MLE": 79.5,
+    "SEX_FMLE": 83.1,
+    "SEX_BTSX": 81.3
+   },
+   "2021": {
+    "SEX_FMLE": 83.0,
+    "SEX_MLE": 79.6,
+    "SEX_BTSX": 81.3
+   }
+  },
+  "USA": {
+   "2022": {
+    "SEX_FMLE": 79.9,
+    "SEX_MLE": 75.1,
+    "SEX_BTSX": 77.5
+   },
+   "2023": {
+    "SEX_FMLE": 80.9,
+    "SEX_MLE": 76.2,
+    "SEX_BTSX": 78.5
+   },
+   "2020": {
+    "SEX_FMLE": 79.5,
+    "SEX_MLE": 74.6,
+    "SEX_BTSX": 76.9
+   },
+   "2021": {
+    "SEX_BTSX": 76.4,
+    "SEX_MLE": 73.9,
+    "SEX_FMLE": 79.0
+   },
+   "2019": {
+    "SEX_FMLE": 80.9,
+    "SEX_BTSX": 78.8,
+    "SEX_MLE": 76.6
+   }
+  },
+  "SWE": {
+   "2022": {
+    "SEX_FMLE": 84.2,
+    "SEX_MLE": 81.1,
+    "SEX_BTSX": 82.7
+   },
+   "2023": {
+    "SEX_FMLE": 84.4,
+    "SEX_MLE": 81.4,
+    "SEX_BTSX": 82.9
+   },
+   "2021": {
+    "SEX_MLE": 81.0,
+    "SEX_FMLE": 84.3,
+    "SEX_BTSX": 82.7
+   },
+   "2020": {
+    "SEX_BTSX": 82.0,
+    "SEX_FMLE": 83.7,
+    "SEX_MLE": 80.3
+   },
+   "2019": {
+    "SEX_BTSX": 82.6,
+    "SEX_MLE": 81.0,
+    "SEX_FMLE": 84.2
+   }
+  },
+  "NLD": {
+   "2022": {
+    "SEX_FMLE": 82.7,
+    "SEX_MLE": 80.0,
+    "SEX_BTSX": 81.4
+   },
+   "2023": {
+    "SEX_FMLE": 83.0,
+    "SEX_MLE": 80.2,
+    "SEX_BTSX": 81.6
+   },
+   "2020": {
+    "SEX_FMLE": 82.9,
+    "SEX_BTSX": 81.4,
+    "SEX_MLE": 79.8
+   },
+   "2019": {
+    "SEX_FMLE": 83.8,
+    "SEX_BTSX": 82.3,
+    "SEX_MLE": 80.8
+   },
+   "2021": {
+    "SEX_BTSX": 81.1,
+    "SEX_FMLE": 82.7,
+    "SEX_MLE": 79.6
+   }
+  },
+  "NOR": {
+   "2022": {
+    "SEX_FMLE": 83.7,
+    "SEX_MLE": 80.7,
+    "SEX_BTSX": 82.2
+   },
+   "2023": {
+    "SEX_FMLE": 84.1,
+    "SEX_MLE": 81.3,
+    "SEX_BTSX": 82.7
+   },
+   "2020": {
+    "SEX_MLE": 81.3,
+    "SEX_FMLE": 84.3,
+    "SEX_BTSX": 82.8
+   },
+   "2021": {
+    "SEX_MLE": 81.5,
+    "SEX_BTSX": 82.8,
+    "SEX_FMLE": 84.2
+   },
+   "2019": {
+    "SEX_MLE": 81.1,
+    "SEX_FMLE": 84.2,
+    "SEX_BTSX": 82.6
+   }
+  },
+  "JPN": {
+   "2022": {
+    "SEX_FMLE": 86.4,
+    "SEX_MLE": 81.2,
+    "SEX_BTSX": 83.8
+   },
+   "2023": {
+    "SEX_FMLE": 86.5,
+    "SEX_MLE": 81.2,
+    "SEX_BTSX": 83.9
+   },
+   "2021": {
+    "SEX_BTSX": 84.3,
+    "SEX_FMLE": 86.9,
+    "SEX_MLE": 81.6
+   },
+   "2019": {
+    "SEX_MLE": 81.5,
+    "SEX_FMLE": 86.9,
+    "SEX_BTSX": 84.2
+   },
+   "2020": {
+    "SEX_FMLE": 87.1,
+    "SEX_MLE": 81.7,
+    "SEX_BTSX": 84.4
+   }
+  },
+  "ISL": {
+   "2022": {
+    "SEX_FMLE": 83.6,
+    "SEX_MLE": 80.7,
+    "SEX_BTSX": 82.1
+   },
+   "2023": {
+    "SEX_FMLE": 83.3,
+    "SEX_MLE": 80.4,
+    "SEX_BTSX": 81.8
+   },
+   "2021": {
+    "SEX_FMLE": 83.6,
+    "SEX_MLE": 81.0,
+    "SEX_BTSX": 82.3
+   },
+   "2019": {
+    "SEX_MLE": 80.9,
+    "SEX_BTSX": 82.3,
+    "SEX_FMLE": 83.8
+   },
+   "2020": {
+    "SEX_MLE": 81.1,
+    "SEX_BTSX": 82.5,
+    "SEX_FMLE": 83.9
+   }
+  },
+  "GBR": {
+   "2022": {
+    "SEX_FMLE": 80.9,
+    "SEX_MLE": 77.8,
+    "SEX_BTSX": 79.4
+   },
+   "2023": {
+    "SEX_FMLE": 82.6,
+    "SEX_MLE": 78.9,
+    "SEX_BTSX": 80.7
+   },
+   "2021": {
+    "SEX_BTSX": 80.3,
+    "SEX_FMLE": 82.2,
+    "SEX_MLE": 78.4
+   },
+   "2020": {
+    "SEX_MLE": 78.3,
+    "SEX_BTSX": 80.2,
+    "SEX_FMLE": 82.0
+   },
+   "2019": {
+    "SEX_BTSX": 81.2,
+    "SEX_MLE": 79.5,
+    "SEX_FMLE": 82.9
+   }
+  },
+  "FRA": {
+   "2022": {
+    "SEX_FMLE": 84.5,
+    "SEX_MLE": 79.2,
+    "SEX_BTSX": 81.9
+   },
+   "2023": {
+    "SEX_FMLE": 85.0,
+    "SEX_MLE": 79.9,
+    "SEX_BTSX": 82.5
+   },
+   "2019": {
+    "SEX_FMLE": 85.1,
+    "SEX_BTSX": 82.4,
+    "SEX_MLE": 79.7
+   },
+   "2020": {
+    "SEX_MLE": 79.1,
+    "SEX_FMLE": 84.7,
+    "SEX_BTSX": 82.0
+   },
+   "2021": {
+    "SEX_FMLE": 84.8,
+    "SEX_BTSX": 82.1,
+    "SEX_MLE": 79.3
+   }
+  },
+  "FIN": {
+   "2022": {
+    "SEX_FMLE": 83.4,
+    "SEX_MLE": 78.6,
+    "SEX_BTSX": 81.0
+   },
+   "2023": {
+    "SEX_FMLE": 83.5,
+    "SEX_MLE": 78.7,
+    "SEX_BTSX": 81.1
+   },
+   "2021": {
+    "SEX_FMLE": 84.1,
+    "SEX_MLE": 79.0,
+    "SEX_BTSX": 81.5
+   },
+   "2019": {
+    "SEX_BTSX": 81.6,
+    "SEX_MLE": 79.1,
+    "SEX_FMLE": 84.2
+   },
+   "2020": {
+    "SEX_FMLE": 84.2,
+    "SEX_BTSX": 81.5,
+    "SEX_MLE": 78.9
+   }
+  },
+  "DEU": {
+   "2022": {
+    "SEX_FMLE": 82.8,
+    "SEX_MLE": 78.3,
+    "SEX_BTSX": 80.5
+   },
+   "2023": {
+    "SEX_FMLE": 83.2,
+    "SEX_MLE": 78.8,
+    "SEX_BTSX": 81.0
+   },
+   "2021": {
+    "SEX_FMLE": 82.9,
+    "SEX_MLE": 78.3,
+    "SEX_BTSX": 80.6
+   },
+   "2020": {
+    "SEX_MLE": 78.5,
+    "SEX_BTSX": 80.8,
+    "SEX_FMLE": 83.1
+   },
+   "2019": {
+    "SEX_FMLE": 83.2,
+    "SEX_MLE": 78.7,
+    "SEX_BTSX": 81.0
+   }
+  },
+  "CHE": {
+   "2022": {
+    "SEX_FMLE": 85.0,
+    "SEX_MLE": 81.5,
+    "SEX_BTSX": 83.3
+   },
+   "2023": {
+    "SEX_FMLE": 85.4,
+    "SEX_MLE": 82.2,
+    "SEX_BTSX": 83.8
+   },
+   "2020": {
+    "SEX_BTSX": 82.8,
+    "SEX_MLE": 80.9,
+    "SEX_FMLE": 84.6
+   },
+   "2019": {
+    "SEX_FMLE": 85.1,
+    "SEX_MLE": 81.7,
+    "SEX_BTSX": 83.4
+   },
+   "2021": {
+    "SEX_FMLE": 85.1,
+    "SEX_BTSX": 83.3,
+    "SEX_MLE": 81.5
+   }
+  }
+ }
+}

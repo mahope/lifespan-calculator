@@ -1,0 +1,127 @@
+{
+ "id": "LIGEHI4",
+ "text": "Gender equality indicator on life expectancy for people aged 30 years",
+ "description": "Gender equality indicator on life expectancy for people aged 30 years by indicator, highest education completed and time",
+ "unit": "-",
+ "suppressedDataValue": "0",
+ "updated": "2026-02-12T08:00:00",
+ "active": true,
+ "contacts": [
+  {
+   "name": "Jørn Korsbø Petersen",
+   "phone": "+4520116864",
+   "mail": "jkp@dst.dk"
+  }
+ ],
+ "documentation": {
+  "id": "4a12721d-a8b0-4bde-82d7-1d1c6f319de3",
+  "url": "https://www.dst.dk/documentationofstatistics/4a12721d-a8b0-4bde-82d7-1d1c6f319de3"
+ },
+ "footnote": null,
+ "variables": [
+  {
+   "id": "INDIKATOR",
+   "text": "indicator",
+   "elimination": false,
+   "time": false,
+   "values": [
+    {
+     "id": "M2",
+     "text": "Men (years)"
+    },
+    {
+     "id": "K2",
+     "text": "Women (Years)"
+    },
+    {
+     "id": "F2",
+     "text": "Difference between men and women (years)"
+    }
+   ]
+  },
+  {
+   "id": "HFUDD",
+   "text": "highest education completed",
+   "elimination": true,
+   "time": false,
+   "values": [
+    {
+     "id": "TOT",
+     "text": "Total"
+    },
+    {
+     "id": "H10",
+     "text": "H10 Primary education"
+    },
+    {
+     "id": "H20",
+     "text": "H20 Upper secondary education"
+    },
+    {
+     "id": "H30",
+     "text": "H30 Vocational Education and Training (VET)"
+    },
+    {
+     "id": "H40",
+     "text": "H40 Short cycle higher education"
+    },
+    {
+     "id": "H50",
+     "text": "H50 Vocational bachelors educations"
+    },
+    {
+     "id": "H70",
+     "text": "H70 Masters programs"
+    }
+   ]
+  },
+  {
+   "id": "Tid",
+   "text": "time",
+   "elimination": false,
+   "time": true,
+   "values": [
+    {
+     "id": "2012:2016",
+     "text": "2012:2016"
+    },
+    {
+     "id": "2013:2017",
+     "text": "2013:2017"
+    },
+    {
+     "id": "2014:2018",
+     "text": "2014:2018"
+    },
+    {
+     "id": "2015:2019",
+     "text": "2015:2019"
+    },
+    {
+     "id": "2016:2020",
+     "text": "2016:2020"
+    },
+    {
+     "id": "2017:2021",
+     "text": "2017:2021"
+    },
+    {
+     "id": "2018:2022",
+     "text": "2018:2022"
+    },
+    {
+     "id": "2019:2023",
+     "text": "2019:2023"
+    },
+    {
+     "id": "2020:2024",
+     "text": "2020:2024"
+    },
+    {
+     "id": "2021:2025",
+     "text": "2021:2025"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "kreiner2018": [
+  {
+   "pmid": "30373814",
+   "doi": "10.1073/pnas.1811455115",
+   "title": "Role of income mobility for the measurement of inequality in life expectancy.",
+   "journal": null,
+   "year": "2018",
+   "authors": "Kreiner CT, Nielsen TH, Serena BL.",
+   "abstract": "This work proposes a method to compute the income gradient in period life expectancy that accounts for income mobility. Using income and mortality records of the Danish population over the period 1980-2013, we validate the method and provide estimates of the income gradient. The period life expectancy of individuals at a certain age, and belonging to a certain income class, is normally computed by using the mortality of older cohorts in the same income class. This approach does not take into account that a substantial fraction of the population moves away from their original income class, which leads to an upward bias in the estimation of the income gradient in life expectancy. For 40-y-olds in the bottom 5% of the income distribution, the risk of dying before age 60 is overestimated by 25%. For the top 5% income class, the risk of dying is underestimated by 20%. By incorporating a classic approach from the social mobility literature, we provide a method that predicts income mobility and future mortality simultaneously. With this method, the association between income and life expectancy is lower throughout the income distribution. Without accounting for income mobility, the estimated difference in life expectancy between persons in percentiles 20 and 80 in the income distribution is 4.6 y for males and 4.1 y for females, while it is only half as big when accounting for mobility. The estimated rise in life-expectancy inequality over time is also halved when accounting for income mobility."
+  }
+ ]
+}

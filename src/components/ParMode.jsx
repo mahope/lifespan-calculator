@@ -16,9 +16,10 @@ const ParMode = ({ resultData }) => {
 
   const pAge = parseInt(partnerAge, 10);
   // The life table covers ages 0–99; cap here so we never produce clamped
-  // (100 %-survival) nonsense for ages beyond the data.
+  // (100 %-survival) nonsense for ages beyond the data. Whole-year ages are
+  // calculated as mid-year, like the main input.
   const valid = Number.isFinite(pAge) && pAge >= 0 && pAge <= 99;
-  const stats = valid ? jointLifeStats(age, gender, pAge, partnerGender) : null;
+  const stats = valid ? jointLifeStats(age, gender, pAge + 0.5, partnerGender) : null;
   const pct = (x) => `${Math.round(x * 100)}%`;
 
   return (

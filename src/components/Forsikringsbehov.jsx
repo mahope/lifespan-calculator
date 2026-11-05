@@ -14,6 +14,8 @@ const AFFILIATE_PROPS = { program: 'findforsikring', placement: 'result-insuranc
 const Forsikringsbehov = ({ resultData }) => {
   const [income, setIncome] = useState('');
   const [years, setYears] = useState('10');
+  const [share, setShare] = useState('');
+  const [existing, setExisting] = useState('');
 
   const cardRef = useRef(null);
 
@@ -38,7 +40,10 @@ const Forsikringsbehov = ({ resultData }) => {
 
   const inc = parseFloat(income);
   const yr = parseFloat(years);
-  const cover = estimateCover(inc, yr);
+  const sharePct = share === '' ? 100 : parseFloat(share);
+  const existingCover = existing === '' ? 0 : parseFloat(existing);
+  const cover = estimateCover(inc, yr, { sharePct, existingCover });
+  const hasEstimate = inc > 0 && yr > 0;
   const fmt = (n) => n.toLocaleString('da-DK');
 
   return (
@@ -59,7 +64,7 @@ const Forsikringsbehov = ({ resultData }) => {
               Hvor meget livsforsikring har din familie brug for?
             </h3>
             <p className="text-sm text-muted-foreground">
-              Et hurtigt overslag ud fra indkomst og forsørgelsesbehov.
+              Et hurtigt overslag ud fra indkomst og forsørgelsesbehov, uden diskontering.
             </p>
           </div>
         </div>
@@ -96,14 +101,48 @@ const Forsikringsbehov = ({ resultData }) => {
               placeholder="fx 10"
             />
           </div>
+          <div className="space-y-1">
+            <label htmlFor="ins-share" className="label">
+              Den afdødes andel af indkomsten (%, valgfri)
+            </label>
+            <input
+              id="ins-share"
+              type="number"
+              min="0"
+              max="100"
+              step="5"
+              className="input w-full"
+              value={share}
+              onChange={(e) => setShare(e.target.value)}
+              placeholder="tom = hele indkomsten"
+            />
+          </div>
+          <div className="space-y-1">
+            <label htmlFor="ins-existing" className="label">
+              Eksisterende dækning (kr, valgfri)
+            </label>
+            <input
+              id="ins-existing"
+              type="number"
+              min="0"
+              step="100000"
+              className="input w-full"
+              value={existing}
+              onChange={(e) => setExisting(e.target.value)}
+              placeholder="fx via arbejdsgiver eller pension"
+            />
+          </div>
         </div>
 
-        {cover > 0 && (
+        {hasEstimate && (
           <div className="rounded-lg bg-muted/30 p-4 text-center">
             <div className="text-sm text-muted-foreground">Vejledende dækningsbehov</div>
-            <div className="text-3xl font-bold text-primary">~{fmt(cover)} kr</div>
+            <div className="text-3xl font-bold text-primary">
+              {cover > 0 ? `~${fmt(cover)} kr` : 'Dækningen ser rigelig ud'}
+            </div>
             <div className="mt-1 text-xs text-muted-foreground">
-              Indkomsterstatning i forsørgelsesperioden — kun et overslag.
+              Den afdødes indkomst i forsørgelsesperioden minus eksisterende dækning, uden
+              diskontering. Kun et overslag.
             </div>
           </div>
         )}
@@ -115,7 +154,7 @@ const Forsikringsbehov = ({ resultData }) => {
           className="btn btn-primary w-full"
           onClick={() => track('Affiliate Click', AFFILIATE_PROPS)}
         >
-          Sammenlign livsforsikringer{cover > 0 ? ` fra ~${fmt(cover)} kr` : ''} →
+          Sammenlign livsforsikringer{hasEstimate && cover > 0 ? ` (overslag på dækningsbehov: ~${fmt(cover)} kr)` : ''} →
         </a>
         <p className="text-center text-[11px] text-muted-foreground">
           Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.

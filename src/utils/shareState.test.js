@@ -90,9 +90,9 @@ describe('parseShareParams', () => {
     expect(parse('a=30')).toBeNull();
   });
 
-  it('clamps age to an integer in 0-120 and rejects non-numeric input', () => {
-    expect(parse('g=male&a=99999999')).toMatchObject({ age: 120 });
-    expect(parse('g=male&a=121')).toMatchObject({ age: 120 });
+  it('clamps age to an integer in 0-110 and rejects non-numeric input', () => {
+    expect(parse('g=male&a=99999999')).toMatchObject({ age: 110 });
+    expect(parse('g=male&a=111')).toMatchObject({ age: 110 });
     expect(parse('g=male&a=-5')).toMatchObject({ age: 0 });
     expect(parse('g=male&a=12.5')).toMatchObject({ age: 12 });
     expect(parse('g=male&a=0')).toMatchObject({ age: 0 });

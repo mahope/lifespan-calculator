@@ -87,8 +87,23 @@ export function renderRoute(template, meta, route) {
   let html = template
   for (const re of STRIP) html = html.replace(re, '')
   if (!html.includes('</head>')) throw new Error('template has no </head>')
-  return html.replace('</head>', () => `${headTags(meta, route)}\n  </head>`)
+  html = html.replace('</head>', () => `${headTags(meta, route)}\n  </head>`)
+  // Safety net: a tag the STRIP patterns missed (e.g. different attribute order) would be a silent duplicate.
+  for (const [name, re] of ONLY_ONCE) {
+    const n = (html.match(re) || []).length
+    if (n !== 1) throw new Error(`${route}: expected exactly one ${name} tag, found ${n}`)
+  }
+  return html
 }
+
+const ONLY_ONCE = [
+  ['title', /<title\b/gi],
+  ['description', /<meta\b[^>]*\bname="description"/gi],
+  ['robots', /<meta\b[^>]*\bname="robots"/gi],
+  ['og:title', /<meta\b[^>]*\bproperty="og:title"/gi],
+  ['twitter:card', /<meta\b[^>]*\bname="twitter:card"/gi],
+  ['canonical', /<link\b[^>]*\brel="canonical"/gi],
+]
 
 export function prerender(distDir, routes = ROUTES, metaByRoute = ROUTE_META) {
   const problems = validateMeta(routes, metaByRoute)

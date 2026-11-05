@@ -103,6 +103,16 @@ describe('renderRoute', () => {
   })
 })
 
+describe('renderRoute safety net', () => {
+  it('fails the build when a template tag could not be replaced (attribute order differs)', () => {
+    const odd = TEMPLATE.replace('<meta name="description" content="old" />', '<meta content="old" name="description" />')
+    expect(() => renderRoute(odd, ROUTE_META['/'], '/')).toThrow(/exactly one description/)
+  })
+  it('passes for the real template shape', () => {
+    expect(() => renderRoute(TEMPLATE, ROUTE_META['/'], '/')).not.toThrow()
+  })
+})
+
 describe('prerender', () => {
   it('writes dist/index.html and one directory per route', () => {
     const dir = mkdtempSync(join(tmpdir(), 'prerender-'))

@@ -33,9 +33,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Privatlivspolitik</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Vi respekterer dit privatliv. Ingen personlige data gemmes eller deles. Al behandling sker lokalt i din browser,
-              og dine indtastninger sendes aldrig til en server. Vi tæller kun anonymt, at beregneren bruges, uden alder, køn
-              eller andre oplysninger.
+              Vi respekterer dit privatliv. Al behandling sker lokalt i din browser, og dine indtastninger gemmes ikke på
+              nogen server. Vi tæller kun anonymt, at beregneren bruges, uden alder, køn eller andre oplysninger.
             </p>
           </div>
 

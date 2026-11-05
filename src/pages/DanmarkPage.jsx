@@ -76,21 +76,21 @@ const DanmarkPage = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-green-600 dark:text-green-400 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-green-700 dark:text-green-400 flex items-center gap-2">
                       <Globe className="h-5 w-5 shrink-0" aria-hidden="true" /> Sammenligning med nabolande
                     </h3>
                     <div className="space-y-3">
                       <div className="flex justify-between items-center p-3 bg-green-500/10 rounded-lg">
                         <span className="font-medium">Sverige ({le.Sweden.year}):</span>
-                        <span className="text-lg font-bold text-green-600 dark:text-green-400">{fmtLE(le.Sweden.total)} år</span>
+                        <span className="text-lg font-bold text-green-700 dark:text-green-400">{fmtLE(le.Sweden.total)} år</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-green-500/10 rounded-lg">
                         <span className="font-medium">Norge ({le.Norway.year}):</span>
-                        <span className="text-lg font-bold text-green-600 dark:text-green-400">{fmtLE(le.Norway.total)} år</span>
+                        <span className="text-lg font-bold text-green-700 dark:text-green-400">{fmtLE(le.Norway.total)} år</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-green-500/10 rounded-lg">
                         <span className="font-medium">Finland ({le.Finland.year}):</span>
-                        <span className="text-lg font-bold text-green-600 dark:text-green-400">{fmtLE(le.Finland.total)} år</span>
+                        <span className="text-lg font-bold text-green-700 dark:text-green-400">{fmtLE(le.Finland.total)} år</span>
                       </div>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ const DanmarkPage = () => {
                   </div>
 
                   <div className="space-y-4 p-4 bg-muted/30 rounded-lg">
-                    <h4 className="font-semibold text-green-600 dark:text-green-400 flex items-center gap-2">
+                    <h4 className="font-semibold text-green-700 dark:text-green-400 flex items-center gap-2">
                       <Dumbbell className="h-5 w-5 shrink-0" aria-hidden="true" /> Danske styrker
                     </h4>
                     <ul className="space-y-3 text-sm text-muted-foreground">
@@ -180,7 +180,7 @@ const DanmarkPage = () => {
                     </span>
                     <h4 className="font-medium">Uddannelse</h4>
                     <p className="text-sm text-muted-foreground">Længere uddannelse = længere liv</p>
-                    <div className="text-lg font-bold text-green-600 dark:text-green-400">+7 år</div>
+                    <div className="text-lg font-bold text-green-700 dark:text-green-400">+7 år</div>
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
                     <span className="mx-auto inline-grid h-11 w-11 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">

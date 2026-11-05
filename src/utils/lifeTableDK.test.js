@@ -48,6 +48,12 @@ describe('jointLifeStats', () => {
     expect(jointLifeStats(100, 'male', 100, 'female').expectedTogether).toBe(0);
   });
 
+  it('integrates the final partial year to the table end (mid-year ages)', () => {
+    const t = jointLifeStats(99.5, 'male', 99.5, 'female').expectedTogether;
+    expect(t).toBeGreaterThan(0);
+    expect(t).toBeLessThan(0.5);
+  });
+
   // #91: the complete expectation (trapezoid, P(0) = 1) rather than the curtate
   // sum, which is ~0.5 year low. Reference values from the data audit, F21.
   it.each([

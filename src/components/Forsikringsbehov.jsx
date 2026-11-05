@@ -115,7 +115,9 @@ const Forsikringsbehov = ({ resultData }) => {
         {hasEstimate && (
           <div className="rounded-lg bg-muted/30 p-4 text-center">
             <div className="text-sm text-muted-foreground">Vejledende dækningsbehov</div>
-            <div className="text-3xl font-bold text-primary">~{fmt(cover)} kr</div>
+            <div className="text-3xl font-bold text-primary">
+              {cover > 0 ? `~${fmt(cover)} kr` : 'Dækningen ser rigelig ud'}
+            </div>
             <div className="mt-1 text-xs text-muted-foreground">
               Den afdødes indkomst i forsørgelsesperioden minus eksisterende dækning, uden
               diskontering. Kun et overslag.
@@ -129,7 +131,7 @@ const Forsikringsbehov = ({ resultData }) => {
           rel="sponsored noopener noreferrer"
           className="btn btn-primary w-full"
         >
-          Sammenlign livsforsikringer{hasEstimate ? ` (overslag på dækningsbehov: ~${fmt(cover)} kr)` : ''} →
+          Sammenlign livsforsikringer{hasEstimate && cover > 0 ? ` (overslag på dækningsbehov: ~${fmt(cover)} kr)` : ''} →
         </a>
         <p className="text-center text-[11px] text-muted-foreground">
           Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.

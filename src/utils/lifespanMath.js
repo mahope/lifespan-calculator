@@ -202,7 +202,7 @@ export function computeResult(input, now) {
   } else {
     // "40" means 40.0-40.99, so the e_x lookup uses the middle of the year.
     const whole = typeof ageOrBirthdate === 'number' ? ageOrBirthdate : parseInt(ageOrBirthdate);
-    age = Math.min(MAX_AGE_INPUT, Math.floor(whole)) + 0.5;
+    age = Math.max(0, Math.min(MAX_AGE_INPUT, Math.floor(whole))) + 0.5;
     daysLived = Math.floor(age * 365.25);
   }
 

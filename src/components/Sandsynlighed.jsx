@@ -5,6 +5,11 @@ import { survivalProbability } from '../utils/lifeTableDK';
 
 const TARGETS = [80, 90, 95, 100];
 
+// One decimal below 10 % so small tail probabilities (0,83 %) are not rounded
+// to 1 % or 0 %; whole percent otherwise.
+export const formatPct = (pct) =>
+  pct < 10 ? `${pct.toFixed(1).replace('.', ',')}%` : `${Math.round(pct)}%`;
+
 // "Chance for at nå…" — probability of reaching selected ages from the user's
 // current age, straight from the Danish survivors table (l_x). Population
 // baseline, independent of the lifestyle sliders (honest framing).
@@ -17,7 +22,7 @@ const Sandsynlighed = ({ resultData }) => {
 
   const rows = TARGETS.filter((t) => t > age).map((t) => ({
     age: t,
-    pct: Math.round(survivalProbability(age, t, gender) * 100),
+    pct: survivalProbability(age, t, gender) * 100,
   }));
   if (!rows.length) return null;
 
@@ -33,7 +38,7 @@ const Sandsynlighed = ({ resultData }) => {
           <div key={r.age} className="space-y-1">
             <div className="flex items-center justify-between text-sm">
               <span className="font-medium">{r.age} år</span>
-              <span className="font-semibold text-primary">{r.pct}%</span>
+              <span className="font-semibold text-primary">{formatPct(r.pct)}</span>
             </div>
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-secondary">
               <div

@@ -71,15 +71,23 @@ export function jointLifeStats(age1, g1, age2, g2, targets = [10, 20, 30]) {
     const p2 = survivalProbability(age2, age2 + t, g2);
     return { years: t, both: p1 * p2, either: 1 - (1 - p1) * (1 - p2) };
   });
-  // Integrate until the older person reaches the end of the survivors table (100).
-  // Beyond that survivalProbability is flat, so extending would overcount.
-  const lastStep = Math.floor(100 - Math.max(age1, age2));
+  // Integrate until the older person reaches the end of the survivors table (100),
+  // including the final partial year. Beyond that survivalProbability is flat, so
+  // extending would overcount.
+  const horizon = Math.max(0, 100 - Math.max(age1, age2));
   const both = (t) =>
     survivalProbability(age1, age1 + t, g1) * survivalProbability(age2, age2 + t, g2);
   let expectedTogether = 0;
-  if (lastStep >= 1) {
-    expectedTogether = 0.5 + 0.5 * both(lastStep);
-    for (let t = 1; t < lastStep; t++) expectedTogether += both(t);
+  if (horizon > 0) {
+    const lastStep = Math.floor(horizon);
+    let prev = 1;
+    for (let t = 1; t <= lastStep; t++) {
+      const cur = both(t);
+      expectedTogether += (prev + cur) / 2;
+      prev = cur;
+    }
+    const frac = horizon - lastStep;
+    if (frac > 0) expectedTogether += (frac * (prev + both(horizon))) / 2;
   }
   return { at, expectedTogether };
 }

@@ -1,20 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import { loadHistory } from '../utils/history';
+import { loadHistory, clearHistory } from '../utils/history';
 
 // "Din historik" — shows how the user's estimate has moved across past visits
 // (localStorage only). Hidden until there are at least two saved calculations.
 const Historik = ({ resultData }) => {
   const [history, setHistory] = useState([]);
+  const [confirming, setConfirming] = useState(false);
+  const [deleted, setDeleted] = useState(false);
 
   // Depend on endTimestamp (stable across countdown ticks, which only replace
   // `countdown`) so history is re-read on a genuinely new calculation, not every second.
   useEffect(() => {
     setHistory(loadHistory());
+    setConfirming(false);
+    setDeleted(false);
   }, [resultData?.endTimestamp]);
 
-  if (history.length < 2) return null;
+  const handleDelete = () => {
+    clearHistory();
+    setHistory([]);
+    setConfirming(false);
+    setDeleted(true);
+  };
+
+  // The live region stays mounted so the status is announced even though the
+  // card itself disappears once the history is gone.
+  const status = (
+    <p role="status" aria-live="polite" className={deleted ? 'text-center text-sm text-muted-foreground' : 'sr-only'}>
+      {deleted ? 'Historik slettet' : ''}
+    </p>
+  );
+
+  if (history.length < 2) return status;
 
   const first = history[0];
   const last = history[history.length - 1];
@@ -30,6 +49,7 @@ const Historik = ({ resultData }) => {
         : 'Dit estimat er stort set uændret';
 
   return (
+    <>
     <div className="card">
       <SectionHeader
         icon={LineChart}
@@ -49,8 +69,42 @@ const Historik = ({ resultData }) => {
           </div>
         ))}
         <p className="pt-1 text-center text-sm font-medium">{trend}</p>
+        <p className="text-center text-xs text-muted-foreground">
+          Historikken gemmes kun i denne browser og forlader aldrig din enhed. Du kan slette den her.
+        </p>
+        <div className="flex justify-center gap-2 pt-1">
+          {confirming ? (
+            <>
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="rounded-md border border-destructive px-3 py-1 text-sm font-medium text-destructive focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                Ja, slet historik
+              </button>
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setConfirming(false)}
+                className="rounded-md border border-border px-3 py-1 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                Annuller
+              </button>
+            </>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setConfirming(true)}
+              className="rounded-md border border-border px-3 py-1 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              Slet historik
+            </button>
+          )}
+        </div>
       </div>
     </div>
+    {status}
+    </>
   );
 };
 

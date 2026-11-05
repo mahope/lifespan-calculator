@@ -1,16 +1,18 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import ErrorBoundary from './components/ErrorBoundary'
+import { lazyWithReload } from './utils/lazyWithReload'
+import HomePage from './pages/HomePage'
 
-// Lazy load pages for better initial load time
-const HomePage = lazy(() => import('./pages/HomePage'))
-const HvorLangTidPage = lazy(() => import('./pages/HvorLangTidPage'))
-const DodsalderPage = lazy(() => import('./pages/DodsalderPage'))
-const LivsstilPage = lazy(() => import('./pages/LivsstilPage'))
-const DanmarkPage = lazy(() => import('./pages/DanmarkPage'))
-const EmbedPage = lazy(() => import('./pages/EmbedPage'))
-const EmbedInfoPage = lazy(() => import('./pages/EmbedInfoPage'))
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+// HomePage is the main landing route and is bundled eagerly; the rest are lazy.
+const HvorLangTidPage = lazyWithReload(() => import('./pages/HvorLangTidPage'))
+const DodsalderPage = lazyWithReload(() => import('./pages/DodsalderPage'))
+const LivsstilPage = lazyWithReload(() => import('./pages/LivsstilPage'))
+const DanmarkPage = lazyWithReload(() => import('./pages/DanmarkPage'))
+const PensionsalderPage = lazyWithReload(() => import('./pages/PensionsalderPage'))
+const EmbedPage = lazyWithReload(() => import('./pages/EmbedPage'))
+const EmbedInfoPage = lazyWithReload(() => import('./pages/EmbedInfoPage'))
+const NotFoundPage = lazyWithReload(() => import('./pages/NotFoundPage'))
 
 // Loading fallback
 const PageLoader = () => (
@@ -33,6 +35,7 @@ function App() {
             <Route path="/dodsalder-calculator" element={<DodsalderPage />} />
             <Route path="/livsstil-og-levetid" element={<LivsstilPage />} />
             <Route path="/levetid-beregner-danmark" element={<DanmarkPage />} />
+            <Route path="/pensionsalder" element={<PensionsalderPage />} />
             <Route path="/embed-levetidsberegner" element={<EmbedInfoPage />} />
             <Route path="/embed" element={<EmbedPage />} />
             <Route path="*" element={<NotFoundPage />} />

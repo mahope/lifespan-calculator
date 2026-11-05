@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+  LIFE_TABLE_DK,
   remainingLifeExpectancy,
   survivalProbability,
   biologicalAge,
@@ -39,9 +40,37 @@ describe('jointLifeStats', () => {
   });
 
   it('does not count beyond the table (no clamp overcount at the top age)', () => {
-    // At age 99 there is no future coverage → expected years together is ~0,
-    // not the ~70 the old fixed loop produced via clamping.
-    expect(jointLifeStats(99, 'male', 99, 'female').expectedTogether).toBe(0);
+    // At age 99 only the last table year remains (trapezoid over 99 -> 100):
+    // well under a year, not the ~70 the old fixed loop produced via clamping.
+    const t = jointLifeStats(99, 'male', 99, 'female').expectedTogether;
+    expect(t).toBeGreaterThan(0);
+    expect(t).toBeLessThan(1);
+    expect(jointLifeStats(100, 'male', 100, 'female').expectedTogether).toBe(0);
+  });
+
+  it('integrates the final partial year to the table end (mid-year ages)', () => {
+    const t = jointLifeStats(99.5, 'male', 99.5, 'female').expectedTogether;
+    expect(t).toBeGreaterThan(0);
+    expect(t).toBeLessThan(0.5);
+  });
+
+  // #91: the complete expectation (trapezoid, P(0) = 1) rather than the curtate
+  // sum, which is ~0.5 year low. Reference values from the data audit, F21.
+  it.each([
+    [40, 40, 36.76],
+    [70, 70, 11.79],
+  ])('expected years together for %iM + %iF is the trapezoid value %f', (a1, a2, expected) => {
+    const s = jointLifeStats(a1, 'male', a2, 'female').expectedTogether;
+    expect(Math.abs(s - expected)).toBeLessThan(0.02);
+  });
+
+  it('matches an independent trapezoid integration over the life tables', () => {
+    const l = LIFE_TABLE_DK.survivors;
+    const P = (t) => (l.male[40 + t] / l.male[40]) * (l.female[45 + t] / l.female[45]);
+    let sum = 0;
+    for (let t = 0; 45 + t < 100; t++) sum += (P(t) + P(t + 1)) / 2;
+    const got = jointLifeStats(40, 'male', 45, 'female').expectedTogether;
+    expect(Math.abs(got - sum)).toBeLessThan(0.02);
   });
 });
 
@@ -53,8 +82,8 @@ describe('projectedExpectancy', () => {
 
   it('adds a positive lifestyle adjustment', () => {
     const base = projectedExpectancy(40, 'male', {});
-    const better = projectedExpectancy(40, 'male', { exercise: 6 });
-    expect(better - base).toBeCloseTo(6, 5);
+    const better = projectedExpectancy(40, 'male', { exercise: 6 }); // answer 6 = intensive, +4.5 years
+    expect(better - base).toBeCloseTo(4.5, 5);
   });
 
   it('treats missing/empty factors the same as all-zero', () => {
@@ -88,7 +117,7 @@ describe('biologicalAge', () => {
 });
 
 describe('remainingLifeExpectancy (Danish e_x)', () => {
-  it('matches the DST 2024:2025 figures at key ages', () => {
+  it('matches the committed DST figures at key ages', () => {
     expect(remainingLifeExpectancy(0, 'male')).toBeCloseTo(80.25, 1);
     expect(remainingLifeExpectancy(0, 'female')).toBeCloseTo(83.9, 1);
     // A 70-year-old man has ~15 years left — NOT 78.9 - 70 = ~9.
@@ -143,5 +172,47 @@ describe('survivalProbability (Danish l_x)', () => {
       expect(p).toBeGreaterThanOrEqual(0);
       expect(p).toBeLessThanOrEqual(1);
     }
+  });
+});
+
+describe('l_100 and P(reach 100) (#91)', () => {
+  // DST HISB8 (LIFE_TABLE_META.period), q_99 = 41,188 (M) / 34,091 (F) per 100,000, so
+  // l_100 = l_99 * (1 - q_99): 1392 -> 819 (M), 4095 -> 2699 (F).
+  it('has 101 survivor entries per sex and 100 e_x entries', () => {
+    expect(LIFE_TABLE_DK.survivors.male).toHaveLength(101);
+    expect(LIFE_TABLE_DK.survivors.female).toHaveLength(101);
+    expect(LIFE_TABLE_DK.remaining.male).toHaveLength(100);
+    expect(LIFE_TABLE_DK.remaining.female).toHaveLength(100);
+  });
+
+  it('matches DST l_100 derived from q_99', () => {
+    expect(LIFE_TABLE_DK.survivors.male[100]).toBe(819);
+    expect(LIFE_TABLE_DK.survivors.female[100]).toBe(2699);
+    expect(Math.round(1392 * (1 - 0.41188))).toBe(819);
+    expect(Math.round(4095 * (1 - 0.34091))).toBe(2699);
+  });
+
+  it('P(100) < P(99) for every age and sex', () => {
+    for (const g of ['male', 'female']) {
+      for (let a = 0; a < 99; a++) {
+        expect(survivalProbability(a, 100, g)).toBeLessThan(survivalProbability(a, 99, g));
+      }
+    }
+  });
+
+  it('gives the audited P(100): female 60 -> 2.8 %, male 40 -> 0.83 %', () => {
+    expect(survivalProbability(60, 100, 'female') * 100).toBeCloseTo(2.82, 1);
+    expect(survivalProbability(40, 100, 'male') * 100).toBeCloseTo(0.83, 2);
+  });
+
+  it('never returns 100 % above 99 unless the target is not above the age', () => {
+    expect(survivalProbability(99.5, 100, 'male')).toBeLessThan(1);
+    expect(survivalProbability(99, 100, 'female')).toBeCloseTo(0.659, 2);
+    expect(survivalProbability(100, 100, 'male')).toBe(1);
+  });
+
+  it('keeps e_x clamped at e_99 above 99 (tail rule)', () => {
+    expect(remainingLifeExpectancy(105, 'male')).toBe(LIFE_TABLE_DK.remaining.male[99]);
+    expect(remainingLifeExpectancy(99.5, 'female')).toBe(LIFE_TABLE_DK.remaining.female[99]);
   });
 });

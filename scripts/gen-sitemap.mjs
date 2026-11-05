@@ -1,6 +1,6 @@
 // Generates public/sitemap.xml from the single ROUTES list below.
 // Run automatically via `prebuild`. A test keeps ROUTES in sync with
-// src/App.jsx and with the rewrites in public/serve.json.
+// src/App.jsx and with ROUTE_META in src/routes.meta.js.
 import { writeFileSync } from 'node:fs'
 import process from 'node:process'
 import { URL, fileURLToPath } from 'node:url'
@@ -13,11 +13,14 @@ export const ROUTES = [
   '/dodsalder-calculator',
   '/levetid-beregner-danmark',
   '/livsstil-og-levetid',
+  '/pensionsalder',
   '/embed-levetidsberegner',
+  '/embed',
 ]
 
-// Routes served by the app but kept out of the sitemap (noindex).
+// Served by the app (and prerendered) but kept out of the sitemap: the iframe widget is noindex.
 export const NOINDEX_ROUTES = ['/embed']
+export const SITEMAP_ROUTES = ROUTES.filter((r) => !NOINDEX_ROUTES.includes(r))
 
 export function buildSitemap(routes) {
   const urls = routes.map((r) => `  <url>\n    <loc>${SITE_URL}${r}</loc>\n  </url>`).join('\n')
@@ -26,6 +29,6 @@ export function buildSitemap(routes) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const out = new URL('../public/sitemap.xml', import.meta.url)
-  writeFileSync(out, buildSitemap(ROUTES))
-  process.stdout.write(`sitemap: wrote ${ROUTES.length} routes to public/sitemap.xml` + '\n')
+  writeFileSync(out, buildSitemap(SITEMAP_ROUTES))
+  process.stdout.write(`sitemap: wrote ${SITEMAP_ROUTES.length} routes to public/sitemap.xml` + '\n')
 }

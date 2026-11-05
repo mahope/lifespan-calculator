@@ -5,12 +5,12 @@ import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import { EMBED_HEIGHT_MESSAGE } from './EmbedPage';
+import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 
 export const EMBED_CODE =
   '<iframe src="https://levetidsberegner.dk/embed" width="100%" height="360" loading="lazy" title="Levetidsberegner" style="border:0"></iframe>';
 
-const ATTRIBUTION_HTML =
-  '<p>Levetidsberegner af <a href="https://levetidsberegner.dk/">levetidsberegner.dk</a>. Kilde: Danmarks Statistik 2024-2025.</p>';
+const ATTRIBUTION_HTML = `<p>Levetidsberegner af <a href="https://levetidsberegner.dk/">levetidsberegner.dk</a>. Kilde: Danmarks Statistik (${LIFE_TABLE_META.period}).</p>`;
 
 const RESIZE_SNIPPET = `<script>
 window.addEventListener('message', function (e) {
@@ -52,16 +52,7 @@ const EmbedInfoPage = () => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Indlej levetidsberegneren på din hjemmeside - gratis widget"
-        description="Gratis, lille levetidsberegner til din hjemmeside. Kopiér én linje HTML, og dine besøgende kan se forventet restlevetid. Alt beregnes i browseren, og der gemmes ingen data."
-        keywords="indlejr levetidsberegner, embed levetidsberegner, widget forventet levetid, iframe levetid"
-        canonicalUrl="/embed-levetidsberegner"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Indlej levetidsberegneren', url: '/embed-levetidsberegner' },
-        ]}
-      />
+      <SEOHead route="/embed-levetidsberegner" />
 
       <PageHeader
         icon={Code2}

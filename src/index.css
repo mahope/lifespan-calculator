@@ -1,11 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap')
-layer(base);
 @import 'tailwindcss';
+
+/* Self-hosted Inter (SIL OFL, see public/fonts/Inter-LICENSE.txt). Latin subset covers æ, ø, å. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Metric-matched fallback so the swap to Inter causes no layout shift. */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107.12%;
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+  --font-sans: Inter, 'Inter Fallback', system-ui, -apple-system, sans-serif;
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -172,7 +192,7 @@ layer(base);
   }
 
   &.active .text-muted-foreground {
-    @apply text-primary-foreground/80;
+    @apply text-primary-foreground;
   }
 }
 
@@ -182,7 +202,7 @@ layer(base);
   }
 
   &.mode-btn .text-muted-foreground {
-    @apply text-primary-foreground/80;
+    @apply text-primary-foreground;
   }
 
   &.gender-btn {
@@ -196,7 +216,7 @@ layer(base);
 
 @utility text-muted-foreground {
   .mode-btn.active & {
-    @apply text-primary-foreground/80;
+    @apply text-primary-foreground;
   }
 }
 
@@ -223,7 +243,7 @@ layer(base);
     @apply bg-primary text-primary-foreground border-primary shadow-xs;
   }
   @media (max-width: 640px) {
-    @apply px-2.5 py-3 text-xs flex-1 text-center;
+    @apply px-2.5 py-3 text-xs flex-auto text-center break-words; /* keep min-w-[44px]: rows wrap instead of shrinking to 45 px */
   }
 }
 
@@ -273,7 +293,7 @@ layer(base);
 }
 
 @utility lifestyle-grid {
-  @apply grid grid-cols-1 gap-6;
+  @apply grid grid-cols-[minmax(0,1fr)] gap-6;
 
   /* Lifestyle factor item styling */
   & > div {
@@ -333,10 +353,10 @@ layer(base);
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 16% 40%;
     --accent: 210 40% 96.1%;
     --accent-foreground: 222 47% 11%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 42%;
     --destructive-foreground: 0 0% 98%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
@@ -355,7 +375,7 @@ layer(base);
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
+    --primary: 217 91% 64%;
     --primary-foreground: 222 47% 11%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
@@ -363,8 +383,8 @@ layer(base);
     --muted-foreground: 215 20% 65%;
     --accent: 217 33% 17%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 91% 70%;
+    --destructive-foreground: 222 47% 11%;
     --border: 217 33% 17%;
     --input: 217 33% 17%;
     --ring: 224 76% 48%;
@@ -380,7 +400,7 @@ layer(base);
 
   body {
     @apply bg-background min-h-screen;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
     color: hsl(var(--foreground));
     transition: background-color 0.3s ease, color 0.3s ease;
   }
@@ -411,13 +431,7 @@ layer(base);
   }
 }
 
-/* /embed (iframe widget): hide the static footer, cookie banner and SEO copy that
-   index.html carries outside the React root; optional transparent background. */
-html.embed body > footer,
-html.embed #cookie-consent-banner,
-html.embed [data-seo-explainer] {
-  display: none !important;
-}
+/* /embed (iframe widget): optional transparent background (?bg=transparent). */
 html[data-embed-bg='transparent'],
 html[data-embed-bg='transparent'] body,
 html[data-embed-bg='transparent'] #root > div {

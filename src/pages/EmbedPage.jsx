@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEOHead from '../components/SEOHead';
 import { computeEmbedResult, EMBED_MAX_AGE } from '../utils/embedResult';
+import { formatYears } from '../utils/lifespanMath';
+import { LIFE_TABLE_META } from '../utils/lifeTableDK';
+import { track } from '../utils/analytics';
 
 export const EMBED_HEIGHT_MESSAGE = 'levetidsberegner:height';
-
-const fmt = (n) =>
-  n.toLocaleString('da-DK', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 // Tell the embedding page how tall the content is. Carries the pixel height only,
 // never any input or result. Harmless if the parent does not listen.
@@ -50,16 +50,13 @@ const EmbedPage = () => {
     setError('');
     setResult(r);
     // No props: nothing the visitor typed or got back leaves the iframe.
-    if (window.plausible) window.plausible('Embed Calculate');
+    track('Embed Calculate');
   };
 
   return (
     <div ref={rootRef}>
       <main className="mx-auto w-full max-w-md p-3 text-foreground">
-        <Helmet>
-          <title>Levetidsberegner (indlejret)</title>
-          <meta name="robots" content="noindex" />
-        </Helmet>
+        <SEOHead route="/embed" />
 
         <h1 className="sr-only">Levetidsberegner</h1>
         <form
@@ -128,17 +125,17 @@ const EmbedPage = () => {
             <dl className="grid grid-cols-2 gap-3 rounded-lg border bg-card p-3 text-card-foreground">
               <div>
                 <dt className="text-xs text-muted-foreground">Forventede år tilbage</dt>
-                <dd className="text-2xl font-bold text-primary">{fmt(result.remainingYears)}</dd>
+                <dd className="text-2xl font-bold text-primary">{formatYears(result.remainingYears)}</dd>
               </div>
               <div>
                 <dt className="text-xs text-muted-foreground">Forventet dødsalder</dt>
-                <dd className="text-2xl font-bold text-primary">{fmt(result.ageAtDeath)}</dd>
+                <dd className="text-2xl font-bold text-primary">{formatYears(result.ageAtDeath)}</dd>
               </div>
             </dl>
           )}
         </div>
 
-        <p className="mt-3 text-xs text-muted-foreground">Kilde: Danmarks Statistik 2024-2025</p>
+        <p className="mt-3 text-xs text-muted-foreground">Kilde: Danmarks Statistik ({LIFE_TABLE_META.period})</p>
         <p className="mt-1 text-sm">
           <a
             href="https://levetidsberegner.dk/?utm_source=embed&utm_medium=widget"

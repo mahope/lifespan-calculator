@@ -1,7 +1,8 @@
 import React from 'react';
 import { Dices } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import { survivalProbability } from '../utils/lifeTableDK';
+import { survivalProbability, LIFE_TABLE_META } from '../utils/lifeTableDK';
+import { formatPct } from '../utils/formatPct';
 
 const TARGETS = [80, 90, 95, 100];
 
@@ -17,7 +18,7 @@ const Sandsynlighed = ({ resultData }) => {
 
   const rows = TARGETS.filter((t) => t > age).map((t) => ({
     age: t,
-    pct: Math.round(survivalProbability(age, t, gender) * 100),
+    pct: survivalProbability(age, t, gender) * 100,
   }));
   if (!rows.length) return null;
 
@@ -33,7 +34,7 @@ const Sandsynlighed = ({ resultData }) => {
           <div key={r.age} className="space-y-1">
             <div className="flex items-center justify-between text-sm">
               <span className="font-medium">{r.age} år</span>
-              <span className="font-semibold text-primary">{r.pct}%</span>
+              <span className="font-semibold text-primary">{formatPct(r.pct)}</span>
             </div>
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-secondary">
               <div
@@ -44,7 +45,7 @@ const Sandsynlighed = ({ resultData }) => {
           </div>
         ))}
         <p className="text-center text-xs text-muted-foreground">
-          Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) — en
+          Baseret på danske dødelighedstavler (Danmarks Statistik, {LIFE_TABLE_META.period}) — en
           befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg.
         </p>
       </div>

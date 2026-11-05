@@ -1,23 +1,21 @@
 # 🕰️ Levetidsberegner (Lifespan Calculator)
 
-En webbaseret applikation der beregner din forventede resterende levetid baseret på din alder, køn og geografiske placering.
+En webbaseret applikation der beregner din forventede resterende levetid baseret på din alder og dit køn, med danske levetidstabeller.
 
 ## 📋 Funktioner
 
-- **Automatisk lokationsdetektering**: Bruger din browsers geolocation API til at finde din placering
-- **Præcise beregninger**: Baseret på WHO og nationale statistikker for forskellige lande
+- **Beregning i browseren**: Dine input forlader aldrig din enhed og sendes ikke til analytics
+- **Danske tal**: Baseret på Danmarks Statistik (HISB8, dødelighedstavlen for den nyeste periode)
 - **Responsive design**: Fungerer på både desktop og mobile enheder
 - **Intuitivt interface**: Moderne og brugervenligt design
 - **Detaljerede resultater**: Viser resterende år, forventet levetid og estimeret slutdato
 - **Kontekstuelle beskeder**: Forskellige beskeder baseret på resultaterne
-- **Fallback til verdensgennemsnit**: Hvis lokation ikke kan bestemmes
 
 ## 🚀 Sådan bruges applikationen
 
 1. **Indtast din alder**: Angiv din nuværende alder i år
 2. **Vælg dit køn**: Vælg mellem mand og kvinde
-3. **Find din lokation**: Klik på "Find min lokation automatisk" for at tillade browser adgang til din placering
-4. **Beregn resultat**: Klik på "Beregn min resterende levetid" for at se resultatet
+3. **Beregn resultat**: Klik på "Beregn min resterende levetid" for at se resultatet
 
 ## 🛠️ Teknisk implementation
 
@@ -28,29 +26,21 @@ En webbaseret applikation der beregner din forventede resterende levetid baseret
 - **Responsive design**: Mobile-first tilgang
 
 ### APIs og data
-- **Geolocation API**: Browser-baseret positionsbestemmelse
-- **OpenStreetMap Nominatim API**: Gratis reverse geocoding
-- **Statiske levetidsdata**: Baseret på WHO og nationale statistikker
+- **Ingen eksterne API'er til beregningen**: Alt kører i browseren
+- **Statiske levetidsdata**: Danmarks Statistik (HISB8) samt landetabeller til sammenligning
 
 ### Databaser
-Applikationen bruger følgende levetidsdata (år 2024):
+Landetabellen i `src/utils/lifeExpectancyData.js` (blokken mellem `BEGIN/END GENERATED COUNTRY TABLE`) genereres af `scripts/refresh-data.mjs` (`node scripts/refresh-data.mjs countries`; se `docs/data-refresh.md`). Scriptet henter levetid ved fødslen fra Eurostat `demo_mlexpec` (Sverige, Norge, Finland) og Verdensbanken `SP.DYN.LE00.MA.IN` / `.FE.IN` / `.IN` (Japan og verdensgennemsnit), og bruger nyeste tilgængelige år. Resultatet afhænger derfor af de live API'er. Danmark udledes af Danmarks Statistik-tabellen (HISB8) i `lifeTableDK`.
 
-| Land | Mænd | Kvinder |
-|------|------|---------|
-| Danmark | 78.9 | 82.7 |
-| Sverige | 80.8 | 84.3 |
-| Norge | 80.5 | 84.2 |
-| Tyskland | 78.6 | 83.4 |
-| Storbritannien | 79.4 | 83.1 |
-| USA | 76.3 | 81.4 |
-| Frankrig | 79.7 | 85.6 |
-| Holland | 80.2 | 83.9 |
-| Finland | 78.7 | 84.5 |
-| Island | 81.3 | 84.1 |
-| Schweiz | 81.9 | 85.6 |
-| Japan | 81.6 | 87.7 |
+| Land | Mænd | Kvinder | Samlet | Kilde |
+|------|------|---------|--------|-------|
+| Sverige | 82.3 | 85.3 | 83.8 | Eurostat 2024 |
+| Norge | 81.6 | 84.8 | 83.2 | Eurostat 2024 |
+| Finland | 79.6 | 84.8 | 82.2 | Eurostat 2024 |
+| Japan | 81.1 | 87.1 | 84.0 | Verdensbanken 2024 |
+| Verdensgennemsnit | 71.1 | 76.0 | 73.5 | Verdensbanken 2024 |
 
-*Verdensgennemsnit: 72.6 år (mænd), 77.1 år (kvinder)*
+Ukendte lande bruger verdensgennemsnittet.
 
 ## 📁 Projektstruktur
 
@@ -67,7 +57,6 @@ lifespan-calculator/
 ### Lokalt udvikling
 1. Klon eller download projektet
 2. Åbn `index.html` i en moderne webbrowser
-3. Tilladbrowser adgang til geolokation når du bliver spurgt
 
 ### Webserver
 Projektet kan hostes på enhver webserver der kan servere statiske filer:
@@ -76,13 +65,17 @@ Projektet kan hostes på enhver webserver der kan servere statiske filer:
 - Vercel
 - Apache/Nginx
 
-### HTTPS krav
-**Vigtigt**: Geolocation API kræver HTTPS i produktion. Sørg for at have SSL-certifikat på din webserver.
+## 🧩 Indlejring
+
+Siden `/embed-levetidsberegner` har en kopiérbar iframe-kode til en lille udgave af
+beregneren (`/embed`, med `?theme=dark` og `?bg=transparent`). Widgetten regner i den besøgendes
+browser, sender kun sin højde (`postMessage`, ingen input) til værtssiden og viser et link til
+levetidsberegner.dk. Kildeperioden hentes fra `LIFE_TABLE_META.period`.
 
 ## 🔒 Privatlivspolitik
 
 - **Ingen data gemmes**: Alle beregninger sker lokalt i browseren
-- **Geolokation**: Kun brugt til at bestemme land - koordinater gemmes ikke
+- **Ingen lokation**: Appen beder ikke om din placering
 - **Ingen cookies**: Applikationen bruger ingen cookies eller tracking
 - **Ingen eksterne scripts**: Alt kode er selvstændig og transparent
 
@@ -91,7 +84,7 @@ Projektet kan hostes på enhver webserver der kan servere statiske filer:
 - **Kun statistiske estimater**: Resultaterne er baseret på gennemsnitsdata
 - **Mange faktorer ignoreres**: Livsstil, genetik, sundhedspleje, mv. påvirker levetiden
 - **Teknologiske fremskridt**: Fremtidens medicinske gennembrud kan forlænge levetiden
-- **Browserkompatibilitet**: Kræver moderne browser med geolocation support
+- **Browserkompatibilitet**: Kræver moderne browser
 
 ## 🎯 Fremtidige forbedringer
 

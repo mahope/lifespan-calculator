@@ -16,33 +16,26 @@ import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 import { Link } from 'react-router-dom';
 
 const DodsalderPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Dødsalder Calculator - Beregn din forventede dødsalder"
-        description="Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder."
-        keywords="dødsalder calculator, dødsalder beregner, forventet dødsalder, levetid, statistisk dødsalder, hvornår dør jeg"
-        ogTitle="Dødsalder Calculator - Hvornår dør jeg statistisk?"
-        ogDescription="Få et statistisk estimat af din dødsalder baseret på demografiske data og livsstilsfaktorer"
-        canonicalUrl="/dodsalder-calculator"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Dødsalder Calculator', url: '/dodsalder-calculator' },
-        ]}
-      />
+      <SEOHead route="/dodsalder-calculator" />
 
       <PageHeader
         icon={Skull}
-        title="Dødsalder Calculator"
+        title="Forventet dødsalder"
         subtitle="Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer"
       />
 
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
           <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
+            <AnswerFirst text={answerFirst.dodsalder()} linkText="Beregn din forventede dødsalder i levetidsberegneren" />
+
             <div className="card animate-slideUp">
               <div className="card-content space-y-6">
                 <h2 className="text-xl sm:text-2xl font-bold">Hvad er en dødsalder calculator?</h2>
@@ -61,7 +54,7 @@ const DodsalderPage = () => {
                     <div>
                       <h4 className="font-medium text-foreground">Demografiske data</h4>
                       <p className="text-sm text-muted-foreground">
-                        Vi bruger officielle statistikker fra WHO og nationale sundhedsmyndigheder for dit land, køn og alder.
+                        Vi bruger Danmarks Statistiks dødelighedstavler for dit køn og din alder.
                       </p>
                     </div>
                   </div>
@@ -123,7 +116,7 @@ const DodsalderPage = () => {
                     </ul>
                   </div>
                   <div className="space-y-4">
-                    <h4 className="font-medium text-green-600 dark:text-green-400 flex items-center gap-2">
+                    <h4 className="font-medium text-green-700 dark:text-green-400 flex items-center gap-2">
                       <Dumbbell className="h-5 w-5 shrink-0" aria-hidden="true" /> Faktorer der forlænger livet:
                     </h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
@@ -169,7 +162,7 @@ const DodsalderPage = () => {
 
             <div className="text-center">
               <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
-                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din dødsalder nu
+                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din forventede dødsalder
               </Link>
             </div>
           </div>

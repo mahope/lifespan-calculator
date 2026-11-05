@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   Hourglass,
-  MapPin,
   Zap,
   SlidersHorizontal,
   Hash,
@@ -18,6 +17,7 @@ import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import ShareModal from '../components/ShareModal';
+import Countdown from '../components/Countdown';
 import PromoBanner from '../components/PromoBanner';
 import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import TidTilbage from '../components/TidTilbage';
@@ -27,27 +27,29 @@ import Pension from '../components/Pension';
 import Sandsynlighed from '../components/Sandsynlighed';
 import KropsAlder from '../components/KropsAlder';
 import Coaching from '../components/Coaching';
+import LifestyleFactor from '../components/LifestyleFactor';
 import Historik from '../components/Historik';
 import HvadHvis from '../components/HvadHvis';
 import ParMode from '../components/ParMode';
 import Forsikringsbehov from '../components/Forsikringsbehov';
+import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
-import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
-import { buildShareParams, parseLifestyle } from '../utils/shareState';
-import { boundLifestyleAdjustment } from '../utils/lifespanMath';
+import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
+import { parseShareParams } from '../utils/shareState';
+import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
+import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
+import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
+import { track, trackCalculate } from '../utils/analytics';
 
 const HomePage = () => {
   const {
-    userLocation,
     resultData,
     currentMode,
     lifestyleFactors,
     setCurrentMode,
-    getUserLocation,
     calculateLifespan,
     updateLifestyleFactor,
     applyLifestyleFactors,
-    startCountdown,
     setResultData
   } = useLifespanCalculator();
 
@@ -90,38 +92,34 @@ const HomePage = () => {
         ? calculateLifespan(formData.birthdate, formData.gender)
         : calculateLifespan(parseInt(formData.age), formData.gender);
     setShowResults(true);
-    startCountdown();
-    // Persist to local history (captures the returned result, so the per-second
-    // countdown updates don't trigger saves).
+    // Persist to local history (captures the returned result).
     if (result) {
+      track('Result Shown', { mode: currentMode });
       saveEntry({
         ts: Date.now(),
-        age: Math.round(parseFloat(result.age)),
+        age: Math.floor(parseFloat(result.age)),
         gender: result.gender,
         expected: result.adjustedLifeExpectancy,
       });
     }
-  }, [formData, calculateLifespan, startCountdown]);
+  }, [formData, calculateLifespan, currentMode]);
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
-    const g = searchParams.get('g');
-    const a = searchParams.get('a');
-    const bd = searchParams.get('b');
-    if (!g || (!a && !bd)) return;
+    const parsed = parseShareParams(searchParams);
+    if (!parsed) return;
 
-    const mode = searchParams.get('m') === 'advanced' ? 'advanced' : 'simple';
-    setCurrentMode(mode);
-    if (bd) {
-      setFormData({ age: '', gender: g, birthdate: bd, useBirthdate: true });
-    } else {
-      setFormData({ age: a, gender: g, birthdate: '', useBirthdate: false });
-    }
-    if (mode === 'advanced') {
-      const parsed = parseLifestyle(searchParams.get('lf'), LIFESTYLE_KEYS);
-      if (parsed) applyLifestyleFactors(parsed);
-    }
+    setCurrentMode(parsed.mode);
+    setFormData({
+      age: parsed.useBirthdate ? '' : String(parsed.age),
+      gender: parsed.gender,
+      birthdate: parsed.birthdate,
+      useBirthdate: parsed.useBirthdate,
+    });
+    if (parsed.lifestyle) applyLifestyleFactors(parsed.lifestyle);
     setAutoSubmit(true);
+    // Drop the share params so a reload doesn't re-hydrate stale input.
+    setSearchParams({}, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -133,6 +131,8 @@ const HomePage = () => {
     runCalculation();
     setAutoSubmit(false);
   }, [autoSubmit, formData, runCalculation]);
+
+  const ageTooHigh = !formData.useBirthdate && Number(formData.age) > MAX_AGE_INPUT;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -162,56 +162,29 @@ const HomePage = () => {
 
     runCalculation();
 
-    // Reflect the inputs in the URL so the result is shareable / reloadable.
-    setSearchParams(
-      buildShareParams({
-        gender: formData.gender,
-        age: formData.age,
-        birthdate: formData.birthdate,
-        useBirthdate: formData.useBirthdate,
-        mode: currentMode,
-        lifestyle: lifestyleFactors,
-        keys: LIFESTYLE_KEYS,
-      })
-    );
-
     // Track analytics
-    if (window.plausible) {
-      window.plausible('Calculate Lifespan', {
-        props: {
-          age: formData.useBirthdate ? 'birthdate' : formData.age,
-          gender: formData.gender,
-          location: userLocation || 'Unknown',
-          usedBirthdate: formData.useBirthdate
-        }
-      });
-    }
+    trackCalculate();
   };
 
   const resetCalculation = () => {
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
-    setSearchParams({});
+    setSearchParams({}, { replace: true });
   };
 
   const shareResults = () => {
     setIsShareModalOpen(true);
+    track('Share Opened');
   };
 
   // Bounded to match what the calculation actually applies (see #6).
-  const rawLifestyleTotal = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
-  const lifestyleTotal = Math.round(boundLifestyleAdjustment(rawLifestyleTotal));
+  const rawLifestyleTotal = sumLifestyleFactors(lifestyleFactors);
+  const lifestyleTotal = roundedLifestyleAdjustment(rawLifestyleTotal);
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Levetidsberegner - Beregn din resterende levetid baseret på statistik"
-        description="Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
-        keywords="levetidsberegner, resterende levetid, statistik, dødsalderen, levetid beregner, hvor længe lever jeg, lifespan calculator dansk"
-        ogTitle="Levetidsberegner - Hvor lang tid har du tilbage?"
-        ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
-      />
+      <SEOHead route="/" />
 
       <PageHeader
         icon={Hourglass}
@@ -320,14 +293,24 @@ const HomePage = () => {
                             id="age"
                             name="age"
                             min="0"
-                            max="120"
+                            max={MAX_AGE_INPUT}
                             required={!formData.useBirthdate}
                             className="input flex-1"
                             value={formData.age}
                             onChange={handleInputChange}
+                            aria-describedby="age-hint"
+                            aria-invalid={ageTooHigh || undefined}
                           />
                           <span className="text-sm text-muted-foreground">år</span>
                         </div>
+                        <p id="age-hint" className="text-xs text-muted-foreground">
+                          Alder angivet i hele år, regnet som midt i året.
+                        </p>
+                        {ageTooHigh && (
+                          <p role="alert" className="text-xs text-red-600 dark:text-red-400">
+                            Indtast en alder mellem 0 og {MAX_AGE_INPUT} år.
+                          </p>
+                        )}
                       </div>
                     ) : (
                       <div className="space-y-2">
@@ -337,7 +320,7 @@ const HomePage = () => {
                           id="birthdate"
                           name="birthdate"
                           required={formData.useBirthdate}
-                          max={new Date().toISOString().split('T')[0]}
+                          max={toLocalISODate()}
                           min="1900-01-01"
                           className="input w-full"
                           value={formData.birthdate}
@@ -374,26 +357,6 @@ const HomePage = () => {
                       </div>
                     </div>
 
-                    {/* Location */}
-                    {userLocation ? (
-                      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <MapPin className="h-3.5 w-3.5" /> {userLocation}
-                      </p>
-                    ) : (
-                      <div className="space-y-2">
-                        <p className="text-sm text-muted-foreground">
-                          Beregningen bruger danske gennemsnit. Vil du bruge din faktiske placering?
-                        </p>
-                        <button
-                          type="button"
-                          onClick={getUserLocation}
-                          className="btn btn-outline w-full gap-2"
-                        >
-                          <MapPin className="h-4 w-4" /> Brug min placering
-                        </button>
-                      </div>
-                    )}
-
                     {/* Lifestyle Factors (Advanced Mode) */}
                     {currentMode === 'advanced' && (
                       <div className="space-y-6">
@@ -407,672 +370,21 @@ const HomePage = () => {
                         </div>
 
                         <div className="lifestyle-grid">
-                          {/* Smoking */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🚭</span>
-                                <label className="font-medium">Rygning</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.smoking > 0 ? `+${lifestyleFactors.smoking}` : lifestyleFactors.smoking} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.smoking === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('smoking', 0)}
-                              >
-                                Ryger ikke
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.smoking === -5 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('smoking', -5)}
-                              >
-                                Let (1-10/dag)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.smoking === -10 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('smoking', -10)}
-                              >
-                                Kraftig (10+/dag)
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Exercise */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🏃‍♂️</span>
-                                <label className="font-medium">Motion</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.exercise > 0 ? `+${lifestyleFactors.exercise}` : lifestyleFactors.exercise} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.exercise === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('exercise', 0)}
-                              >
-                                Ingen
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.exercise === 2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('exercise', 2)}
-                              >
-                                Let (1-3 t/uge)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.exercise === 4 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('exercise', 4)}
-                              >
-                                Moderat (4-6 t/uge)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.exercise === 6 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('exercise', 6)}
-                              >
-                                Intensiv (7+ t/uge)
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Diet */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🍎</span>
-                                <label className="font-medium">Kost</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.diet > 0 ? `+${lifestyleFactors.diet}` : lifestyleFactors.diet} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.diet === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('diet', -2)}
-                              >
-                                Usund
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.diet === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('diet', 0)}
-                              >
-                                Gennemsnitlig
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.diet === 3 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('diet', 3)}
-                              >
-                                Sund
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.diet === 5 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('diet', 5)}
-                              >
-                                Meget sund
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Alcohol */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🍷</span>
-                                <label className="font-medium">Alkohol</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.alcohol > 0 ? `+${lifestyleFactors.alcohol}` : lifestyleFactors.alcohol} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.alcohol === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('alcohol', 0)}
-                              >
-                                Ingen
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.alcohol === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('alcohol', -1)}
-                              >
-                                Let (1-7/uge)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.alcohol === -3 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('alcohol', -3)}
-                              >
-                                Moderat (8-14/uge)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.alcohol === -6 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('alcohol', -6)}
-                              >
-                                Kraftig (15+/uge)
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Sleep */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">😴</span>
-                                <label className="font-medium">Søvn</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.sleep > 0 ? `+${lifestyleFactors.sleep}` : lifestyleFactors.sleep} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.sleep === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('sleep', -2)}
-                              >
-                                &lt;5 timer
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.sleep === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('sleep', -1)}
-                              >
-                                5-6 timer
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.sleep === 2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('sleep', 2)}
-                              >
-                                7-8 timer
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.sleep === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('sleep', 0)}
-                              >
-                                9+ timer
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Stress */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">😰</span>
-                                <label className="font-medium">Stress</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.stress > 0 ? `+${lifestyleFactors.stress}` : lifestyleFactors.stress} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.stress === 2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('stress', 2)}
-                              >
-                                Lavt
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.stress === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('stress', 0)}
-                              >
-                                Moderat
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.stress === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('stress', -2)}
-                              >
-                                Højt
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.stress === -4 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('stress', -4)}
-                              >
-                                Meget højt
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Health */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🏥</span>
-                                <label className="font-medium">Sundhedstilstand</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.health > 0 ? `+${lifestyleFactors.health}` : lifestyleFactors.health} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.health === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('health', 0)}
-                              >
-                                Ingen sygdomme
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.health === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('health', -2)}
-                              >
-                                1 kronisk sygdom
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.health === -5 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('health', -5)}
-                              >
-                                2+ sygdomme
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* BMI */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">⚖️</span>
-                                <label className="font-medium">BMI/Vægt</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.bmi > 0 ? `+${lifestyleFactors.bmi}` : lifestyleFactors.bmi} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.bmi === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('bmi', -2)}
-                              >
-                                Undervægtig (&lt;18.5)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.bmi === 2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('bmi', 2)}
-                              >
-                                Normal (18.5-24.9)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.bmi === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('bmi', -1)}
-                              >
-                                Overvægtig (25-29.9)
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.bmi === -4 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('bmi', -4)}
-                              >
-                                Svært overvægtig (30+)
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Social */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">👨‍👩‍👧‍👦</span>
-                                <label className="font-medium">Social aktivitet</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.social > 0 ? `+${lifestyleFactors.social}` : lifestyleFactors.social} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.social === 4 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('social', 4)}
-                              >
-                                Stærkt netværk
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.social === 2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('social', 2)}
-                              >
-                                Moderat netværk
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.social === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('social', -1)}
-                              >
-                                Begrænset
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.social === -3 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('social', -3)}
-                              >
-                                Isoleret
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Mental Health */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🧠</span>
-                                <label className="font-medium">Mental sundhed</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.mental > 0 ? `+${lifestyleFactors.mental}` : lifestyleFactors.mental} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.mental === 2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('mental', 2)}
-                              >
-                                Meget god
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.mental === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('mental', 0)}
-                              >
-                                God
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.mental === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('mental', -2)}
-                              >
-                                Depression/angst
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.mental === -3 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('mental', -3)}
-                              >
-                                Alvorlige problemer
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Work Environment */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">💼</span>
-                                <label className="font-medium">Arbejdsmiljø</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.work > 0 ? `+${lifestyleFactors.work}` : lifestyleFactors.work} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.work === 1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('work', 1)}
-                              >
-                                Fleksibelt/balanceret
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.work === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('work', 0)}
-                              >
-                                Kontorarbejde
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.work === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('work', -1)}
-                              >
-                                Fysisk krævende
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.work === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('work', -2)}
-                              >
-                                Farligt arbejde
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Environment */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🌍</span>
-                                <label className="font-medium">Boligområde</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.environment > 0 ? `+${lifestyleFactors.environment}` : lifestyleFactors.environment} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.environment === 1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('environment', 1)}
-                              >
-                                Landdistrikter
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.environment === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('environment', -1)}
-                              >
-                                Forstad
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.environment === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('environment', -2)}
-                              >
-                                By m/ forurening
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Education */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🎓</span>
-                                <label className="font-medium">Uddannelse</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.education > 0 ? `+${lifestyleFactors.education}` : lifestyleFactors.education} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.education === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('education', -1)}
-                              >
-                                Grundskole
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.education === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('education', 0)}
-                              >
-                                Gymnasium
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.education === 1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('education', 1)}
-                              >
-                                Bachelor
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.education === 3 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('education', 3)}
-                              >
-                                Master/PhD
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Income */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">💰</span>
-                                <label className="font-medium">Indkomst</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.income > 0 ? `+${lifestyleFactors.income}` : lifestyleFactors.income} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.income === 2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('income', 2)}
-                              >
-                                Høj
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.income === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('income', 0)}
-                              >
-                                Mellem
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.income === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('income', -2)}
-                              >
-                                Lav
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.income === -3 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('income', -3)}
-                              >
-                                Fattigdom
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Commute */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">🚗</span>
-                                <label className="font-medium">Transport</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.commute > 0 ? `+${lifestyleFactors.commute}` : lifestyleFactors.commute} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.commute === 1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('commute', 1)}
-                              >
-                                Cykling/gåtur
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.commute === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('commute', 0)}
-                              >
-                                Offentlig/bil &lt;30 min
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.commute === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('commute', -1)}
-                              >
-                                Lang pendling 1h+
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* Screen Time */}
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl">📱</span>
-                                <label className="font-medium">Skærmtid (fritid)</label>
-                              </div>
-                              <span className="text-sm font-medium">
-                                {lifestyleFactors.screentime > 0 ? `+${lifestyleFactors.screentime}` : lifestyleFactors.screentime} år
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.screentime === 1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('screentime', 1)}
-                              >
-                                &lt;2 timer
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.screentime === 0 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('screentime', 0)}
-                              >
-                                2-4 timer
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.screentime === -1 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('screentime', -1)}
-                              >
-                                4-6 timer
-                              </button>
-                              <button
-                                type="button"
-                                className={`factor-btn ${lifestyleFactors.screentime === -2 ? 'active' : ''}`}
-                                onClick={() => selectLifestyleFactor('screentime', -2)}
-                              >
-                                6+ timer
-                              </button>
-                            </div>
-                          </div>
+                          {LIFESTYLE_FACTORS.map((factor) => (
+                            <LifestyleFactor
+                              key={factor.key}
+                              factor={factor}
+                              value={lifestyleFactors[factor.key]}
+                              onSelect={selectLifestyleFactor}
+                            />
+                          ))}
                         </div>
 
                         <div className="border-t pt-4 space-y-4">
                           <div className="flex items-center justify-between">
                             <span className="font-medium">Livsstils påvirkning:</span>
                             <span className="font-bold text-primary">
-                              {lifestyleTotal > 0 ? `+${lifestyleTotal}` : lifestyleTotal} år
+                              {formatSignedYears(lifestyleTotal)}
                             </span>
                           </div>
                         </div>
@@ -1082,7 +394,7 @@ const HomePage = () => {
                     <button
                       type="submit"
                       className="btn btn-primary w-full"
-                      disabled={(!formData.useBirthdate && !formData.age) || (formData.useBirthdate && !formData.birthdate) || !formData.gender}
+                      disabled={(!formData.useBirthdate && (!formData.age || ageTooHigh)) || (formData.useBirthdate && !formData.birthdate) || !formData.gender}
                     >
                       Beregn levetid
                     </button>
@@ -1107,30 +419,9 @@ const HomePage = () => {
                 {/* Announced once for screen readers; the ticking grid below is
                     hidden from assistive tech to avoid per-second spam. */}
                 <p className="sr-only" aria-live="polite">
-                  Du har statistisk {resultData?.remainingYears} år tilbage at leve.
+                  Du har statistisk {formatYears(Number(resultData?.remainingYears))} år tilbage at leve.
                 </p>
-                <div className="flex flex-wrap justify-center gap-3 sm:gap-4" aria-hidden="true">
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.years || resultData?.remainingYears || '--'}</span>
-                    <span className="time-label">år</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.days || '--'}</span>
-                    <span className="time-label">dage</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.hours || '--'}</span>
-                    <span className="time-label">timer</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.minutes || '--'}</span>
-                    <span className="time-label">min</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.seconds || '--'}</span>
-                    <span className="time-label">sek</span>
-                  </div>
-                </div>
+                <Countdown key={resultData?.endTimestamp} endTimestamp={resultData?.endTimestamp} />
               </div>
 
               {/* Biological age (advanced mode) */}
@@ -1141,12 +432,18 @@ const HomePage = () => {
                 <div className="card-header">
                   <h3 className="text-lg font-semibold">Dit livsforløb</h3>
                   {resultData?.hasPreciseBirthdate && (
-                    <span className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
+                    <span className="text-xs text-green-700 dark:text-green-400 flex items-center gap-1">
                       🎯 Præcis beregning
                     </span>
                   )}
                 </div>
                 <div className="card-content space-y-4">
+                  {resultData?.usesTailRule && (
+                    <p className="rounded-lg bg-muted/50 p-3 text-xs text-muted-foreground">
+                      Danmarks Statistiks tavle slutter ved 99 år. Fra den alder bruges den sidste
+                      værdi (forventet restlevetid ved 99 år) som overslag.
+                    </p>
+                  )}
                   {/* Show precise age if birthdate was used */}
                   {resultData?.hasPreciseBirthdate && (
                     <div className="text-center p-3 bg-muted/50 rounded-lg">
@@ -1168,17 +465,17 @@ const HomePage = () => {
                       style={{ width: `${100 - resultData?.lifePercentage}%` }}
                     ></div>
                   </div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="text-center space-y-1">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div className="min-w-0 text-center space-y-1">
                       <div className="text-xl font-semibold">{resultData?.lifePercentage}%</div>
                       <div className="text-xs text-muted-foreground">Levet</div>
                     </div>
-                    <div className="text-center space-y-1">
-                      <div className="text-xl font-semibold">{resultData?.daysLived?.toLocaleString()}</div>
+                    <div className="min-w-0 text-center space-y-1">
+                      <div className="text-xl font-semibold break-words">{resultData?.daysLived?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Dage levet</div>
                     </div>
-                    <div className="text-center space-y-1">
-                      <div className="text-xl font-semibold">{resultData?.heartbeats?.toLocaleString()}</div>
+                    <div className="min-w-0 text-center space-y-1 col-span-2 sm:col-span-1">
+                      <div className="text-xl font-semibold break-words">{resultData?.heartbeats?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Hjerteslag</div>
                     </div>
                   </div>
@@ -1209,66 +506,69 @@ const HomePage = () => {
               {/* Value-first livsforsikring CTA — high-intent moment */}
               <Forsikringsbehov resultData={resultData} />
 
+              {/* Calm will / power of attorney pointer (advertising) */}
+              <PraktiskePapirer resultData={resultData} />
+
               {/* Fun Facts Section */}
               <div className="card">
                 <SectionHeader icon={Sparkles} tone="amber" title="Fun facts om dit liv" />
                 <div className="card-content">
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">🌅</div>
-                      <div className="text-lg font-semibold">{resultData?.sunrises?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold break-words">{resultData?.sunrises?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Solopgange set</div>
                     </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">💨</div>
-                      <div className="text-lg font-semibold">{resultData?.breaths?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold break-words">{resultData?.breaths?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Åndedrætninger</div>
                     </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">👣</div>
-                      <div className="text-lg font-semibold">{resultData?.steps?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold break-words">{resultData?.steps?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Skridt taget</div>
                     </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">😴</div>
-                      <div className="text-lg font-semibold">{resultData?.sleepHours?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold break-words">{resultData?.sleepHours?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Timer sovet</div>
                     </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">😊</div>
-                      <div className="text-lg font-semibold">{resultData?.laughs?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold break-words">{resultData?.laughs?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Gange grint</div>
                     </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">🍽️</div>
-                      <div className="text-lg font-semibold">{resultData?.meals?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold break-words">{resultData?.meals?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Måltider spist</div>
                     </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">💧</div>
-                      <div className="text-lg font-semibold">{resultData?.waterLiters?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold break-words">{resultData?.waterLiters?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Liter vand drukket</div>
                     </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-lg">
+                    <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">🚀</div>
-                      <div className="text-lg font-semibold">{(resultData?.spaceKm / 1000000000)?.toFixed(1)} mia</div>
+                      <div className="text-lg font-semibold break-words">{(resultData?.spaceKm / 1000000000)?.toFixed(1)} mia</div>
                       <div className="text-xs text-muted-foreground">km rejst i rummet</div>
                     </div>
                     {resultData?.hasPreciseBirthdate && (
                       <>
-                        <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
+                        <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
                           <div className="text-2xl mb-1">🌙</div>
-                          <div className="text-lg font-semibold">{resultData?.fullMoons?.toLocaleString()}</div>
+                          <div className="text-lg font-semibold break-words">{resultData?.fullMoons?.toLocaleString()}</div>
                           <div className="text-xs text-muted-foreground">Fuldmåner oplevet</div>
                         </div>
-                        <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
+                        <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
                           <div className="text-2xl mb-1">🍂</div>
-                          <div className="text-lg font-semibold">{resultData?.seasons?.toLocaleString()}</div>
+                          <div className="text-lg font-semibold break-words">{resultData?.seasons?.toLocaleString()}</div>
                           <div className="text-xs text-muted-foreground">Årstider oplevet</div>
                         </div>
-                        <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
+                        <div className="min-w-0 text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
                           <div className="text-2xl mb-1">⏱️</div>
-                          <div className="text-lg font-semibold">{resultData?.secondsLived?.toLocaleString()}</div>
+                          <div className="text-lg font-semibold break-words">{resultData?.secondsLived?.toLocaleString()}</div>
                           <div className="text-xs text-muted-foreground">Sekunder levet</div>
                         </div>
                       </>
@@ -1313,7 +613,7 @@ const HomePage = () => {
                   <div className="card-content space-y-2">
                     <h4 className="text-sm font-semibold text-foreground">Vigtige disclaimere</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025)</li>
+                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, {LIFE_TABLE_META.period})</li>
                       <li>• Individuelle faktorer påvirker ikke beregningen</li>
                       <li>• Kun til underholdning og reflektion</li>
                     </ul>
@@ -1334,6 +634,8 @@ const HomePage = () => {
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
         resultData={resultData}
+        lifestyleFactors={lifestyleFactors}
+        isAdvanced={currentMode === 'advanced'}
       />
     </div>
   );

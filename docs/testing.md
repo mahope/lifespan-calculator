@@ -31,6 +31,10 @@ exactly like in production. `vite preview` ignores `serve.json` and would hide t
 - `share-privacy.e2e.js`: opens a new-style, an advanced and a legacy `b=` share link and records every request to the analytics origin (URL, headers, body). None may contain `g=`, `a=`, `b=`, `m=`, `lf=` or the birthdate, the pageview `u` is the clean path, the result still hydrates, and an unrelated `utm_source` still reaches analytics. The inline script in `index.html` that makes this true is also unit tested (`src/utils/shareQuery.test.js`).
 - `static-contract.e2e.js`: `/robots.txt`, `/sitemap.xml`, `/privatlivspolitik`, a 404 for `/xyz` and 200 for
   `/api/health`. There is no skip: if `/sitemap.xml` falls back to the SPA, the suite fails.
+- `embed.e2e.js`: the iframe widget. A page on another origin (`framer.test`, served by a Playwright route) frames
+  `/embed`, which must render, while `/` and `/embed-levetidsberegner` must not be framable (`X-Frame-Options:
+  SAMEORIGIN`). Also checks the response headers per URL, that the only message posted to the parent is
+  `{type, height}`, and that the `Embed Calculate` event carries no props and no input.
 
 The baseline cases come from the 2026-11-05 audit harness (branch `docs/audit-2026-11-05`, `audit/measure2/baseline`).
 The pinned Plausible script in `e2e/fixtures/` is a copy from there.

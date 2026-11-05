@@ -65,6 +65,13 @@ Projektet kan hostes på enhver webserver der kan servere statiske filer:
 - Vercel
 - Apache/Nginx
 
+## 🧩 Indlejring
+
+Siden `/embed-levetidsberegner` har en kopiérbar iframe-kode til en lille udgave af
+beregneren (`/embed`, med `?theme=dark` og `?bg=transparent`). Widgetten regner i den besøgendes
+browser, sender kun sin højde (`postMessage`, ingen input) til værtssiden og viser et link til
+levetidsberegner.dk. Kildeperioden hentes fra `LIFE_TABLE_META.period`.
+
 ## 🔒 Privatlivspolitik
 
 - **Ingen data gemmes**: Alle beregninger sker lokalt i browseren

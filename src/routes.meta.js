@@ -64,6 +64,22 @@ export const ROUTE_META = {
     breadcrumbs: [HOME, { name: 'Pensionsalder', url: '/pensionsalder' }],
     noindex: false,
   },
+  '/embed-levetidsberegner': {
+    title: 'Indlej levetidsberegneren på din hjemmeside, gratis',
+    description:
+      'Gratis levetidsberegner til din hjemmeside. Kopiér én linje HTML, og besøgende kan se deres restlevetid. Alt beregnes i browseren, og der gemmes ingen data.',
+    keywords: 'indlejr levetidsberegner, embed levetidsberegner, widget forventet levetid, iframe levetid',
+    breadcrumbs: [HOME, { name: 'Indlej levetidsberegneren', url: '/embed-levetidsberegner' }],
+    noindex: false,
+  },
+  // The iframe widget: noindex, not in the sitemap (see NOINDEX_ROUTES in scripts/gen-sitemap.mjs).
+  '/embed': {
+    title: 'Levetidsberegner (indlejret widget)',
+    description: 'Lille levetidsberegner til indlejring i en iframe. Se /embed-levetidsberegner for kode og vilkår.',
+    keywords: 'levetidsberegner widget',
+    breadcrumbs: [],
+    noindex: true,
+  },
 }
 
 // Not a sitemap route: the catch-all 404 view. Runtime only (public/404.html is the served file).

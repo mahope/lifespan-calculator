@@ -65,7 +65,7 @@ const EmbedInfoPage = () => {
 
       <PageHeader
         icon={Code2}
-        title="Indlej levetidsberegneren"
+        title="Indlej beregneren"
         subtitle="Gratis widget til din hjemmeside. Én linje kode, ingen cookies og ingen data, der forlader besøgendes browser."
       />
 
@@ -110,12 +110,15 @@ const EmbedInfoPage = () => {
 
                 <div className="rounded-lg border bg-muted/50 p-4" data-testid="attribution">
                   <h3 className="mb-1 font-semibold">Behold kildelinket</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm">
                     Beregneren indeholder et link til levetidsberegner.dk og en kildeangivelse. Vi
                     beder dig beholde dem, så dine besøgende kan se, hvor tallene kommer fra. Vil du
                     også nævne os i din egen tekst, kan du bruge:
                   </p>
-                  <CodeBlock label={{ id: 'attribution-code', text: 'Kildehenvisning (valgfri)' }} code={ATTRIBUTION_HTML} />
+                  <CodeBlock
+                    label={{ id: 'attribution-code', text: 'Kildehenvisning (valgfri)' }}
+                    code={ATTRIBUTION_HTML}
+                  />
                 </div>
 
                 <h3 className="pt-2 text-lg font-semibold">Vilkår</h3>
@@ -134,8 +137,8 @@ const EmbedInfoPage = () => {
                 </h2>
                 <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
                   <li>
-                    <code>?theme=light</code> eller <code>?theme=dark</code> på adressen vælger
-                    lyst eller mørkt udseende, fx <code>/embed?theme=dark</code>.
+                    <code>?theme=light</code> eller <code>?theme=dark</code> på adressen vælger lyst
+                    eller mørkt udseende, fx <code>/embed?theme=dark</code>.
                   </li>
                   <li>
                     <code>?bg=transparent</code> gør baggrunden gennemsigtig, så widgetten falder
@@ -151,7 +154,10 @@ const EmbedInfoPage = () => {
                   resultat. Ignorerer din side beskeden, sker der ikke noget, og iframen beholder
                   sin faste højde. Vil du lytte efter den, kan du bruge:
                 </p>
-                <CodeBlock label={{ id: 'resize-code', text: 'Script til automatisk højde' }} code={RESIZE_SNIPPET} />
+                <CodeBlock
+                  label={{ id: 'resize-code', text: 'Script til automatisk højde' }}
+                  code={RESIZE_SNIPPET}
+                />
               </div>
             </section>
 

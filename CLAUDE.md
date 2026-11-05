@@ -38,7 +38,7 @@ npm ci && npm run lint && npm test && npm run build
 - **`App.jsx`**: Route definitions. Pages are lazy-loaded via `React.lazy` +
   `Suspense`.
 - **`pages/`**: One component per route (HomePage, HvorLangTidPage,
-  DodsalderPage, LivsstilPage, DanmarkPage, NotFoundPage).
+  DodsalderPage, LivsstilPage, DanmarkPage, EmbedInfoPage, EmbedPage, NotFoundPage).
 - **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
   ShareCard, ShareModal).
 - **`hooks/useLifespanCalculator.js`**: Core calculation logic (age, remaining
@@ -85,6 +85,12 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
   list lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates
   `public/sitemap.xml` from it. Adding a route means updating `ROUTES`,
   `App.jsx` and `public/serve.json` (a test enforces this).
+  `/embed` (iframe widget, noindex, listed in `NOINDEX_ROUTES`, not in the
+  sitemap) is the exception: `serve` matches header rules against the file it
+  sends, so the build emits a copy of `index.html` as `embed.html`
+  (`embedHtml` plugin in `vite.config.js`) and `serve.json` rewrites `/embed`
+  to it. Only `embed.html` omits `X-Frame-Options` and sends
+  `frame-ancestors *`.
 - Hosted as a Dokploy app (`web`) on a worker server, build type `dockerfile`.
   **autoDeploy is off**: merging to `master` does not deploy; a deploy is
   triggered by hand.

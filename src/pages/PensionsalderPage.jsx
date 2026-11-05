@@ -9,6 +9,7 @@ import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
 import { PENSION_AGE_ROWS, efterloenAgeOn, folkepensionAgeOn, pensionOutlook } from '../utils/pension';
 import { FAQ, faqJsonLd } from '../utils/pensionFaq';
+import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 import { parseLocalDate, toLocalISODate } from '../utils/lifespanMath';
 
 // Before 1939-07-01 the pension age was 67, which the age schedule in utils/pension.js does not cover.
@@ -138,7 +139,7 @@ const PensionsalderPage = () => {
                         {' '}for {sexLabel[s]}
                       </span>
                     ))}
-                    . Perioderestlevetid fra Danmarks Statistik (2024-2025), et gennemsnit for alle på samme alder
+                    . Perioderestlevetid fra Danmarks Statistik ({LIFE_TABLE_META.period}), et gennemsnit for alle på samme alder
                     og ikke en prognose for dig.
                   </p>
 
@@ -193,7 +194,7 @@ const PensionsalderPage = () => {
                 </p>
                 <p className="leading-relaxed text-muted-foreground">
                   Pensionsårene beregnes med den danske dødelighedstabel: vi aflæser den forventede restlevetid ved
-                  netop din pensionsalder. Tabellen beskriver dødeligheden i 2024-2025 og tager ikke højde for, at vi
+                  netop din pensionsalder. Tabellen beskriver dødeligheden i {LIFE_TABLE_META.period} og tager ikke højde for, at vi
                   lever længere i fremtiden. Er du allerede pensionist, bruger vi din alder i dag. Du kan få et mere
                   personligt bud i{' '}
                   <Link to="/" className="underline">levetidsberegneren</Link>, som også kan tage højde for din

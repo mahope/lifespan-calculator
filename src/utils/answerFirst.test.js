@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { LIFE_TABLE_DK } from './lifeTableDK'
+import { LIFE_TABLE_DK, LIFE_TABLE_META } from './lifeTableDK'
 import { answerFirst, SOURCE } from './answerFirst'
 
 const fmt = (n) => `${n.toFixed(1).replace('.', ',')} år`
@@ -10,6 +10,7 @@ describe('answerFirst', () => {
     const t = answerFirst.danmark()
     for (const v of [e(0, 'male'), e(0, 'female'), e(40, 'male'), e(40, 'female')]) expect(t).toContain(fmt(v))
     expect(t).toContain(SOURCE)
+    expect(SOURCE).toContain(LIFE_TABLE_META.period)
   })
   it('danmark: matches independently typed control values', () => {
     const t = answerFirst.danmark()

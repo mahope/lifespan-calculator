@@ -75,6 +75,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/pensionsalder" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
+                  🧓 Hvornår kan jeg gå på pension?
+                </Link>
+              </li>
+              <li>
                 <Link to="/levetid-beregner-danmark" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
                   🇩🇰 Levealder i Danmark
                 </Link>

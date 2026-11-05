@@ -12,16 +12,16 @@ const HOME = { name: 'Forside', url: '/' }
 export const ROUTE_META = {
   '/': {
     title: 'Hvor gammel bliver jeg? Levetidsberegner med danske tal',
-    description: 'Levetidsberegner: se din statistiske restlevetid ud fra alder og køn i Danmarks Statistiks tavler 2024-2025. Med nedtælling.',
+    description: 'Levetidsberegner: se din statistiske restlevetid ud fra alder og køn i Danmarks Statistiks dødelighedstavler. Med nedtælling.',
     keywords: 'hvor gammel bliver jeg, levetidsberegner, hvor gammel bliver jeg beregner, hvor gammel bliver jeg test, hvor længe lever jeg',
     ogTitle: 'Hvor gammel bliver jeg? Beregn din levetid',
-    ogDescription: 'Beregn din statistiske levetid ud fra alder og køn. Baseret på Danmarks Statistiks dødelighedstavler 2024-2025.',
+    ogDescription: 'Beregn din statistiske levetid ud fra alder og køn. Baseret på Danmarks Statistiks dødelighedstavler.',
     breadcrumbs: [],
     noindex: false,
   },
   '/hvor-lang-tid-har-jeg-tilbage': {
     title: 'Hvor mange år har jeg tilbage? Beregn din restlevetid',
-    description: 'Hvor mange år har du statistisk tilbage? Se restlevetiden for din alder og dit køn i Danmarks Statistiks tavler 2024-2025.',
+    description: 'Hvor mange år har du statistisk tilbage? Se restlevetiden for din alder og dit køn i Danmarks Statistiks tavler.',
     keywords: 'hvor mange år har jeg tilbage, restlevetid, resterende levetid, hvor lang tid har jeg tilbage',
     ogTitle: 'Hvor mange år har jeg tilbage?',
     ogDescription: 'Se din statistiske restlevetid ud fra alder og køn, baseret på Danmarks Statistiks dødelighedstavler.',
@@ -30,7 +30,7 @@ export const ROUTE_META = {
   },
   '/dodsalder-calculator': {
     title: 'Forventet dødsalder: beregn din statistiske dødsalder',
-    description: 'Forventet dødsalder for din alder og dit køn, beregnet af Danmarks Statistiks tavler 2024-2025. Se også, hvad livsstil kan ændre.',
+    description: 'Forventet dødsalder for din alder og dit køn, beregnet af Danmarks Statistiks tavler. Se også, hvad livsstil kan ændre.',
     keywords: 'forventet dødsalder, dødsalder beregner, dødsalder calculator, statistisk dødsalder, hvornår dør jeg',
     ogTitle: 'Forventet dødsalder: hvornår dør jeg statistisk?',
     ogDescription: 'Et statistisk estimat af din forventede dødsalder ud fra alder og køn, baseret på Danmarks Statistik.',
@@ -38,11 +38,11 @@ export const ROUTE_META = {
     noindex: false,
   },
   '/levetid-beregner-danmark': {
-    title: 'Levealder i Danmark: tal for mænd og kvinder 2024-2025',
-    description: 'Gennemsnitlig levealder i Danmark for mænd og kvinder fra Danmarks Statistik 2024-2025, plus middellevetid sammenlignet med nabolande.',
+    title: 'Levealder i Danmark: tal for mænd og kvinder',
+    description: 'Gennemsnitlig levealder i Danmark for mænd og kvinder fra Danmarks Statistik, plus middellevetid sammenlignet med nabolande.',
     keywords: 'levealder danmark, gennemsnitlig levealder, middellevetid danmark, levetid danmark, danmarks statistik levealder',
     ogTitle: 'Levealder i Danmark: aktuelle tal fra Danmarks Statistik',
-    ogDescription: 'Gennemsnitlig levealder for danske mænd og kvinder 2024-2025 og sammenligning med Sverige, Norge og Finland.',
+    ogDescription: 'Gennemsnitlig levealder for danske mænd og kvinder og sammenligning med Sverige, Norge og Finland.',
     breadcrumbs: [HOME, { name: 'Levetidsberegner Danmark', url: '/levetid-beregner-danmark' }],
     noindex: false,
   },

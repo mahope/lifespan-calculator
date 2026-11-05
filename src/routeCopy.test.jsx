@@ -9,6 +9,7 @@ import HvorLangTidPage from './pages/HvorLangTidPage'
 import DodsalderPage from './pages/DodsalderPage'
 import DanmarkPage from './pages/DanmarkPage'
 import LivsstilPage from './pages/LivsstilPage'
+import PensionsalderPage from './pages/PensionsalderPage'
 
 const PAGES = {
   '/': HomePage,
@@ -16,6 +17,7 @@ const PAGES = {
   '/dodsalder-calculator': DodsalderPage,
   '/levetid-beregner-danmark': DanmarkPage,
   '/livsstil-og-levetid': LivsstilPage,
+  '/pensionsalder': PensionsalderPage,
 }
 const ANSWER = {
   '/hvor-lang-tid-har-jeg-tilbage': 'hvorLangTid',
@@ -39,19 +41,19 @@ const html = Object.fromEntries(routes.map((r) => [r, render(PAGES[r])]))
 const h1 = (r) => unescape(html[r].match(/<h1[^>]*>(.*?)<\/h1>/s)[1].replace(/<[^>]+>/g, '').trim())
 
 describe('route copy', () => {
-  it('has five routes with unique titles within 60 characters and descriptions within 155', () => {
-    expect(routes).toHaveLength(5)
+  it('has six routes with unique titles within 60 characters and descriptions within 155', () => {
+    expect(routes).toHaveLength(6)
     const titles = routes.map((r) => ROUTE_META[r].title)
-    expect(new Set(titles).size).toBe(5)
+    expect(new Set(titles).size).toBe(6)
     for (const r of routes) {
       expect(ROUTE_META[r].title.length).toBeLessThanOrEqual(60)
       expect(ROUTE_META[r].description.length).toBeLessThanOrEqual(155)
     }
   })
-  it('renders five unique H1s', () => {
+  it('renders six unique H1s', () => {
     const h1s = routes.map(h1)
     h1s.forEach((t) => expect(t.length).toBeGreaterThan(0))
-    expect(new Set(h1s.map((t) => t.toLowerCase())).size).toBe(5)
+    expect(new Set(h1s.map((t) => t.toLowerCase())).size).toBe(6)
   })
   it('only the home page targets "hvor gammel bliver jeg" in title, description and H1', () => {
     for (const r of routes) {

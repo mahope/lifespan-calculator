@@ -3,10 +3,10 @@
 One URL, one search intent. The title, description, H1 and the answer-first block under the H1
 of each page target the primary query only. Copy and metadata live in `src/routes.meta.js`
 (head) and the page components (H1, answer-first). `src/routeCopy.test.jsx` enforces unique
-titles (<= 60), descriptions (<= 155) and H1s, and that only `/` targets "hvor gammel bliver jeg".
+titles (<= 60), descriptions (<= 155) and H1s across all six routes, and that only `/` targets "hvor gammel bliver jeg".
 
 The answer-first figures come from `LIFE_TABLE_DK` through `src/utils/answerFirst.js`
-(Danmarks Statistik HISB8, 2024-2025). Never type them into JSX.
+(Danmarks Statistik HISB8, period from `LIFE_TABLE_META.period`). Never type them into JSX.
 
 | URL | Intent | Primary query | Must NOT target |
 |---|---|---|---|
@@ -15,6 +15,7 @@ The answer-first figures come from `LIFE_TABLE_DK` through `src/utils/answerFirs
 | `/hvor-lang-tid-har-jeg-tilbage` | Years left | hvor mange år har jeg tilbage; restlevetid | hvor gammel bliver jeg; levealder danmark; dødsalder |
 | `/dodsalder-calculator` | Expected age at death | forventet dødsalder; dødsalder beregner | hvor gammel bliver jeg; restlevetid; levealder danmark |
 | `/livsstil-og-levetid` | Lifestyle and life expectancy | livsstil og levetid; motion/rygning og levetid | hvor gammel bliver jeg; levealder danmark; dødsalder |
+| `/pensionsalder` | State pension age | hvornår kan jeg gå på pension; pensionsalder beregner; folkepensionsalder | hvor gammel bliver jeg; levealder danmark; restlevetid; forventet dødsalder |
 
 Internal links: every landing page links to `/` with descriptive anchor text, and the calculator's
 footer links back to each landing page with an anchor matching that page's primary query.

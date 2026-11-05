@@ -1,8 +1,8 @@
 // Answer-first sentences for the landing pages. Every figure is read from LIFE_TABLE_DK
-// (Danmarks Statistik HISB8, 2024-2025), never typed by hand.
-import { LIFE_TABLE_DK } from './lifeTableDK';
+// (Danmarks Statistik HISB8, LIFE_TABLE_META.period), never typed by hand.
+import { LIFE_TABLE_DK, LIFE_TABLE_META } from './lifeTableDK';
 
-export const SOURCE = 'Danmarks Statistik, 2024-2025';
+export const SOURCE = `Danmarks Statistik, ${LIFE_TABLE_META.period}`;
 
 const years = (n) => `${n.toFixed(1).replace('.', ',')} år`;
 const e = (age, gender) => LIFE_TABLE_DK.remaining[gender][age];

@@ -17,6 +17,7 @@ import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
 import AnswerFirst from '../components/AnswerFirst';
 import { answerFirst } from '../utils/answerFirst';
+import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 import { Link } from 'react-router-dom';
 import { lifeExpectancyData as le } from '../utils/lifeExpectancyData';
 
@@ -43,7 +44,7 @@ const DanmarkPage = () => {
                 <h2 className="text-xl sm:text-2xl font-bold">Levetid i Danmark</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Tallene her er den danske middellevetid fra Danmarks Statistiks dødelighedstavler (tabel HISB8,
-                  2024-2025). Det er de samme tavler, som levetidsberegneren bruger. Sammenligningen med Sverige, Norge og
+                  {LIFE_TABLE_META.period}). Det er de samme tavler, som levetidsberegneren bruger. Sammenligningen med Sverige, Norge og
                   Finland kommer fra Eurostat, og tallene for Japan og verden kommer fra Verdensbanken.
                 </p>
 

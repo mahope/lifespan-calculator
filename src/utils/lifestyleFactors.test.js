@@ -26,6 +26,19 @@ describe('topImprovements', () => {
     }
   });
 
+  it('never tells a former smoker to stop smoking', () => {
+    for (const v of [11, 12, 13]) {
+      const keys = topImprovements({ ...zero, smoking: v }, LIFESTYLE_META, 10).map((m) => m.key);
+      expect(keys).not.toContain('smoking');
+    }
+    expect(topImprovements({ ...zero, smoking: -10 }, LIFESTYLE_META, 10).map((m) => m.key)).toContain('smoking');
+  });
+
+  it('does not advise shortening sleep for 9+ hours', () => {
+    const keys = topImprovements({ ...zero, sleep: 11 }, LIFESTYLE_META, 10).map((m) => m.key);
+    expect(keys).not.toContain('sleep');
+  });
+
   it('excludes factors already at their best value', () => {
     const factors = { ...zero, exercise: 6, diet: 5 }; // intensive (+4.5 y), very healthy (+5 y)
     const keys = topImprovements(factors, LIFESTYLE_META, 10).map((t) => t.key);
@@ -48,7 +61,7 @@ describe('topImprovements', () => {
 // Frozen golden table of the recalibration (#93): stored answer -> years per
 // factor, in render order. Changing a coefficient must change this table too.
 const GOLDEN = {
-  smoking: { inSum: true, options: [[0, 0], [11, -1], [12, -3.5], [13, -5], [-5, -6], [-10, -10]] },
+  smoking: { inSum: true, options: [[0, 0], [11, -1], [12, -2.5], [13, -5], [-5, -6], [-10, -10]] },
   exercise: { inSum: true, options: [[0, 0], [2, 2], [4, 3.5], [6, 4.5]] },
   diet: { inSum: true, options: [[0, 0], [3, 3.5], [5, 5]] },
   alcohol: { inSum: true, options: [[0, 0], [11, -0.5], [12, -1.5], [13, -4.5]] },

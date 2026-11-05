@@ -44,7 +44,7 @@ export const LIFESTYLE_FACTORS = [
     options: [
       { value: 0, years: 0, label: 'Ryger ikke' },
       { value: 11, years: -1, label: 'Tidligere ryger, stoppet før 40' },
-      { value: 12, years: -3.5, label: 'Tidligere ryger, stoppet 40-49' },
+      { value: 12, years: -2.5, label: 'Tidligere ryger, stoppet 40-49' },
       { value: 13, years: -5, label: 'Tidligere ryger, stoppet 50+' },
       { value: -5, years: -6, label: 'Let (1-10/dag)' },
       { value: -10, years: -10, label: 'Kraftig (10+/dag)' },
@@ -361,6 +361,8 @@ const META_SOURCE = [
   {
     key: 'smoking',
     label: 'Stop med at ryge',
+    // A former smoker has already stopped; the source says the loss is not regained.
+    notFor: [11, 12, 13],
     cite: { text: 'Jha 2013, NEJM', url: 'https://pubmed.ncbi.nlm.nih.gov/23343063/' },
   },
   {
@@ -388,7 +390,8 @@ const META_SOURCE = [
     label: 'Styrk dit sociale netværk',
     cite: { text: 'Holt-Lunstad 2010, PLoS Medicine', url: 'https://pubmed.ncbi.nlm.nih.gov/20668659/' },
   },
-  { key: 'sleep', label: 'Sov 7-8 timer' },
+  // 9+ hours is partly reverse causation, so shortening sleep is not advice.
+  { key: 'sleep', label: 'Sov 7-8 timer', notFor: [11] },
 ];
 
 export const LIFESTYLE_META = META_SOURCE.map((m) => {
@@ -401,6 +404,11 @@ export const LIFESTYLE_META = META_SOURCE.map((m) => {
 // conditions are intentionally excluded — they are not actionable "lifestyle
 // changes", so the coaching copy is scoped to behavioural factors only.
 
+/** False when the current answer makes the suggestion wrong or stronger than its source. */
+export function isSuggestible(m, factors) {
+  return !(m.notFor || []).includes((factors || {})[m.key]);
+}
+
 /**
  * The lifestyle changes that would raise the estimate most for this user,
  * highest gain first. gain = best achievable years − the years of the current
@@ -408,6 +416,7 @@ export const LIFESTYLE_META = META_SOURCE.map((m) => {
  */
 export function topImprovements(factors, meta = LIFESTYLE_META, limit = 3) {
   return meta
+    .filter((m) => isSuggestible(m, factors))
     .map((m) => ({ ...m, gain: Math.round((m.best - factorYears(m.key, factors[m.key])) * 10) / 10 }))
     .filter((m) => m.gain > 0)
     .sort((a, b) => b.gain - a.gain)

@@ -89,7 +89,7 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
       </div>
       {helper && (
         <p id={helperId} className="text-xs text-muted-foreground">
-          {helper} {ASSOCIATION_NOTE}
+          {helper}{factor.source ? ` ${ASSOCIATION_NOTE}` : ''}
           {factor.source?.pmid && (
             <>
               {' '}

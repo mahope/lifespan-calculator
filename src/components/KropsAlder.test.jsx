@@ -43,9 +43,9 @@ describe('KropsAlder (Statistisk risikoalder)', () => {
     for (const delta of [6, -6]) {
       const text = render(delta);
       expect(text).toContain('Din statistiske risikoalder');
-      expect(text).toContain('svarer din statistiske dødelighedsrisiko til en gennemsnitsdansker på ca.');
+      expect(text).toContain('svarer dit estimat for resterende leveår til det, en gennemsnitsdansker på ca.');
       expect(text).toContain('ikke en måling af din krop');
-      expect(text).not.toMatch(/biologisk|🎉|krop, der er/i);
+      expect(text).not.toMatch(/biologisk|🎉|krop, der er|dødelighedsrisiko/i);
     }
   });
 

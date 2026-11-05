@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Briefcase } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { pensionCohort } from '../utils/pension';
@@ -14,7 +15,11 @@ const Pension = ({ resultData }) => {
 
   // Real birth year when a birthdate is known; otherwise the cohort is derived
   // from the whole-year age and may straddle a pension-age boundary.
-  const cohort = pensionCohort({ birthYear: resultData.birthYear, age });
+  const cohort = pensionCohort({
+    birthYear: resultData.birthYear,
+    birthMonth: resultData.birthMonth,
+    age,
+  });
   const { pensionAge } = cohort;
   const cohortText =
     cohort.birthYears.length === 1
@@ -41,17 +46,17 @@ const Pension = ({ resultData }) => {
         <div className="grid grid-cols-3 gap-3 text-center">
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold">{cohort.label}</div>
-            <div className="text-xs text-muted-foreground">Folkepensionsalder</div>
+            <div className="text-xs text-muted-foreground wrap-anywhere">Folkepensionsalder</div>
           </div>
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold text-primary">{workingYearsLeft}</div>
-            <div className="text-xs text-muted-foreground">
+            <div className="text-xs text-muted-foreground wrap-anywhere">
               {retired ? 'Pensioneret' : 'Arbejdsår tilbage'}
             </div>
           </div>
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold">{retirementYears}</div>
-            <div className="text-xs text-muted-foreground">Forventede pensionsår</div>
+            <div className="text-xs text-muted-foreground wrap-anywhere">Forventede pensionsår</div>
           </div>
         </div>
 
@@ -74,8 +79,24 @@ const Pension = ({ resultData }) => {
           </div>
         </div>
 
+        {cohort.efterloen && (
+          <p className="text-center text-sm text-muted-foreground">
+            Efterlønsalder for din årgang:{' '}
+            <span className="font-semibold text-foreground">
+              {cohort.efterloen === 'ikke fastsat' ? 'ikke fastsat endnu' : cohort.efterloen}
+            </span>
+            . Kun alderen er med i overslaget; vilkår for efterløn indgår ikke.
+          </p>
+        )}
+
+        <p className="text-center text-sm">
+          <Link to="/pensionsalder" className="font-medium text-primary underline">Se alle pensionsaldre og din pensionsdato</Link>
+        </p>
+
         <p className="text-center text-xs text-muted-foreground">
-          Folkepensionsalderen er 70 år for alle født efter 31. december 1970 (lov nr. 703 af 20. juni 2025). Næste regulering behandles i 2030 og kan påvirke yngre årgange.
+          Folkepensionsalderen er 70 år for dem, der er født fra 1. januar 1971 (Lov nr. 703 af 20. juni 2025, som
+          også satte 69 år for 1967-1970). De øvrige aldre er efter borger.dk, november 2026, og alderen kan stige
+          yderligere for årgange fra 1975. Efterlønsaldre er ligeledes fra borger.dk.
         </p>
       </div>
     </div>

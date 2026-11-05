@@ -6,10 +6,10 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import prettier from 'eslint-config-prettier';
 
 export default [
-  { ignores: ['dist/**', 'backup/**', 'node_modules/**'] },
+  { ignores: ['dist/**', 'playwright-report/**', 'test-results/**', 'e2e/fixtures/**', 'backup/**', 'node_modules/**'] },
   js.configs.recommended,
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,mjs}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -35,7 +35,7 @@ export default [
   },
   // Node-context config + test files
   {
-    files: ['*.config.js', '**/*.test.{js,jsx}'],
+    files: ['*.config.js', '**/*.test.{js,jsx}', 'scripts/**/*.mjs', 'e2e/**/*.js'],
     languageOptions: { globals: { ...globals.node } },
   },
   prettier,

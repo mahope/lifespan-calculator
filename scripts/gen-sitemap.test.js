@@ -11,14 +11,11 @@ describe('route list', () => {
     expect([...ROUTES].sort()).toEqual(declared.sort())
   })
 
-  it('is mirrored by the rewrites in public/serve.json', () => {
+  it('is served from generated dist/<route>/index.html, so serve.json has no rewrites', () => {
+    // serve applies rewrites before it looks at the filesystem; a rewrite would hide the
+    // per-route HTML written by scripts/prerender-head.mjs.
     const cfg = JSON.parse(read('../public/serve.json'))
-    const rewritten = cfg.rewrites.map((r) => r.source)
-    for (const route of ROUTES) {
-      if (route !== '/') expect(rewritten).toContain(route)
-    }
-    for (const r of cfg.rewrites) expect(r.destination).toBe('/index.html')
-    expect(rewritten.filter((s) => s !== '/' && !ROUTES.includes(s))).toEqual([])
+    expect(cfg.rewrites).toBeUndefined()
   })
 })
 

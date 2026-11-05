@@ -15,23 +15,14 @@ import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 import { Link } from 'react-router-dom';
 
 const LivsstilPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?"
-        description="Lær hvordan livsstilsfaktorer som motion, kost, rygning og stress påvirker din levetid. Videnskabsbaseret guide til sundere og længere liv."
-        keywords="livsstil levetid, motion levetid, sund kost levetid, rygning påvirkning, stress sundhed, længere liv, sundhed"
-        ogTitle="Livsstil og Levetid - Forlæng dit liv med de rigtige valg"
-        ogDescription="Videnskabsbaseret guide til hvordan du kan forlænge dit liv gennem livsstilsændringer"
-        canonicalUrl="/livsstil-og-levetid"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Livsstil og Levetid', url: '/livsstil-og-levetid' },
-        ]}
-      />
+      <SEOHead route="/livsstil-og-levetid" />
 
       <PageHeader
         icon={HeartPulse}
@@ -42,6 +33,8 @@ const LivsstilPage = () => {
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
           <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
+            <AnswerFirst text={answerFirst.livsstil()} linkText="Læg din livsstil ind i levetidsberegneren" />
+
             <div className="card animate-slideUp">
               <div className="card-content space-y-6">
                 <h2 className="text-xl sm:text-2xl font-bold">Livsstilsfaktorer med størst påvirkning</h2>
@@ -66,7 +59,7 @@ const LivsstilPage = () => {
                         ca. 1,8 flere leveår (Moore m.fl., PLoS Medicine 2012). Det er statistiske sammenhænge.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Anbefalinger:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Anbefalinger:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• 150 min. moderat aktivitet per uge</li>
                           <li>• Styrketræning 2 gange om ugen</li>
@@ -89,7 +82,7 @@ const LivsstilPage = () => {
                         Medicine 2022). Det er en modelberegning, ikke et forsøg.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Kostvejledning:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Kostvejledning:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Spis 5-7 portioner frugt og grønt dagligt</li>
                           <li>• Vælg fuldkornsprodukter frem for raffinerede</li>
@@ -112,7 +105,7 @@ const LivsstilPage = () => {
                         del af sammenhængen kan skyldes, at sygdom påvirker søvnen.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Søvnhygiejne:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Søvnhygiejne:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Gå i seng og stå op på samme tid hver dag</li>
                           <li>• Undgå skærme 1 time før sengetid</li>
@@ -162,7 +155,7 @@ const LivsstilPage = () => {
                         dokumentation for et bestemt antal leveår ved stresshåndtering.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Stresshåndtering:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Stresshåndtering:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Praktiser mindfulness eller meditation</li>
                           <li>• Dyrk hobbies og interesser</li>
@@ -181,11 +174,11 @@ const LivsstilPage = () => {
                       </div>
                       <p className="text-sm text-muted-foreground">
                         Risikoen for tidlig død er lavest ved lavt forbrug og stiger derefter; ved 200-350 g alkohol om
-                        ugen (ca. 17-29 genstande) er forventet levetid ved 40 år ca. 1-2 år kortere (Wood m.fl., Lancet
-                        2018).
+                        ugen (ca. 17-29 genstande) er forventet levetid ved 40 år ca. 1-2 år kortere end ved højst 100 g om
+                        ugen (ca. 8 genstande) (Wood m.fl., Lancet 2018).
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-yellow-600 dark:text-yellow-400">Anbefalinger:</h4>
+                        <h4 className="font-medium text-yellow-700 dark:text-yellow-400">Anbefalinger:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>
                             • Sundhedsstyrelsen anbefaler højst 10 genstande om ugen og højst 4 på samme dag, for både
@@ -213,16 +206,16 @@ const LivsstilPage = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">+12,2-14,0</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-green-700 dark:text-green-400">+12,2-14,0</div>
                     <div className="text-sm text-muted-foreground">Flere leveår ved 50 år: fem mod ingen sunde levevaner</div>
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
                     <div className="text-2xl sm:text-3xl font-bold text-primary">82 %</div>
-                    <div className="text-sm text-muted-foreground">Lavere dødelighed af hjerte-kar-sygdom</div>
+                    <div className="text-sm text-muted-foreground">Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner</div>
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
                     <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">65 %</div>
-                    <div className="text-sm text-muted-foreground">Lavere kræftdødelighed</div>
+                    <div className="text-sm text-muted-foreground">Lavere kræftdødelighed ved fem mod ingen sunde levevaner</div>
                   </div>
                 </div>
               </div>
@@ -231,7 +224,7 @@ const LivsstilPage = () => {
             <div className="card border-green-500/20 bg-green-500/5">
               <div className="card-content">
                 <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Target className="h-5 w-5 shrink-0 text-green-600 dark:text-green-400" aria-hidden="true" /> Start i dag
+                  <Target className="h-5 w-5 shrink-0 text-green-700 dark:text-green-400" aria-hidden="true" /> Start i dag
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground mb-4">
                   Du behøver ikke at ændre alt på én gang. Start med én livsstilsændring ad gangen og byg gradvist

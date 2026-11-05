@@ -14,9 +14,10 @@ const KropsAlder = ({ resultData }) => {
   if (!Number.isFinite(age) || !Number.isFinite(remaining)) return null;
 
   const riskAge = Math.round(statisticalRiskAge(remaining, gender));
-  const chrono = Math.round(age);
+  // Age-only input is treated as mid-year (age + 0.5); round down so a 40-year-old is not shown as 41.
+  const chrono = Math.floor(age);
 
-  const message = `Ud fra de valg, du har lavet, svarer din statistiske dødelighedsrisiko til en gennemsnitsdansker på ca. ${riskAge} år (du er ${chrono}). Det er et statistisk billede, ikke en måling af din krop.`;
+  const message = `Med de valg, du har lavet, svarer dit estimat for resterende leveår til det, en gennemsnitsdansker på ca. ${riskAge} år har tilbage (du er ${chrono}). Det er en statistisk omregning af leveår, ikke en måling af din krop eller din risiko.`;
 
   return (
     <div className="card">

@@ -1,0 +1,46 @@
+{
+  "id": "3-male-birthdate-1985-06-15",
+  "input": {
+    "gender": "male",
+    "birthdate": "1985-06-15"
+  },
+  "frozenClock": "2026-11-05T12:34:56Z",
+  "urlAfterSubmit": "/",
+  "yearsRemaining": "39.9",
+  "countdown": [
+    {
+      "label": "ÅR",
+      "value": "39"
+    },
+    {
+      "label": "DAGE",
+      "value": "324"
+    },
+    {
+      "label": "TIMER",
+      "value": "13"
+    },
+    {
+      "label": "MIN",
+      "value": "1"
+    },
+    {
+      "label": "SEK",
+      "value": "4"
+    }
+  ],
+  "partnerAdsLinks": [
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    }
+  ]
+}

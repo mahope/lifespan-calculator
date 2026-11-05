@@ -90,9 +90,9 @@ describe('parseShareParams', () => {
     expect(parse('a=30')).toBeNull();
   });
 
-  it('clamps age to an integer in 0-120 and rejects non-numeric input', () => {
-    expect(parse('g=male&a=99999999')).toMatchObject({ age: 120 });
-    expect(parse('g=male&a=121')).toMatchObject({ age: 120 });
+  it('clamps age to an integer in 0-110 and rejects non-numeric input', () => {
+    expect(parse('g=male&a=99999999')).toMatchObject({ age: 110 });
+    expect(parse('g=male&a=111')).toMatchObject({ age: 110 });
     expect(parse('g=male&a=-5')).toMatchObject({ age: 0 });
     expect(parse('g=male&a=12.5')).toMatchObject({ age: 12 });
     expect(parse('g=male&a=0')).toMatchObject({ age: 0 });
@@ -137,11 +137,47 @@ describe('parseShareParams', () => {
     expect(r.lifestyle.smoking).toBe(-5);
     expect(Object.keys(r.lifestyle)).toEqual(LIFESTYLE_KEYS);
 
+    // Anything the questionnaire cannot produce drops the lifestyle part only.
+    const kept = { gender: 'male', age: 30, mode: 'advanced', lifestyle: null };
     const bad = LIFESTYLE_KEYS.map((k) => (k === 'smoking' ? -99 : 0)).join(',');
-    expect(parse(`g=male&a=30&m=advanced&lf=${bad}`)).toBeNull();
-    expect(parse('g=male&a=30&m=advanced&lf=1,2')).toBeNull();
-    expect(parse(`g=male&a=30&m=advanced&lf=${LIFESTYLE_KEYS.map(() => 'x').join(',')}`)).toBeNull();
-    expect(parse(`g=male&a=30&m=advanced&lf=${LIFESTYLE_KEYS.map(() => '1e9').join(',')}`)).toBeNull();
+    expect(parse(`g=male&a=30&m=advanced&lf=${bad}`)).toMatchObject(kept);
+    expect(parse('g=male&a=30&m=advanced&lf=1,2')).toMatchObject(kept);
+    expect(parse(`g=male&a=30&m=advanced&lf=${LIFESTYLE_KEYS.map(() => 'x').join(',')}`)).toMatchObject(kept);
+    expect(parse(`g=male&a=30&m=advanced&lf=${LIFESTYLE_KEYS.map(() => '1e9').join(',')}`)).toMatchObject(kept);
+    expect(parse('g=male&a=30&m=advanced&lf=0&lf=0')).toMatchObject(kept);
+  });
+
+  // Links made before the recalibration (#93): `lf` is positional, so a removed or
+  // renumbered option must not cost the visitor gender, age and mode.
+  describe('old share links', () => {
+    const lf = (over) => LIFESTYLE_KEYS.map((k) => over[k] ?? 0).join(',');
+
+    it('still applies answers whose id exists but whose years changed', () => {
+      const old = { smoking: -5, exercise: 4, diet: 3, alcohol: 0, sleep: 0, mental: 0, social: 4 };
+      const r = parse(`g=female&a=55&m=advanced&lf=${lf(old)}`);
+      expect(r).toMatchObject({ gender: 'female', age: 55, mode: 'advanced' });
+      expect(r.lifestyle).toMatchObject(old);
+      expect(parse(`g=female&a=55&m=advanced&lf=${lf({ exercise: 6 })}`).lifestyle.exercise).toBe(6);
+    });
+
+    it.each([
+      ['diet -2 (Usund)', { diet: -2 }],
+      ['alcohol -1', { alcohol: -1 }],
+      ['alcohol -3', { alcohol: -3 }],
+      ['alcohol -6', { alcohol: -6 }],
+      ['sleep 2', { sleep: 2 }],
+      ['bmi 2', { bmi: 2 }],
+      ['bmi -4', { bmi: -4 }],
+      ['social 2', { social: 2 }],
+      ['mental 2', { mental: 2 }],
+      ['mental -2', { mental: -2 }],
+      ['mental -3', { mental: -3 }],
+    ])('drops only the lifestyle part when %s no longer exists', (_name, over) => {
+      const r = parse(`g=male&b=1980-05-05&m=advanced&lf=${lf({ smoking: -5, ...over })}`);
+      expect(r).toMatchObject({
+        gender: 'male', birthdate: '1980-05-05', useBirthdate: true, mode: 'advanced', lifestyle: null,
+      });
+    });
   });
 
   it('ignores lf in simple mode and accepts advanced without lf', () => {

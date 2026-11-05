@@ -5,7 +5,7 @@ En webbaseret applikation der beregner din forventede resterende levetid baseret
 ## 📋 Funktioner
 
 - **Beregning i browseren**: Dine input forlader aldrig din enhed og sendes ikke til analytics
-- **Danske tal**: Baseret på Danmarks Statistik (HISB8, periode 2024:2025)
+- **Danske tal**: Baseret på Danmarks Statistik (HISB8, dødelighedstavlen for den nyeste periode)
 - **Responsive design**: Fungerer på både desktop og mobile enheder
 - **Intuitivt interface**: Moderne og brugervenligt design
 - **Detaljerede resultater**: Viser resterende år, forventet levetid og estimeret slutdato
@@ -30,24 +30,17 @@ En webbaseret applikation der beregner din forventede resterende levetid baseret
 - **Statiske levetidsdata**: Danmarks Statistik (HISB8) samt landetabeller til sammenligning
 
 ### Databaser
-Applikationen bruger følgende levetidsdata (år 2024):
+Landetabellen i `src/utils/lifeExpectancyData.js` (blokken mellem `BEGIN/END GENERATED COUNTRY TABLE`) genereres af `scripts/refresh-data.mjs` (`node scripts/refresh-data.mjs countries`; se `docs/data-refresh.md`). Scriptet henter levetid ved fødslen fra Eurostat `demo_mlexpec` (Sverige, Norge, Finland) og Verdensbanken `SP.DYN.LE00.MA.IN` / `.FE.IN` / `.IN` (Japan og verdensgennemsnit), og bruger nyeste tilgængelige år. Resultatet afhænger derfor af de live API'er. Danmark udledes af Danmarks Statistik-tabellen (HISB8) i `lifeTableDK`.
 
-| Land | Mænd | Kvinder |
-|------|------|---------|
-| Danmark | 78.9 | 82.7 |
-| Sverige | 80.8 | 84.3 |
-| Norge | 80.5 | 84.2 |
-| Tyskland | 78.6 | 83.4 |
-| Storbritannien | 79.4 | 83.1 |
-| USA | 76.3 | 81.4 |
-| Frankrig | 79.7 | 85.6 |
-| Holland | 80.2 | 83.9 |
-| Finland | 78.7 | 84.5 |
-| Island | 81.3 | 84.1 |
-| Schweiz | 81.9 | 85.6 |
-| Japan | 81.6 | 87.7 |
+| Land | Mænd | Kvinder | Samlet | Kilde |
+|------|------|---------|--------|-------|
+| Sverige | 82.3 | 85.3 | 83.8 | Eurostat 2024 |
+| Norge | 81.6 | 84.8 | 83.2 | Eurostat 2024 |
+| Finland | 79.6 | 84.8 | 82.2 | Eurostat 2024 |
+| Japan | 81.1 | 87.1 | 84.0 | Verdensbanken 2024 |
+| Verdensgennemsnit | 71.1 | 76.0 | 73.5 | Verdensbanken 2024 |
 
-*Verdensgennemsnit: 72.6 år (mænd), 77.1 år (kvinder)*
+Ukendte lande bruger verdensgennemsnittet.
 
 ## 📁 Projektstruktur
 

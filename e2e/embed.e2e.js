@@ -63,7 +63,7 @@ test.describe('embed widget', () => {
     }
     const calc = rec.events.filter((e) => e.n === 'Embed Calculate');
     expect(calc).toHaveLength(1);
-    expect(calc[0].p).toBeNull();
-    for (const body of rec.eventBodies) expect(body).not.toMatch(/47|female|Kvinde/);
+    expect(Object.keys(calc[0].p ?? {})).toEqual([]);
+    for (const body of rec.eventBodies) expect(body).not.toMatch(/female|Kvinde|"age"/);
   });
 });

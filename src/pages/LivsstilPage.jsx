@@ -53,7 +53,7 @@ const LivsstilPage = () => {
                         reducerer risikoen for hjertesygdomme, diabetes og kræft betydeligt.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Anbefalinger:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Anbefalinger:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• 150 min. moderat aktivitet per uge</li>
                           <li>• Styrketræning 2 gange om ugen</li>
@@ -75,7 +75,7 @@ const LivsstilPage = () => {
                         koststil for langt liv.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Kostvejledning:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Kostvejledning:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Spis 5-7 portioner frugt og grønt dagligt</li>
                           <li>• Vælg fuldkornsprodukter frem for raffinerede</li>
@@ -97,7 +97,7 @@ const LivsstilPage = () => {
                         hjertesygdomme, diabetes og tidlig død.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Søvnhygiejne:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Søvnhygiejne:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Gå i seng og stå op på samme tid hver dag</li>
                           <li>• Undgå skærme 1 time før sengetid</li>
@@ -143,7 +143,7 @@ const LivsstilPage = () => {
                         kan tilføje 2-3 år til dit liv.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-green-600 dark:text-green-400">Stresshåndtering:</h4>
+                        <h4 className="font-medium text-green-700 dark:text-green-400">Stresshåndtering:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Praktiser mindfulness eller meditation</li>
                           <li>• Dyrk hobbies og interesser</li>
@@ -165,7 +165,7 @@ const LivsstilPage = () => {
                         forkorter livet betydeligt.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-medium text-yellow-600 dark:text-yellow-400">Anbefalinger:</h4>
+                        <h4 className="font-medium text-yellow-700 dark:text-yellow-400">Anbefalinger:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Kvinder: Max 7 genstande per uge</li>
                           <li>• Mænd: Max 14 genstande per uge</li>
@@ -190,7 +190,7 @@ const LivsstilPage = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">+12-14</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-green-700 dark:text-green-400">+12-14</div>
                     <div className="text-sm text-muted-foreground">År ekstra ved optimal livsstil</div>
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
@@ -208,7 +208,7 @@ const LivsstilPage = () => {
             <div className="card border-green-500/20 bg-green-500/5">
               <div className="card-content">
                 <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Target className="h-5 w-5 shrink-0 text-green-600 dark:text-green-400" aria-hidden="true" /> Start i dag
+                  <Target className="h-5 w-5 shrink-0 text-green-700 dark:text-green-400" aria-hidden="true" /> Start i dag
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground mb-4">
                   Du behøver ikke at ændre alt på én gang. Start med én livsstilsændring ad gangen og byg gradvist

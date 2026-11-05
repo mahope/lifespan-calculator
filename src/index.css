@@ -192,7 +192,7 @@
   }
 
   &.active .text-muted-foreground {
-    @apply text-primary-foreground/80;
+    @apply text-primary-foreground;
   }
 }
 
@@ -202,7 +202,7 @@
   }
 
   &.mode-btn .text-muted-foreground {
-    @apply text-primary-foreground/80;
+    @apply text-primary-foreground;
   }
 
   &.gender-btn {
@@ -216,7 +216,7 @@
 
 @utility text-muted-foreground {
   .mode-btn.active & {
-    @apply text-primary-foreground/80;
+    @apply text-primary-foreground;
   }
 }
 
@@ -353,10 +353,10 @@
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 16% 40%;
     --accent: 210 40% 96.1%;
     --accent-foreground: 222 47% 11%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 42%;
     --destructive-foreground: 0 0% 98%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
@@ -375,7 +375,7 @@
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
+    --primary: 217 91% 64%;
     --primary-foreground: 222 47% 11%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
@@ -383,8 +383,8 @@
     --muted-foreground: 215 20% 65%;
     --accent: 217 33% 17%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 91% 70%;
+    --destructive-foreground: 222 47% 11%;
     --border: 217 33% 17%;
     --input: 217 33% 17%;
     --ring: 224 76% 48%;

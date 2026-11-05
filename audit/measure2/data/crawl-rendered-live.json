@@ -1,0 +1,1383 @@
+{
+  "at": "2026-11-05T13:10:42.571Z",
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 levetid-audit/1.0",
+  "liveDocRequests": 25,
+  "liveAssetRequests": 26,
+  "results": [
+    {
+      "requested": "https://levetidsberegner.dk/",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "canonical": [
+          "https://levetidsberegner.dk/"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Levetidsberegner - Hvor lang tid har du tilbage?"
+        ],
+        "h1": [
+          "Levetidsberegner"
+        ],
+        "h2": [
+          "Beregn din levetid",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": true,
+        "bodyText200": "Levetidsberegner Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler. Beregn din levetid Udfyld felterne — det tager ti sekunder. Beregningsmåde Simpel Hurtig bere",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/index.html",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "canonical": [
+          "https://levetidsberegner.dk/"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Levetidsberegner - Hvor lang tid har du tilbage?"
+        ],
+        "h1": [
+          "Levetidsberegner"
+        ],
+        "h2": [
+          "Beregn din levetid",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": true,
+        "bodyText200": "Levetidsberegner Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler. Beregn din levetid Udfyld felterne — det tager ti sekunder. Beregningsmåde Simpel Hurtig bere",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+        "title": "Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Få svar på hvor lang tid du har tilbage at leve baseret på statistiske data. Vores levetidsberegner giver dig et realistisk estimat af din resterende levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Hvor lang tid har jeg tilbage at leve?"
+        ],
+        "h1": [
+          "Hvor lang tid har jeg tilbage?"
+        ],
+        "h2": [
+          "Hvad betyder \"resterende levetid\"?",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Hvor lang tid har jeg tilbage? Få et statistisk estimat af din resterende levetid baseret på videnskabelige data Hvad betyder \"resterende levetid\"? Din resterende levetid er et statistisk estimat base",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage/",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage/",
+        "title": "Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Få svar på hvor lang tid du har tilbage at leve baseret på statistiske data. Vores levetidsberegner giver dig et realistisk estimat af din resterende levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Hvor lang tid har jeg tilbage at leve?"
+        ],
+        "h1": [
+          "Hvor lang tid har jeg tilbage?"
+        ],
+        "h2": [
+          "Hvad betyder \"resterende levetid\"?",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Hvor lang tid har jeg tilbage? Få et statistisk estimat af din resterende levetid baseret på videnskabelige data Hvad betyder \"resterende levetid\"? Din resterende levetid er et statistisk estimat base",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/dodsalder-calculator",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/dodsalder-calculator",
+        "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+        "canonical": [
+          "https://levetidsberegner.dk/dodsalder-calculator"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Dødsalder Calculator - Hvornår dør jeg statistisk?"
+        ],
+        "h1": [
+          "Dødsalder Calculator"
+        ],
+        "h2": [
+          "Hvad er en dødsalder calculator?",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Dødsalder Calculator Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer Hvad er en dødsalder calculator? En dødsalder calculator er et statistisk værktøj, der estimerer",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/dodsalder-calculator/",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/dodsalder-calculator/",
+        "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+        "canonical": [
+          "https://levetidsberegner.dk/dodsalder-calculator"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Dødsalder Calculator - Hvornår dør jeg statistisk?"
+        ],
+        "h1": [
+          "Dødsalder Calculator"
+        ],
+        "h2": [
+          "Hvad er en dødsalder calculator?",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Dødsalder Calculator Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer Hvad er en dødsalder calculator? En dødsalder calculator er et statistisk værktøj, der estimerer",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/Dodsalder-Calculator",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/Dodsalder-Calculator",
+        "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+        "canonical": [
+          "https://levetidsberegner.dk/dodsalder-calculator"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Dødsalder Calculator - Hvornår dør jeg statistisk?"
+        ],
+        "h1": [
+          "Dødsalder Calculator"
+        ],
+        "h2": [
+          "Hvad er en dødsalder calculator?",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Dødsalder Calculator Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer Hvad er en dødsalder calculator? En dødsalder calculator er et statistisk værktøj, der estimerer",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/livsstil-og-levetid",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/livsstil-og-levetid",
+        "title": "Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?",
+        "canonical": [
+          "https://levetidsberegner.dk/livsstil-og-levetid"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Lær hvordan livsstilsfaktorer som motion, kost, rygning og stress påvirker din levetid. Videnskabsbaseret guide til sundere og længere liv."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Livsstil og Levetid - Forlæng dit liv med de rigtige valg"
+        ],
+        "h1": [
+          "Livsstil og Levetid"
+        ],
+        "h2": [
+          "Livsstilsfaktorer med størst påvirkning",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Livsstil og Levetid Oplev hvordan dine daglige valg påvirker din levetid og lær at optimere din livsstil for et længere, sundere liv Livsstilsfaktorer med størst påvirkning Forskning viser, at livssti",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/livsstil-og-levetid/",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/livsstil-og-levetid/",
+        "title": "Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?",
+        "canonical": [
+          "https://levetidsberegner.dk/livsstil-og-levetid"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Lær hvordan livsstilsfaktorer som motion, kost, rygning og stress påvirker din levetid. Videnskabsbaseret guide til sundere og længere liv."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Livsstil og Levetid - Forlæng dit liv med de rigtige valg"
+        ],
+        "h1": [
+          "Livsstil og Levetid"
+        ],
+        "h2": [
+          "Livsstilsfaktorer med størst påvirkning",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Livsstil og Levetid Oplev hvordan dine daglige valg påvirker din levetid og lær at optimere din livsstil for et længere, sundere liv Livsstilsfaktorer med størst påvirkning Forskning viser, at livssti",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/levetid-beregner-danmark",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/levetid-beregner-danmark",
+        "title": "Dansk Levetidsberegner - Specialiseret til danske forhold",
+        "canonical": [
+          "https://levetidsberegner.dk/levetid-beregner-danmark"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Beregn din levetid med data specifikt fra Danmarks Statistik. Vores danske levetidsberegner bruger de seneste data fra danske sundhedsmyndigheder."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Dansk Levetidsberegner - Præcise data fra Danmarks Statistik"
+        ],
+        "h1": [
+          "Dansk Levetidsberegner"
+        ],
+        "h2": [
+          "Levetid i Danmark",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Dansk Levetidsberegner Specialiseret levetidsberegner med præcise data fra Danmarks Statistik og danske sundhedsmyndigheder Levetid i Danmark Danmark har en af verdens højeste levetider, og danske dat",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/levetid-beregner-danmark/",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/levetid-beregner-danmark/",
+        "title": "Dansk Levetidsberegner - Specialiseret til danske forhold",
+        "canonical": [
+          "https://levetidsberegner.dk/levetid-beregner-danmark"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Beregn din levetid med data specifikt fra Danmarks Statistik. Vores danske levetidsberegner bruger de seneste data fra danske sundhedsmyndigheder."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Dansk Levetidsberegner - Præcise data fra Danmarks Statistik"
+        ],
+        "h1": [
+          "Dansk Levetidsberegner"
+        ],
+        "h2": [
+          "Levetid i Danmark",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Dansk Levetidsberegner Specialiseret levetidsberegner med præcise data fra Danmarks Statistik og danske sundhedsmyndigheder Levetid i Danmark Danmark har en af verdens højeste levetider, og danske dat",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/?a=40&g=male",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/?a=40&g=male",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "canonical": [
+          "https://levetidsberegner.dk/"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Levetidsberegner - Hvor lang tid har du tilbage?"
+        ],
+        "h1": [
+          "Levetidsberegner"
+        ],
+        "h2": [
+          "Din resterende tid",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Levetidsberegner Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler. Din resterende tid Du har statistisk 41.2 år tilbage at leve. 40 ÅR 364 DAGE 9 TIMER 49 MIN 3",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/?utm_source=x",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/?utm_source=x",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "canonical": [
+          "https://levetidsberegner.dk/"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Levetidsberegner - Hvor lang tid har du tilbage?"
+        ],
+        "h1": [
+          "Levetidsberegner"
+        ],
+        "h2": [
+          "Beregn din levetid",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": true,
+        "bodyText200": "Levetidsberegner Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler. Beregn din levetid Udfyld felterne — det tager ti sekunder. Beregningsmåde Simpel Hurtig bere",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/xyz",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/xyz",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/sitemap.xml",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/sitemap.xml",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/ads.txt",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/ads.txt",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/privatlivspolitik",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/privatlivspolitik",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/privatlivspolitik.html",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/privatlivspolitik",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/cookiepolitik",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/cookiepolitik",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/cookiepolitik.html",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/cookiepolitik",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "http://levetidsberegner.dk/",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "canonical": [
+          "https://levetidsberegner.dk/"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Levetidsberegner - Hvor lang tid har du tilbage?"
+        ],
+        "h1": [
+          "Levetidsberegner"
+        ],
+        "h2": [
+          "Beregn din levetid",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": true,
+        "bodyText200": "Levetidsberegner Beregn hvor mange år du statistisk set har tilbage — baseret på danske dødelighedstavler. Beregn din levetid Udfyld felterne — det tager ti sekunder. Beregningsmåde Simpel Hurtig bere",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "http://levetidsberegner.dk/dodsalder-calculator",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/dodsalder-calculator",
+        "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+        "canonical": [
+          "https://levetidsberegner.dk/dodsalder-calculator"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Dødsalder Calculator - Hvornår dør jeg statistisk?"
+        ],
+        "h1": [
+          "Dødsalder Calculator"
+        ],
+        "h2": [
+          "Hvad er en dødsalder calculator?",
+          "Andre nyttige værktøjer",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": false,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Dødsalder Calculator Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer Hvad er en dødsalder calculator? En dødsalder calculator er et statistisk værktøj, der estimerer",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/.well-known/security.txt",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/.well-known/security.txt",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/llms.txt",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/llms.txt",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    },
+    {
+      "requested": "https://levetidsberegner.dk/CLAUDE.md",
+      "docStatus": 200,
+      "rendered": {
+        "url": "https://levetidsberegner.dk/CLAUDE.md",
+        "title": "Side ikke fundet - Dansk Levetidsberegner",
+        "canonical": [
+          "https://levetidsberegner.dk/404"
+        ],
+        "robots": [
+          "index, follow"
+        ],
+        "description": [
+          "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+          "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+        ],
+        "ogImage": [
+          "https://levetidsberegner.dk/og-image.png"
+        ],
+        "ogTitle": [
+          "Dansk Levetidsberegner",
+          "Side ikke fundet - Dansk Levetidsberegner"
+        ],
+        "h1": [
+          "Side ikke fundet"
+        ],
+        "h2": [
+          "Hmm, denne side findes ikke",
+          "Om dette værktøj"
+        ],
+        "ldTypes": [
+          "WebApplication"
+        ],
+        "footerCount": 2,
+        "rootChildren": 1,
+        "staticExplainerVisible": true,
+        "cookieBannerDisplay": "block",
+        "notFoundShown": true,
+        "privacyPolicyTextShown": false,
+        "cookiePolicyTextShown": false,
+        "calculatorFormShown": false,
+        "bodyText200": "Side ikke fundet Den side du leder efter eksisterer ikke eller er blevet flyttet Hmm, denne side findes ikke Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse. Lad os ",
+        "metaDescriptionCount": 2
+      },
+      "blockedThirdPartyHosts": [
+        "analytics.holstjensen.eu",
+        "fonts.googleapis.com"
+      ],
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ]
+    }
+  ]
+}

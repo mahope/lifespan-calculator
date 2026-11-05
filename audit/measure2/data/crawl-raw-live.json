@@ -1,0 +1,865 @@
+{
+  "at": "2026-11-05T13:01:31.645Z",
+  "ua": "levetid-audit/1.0 (read-only crawl, 2026-11-05)",
+  "results": [
+    {
+      "requested": "https://levetidsberegner.dk/",
+      "chain": [
+        "200 https://levetidsberegner.dk/"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/index.html",
+      "chain": [
+        "301 https://levetidsberegner.dk/index.html -> /index",
+        "301 https://levetidsberegner.dk/index -> /",
+        "200 https://levetidsberegner.dk/"
+      ],
+      "redirects": 2,
+      "finalUrl": "https://levetidsberegner.dk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+      "chain": [
+        "200 https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage/",
+      "chain": [
+        "200 https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage/"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/dodsalder-calculator",
+      "chain": [
+        "200 https://levetidsberegner.dk/dodsalder-calculator"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/dodsalder-calculator",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/dodsalder-calculator/",
+      "chain": [
+        "200 https://levetidsberegner.dk/dodsalder-calculator/"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/dodsalder-calculator/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/Dodsalder-Calculator",
+      "chain": [
+        "200 https://levetidsberegner.dk/Dodsalder-Calculator"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/Dodsalder-Calculator",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/livsstil-og-levetid",
+      "chain": [
+        "200 https://levetidsberegner.dk/livsstil-og-levetid"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/livsstil-og-levetid",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/livsstil-og-levetid/",
+      "chain": [
+        "200 https://levetidsberegner.dk/livsstil-og-levetid/"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/livsstil-og-levetid/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/levetid-beregner-danmark",
+      "chain": [
+        "200 https://levetidsberegner.dk/levetid-beregner-danmark"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/levetid-beregner-danmark",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/levetid-beregner-danmark/",
+      "chain": [
+        "200 https://levetidsberegner.dk/levetid-beregner-danmark/"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/levetid-beregner-danmark/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/?a=40&g=male",
+      "chain": [
+        "200 https://levetidsberegner.dk/?a=40&g=male"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/?a=40&g=male",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/?utm_source=x",
+      "chain": [
+        "200 https://levetidsberegner.dk/?utm_source=x"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/?utm_source=x",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/xyz",
+      "chain": [
+        "200 https://levetidsberegner.dk/xyz"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/xyz",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/sitemap.xml",
+      "chain": [
+        "200 https://levetidsberegner.dk/sitemap.xml"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/sitemap.xml",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/robots.txt",
+      "chain": [
+        "200 https://levetidsberegner.dk/robots.txt"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/robots.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "bytes": 8047,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "EXPIRED",
+        "cache-control": "max-age=14400",
+        "content-encoding": "br"
+      },
+      "text200": "# As a condition of accessing this website, you agree to abide by the following # content signals: # (a) If a Content-Signal = yes, you may collect content for the corresponding # use. # (b) If a Cont",
+      "bodySha": "4ceda04ff77592d1"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/ads.txt",
+      "chain": [
+        "200 https://levetidsberegner.dk/ads.txt"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/ads.txt",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/manifest.webmanifest",
+      "chain": [
+        "200 https://levetidsberegner.dk/manifest.webmanifest"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/manifest.webmanifest",
+      "status": 200,
+      "contentType": "application/manifest+json; charset=utf-8",
+      "bytes": 491,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br",
+        "etag": "W/\"e4c7f16566b96d5f3f6a14d19fcf0ec687ee14ec\""
+      },
+      "text200": "{\"name\":\"Levetidsberegner\",\"short_name\":\"Levetid\",\"description\":\"Beregn din resterende levetid — med live nedtælling, dit liv i uger og fun facts.\",\"start_url\":\"/\",\"display\":\"standalone\",\"background_c",
+      "bodySha": "fb14bcf9ae2a1609"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/sw.js",
+      "chain": [
+        "200 https://levetidsberegner.dk/sw.js"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/sw.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 2849,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "EXPIRED",
+        "cache-control": "max-age=14400",
+        "content-encoding": "br",
+        "etag": "\"c8d1b8ca750e2745c775c9e6c817e5b4915bd38c\""
+      },
+      "text200": "if(!self.define){let s,e={};const l=(l,r)=>(l=new URL(l+\".js\",r).href,e[l]||new Promise(e=>{if(\"document\"in self){const s=document.createElement(\"script\");s.src=l,s.onload=e,document.head.appendChild(",
+      "bodySha": "0ceea08765664b84"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/privatlivspolitik",
+      "chain": [
+        "200 https://levetidsberegner.dk/privatlivspolitik"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/privatlivspolitik",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/privatlivspolitik.html",
+      "chain": [
+        "301 https://levetidsberegner.dk/privatlivspolitik.html -> /privatlivspolitik",
+        "200 https://levetidsberegner.dk/privatlivspolitik"
+      ],
+      "redirects": 1,
+      "finalUrl": "https://levetidsberegner.dk/privatlivspolitik",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/cookiepolitik",
+      "chain": [
+        "200 https://levetidsberegner.dk/cookiepolitik"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/cookiepolitik",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/cookiepolitik.html",
+      "chain": [
+        "301 https://levetidsberegner.dk/cookiepolitik.html -> /cookiepolitik",
+        "200 https://levetidsberegner.dk/cookiepolitik"
+      ],
+      "redirects": 1,
+      "finalUrl": "https://levetidsberegner.dk/cookiepolitik",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "http://levetidsberegner.dk/",
+      "chain": [
+        "301 http://levetidsberegner.dk/ -> https://levetidsberegner.dk/",
+        "200 https://levetidsberegner.dk/"
+      ],
+      "redirects": 1,
+      "finalUrl": "https://levetidsberegner.dk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "http://levetidsberegner.dk/dodsalder-calculator",
+      "chain": [
+        "301 http://levetidsberegner.dk/dodsalder-calculator -> https://levetidsberegner.dk/dodsalder-calculator",
+        "200 https://levetidsberegner.dk/dodsalder-calculator"
+      ],
+      "redirects": 1,
+      "finalUrl": "https://levetidsberegner.dk/dodsalder-calculator",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://www.levetidsberegner.dk/",
+      "error": "fetch failed | cause: ENOTFOUND"
+    },
+    {
+      "requested": "http://www.levetidsberegner.dk/",
+      "error": "fetch failed | cause: ENOTFOUND"
+    },
+    {
+      "requested": "https://www.levetidsberegner.dk/dodsalder-calculator",
+      "error": "fetch failed | cause: ENOTFOUND"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/.well-known/security.txt",
+      "chain": [
+        "200 https://levetidsberegner.dk/.well-known/security.txt"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/.well-known/security.txt",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/llms.txt",
+      "chain": [
+        "200 https://levetidsberegner.dk/llms.txt"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/llms.txt",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/CLAUDE.md",
+      "chain": [
+        "200 https://levetidsberegner.dk/CLAUDE.md"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/CLAUDE.md",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 5371,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "DYNAMIC",
+        "content-encoding": "br"
+      },
+      "html": {
+        "title": "Dansk Levetidsberegner - Beregn din forventede levetid",
+        "description": "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "canonical": null,
+        "metaRobots": null,
+        "h1": null,
+        "ogImage": null,
+        "ogTitle": "Dansk Levetidsberegner",
+        "ldJsonCount": 0,
+        "rootDivEmpty": true,
+        "bodyText200": "© 2026 Mahope.dk – Gratis online værktøjer Privatlivspolitik Cookiepolitik Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke. Accepter Afvis Om"
+      },
+      "bodySha": "6c5dfab472e5dcf7"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/registerSW.js",
+      "chain": [
+        "200 https://levetidsberegner.dk/registerSW.js"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/registerSW.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 134,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "REVALIDATED",
+        "cache-control": "max-age=14400",
+        "content-encoding": "br",
+        "etag": "W/\"c9c67122268adf04cb7726eed7b2e2042dd0df30\""
+      },
+      "text200": "if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js', { scope: '/' })})}",
+      "bodySha": "9742073ef7fc795e"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/favicon.svg",
+      "chain": [
+        "200 https://levetidsberegner.dk/favicon.svg"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/favicon.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 555,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "REVALIDATED",
+        "cache-control": "max-age=14400",
+        "content-encoding": "br",
+        "etag": "W/\"46231370c3946dcbcf3b18317fa90fa6145a4a3e\""
+      },
+      "text200": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\" width=\"64\" height=\"64\"> <defs> <linearGradient id=\"g\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"> <stop offset=\"0\" stop-color=\"#3b82f6\"/> <stop offset=\"1\" ",
+      "bodySha": "33543654571f1fdd"
+    },
+    {
+      "requested": "https://levetidsberegner.dk/og-image.png",
+      "chain": [
+        "200 https://levetidsberegner.dk/og-image.png"
+      ],
+      "redirects": 0,
+      "finalUrl": "https://levetidsberegner.dk/og-image.png",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 414915,
+      "headers": {
+        "server": "cloudflare",
+        "cf-cache-status": "REVALIDATED",
+        "cache-control": "max-age=14400",
+        "etag": "\"b972840733d8e52ca2ab6c6bbe3b41207e07f018\""
+      },
+      "bodySha": "43d379528ff9f1fc"
+    }
+  ]
+}

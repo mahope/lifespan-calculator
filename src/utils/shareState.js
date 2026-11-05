@@ -9,6 +9,27 @@ const MIN_AGE = 0;
 const MAX_AGE = 110; // same cap as the age input
 const MIN_BIRTHDATE = '1900-01-01';
 
+/** Query keys the share link uses. Keep in sync with the inline script in index.html. */
+export const SHARE_KEYS = ['g', 'a', 'b', 'm', 'lf'];
+
+/**
+ * index.html strips the share keys from the address before the analytics script
+ * runs and leaves them in `window.__shareQuery` (memory only). Return that value
+ * as URLSearchParams and delete it so nothing lingers; fall back to `fallback`
+ * (the real search string: dev server, tests, in-app navigation).
+ *
+ * @param {URLSearchParams} fallback
+ * @param {object} [win]
+ */
+export function takeShareSearchParams(fallback, win = typeof window !== 'undefined' ? window : undefined) {
+  if (win && typeof win.__shareQuery === 'string') {
+    const q = win.__shareQuery;
+    delete win.__shareQuery;
+    return new URLSearchParams(q);
+  }
+  return fallback;
+}
+
 /**
  * Read the packed `lf` value. An old link may carry an option that was removed
  * or renumbered since; then the whole lifestyle part is dropped (null) and the

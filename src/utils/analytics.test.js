@@ -78,6 +78,7 @@ describe('EVENTS whitelist', () => {
       'Affiliate Impression': ['program', 'placement'],
       'Affiliate Click': ['program', 'placement'],
       'Share Opened': [],
+      'Embed Calculate': [],
       Share: ['method'],
       Error: ['type'],
     });

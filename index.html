@@ -2,6 +2,29 @@
 <html lang="da">
   <head>
     <meta charset="UTF-8" />
+    <!-- Privacy: runs before every other script (notably the analytics script). Moves the share-link
+         parameters (g, a, b, m, lf) out of the address into window.__shareQuery (memory only) so they are never
+         sent to the statistics server. Other parameters (utm_source, ref, ...) stay. Mirrored by SHARE_KEYS in
+         src/utils/shareState.js; index.shareQuery.test.js runs this exact script. -->
+    <script>
+      (function () {
+        try {
+          var s = location.search;
+          if (!s || s.length < 2) return;
+          var keys = { g: 1, a: 1, b: 1, m: 1, lf: 1 };
+          var own = [];
+          var rest = [];
+          s.slice(1).split('&').forEach(function (part) {
+            var k = part.split('=')[0];
+            try { k = decodeURIComponent(k.replace(/\+/g, ' ')); } catch (e) {}
+            (Object.prototype.hasOwnProperty.call(keys, k) ? own : rest).push(part);
+          });
+          if (!own.length) return;
+          window.__shareQuery = own.join('&');
+          history.replaceState(history.state, '', location.pathname + (rest.length ? '?' + rest.join('&') : '') + location.hash);
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +39,15 @@
             document.documentElement.classList.add('dark');
           }
         } catch (e) {}
+      })();
+    </script>
+    <!-- /embed (iframe widget): theme and background from the query string, before first paint. -->
+    <script>
+      (function () {
+        if (location.pathname.replace(/\/$/, '') !== '/embed') return;
+        var h = document.documentElement, q = new URLSearchParams(location.search);
+        h.classList.toggle('dark', q.get('theme') === 'dark');
+        if (q.get('bg') === 'transparent') h.setAttribute('data-embed-bg', 'transparent');
       })();
     </script>
     <title>Dansk Levetidsberegner - Beregn din forventede levetid</title>

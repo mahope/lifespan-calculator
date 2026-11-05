@@ -33,7 +33,7 @@ const ShareCard = ({ resultData }) => {
         </div>
         {resultData.lifestyleImpact !== 0 && (
           <div style={row}>
-            <span style={{ color: MUTED }}>Livsstils påvirkning</span>
+            <span style={{ color: MUTED }}>Livsstilspåvirkning</span>
             <span className="fig text-xl font-semibold">
               {resultData.lifestyleImpact > 0 ? '+' : ''}
               {resultData.lifestyleImpact} år

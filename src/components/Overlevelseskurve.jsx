@@ -6,8 +6,8 @@ const MARGIN = { top: 28, right: 14, bottom: 30, left: 46 };
 const Y_TICKS = [0, 25, 50, 75, 100];
 
 // Share of people of the user's age and sex who are still alive at each later age, straight from the
-// Danish survivors table (population baseline, not adjusted for lifestyle). The dashed line marks the
-// user's own expected age. Drawn at the measured size so the labels stay at a readable pixel size.
+// Danish survivors table (population baseline, not adjusted for lifestyle). The dashed line marks the user's lifestyle-adjusted
+// expected age; it is not a point on the baseline curve. Drawn at the measured size so the labels stay at a readable pixel size.
 const Overlevelseskurve = ({ age, gender, expectedAge }) => {
   const wrapRef = useRef(null);
   const [size, setSize] = useState({ w: 640, h: 320 });
@@ -109,7 +109,7 @@ const Overlevelseskurve = ({ age, gender, expectedAge }) => {
                 fontWeight="600"
                 className="fill-foreground"
               >
-                Forventet alder {expected.toFixed(1)}
+                Justeret forventet alder {expected.toFixed(1)}
               </text>
             </g>
           )}

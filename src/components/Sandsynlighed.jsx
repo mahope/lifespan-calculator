@@ -54,7 +54,7 @@ const Sandsynlighed = ({ resultData }) => {
         </table>
         <p className="max-w-prose text-sm text-muted-foreground">
           Baseret på danske dødelighedstavler (Danmarks Statistik, {LIFE_TABLE_META.period}). Det er en
-          befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg.
+          befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg. Den stiplede linje er din justerede forventede alder og er ikke en andel på kurven.
         </p>
       </div>
     </div>

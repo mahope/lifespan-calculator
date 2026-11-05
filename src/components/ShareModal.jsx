@@ -4,6 +4,7 @@ import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams } from '../utils/shareState';
 import { formatSignedYears, formatYears } from '../utils/lifespanMath';
 import { track } from '../utils/analytics';
+import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced = false }) => {
   const [copySuccess, setCopySuccess] = useState('');
@@ -33,7 +34,12 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
     })
   ).toString();
   const shareUrl = `${window.location.origin}${window.location.pathname}?${query}`;
-  const shareText = `Jeg har statistisk ${formatYears(Number(resultData.remainingYears))} år tilbage at leve! 🕐 Beregn din egen levetid på`;
+  const basis = PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period;
+  // No nested parentheses: the DST label already carries its own.
+  const basisInline = resultData.projection === 'projected' ? 'fremskrevet af Danmarks Statistik' : 'nuværende dødelighed';
+  // The link carries no projection state (page state only), so it opens the period view.
+  const linkNote = resultData.projection === 'projected' ? ' Linket viser nuværende dødelighed.' : '';
+  const shareText = `Jeg har statistisk ${formatYears(Number(resultData.remainingYears))} år tilbage at leve (${basisInline})!${linkNote} 🕐 Beregn din egen levetid på`;
 
   // Copy link to clipboard
   const copyLink = async () => {
@@ -58,6 +64,7 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
 ⏳ Resterende tid: ${formatYears(Number(resultData.remainingYears))} år (${resultData.remainingDays} dage)
 📅 Estimeret slutdato: ${resultData.endDate}
 📍 Baseret på: ${resultData.dataSource}
+🔎 Grundlag: ${basis}${linkNote}
 
 ${resultData.lifestyleImpact !== 0 ? `💪 Livsstil påvirkning: ${formatSignedYears(resultData.lifestyleImpact)}` : ''}
 

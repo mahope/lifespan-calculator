@@ -4,6 +4,7 @@ import SectionHeader from './SectionHeader';
 import { getLifeExpectancyForCountry, lifeExpectancyData } from '../utils/lifeExpectancyData';
 import { formatYears } from '../utils/lifespanMath';
 import { compareWithDanishAverage, verdictFor } from '../utils/compareAverage';
+import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 // "Sammenlign med gennemsnittet" — the user's estimate against the Danish
 // average for the same age and sex (no lifestyle adjustment), plus context rows
@@ -16,13 +17,18 @@ const Sammenlign = ({ resultData }) => {
   const lifestyle = Number(resultData.lifestyleImpact) || 0;
   if (!Number.isFinite(age)) return null;
 
-  const { you, average, diff } = compareWithDanishAverage(age, gender, lifestyle);
+  const { you, average, diff } = compareWithDanishAverage(age, gender, lifestyle, resultData.projection);
   const verdict = verdictFor(diff);
   const sexLabel = gender === 'female' ? 'kvinde' : 'mand';
   const dk = lifeExpectancyData.Denmark;
+  const projected = resultData.projection === 'projected';
   const rows = [
     { label: 'Dig', value: you, you: true },
-    { label: `Gennemsnitlig dansk ${sexLabel} på ${Math.floor(age)}`, value: average },
+    {
+      label: `Gennemsnitlig dansk ${sexLabel} på ${Math.floor(age)}`,
+      value: average,
+      note: projected ? PROJECTION_LABELS.projected : undefined,
+    },
     {
       label: 'Danmark ved fødslen',
       value: getLifeExpectancyForCountry('Denmark', gender),
@@ -70,6 +76,12 @@ const Sammenlign = ({ resultData }) => {
             </div>
           ))}
         </div>
+        {projected && (
+          <p className="text-center text-xs text-muted-foreground" data-testid="sammenlign-basis-note">
+            "Dig" og gennemsnittet for din alder bruger fremskrevet dødelighed (DST). Rækkerne "ved fødslen" er
+            målte tal for nuværende dødelighed og kan ikke sammenlignes direkte.
+          </p>
+        )}
         <p className="text-center text-sm font-medium">{verdict.text}</p>
       </div>
     </div>

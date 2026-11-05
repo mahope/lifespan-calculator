@@ -1,4 +1,4 @@
-import { remainingLifeExpectancy } from './lifeTableDK';
+import { remainingFor } from './lifeTableDK';
 import { formatYears } from './lifespanMath';
 
 /** Differences within +-this many years count as "about the same". */
@@ -10,8 +10,10 @@ export const EQUAL_THRESHOLD_YEARS = 0.5;
  * `lifestyleYears` is the bounded, rounded adjustment the calculator applied,
  * so zero lifestyle input gives a difference of exactly 0.
  */
-export function compareWithDanishAverage(age, gender, lifestyleYears = 0) {
-  const remaining = remainingLifeExpectancy(age, gender);
+export function compareWithDanishAverage(age, gender, lifestyleYears = 0, projection = 'period') {
+  // Same table on both sides, so a projected result is compared with the
+  // projected average (like with like).
+  const remaining = remainingFor(age, gender, projection);
   const average = age + remaining;
   const you = age + Math.max(0, remaining + lifestyleYears);
   return { you, average, diff: you - average };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatSignedYears, formatYears } from '../utils/lifespanMath';
+import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 const ShareCard = ({ resultData }) => {
   if (!resultData) return null;
@@ -33,6 +34,9 @@ const ShareCard = ({ resultData }) => {
         <div className="text-center py-6 bg-white/10 backdrop-blur-xs rounded-lg">
           <div className="text-6xl font-bold mb-2">{formatYears(Number(resultData.remainingYears))}</div>
           <div className="text-lg text-white/90">år tilbage</div>
+          <div className="mt-1 text-sm text-white/80">
+            {PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period}
+          </div>
         </div>
 
         {/* Details grid */}

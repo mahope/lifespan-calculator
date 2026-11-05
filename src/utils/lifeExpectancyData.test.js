@@ -48,3 +48,10 @@ describe('lifeExpectancyData integrity', () => {
     }
   });
 });
+
+describe('prototype keys', () => {
+  it.each(['constructor', '__proto__', 'toString', 'hasOwnProperty'])('%s falls back to World', (key) => {
+    expect(getLifeExpectancyForCountry(key, 'male')).toBe(getLifeExpectancyForCountry('World', 'male'));
+    expect(getLifeExpectancyForCountry('Denmark', key)).toBe(getLifeExpectancyForCountry('Denmark', 'male'));
+  });
+});

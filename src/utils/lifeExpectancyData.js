@@ -24,15 +24,11 @@ export const lifeExpectancyData = {
     ...countryTable,
 };
 
-export const achievements = [
-    { id: 'non-smoker', icon: '🙅', title: 'Ikke-ryger', desc: 'Du ryger ikke - det forlænger dit liv!' },
-    { id: 'active-lifestyle', icon: '🏃', title: 'Aktiv livsstil', desc: 'Du dyrker regelmæssig motion' },
-    { id: 'healthy-eater', icon: '🍎', title: 'Sund spiser', desc: 'Du spiser sundt og nærende mad' },
-    { id: 'wellness-warrior', icon: '🧘', title: 'Wellness kriger', desc: 'Du har lav stress og god søvn' },
-    { id: 'lifestyle-optimizer', icon: '🎆', title: 'Livsstils optimerer', desc: 'Du har optimeret alle aspekter af din livsstil' }
-];
+// Own-property lookup so keys like "constructor" or "__proto__" fall back to World.
+const countryEntry = (country) =>
+    Object.hasOwn(lifeExpectancyData, country) ? lifeExpectancyData[country] : lifeExpectancyData['World'];
 
 export const getLifeExpectancyForCountry = (country, gender) => {
-    const countryData = lifeExpectancyData[country] || lifeExpectancyData['World'];
-    return countryData[gender] || countryData.male;
+    const countryData = countryEntry(country);
+    return (Object.hasOwn(countryData, gender) && countryData[gender]) || countryData.male;
 };

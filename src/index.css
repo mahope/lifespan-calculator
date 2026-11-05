@@ -1,11 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap')
-layer(base);
 @import 'tailwindcss';
+
+/* Self-hosted Inter (SIL OFL, see public/fonts/Inter-LICENSE.txt). Latin subset covers æ, ø, å. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Metric-matched fallback so the swap to Inter causes no layout shift. */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107.12%;
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+  --font-sans: Inter, 'Inter Fallback', system-ui, -apple-system, sans-serif;
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -114,10 +134,6 @@ layer(base);
   @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 h-11 sm:h-12 px-6 py-2;
 }
 
-@utility btn-ghost {
-  @apply hover:bg-accent hover:text-accent-foreground h-11 sm:h-12 px-6 py-2;
-}
-
 @utility card {
   /* Minimal cards with responsive padding */
   @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-xs hover:shadow-md transition-shadow duration-200;
@@ -125,14 +141,6 @@ layer(base);
 
 @utility card-header {
   @apply flex flex-col space-y-1.5 p-4 sm:p-6;
-}
-
-@utility card-title {
-  @apply text-xl sm:text-2xl font-semibold leading-none tracking-tight;
-}
-
-@utility card-description {
-  @apply text-sm text-muted-foreground;
 }
 
 @utility card-content {
@@ -143,10 +151,6 @@ layer(base);
       @apply scroll-mt-4;
     }
   }
-}
-
-@utility card-footer {
-  @apply flex items-center p-4 sm:p-6 pt-0;
 }
 
 @utility input {
@@ -167,34 +171,9 @@ layer(base);
   @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
 }
 
-@utility badge {
-  /* Simple badges */
-  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors;
-}
-
-@utility badge-default {
-  @apply border-transparent bg-primary text-primary-foreground;
-}
-
-@utility badge-secondary {
-  @apply border-transparent bg-secondary text-secondary-foreground;
-}
-
-@utility badge-outline {
-  @apply text-foreground;
-}
-
 @utility progress {
   /* Clean progress bar */
   @apply relative h-2 w-full overflow-hidden rounded-full bg-secondary shadow-inner;
-}
-
-@utility progress-bar {
-  @apply h-full w-full flex-1 bg-linear-to-r from-primary to-primary/80 transition-all duration-300;
-}
-
-@utility separator {
-  @apply shrink-0 bg-border h-px w-full my-6;
 }
 
 @utility container {
@@ -352,15 +331,6 @@ layer(base);
   }
 }
 
-@utility result-card {
-  /* Result card animations */
-  @apply animate-scaleIn;
-}
-
-@utility stat-item {
-  @apply hover:scale-105 transition-transform duration-200;
-}
-
 @utility space-y-6 {
   @media (max-width: 640px) {
     /* Ensure adequate spacing in forms */
@@ -430,7 +400,7 @@ layer(base);
 
   body {
     @apply bg-background min-h-screen;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
     color: hsl(var(--foreground));
     transition: background-color 0.3s ease, color 0.3s ease;
   }

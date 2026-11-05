@@ -1,14 +1,15 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import ErrorBoundary from './components/ErrorBoundary'
+import { lazyWithReload } from './utils/lazyWithReload'
+import HomePage from './pages/HomePage'
 
-// Lazy load pages for better initial load time
-const HomePage = lazy(() => import('./pages/HomePage'))
-const HvorLangTidPage = lazy(() => import('./pages/HvorLangTidPage'))
-const DodsalderPage = lazy(() => import('./pages/DodsalderPage'))
-const LivsstilPage = lazy(() => import('./pages/LivsstilPage'))
-const DanmarkPage = lazy(() => import('./pages/DanmarkPage'))
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+// HomePage is the main landing route and is bundled eagerly; the rest are lazy.
+const HvorLangTidPage = lazyWithReload(() => import('./pages/HvorLangTidPage'))
+const DodsalderPage = lazyWithReload(() => import('./pages/DodsalderPage'))
+const LivsstilPage = lazyWithReload(() => import('./pages/LivsstilPage'))
+const DanmarkPage = lazyWithReload(() => import('./pages/DanmarkPage'))
+const NotFoundPage = lazyWithReload(() => import('./pages/NotFoundPage'))
 
 // Loading fallback
 const PageLoader = () => (

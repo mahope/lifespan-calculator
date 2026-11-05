@@ -6,11 +6,11 @@ import { track } from '../utils/analytics';
 const AFFILIATE_URL =
   'https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner';
 
+const AFFILIATE_PROPS = { program: 'findforsikring', placement: 'result-insurance' };
+
 // Value-first version of the life-insurance CTA: a quick, transparent cover
 // estimate (income replacement over the support period), then the affiliate link
 // framed around that number instead of a bare banner.
-const AFFILIATE_PROPS = { program: 'findforsikring', placement: 'result-insurance' };
-
 const Forsikringsbehov = ({ resultData }) => {
   const [income, setIncome] = useState('');
   const [years, setYears] = useState('10');

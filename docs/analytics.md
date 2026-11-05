@@ -25,8 +25,8 @@ lifestyle answers, country) as a prop.
 - [ ] `Affiliate Impression` (custom properties `program`, `placement`)
 - [ ] `Affiliate Click` (custom properties `program`, `placement`)
 - [ ] `Share Opened`
-- [ ] `Share` (custom property `method`)
-- [ ] `Error` (custom property `type`)
+- [ ] `Share` (custom property `method`; optional, already sent before this change)
+- [ ] `Error` (custom property `type`; optional, already sent before this change)
 
 Funnel suggestion: pageview `/` -> `Result Shown` -> `Affiliate Impression` -> `Affiliate Click`.
 

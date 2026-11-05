@@ -88,9 +88,9 @@ const HomePage = () => {
         ? calculateLifespan(formData.birthdate, formData.gender)
         : calculateLifespan(parseInt(formData.age), formData.gender);
     setShowResults(true);
-    track('Result Shown', { mode: currentMode });
     // Persist to local history (captures the returned result).
     if (result) {
+      track('Result Shown', { mode: currentMode });
       saveEntry({
         ts: Date.now(),
         age: Math.round(parseFloat(result.age)),

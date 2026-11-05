@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort, folkepensionDate } from './pension';
+import { folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort, folkepensionDate, pensionOutlook } from './pension';
+import { remainingLifeExpectancy } from './lifeTableDK';
 import { toLocalISODate } from './lifespanMath';
 
 // Statutory ages as of 2026-11-05 (borger.dk "Før du går på folkepension";
@@ -190,5 +191,26 @@ describe('folkepensionDate', () => {
   it('returns null for an invalid date', () => {
     expect(folkepensionDate('1999-02-30')).toBeNull();
     expect(folkepensionDate('')).toBeNull();
+  });
+});
+
+describe('pensionOutlook', () => {
+  const now = new Date(2026, 10, 5);
+  it('counts years, months and days until the pension date', () => {
+    const o = pensionOutlook('1980-01-01', now);
+    expect(toLocalISODate(o.date)).toBe('2050-01-01');
+    expect(o.retired).toBe(false);
+    expect(o.until).toEqual({ years: 23, months: 1, days: 27 });
+    expect(o.yearsInRetirement.female).toBeGreaterThan(o.yearsInRetirement.male);
+  });
+  it('is retired once the date has passed, using e_x at the current age', () => {
+    const o = pensionOutlook('1954-06-30', now);
+    expect(o.retired).toBe(true);
+    expect(o.until).toBeNull();
+    expect(o.yearsInRetirement.male).toBeCloseTo(remainingLifeExpectancy(72.35, 'male'), 0);
+  });
+  it('rejects invalid and future dates', () => {
+    expect(pensionOutlook('2030-01-01', now)).toBeNull();
+    expect(pensionOutlook('2001-02-30', now)).toBeNull();
   });
 });

@@ -8,7 +8,8 @@
 // Efterløn (borger.dk, same date): 1956 H2-1958 → 63, 1959 H1 → 63½,
 // 1959 H2-1962 → 64, 1963-1966 → 65, 1967-1970 → 66; later cohorts are not fixed.
 
-import { parseLocalDate } from './lifespanMath';
+import { calculatePreciseAge, parseLocalDate } from './lifespanMath';
+import { remainingLifeExpectancy } from './lifeTableDK';
 
 /** Statutory age for a birth year and half (1 = Jan-Jun, 2 = Jul-Dec). */
 function pensionAgeFor(year, half) {
@@ -124,4 +125,31 @@ export function folkepensionDate(birthdate) {
   const lastDay = new Date(birth.getFullYear() + years, monthIndex + 1, 0).getDate();
   const date = new Date(birth.getFullYear() + years, monthIndex, Math.min(birth.getDate(), lastDay));
   return { age, years, months, date };
+}
+
+/**
+ * Pension outlook for the pension page: statutory age and date, time until then,
+ * and period life-table e_x at the pension age (at the current age when already
+ * past it), for both sexes. Null for an invalid date or one in the future.
+ * @param {string|Date} birthdate
+ * @param {Date} [now]
+ */
+export function pensionOutlook(birthdate, now = new Date()) {
+  const base = folkepensionDate(birthdate);
+  if (!base) return null;
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const birth = parseLocalDate(birthdate);
+  if (birth > today) return null;
+  const retired = base.date <= today;
+  const until = retired ? null : calculatePreciseAge(today, base.date);
+  const atAge = retired ? calculatePreciseAge(birth, today).preciseAge : base.age;
+  return {
+    ...base,
+    retired,
+    until: until && { years: until.years, months: until.months, days: until.days },
+    yearsInRetirement: {
+      male: remainingLifeExpectancy(atAge, 'male'),
+      female: remainingLifeExpectancy(atAge, 'female'),
+    },
+  };
 }

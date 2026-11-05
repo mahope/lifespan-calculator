@@ -1,0 +1,259 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { Briefcase, Calculator } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
+import PageHeader from '../components/PageHeader';
+import Footer from '../components/Footer';
+import ThemeToggle from '../components/ThemeToggle';
+import PromoBanner from '../components/PromoBanner';
+import { efterloenAgeOn, pensionOutlook } from '../utils/pension';
+import { parseLocalDate, toLocalISODate } from '../utils/lifespanMath';
+
+const MIN_BIRTH = '1930-01-01';
+
+const AGE_TABLE = [
+  ['Før 1. jan. 1954', '65 år'],
+  ['1. jan.-30. juni 1954', '65½ år'],
+  ['1. juli-31. dec. 1954', '66 år'],
+  ['1. jan.-30. juni 1955', '66½ år'],
+  ['1. juli 1955-1962', '67 år'],
+  ['1963-1966', '68 år'],
+  ['1967-1970', '69 år'],
+  ['1971 og senere', '70 år'],
+];
+
+const FAQ = [
+  [
+    'Hvornår kan jeg gå på folkepension?',
+    'Det afhænger af din fødselsdato. Er du født 1955 (2. halvår) til 1962, er alderen 67 år; er du født i 1971 eller senere, er den 70 år. Skriv din fødselsdato ovenfor for at se dato og alder.',
+  ],
+  [
+    'Hvad betyder regulering i 2030?',
+    'Folkepensionsalderen følger udviklingen i middellevetiden. Ved reguleringen i 2030 kan alderen for de yngste årgange (født 1975 eller senere) blive sat op igen.',
+  ],
+  [
+    'Hvor længe er jeg pensionist?',
+    'Tallet er forventede år tilbage ved pensionsalderen ifølge Danmarks Statistiks dødelighedstabel. Det er et gennemsnit for mange mennesker og ikke en prognose for dig.',
+  ],
+];
+
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const fmtDate = (d) => d.toLocaleDateString('da-DK', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmtYears = (n) => n.toLocaleString('da-DK', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const fmtAge = (years, months) => (months ? `${years}½ år` : `${years} år`);
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+
+const PensionsalderPage = () => {
+  const [birthdate, setBirthdate] = useState('');
+  const [gender, setGender] = useState('');
+  const today = toLocalISODate(new Date());
+
+  const parsed = birthdate ? parseLocalDate(birthdate) : null;
+  const valid = parsed && !Number.isNaN(parsed.getTime()) && birthdate >= MIN_BIRTH && birthdate <= today;
+  const outlook = valid ? pensionOutlook(birthdate) : null;
+  const error =
+    birthdate && !valid
+      ? `Skriv en gyldig fødselsdato mellem ${fmtDate(parseLocalDate(MIN_BIRTH))} og i dag.`
+      : null;
+  const efterloen = outlook ? efterloenAgeOn(parsed.getFullYear(), parsed.getMonth() + 1) : undefined;
+  const sexes = gender ? [gender] : ['male', 'female'];
+  const sexLabel = { male: 'mænd', female: 'kvinder' };
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      <SEOHead
+        title="Hvornår kan jeg gå på pension? Beregn din pensionsalder"
+        description="Se din folkepensionsalder, den dato du når den, og hvor mange år du i gennemsnit kan forvente som pensionist. Gratis, uden login."
+        keywords="hvornår kan jeg gå på pension, pensionsalder beregner, folkepensionsalder, pensionsalder 2026"
+        canonicalUrl="/pensionsalder"
+        breadcrumbs={[
+          { name: 'Forside', url: '/' },
+          { name: 'Pensionsalder', url: '/pensionsalder' },
+        ]}
+      />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      </Helmet>
+
+      <PageHeader
+        icon={Briefcase}
+        title="Hvornår kan jeg gå på pension?"
+        subtitle="Skriv din fødselsdato og se din folkepensionsalder, datoen du når den, og hvor mange pensionsår du i gennemsnit kan forvente"
+      />
+
+      <main className="flex-1">
+        <div className="container py-8 sm:py-12">
+          <div className="mx-auto max-w-3xl space-y-6 sm:space-y-8">
+            <div className="card">
+              <div className="card-content space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label htmlFor="pension-birthdate" className="label">Fødselsdato</label>
+                    <input
+                      id="pension-birthdate"
+                      type="date"
+                      className="input"
+                      value={birthdate}
+                      min={MIN_BIRTH}
+                      max={today}
+                      onChange={(e) => setBirthdate(e.target.value)}
+                      aria-invalid={error ? 'true' : undefined}
+                      aria-describedby={error ? 'pension-birthdate-error' : undefined}
+                    />
+                    {error && (
+                      <p id="pension-birthdate-error" role="alert" className="text-sm text-destructive">
+                        {error}
+                      </p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="pension-sex" className="label">Køn (valgfrit)</label>
+                    <select
+                      id="pension-sex"
+                      className="input"
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
+                    >
+                      <option value="">Vis begge</option>
+                      <option value="male">Mand</option>
+                      <option value="female">Kvinde</option>
+                    </select>
+                    <p className="text-xs text-muted-foreground">
+                      Bruges kun til overslaget over pensionsår. Intet gemmes eller sendes.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {outlook && (
+              <div className="card" aria-live="polite">
+                <div className="card-content space-y-4">
+                  <div className="grid grid-cols-1 gap-3 text-center sm:grid-cols-3">
+                    <div className="rounded-lg bg-muted/30 p-3">
+                      <div className="text-2xl font-semibold">{fmtAge(outlook.years, outlook.months)}</div>
+                      <div className="text-xs text-muted-foreground">Folkepensionsalder</div>
+                    </div>
+                    <div className="rounded-lg bg-muted/30 p-3">
+                      <div className="text-2xl font-semibold text-primary">{fmtDate(outlook.date)}</div>
+                      <div className="text-xs text-muted-foreground">
+                        {outlook.retired ? 'Dato du nåede den' : 'Dato du når den'}
+                      </div>
+                    </div>
+                    <div className="rounded-lg bg-muted/30 p-3">
+                      <div className="text-2xl font-semibold">
+                        {outlook.retired
+                          ? 'Pensioneret'
+                          : `${outlook.until.years} år`}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {outlook.retired
+                          ? 'Alderen er nået'
+                          : `og ${plural(outlook.until.months, 'måned', 'måneder')} og ${plural(outlook.until.days, 'dag', 'dage')} til pension`}
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-sm leading-relaxed">
+                    {outlook.retired ? 'Forventede år tilbage i dag' : 'Forventede pensionsår'}
+                    {sexes.map((s, i) => (
+                      <span key={s}>
+                        {i ? ', ' : ': '}
+                        <span className="font-semibold">{fmtYears(outlook.yearsInRetirement[s])} år</span>
+                        {' '}for {sexLabel[s]}
+                      </span>
+                    ))}
+                    . Perioderestlevetid fra Danmarks Statistik (2024-2025), et gennemsnit for alle på samme alder
+                    og ikke en prognose for dig.
+                  </p>
+
+                  {efterloen !== undefined && (
+                    <p className="text-sm text-muted-foreground">
+                      Efterlønsalderen for din årgang er{' '}
+                      {efterloen === null ? 'ikke fastsat endnu' : fmtAge(Math.floor(efterloen), efterloen % 1 ? 6 : 0)}
+                      . Kun alderen er med; vilkår for efterløn indgår ikke.
+                    </p>
+                  )}
+
+                  <Link to="/" className="btn btn-primary gap-2">
+                    <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din forventede levetid
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            <div className="card">
+              <div className="card-content space-y-4">
+                <h2 className="text-xl font-bold sm:text-2xl">Folkepensionsalder efter fødselsår</h2>
+                <p className="leading-relaxed text-muted-foreground">
+                  Alderen er fastsat i Lov nr. 703 af 20. juni 2025 og svarer til oplysningerne på borger.dk.
+                </p>
+                <table className="w-full text-sm">
+                  <caption className="sr-only">Folkepensionsalder efter fødselsdato</caption>
+                  <thead>
+                    <tr className="border-b text-left">
+                      <th scope="col" className="py-2 pr-4 font-semibold">Født</th>
+                      <th scope="col" className="py-2 font-semibold">Pensionsalder</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {AGE_TABLE.map(([born, age]) => (
+                      <tr key={born} className="border-b last:border-0">
+                        <th scope="row" className="py-2 pr-4 text-left font-normal">{born}</th>
+                        <td className="py-2">{age}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="leading-relaxed text-muted-foreground">
+                  Regulering 2030 betyder, at Folketinget i 2030 igen tager stilling til, om alderen skal op for de
+                  yngste årgange (født 1975 eller senere). Tallene ovenfor kan derfor ændre sig for dem.
+                </p>
+                <p className="leading-relaxed text-muted-foreground">
+                  Pensionsårene beregnes med den danske dødelighedstabel: vi aflæser den forventede restlevetid ved
+                  netop din pensionsalder. Tabellen beskriver dødeligheden i 2024-2025 og tager ikke højde for, at vi
+                  lever længere i fremtiden. Er du allerede pensionist, bruger vi din alder i dag. Du kan få et mere
+                  personligt bud i{' '}
+                  <Link to="/" className="underline">levetidsberegneren</Link>, som også kan tage højde for din
+                  livsstil.
+                </p>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  Forbehold: Siden er vejledende og erstatter ikke Udbetaling Danmark eller rådgivning om din egen
+                  pension. Din fødselsdato bliver i din browser og sendes ikke videre.
+                </p>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="card-content space-y-4">
+                <h2 className="text-xl font-bold sm:text-2xl">Ofte stillede spørgsmål</h2>
+                {FAQ.map(([q, a]) => (
+                  <div key={q}>
+                    <h3 className="font-semibold">{q}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <PromoBanner />
+      <Footer />
+      <ThemeToggle />
+    </div>
+  );
+};
+
+export default PensionsalderPage;

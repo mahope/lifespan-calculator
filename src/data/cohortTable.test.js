@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { COHORT_TABLE } from './cohortTable.generated';
-import { LIFE_TABLE_DK } from '../utils/lifeTableDK';
+import { LIFE_TABLE_DK, LIFE_TABLE_PERIOD } from '../utils/lifeTableDK';
 
 // Verified values from the audit (cohort_projection_output.json, DST FRDK426).
 const EXPECTED = [
@@ -26,5 +26,14 @@ describe('generated cohort table', () => {
     expect(c).toHaveLength(100);
     for (let a = 0; a < 90; a++) expect(c[a]).toBeGreaterThanOrEqual(p[a]);
     for (let a = 1; a < c.length; a++) expect(c[a]).toBeLessThan(c[a - 1]);
+  });
+
+  // Reminder to regenerate (`node scripts/build-cohort-table.mjs`): the cohort table's
+  // first projection year must not trail the end of the period table's years by more
+  // than one year. Fails once a newer period table ships without a newer projection.
+  it('is not older than the life table period by more than a year', () => {
+    const periodEnd = Number(LIFE_TABLE_PERIOD.split('-').pop());
+    expect(Number.isInteger(periodEnd)).toBe(true);
+    expect(periodEnd - COHORT_TABLE.baseYear).toBeLessThanOrEqual(1);
   });
 });

@@ -48,6 +48,7 @@ const HomePage = () => {
     resultData,
     currentMode,
     setProjection,
+    resetProjection,
     lifestyleFactors,
     setCurrentMode,
     calculateLifespan,
@@ -170,6 +171,7 @@ const HomePage = () => {
   };
 
   const resetCalculation = () => {
+    resetProjection();
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });

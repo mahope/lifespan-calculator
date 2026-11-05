@@ -35,6 +35,12 @@ export const useLifespanCalculator = () => {
     }
   }, []);
 
+  // "Ny beregning": back to the default (period) figure and forget the last input.
+  const resetProjection = useCallback(() => {
+    setProjectionState('period');
+    lastInput.current = null;
+  }, []);
+
   // Update lifestyle factors
   const updateLifestyleFactor = useCallback((factor, value) => {
     setLifestyleFactors(prev => ({
@@ -53,6 +59,7 @@ export const useLifespanCalculator = () => {
     currentMode,
     projection,
     setProjection,
+    resetProjection,
     lifestyleFactors,
     setCurrentMode,
     calculateLifespan,

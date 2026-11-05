@@ -34,10 +34,11 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
   ).toString();
   const shareUrl = `${window.location.origin}${window.location.pathname}?${query}`;
   const basis = PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period;
-  const basisLower = basis.charAt(0).toLowerCase() + basis.slice(1);
+  // No nested parentheses: the DST label already carries its own.
+  const basisInline = resultData.projection === 'projected' ? 'fremskrevet af Danmarks Statistik' : 'nuværende dødelighed';
   // The link carries no projection state (page state only), so it opens the period view.
   const linkNote = resultData.projection === 'projected' ? ' Linket viser nuværende dødelighed.' : '';
-  const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve (${basisLower})!${linkNote} 🕐 Beregn din egen levetid på`;
+  const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve (${basisInline})!${linkNote} 🕐 Beregn din egen levetid på`;
 
   // Copy link to clipboard
   const copyLink = async () => {

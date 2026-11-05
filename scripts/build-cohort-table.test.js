@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { parseCsv, validate, cohortE } from './build-cohort-table.mjs';
+import { describe, it, expect, vi, afterEach } from 'vitest';
+import { parseCsv, validate, cohortE, assertBaseYear, fetchWithTimeout, BASE_YEAR } from './build-cohort-table.mjs';
 
 // Tiny synthetic table: constant q over ages 0..109 and years 2026..2028.
 function csv({ q = 0.01, e = null, ages = 110 } = {}) {
@@ -56,5 +56,28 @@ describe('build-cohort-table', () => {
     expect(cohortE(q, 'male', 30)).toBeCloseTo(5.0, 2) // tail beyond age 109 is ~1e-3;
     // Without falling q (all 0.5) the result differs, so the year lookup is exercised.
     expect(cohortE(parseCsv(byYear([0.5, 0.5, 0.5])).q, 'male', 30)).not.toBeCloseTo(5.0, 0);
+  });
+});
+
+describe('build-cohort-table base year and timeout', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.useRealTimers();
+  });
+
+  it('fails loudly when DST starts a new projection vintage', () => {
+    expect(() => assertBaseYear(BASE_YEAR)).not.toThrow();
+    expect(() => assertBaseYear(BASE_YEAR + 1)).toThrow(/new vintage/);
+  });
+
+  it('aborts a hung request after the timeout', async () => {
+    vi.useFakeTimers();
+    vi.stubGlobal('fetch', (url, { signal }) => new Promise((_, reject) => {
+      signal.addEventListener('abort', () => reject(Object.assign(new Error('aborted'), { name: 'AbortError' })));
+    }));
+    const p = fetchWithTimeout('https://example.invalid/x', {}, 30_000);
+    const assertion = expect(p).rejects.toThrow(/Timeout after 30 s/);
+    await vi.advanceTimersByTimeAsync(30_000);
+    await assertion;
   });
 });

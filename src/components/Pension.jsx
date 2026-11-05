@@ -14,7 +14,11 @@ const Pension = ({ resultData }) => {
 
   // Real birth year when a birthdate is known; otherwise the cohort is derived
   // from the whole-year age and may straddle a pension-age boundary.
-  const cohort = pensionCohort({ birthYear: resultData.birthYear, age });
+  const cohort = pensionCohort({
+    birthYear: resultData.birthYear,
+    birthMonth: resultData.birthMonth,
+    age,
+  });
   const { pensionAge } = cohort;
   const cohortText =
     cohort.birthYears.length === 1
@@ -74,8 +78,20 @@ const Pension = ({ resultData }) => {
           </div>
         </div>
 
+        {cohort.efterloen && (
+          <p className="text-center text-sm text-muted-foreground">
+            Efterlønsalder for din årgang:{' '}
+            <span className="font-semibold text-foreground">
+              {cohort.efterloen === 'ikke fastsat' ? 'ikke fastsat endnu' : cohort.efterloen}
+            </span>
+            . Kun alderen er med i overslaget; vilkår for efterløn indgår ikke.
+          </p>
+        )}
+
         <p className="text-center text-xs text-muted-foreground">
-          Folkepensionsalderen er lovbestemt og kan stige yderligere for årgange fra 1975.
+          Folkepensionsalderen er lovbestemt (Lov nr. 703 af 20. juni 2025; aldre efter borger.dk,
+          november 2026) og kan stige yderligere for årgange fra 1975. Efterlønsaldre er
+          ligeledes fra borger.dk.
         </p>
       </div>
     </div>

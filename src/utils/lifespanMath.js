@@ -247,6 +247,7 @@ export function computeResult(input, now) {
     minutesLived,
     hasPreciseBirthdate: !!preciseAgeData,
     birthYear: preciseAgeData ? preciseAgeData.birthDate.getFullYear() : null,
+    birthMonth: preciseAgeData ? preciseAgeData.birthDate.getMonth() + 1 : null,
     birthdate: preciseAgeData?.birthDate?.toLocaleDateString('da-DK') || null,
 
     // Heart beats: average 70 bpm across rest and activity

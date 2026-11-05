@@ -20,18 +20,7 @@ import { Link } from 'react-router-dom';
 const DanmarkPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Dansk Levetidsberegner - Specialiseret til danske forhold"
-        description="Beregn din levetid med data specifikt fra Danmarks Statistik. Vores danske levetidsberegner bruger de seneste data fra danske sundhedsmyndigheder."
-        keywords="dansk levetidsberegner, danmark levetid, danmarks statistik levetid, dansk dødsalder, levetid danmark, forventet levealder danmark"
-        ogTitle="Dansk Levetidsberegner - Præcise data fra Danmarks Statistik"
-        ogDescription="Specialiseret levetidsberegner med data fra Danmarks Statistik og danske sundhedsmyndigheder"
-        canonicalUrl="/levetid-beregner-danmark"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Levetidsberegner Danmark', url: '/levetid-beregner-danmark' },
-        ]}
-      />
+      <SEOHead route="/levetid-beregner-danmark" />
 
       <PageHeader
         icon={MapPin}

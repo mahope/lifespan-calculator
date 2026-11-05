@@ -20,18 +20,7 @@ import { Link } from 'react-router-dom';
 const LivsstilPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?"
-        description="Lær hvordan livsstilsfaktorer som motion, kost, rygning og stress påvirker din levetid. Videnskabsbaseret guide til sundere og længere liv."
-        keywords="livsstil levetid, motion levetid, sund kost levetid, rygning påvirkning, stress sundhed, længere liv, sundhed"
-        ogTitle="Livsstil og Levetid - Forlæng dit liv med de rigtige valg"
-        ogDescription="Videnskabsbaseret guide til hvordan du kan forlænge dit liv gennem livsstilsændringer"
-        canonicalUrl="/livsstil-og-levetid"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Livsstil og Levetid', url: '/livsstil-og-levetid' },
-        ]}
-      />
+      <SEOHead route="/livsstil-og-levetid" />
 
       <PageHeader
         icon={HeartPulse}

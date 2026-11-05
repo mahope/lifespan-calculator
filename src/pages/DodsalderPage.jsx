@@ -21,18 +21,7 @@ import { Link } from 'react-router-dom';
 const DodsalderPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Dødsalder Calculator - Beregn din forventede dødsalder"
-        description="Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder."
-        keywords="dødsalder calculator, dødsalder beregner, forventet dødsalder, levetid, statistisk dødsalder, hvornår dør jeg"
-        ogTitle="Dødsalder Calculator - Hvornår dør jeg statistisk?"
-        ogDescription="Få et statistisk estimat af din dødsalder baseret på demografiske data og livsstilsfaktorer"
-        canonicalUrl="/dodsalder-calculator"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Dødsalder Calculator', url: '/dodsalder-calculator' },
-        ]}
-      />
+      <SEOHead route="/dodsalder-calculator" />
 
       <PageHeader
         icon={Skull}

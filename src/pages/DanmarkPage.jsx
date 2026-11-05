@@ -18,7 +18,7 @@ import PromoBanner from '../components/PromoBanner';
 import { Link } from 'react-router-dom';
 import { lifeExpectancyData as le } from '../utils/lifeExpectancyData';
 
-const fmtLE = (n) => n.toFixed(1).replace('.', ',');
+const fmtLE = (n) => n.toFixed(1);
 
 const DanmarkPage = () => {
   return (

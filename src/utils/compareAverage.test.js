@@ -45,7 +45,7 @@ describe('verdictFor', () => {
   });
 
   it('mentions the size of the gap when above or below', () => {
-    expect(verdictFor(2.34).text).toMatch(/2,3 år/);
-    expect(verdictFor(-1.26).text).toMatch(/1,3 år/);
+    expect(verdictFor(2.34).text).toMatch(/2.3 år/);
+    expect(verdictFor(-1.26).text).toMatch(/1.3 år/);
   });
 });

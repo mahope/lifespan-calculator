@@ -16,7 +16,7 @@ export function compareWithDanishAverage(age, gender, lifestyleYears = 0) {
   return { you, average, diff: you - average };
 }
 
-const fmt = (n) => n.toFixed(1).replace('.', ',');
+const fmt = (n) => n.toFixed(1);
 
 /** Danish verdict text for a difference in years: below / equal / above. */
 export function verdictFor(diff) {

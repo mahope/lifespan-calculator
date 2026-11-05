@@ -18,8 +18,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Hvordan fungerer det?</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Levetidsberegneren bruger automatisk IP-lokation til at bestemme dit land uden at bede om tilladelse til GPS.
-              Derefter krydses dine personlige data med officielle levetidsstatistikker for at beregne dit personlige estimat.
+              Levetidsberegneren krydser din alder og dit køn med officielle levetidsstatistikker for at beregne dit
+              personlige estimat. Beregningen sker i din browser.
               Resultatet inkluderer en live nedtælling og mulighed for at dele dine resultater.
             </p>
           </div>
@@ -36,9 +36,9 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Privatlivspolitik</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Vi respekterer dit privatliv. Ingen personlige data gemmes eller deles. Al behandling sker lokalt i din browser,
-              og vi bruger kun din IP-adresse til at bestemme dit land - ikke til tracking eller analyse. Der anvendes ingen
-              cookies eller tredjepartsscripts.
+              Beregningen kører i din browser, og dine indtastninger sendes ikke til os. Læs{' '}
+              <a href="/privatlivspolitik" className="text-primary hover:underline">privatlivspolitikken</a> og{' '}
+              <a href="/cookiepolitik" className="text-primary hover:underline">cookiepolitikken</a>.
             </p>
           </div>
 

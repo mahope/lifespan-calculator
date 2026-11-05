@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "!/{privatlivspolitik,cookiepolitik}", "destination": "/index.html" }
+  ]
+}

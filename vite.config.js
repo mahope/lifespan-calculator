@@ -27,8 +27,9 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
-        // Don't SPA-fallback the standalone static legal/policy .html pages.
-        navigateFallbackDenylist: [/\.html$/],
+        // Don't SPA-fallback the standalone static legal/policy pages
+        // (served from public/ as .html and at clean URLs).
+        navigateFallbackDenylist: [/\.html$/, /^\/(privatlivspolitik|cookiepolitik)\/?$/],
       },
     }),
   ],

@@ -9,6 +9,7 @@
 // from P(reach 99). e_x stops at 99; older ages use e_99 (the tail rule).
 
 import { lifestyleTotal, roundedLifestyleAdjustment } from './lifespanMath';
+import { COHORT_TABLE } from '../data/cohortTable.generated';
 import { LIFE_TABLE_DK, LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 
 export { LIFE_TABLE_DK, LIFE_TABLE_META };
@@ -26,6 +27,36 @@ export function remainingLifeExpectancy(age, gender) {
   return t[lo] + (t[lo + 1] - t[lo]) * (age - lo);
 }
 
+/** Projected (cohort) remaining life expectancy at an exact age, from DST FRDK426. */
+export function projectedRemainingLifeExpectancy(age, gender) {
+  const t = COHORT_TABLE.remaining[gender] || COHORT_TABLE.remaining.male;
+  if (!Number.isFinite(age) || age <= 0) return t[0];
+  if (age >= t.length - 1) return t[t.length - 1];
+  const lo = Math.floor(age);
+  return t[lo] + (t[lo + 1] - t[lo]) * (age - lo);
+}
+
+/** Projected figures are only offered below this age (#92). */
+export const PROJECTION_MAX_AGE = 70;
+
+/**
+ * The table behind a result: 'projected' only when asked for AND the age is
+ * below PROJECTION_MAX_AGE, otherwise the period table.
+ * @returns {'period'|'projected'}
+ */
+export function effectiveProjection(age, requested) {
+  return requested === 'projected' && Number.isFinite(age) && age < PROJECTION_MAX_AGE
+    ? 'projected'
+    : 'period';
+}
+
+/** e_x from the period table or, for 'projected', the cohort table. */
+export function remainingFor(age, gender, projection = 'period') {
+  return projection === 'projected'
+    ? projectedRemainingLifeExpectancy(age, gender)
+    : remainingLifeExpectancy(age, gender);
+}
+
 /**
  * Projected expected age at death for a given age/gender and a set of lifestyle
  * factors: age + max(0, e_x + bounded lifestyle adjustment). Mirrors the hook's
@@ -34,10 +65,10 @@ export function remainingLifeExpectancy(age, gender) {
  * @param {'male'|'female'} gender
  * @param {Record<string, number>} factors
  */
-export function projectedExpectancy(age, gender, factors) {
+export function projectedExpectancy(age, gender, factors, projection = 'period') {
   const remaining = Math.max(
     0,
-    remainingLifeExpectancy(age, gender) + roundedLifestyleAdjustment(lifestyleTotal(factors))
+    remainingFor(age, gender, projection) + roundedLifestyleAdjustment(lifestyleTotal(factors))
   );
   return age + remaining;
 }

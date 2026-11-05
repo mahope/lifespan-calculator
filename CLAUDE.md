@@ -54,6 +54,15 @@ update snapshots with `npm run test:e2e -- --update-snapshots`). `npm run build`
   (tested). `components/LifestyleFactor.jsx` renders one factor as an accessible
   radio group with helper text generated from the table. To add or change an
   option, edit the data only.
+- **`data/cohortTable.generated.js`**: projected (cohort) e_x per age 0-99 from DST
+  FRDK426, written by `node scripts/build-cohort-table.mjs` (needs network; leaves the
+  file untouched on any validation failure). `computeResult` takes `projection:
+  'period'|'projected'`; the period table stays the default and projected is only
+  offered below age 70 (`PROJECTION_MAX_AGE`, checked on the age after #118's +0.5, so
+  an entered 69 gets the toggle and 70 does not). Survival probabilities (`Sandsynlighed`)
+  and `ParMode` always use the period figures. The toggle state is page state only (reset
+  by "Ny beregning", never in the URL or storage). `BASE_YEAR` in the script is explicit;
+  a test fails when the table is more than a year older than `LIFE_TABLE_PERIOD`.
 - **`utils/lifeExpectancyData.js`**: Static country life-expectancy data with
   Danish translations, plus lookup/formatting helpers.
 - **`index.css`**: Tailwind v4 entry - `@import 'tailwindcss'`, `@theme` design

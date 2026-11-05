@@ -26,6 +26,8 @@ exactly like in production. `vite preview` ignores `serve.json` and would hide t
   the event name is a key, every prop key is listed for that event, Plausible's own `pageview` carries no props),
   that no prop value and no request body contains a typed input value (age, birthdate, gender), that nothing is
   logged with `console.error`, and that a crafted share link (`?g=constructor&a=99999999`) leaves the page responsive.
+- `projection.e2e.js`: the projected-figure toggle (#92): period stays the default headline, keyboard operation (Space/Enter),
+  reset on "Ny beregning", no toggle from entered age 70, nothing in the URL or storage.
 - `static-contract.e2e.js`: `/robots.txt`, `/sitemap.xml`, `/privatlivspolitik`, a 404 for `/xyz` and 200 for
   `/api/health`. There is no skip: if `/sitemap.xml` falls back to the SPA, the suite fails.
 

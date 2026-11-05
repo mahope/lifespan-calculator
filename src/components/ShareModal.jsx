@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ShareCard from './ShareCard';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams } from '../utils/shareState';
+import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced = false }) => {
   const [copySuccess, setCopySuccess] = useState('');
@@ -31,7 +32,8 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
     })
   ).toString();
   const shareUrl = `${window.location.origin}${window.location.pathname}?${query}`;
-  const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve! 🕐 Beregn din egen levetid på`;
+  const basis = PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period;
+  const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve (${basis.toLowerCase()})! 🕐 Beregn din egen levetid på`;
 
   // Copy link to clipboard
   const copyLink = async () => {
@@ -58,6 +60,7 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
 ⏳ Resterende tid: ${resultData.remainingYears} år (${resultData.remainingDays} dage)
 📅 Estimeret slutdato: ${resultData.endDate}
 📍 Baseret på: ${resultData.dataSource}
+🔎 Grundlag: ${basis}
 
 ${resultData.lifestyleImpact !== 0 ? `💪 Livsstil påvirkning: ${resultData.lifestyleImpact > 0 ? '+' : ''}${resultData.lifestyleImpact} år` : ''}
 

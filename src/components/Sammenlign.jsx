@@ -15,7 +15,7 @@ const Sammenlign = ({ resultData }) => {
   const lifestyle = Number(resultData.lifestyleImpact) || 0;
   if (!Number.isFinite(age)) return null;
 
-  const { you, average, diff } = compareWithDanishAverage(age, gender, lifestyle);
+  const { you, average, diff } = compareWithDanishAverage(age, gender, lifestyle, resultData.projection);
   const verdict = verdictFor(diff);
   const sexLabel = gender === 'female' ? 'kvinde' : 'mand';
   const dk = lifeExpectancyData.Denmark;

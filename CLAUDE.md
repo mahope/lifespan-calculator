@@ -44,6 +44,12 @@ npm ci && npm run lint && npm test && npm run build
 - **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure
   `computeResult(input, now)` in `utils/lifespanMath.js` (age, remaining time,
   end instant). No location lookup: the app never asks for or sends the user's position.
+- **`data/cohortTable.generated.js`**: projected (cohort) e_x per age 0-99 from DST
+  FRDK426, written by `node scripts/build-cohort-table.mjs` (needs network; leaves the
+  file untouched on any validation failure). `computeResult` takes `projection:
+  'period'|'projected'`; the period table stays the default and projected is only
+  offered below age 70 (`PROJECTION_MAX_AGE`). Survival probabilities (`Sandsynlighed`)
+  always use the period l_x.
 - **`utils/lifeExpectancyData.js`**: Static country life-expectancy data with
   Danish translations, plus lookup/formatting helpers.
 - **`index.css`**: Tailwind v4 entry - `@import 'tailwindcss'`, `@theme` design

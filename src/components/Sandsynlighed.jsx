@@ -26,7 +26,11 @@ const Sandsynlighed = ({ resultData }) => {
       <SectionHeader
         icon={Dices}
         title="Chance for at nå…"
-        description="Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler."
+        description={
+          resultData.projection === 'projected'
+            ? 'Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler (nuværende dødelighed, også når du har valgt fremskrevet).'
+            : 'Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler.'
+        }
       />
       <div className="card-content space-y-3">
         {rows.map((r) => (

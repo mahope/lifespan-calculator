@@ -22,7 +22,7 @@ function walk(dir) {
 
 describe('data period is single-sourced', () => {
   it('has no hard-coded DST period in src/ outside the generated file', () => {
-    const generated = ['data/lifeTableDK.generated.js', 'data/healthyLifeYears.generated.js'].map((f) =>
+    const generated = ['data/lifeTableDK.generated.js', 'data/lifeTableExtras.generated.js', 'data/healthyLifeYears.generated.js'].map((f) =>
       join('src', f).split(sep).join('/')
     );
     const offenders = walk(SRC)
@@ -33,12 +33,14 @@ describe('data period is single-sourced', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('exposes a well-formed period and tables of 100 ages', () => {
+  it('exposes a well-formed period and tables of 100 ages (101 survivors entries)', () => {
     expect(LIFE_TABLE_META.period).toMatch(/^\d{4}-\d{4}$/);
     expect(LIFE_TABLE_META.tid).toBe(LIFE_TABLE_META.period.replace('-', ':'));
     expect(LIFE_TABLE_META.retrieved).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(LIFE_TABLE_DK.remaining.male).toHaveLength(100);
-    expect(LIFE_TABLE_DK.survivors.female).toHaveLength(100);
+    expect(LIFE_TABLE_DK.remaining.female).toHaveLength(100);
+    expect(LIFE_TABLE_DK.survivors.male).toHaveLength(101);
+    expect(LIFE_TABLE_DK.survivors.female).toHaveLength(101);
   });
 
   it('puts the period in the result data source', () => {

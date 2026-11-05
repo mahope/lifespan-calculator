@@ -3,6 +3,10 @@
 
 import { remainingLifeExpectancy, LIFE_TABLE_META } from './lifeTableDK';
 
+/** Highest whole-year age accepted in age-only mode. The tables end at 99/100, so
+ *  ages above 99 use the tail rule (e_99). */
+export const MAX_AGE_INPUT = 110;
+
 /**
  * Parse a calendar date as LOCAL midnight. `new Date('YYYY-MM-DD')` is UTC
  * midnight, which is the previous day west of UTC; `YYYY-MM-DD` strings are
@@ -196,7 +200,9 @@ export function computeResult(input, now) {
     age = preciseAgeData.preciseAge;
     daysLived = preciseAgeData.totalDaysLived;
   } else {
-    age = typeof ageOrBirthdate === 'number' ? ageOrBirthdate : parseInt(ageOrBirthdate);
+    // "40" means 40.0-40.99, so the e_x lookup uses the middle of the year.
+    const whole = typeof ageOrBirthdate === 'number' ? ageOrBirthdate : parseInt(ageOrBirthdate);
+    age = Math.max(0, Math.min(MAX_AGE_INPUT, Math.floor(whole))) + 0.5;
     daysLived = Math.floor(age * 365.25);
   }
 
@@ -232,6 +238,8 @@ export function computeResult(input, now) {
     displayAge: preciseAgeData
       ? `${preciseAgeData.years} år, ${preciseAgeData.months} mdr, ${preciseAgeData.days} dage`
       : `${Math.floor(age)} år`,
+    ageIsMidYear: !preciseAgeData,
+    usesTailRule: age >= 99,
     gender,
     lifePercentage: lifePercent(age, adjustedLifeExpectancy).toFixed(1),
     daysLived,
@@ -239,6 +247,7 @@ export function computeResult(input, now) {
     minutesLived,
     hasPreciseBirthdate: !!preciseAgeData,
     birthYear: preciseAgeData ? preciseAgeData.birthDate.getFullYear() : null,
+    birthMonth: preciseAgeData ? preciseAgeData.birthDate.getMonth() + 1 : null,
     birthdate: preciseAgeData?.birthDate?.toLocaleDateString('da-DK') || null,
 
     // Heart beats: average 70 bpm across rest and activity

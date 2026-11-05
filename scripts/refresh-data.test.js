@@ -1,12 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import {
-  LIFE_TABLE_DK,
-  LIFE_TABLE_META,
-  MORTALITY_DK,
-  SURVIVORS_AT_100_DK,
-  NEWBORN_DK,
-  REGIONAL_DK,
-} from '../src/data/lifeTableDK.generated.js';
+import { readFileSync } from 'node:fs';
+import { LIFE_TABLE_DK, LIFE_TABLE_META } from '../src/data/lifeTableDK.generated.js';
+import { MORTALITY_DK, NEWBORN_DK, REGIONAL_DK } from '../src/data/lifeTableExtras.generated.js';
+import masterTable from './fixtures/lifeTableDK.master-118.json';
 import { HEALTHY_LIFE_YEARS } from '../src/data/healthyLifeYears.generated.js';
 import {
   validateLifeTable,
@@ -17,6 +13,12 @@ import {
   buildLifeTableSeries,
   decodeJsonStat,
   deriveL100,
+  withL100,
+  renderLifeTable,
+  renderLifeTableExtras,
+  PATHS,
+  main,
+  CohortUnavailableError,
   latestTid,
   isStale,
   parseDstCsv,
@@ -60,6 +62,19 @@ describe('validateLifeTable', () => {
     const t = committed();
     t.male.mortality = t.male.mortality.slice(0, 99);
     expect(validateLifeTable(t, meta).join('\n')).toMatch(/male\/mortality: expected 100 values, got 99/);
+  });
+
+  it('requires 101 survivors entries (100 from DST + derived l_100)', () => {
+    const t = committed();
+    expect(t.male.survivors).toHaveLength(101);
+    t.male.survivors = t.male.survivors.slice(0, 100);
+    expect(validateLifeTable(t, meta).join('\n')).toMatch(/male\/survivors: expected 101 values, got 100/);
+  });
+
+  it('rejects an l_100 that is not l_99 * (1 - q_99)', () => {
+    const t = committed();
+    t.female.survivors[100] += 1;
+    expect(validateLifeTable(t, meta).join('\n')).toMatch(/female\/survivors: l_100 is 2700, expected .* = 2699/);
   });
 
   it('rejects the wrong period', () => {
@@ -123,8 +138,11 @@ describe('DST helpers', () => {
     expect(() => latestTid({ id: 'X', variables: [] })).toThrow(/no Tid/);
   });
 
-  it('derives l_100 consistently with the committed table', () => {
-    expect(deriveL100(committed())).toEqual(SURVIVORS_AT_100_DK);
+  it('derives l_100 from the first 100 survivors values and q_99', () => {
+    const raw = committed();
+    for (const sex of ['male', 'female']) raw[sex].survivors = raw[sex].survivors.slice(0, 100);
+    expect(deriveL100(raw)).toEqual({ male: 819, female: 2699 });
+    expect(withL100(raw)).toEqual(committed());
   });
 
   it('detects staleness by start year', () => {
@@ -235,5 +253,52 @@ describe('Eurostat helpers', () => {
     const src = `export const HEALTHY_LIFE_YEARS_META = {};\nexport const HEALTHY_LIFE_YEARS = ${JSON.stringify(HEALTHY_LIFE_YEARS, null, 2)};\n`;
     expect(parseCommittedHly(src)).toEqual(HEALTHY_LIFE_YEARS);
     expect(parseCommittedHly(null)).toBeNull();
+  });
+});
+
+describe('generated life table equals the table shipped by #118', () => {
+  // The values are pinned in scripts/fixtures (copied from master's src/utils/lifeTableDK.js after #118)
+  // and in src/utils/lifeTableDK.test.js. They are DST's 2024-2025 period; after a legitimate
+  // refresh to a newer period this fixture must be replaced with the new numbers.
+  const samePeriod = LIFE_TABLE_META.tid === '2024:2025';
+
+  it.runIf(samePeriod)('reproduces all four arrays, including the 101st survivors entry', () => {
+    expect(LIFE_TABLE_DK).toEqual(masterTable);
+    expect(masterTable.survivors.male).toHaveLength(101);
+    expect(masterTable.survivors.female).toHaveLength(101);
+    expect(masterTable.remaining.male).toHaveLength(100);
+    expect(masterTable.remaining.female).toHaveLength(100);
+    expect(LIFE_TABLE_DK.survivors.male[100]).toBe(819);
+    expect(LIFE_TABLE_DK.survivors.female[100]).toBe(2699);
+  });
+
+  it('committed files are exactly what the generator renders from their own data', () => {
+    const d = {
+      tid: LIFE_TABLE_META.tid,
+      tableUpdated: LIFE_TABLE_META.tableUpdated,
+      table: committed(),
+      newborn: NEWBORN_DK,
+      regional: REGIONAL_DK,
+    };
+    expect(renderLifeTable(d, LIFE_TABLE_META.retrieved)).toBe(readFileSync(PATHS.lifeTable, 'utf8'));
+    expect(renderLifeTableExtras(d, LIFE_TABLE_META.retrieved)).toBe(readFileSync(PATHS.lifeTableExtras, 'utf8'));
+  });
+
+  it('keeps the app file small: no mortality or regional data in it', () => {
+    const src = readFileSync(PATHS.lifeTable, 'utf8');
+    expect(src).not.toMatch(/MORTALITY_DK|REGIONAL_DK|NEWBORN_DK/);
+    expect(src.length).toBeLessThan(6000);
+  });
+});
+
+describe('cohort sub-command', () => {
+  it('is an explicit "not available yet" failure, also when asked for directly', async () => {
+    await expect(main(['cohort', '--dry-run'])).rejects.toBeInstanceOf(CohortUnavailableError);
+    await expect(main(['cohort'])).rejects.toThrow(/not available yet/);
+  });
+
+  it('is not part of "all", so all stays atomic and does not skip silently', () => {
+    const src = readFileSync(new URL('./refresh-data.mjs', import.meta.url), 'utf8');
+    expect(src).toMatch(/cmd === 'all' \? \['dst', 'countries', 'hly'\]/);
   });
 });

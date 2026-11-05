@@ -19,11 +19,11 @@ unchanged data changes nothing (the retrieval date is only bumped when content c
 
 | Sub-command | Source | Writes |
 |---|---|---|
-| `dst` | DST StatBank `HISB8` (l_x, q_x, e_x, ages 0-99, M/K), `HISB7` (newborn headline), `HISBR`, `HISBK`, `LABY21` (regional) | `src/data/lifeTableDK.generated.js` |
+| `dst` | DST StatBank `HISB8` (l_x, q_x, e_x, ages 0-99, M/K), `HISB7` (newborn headline), `HISBR`, `HISBK`, `LABY21` (regional) | `src/data/lifeTableDK.generated.js` (what the app imports: meta, e_x 0-99, l_x 0-100) and `src/data/lifeTableExtras.generated.js` (q_x, newborn, regional; not imported by the app) |
 | `countries` | World Bank WDI `SP.DYN.LE00*`, Eurostat `demo_mlexpec` | the `BEGIN/END GENERATED COUNTRY TABLE` block in `src/utils/lifeExpectancyData.js` |
 | `hly` | Eurostat `hlth_hlye` (`HLY_Y0`, `HLY_Y65`, `LE_Y65`) | `src/data/healthyLifeYears.generated.js` |
-| `cohort` | reserved for the cohort-projection work (separate issue). Not implemented: `cohort` alone exits non-zero, and `all` prints a "SKIPPED" warning for it | none |
-| `all` | all of the above | all of the above |
+| `cohort` | not available yet (the cohort table is a separate pull request). `cohort` exits 1 with a "not available yet" message; it is not part of `all` | none |
+| `all` | `dst`, `countries` and `hly` | all of the above |
 | `check` | `tableinfo/HISB8` | stdout (JSON): committed vs latest period, `stale` flag |
 
 ### What is validated
@@ -33,7 +33,9 @@ unchanged data changes nothing (the retrieval date is only bumped when content c
   e_x non-increasing from age 1 (e_0 may be below e_1); e_x recomputed from l_x (trapezoid, tail
   closed with DST's e_99) within 0.05 of DST's; HISB7 agrees with e_0; regional tables are
   complete (DST suppresses a few tiny municipalities; up to 10 % missing is accepted) and plausible.
-  `l_100` is derived as l_99 * (1 - q_99) and written as `SURVIVORS_AT_100_DK`.
+  The 101st survivors entry `l_100` is derived as l_99 * (1 - q_99) (rounded) and written as the last
+  element of `survivors`; validation requires 101 survivors values, of which the first 100 are DST's and
+  the last must equal that derivation. e_x stops at 99.
 - `countries`: Sweden, Norway and Finland come from Eurostat, Japan and the world average from the
   World Bank (each row carries its source and year). This deliberately keeps the choice made in #81
   and differs from the issue text (World Bank primary, Eurostat cross-check). The World Bank value
@@ -43,7 +45,7 @@ unchanged data changes nothing (the retrieval date is only bumped when content c
 - `hly`: Denmark must have all three indicators for both sexes, values must be plausible and
   HLY_Y65 may not exceed LE_Y65. Years are compared per country/indicator/sex with the committed
   file (countries publish at different times); a regression fails the run. The hly data and the
-  regional/newborn/survivor exports are not used by the UI yet.
+  regional and newborn exports (in `lifeTableExtras.generated.js`) are not used by the UI yet; they live in their own file so the bundle never depends on tree-shaking.
 
 The generated life-table file exports `LIFE_TABLE_META` = `{ period, tid, tableUpdated, retrieved, source }`.
 UI and SEO copy read `LIFE_TABLE_META.period` / `.tid`; a vitest test fails if `2024-2025`,

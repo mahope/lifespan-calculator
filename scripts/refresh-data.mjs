@@ -3,12 +3,13 @@
 //
 //   node scripts/refresh-data.mjs <dst|countries|hly|cohort|all|check> [--dry-run]
 //
-//   dst        Danmarks Statistik StatBank: HISB8 (life table), HISB7 (newborn headline),
-//              HISBR/HISBK/LABY21 (regional) -> src/data/lifeTableDK.generated.js
+//   dst        Danmarks Statistik StatBank: HISB8 (life table) -> src/data/lifeTableDK.generated.js;
+//              HISB8 q_x, HISB7 (newborn headline), HISBR/HISBK/LABY21 (regional)
+//              -> src/data/lifeTableExtras.generated.js (not imported by the app)
 //   countries  World Bank WDI + Eurostat demo_mlexpec -> block in src/utils/lifeExpectancyData.js
 //   hly        Eurostat hlth_hlye (HLY_Y0, HLY_Y65, LE_Y65) -> src/data/healthyLifeYears.generated.js
-//   cohort     reserved for the cohort-projection issue (not implemented yet)
-//   all        dst + countries + hly (+ cohort once it exists)
+//   cohort     not available yet (separate cohort-projection pull request): exits 1
+//   all        dst + countries + hly (cohort joins once it exists)
 //   check      staleness check: is DST's latest HISB8 period newer than the committed one?
 //              Prints JSON, always exits 0 unless DST is unreachable. `--simulate-latest 2026:2027`
 //              pretends DST published that period (for testing the stale path).
@@ -23,6 +24,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = new URL('../', import.meta.url);
 export const PATHS = {
   lifeTable: fileURLToPath(new URL('src/data/lifeTableDK.generated.js', ROOT)),
+  lifeTableExtras: fileURLToPath(new URL('src/data/lifeTableExtras.generated.js', ROOT)),
   hly: fileURLToPath(new URL('src/data/healthyLifeYears.generated.js', ROOT)),
   countries: fileURLToPath(new URL('src/utils/lifeExpectancyData.js', ROOT)),
 };
@@ -31,7 +33,8 @@ const DST_API = 'https://api.statbank.dk/v1';
 const EUROSTAT_API = 'https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data';
 const WORLD_BANK_API = 'https://api.worldbank.org/v2';
 
-export const AGES = 100; // exact ages 0..99
+export const AGES = 100; // exact ages 0..99: what DST HISB8 publishes (e_x, q_x and l_x)
+export const SURVIVOR_AGES = AGES + 1; // l_x runs 0..100: entry 100 (l_100) is derived from q_99
 export const E_TOLERANCE = 0.05; // recomputed e_x vs DST's e_x
 export const COUNTRY_WARN_DIFF = 0.5; // years, World Bank vs Eurostat
 
@@ -42,16 +45,22 @@ export const COUNTRY_WARN_DIFF = 0.5; // years, World Bank vs Eurostat
 export const today = () => new Date().toISOString().slice(0, 10);
 const round1 = (n) => Math.round(n * 10) / 10;
 
+export const FETCH_TIMEOUT_MS = 30_000;
+
 async function fetchText(url, init, attempts = 3) {
   let lastErr;
   for (let i = 0; i < attempts; i++) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
     try {
-      const res = await fetch(url, init);
+      const res = await fetch(url, { ...init, signal: ctrl.signal });
       if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
       return await res.text();
     } catch (err) {
-      lastErr = err;
+      lastErr = ctrl.signal.aborted ? new Error(`Timeout after ${FETCH_TIMEOUT_MS / 1000} s for ${url}`) : err;
       await new Promise((r) => setTimeout(r, 500 * (i + 1)));
+    } finally {
+      clearTimeout(timer);
     }
   }
   throw lastErr;
@@ -107,7 +116,7 @@ export function parseDstCsv(text) {
   });
 }
 
-/** Build the 100-long series for each sex and TAVLE from HISB8 rows of one period. */
+/** Build the 100-long series (ages 0..99) for each sex and TAVLE from HISB8 rows of one period. */
 export function buildLifeTableSeries(rows, tid) {
   const out = { male: {}, female: {} };
   const sexOf = { M: 'male', K: 'female' };
@@ -138,7 +147,9 @@ export function recomputeRemaining(survivors, e99) {
 }
 
 /**
- * Validate one DST life table. Returns a list of problems (empty = valid).
+ * Validate one life table. Returns a list of problems (empty = valid).
+ * survivors has 101 entries: the first 100 come from DST HISB8, entry 100 (l_100) is derived
+ * from l_99 and q_99 (see deriveL100); mortality and remaining have 100.
  * @param {{male:object,female:object}} table  series per sex: survivors, mortality, remaining
  * @param {{tid:string, expectedTid?:string, previousTid?:string}} meta
  */
@@ -159,25 +170,30 @@ export function validateLifeTable(table, { tid, expectedTid, previousTid } = {})
     for (const name of ['survivors', 'mortality', 'remaining']) {
       const arr = s?.[name];
       const where = `${sex}/${name}`;
-      if (!Array.isArray(arr) || arr.length !== AGES) {
-        errors.push(`${where}: expected ${AGES} values, got ${arr?.length ?? 'none'}`);
+      const want = name === 'survivors' ? SURVIVOR_AGES : AGES;
+      if (!Array.isArray(arr) || arr.length !== want) {
+        errors.push(`${where}: expected ${want} values, got ${arr?.length ?? 'none'}`);
         continue;
       }
       const missing = [];
-      for (let i = 0; i < AGES; i++) if (typeof arr[i] !== 'number' || !Number.isFinite(arr[i])) missing.push(i);
+      for (let i = 0; i < want; i++) if (typeof arr[i] !== 'number' || !Number.isFinite(arr[i])) missing.push(i);
       if (missing.length) errors.push(`${where}: missing or non-numeric at age ${missing.slice(0, 5).join(', ')}`);
     }
     if (errors.some((e) => e.startsWith(`${sex}/`))) continue;
 
     const { survivors: l, mortality: q, remaining: e } = s;
     if (l[0] !== 100000) errors.push(`${sex}/survivors: l_0 is ${l[0]}, expected 100000`);
-    for (let x = 1; x < AGES; x++) {
+    for (let x = 1; x < SURVIVOR_AGES; x++) {
       if (l[x] > l[x - 1]) {
         errors.push(`${sex}/survivors: l_x increases at age ${x} (${l[x - 1]} -> ${l[x]})`);
         break;
       }
     }
     if (l.some((v) => v <= 0 || v > 100000)) errors.push(`${sex}/survivors: value outside (0, 100000]`);
+    const l100 = Math.round(l[AGES - 1] * (1 - q[AGES - 1] / 100000));
+    if (l[AGES] !== l100) {
+      errors.push(`${sex}/survivors: l_100 is ${l[AGES]}, expected l_99 * (1 - q_99) = ${l100}`);
+    }
     if (q.some((v) => v < 0 || v > 100000)) errors.push(`${sex}/mortality: value outside [0, 100000]`);
     // e_0 may be lower than e_1 (infant mortality), so monotonicity starts at age 1.
     for (let x = 2; x < AGES; x++) {
@@ -187,7 +203,7 @@ export function validateLifeTable(table, { tid, expectedTid, previousTid } = {})
       }
     }
     if (!errors.some((er) => er.startsWith(`${sex}/survivors`))) {
-      const re = recomputeRemaining(l, e[AGES - 1]);
+      const re = recomputeRemaining(l.slice(0, AGES), e[AGES - 1]);
       for (let x = 0; x < AGES - 1; x++) {
         if (Math.abs(re[x] - e[x]) > E_TOLERANCE) {
           errors.push(
@@ -207,6 +223,16 @@ export function deriveL100(table) {
   for (const sex of ['male', 'female']) {
     const { survivors, mortality } = table[sex];
     out[sex] = Math.round(survivors[AGES - 1] * (1 - mortality[AGES - 1] / 100000));
+  }
+  return out;
+}
+
+/** Append the derived l_100 to the 100 DST survivors values (the series validateLifeTable expects). */
+export function withL100(table) {
+  const l100 = deriveL100(table);
+  const out = {};
+  for (const sex of ['male', 'female']) {
+    out[sex] = { ...table[sex], survivors: [...table[sex].survivors, l100[sex]] };
   }
   return out;
 }
@@ -258,7 +284,7 @@ export async function fetchDst({ previousTid } = {}) {
     { code: 'TAVLE', values: ['1', '2', '3'] },
     { code: 'Tid', values: [tid] },
   ]);
-  const table = buildLifeTableSeries(rows, tid);
+  const table = withL100(buildLifeTableSeries(rows, tid));
   const errors = validateLifeTable(table, { tid, previousTid });
 
   // Newborn headline (HISB7) must agree with e_0 of the life table (one decimal).
@@ -303,7 +329,7 @@ export async function fetchDst({ previousTid } = {}) {
   }
 
   if (errors.length) throw new ValidationError('dst', errors);
-  return { tid, tableUpdated: info.updated, table, l100: deriveL100(table), newborn, regional };
+  return { tid, tableUpdated: info.updated, table, newborn, regional };
 }
 
 // ---------------------------------------------------------------------------
@@ -325,12 +351,16 @@ const HEADER = (cmd) =>
 const fmtArray = (arr, digits) =>
   `[${arr.map((v) => (digits === null ? String(v) : v.toFixed(digits))).join(', ')}]`;
 
+const sexBlock = (table, name, digits) =>
+  `    male: ${fmtArray(table.male[name], digits)},\n    female: ${fmtArray(table.female[name], digits)},`;
+
+/** The part the app imports: meta, e_x (ages 0..99) and l_x (ages 0..100). */
 export function renderLifeTable(d, retrieved) {
   const { table } = d;
-  const block = (name, digits) =>
-    `    male: ${fmtArray(table.male[name], digits)},\n    female: ${fmtArray(table.female[name], digits)},`;
-  return `${HEADER('dst')}// Source: https://www.statbank.dk/HISB8 (TAVLE 1 = l_x, 2 = q_x per 100,000, 3 = e_x).
-// Index = exact age 0..99. Period is the two-year period DST calls ${JSON.stringify(d.tid)}.
+  return `${HEADER('dst')}// Source: https://www.statbank.dk/HISB8 (TAVLE 1 = l_x, 3 = e_x).
+// Index = exact age: remaining (e_x) 0..99, survivors (l_x) 0..100. The first 100 survivors values
+// are DST's; entry 100 is derived as l_99 * (1 - q_99) with DST's q_99 (TAVLE 2).
+// Period is the two-year period DST calls ${JSON.stringify(d.tid)}.
 
 export const LIFE_TABLE_META = {
   period: ${JSON.stringify(periodLabel(d.tid))},
@@ -343,18 +373,24 @@ export const LIFE_TABLE_META = {
 
 export const LIFE_TABLE_DK = {
   remaining: {
-${block('remaining', 2)}
+${sexBlock(table, 'remaining', 2)}
   },
   survivors: {
-${block('survivors', null)}
+${sexBlock(table, 'survivors', null)}
   },
 };
+`;
+}
 
-// q_x per 100,000 (TAVLE 2) and l_100 derived as l_99 * (1 - q_99).
+/** Data the app does not import (kept apart so bundle size never depends on tree-shaking). */
+export function renderLifeTableExtras(d, retrieved) {
+  const { table } = d;
+  return `${HEADER('dst')}// Not imported by the app. Same period as lifeTableDK.generated.js (retrieved ${retrieved}).
+
+// q_x per 100,000 (HISB8 TAVLE 2), ages 0..99.
 export const MORTALITY_DK = {
-${block('mortality', null).replace(/^ {4}/gm, '  ')}
+${sexBlock(table, 'mortality', null).replace(/^ {4}/gm, '  ')}
 };
-export const SURVIVORS_AT_100_DK = ${JSON.stringify(d.l100)};
 
 // HISB7: life expectancy of a newborn, same period.
 export const NEWBORN_DK = ${JSON.stringify(d.newborn)};
@@ -663,12 +699,22 @@ function stable(render, existing, oldRetrieved) {
 
 async function planDst() {
   const existing = await readOrNull(PATHS.lifeTable);
+  const existingExtras = await readOrNull(PATHS.lifeTableExtras);
   const previousTid = existing?.match(/\btid:\s*"([^"]+)"/)?.[1];
   const d = await fetchDst({ previousTid });
   const oldRetrieved = existing?.match(/\bretrieved:\s*"([^"]+)"/)?.[1];
-  const content = stable((r) => renderLifeTable(d, r), existing, oldRetrieved);
-  console.log(`dst: period ${d.tid} (table updated ${d.tableUpdated}), l_100 ${JSON.stringify(d.l100)}`);
-  return [{ path: PATHS.lifeTable, content, existing }];
+  // One retrieval date for both files: bump it only if either file's content changes.
+  const unchanged =
+    oldRetrieved &&
+    renderLifeTable(d, oldRetrieved) === existing &&
+    renderLifeTableExtras(d, oldRetrieved) === existingExtras;
+  const retrieved = unchanged ? oldRetrieved : today();
+  const l100 = { male: d.table.male.survivors[AGES], female: d.table.female.survivors[AGES] };
+  console.log(`dst: period ${d.tid} (table updated ${d.tableUpdated}), l_100 ${JSON.stringify(l100)}`);
+  return [
+    { path: PATHS.lifeTable, content: renderLifeTable(d, retrieved), existing },
+    { path: PATHS.lifeTableExtras, content: renderLifeTableExtras(d, retrieved), existing: existingExtras },
+  ];
 }
 
 async function planCountries() {
@@ -690,11 +736,17 @@ async function planHly() {
   return [{ path: PATHS.hly, content, existing }];
 }
 
-async function planCohort({ inAll = false } = {}) {
-  const msg = 'cohort: NOT IMPLEMENTED yet (tracked in the cohort-projection issue)';
-  if (!inAll) throw new Error(msg);
-  console.warn(`${msg}; SKIPPED in "all"`);
-  return [];
+async function planCohort() {
+  throw new CohortUnavailableError();
+}
+
+export class CohortUnavailableError extends Error {
+  constructor() {
+    super(
+      'cohort: not available yet (src/data/cohortTable.generated.js and its builder are a separate pull request); ' +
+        'nothing was written'
+    );
+  }
 }
 
 const PLANS = { dst: planDst, countries: planCountries, hly: planHly, cohort: planCohort };
@@ -734,13 +786,13 @@ export async function main(argv) {
     console.log(JSON.stringify(await check({ simulateLatest })));
     return;
   }
-  const steps = cmd === 'all' ? ['dst', 'countries', 'hly', 'cohort'] : PLANS[cmd] ? [cmd] : null;
+  const steps = cmd === 'all' ? ['dst', 'countries', 'hly'] : PLANS[cmd] ? [cmd] : null;
   if (!steps) {
     console.error('Usage: node scripts/refresh-data.mjs <dst|countries|hly|cohort|all|check> [--dry-run]');
     process.exit(2);
   }
   const writes = [];
-  for (const step of steps) writes.push(...(await PLANS[step]({ inAll: cmd === 'all' })));
+  for (const step of steps) writes.push(...(await PLANS[step]()));
   await applyWrites(writes, flags.has('--dry-run'));
 }
 

@@ -5,7 +5,9 @@
 //
 // Serves dist/ with `vite preview`, runs Lighthouse (mobile preset, default throttling) 3 times and
 // fails when the median LCP > 2.5 s, the median CLS > 0.1 or the total JavaScript (brotli) > 130 KB.
-// Lighthouse is fetched with npx at a pinned version, it is not a project dependency.
+// Lighthouse is fetched with npx at an exact pinned version (13.5.0, published 2026-09-18, no install scripts), it is not a
+// project dependency. npx downloads it and its transitive dependencies from the npm registry, so this script needs network
+// access; install scripts are disabled for that download.
 // Env: CHROME_PATH (browser to use; on agent-worker /opt/google/chrome/chrome), BUDGET_PORT (default 4174).
 import { spawn, spawnSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
@@ -46,7 +48,7 @@ try {
     const r = spawnSync(
       'npx',
       ['--yes', LIGHTHOUSE, URL_UNDER_TEST, '--output=json', `--output-path=${out}`, '--only-categories=performance', '--quiet', '--chrome-flags=--headless=new'],
-      { stdio: ['ignore', 'inherit', 'inherit'] },
+      { stdio: ['ignore', 'inherit', 'inherit'], env: { ...process.env, npm_config_ignore_scripts: 'true', npm_config_audit: 'false', npm_config_fund: 'false' } },
     );
     if (r.status !== 0) throw new Error(`lighthouse run ${i + 1} failed (exit ${r.status})`);
     const lhr = JSON.parse(readFileSync(out, 'utf8'));

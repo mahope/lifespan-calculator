@@ -1,18 +1,11 @@
 import { test, expect } from './fixtures.js';
 
-// Needs the production serving layer (serve + public/serve.json). Skipped with a clear message
-// when /sitemap.xml is not XML, i.e. when the app is served by something that falls back to the SPA.
+// Needs the production serving layer (serve + public/serve.json). If /sitemap.xml falls back to the SPA, the
+// tests below fail: that is exactly the regression this file exists to catch.
 // Node-side requests do not use the browser's host mapping, so talk to the server directly.
 test.use({ baseURL: `http://127.0.0.1:${process.env.E2E_PORT ?? 4173}` });
 
 test.describe('static contract', () => {
-  test.beforeAll(async ({ request }) => {
-    const res = await request.get('/sitemap.xml');
-    const type = res.headers()['content-type'] || '';
-    const body = await res.text();
-    test.skip(!/xml/.test(type) && !body.trimStart().startsWith('<?xml'), '/sitemap.xml is not XML: the serving-layer change has not landed, static contract not checked');
-  });
-
   test('robots.txt allows crawling and points at the sitemap', async ({ request }) => {
     const res = await request.get('/robots.txt');
     expect(res.status()).toBe(200);

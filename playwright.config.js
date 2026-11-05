@@ -27,7 +27,7 @@ export default defineConfig({
     acceptDownloads: false,
   },
   webServer: {
-    command: `npx serve dist -l ${PORT}`,
+    command: `NO_UPDATE_CHECK=1 npx serve dist -l tcp://127.0.0.1:${PORT} --no-port-switching`,
     url: `http://127.0.0.1:${PORT}/api/health`,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,

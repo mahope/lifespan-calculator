@@ -19,19 +19,23 @@ Vitest, files next to the code as `*.test.js`. Pure logic (`src/utils/*`) and a 
 exactly like in production. `vite preview` ignores `serve.json` and would hide that. Run `npm run build` first.
 
 - `calculator.e2e.js`: three baseline inputs (male 40, female 65, male born 1985-06-15) with the clock frozen at
-  2026-11-05T12:34:56Z. The visible result is compared exactly to `e2e/__snapshots__/<case>.json`. The same file
-  checks that only the site and the analytics host are contacted, that no typed value appears in an analytics
-  payload (and no event carries props), that nothing is logged with `console.error`, and that a crafted share link
-  (`?g=constructor&a=99999999`) leaves the page responsive.
+  2026-11-05T12:34:56Z. The golden remaining years are explicit assertions (40.8, 21.0 and 39.9 years; age-only input
+  counts as mid-year) and a small JSON snapshot in `e2e/__snapshots__/<case>.json` holds numbers only (years, the
+  countdown values, the affiliate link attributes), never page copy. The same file checks that only the site and the
+  analytics host are contacted, that every analytics event is whitelisted in `EVENTS` (`src/utils/analytics.js`:
+  the event name is a key, every prop key is listed for that event, Plausible's own `pageview` carries no props),
+  that no prop value and no request body contains a typed input value (age, birthdate, gender), that nothing is
+  logged with `console.error`, and that a crafted share link (`?g=constructor&a=99999999`) leaves the page responsive.
 - `static-contract.e2e.js`: `/robots.txt`, `/sitemap.xml`, `/privatlivspolitik`, a 404 for `/xyz` and 200 for
-  `/api/health`. Skipped with a message if `/sitemap.xml` is not XML.
+  `/api/health`. There is no skip: if `/sitemap.xml` falls back to the SPA, the suite fails.
 
 The baseline cases come from the 2026-11-05 audit harness (branch `docs/audit-2026-11-05`, `audit/measure2/baseline`).
 The pinned Plausible script in `e2e/fixtures/` is a copy from there.
 
-### Updating the snapshots
+### Updating the golden values and snapshots
 
-A snapshot changes only when a visible result changes on purpose (new copy, new data table). Run
+The golden years change only when the calculation or the life table changes on purpose. Copy changes must not touch
+them. Regenerate with
 
 ```sh
 npm run build
@@ -39,7 +43,10 @@ npm run test:e2e -- --update-snapshots
 git diff e2e/__snapshots__
 ```
 
-and read the diff: every changed line must be explained by your change, then commit the JSON files with it.
+The diff must contain only numbers: `yearsRemaining`, the `countdown` values, and (rarely) the affiliate link
+attributes. A changed word in the diff means the snapshot has started to depend on copy: fix the capture, do not
+commit it. Every changed number must be explained by your change. Also update the explicit `years` values in
+`CASES` in `e2e/calculator.e2e.js`, and commit them together with the JSON files.
 
 ### Network is always intercepted
 
@@ -47,7 +54,10 @@ The fixture in `e2e/fixtures.js` routes every request. Same-origin requests go t
 host is answered locally (the Plausible script is replayed from the pinned copy, events are recorded and
 acknowledged with 202, never forwarded). Every other host, including partner ads, fonts and geocoding, is aborted
 and recorded, and the test fails if one was contacted. Affiliate links are only inspected, never clicked. The suite
-therefore never sends anything to analytics or to partners, and needs no internet at all once `npm ci` has run.
+therefore never sends anything to analytics or to partners. The tests themselves need no internet once `npm ci` has
+run and the browser is installed (`npx playwright install` downloads Chromium, which does use the network).
+`serve` is started with `NO_UPDATE_CHECK=1` (no update check call) and `--no-port-switching` (a busy port is an
+error, never a silent move to another port), bound to 127.0.0.1.
 
 The site is opened as `http://levetid.test:4173`, which Chrome maps to 127.0.0.1, because the Plausible script
 ignores localhost and 127.x and the privacy check needs it to run.
@@ -57,7 +67,9 @@ ignores localhost and 127.x and the privacy check needs it to run.
 `scripts/lighthouse-budget.mjs` starts `vite preview` on `dist/`, runs Lighthouse (`npx lighthouse@13.5.0`, mobile
 preset) three times and fails when the median is over budget: LCP above 2.5 s, CLS above 0.1, or JavaScript
 above 130 KB brotli (computed from the files in `dist/` the page loaded). It prints the runs and medians as JSON.
-It is not part of CI, because timings on shared runners are too noisy.
+It is not part of CI, because timings on shared runners are too noisy. The script is not offline: `npx` downloads
+`lighthouse@13.5.0` (exact pin, no install scripts, run with `npm_config_ignore_scripts`) and its transitive
+dependencies from the npm registry on each run.
 
 On agent-worker:
 

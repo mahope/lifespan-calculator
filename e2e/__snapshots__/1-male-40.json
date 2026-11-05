@@ -6,91 +6,42 @@
   },
   "frozenClock": "2026-11-05T12:34:56Z",
   "urlAfterSubmit": "/",
-  "documentTitle": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
-  "srAnnouncement": "Du har statistisk 41.2 år tilbage at leve.",
+  "yearsRemaining": "40.8",
   "countdown": [
     {
       "label": "ÅR",
-      "value": "41"
+      "value": "40"
     },
     {
       "label": "DAGE",
-      "value": "83"
+      "value": "273"
     },
     {
       "label": "TIMER",
-      "value": "6"
+      "value": "22"
     },
     {
       "label": "MIN",
-      "value": "10"
+      "value": "30"
     },
     {
       "label": "SEK",
-      "value": "48"
-    }
-  ],
-  "sections": [
-    {
-      "heading": "Din resterende tid",
-      "text": "Din resterende tid Du har statistisk 41.2 år tilbage at leve. 41 ÅR 83 DAGE 6 TIMER 10 MIN 48 SEK"
-    },
-    {
-      "heading": "Dit livsforløb",
-      "text": "Dit livsforløb 49.2% Levet 14.610 Dage levet 1.472.688.000 Hjerteslag"
-    },
-    {
-      "heading": "Chance for at nå…",
-      "text": "Chance for at nå… Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler. 80 år 62% 90 år 23% 95 år 7% 100 år 1% Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) — en befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg."
-    },
-    {
-      "heading": "Hvad hvis?",
-      "text": "Hvad hvis? Vælg ændringer og se effekten på dit estimat med det samme. 🏃 Dyrk mere motion 🍎 Spis sundere ⚖️ Opnå en sund vægt 👨‍👩‍👧 Styrk dit sociale netværk 😴 Sov 7-8 timer 😰 Reducér dit stressniveau 🧠 Passe på din mentale sundhed 🚲 Cykl eller gå i stedet for at pendle 💼 Vælg et mindre belastende arbejdsmiljø 🌍 Bo et sted med renere luft 📱 Mindre skærmtid i fritiden Din forventede alder 81.2 Vælg en ændring ovenfor"
-    },
-    {
-      "heading": "Sammenlign med gennemsnittet",
-      "text": "Sammenlign med gennemsnittet Din forventede alder (81.2 år) sat i perspektiv. Dig 81.2 år Gennemsnitlig dansk mand på 40 81.2 år Danmark ved fødslen Danmarks Statistik HISB8, 2024-2025 80.3 år Japan ved fødslen Verdensbanken SP.DYN.LE00, 2024 81.1 år Verdensgennemsnit ved fødslen Verdensbanken SP.DYN.LE00, 2024 71.1 år Du ligger omtrent på det samme som gennemsnittet for en dansker på din alder og dit køn"
-    },
-    {
-      "heading": "Pension & arbejdsår",
-      "text": "Pension & arbejdsår Baseret på din årgang (1985/86) og den danske folkepensionsalder. 70 Folkepensionsalder 30 Arbejdsår tilbage 11 Forventede pensionsår Levet Arbejde tilbage Pension Folkepensionsalderen er lovbestemt og kan stige yderligere for årgange fra 1975."
-    },
-    {
-      "heading": "Jer to sammen",
-      "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
-    },
-    {
-      "heading": "Dit liv i uger",
-      "text": "Dit liv i uger Hver firkant er én uge. Du har levet ca. 2.087 uger (40 år) — statistisk venter der dig ca. 2.135 uger endnu. Hold musen over en firkant for at se alderen Uger levet Forventede uger tilbage Bonus-uger Nu"
-    },
-    {
-      "heading": "Hvor meget livsforsikring har din familie brug for?",
-      "text": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning."
-    },
-    {
-      "heading": "Fun facts om dit liv",
-      "text": "Fun facts om dit liv 🌅 14.610 Solopgange set 💨 294.537.600 Åndedrætninger 👣 102.270.000 Skridt taget 😴 116.880 Timer sovet 😊 248.370 Gange grint 🍽️ 43.830 Måltider spist 💧 29.220 Liter vand drukket 🚀 37.6 mia km rejst i rummet"
-    },
-    {
-      "heading": "Tider tilbage",
-      "text": "Tider tilbage Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem. 🌞 41 somre tilbage 🎄 41 jul tilbage 🍂 164 årstider 🌕 509 fuldmåner 🎂 41 fødselsdage 🛌 2.151 weekender ☕ 37.647 kopper kaffe 🍽️ 45.177 måltider 👨‍👩‍👧 Besøg hos dine kære Hvor ofte ses I? Hver uge Hver 2. uge Hver måned Hver 2. måned Hvert kvartal 2 gange om året 1 gang om året Så når I hinanden ca. 247 gange mere. Baseret på statistiske gennemsnit — ikke en forudsigelse. Brug dine tider godt. 💛"
-    },
-    {
-      "heading": "Dine næste milepæle",
-      "text": "Dine næste milepæle Runde tal er tættere på, end du tror. 📅 15.000 dage levet ca. 30. november 2027 390 dage 📅 16.000 dage levet ca. 26. august 2030 1.390 dage ⏱️ 1,5 mia. sekunder levet ca. 18. maj 2034 2.751 dage 🎂 Du fylder 50 ca. 5. november 2036 3.653 dage"
-    },
-    {
-      "heading": null,
-      "text": "Bemærk: Dette er kun et statistisk estimat baseret på gennemsnitlige data. Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt."
-    },
-    {
-      "heading": "Vigtige disclaimere",
-      "text": "Vigtige disclaimere • Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) • Individuelle faktorer påvirker ikke beregningen • Kun til underholdning og reflektion"
+      "value": "0"
     }
   ],
   "partnerAdsLinks": [
     {
       "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=99220&uid=levetidsberegner",
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=71629&uid=levetidsberegner",
       "rel": "sponsored noopener noreferrer",
       "target": "_blank"
     }

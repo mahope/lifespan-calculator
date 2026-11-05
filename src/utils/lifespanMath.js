@@ -1,6 +1,8 @@
 // Pure lifespan math, extracted from useLifespanCalculator so it can be
 // unit-tested in isolation. Keep this module free of React and side effects.
 
+import { remainingLifeExpectancy } from './lifeTableDK';
+
 /**
  * Precise age from a birthdate.
  * @param {string|Date} birthdate
@@ -135,5 +137,96 @@ export function breakdownRemaining(msRemaining) {
     hours: totalHours % 24,
     minutes: totalMinutes % 60,
     seconds: totalSeconds % 60,
+  };
+}
+
+/**
+ * Everything the result view needs, computed purely from the input and `now`.
+ * @param {{ageOrBirthdate: number|string, gender: string, birthdate?: string|Date|null,
+ *          lifestyleFactors: Record<string, number>}} input
+ * @param {Date} now
+ */
+export function computeResult(input, now) {
+  const { ageOrBirthdate, gender, birthdate = null, lifestyleFactors } = input;
+  let age;
+  let preciseAgeData = null;
+  let daysLived;
+  let exactEndDate;
+
+  // Check if we have a birthdate (either as first param or third param)
+  const birthdateValue = birthdate || (typeof ageOrBirthdate === 'string' && ageOrBirthdate.includes('-') ? ageOrBirthdate : null);
+
+  if (birthdateValue) {
+    preciseAgeData = calculatePreciseAge(birthdateValue, now);
+    age = preciseAgeData.preciseAge;
+    daysLived = preciseAgeData.totalDaysLived;
+  } else {
+    age = typeof ageOrBirthdate === 'number' ? ageOrBirthdate : parseInt(ageOrBirthdate);
+    daysLived = Math.floor(age * 365.25);
+  }
+
+  // Age-conditional remaining life expectancy (e_x) from the Danish period life table.
+  const genderKey = gender === 'female' ? 'female' : 'male';
+  const rawLifestyleAdjustment = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
+  const lifestyleAdjustment = Math.round(boundLifestyleAdjustment(rawLifestyleAdjustment));
+  const remainingBase = remainingLifeExpectancy(age, genderKey);
+  const remainingYears = Math.max(0, remainingBase + lifestyleAdjustment);
+  const adjustedLifeExpectancy = age + remainingYears; // expected age at death
+
+  if (preciseAgeData) {
+    const yearsToAdd = Math.floor(adjustedLifeExpectancy);
+    const fractionalYear = adjustedLifeExpectancy - yearsToAdd;
+    exactEndDate = new Date(preciseAgeData.birthDate);
+    exactEndDate.setFullYear(exactEndDate.getFullYear() + yearsToAdd);
+    exactEndDate.setDate(exactEndDate.getDate() + Math.floor(fractionalYear * 365.25));
+  } else {
+    exactEndDate = new Date(now.getFullYear() + remainingYears, now.getMonth(), now.getDate());
+  }
+
+  const timeRemaining = exactEndDate - now;
+
+  const minutesLived = daysLived * 24 * 60;
+  const hoursLived = daysLived * 24;
+
+  return {
+    remainingYears: remainingYears.toFixed(1),
+    remainingDays: Math.floor(timeRemaining / (1000 * 60 * 60 * 24)),
+    adjustedLifeExpectancy: adjustedLifeExpectancy.toFixed(1),
+    lifestyleImpact: lifestyleAdjustment,
+    endDate: exactEndDate.toLocaleDateString('da-DK'),
+    endTimestamp: exactEndDate.getTime(),
+    dataSource: 'Danmarks Statistik (2024-2025)',
+    age: typeof age === 'number' ? age.toFixed(2) : age,
+    displayAge: preciseAgeData
+      ? `${preciseAgeData.years} år, ${preciseAgeData.months} mdr, ${preciseAgeData.days} dage`
+      : `${Math.floor(age)} år`,
+    gender,
+    lifePercentage: lifePercent(age, adjustedLifeExpectancy).toFixed(1),
+    daysLived,
+    hoursLived,
+    minutesLived,
+    hasPreciseBirthdate: !!preciseAgeData,
+    birthdate: preciseAgeData?.birthDate?.toLocaleDateString('da-DK') || null,
+
+    // Heart beats: average 70 bpm across rest and activity
+    heartbeats: Math.floor(minutesLived * 70),
+
+    countdown: breakdownRemaining(timeRemaining),
+
+    sunrises: daysLived,
+    wordsSpoken: Math.floor(daysLived * 16000), // ~16,000 words/day average
+    sleepHours: Math.floor(daysLived * 8), // 8 hours sleep/day
+    blinks: Math.floor(minutesLived * 17), // ~17 blinks/minute while awake
+    breaths: Math.floor(minutesLived * 14), // ~14 breaths/minute average
+    steps: Math.floor(daysLived * 7000), // ~7,000 steps/day average
+    meals: Math.floor(daysLived * 3), // 3 meals/day
+    coffeeCups: Math.floor(daysLived * 2.5), // ~2.5 cups/day (Danish average)
+    laughs: Math.floor(daysLived * 17), // adults laugh ~17 times/day
+    waterLiters: Math.floor(daysLived * 2), // ~2 liters/day
+    spaceKm: Math.floor(daysLived * 2575342), // Earth travels ~2.58 million km/day
+
+    secondsLived: preciseAgeData ? daysLived * 24 * 60 * 60 : null,
+    fullMoons: preciseAgeData ? Math.floor(daysLived / 29.53) : null, // lunar cycle ~29.53 days
+    seasons: preciseAgeData ? Math.floor(daysLived / 91.31) : null, // ~4 seasons per year
   };
 }

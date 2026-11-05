@@ -1,0 +1,121 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`computeResult characterization (current formulas) > advanced two factors 1`] = `
+{
+  "adjustedLifeExpectancy": "80.8",
+  "age": "50.00",
+  "countdown": {
+    "days": 364,
+    "hours": 12,
+    "minutes": 0,
+    "seconds": 0,
+    "years": 29,
+  },
+  "daysLived": 18262,
+  "endTimestamp": 2740604400000,
+  "lifePercentage": "61.9",
+  "lifestyleImpact": -1,
+  "remainingDays": 10957,
+  "remainingYears": "30.8",
+}
+`;
+
+exports[`computeResult characterization (current formulas) > age 0 1`] = `
+{
+  "adjustedLifeExpectancy": "83.9",
+  "age": "0.00",
+  "countdown": {
+    "days": 363,
+    "hours": 12,
+    "minutes": 0,
+    "seconds": 0,
+    "years": 82,
+  },
+  "daysLived": 0,
+  "endTimestamp": 4413049200000,
+  "lifePercentage": "0.0",
+  "lifestyleImpact": 0,
+  "remainingDays": 30314,
+  "remainingYears": "83.9",
+}
+`;
+
+exports[`computeResult characterization (current formulas) > age 99 1`] = `
+{
+  "adjustedLifeExpectancy": "100.8",
+  "age": "99.00",
+  "countdown": {
+    "days": 364,
+    "hours": 12,
+    "minutes": 0,
+    "seconds": 0,
+    "years": 0,
+  },
+  "daysLived": 36159,
+  "endTimestamp": 1825369200000,
+  "lifePercentage": "98.2",
+  "lifestyleImpact": 0,
+  "remainingDays": 364,
+  "remainingYears": "1.8",
+}
+`;
+
+exports[`computeResult characterization (current formulas) > female 65 1`] = `
+{
+  "adjustedLifeExpectancy": "86.4",
+  "age": "65.00",
+  "countdown": {
+    "days": 364,
+    "hours": 12,
+    "minutes": 0,
+    "seconds": 0,
+    "years": 20,
+  },
+  "daysLived": 23741,
+  "endTimestamp": 2456521200000,
+  "lifePercentage": "75.2",
+  "lifestyleImpact": 0,
+  "remainingDays": 7669,
+  "remainingYears": "21.4",
+}
+`;
+
+exports[`computeResult characterization (current formulas) > male 40 1`] = `
+{
+  "adjustedLifeExpectancy": "81.2",
+  "age": "40.00",
+  "countdown": {
+    "days": 364,
+    "hours": 12,
+    "minutes": 0,
+    "seconds": 0,
+    "years": 40,
+  },
+  "daysLived": 14610,
+  "endTimestamp": 3087673200000,
+  "lifePercentage": "49.2",
+  "lifestyleImpact": 0,
+  "remainingDays": 14974,
+  "remainingYears": "41.2",
+}
+`;
+
+exports[`computeResult characterization (current formulas) > male born 1985-06-15 1`] = `
+{
+  "adjustedLifeExpectancy": "81.3",
+  "age": "41.39",
+  "countdown": {
+    "days": 323,
+    "hours": 13,
+    "minutes": 0,
+    "seconds": 0,
+    "years": 39,
+  },
+  "daysLived": 15118,
+  "endTimestamp": 3052598400000,
+  "lifePercentage": "50.9",
+  "lifestyleImpact": 0,
+  "remainingDays": 14568,
+  "remainingYears": "39.9",
+}
+`;

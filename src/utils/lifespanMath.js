@@ -159,7 +159,6 @@ export function computeResult(input, now) {
   let age;
   let preciseAgeData = null;
   let daysLived;
-  let exactEndDate;
 
   // Check if we have a birthdate (either as first param or third param)
   const birthdateValue = birthdate || (typeof ageOrBirthdate === 'string' && ageOrBirthdate.includes('-') ? ageOrBirthdate : null);
@@ -184,7 +183,7 @@ export function computeResult(input, now) {
   // One end instant for both modes, with the fractional year kept (the old age
   // branch used the Date constructor, which truncated it to whole years).
   const MS_PER_YEAR = 365.25 * 864e5;
-  exactEndDate = preciseAgeData
+  const exactEndDate = preciseAgeData
     ? new Date(preciseAgeData.birthDate.getTime() + adjustedLifeExpectancy * MS_PER_YEAR)
     : new Date(now.getTime() + remainingYears * MS_PER_YEAR);
 

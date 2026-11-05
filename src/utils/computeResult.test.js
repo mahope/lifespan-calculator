@@ -69,3 +69,10 @@ describe('lifestyleTotal', () => {
     expect(lifestyleTotal({})).toBe(0);
   });
 });
+
+describe('computeResult invalid input', () => {
+  it.each([NaN, 'abc', -5])('does not throw for age input %s and keeps a finite end instant', (v) => {
+    const r = computeResult({ ageOrBirthdate: v, gender: 'male', lifestyleFactors: zero }, NOW);
+    expect(Number.isFinite(r.endTimestamp)).toBe(true);
+  });
+});

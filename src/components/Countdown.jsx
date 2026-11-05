@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import { breakdownRemaining } from '../utils/lifespanMath';
 
+const EMPTY = { years: null, days: null, hours: null, minutes: null, seconds: null };
+
+const compute = (endTimestamp) =>
+  Number.isFinite(endTimestamp) ? breakdownRemaining(endTimestamp - Date.now()) : EMPTY;
+
 // Owns the 1 Hz tick so that only these five tiles re-render each second, not the
 // whole result page. Counts against the exact end instant of the calculation.
+// Render with key={endTimestamp} so a new calculation remounts with fresh state.
 const Countdown = ({ endTimestamp }) => {
-  const [remaining, setRemaining] = useState(() => breakdownRemaining(endTimestamp - Date.now()));
+  const [remaining, setRemaining] = useState(() => compute(endTimestamp));
 
   useEffect(() => {
-    const tick = () => setRemaining(breakdownRemaining(endTimestamp - Date.now()));
-    tick();
-    const id = setInterval(tick, 1000);
+    const id = setInterval(() => setRemaining(compute(endTimestamp)), 1000);
     return () => clearInterval(id);
   }, [endTimestamp]);
 

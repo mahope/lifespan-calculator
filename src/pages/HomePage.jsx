@@ -1107,7 +1107,7 @@ const HomePage = () => {
                 <p className="sr-only" aria-live="polite">
                   Du har statistisk {resultData?.remainingYears} år tilbage at leve.
                 </p>
-                <Countdown endTimestamp={resultData?.endTimestamp} />
+                <Countdown key={resultData?.endTimestamp} endTimestamp={resultData?.endTimestamp} />
               </div>
 
               {/* Biological age (advanced mode) */}

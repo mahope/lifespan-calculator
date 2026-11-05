@@ -35,8 +35,8 @@ export default defineConfig({
         ],
       },
       generateSW: {
-        // Precache only what the calculator needs offline: its JS/CSS, the home page and the icon.
-        globPatterns: ['_astro/*.{js,css}', 'index.html'],
+        // Precache only the hashed JS/CSS the calculator needs offline. HTML is never precached (see NetworkFirst below).
+        globPatterns: ['_astro/*.{js,css}'],
         // No SPA fallback: every URL is a real file, unknown URLs must stay real 404s.
         navigateFallback: null,
         cleanupOutdatedCaches: true,

@@ -6,7 +6,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import prettier from 'eslint-config-prettier';
 
 export default [
-  { ignores: ['dist/**', 'backup/**', 'node_modules/**'] },
+  { ignores: ['dist/**', '.astro/**', 'backup/**', 'node_modules/**'] },
   js.configs.recommended,
   {
     files: ['**/*.{js,jsx}'],
@@ -35,7 +35,7 @@ export default [
   },
   // Node-context config + test files
   {
-    files: ['*.config.js', '**/*.test.{js,jsx}'],
+    files: ['*.config.{js,mjs}', 'scripts/**/*.mjs', '**/*.test.{js,jsx}'],
     languageOptions: { globals: { ...globals.node } },
   },
   prettier,

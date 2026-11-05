@@ -44,32 +44,27 @@ npm run build      # acts as a smoke test - fails on broken imports/JSX/CSS
 - **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
   ShareCard, ShareModal).
 - **`hooks/useLifespanCalculator.js`**: Core calculation logic (age, remaining
-  time, geolocation-driven country lookup).
+  time). No location lookup: the app never asks for or sends the user's position.
 - **`utils/lifeExpectancyData.js`**: Static country life-expectancy data with
   Danish translations, plus lookup/formatting helpers.
 - **`index.css`**: Tailwind v4 entry - `@import 'tailwindcss'`, `@theme` design
   tokens, `@utility` component classes, and the light/dark CSS variables.
 
 ### Key Technical Points
-- **Language**: Danish interface with English API calls.
-- **Geolocation flow**: Browser API -> OpenStreetMap Nominatim -> country
-  mapping -> calculation, with graceful fallback to world averages.
+- **Language**: Danish interface.
+- **Privacy**: All input stays in the browser; analytics events carry no user input.
 - **Dark mode**: `class` strategy - `.dark` is toggled on `<html>`; Tailwind v4
   `@custom-variant dark` in `index.css` drives the theming.
-- **HTTPS requirement**: Geolocation API requires HTTPS in production (use
-  localhost for development).
 
 ### Data Flow
-1. User inputs age/gender -> enables location detection
-2. Geolocation API gets coordinates -> Nominatim API resolves to country
-3. Country mapped to life expectancy data -> calculation performed
-4. Results displayed with contextual messaging
+1. User inputs age/gender
+2. Danish life table (and country data for comparison) -> calculation performed
+3. Results displayed with contextual messaging
 
 ## Common Tasks
 
 ### Adding Countries
-Update the data in `src/utils/lifeExpectancyData.js`. Country names must match
-the Nominatim API response format. Include `male`, `female` values plus a
+Update the data in `src/utils/lifeExpectancyData.js`. Include `male`, `female` values plus a
 localized `country` name for display.
 
 ### Styling Changes

@@ -37,7 +37,7 @@ import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate } from '../utils/lifespanMath';
-import { trackCalculate } from '../utils/analytics';
+import { track, trackCalculate } from '../utils/analytics';
 
 const HomePage = () => {
   const {
@@ -92,6 +92,7 @@ const HomePage = () => {
     setShowResults(true);
     // Persist to local history (captures the returned result).
     if (result) {
+      track('Result Shown', { mode: currentMode });
       saveEntry({
         ts: Date.now(),
         age: Math.round(parseFloat(result.age)),
@@ -99,7 +100,7 @@ const HomePage = () => {
         expected: result.adjustedLifeExpectancy,
       });
     }
-  }, [formData, calculateLifespan]);
+  }, [formData, calculateLifespan, currentMode]);
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
@@ -170,6 +171,7 @@ const HomePage = () => {
 
   const shareResults = () => {
     setIsShareModalOpen(true);
+    track('Share Opened');
   };
 
   // Bounded to match what the calculation actually applies (see #6).

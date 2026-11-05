@@ -1,0 +1,85 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`computeResult characterization > advanced two factors 1`] = `
+{
+  "adjustedLifeExpectancy": "80.8",
+  "age": "50.00",
+  "countdown": undefined,
+  "daysLived": 18262,
+  "endTimestamp": 2764272600000,
+  "lifePercentage": "61.9",
+  "lifestyleImpact": -1,
+  "remainingDays": 11231,
+  "remainingYears": "30.8",
+}
+`;
+
+exports[`computeResult characterization > age 0 1`] = `
+{
+  "adjustedLifeExpectancy": "83.9",
+  "age": "0.00",
+  "countdown": undefined,
+  "daysLived": 0,
+  "endTimestamp": 4441559040000,
+  "lifePercentage": "0.0",
+  "lifestyleImpact": 0,
+  "remainingDays": 30644,
+  "remainingYears": "83.9",
+}
+`;
+
+exports[`computeResult characterization > age 99 1`] = `
+{
+  "adjustedLifeExpectancy": "100.8",
+  "age": "99.00",
+  "countdown": undefined,
+  "daysLived": 36159,
+  "endTimestamp": 1851942384000,
+  "lifePercentage": "98.2",
+  "lifestyleImpact": 0,
+  "remainingDays": 672,
+  "remainingYears": "1.8",
+}
+`;
+
+exports[`computeResult characterization > female 65 1`] = `
+{
+  "adjustedLifeExpectancy": "86.4",
+  "age": "65.00",
+  "countdown": undefined,
+  "daysLived": 23741,
+  "endTimestamp": 2468893464000,
+  "lifePercentage": "75.2",
+  "lifestyleImpact": 0,
+  "remainingDays": 7812,
+  "remainingYears": "21.4",
+}
+`;
+
+exports[`computeResult characterization > male 40 1`] = `
+{
+  "adjustedLifeExpectancy": "81.2",
+  "age": "40.00",
+  "countdown": undefined,
+  "daysLived": 14610,
+  "endTimestamp": 3094996248000,
+  "lifePercentage": "49.2",
+  "lifestyleImpact": 0,
+  "remainingDays": 15059,
+  "remainingYears": "41.2",
+}
+`;
+
+exports[`computeResult characterization > male born 1985-06-15 1`] = `
+{
+  "adjustedLifeExpectancy": "81.3",
+  "age": "41.39",
+  "countdown": undefined,
+  "daysLived": 15118,
+  "endTimestamp": 3052690560000,
+  "lifePercentage": "50.9",
+  "lifestyleImpact": 0,
+  "remainingDays": 14569,
+  "remainingYears": "39.9",
+}
+`;

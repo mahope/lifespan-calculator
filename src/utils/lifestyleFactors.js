@@ -82,3 +82,27 @@ export function topImprovements(factors, meta = LIFESTYLE_META, limit = 3) {
     .sort((a, b) => b.gain - a.gain)
     .slice(0, limit);
 }
+
+/**
+ * Every value the questionnaire can produce per factor (0 is always the
+ * default). Used to validate the packed `lf` value of a shared link. The key
+ * order matches LIFESTYLE_KEYS in useLifespanCalculator.
+ */
+export const LIFESTYLE_OPTIONS = {
+  smoking: [-10, -5, 0],
+  exercise: [0, 2, 4, 6],
+  diet: [-2, 0, 3, 5],
+  alcohol: [-6, -3, -1, 0],
+  sleep: [-2, -1, 0, 2],
+  stress: [-4, -2, 0, 2],
+  health: [-5, -2, 0],
+  bmi: [-4, -2, -1, 0, 2],
+  social: [-3, -1, 0, 2, 4],
+  mental: [-3, -2, 0, 2],
+  work: [-2, -1, 0, 1],
+  environment: [-2, -1, 0, 1],
+  education: [-1, 0, 1, 3],
+  income: [-3, -2, 0, 2],
+  commute: [-1, 0, 1],
+  screentime: [-2, -1, 0, 1],
+};

@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import {
   calculatePreciseAge,
+  parseLocalDate,
+  toLocalISODate,
   breakdownRemaining,
   lifePercent,
   upcomingMilestones,
@@ -165,5 +167,29 @@ describe('breakdownRemaining', () => {
 
   it('returns all zeros at exactly zero', () => {
     expect(breakdownRemaining(0)).toEqual({ years: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+  });
+});
+
+describe('local date handling (run with TZ=America/New_York and TZ=Europe/Copenhagen)', () => {
+  it('parses YYYY-MM-DD as local midnight', () => {
+    const d = parseLocalDate('1990-05-20');
+    expect([d.getFullYear(), d.getMonth(), d.getDate(), d.getHours()]).toEqual([1990, 4, 20, 0]);
+  });
+
+  it('rejects impossible calendar dates', () => {
+    expect(Number.isNaN(parseLocalDate('2021-02-30').getTime())).toBe(true);
+    expect(Number.isNaN(parseLocalDate('garbage-x').getTime())).toBe(true);
+  });
+
+  it('gives exactly 0 months and 0 days on the birthday itself', () => {
+    const now = new Date(2026, 4, 20, 12, 0, 0);
+    const r = calculatePreciseAge('1990-05-20', now);
+    expect([r.years, r.months, r.days]).toEqual([36, 0, 0]);
+    expect(r.birthDate.getDate()).toBe(20);
+  });
+
+  it('formats the local date for the input max attribute', () => {
+    expect(toLocalISODate(new Date(2026, 10, 5, 23, 30))).toBe('2026-11-05');
+    expect(toLocalISODate(new Date(2026, 0, 2, 0, 5))).toBe('2026-01-02');
   });
 });

@@ -1,25 +1,26 @@
 import { describe, it, expect } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 
-const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
+const url = (p) => new URL(`../${p}`, import.meta.url)
+const read = (p) => readFileSync(url(p), 'utf8')
 
-describe('static serving config', () => {
-  it('keeps SPA fallback in serve.json, excluding the static policy pages', () => {
-    const { rewrites } = JSON.parse(read('public/serve.json'))
-    expect(rewrites).toEqual([
-      { source: '!/{privatlivspolitik,cookiepolitik}', destination: '/index.html' },
-    ])
-  })
-
-  it('does not use serve -s (it overrides serve.json and breaks clean policy URLs)', () => {
-    for (const f of ['Dockerfile', 'nixpacks.toml']) {
-      expect(read(f)).not.toMatch(/serve(@\S+)?\s+(-s|--single)\b/)
-      expect(read(f)).not.toMatch(/\bserve\s+dist\s+-s\b/)
+describe('policy pages', () => {
+  it('ship from public/ (real files), with no stray copy in the repo root', () => {
+    for (const f of ['privatlivspolitik', 'cookiepolitik']) {
+      expect(existsSync(url(`public/${f}.html`))).toBe(true)
+      expect(existsSync(url(`${f}.html`))).toBe(false)
     }
   })
 
-  it('pins serve to an exact version', () => {
-    expect(read('Dockerfile')).toMatch(/serve@\d+\.\d+\.\d+/)
-    expect(read('nixpacks.toml')).toMatch(/serve@\d+\.\d+\.\d+/)
+  it('are not rewritten to the SPA and are kept away from the service worker fallback', () => {
+    const { rewrites } = JSON.parse(read('public/serve.json'))
+    expect(rewrites.map((r) => r.source).filter((s) => /politik/.test(s))).toEqual([])
+    expect(read('vite.config.js')).toMatch(/privatlivspolitik\|cookiepolitik/)
+  })
+
+  it('are linked from the footer with plain anchors (the router Link would show the 404 route)', () => {
+    const footer = read('src/components/Footer.jsx')
+    expect(footer).toContain('href="/privatlivspolitik"')
+    expect(footer).toContain('href="/cookiepolitik"')
   })
 })

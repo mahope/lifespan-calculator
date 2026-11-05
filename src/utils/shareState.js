@@ -10,6 +10,26 @@ const MAX_AGE = 110; // same cap as the age input
 const MIN_BIRTHDATE = '1900-01-01';
 
 /**
+ * Read the packed `lf` value. An old link may carry an option that was removed
+ * or renumbered since; then the whole lifestyle part is dropped (null) and the
+ * rest of the link (gender, age, mode) still works.
+ */
+function parseLifestyleParam(value, options) {
+  if (!value) return null;
+  const keys = Object.keys(options);
+  const parts = value.split(',');
+  if (parts.length !== keys.length) return null;
+  const out = {};
+  for (let i = 0; i < keys.length; i++) {
+    if (!/^-?\d+$/.test(parts[i])) return null;
+    const n = Number(parts[i]);
+    if (!options[keys[i]].includes(n)) return null;
+    out[keys[i]] = n;
+  }
+  return out;
+}
+
+/**
  * Validate the query params of an incoming share link. Never trust a URL:
  * returns `null` for anything invalid (the page then shows the empty form),
  * otherwise a form-ready object:
@@ -18,7 +38,8 @@ const MIN_BIRTHDATE = '1900-01-01';
  * - `g` must be male|female; `a` is clamped to an integer 0-110;
  * - `b` must be a real calendar date YYYY-MM-DD in [1900-01-01, today] (wins over `a`);
  * - `m` is simple|advanced (absent = simple); `lf` is only read in advanced
- *   mode and every value must be one the questionnaire can produce;
+ *   mode and every value must be one the questionnaire can produce, otherwise
+ *   (or when repeated) only the lifestyle part is dropped;
  * - a repeated param makes the link invalid.
  *
  * @param {URLSearchParams} searchParams
@@ -35,7 +56,7 @@ export function parseShareParams(searchParams, { now = new Date(), options = LIF
   const b = one('b');
   const m = one('m');
   const lf = one('lf');
-  if (g.dup || a.dup || b.dup || m.dup || lf.dup) return null;
+  if (g.dup || a.dup || b.dup || m.dup) return null;
 
   if (!GENDERS.includes(g.value)) return null;
 
@@ -60,17 +81,8 @@ export function parseShareParams(searchParams, { now = new Date(), options = LIF
   const mode = m.value === 'advanced' ? 'advanced' : 'simple';
 
   let lifestyle = null;
-  if (mode === 'advanced' && lf.value !== null) {
-    const keys = Object.keys(options);
-    const parts = lf.value.split(',');
-    if (parts.length !== keys.length) return null;
-    lifestyle = {};
-    for (let i = 0; i < keys.length; i++) {
-      if (!/^-?\d+$/.test(parts[i])) return null;
-      const n = Number(parts[i]);
-      if (!options[keys[i]].includes(n)) return null;
-      lifestyle[keys[i]] = n;
-    }
+  if (mode === 'advanced' && !lf.dup && lf.value !== null) {
+    lifestyle = parseLifestyleParam(lf.value, options);
   }
 
   return { gender: g.value, age, birthdate, useBirthdate, mode, lifestyle };

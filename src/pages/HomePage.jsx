@@ -38,7 +38,7 @@ import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
 import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
-import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
+import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
 import { COHORT_TABLE } from '../data/cohortTable.generated';
 import ProjectionToggle from '../components/ProjectionToggle';
@@ -185,7 +185,7 @@ const HomePage = () => {
 
   // Bounded to match what the calculation actually applies (see #6).
   const rawLifestyleTotal = sumLifestyleFactors(lifestyleFactors);
-  const lifestyleTotal = Math.round(boundLifestyleAdjustment(rawLifestyleTotal));
+  const lifestyleTotal = roundedLifestyleAdjustment(rawLifestyleTotal);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -389,7 +389,7 @@ const HomePage = () => {
                           <div className="flex items-center justify-between">
                             <span className="font-medium">Livsstils påvirkning:</span>
                             <span className="font-bold text-primary">
-                              {lifestyleTotal > 0 ? `+${lifestyleTotal}` : lifestyleTotal} år
+                              {formatSignedYears(lifestyleTotal)}
                             </span>
                           </div>
                         </div>
@@ -424,7 +424,7 @@ const HomePage = () => {
                 {/* Announced once for screen readers; the ticking grid below is
                     hidden from assistive tech to avoid per-second spam. */}
                 <p className="sr-only" aria-live="polite">
-                  Du har statistisk {resultData?.remainingYears} år tilbage at leve
+                  Du har statistisk {formatYears(Number(resultData?.remainingYears))} år tilbage at leve
                   {resultData?.projection === 'projected'
                     ? ' (fremskrevet af Danmarks Statistik).'
                     : ' (nuværende dødelighed).'}

@@ -46,9 +46,13 @@ update snapshots with `npm run test:e2e -- --update-snapshots`). `npm run build`
   `computeResult(input, now)` in `utils/lifespanMath.js` (age, remaining time,
   end instant). No location lookup: the app never asks for or sends the user's position.
 - **`utils/lifestyleFactors.js`**: `LIFESTYLE_FACTORS` is the single source of the
-  advanced-mode questionnaire (key, icon, label, options with year deltas);
-  `components/LifestyleFactor.jsx` renders one factor as an accessible radio group.
-  To add or change an option, edit the data only.
+  advanced-mode questionnaire (key, icon, label, `inSum`, `evidence`, `source` with
+  cited figure/PMID/range, options `{ value, years, label }`; `value` is the stored
+  answer/share-link id, `years` the effect). Only `inSum` factors change the
+  estimate, and every `inSum` factor needs a source and evidence above `none`
+  (tested). `components/LifestyleFactor.jsx` renders one factor as an accessible
+  radio group with helper text generated from the table. To add or change an
+  option, edit the data only.
 - **`data/cohortTable.generated.js`**: projected (cohort) e_x per age 0-99 from DST
   FRDK426, written by `node scripts/build-cohort-table.mjs` (needs network; leaves the
   file untouched on any validation failure). `computeResult` takes `projection:

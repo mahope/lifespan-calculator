@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ShareCard from './ShareCard';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams } from '../utils/shareState';
+import { formatSignedYears, formatYears } from '../utils/lifespanMath';
 import { track } from '../utils/analytics';
 import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
@@ -38,7 +39,7 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
   const basisInline = resultData.projection === 'projected' ? 'fremskrevet af Danmarks Statistik' : 'nuværende dødelighed';
   // The link carries no projection state (page state only), so it opens the period view.
   const linkNote = resultData.projection === 'projected' ? ' Linket viser nuværende dødelighed.' : '';
-  const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve (${basisInline})!${linkNote} 🕐 Beregn din egen levetid på`;
+  const shareText = `Jeg har statistisk ${formatYears(Number(resultData.remainingYears))} år tilbage at leve (${basisInline})!${linkNote} 🕐 Beregn din egen levetid på`;
 
   // Copy link to clipboard
   const copyLink = async () => {
@@ -60,12 +61,12 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
     const text = `🕐 Mine Levetidsresultater
 
 📊 Forventet levetid: ${resultData.adjustedLifeExpectancy} år
-⏳ Resterende tid: ${resultData.remainingYears} år (${resultData.remainingDays} dage)
+⏳ Resterende tid: ${formatYears(Number(resultData.remainingYears))} år (${resultData.remainingDays} dage)
 📅 Estimeret slutdato: ${resultData.endDate}
 📍 Baseret på: ${resultData.dataSource}
 🔎 Grundlag: ${basis}${linkNote}
 
-${resultData.lifestyleImpact !== 0 ? `💪 Livsstil påvirkning: ${resultData.lifestyleImpact > 0 ? '+' : ''}${resultData.lifestyleImpact} år` : ''}
+${resultData.lifestyleImpact !== 0 ? `💪 Livsstil påvirkning: ${formatSignedYears(resultData.lifestyleImpact)}` : ''}
 
 Beregn din egen: ${shareUrl}`;
 

@@ -9,6 +9,7 @@ import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
 import { PENSION_AGE_ROWS, efterloenAgeOn, folkepensionAgeOn, pensionOutlook } from '../utils/pension';
 import { FAQ, faqJsonLd } from '../utils/pensionFaq';
+import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 import { parseLocalDate, toLocalISODate } from '../utils/lifespanMath';
 import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 

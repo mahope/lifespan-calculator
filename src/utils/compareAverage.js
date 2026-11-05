@@ -1,4 +1,5 @@
 import { remainingFor } from './lifeTableDK';
+import { formatYears } from './lifespanMath';
 
 /** Differences within +-this many years count as "about the same". */
 export const EQUAL_THRESHOLD_YEARS = 0.5;
@@ -18,8 +19,6 @@ export function compareWithDanishAverage(age, gender, lifestyleYears = 0, projec
   return { you, average, diff: you - average };
 }
 
-const fmt = (n) => n.toFixed(1);
-
 /** Danish verdict text for a difference in years: below / equal / above. */
 export function verdictFor(diff) {
   if (Math.abs(diff) <= EQUAL_THRESHOLD_YEARS) {
@@ -28,7 +27,7 @@ export function verdictFor(diff) {
       text: 'Du ligger omtrent på det samme som gennemsnittet for en dansker på din alder og dit køn',
     };
   }
-  const years = fmt(Math.abs(diff));
+  const years = formatYears(Math.abs(diff));
   return diff > 0
     ? { level: 'above', text: `Du ligger ca. ${years} år over gennemsnittet for en dansker på din alder og dit køn` }
     : { level: 'below', text: `Du ligger ca. ${years} år under gennemsnittet for en dansker på din alder og dit køn` };

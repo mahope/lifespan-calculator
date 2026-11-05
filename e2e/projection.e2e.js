@@ -14,14 +14,14 @@ test('male 40: period is the default, the toggle switches the headline and is ke
   expect(await srText(page)).toMatch(/40\.8 år tilbage at leve \(nuværende dødelighed\)/);
   await expect(toggle(page, 'Nuværende dødelighed')).toHaveAttribute('aria-pressed', 'true');
   await expect(toggle(page, 'Fremskrevet (DST)')).toHaveAttribute('aria-pressed', 'false');
-  await expect(page.getByTestId('projection-second-line')).toContainText('ca. 46.3 år');
+  await expect(page.getByTestId('projection-second-line')).toContainText('ca. 46,3 år');
 
   // Keyboard only: focus the inactive button, activate with Space.
   await toggle(page, 'Fremskrevet (DST)').focus();
   await page.keyboard.press('Space');
   expect(await srText(page)).toMatch(/46\.3 år tilbage at leve \(fremskrevet af Danmarks Statistik\)/);
   await expect(toggle(page, 'Fremskrevet (DST)')).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByTestId('projection-second-line')).toContainText('ca. 40.8 år');
+  await expect(page.getByTestId('projection-second-line')).toContainText('ca. 40,8 år');
   await expect(page.getByTestId('sammenlign-basis-note')).toBeVisible();
   await expect(page.getByTestId('par-period-note')).toContainText('nuværende dødelighed');
 

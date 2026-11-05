@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatYears } from '../utils/lifespanMath';
 import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 // Result header: switches the headline between the period figure (default) and
@@ -38,12 +39,12 @@ const ProjectionToggle = ({ resultData, onChange }) => {
         {projection === 'period' ? (
           <>
             Hvis dødeligheden fortsætter med at falde som Danmarks Statistik forventer:{' '}
-            <strong className="text-white">ca.&nbsp;{projectedRemainingYears}&nbsp;år</strong>
+            <strong className="text-white">ca.&nbsp;{formatYears(Number(projectedRemainingYears))}&nbsp;år</strong>
           </>
         ) : (
           <>
             Hvis dødeligheden forbliver som i dag:{' '}
-            <strong className="text-white">ca.&nbsp;{periodRemainingYears}&nbsp;år</strong>
+            <strong className="text-white">ca.&nbsp;{formatYears(Number(periodRemainingYears))}&nbsp;år</strong>
           </>
         )}
       </p>

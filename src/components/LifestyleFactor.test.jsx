@@ -4,11 +4,12 @@ import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import LifestyleFactor from './LifestyleFactor';
-import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
+import { ASSOCIATION_NOTE, LIFESTYLE_FACTORS, factorHelper } from '../utils/lifestyleFactors';
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 const factor = LIFESTYLE_FACTORS.find((f) => f.key === 'exercise'); // 0, 2, 4, 6
+const find = (key) => LIFESTYLE_FACTORS.find((f) => f.key === key);
 const environment = LIFESTYLE_FACTORS.find((f) => f.key === 'environment'); // no 0 option
 
 function Harness({ f, initial = 0, spy }) {
@@ -90,7 +91,7 @@ describe('LifestyleFactor', () => {
     render({ f: factor, spy });
     act(() => radios()[3].click());
     expect(spy).toEqual([['exercise', 6]]);
-    expect(container.textContent).toContain('+6 år');
+    expect(container.textContent).toContain('+4,5 år');
   });
 
   it('moves selection and focus with the arrow keys, wrapping around', () => {
@@ -120,3 +121,62 @@ describe('LifestyleFactor', () => {
     expect(spy).toEqual([]);
   });
 });
+
+describe('LifestyleFactor helper text and notes (#93)', () => {
+  const group = () => container.querySelector('[role="radiogroup"]');
+  const describedText = () =>
+    group().getAttribute('aria-describedby').split(' ').map((id) => document.getElementById(id).textContent);
+
+  it('shows the generated helper text with the association note and ties it to the group', () => {
+    render({ f: factor });
+    const helper = container.querySelector('p');
+    expect(helper.textContent).toContain(factorHelper(factor));
+    expect(helper.textContent).toContain(ASSOCIATION_NOTE);
+    expect(group().getAttribute('aria-describedby')).toBe(helper.id);
+  });
+
+  it('marks a factor that does not count and describes the group with that note first', () => {
+    const stress = find('stress');
+    render({ f: stress, initial: -2 });
+    expect(container.textContent).toContain('påvirker ikke beregningen');
+    expect(container.querySelector('span.text-sm').textContent).toBe('påvirker ikke beregningen');
+    const [note, helper] = describedText();
+    expect(note).toBe('påvirker ikke beregningen');
+    expect(helper).toContain('Kivimäki');
+  });
+
+  it('does not show the note on a factor that counts', () => {
+    render({ f: factor });
+    expect(container.textContent).not.toContain('påvirker ikke beregningen');
+    expect(describedText()).toHaveLength(1);
+  });
+
+  it('describes a factor without helper text by the note alone', () => {
+    const work = find('work');
+    render({ f: { ...work, info: undefined, source: undefined } });
+    expect(describedText()).toEqual(['påvirker ikke beregningen']);
+  });
+
+  it('gives every "Se kilden" link its own accessible name and links all papers the cite names', () => {
+    const smoking = find('smoking');
+    render({ f: smoking });
+    const links = [...container.querySelectorAll('a')];
+    expect(links.map((a) => a.getAttribute('href'))).toEqual([
+      'https://pubmed.ncbi.nlm.nih.gov/23343063/',
+      'https://pubmed.ncbi.nlm.nih.gov/23107252/',
+      'https://pubmed.ncbi.nlm.nih.gov/15213107/',
+    ]);
+    const names = links.map((a) => a.getAttribute('aria-label'));
+    expect(new Set(names).size).toBe(3);
+    expect(names[0]).toBe('Se kilden (Jha), Rygning');
+    expect(links.every((a) => a.getAttribute('aria-label').startsWith(a.textContent))).toBe(true);
+  });
+
+  it('uses the plain visible text when there is only one paper, still named per factor', () => {
+    render({ f: factor });
+    const [a] = container.querySelectorAll('a');
+    expect(a.textContent).toBe('Se kilden');
+    expect(a.getAttribute('aria-label')).toBe('Se kilden, Motion');
+  });
+});
+

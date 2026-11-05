@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatSignedYears, formatYears } from '../utils/lifespanMath';
 import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 const ShareCard = ({ resultData }) => {
@@ -31,7 +32,7 @@ const ShareCard = ({ resultData }) => {
 
         {/* Main stat */}
         <div className="text-center py-6 bg-white/10 backdrop-blur-xs rounded-lg">
-          <div className="text-6xl font-bold mb-2">{resultData.remainingYears}</div>
+          <div className="text-6xl font-bold mb-2">{formatYears(Number(resultData.remainingYears))}</div>
           <div className="text-lg text-white/90">år tilbage</div>
           <div className="mt-1 text-sm text-white/80">
             {PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period}
@@ -56,7 +57,7 @@ const ShareCard = ({ resultData }) => {
           <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
             <div className="text-sm text-white/80 mb-1">Livsstil påvirkning</div>
             <div className={`text-3xl font-bold ${resultData.lifestyleImpact > 0 ? 'text-green-300' : 'text-orange-300'}`}>
-              {resultData.lifestyleImpact > 0 ? '+' : ''}{resultData.lifestyleImpact} år
+              {formatSignedYears(resultData.lifestyleImpact)}
             </div>
           </div>
         )}

@@ -15,6 +15,8 @@ import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 import { Link } from 'react-router-dom';
 
 const LivsstilPage = () => {
@@ -31,6 +33,8 @@ const LivsstilPage = () => {
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
           <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
+            <AnswerFirst text={answerFirst.livsstil()} linkText="Læg din livsstil ind i levetidsberegneren" />
+
             <div className="card animate-slideUp">
               <div className="card-content space-y-6">
                 <h2 className="text-xl sm:text-2xl font-bold">Livsstilsfaktorer med størst påvirkning</h2>

@@ -2,6 +2,7 @@
 // unit-tested in isolation. Keep this module free of React and side effects.
 
 import { remainingFor, effectiveProjection, LIFE_TABLE_META } from './lifeTableDK';
+import { lifestyleYears } from './lifestyleFactors';
 
 /** Highest whole-year age accepted in age-only mode. The tables end at 99/100, so
  *  ages above 99 use the tail rule (e_99). */
@@ -69,11 +70,38 @@ export function calculatePreciseAge(birthdate, now = new Date()) {
 }
 
 /**
- * Raw sum of the lifestyle factor deltas (before bounding).
- * @param {Record<string, number>} factors
+ * Raw sum of the lifestyle years (before bounding): the years of each stored
+ * answer, counting only the factors that are `inSum` (see lifestyleFactors.js).
+ * @param {Record<string, number>} factors - stored answer per factor key
  */
 export function lifestyleTotal(factors) {
-  return Object.values(factors).reduce((sum, val) => sum + val, 0);
+  return lifestyleYears(factors);
+}
+
+/**
+ * Bound and round the lifestyle sum to one decimal (the table has half years,
+ * so whole-year rounding would turn +4.5 into +5, above its source).
+ * @param {number} sum - raw sum from lifestyleTotal
+ */
+export function roundedLifestyleAdjustment(sum) {
+  return roundYears(boundLifestyleAdjustment(sum));
+}
+
+/** Round to one decimal, half away from zero (-8.75 -> -8.8, like +8.75 -> +8.8). */
+export function roundYears(years) {
+  return (Math.sign(years) * Math.round(Math.abs(years) * 10)) / 10 || 0;
+}
+
+/** Years with one decimal and a decimal comma: "77,8". */
+export function formatYears(years) {
+  return years.toLocaleString('da-DK', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
+
+/** Signed years in Danish number format: "+4,5 år", "-0,5 år", "0 år". */
+export function formatSignedYears(years) {
+  const n = roundYears(years);
+  const body = Math.abs(n).toLocaleString('da-DK', { maximumFractionDigits: 1 });
+  return `${n > 0 ? '+' : n < 0 ? '-' : ''}${body} år`;
 }
 
 /**
@@ -209,7 +237,7 @@ export function computeResult(input, now) {
   // Age-conditional remaining life expectancy (e_x) from the Danish period life table.
   const genderKey = gender === 'female' ? 'female' : 'male';
   const rawLifestyleAdjustment = lifestyleTotal(lifestyleFactors);
-  const lifestyleAdjustment = Math.round(boundLifestyleAdjustment(rawLifestyleAdjustment));
+  const lifestyleAdjustment = roundedLifestyleAdjustment(rawLifestyleAdjustment);
   // 'period' (default) or 'projected' (DST cohort table, only below age 70).
   const projection = effectiveProjection(age, requested);
   const remainingBase = remainingFor(age, genderKey, projection);

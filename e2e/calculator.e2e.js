@@ -20,7 +20,8 @@ for (const { id, input, years } of CASES) {
       const url = new URL(page.url());
       const result = await captureResult(page);
       // Explicit golden number: changes only when the calculation or the life table changes.
-      expect(result.srAnnouncement).toMatch(new RegExp(`(^|[^\\d.,])${years.replace('.', '\\.')} år`));
+      // The page shows a decimal comma (Danish format), the golden value is kept as on master.
+      expect(result.srAnnouncement).toMatch(new RegExp(`(^|[^\\d.,])${years.replace('.', ',')} år`));
       // Numbers only, no copy: the snapshot must not break when wording changes.
       const snapshot = {
         id,

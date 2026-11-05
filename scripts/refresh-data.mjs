@@ -46,6 +46,8 @@ export const today = () => new Date().toISOString().slice(0, 10);
 const round1 = (n) => Math.round(n * 10) / 10;
 
 export const FETCH_TIMEOUT_MS = 30_000;
+// The World Bank API answers 403 to Node's default user agent.
+const USER_AGENT = 'levetidsberegner-data-refresh (+https://levetidsberegner.dk)';
 
 async function fetchText(url, init, attempts = 3) {
   let lastErr;
@@ -53,7 +55,11 @@ async function fetchText(url, init, attempts = 3) {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
     try {
-      const res = await fetch(url, { ...init, signal: ctrl.signal });
+      const res = await fetch(url, {
+        ...init,
+        headers: { 'user-agent': USER_AGENT, ...init?.headers },
+        signal: ctrl.signal,
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
       return await res.text();
     } catch (err) {

@@ -1,0 +1,1982 @@
+{
+ "København": {
+  "total": {
+   "value": 80.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Frederiksberg": {
+  "total": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Dragør": {
+  "total": {
+   "value": 83.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Tårnby": {
+  "total": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Albertslund": {
+  "total": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Ballerup": {
+  "total": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Brøndby": {
+  "total": {
+   "value": 80.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Gentofte": {
+  "total": {
+   "value": 84.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 82.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Gladsaxe": {
+  "total": {
+   "value": 81.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Glostrup": {
+  "total": {
+   "value": 81.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Herlev": {
+  "total": {
+   "value": 80.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Hvidovre": {
+  "total": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Høje-Taastrup": {
+  "total": {
+   "value": 81.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Ishøj": {
+  "total": {
+   "value": 79.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Lyngby-Taarbæk": {
+  "total": {
+   "value": 84.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 82.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Rødovre": {
+  "total": {
+   "value": 81.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Vallensbæk": {
+  "total": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Allerød": {
+  "total": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 82.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Egedal": {
+  "total": {
+   "value": 83,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Fredensborg": {
+  "total": {
+   "value": 82.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Frederikssund": {
+  "total": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Furesø": {
+  "total": {
+   "value": 83.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Gribskov": {
+  "total": {
+   "value": 81.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Halsnæs": {
+  "total": {
+   "value": 80.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Helsingør": {
+  "total": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Hillerød": {
+  "total": {
+   "value": 82.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Hørsholm": {
+  "total": {
+   "value": 83.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Rudersdal": {
+  "total": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Bornholm": {
+  "total": {
+   "value": 80.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Christiansø": {
+  "total": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Greve": {
+  "total": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Køge": {
+  "total": {
+   "value": 81.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Lejre": {
+  "total": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 82,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Roskilde": {
+  "total": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Solrød": {
+  "total": {
+   "value": 83.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Faxe": {
+  "total": {
+   "value": 81.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Guldborgsund": {
+  "total": {
+   "value": 79.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 77.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 81.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Holbæk": {
+  "total": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Kalundborg": {
+  "total": {
+   "value": 80.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Lolland": {
+  "total": {
+   "value": 78.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 76,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Næstved": {
+  "total": {
+   "value": 80.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Odsherred": {
+  "total": {
+   "value": 80.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Ringsted": {
+  "total": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Slagelse": {
+  "total": {
+   "value": 80.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Sorø": {
+  "total": {
+   "value": 80.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Stevns": {
+  "total": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Vordingborg": {
+  "total": {
+   "value": 79.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 77.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Assens": {
+  "total": {
+   "value": 80.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Faaborg-Midtfyn": {
+  "total": {
+   "value": 81.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Kerteminde": {
+  "total": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Langeland": {
+  "total": {
+   "value": 81,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Middelfart": {
+  "total": {
+   "value": 81.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Nordfyns": {
+  "total": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Nyborg": {
+  "total": {
+   "value": 81.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Odense": {
+  "total": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Svendborg": {
+  "total": {
+   "value": 81.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Ærø": {
+  "total": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Billund": {
+  "total": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Esbjerg": {
+  "total": {
+   "value": 80.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Fanø": {
+  "total": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Fredericia": {
+  "total": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Haderslev": {
+  "total": {
+   "value": 81.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Kolding": {
+  "total": {
+   "value": 82,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Sønderborg": {
+  "total": {
+   "value": 81.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Tønder": {
+  "total": {
+   "value": 80.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Varde": {
+  "total": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Vejen": {
+  "total": {
+   "value": 81.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Vejle": {
+  "total": {
+   "value": 82,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Aabenraa": {
+  "total": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Favrskov": {
+  "total": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Hedensted": {
+  "total": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Horsens": {
+  "total": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Norddjurs": {
+  "total": {
+   "value": 80.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Odder": {
+  "total": {
+   "value": 83.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 85,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Randers": {
+  "total": {
+   "value": 80.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Samsø": {
+  "total": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Silkeborg": {
+  "total": {
+   "value": 82.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Skanderborg": {
+  "total": {
+   "value": 83,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Syddjurs": {
+  "total": {
+   "value": 82.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Aarhus": {
+  "total": {
+   "value": 82.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Herning": {
+  "total": {
+   "value": 81.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Holstebro": {
+  "total": {
+   "value": 81.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Ikast-Brande": {
+  "total": {
+   "value": 81.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Lemvig": {
+  "total": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Ringkøbing-Skjern": {
+  "total": {
+   "value": 82,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Skive": {
+  "total": {
+   "value": 81.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Struer": {
+  "total": {
+   "value": 81,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Viborg": {
+  "total": {
+   "value": 82,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Brønderslev": {
+  "total": {
+   "value": 80.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 81.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Frederikshavn": {
+  "total": {
+   "value": 80.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Hjørring": {
+  "total": {
+   "value": 81.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Jammerbugt": {
+  "total": {
+   "value": 81.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.5,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Læsø": {
+  "total": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": null,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Mariagerfjord": {
+  "total": {
+   "value": 81.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Morsø": {
+  "total": {
+   "value": 80.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Rebild": {
+  "total": {
+   "value": 81.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.4,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.6,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Thisted": {
+  "total": {
+   "value": 80.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 78.7,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Vesthimmerlands": {
+  "total": {
+   "value": 80.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.2,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.8,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Aalborg": {
+  "total": {
+   "value": 81.1,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.3,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 82.9,
+   "period": "2021:2025",
+   "source": "DST HISBK",
+   "retrieved": "2026-11-05"
+  }
+ }
+}

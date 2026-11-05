@@ -1,0 +1,102 @@
+{
+ "Region Hovedstaden": {
+  "total": {
+   "value": 82.5,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.7,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.2,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Region Sjælland": {
+  "total": {
+   "value": 81.5,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.8,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.1,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Region Syddanmark": {
+  "total": {
+   "value": 81.9,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79.8,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.9,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Region Midtjylland": {
+  "total": {
+   "value": 82.6,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 80.9,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 84.3,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  }
+ },
+ "Region Nordjylland": {
+  "total": {
+   "value": 81.1,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "male": {
+   "value": 79,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  },
+  "female": {
+   "value": 83.3,
+   "period": "2024:2025",
+   "source": "DST HISBR",
+   "retrieved": "2026-11-05"
+  }
+ }
+}

@@ -4,6 +4,7 @@ import ShareCard from './ShareCard';
 const ShareModal = ({ isOpen, onClose, resultData }) => {
   const [copySuccess, setCopySuccess] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [downloadError, setDownloadError] = useState(false);
   const shareCardRef = useRef(null);
 
   if (!isOpen || !resultData) return null;
@@ -118,6 +119,7 @@ Beregn din egen: ${shareUrl}`;
   const downloadImage = async () => {
     if (!shareCardRef.current) return;
     setIsGenerating(true);
+    setDownloadError(false);
 
     try {
       const { toPng } = await import('html-to-image');
@@ -135,6 +137,7 @@ Beregn din egen: ${shareUrl}`;
       }
     } catch (err) {
       console.error('Failed to generate image:', err);
+      setDownloadError(true);
     } finally {
       setIsGenerating(false);
     }
@@ -284,6 +287,11 @@ Beregn din egen: ${shareUrl}`;
                   </>
                 )}
               </button>
+              {downloadError && (
+                <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+                  Billedet kunne ikke oprettes. Genindlæs siden og prøv igen.
+                </p>
+              )}
             </div>
           </div>
         </div>

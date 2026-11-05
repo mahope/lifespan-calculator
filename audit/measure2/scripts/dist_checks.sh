@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
+# Set AUDIT_DIR to a working directory containing repo/ (clone at 0a4c35c) and work/health/ ; Node >= 20 required
 # Part D/A: dist listing, absence of root-level static files, secret grep, dep-usage check.
-source ~/dev/env.sh >/dev/null 2>&1
-R=~/dev/audit-levetid/measure2/repo
-W=~/dev/audit-levetid/measure2/work/health
+R=$AUDIT_DIR/repo
+W=$AUDIT_DIR/work/health
 cd "$R" || exit 1
 
 {

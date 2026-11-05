@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
+# Set AUDIT_DIR to a working directory containing repo/ (clone at 0a4c35c) and work/health/ ; Node >= 20 required
 # Part D: health of lifespan-calculator @ 0a4c35c. Runs on agent-worker. No secrets printed.
 set -u
-source ~/dev/env.sh >/dev/null 2>&1
-cd ~/dev/audit-levetid/measure2/repo || exit 1
-W=~/dev/audit-levetid/measure2/work/health
+cd $AUDIT_DIR/repo || exit 1
+W=$AUDIT_DIR/work/health
 rm -rf "$W"; mkdir -p "$W"
 : > "$W/summary.txt"
 

@@ -1,0 +1,1759 @@
+{
+  "harness": {
+    "version": 1,
+    "frozenClock": "2026-11-05T12:00:00Z",
+    "locale": "da-DK",
+    "timezone": "Europe/Copenhagen",
+    "viewport": "1280x900",
+    "plausible": "pinned script replayed locally, POST /api/event recorded + acknowledged, never forwarded",
+    "note": "Origin of the tested base URL is rewritten to https://levetidsberegner.dk so local and live runs are directly diffable."
+  },
+  "routes": {
+    "/": {
+      "requested": "/",
+      "httpStatus": 200,
+      "finalPath": "/",
+      "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+      "htmlLang": "da",
+      "canonical": [
+        "https://levetidsberegner.dk"
+      ],
+      "metaRobots": [
+        "index, follow"
+      ],
+      "metaDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+      ],
+      "ogTitle": [
+        "Dansk Levetidsberegner",
+        "Levetidsberegner - Hvor lang tid har du tilbage?"
+      ],
+      "ogDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker",
+        "Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
+      ],
+      "ogImage": [
+        "https://levetidsberegner.dk/og-image.png"
+      ],
+      "ogUrl": [
+        "https://levetidsberegner.dk"
+      ],
+      "twitterCard": [
+        "summary",
+        "summary_large_image"
+      ],
+      "h1": [
+        "Levetidsberegner"
+      ],
+      "headings": [
+        "h1: Levetidsberegner",
+        "h2: Beregn din levetid",
+        "h3: Beregningsmåde",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "jsonLdTypes": [
+        "WebApplication"
+      ],
+      "footers": 2,
+      "cookieBanner": {
+        "display": "block",
+        "buttons": [
+          "Accepter",
+          "Afvis"
+        ]
+      },
+      "staticExplainer": "Om dette værktøj Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og",
+      "notFoundShown": false,
+      "localLinks": [
+        "/levetid-beregner-danmark",
+        "/hvor-lang-tid-har-jeg-tilbage",
+        "/dodsalder-calculator",
+        "/livsstil-og-levetid",
+        "/levetid-beregner-danmark",
+        "/privatlivspolitik.html",
+        "/cookiepolitik.html"
+      ],
+      "partnerAdsLinks": [],
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "/hvor-lang-tid-har-jeg-tilbage": {
+      "requested": "/hvor-lang-tid-har-jeg-tilbage",
+      "httpStatus": 200,
+      "finalPath": "/hvor-lang-tid-har-jeg-tilbage",
+      "title": "Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner",
+      "htmlLang": "da",
+      "canonical": [
+        "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage"
+      ],
+      "metaRobots": [
+        "index, follow"
+      ],
+      "metaDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "Få svar på hvor lang tid du har tilbage at leve baseret på statistiske data. Vores levetidsberegner giver dig et realistisk estimat af din resterende levetid."
+      ],
+      "ogTitle": [
+        "Dansk Levetidsberegner",
+        "Hvor lang tid har jeg tilbage at leve?"
+      ],
+      "ogDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker",
+        "Beregn din statistiske resterende levetid med vores præcise levetidsberegner baseret på danske data"
+      ],
+      "ogImage": [
+        "https://levetidsberegner.dk/og-image.png"
+      ],
+      "ogUrl": [
+        "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage"
+      ],
+      "twitterCard": [
+        "summary",
+        "summary_large_image"
+      ],
+      "h1": [
+        "Hvor lang tid har jeg tilbage?"
+      ],
+      "headings": [
+        "h1: Hvor lang tid har jeg tilbage?",
+        "h2: Hvad betyder \"resterende levetid\"?",
+        "h3: Faktorer der påvirker din resterende levetid:",
+        "h3: Hvorfor beregne resterende levetid?",
+        "h4: Målsætning og prioritering",
+        "h4: Finansiel planlægning",
+        "h4: Sundhedsmotivation",
+        "h4: Tidsperspektiv",
+        "h3: Prøv med din fødselsdato",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "footers": 2,
+      "cookieBanner": {
+        "display": "block",
+        "buttons": [
+          "Accepter",
+          "Afvis"
+        ]
+      },
+      "staticExplainer": "Om dette værktøj Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og",
+      "notFoundShown": false,
+      "localLinks": [
+        "/",
+        "/levetid-beregner-danmark",
+        "/hvor-lang-tid-har-jeg-tilbage",
+        "/dodsalder-calculator",
+        "/livsstil-og-levetid",
+        "/levetid-beregner-danmark",
+        "/privatlivspolitik.html",
+        "/cookiepolitik.html"
+      ],
+      "partnerAdsLinks": [],
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "/dodsalder-calculator": {
+      "requested": "/dodsalder-calculator",
+      "httpStatus": 200,
+      "finalPath": "/dodsalder-calculator",
+      "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+      "htmlLang": "da",
+      "canonical": [
+        "https://levetidsberegner.dk/dodsalder-calculator"
+      ],
+      "metaRobots": [
+        "index, follow"
+      ],
+      "metaDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder."
+      ],
+      "ogTitle": [
+        "Dansk Levetidsberegner",
+        "Dødsalder Calculator - Hvornår dør jeg statistisk?"
+      ],
+      "ogDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker",
+        "Få et statistisk estimat af din dødsalder baseret på demografiske data og livsstilsfaktorer"
+      ],
+      "ogImage": [
+        "https://levetidsberegner.dk/og-image.png"
+      ],
+      "ogUrl": [
+        "https://levetidsberegner.dk/dodsalder-calculator"
+      ],
+      "twitterCard": [
+        "summary",
+        "summary_large_image"
+      ],
+      "h1": [
+        "Dødsalder Calculator"
+      ],
+      "headings": [
+        "h1: Dødsalder Calculator",
+        "h2: Hvad er en dødsalder calculator?",
+        "h3: Hvordan fungerer beregningen?",
+        "h4: Demografiske data",
+        "h4: Biologiske faktorer",
+        "h4: Livsstilsjusteringer",
+        "h3: Livsstilsfaktorer der påvirker dødsalder",
+        "h4: Faktorer der forkorter livet:",
+        "h4: Faktorer der forlænger livet:",
+        "h3: Vigtig påmindelse",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "footers": 2,
+      "cookieBanner": {
+        "display": "block",
+        "buttons": [
+          "Accepter",
+          "Afvis"
+        ]
+      },
+      "staticExplainer": "Om dette værktøj Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og",
+      "notFoundShown": false,
+      "localLinks": [
+        "/",
+        "/levetid-beregner-danmark",
+        "/hvor-lang-tid-har-jeg-tilbage",
+        "/dodsalder-calculator",
+        "/livsstil-og-levetid",
+        "/levetid-beregner-danmark",
+        "/privatlivspolitik.html",
+        "/cookiepolitik.html"
+      ],
+      "partnerAdsLinks": [],
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/dodsalder-calculator",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "/livsstil-og-levetid": {
+      "requested": "/livsstil-og-levetid",
+      "httpStatus": 200,
+      "finalPath": "/livsstil-og-levetid",
+      "title": "Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?",
+      "htmlLang": "da",
+      "canonical": [
+        "https://levetidsberegner.dk/livsstil-og-levetid"
+      ],
+      "metaRobots": [
+        "index, follow"
+      ],
+      "metaDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "Lær hvordan livsstilsfaktorer som motion, kost, rygning og stress påvirker din levetid. Videnskabsbaseret guide til sundere og længere liv."
+      ],
+      "ogTitle": [
+        "Dansk Levetidsberegner",
+        "Livsstil og Levetid - Forlæng dit liv med de rigtige valg"
+      ],
+      "ogDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker",
+        "Videnskabsbaseret guide til hvordan du kan forlænge dit liv gennem livsstilsændringer"
+      ],
+      "ogImage": [
+        "https://levetidsberegner.dk/og-image.png"
+      ],
+      "ogUrl": [
+        "https://levetidsberegner.dk/livsstil-og-levetid"
+      ],
+      "twitterCard": [
+        "summary",
+        "summary_large_image"
+      ],
+      "h1": [
+        "Livsstil og Levetid"
+      ],
+      "headings": [
+        "h1: Livsstil og Levetid",
+        "h2: Livsstilsfaktorer med størst påvirkning",
+        "h3: Motion og fysisk aktivitet",
+        "h4: Anbefalinger:",
+        "h3: Ernæring og kost",
+        "h4: Kostvejledning:",
+        "h3: Søvn og hvile",
+        "h4: Søvnhygiejne:",
+        "h3: Rygning og tobak",
+        "h4: Rygningens påvirkning:",
+        "h3: Stress og mental sundhed",
+        "h4: Stresshåndtering:",
+        "h3: Alkohol",
+        "h4: Anbefalinger:",
+        "h3: Den kumulative effekt af livsstilsændringer",
+        "h3: Start i dag",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "footers": 2,
+      "cookieBanner": {
+        "display": "block",
+        "buttons": [
+          "Accepter",
+          "Afvis"
+        ]
+      },
+      "staticExplainer": "Om dette værktøj Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og",
+      "notFoundShown": false,
+      "localLinks": [
+        "/",
+        "/levetid-beregner-danmark",
+        "/hvor-lang-tid-har-jeg-tilbage",
+        "/dodsalder-calculator",
+        "/livsstil-og-levetid",
+        "/levetid-beregner-danmark",
+        "/privatlivspolitik.html",
+        "/cookiepolitik.html"
+      ],
+      "partnerAdsLinks": [],
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/livsstil-og-levetid",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "/levetid-beregner-danmark": {
+      "requested": "/levetid-beregner-danmark",
+      "httpStatus": 200,
+      "finalPath": "/levetid-beregner-danmark",
+      "title": "Dansk Levetidsberegner - Specialiseret til danske forhold",
+      "htmlLang": "da",
+      "canonical": [
+        "https://levetidsberegner.dk/levetid-beregner-danmark"
+      ],
+      "metaRobots": [
+        "index, follow"
+      ],
+      "metaDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "Beregn din levetid med data specifikt fra Danmarks Statistik. Vores danske levetidsberegner bruger de seneste data fra danske sundhedsmyndigheder."
+      ],
+      "ogTitle": [
+        "Dansk Levetidsberegner",
+        "Dansk Levetidsberegner - Præcise data fra Danmarks Statistik"
+      ],
+      "ogDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker",
+        "Specialiseret levetidsberegner med data fra Danmarks Statistik og danske sundhedsmyndigheder"
+      ],
+      "ogImage": [
+        "https://levetidsberegner.dk/og-image.png"
+      ],
+      "ogUrl": [
+        "https://levetidsberegner.dk/levetid-beregner-danmark"
+      ],
+      "twitterCard": [
+        "summary",
+        "summary_large_image"
+      ],
+      "h1": [
+        "Dansk Levetidsberegner"
+      ],
+      "headings": [
+        "h1: Dansk Levetidsberegner",
+        "h2: Levetid i Danmark",
+        "h3: Aktuelle danske tal (2024)",
+        "h3: Sammenligning med nabolande",
+        "h3: Danske sundhedstrends",
+        "h4: Udfordringer i Danmark",
+        "h4: Danske styrker",
+        "h3: Regionale forskelle i Danmark",
+        "h4: Hovedstadsområdet",
+        "h4: Uddannelse",
+        "h4: Indkomst",
+        "h3: Hvorfor bruge den danske version?",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "jsonLdTypes": [
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "footers": 2,
+      "cookieBanner": {
+        "display": "block",
+        "buttons": [
+          "Accepter",
+          "Afvis"
+        ]
+      },
+      "staticExplainer": "Om dette værktøj Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og",
+      "notFoundShown": false,
+      "localLinks": [
+        "/",
+        "/levetid-beregner-danmark",
+        "/hvor-lang-tid-har-jeg-tilbage",
+        "/dodsalder-calculator",
+        "/livsstil-og-levetid",
+        "/levetid-beregner-danmark",
+        "/privatlivspolitik.html",
+        "/cookiepolitik.html"
+      ],
+      "partnerAdsLinks": [],
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/levetid-beregner-danmark",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "/xyz": {
+      "requested": "/xyz",
+      "httpStatus": 200,
+      "finalPath": "/xyz",
+      "title": "Side ikke fundet - Dansk Levetidsberegner",
+      "htmlLang": "da",
+      "canonical": [
+        "https://levetidsberegner.dk/404"
+      ],
+      "metaRobots": [
+        "index, follow"
+      ],
+      "metaDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.",
+        "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+      ],
+      "ogTitle": [
+        "Dansk Levetidsberegner",
+        "Side ikke fundet - Dansk Levetidsberegner"
+      ],
+      "ogDescription": [
+        "Beregn din forventede levetid baseret på danske statistikker",
+        "Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
+      ],
+      "ogImage": [
+        "https://levetidsberegner.dk/og-image.png"
+      ],
+      "ogUrl": [
+        "https://levetidsberegner.dk/404"
+      ],
+      "twitterCard": [
+        "summary",
+        "summary_large_image"
+      ],
+      "h1": [
+        "Side ikke fundet"
+      ],
+      "headings": [
+        "h1: Side ikke fundet",
+        "h2: Hmm, denne side findes ikke",
+        "h3: Populære sider:",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "jsonLdTypes": [
+        "WebApplication"
+      ],
+      "footers": 2,
+      "cookieBanner": {
+        "display": "block",
+        "buttons": [
+          "Accepter",
+          "Afvis"
+        ]
+      },
+      "staticExplainer": "Om dette værktøj Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og",
+      "notFoundShown": true,
+      "localLinks": [
+        "/",
+        "/hvor-lang-tid-har-jeg-tilbage",
+        "/dodsalder-calculator",
+        "/livsstil-og-levetid",
+        "/levetid-beregner-danmark",
+        "/",
+        "/levetid-beregner-danmark",
+        "/hvor-lang-tid-har-jeg-tilbage",
+        "/dodsalder-calculator",
+        "/livsstil-og-levetid",
+        "/levetid-beregner-danmark",
+        "/privatlivspolitik.html",
+        "/cookiepolitik.html"
+      ],
+      "partnerAdsLinks": [],
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/xyz",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    }
+  },
+  "cases": {
+    "1-male-40": {
+      "id": "1-male-40",
+      "input": {
+        "gender": "male",
+        "age": 40
+      },
+      "cookieBannerAtStart": "block",
+      "formProgressText": "100% udfyldt",
+      "urlAfterSubmit": "/?g=male&a=40",
+      "headline": {
+        "remainingYears": "41.2",
+        "expectedAgeAtDeath": "81.2",
+        "expectedAgeInWhatIf": "81.2",
+        "countdown": {
+          "ÅR": "40",
+          "DAGE": "364",
+          "TIMER": "11",
+          "MIN": "--",
+          "SEK": "--"
+        },
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "survivalProbabilities": [
+          {
+            "age": 80,
+            "pct": 62
+          },
+          {
+            "age": 90,
+            "pct": 23
+          },
+          {
+            "age": 95,
+            "pct": 7
+          },
+          {
+            "age": 100,
+            "pct": 1
+          }
+        ],
+        "comparison": {
+          "rows": [
+            {
+              "label": "Dig",
+              "years": "81.2"
+            },
+            {
+              "label": "Danmark (gennemsnit)",
+              "years": "78.9"
+            },
+            {
+              "label": "Japan (højest i verden)",
+              "years": "81.6"
+            },
+            {
+              "label": "Verdensgennemsnit",
+              "years": "72.6"
+            }
+          ],
+          "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit"
+        },
+        "pension": {
+          "birthYearLine": "1986",
+          "tiles": [
+            "70",
+            "30",
+            "Arbejdsår tilbage",
+            "11"
+          ]
+        },
+        "biologicalAge": null,
+        "couple": "section present (see interactions.couple)"
+      },
+      "headings": [
+        "h1: Levetidsberegner",
+        "h2: Din resterende tid",
+        "h3: Dit livsforløb",
+        "h3: Chance for at nå…",
+        "h3: Hvad hvis?",
+        "h3: Sammenlign med gennemsnittet",
+        "h3: Pension & arbejdsår",
+        "h3: Jer to sammen",
+        "h3: Dit liv i uger",
+        "h3: Hvor meget livsforsikring har din familie brug for?",
+        "h3: Fun facts om dit liv",
+        "h3: Tider tilbage",
+        "h3: Dine næste milepæle",
+        "h4: Vigtige disclaimere",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "sections": [
+        {
+          "heading": "Din resterende tid",
+          "text": "Din resterende tid Du har statistisk 41.2 år tilbage at leve. 40 ÅR 364 DAGE 11 TIMER -- MIN -- SEK"
+        },
+        {
+          "heading": "Dit livsforløb",
+          "text": "Dit livsforløb 49.2% Levet 14.610 Dage levet 1.472.688.000 Hjerteslag"
+        },
+        {
+          "heading": "Chance for at nå…",
+          "text": "Chance for at nå… Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler. 80 år 62% 90 år 23% 95 år 7% 100 år 1% Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) — en befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg."
+        },
+        {
+          "heading": "Hvad hvis?",
+          "text": "Hvad hvis? Vælg ændringer og se effekten på dit estimat med det samme. 🏃 Dyrk mere motion 🍎 Spis sundere ⚖️ Opnå en sund vægt 👨‍👩‍👧 Styrk dit sociale netværk 😴 Sov 7-8 timer 😰 Reducér dit stressniveau 🧠 Passe på din mentale sundhed 🚲 Cykl eller gå i stedet for at pendle 💼 Vælg et mindre belastende arbejdsmiljø 🌍 Bo et sted med renere luft 📱 Mindre skærmtid i fritiden Din forventede alder 81.2 Vælg en ændring ovenfor"
+        },
+        {
+          "heading": "Sammenlign med gennemsnittet",
+          "text": "Sammenlign med gennemsnittet Din forventede alder (81.2 år) sat i perspektiv. Dig 81.2 år Danmark (gennemsnit) 78.9 år Japan (højest i verden) 81.6 år Verdensgennemsnit 72.6 år Du ligger ca. 2.3 år over det danske gennemsnit 🎉"
+        },
+        {
+          "heading": "Pension & arbejdsår",
+          "text": "Pension & arbejdsår Baseret på din årgang (1986) og den danske folkepensionsalder. 70 Folkepensionsalder 30 Arbejdsår tilbage 11 Forventede pensionsår Levet Arbejde tilbage Pension Folkepensionsalderen er lovbestemt og kan stige yderligere for årgange fra 1975."
+        },
+        {
+          "heading": "Jer to sammen",
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        },
+        {
+          "heading": "Dit liv i uger",
+          "text": "Dit liv i uger Hver firkant er én uge. Du har levet ca. 2.087 uger (40 år) — statistisk venter der dig ca. 2.135 uger endnu. Hold musen over en firkant for at se alderen Uger levet Forventede uger tilbage Bonus-uger Nu"
+        },
+        {
+          "heading": "Hvor meget livsforsikring har din familie brug for?",
+          "text": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning."
+        },
+        {
+          "heading": "Fun facts om dit liv",
+          "text": "Fun facts om dit liv 🌅 14.610 Solopgange set 💨 294.537.600 Åndedrætninger 👣 102.270.000 Skridt taget 😴 116.880 Timer sovet 😊 248.370 Gange grint 🍽️ 43.830 Måltider spist 💧 29.220 Liter vand drukket 🚀 37.6 mia km rejst i rummet"
+        },
+        {
+          "heading": "Tider tilbage",
+          "text": "Tider tilbage Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem. 🌞 41 somre tilbage 🎄 41 jul tilbage 🍂 164 årstider 🌕 507 fuldmåner 🎂 41 fødselsdage 🛌 2.139 weekender ☕ 37.435 kopper kaffe 🍽️ 44.922 måltider 👨‍👩‍👧 Besøg hos dine kære Hvor ofte ses I? Hver uge Hver 2. uge Hver måned Hver 2. måned Hvert kvartal 2 gange om året 1 gang om året Så når I hinanden ca. 247 gange mere. Baseret på statistiske gennemsnit — ikke en forudsigelse. Brug dine tider godt. 💛"
+        },
+        {
+          "heading": "Dine næste milepæle",
+          "text": "Dine næste milepæle Runde tal er tættere på, end du tror. 📅 15.000 dage levet ca. 30. november 2027 390 dage 📅 16.000 dage levet ca. 26. august 2030 1.390 dage ⏱️ 1,5 mia. sekunder levet ca. 18. maj 2034 2.751 dage 🎂 Du fylder 50 ca. 5. november 2036 3.653 dage"
+        },
+        {
+          "heading": null,
+          "text": "Bemærk: Dette er kun et statistisk estimat baseret på gennemsnitlige data. Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt."
+        },
+        {
+          "heading": "Vigtige disclaimere",
+          "text": "Vigtige disclaimere • Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) • Individuelle faktorer påvirker ikke beregningen • Kun til underholdning og reflektion"
+        }
+      ],
+      "partnerAdsLinks": [
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank",
+          "text": "Sammenlign livsforsikringer →"
+        }
+      ],
+      "externalLinks": [
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://beregner.holstjensen.eu",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://whitenoise.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://qrtool.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://pakkeliste.com",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        }
+      ],
+      "documentTitle": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+      "interactions": {
+        "insurance": {
+          "inputs": {
+            "income": 500000,
+            "yearsDefault": "10"
+          },
+          "before": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "after": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Vejledende dækningsbehov ~5.000.000 kr Indkomsterstatning i forsørgelsesperioden — kun et overslag. Sammenlign livsforsikringer fra ~5.000.000 kr → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "link": {
+            "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+            "rel": "sponsored noopener noreferrer",
+            "target": "_blank",
+            "text": "Sammenlign livsforsikringer fra ~5.000.000 kr →"
+          }
+        },
+        "couple": {
+          "inputs": {
+            "partnerAge": 38,
+            "partnerGenderDefault": "female"
+          },
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Forventede år sammen (begge i live) 37.0 Om Begge i live Mindst én 10 år 98% 100% 20 år 92% 100% 30 år 77% 99% Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        }
+      },
+      "deepLinkRoundTrip": {
+        "url": "/?g=male&a=40",
+        "sameResultAsFormSubmit": true,
+        "srAnnouncement": "Du har statistisk 41.2 år tilbage at leve."
+      },
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        },
+        {
+          "n": "Calculate Lifespan",
+          "u": "https://levetidsberegner.dk/?g=male&a=40",
+          "d": "levetidsberegner.dk",
+          "p": {
+            "age": "40",
+            "gender": "male",
+            "location": "Unknown",
+            "usedBirthdate": false
+          }
+        },
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/?g=male&a=40",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "2-female-65": {
+      "id": "2-female-65",
+      "input": {
+        "gender": "female",
+        "age": 65
+      },
+      "cookieBannerAtStart": "block",
+      "formProgressText": "100% udfyldt",
+      "urlAfterSubmit": "/?g=female&a=65",
+      "headline": {
+        "remainingYears": "21.4",
+        "expectedAgeAtDeath": "86.4",
+        "expectedAgeInWhatIf": "86.4",
+        "countdown": {
+          "ÅR": "20",
+          "DAGE": "364",
+          "TIMER": "11",
+          "MIN": "--",
+          "SEK": "--"
+        },
+        "lifeProgress": [
+          "75.2",
+          "23.741",
+          "2.393.092.800"
+        ],
+        "preciseAge": null,
+        "survivalProbabilities": [
+          {
+            "age": 80,
+            "pct": 77
+          },
+          {
+            "age": 90,
+            "pct": 38
+          },
+          {
+            "age": 95,
+            "pct": 15
+          },
+          {
+            "age": 100,
+            "pct": 4
+          }
+        ],
+        "comparison": {
+          "rows": [
+            {
+              "label": "Dig",
+              "years": "86.4"
+            },
+            {
+              "label": "Danmark (gennemsnit)",
+              "years": "82.7"
+            },
+            {
+              "label": "Japan (højest i verden)",
+              "years": "87.7"
+            },
+            {
+              "label": "Verdensgennemsnit",
+              "years": "77.1"
+            }
+          ],
+          "verdict": "Du ligger ca. 3.7 år over det danske gennemsnit"
+        },
+        "pension": {
+          "birthYearLine": "1961",
+          "tiles": [
+            "67",
+            "2",
+            "Arbejdsår tilbage",
+            "19"
+          ]
+        },
+        "biologicalAge": null,
+        "couple": "section present (see interactions.couple)"
+      },
+      "headings": [
+        "h1: Levetidsberegner",
+        "h2: Din resterende tid",
+        "h3: Dit livsforløb",
+        "h3: Chance for at nå…",
+        "h3: Hvad hvis?",
+        "h3: Sammenlign med gennemsnittet",
+        "h3: Pension & arbejdsår",
+        "h3: Jer to sammen",
+        "h3: Dit liv i uger",
+        "h3: Hvor meget livsforsikring har din familie brug for?",
+        "h3: Fun facts om dit liv",
+        "h3: Tider tilbage",
+        "h3: Dine næste milepæle",
+        "h4: Vigtige disclaimere",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "sections": [
+        {
+          "heading": "Din resterende tid",
+          "text": "Din resterende tid Du har statistisk 21.4 år tilbage at leve. 20 ÅR 364 DAGE 11 TIMER -- MIN -- SEK"
+        },
+        {
+          "heading": "Dit livsforløb",
+          "text": "Dit livsforløb 75.2% Levet 23.741 Dage levet 2.393.092.800 Hjerteslag"
+        },
+        {
+          "heading": "Chance for at nå…",
+          "text": "Chance for at nå… Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler. 80 år 77% 90 år 38% 95 år 15% 100 år 4% Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) — en befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg."
+        },
+        {
+          "heading": "Hvad hvis?",
+          "text": "Hvad hvis? Vælg ændringer og se effekten på dit estimat med det samme. 🏃 Dyrk mere motion 🍎 Spis sundere ⚖️ Opnå en sund vægt 👨‍👩‍👧 Styrk dit sociale netværk 😴 Sov 7-8 timer 😰 Reducér dit stressniveau 🧠 Passe på din mentale sundhed 🚲 Cykl eller gå i stedet for at pendle 💼 Vælg et mindre belastende arbejdsmiljø 🌍 Bo et sted med renere luft 📱 Mindre skærmtid i fritiden Din forventede alder 86.4 Vælg en ændring ovenfor"
+        },
+        {
+          "heading": "Sammenlign med gennemsnittet",
+          "text": "Sammenlign med gennemsnittet Din forventede alder (86.4 år) sat i perspektiv. Dig 86.4 år Danmark (gennemsnit) 82.7 år Japan (højest i verden) 87.7 år Verdensgennemsnit 77.1 år Du ligger ca. 3.7 år over det danske gennemsnit 🎉"
+        },
+        {
+          "heading": "Pension & arbejdsår",
+          "text": "Pension & arbejdsår Baseret på din årgang (1961) og den danske folkepensionsalder. 67 Folkepensionsalder 2 Arbejdsår tilbage 19 Forventede pensionsår Levet Arbejde tilbage Pension Folkepensionsalderen er lovbestemt og kan stige yderligere for årgange fra 1975."
+        },
+        {
+          "heading": "Jer to sammen",
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        },
+        {
+          "heading": "Dit liv i uger",
+          "text": "Dit liv i uger Hver firkant er én uge. Du har levet ca. 3.391 uger (65 år) — statistisk venter der dig ca. 1.102 uger endnu. Hold musen over en firkant for at se alderen Uger levet Forventede uger tilbage Bonus-uger Nu"
+        },
+        {
+          "heading": "Hvor meget livsforsikring har din familie brug for?",
+          "text": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning."
+        },
+        {
+          "heading": "Fun facts om dit liv",
+          "text": "Fun facts om dit liv 🌅 23.741 Solopgange set 💨 478.618.560 Åndedrætninger 👣 166.187.000 Skridt taget 😴 189.928 Timer sovet 😊 403.597 Gange grint 🍽️ 71.223 Måltider spist 💧 47.482 Liter vand drukket 🚀 61.1 mia km rejst i rummet"
+        },
+        {
+          "heading": "Tider tilbage",
+          "text": "Tider tilbage Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem. 🌞 21 somre tilbage 🎄 21 jul tilbage 🍂 85 årstider 🌕 259 fuldmåner 🎂 21 fødselsdage 🛌 1.095 weekender ☕ 19.172 kopper kaffe 🍽️ 23.007 måltider 👨‍👩‍👧 Besøg hos dine kære Hvor ofte ses I? Hver uge Hver 2. uge Hver måned Hver 2. måned Hvert kvartal 2 gange om året 1 gang om året Så når I hinanden ca. 128 gange mere. Baseret på statistiske gennemsnit — ikke en forudsigelse. Brug dine tider godt. 💛"
+        },
+        {
+          "heading": "Dine næste milepæle",
+          "text": "Dine næste milepæle Runde tal er tættere på, end du tror. 📅 24.000 dage levet ca. 22. juli 2027 259 dage 📅 25.000 dage levet ca. 17. april 2030 1.259 dage 🎂 Du fylder 70 ca. 6. november 2031 1.827 dage ⏱️ 2,5 mia. sekunder levet ca. 24. januar 2041 5.194 dage"
+        },
+        {
+          "heading": null,
+          "text": "Bemærk: Dette er kun et statistisk estimat baseret på gennemsnitlige data. Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt."
+        },
+        {
+          "heading": "Vigtige disclaimere",
+          "text": "Vigtige disclaimere • Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) • Individuelle faktorer påvirker ikke beregningen • Kun til underholdning og reflektion"
+        }
+      ],
+      "partnerAdsLinks": [
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank",
+          "text": "Sammenlign livsforsikringer →"
+        }
+      ],
+      "externalLinks": [
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://beregner.holstjensen.eu",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://whitenoise.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://qrtool.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://pakkeliste.com",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        }
+      ],
+      "documentTitle": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+      "interactions": {
+        "insurance": {
+          "inputs": {
+            "income": 500000,
+            "yearsDefault": "10"
+          },
+          "before": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "after": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Vejledende dækningsbehov ~5.000.000 kr Indkomsterstatning i forsørgelsesperioden — kun et overslag. Sammenlign livsforsikringer fra ~5.000.000 kr → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "link": {
+            "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+            "rel": "sponsored noopener noreferrer",
+            "target": "_blank",
+            "text": "Sammenlign livsforsikringer fra ~5.000.000 kr →"
+          }
+        },
+        "couple": {
+          "inputs": {
+            "partnerAge": 38,
+            "partnerGenderDefault": "female"
+          },
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Forventede år sammen (begge i live) 20.5 Om Begge i live Mindst én 10 år 88% 100% 20 år 59% 99% 30 år 14% 93% Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        }
+      },
+      "deepLinkRoundTrip": {
+        "url": "/?g=female&a=65",
+        "sameResultAsFormSubmit": true,
+        "srAnnouncement": "Du har statistisk 21.4 år tilbage at leve."
+      },
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        },
+        {
+          "n": "Calculate Lifespan",
+          "u": "https://levetidsberegner.dk/?g=female&a=65",
+          "d": "levetidsberegner.dk",
+          "p": {
+            "age": "65",
+            "gender": "female",
+            "location": "Unknown",
+            "usedBirthdate": false
+          }
+        },
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/?g=female&a=65",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "3-male-birthdate-1985-06-15": {
+      "id": "3-male-birthdate-1985-06-15",
+      "input": {
+        "gender": "male",
+        "birthdate": "1985-06-15"
+      },
+      "cookieBannerAtStart": "block",
+      "formProgressText": "100% udfyldt",
+      "urlAfterSubmit": "/?g=male&b=1985-06-15",
+      "headline": {
+        "remainingYears": "39.9",
+        "expectedAgeAtDeath": "81.3",
+        "expectedAgeInWhatIf": "81.3",
+        "countdown": {
+          "ÅR": "39",
+          "DAGE": "323",
+          "TIMER": "12",
+          "MIN": "--",
+          "SEK": "--"
+        },
+        "lifeProgress": [
+          "50.9",
+          "15.118",
+          "1.523.894.400"
+        ],
+        "preciseAge": [
+          "41 år, 4 mdr, 21 dage",
+          "15.6.1985"
+        ],
+        "survivalProbabilities": [
+          {
+            "age": 80,
+            "pct": 62
+          },
+          {
+            "age": 90,
+            "pct": 23
+          },
+          {
+            "age": 95,
+            "pct": 7
+          },
+          {
+            "age": 100,
+            "pct": 1
+          }
+        ],
+        "comparison": {
+          "rows": [
+            {
+              "label": "Dig",
+              "years": "81.3"
+            },
+            {
+              "label": "Danmark (gennemsnit)",
+              "years": "78.9"
+            },
+            {
+              "label": "Japan (højest i verden)",
+              "years": "81.6"
+            },
+            {
+              "label": "Verdensgennemsnit",
+              "years": "72.6"
+            }
+          ],
+          "verdict": "Du ligger ca. 2.4 år over det danske gennemsnit"
+        },
+        "pension": {
+          "birthYearLine": "1985",
+          "tiles": [
+            "70",
+            "29",
+            "Arbejdsår tilbage",
+            "11"
+          ]
+        },
+        "biologicalAge": null,
+        "couple": "section present (see interactions.couple)"
+      },
+      "headings": [
+        "h1: Levetidsberegner",
+        "h2: Din resterende tid",
+        "h3: Dit livsforløb",
+        "h3: Chance for at nå…",
+        "h3: Hvad hvis?",
+        "h3: Sammenlign med gennemsnittet",
+        "h3: Pension & arbejdsår",
+        "h3: Jer to sammen",
+        "h3: Dit liv i uger",
+        "h3: Hvor meget livsforsikring har din familie brug for?",
+        "h3: Fun facts om dit liv",
+        "h3: Tider tilbage",
+        "h3: Dine næste milepæle",
+        "h4: Vigtige disclaimere",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "sections": [
+        {
+          "heading": "Din resterende tid",
+          "text": "Din resterende tid Du har statistisk 39.9 år tilbage at leve. 39 ÅR 323 DAGE 12 TIMER -- MIN -- SEK"
+        },
+        {
+          "heading": "Dit livsforløb",
+          "text": "Dit livsforløb 🎯 Præcis beregning Din præcise alder 41 år, 4 mdr, 21 dage Født: 15.6.1985 50.9% Levet 15.118 Dage levet 1.523.894.400 Hjerteslag"
+        },
+        {
+          "heading": "Chance for at nå…",
+          "text": "Chance for at nå… Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler. 80 år 62% 90 år 23% 95 år 7% 100 år 1% Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) — en befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg."
+        },
+        {
+          "heading": "Hvad hvis?",
+          "text": "Hvad hvis? Vælg ændringer og se effekten på dit estimat med det samme. 🏃 Dyrk mere motion 🍎 Spis sundere ⚖️ Opnå en sund vægt 👨‍👩‍👧 Styrk dit sociale netværk 😴 Sov 7-8 timer 😰 Reducér dit stressniveau 🧠 Passe på din mentale sundhed 🚲 Cykl eller gå i stedet for at pendle 💼 Vælg et mindre belastende arbejdsmiljø 🌍 Bo et sted med renere luft 📱 Mindre skærmtid i fritiden Din forventede alder 81.3 Vælg en ændring ovenfor"
+        },
+        {
+          "heading": "Sammenlign med gennemsnittet",
+          "text": "Sammenlign med gennemsnittet Din forventede alder (81.3 år) sat i perspektiv. Dig 81.3 år Danmark (gennemsnit) 78.9 år Japan (højest i verden) 81.6 år Verdensgennemsnit 72.6 år Du ligger ca. 2.4 år over det danske gennemsnit 🎉"
+        },
+        {
+          "heading": "Pension & arbejdsår",
+          "text": "Pension & arbejdsår Baseret på din årgang (1985) og den danske folkepensionsalder. 70 Folkepensionsalder 29 Arbejdsår tilbage 11 Forventede pensionsår Levet Arbejde tilbage Pension Folkepensionsalderen er lovbestemt og kan stige yderligere for årgange fra 1975."
+        },
+        {
+          "heading": "Jer to sammen",
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        },
+        {
+          "heading": "Dit liv i uger",
+          "text": "Dit liv i uger Hver firkant er én uge. Du har levet ca. 2.159 uger (41 år) — statistisk venter der dig ca. 2.069 uger endnu. Hold musen over en firkant for at se alderen Uger levet Forventede uger tilbage Bonus-uger Nu"
+        },
+        {
+          "heading": "Hvor meget livsforsikring har din familie brug for?",
+          "text": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning."
+        },
+        {
+          "heading": "Fun facts om dit liv",
+          "text": "Fun facts om dit liv 🌅 15.118 Solopgange set 💨 304.778.880 Åndedrætninger 👣 105.826.000 Skridt taget 😴 120.944 Timer sovet 😊 257.006 Gange grint 🍽️ 45.354 Måltider spist 💧 30.236 Liter vand drukket 🚀 38.9 mia km rejst i rummet 🌙 511 Fuldmåner oplevet 🍂 165 Årstider oplevet ⏱️ 1.306.195.200 Sekunder levet"
+        },
+        {
+          "heading": "Tider tilbage",
+          "text": "Tider tilbage Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem. 🌞 39 somre tilbage 🎄 39 jul tilbage 🍂 159 årstider 🌕 493 fuldmåner 🎂 39 fødselsdage 🛌 2.081 weekender ☕ 36.420 kopper kaffe 🍽️ 43.704 måltider 👨‍👩‍👧 Besøg hos dine kære Hvor ofte ses I? Hver uge Hver 2. uge Hver måned Hver 2. måned Hvert kvartal 2 gange om året 1 gang om året Så når I hinanden ca. 239 gange mere. Baseret på statistiske gennemsnit — ikke en forudsigelse. Brug dine tider godt. 💛"
+        },
+        {
+          "heading": "Dine næste milepæle",
+          "text": "Dine næste milepæle Runde tal er tættere på, end du tror. 📅 16.000 dage levet ca. 5. april 2029 882 dage 📅 17.000 dage levet ca. 31. december 2031 1.882 dage ⏱️ 1,5 mia. sekunder levet ca. 26. december 2032 2.243 dage 🎂 Du fylder 50 ca. 16. juni 2035 3.145 dage"
+        },
+        {
+          "heading": null,
+          "text": "Bemærk: Dette er kun et statistisk estimat baseret på gennemsnitlige data. Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt."
+        },
+        {
+          "heading": "Vigtige disclaimere",
+          "text": "Vigtige disclaimere • Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) • Individuelle faktorer påvirker ikke beregningen • Kun til underholdning og reflektion"
+        }
+      ],
+      "partnerAdsLinks": [
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank",
+          "text": "Sammenlign livsforsikringer →"
+        }
+      ],
+      "externalLinks": [
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://beregner.holstjensen.eu",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://whitenoise.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://qrtool.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://pakkeliste.com",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        }
+      ],
+      "documentTitle": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+      "interactions": {
+        "insurance": {
+          "inputs": {
+            "income": 500000,
+            "yearsDefault": "10"
+          },
+          "before": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "after": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Vejledende dækningsbehov ~5.000.000 kr Indkomsterstatning i forsørgelsesperioden — kun et overslag. Sammenlign livsforsikringer fra ~5.000.000 kr → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "link": {
+            "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+            "rel": "sponsored noopener noreferrer",
+            "target": "_blank",
+            "text": "Sammenlign livsforsikringer fra ~5.000.000 kr →"
+          }
+        },
+        "couple": {
+          "inputs": {
+            "partnerAge": 38,
+            "partnerGenderDefault": "female"
+          },
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Forventede år sammen (begge i live) 36.1 Om Begge i live Mindst én 10 år 98% 100% 20 år 91% 100% 30 år 75% 98% Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        }
+      },
+      "deepLinkRoundTrip": {
+        "url": "/?g=male&b=1985-06-15",
+        "sameResultAsFormSubmit": true,
+        "srAnnouncement": "Du har statistisk 39.9 år tilbage at leve."
+      },
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        },
+        {
+          "n": "Calculate Lifespan",
+          "u": "https://levetidsberegner.dk/?g=male&b=1985-06-15",
+          "d": "levetidsberegner.dk",
+          "p": {
+            "age": "birthdate",
+            "gender": "male",
+            "location": "Unknown",
+            "usedBirthdate": true
+          }
+        },
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/?g=male&b=1985-06-15",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    },
+    "4-bonus-male-50-advanced": {
+      "id": "4-bonus-male-50-advanced",
+      "input": {
+        "gender": "male",
+        "age": 50,
+        "advanced": {
+          "buttons": [
+            "Let (1-10/dag)",
+            "Moderat (4-6 t/uge)",
+            "Sund",
+            "7-8 timer"
+          ]
+        }
+      },
+      "cookieBannerAtStart": "block",
+      "formProgressText": "100% udfyldt",
+      "urlAfterSubmit": "/?g=male&a=50&m=advanced&lf=-5%2C4%2C3%2C0%2C2%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+      "headline": {
+        "remainingYears": "35.8",
+        "expectedAgeAtDeath": "85.8",
+        "expectedAgeInWhatIf": "85.8",
+        "countdown": {
+          "ÅR": "34",
+          "DAGE": "364",
+          "TIMER": "11",
+          "MIN": "--",
+          "SEK": "--"
+        },
+        "lifeProgress": [
+          "58.3",
+          "18.262",
+          "1.840.809.600"
+        ],
+        "preciseAge": null,
+        "survivalProbabilities": [
+          {
+            "age": 80,
+            "pct": 62
+          },
+          {
+            "age": 90,
+            "pct": 23
+          },
+          {
+            "age": 95,
+            "pct": 7
+          },
+          {
+            "age": 100,
+            "pct": 1
+          }
+        ],
+        "comparison": {
+          "rows": [
+            {
+              "label": "Dig",
+              "years": "85.8"
+            },
+            {
+              "label": "Danmark (gennemsnit)",
+              "years": "78.9"
+            },
+            {
+              "label": "Japan (højest i verden)",
+              "years": "81.6"
+            },
+            {
+              "label": "Verdensgennemsnit",
+              "years": "72.6"
+            }
+          ],
+          "verdict": "Du ligger ca. 6.9 år over det danske gennemsnit"
+        },
+        "pension": {
+          "birthYearLine": "1976",
+          "tiles": [
+            "70",
+            "20",
+            "Arbejdsår tilbage",
+            "16"
+          ]
+        },
+        "biologicalAge": [
+          "46",
+          "50",
+          "Din livsstil svarer til en krop, der er ~4 år yngre 🎉"
+        ],
+        "couple": "section present (see interactions.couple)"
+      },
+      "headings": [
+        "h1: Levetidsberegner",
+        "h2: Din resterende tid",
+        "h3: Dit livsforløb",
+        "h3: Chance for at nå…",
+        "h3: Hvad hvis?",
+        "h3: Sammenlign med gennemsnittet",
+        "h3: Pension & arbejdsår",
+        "h3: Jer to sammen",
+        "h3: Sådan kan du vinde flere år",
+        "h3: Dit liv i uger",
+        "h3: Hvor meget livsforsikring har din familie brug for?",
+        "h3: Fun facts om dit liv",
+        "h3: Tider tilbage",
+        "h3: Dine næste milepæle",
+        "h4: Vigtige disclaimere",
+        "h2: Andre nyttige værktøjer",
+        "h3: Beregner.dk",
+        "h3: WhiteNoise.dk",
+        "h3: QRtool.dk",
+        "h3: Pakkeliste.com",
+        "h3: Mahope.dk",
+        "h3: Om Levetidsberegneren",
+        "h3: Hvordan fungerer det?",
+        "h3: Datakilder og nøjagtighed",
+        "h3: Privatlivspolitik",
+        "h3: Understøttede lande",
+        "h3: Relaterede sider",
+        "h2: Om dette værktøj"
+      ],
+      "sections": [
+        {
+          "heading": "Din resterende tid",
+          "text": "Din resterende tid Du har statistisk 35.8 år tilbage at leve. 34 ÅR 364 DAGE 11 TIMER -- MIN -- SEK"
+        },
+        {
+          "heading": null,
+          "text": "Din biologiske alder 46 år · du er 50 Din livsstil svarer til en krop, der er ~4 år yngre 🎉 Beregnet ud fra dine livsstilsvalg og danske dødelighedstavler."
+        },
+        {
+          "heading": "Dit livsforløb",
+          "text": "Dit livsforløb 58.3% Levet 18.262 Dage levet 1.840.809.600 Hjerteslag"
+        },
+        {
+          "heading": "Chance for at nå…",
+          "text": "Chance for at nå… Sandsynlighed for at nå udvalgte aldre, ud fra danske dødelighedstavler. 80 år 62% 90 år 23% 95 år 7% 100 år 1% Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) — en befolkningsgennemsnitlig sandsynlighed, uafhængig af dine livsstilsvalg."
+        },
+        {
+          "heading": "Hvad hvis?",
+          "text": "Hvad hvis? Vælg ændringer og se effekten på dit estimat med det samme. 🚭 Stop med at ryge 🏃 Dyrk mere motion 🍎 Spis sundere ⚖️ Opnå en sund vægt 👨‍👩‍👧 Styrk dit sociale netværk 😰 Reducér dit stressniveau 🧠 Passe på din mentale sundhed 🚲 Cykl eller gå i stedet for at pendle 💼 Vælg et mindre belastende arbejdsmiljø 🌍 Bo et sted med renere luft 📱 Mindre skærmtid i fritiden Din forventede alder 85.8 Vælg en ændring ovenfor"
+        },
+        {
+          "heading": "Sammenlign med gennemsnittet",
+          "text": "Sammenlign med gennemsnittet Din forventede alder (85.8 år) sat i perspektiv. Dig 85.8 år Danmark (gennemsnit) 78.9 år Japan (højest i verden) 81.6 år Verdensgennemsnit 72.6 år Du ligger ca. 6.9 år over det danske gennemsnit 🎉"
+        },
+        {
+          "heading": "Pension & arbejdsår",
+          "text": "Pension & arbejdsår Baseret på din årgang (1976) og den danske folkepensionsalder. 70 Folkepensionsalder 20 Arbejdsår tilbage 16 Forventede pensionsår Levet Arbejde tilbage Pension Folkepensionsalderen er lovbestemt og kan stige yderligere for årgange fra 1975."
+        },
+        {
+          "heading": "Jer to sammen",
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        },
+        {
+          "heading": "Sådan kan du vinde flere år",
+          "text": "Sådan kan du vinde flere år Livsstilsændringer, der kan give dig flere leveår. 🚭 Stop med at ryge Kilde: Doll & Peto 2004, BMJ +5 år 👨‍👩‍👧 Styrk dit sociale netværk Kilde: Holt-Lunstad 2010, PLoS Medicine +4 år 🏃 Dyrk mere motion Kilde: Moore 2012, PLoS Medicine +2 år Illustrativt — de enkelte effekter overlapper og indgår samlet begrænset i estimatet."
+        },
+        {
+          "heading": "Dit liv i uger",
+          "text": "Dit liv i uger Hver firkant er én uge. Du har levet ca. 2.608 uger (50 år) — statistisk venter der dig ca. 1.854 uger endnu. Hold musen over en firkant for at se alderen Uger levet Forventede uger tilbage Bonus-uger Nu"
+        },
+        {
+          "heading": "Hvor meget livsforsikring har din familie brug for?",
+          "text": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning."
+        },
+        {
+          "heading": "Fun facts om dit liv",
+          "text": "Fun facts om dit liv 🌅 18.262 Solopgange set 💨 368.161.920 Åndedrætninger 👣 127.834.000 Skridt taget 😴 146.096 Timer sovet 😊 310.454 Gange grint 🍽️ 54.786 Måltider spist 💧 36.524 Liter vand drukket 🚀 47.0 mia km rejst i rummet"
+        },
+        {
+          "heading": "Tider tilbage",
+          "text": "Tider tilbage Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem. 🌞 35 somre tilbage 🎄 35 jul tilbage 🍂 143 årstider 🌕 432 fuldmåner 🎂 35 fødselsdage 🛌 1.826 weekender ☕ 31.957 kopper kaffe 🍽️ 38.349 måltider 👨‍👩‍👧 Besøg hos dine kære Hvor ofte ses I? Hver uge Hver 2. uge Hver måned Hver 2. måned Hvert kvartal 2 gange om året 1 gang om året Så når I hinanden ca. 214 gange mere. Baseret på statistiske gennemsnit — ikke en forudsigelse. Brug dine tider godt. 💛"
+        },
+        {
+          "heading": "Dine næste milepæle",
+          "text": "Dine næste milepæle Runde tal er tættere på, end du tror. 🎂 Du fylder 50 ca. 6. november 2026 1 dage 📅 19.000 dage levet ca. 12. november 2028 738 dage ❤️ 2 mia. hjerteslag ca. 3. marts 2031 1.579 dage 📅 20.000 dage levet ca. 9. august 2031 1.738 dage"
+        },
+        {
+          "heading": null,
+          "text": "Bemærk: Dette er kun et statistisk estimat baseret på gennemsnitlige data. Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt."
+        },
+        {
+          "heading": "Vigtige disclaimere",
+          "text": "Vigtige disclaimere • Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025) • Individuelle faktorer påvirker ikke beregningen • Kun til underholdning og reflektion"
+        }
+      ],
+      "partnerAdsLinks": [
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank",
+          "text": "Sammenlign livsforsikringer →"
+        }
+      ],
+      "externalLinks": [
+        {
+          "href": "https://pubmed.ncbi.nlm.nih.gov/15213107/",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2910600/",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001335",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+          "rel": "sponsored noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://beregner.holstjensen.eu",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://whitenoise.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://qrtool.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://pakkeliste.com",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        {
+          "href": "https://mahope.dk",
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        }
+      ],
+      "documentTitle": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+      "interactions": {
+        "insurance": {
+          "inputs": {
+            "income": 500000,
+            "yearsDefault": "10"
+          },
+          "before": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Sammenlign livsforsikringer → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "after": "ANNONCE · VÆRKTØJ Hvor meget livsforsikring har din familie brug for? Et hurtigt overslag ud fra indkomst og forsørgelsesbehov. Årlig husstandsindkomst (kr) År med forsørgeransvar Vejledende dækningsbehov ~5.000.000 kr Indkomsterstatning i forsørgelsesperioden — kun et overslag. Sammenlign livsforsikringer fra ~5.000.000 kr → Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.",
+          "link": {
+            "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+            "rel": "sponsored noopener noreferrer",
+            "target": "_blank",
+            "text": "Sammenlign livsforsikringer fra ~5.000.000 kr →"
+          }
+        },
+        "couple": {
+          "inputs": {
+            "partnerAge": 38,
+            "partnerGenderDefault": "female"
+          },
+          "text": "Jer to sammen Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen. Partnerens alder Mand Kvinde Forventede år sammen (begge i live) 29.9 Om Begge i live Mindst én 10 år 95% 100% 20 år 83% 100% 30 år 57% 97% Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+        }
+      },
+      "deepLinkRoundTrip": {
+        "url": "/?g=male&a=50&m=advanced&lf=-5%2C4%2C3%2C0%2C2%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+        "sameResultAsFormSubmit": true,
+        "srAnnouncement": "Du har statistisk 35.8 år tilbage at leve."
+      },
+      "plausibleEvents": [
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        },
+        {
+          "n": "Calculate Lifespan",
+          "u": "https://levetidsberegner.dk/?g=male&a=50&m=advanced&lf=-5%2C4%2C3%2C0%2C2%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+          "d": "levetidsberegner.dk",
+          "p": {
+            "age": "50",
+            "gender": "male",
+            "location": "Unknown",
+            "usedBirthdate": false
+          }
+        },
+        {
+          "n": "pageview",
+          "u": "https://levetidsberegner.dk/?g=male&a=50&m=advanced&lf=-5%2C4%2C3%2C0%2C2%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+          "d": "levetidsberegner.dk",
+          "p": {}
+        }
+      ],
+      "plausibleStubQueue": [],
+      "blockedThirdPartyHosts": [
+        "fonts.googleapis.com"
+      ],
+      "consoleMessages": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "error: Failed to load resource: net::ERR_FAILED"
+      ],
+      "pageErrors": []
+    }
+  }
+}

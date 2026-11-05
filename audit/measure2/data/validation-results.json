@@ -1,0 +1,6330 @@
+{
+  "at": "2026-11-05T13:53:02.958Z",
+  "frozenClock": "2026-11-05T12:34:56.000Z",
+  "form": {
+    "age": [
+      {
+        "input": "",
+        "mode": "native",
+        "fieldValueAfterTyping": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": {
+            "value": "",
+            "valid": false
+          },
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2736
+      },
+      {
+        "input": "",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/?g=male&a=",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": [
+            "0.0",
+            "NaN",
+            "NaN"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [
+            "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+            "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+            "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+            "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+            "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+            "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+          ],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+        },
+        "outcome": "BAD OUTPUT (NaN)",
+        "ms": 2005
+      },
+      {
+        "input": "0",
+        "mode": "native",
+        "fieldValueAfterTyping": "0",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=0",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": "80.3",
+          "compare": [
+            "Dig=80.3",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.4 år over det danske gennemsnit",
+          "lifeProgress": [
+            "0.0",
+            "0",
+            "0"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "70",
+            "Arbejdsår tilbage",
+            "10"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"0\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.3\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2151
+      },
+      {
+        "input": "0",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "0",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=0",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": "80.3",
+          "compare": [
+            "Dig=80.3",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.4 år over det danske gennemsnit",
+          "lifeProgress": [
+            "0.0",
+            "0",
+            "0"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "70",
+            "Arbejdsår tilbage",
+            "10"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"0\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.3\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2066
+      },
+      {
+        "input": "-5",
+        "mode": "native",
+        "fieldValueAfterTyping": "-5",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeUnderflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": {
+            "value": "-5",
+            "valid": false
+          },
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 1977
+      },
+      {
+        "input": "-5",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "-5",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeUnderflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=-5",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": "75.3",
+          "compare": [
+            "Dig=75.3",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 3.6 år under det danske gennemsnit",
+          "lifeProgress": [
+            "0.0",
+            "-1.827",
+            "-184.161.600"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "75",
+            "Arbejdsår tilbage",
+            "5"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [
+            "K Dit livsforløb 0.0% Levet -1.827 Dage levet -184.161",
+            ".0% Levet -1.827 Dage levet -184.161.600 Hjerteslag Chance f",
+            "ng. Fun facts om dit liv 🌅 -1.827 Solopgange set 💨 -",
+            "🌅 -1.827 Solopgange set 💨 -36.832.320 Åndedrætninger 👣 -",
+            "6.832.320 Åndedrætninger 👣 -12.789.000 Skridt taget 😴 -14",
+            "-12.789.000 Skridt taget 😴 -14.616 Timer sovet 😊 -31."
+          ],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"-5\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":-5,\"gender\":\"male\",\"expected\":\"75.3\"}]"
+        },
+        "outcome": "BAD OUTPUT (negative number)",
+        "ms": 1929
+      },
+      {
+        "input": "1",
+        "mode": "native",
+        "fieldValueAfterTyping": "1",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=1",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "79.6",
+          "expectedAge": "80.6",
+          "compare": [
+            "Dig=80.6",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+          "lifeProgress": [
+            "1.2",
+            "365",
+            "36.792.000"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "78 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "69",
+            "Arbejdsår tilbage",
+            "11"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"1\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":1,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2423
+      },
+      {
+        "input": "1",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "1",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=1",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "79.6",
+          "expectedAge": "80.6",
+          "compare": [
+            "Dig=80.6",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+          "lifeProgress": [
+            "1.2",
+            "365",
+            "36.792.000"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "78 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "69",
+            "Arbejdsår tilbage",
+            "11"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"1\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":1,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2189
+      },
+      {
+        "input": "99",
+        "mode": "native",
+        "fieldValueAfterTyping": "99",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=99",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "1.8",
+          "expectedAge": "100.8",
+          "compare": [
+            "Dig=100.8",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 21.9 år over det danske gennemsnit",
+          "lifeProgress": [
+            "98.2",
+            "36.159",
+            "3.644.827.200"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "1.8 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "100:100%"
+          ],
+          "pension": [
+            "65",
+            "0",
+            "Pensioneret",
+            "36"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"99\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":99,\"gender\":\"male\",\"expected\":\"100.8\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2221
+      },
+      {
+        "input": "99",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "99",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=99",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "1.8",
+          "expectedAge": "100.8",
+          "compare": [
+            "Dig=100.8",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 21.9 år over det danske gennemsnit",
+          "lifeProgress": [
+            "98.2",
+            "36.159",
+            "3.644.827.200"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "1.8 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "100:100%"
+          ],
+          "pension": [
+            "65",
+            "0",
+            "Pensioneret",
+            "36"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"99\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":99,\"gender\":\"male\",\"expected\":\"100.8\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 1889
+      },
+      {
+        "input": "100",
+        "mode": "native",
+        "fieldValueAfterTyping": "100",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=100",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "1.8",
+          "expectedAge": "101.8",
+          "compare": [
+            "Dig=101.8",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 22.9 år over det danske gennemsnit",
+          "lifeProgress": [
+            "98.2",
+            "36.525",
+            "3.681.720.000"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "1.8 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": [
+            "65",
+            "0",
+            "Pensioneret",
+            "37"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"100\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":100,\"gender\":\"male\",\"expected\":\"101.8\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2043
+      },
+      {
+        "input": "100",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "100",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=100",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "1.8",
+          "expectedAge": "101.8",
+          "compare": [
+            "Dig=101.8",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 22.9 år over det danske gennemsnit",
+          "lifeProgress": [
+            "98.2",
+            "36.525",
+            "3.681.720.000"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "1.8 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": [
+            "65",
+            "0",
+            "Pensioneret",
+            "37"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"100\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":100,\"gender\":\"male\",\"expected\":\"101.8\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 1952
+      },
+      {
+        "input": "150",
+        "mode": "native",
+        "fieldValueAfterTyping": "150",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": {
+            "value": "150",
+            "valid": false
+          },
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2148
+      },
+      {
+        "input": "150",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "150",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=150",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "1.8",
+          "expectedAge": "151.8",
+          "compare": [
+            "Dig=151.8",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 72.9 år over det danske gennemsnit",
+          "lifeProgress": [
+            "98.8",
+            "54.787",
+            "5.522.529.600"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "1.8 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": [
+            "65",
+            "0",
+            "Pensioneret",
+            "87"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"150\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":150,\"gender\":\"male\",\"expected\":\"151.8\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2337
+      },
+      {
+        "input": "1e3",
+        "mode": "native",
+        "fieldValueAfterTyping": "1e3",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": {
+            "value": "1e3",
+            "valid": false
+          },
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2171
+      },
+      {
+        "input": "1e3",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "1e3",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=1e3",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "79.6",
+          "expectedAge": "80.6",
+          "compare": [
+            "Dig=80.6",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+          "lifeProgress": [
+            "1.2",
+            "365",
+            "36.792.000"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "78 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "69",
+            "Arbejdsår tilbage",
+            "11"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"1e3\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":1,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2256
+      },
+      {
+        "input": "12.5",
+        "mode": "native",
+        "fieldValueAfterTyping": "12.5",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "stepMismatch"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": {
+            "value": "12.5",
+            "valid": false
+          },
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2096
+      },
+      {
+        "input": "12.5",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "12.5",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "stepMismatch"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=12.5",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "68.6",
+          "expectedAge": "80.6",
+          "compare": [
+            "Dig=80.6",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+          "lifeProgress": [
+            "14.9",
+            "4.383",
+            "441.806.400"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "67 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "58",
+            "Arbejdsår tilbage",
+            "11"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"12.5\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":12,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2133
+      },
+      {
+        "input": "abc",
+        "mode": "native",
+        "fieldValueAfterTyping": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": {
+            "value": "",
+            "valid": false
+          },
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 1792
+      },
+      {
+        "input": "abc",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/?g=male&a=",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": [
+            "0.0",
+            "NaN",
+            "NaN"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [
+            "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+            "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+            "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+            "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+            "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+            "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+          ],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+        },
+        "outcome": "BAD OUTPUT (NaN)",
+        "ms": 1998
+      },
+      {
+        "input": " 40 ",
+        "mode": "native",
+        "fieldValueAfterTyping": "40",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=40",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "41.2",
+          "expectedAge": "81.2",
+          "compare": [
+            "Dig=81.2",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+          "lifeProgress": [
+            "49.2",
+            "14.610",
+            "1.472.688.000"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "40 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:62%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "30",
+            "Arbejdsår tilbage",
+            "11"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2090
+      },
+      {
+        "input": " 40 ",
+        "mode": "bypass",
+        "fieldValueAfterTyping": "40",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&a=40",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "41.2",
+          "expectedAge": "81.2",
+          "compare": [
+            "Dig=81.2",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+          "lifeProgress": [
+            "49.2",
+            "14.610",
+            "1.472.688.000"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "40 ÅR",
+            "364 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:62%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "30",
+            "Arbejdsår tilbage",
+            "11"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2068
+      }
+    ],
+    "birthdate": [
+      {
+        "input": "future 2999-01-01",
+        "mode": "native",
+        "fieldValueAfterInput": "2999-01-01",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": {
+            "value": "2999-01-01",
+            "valid": false
+          },
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2135
+      },
+      {
+        "input": "future 2999-01-01",
+        "mode": "bypass",
+        "fieldValueAfterInput": "2999-01-01",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&b=2999-01-01",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": "-891.9",
+          "compare": [
+            "Dig=-891.9",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 970.8 år under det danske gennemsnit",
+          "lifeProgress": [
+            "0.0",
+            "-355.073",
+            "-35.791.358.400"
+          ],
+          "preciseAge": [
+            "-973 år, 10 mdr, 4 dage",
+            "1.1.2999 0.0% Levet -355.073 Dage levet -35.791.358.400 Hjerteslag"
+          ],
+          "countdown": [
+            "80 ÅR",
+            "96 DAGE",
+            "11 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "1042",
+            "Arbejdsår tilbage",
+            "0"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [
+            "beregning Din præcise alder -973 år, 10 mdr, 4 dage ",
+            "e Født: 1.1.2999 0.0% Levet -355.073 Dage levet -35.791.",
+            "% Levet -355.073 Dage levet -35.791.358.400 Hjerteslag Chance f",
+            "itiden Din forventede alder -891.9 Vælg en ændring ove",
+            "9 år) sat i perspektiv. Dig -891.9 år Danmark (gennems",
+            "ng. Fun facts om dit liv 🌅 -355.073 Solopgange set 💨 -"
+          ],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":-972,\"gender\":\"male\",\"expected\":\"-891.9\"}]"
+        },
+        "outcome": "BAD OUTPUT (negative number)",
+        "ms": 1980
+      },
+      {
+        "input": "before min 1850-01-01",
+        "mode": "native",
+        "fieldValueAfterInput": "1850-01-01",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeUnderflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": {
+            "value": "1850-01-01",
+            "valid": false
+          },
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 1992
+      },
+      {
+        "input": "before min 1850-01-01",
+        "mode": "bypass",
+        "fieldValueAfterInput": "1850-01-01",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeUnderflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&b=1850-01-01",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "1.8",
+          "expectedAge": "178.7",
+          "compare": [
+            "Dig=178.7",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 99.8 år over det danske gennemsnit",
+          "lifeProgress": [
+            "99.0",
+            "64.591",
+            "6.510.772.800"
+          ],
+          "preciseAge": [
+            "176 år, 10 mdr, 4 dage",
+            "1.1.1850 99.0% Levet 64.591 Dage levet 6.510.772.800 Hjerteslag"
+          ],
+          "countdown": [
+            "1 ÅR",
+            "303 DAGE",
+            "10 TIMER",
+            "18 MIN",
+            "32 SEK"
+          ],
+          "survival": null,
+          "pension": [
+            "65",
+            "0",
+            "Pensioneret",
+            "114"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":177,\"gender\":\"male\",\"expected\":\"178.7\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2096
+      },
+      {
+        "input": "today 2026-11-05 (frozen)",
+        "mode": "native",
+        "fieldValueAfterInput": "2026-11-05",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&b=2026-11-05",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": "80.3",
+          "compare": [
+            "Dig=80.3",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.4 år over det danske gennemsnit",
+          "lifeProgress": [
+            "0.0",
+            "0",
+            "0"
+          ],
+          "preciseAge": [
+            "0 år, 0 mdr, 0 dage",
+            "5.11.2026 0.0% Levet 0 Dage levet 0 Hjerteslag"
+          ],
+          "countdown": [
+            "80 ÅR",
+            "89 DAGE",
+            "11 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "70",
+            "Arbejdsår tilbage",
+            "10"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.3\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2045
+      },
+      {
+        "input": "today 2026-11-05 (frozen)",
+        "mode": "bypass",
+        "fieldValueAfterInput": "2026-11-05",
+        "validity": {
+          "valid": true,
+          "flags": []
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&b=2026-11-05",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": "80.3",
+          "compare": [
+            "Dig=80.3",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.4 år over det danske gennemsnit",
+          "lifeProgress": [
+            "0.0",
+            "0",
+            "0"
+          ],
+          "preciseAge": [
+            "0 år, 0 mdr, 0 dage",
+            "5.11.2026 0.0% Levet 0 Dage levet 0 Hjerteslag"
+          ],
+          "countdown": [
+            "80 ÅR",
+            "89 DAGE",
+            "11 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "70",
+            "Arbejdsår tilbage",
+            "10"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.3\"}]"
+        },
+        "outcome": "result shown",
+        "ms": 2121
+      },
+      {
+        "input": "tomorrow 2026-11-06",
+        "mode": "native",
+        "fieldValueAfterInput": "2026-11-06",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": {
+            "value": "2026-11-06",
+            "valid": false
+          },
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2180
+      },
+      {
+        "input": "tomorrow 2026-11-06",
+        "mode": "bypass",
+        "fieldValueAfterInput": "2026-11-06",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "rangeOverflow"
+          ]
+        },
+        "submitDisabled": false,
+        "snapshot": {
+          "url": "/?g=male&b=2026-11-06",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": "80.2",
+          "compare": [
+            "Dig=80.2",
+            "Danmark (gennemsnit)=78.9"
+          ],
+          "verdict": "Du ligger ca. 1.3 år over det danske gennemsnit",
+          "lifeProgress": [
+            "0.0",
+            "-1",
+            "-100.800"
+          ],
+          "preciseAge": [
+            "-1 år, 11 mdr, 30 dage",
+            "6.11.2026 0.0% Levet -1 Dage levet -100.800 Hjerteslag"
+          ],
+          "countdown": [
+            "80 ÅR",
+            "89 DAGE",
+            "11 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": [
+            "80:61%",
+            "90:23%",
+            "95:7%",
+            "100:1%"
+          ],
+          "pension": [
+            "70",
+            "70",
+            "Arbejdsår tilbage",
+            "10"
+          ],
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [],
+          "negatives": [
+            "beregning Din præcise alder -1 år, 11 mdr, 30 dage",
+            " Født: 6.11.2026 0.0% Levet -1 Dage levet -100.800",
+            "26 0.0% Levet -1 Dage levet -100.800 Hjerteslag Chance f",
+            "ng. Fun facts om dit liv 🌅 -1 Solopgange set 💨 -",
+            "liv 🌅 -1 Solopgange set 💨 -20.160 Åndedrætninger 👣 -",
+            "\udca8 -20.160 Åndedrætninger 👣 -7.000 Skridt taget 😴 -8 "
+          ],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.2\"}]"
+        },
+        "outcome": "BAD OUTPUT (negative number)",
+        "ms": 2213
+      },
+      {
+        "input": "invalid string \"abc\" (fill)",
+        "mode": "native",
+        "typedError": "locator.fill: Error: Malformed value",
+        "fieldValueAfterInput": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": {
+            "value": "",
+            "valid": false
+          },
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [
+            "warning: The specified value \"abc\" does not conform to the required format, \"yyyy-MM-dd\"."
+          ],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2057
+      },
+      {
+        "input": "invalid string \"abc\" (fill)",
+        "mode": "bypass",
+        "typedError": "locator.fill: Error: Malformed value",
+        "fieldValueAfterInput": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/?g=male&b=",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": [
+            "0.0",
+            "NaN",
+            "NaN"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [
+            "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+            "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+            "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+            "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+            "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+            "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+          ],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [
+            "warning: The specified value \"abc\" does not conform to the required format, \"yyyy-MM-dd\"."
+          ],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+        },
+        "outcome": "BAD OUTPUT (NaN)",
+        "ms": 2005
+      },
+      {
+        "input": "partial typing \"15\" (day segment only)",
+        "mode": "native",
+        "fieldValueAfterInput": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "badInput",
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": {
+            "value": "",
+            "valid": false
+          },
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 2016
+      },
+      {
+        "input": "partial typing \"15\" (day segment only)",
+        "mode": "bypass",
+        "fieldValueAfterInput": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "badInput",
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/?g=male&b=",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": [
+            "0.0",
+            "NaN",
+            "NaN"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [
+            "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+            "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+            "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+            "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+            "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+            "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+          ],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+        },
+        "outcome": "BAD OUTPUT (NaN)",
+        "ms": 2106
+      },
+      {
+        "input": "impossible date 2026-02-30",
+        "mode": "native",
+        "typedError": "locator.fill: Error: Malformed value",
+        "fieldValueAfterInput": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": false,
+          "formShown": true,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": null,
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": null,
+          "preciseAge": null,
+          "countdown": [],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": {
+            "value": "",
+            "valid": false
+          },
+          "badTokens": [],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [],
+          "pageErrors": [],
+          "consoleErrors": [
+            "warning: The specified value \"2026-02-30\" does not conform to the required format, \"yyyy-MM-dd\"."
+          ],
+          "dialogs": [],
+          "storageHistory": null
+        },
+        "outcome": "BLOCKED by native validation",
+        "ms": 1916
+      },
+      {
+        "input": "impossible date 2026-02-30",
+        "mode": "bypass",
+        "typedError": "locator.fill: Error: Malformed value",
+        "fieldValueAfterInput": "",
+        "validity": {
+          "valid": false,
+          "flags": [
+            "valueMissing"
+          ]
+        },
+        "submitDisabled": true,
+        "snapshot": {
+          "url": "/?g=male&b=",
+          "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+          "resultShown": true,
+          "formShown": false,
+          "errorBoundary": false,
+          "blankRoot": false,
+          "notFound": false,
+          "remainingYears": "80.3",
+          "expectedAge": null,
+          "compare": null,
+          "verdict": null,
+          "lifeProgress": [
+            "0.0",
+            "NaN",
+            "NaN"
+          ],
+          "preciseAge": null,
+          "countdown": [
+            "79 ÅR",
+            "363 DAGE",
+            "10 TIMER",
+            "25 MIN",
+            "4 SEK"
+          ],
+          "survival": null,
+          "pension": null,
+          "historyCard": null,
+          "ageInput": null,
+          "birthInput": null,
+          "badTokens": [
+            "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+            "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+            "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+            "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+            "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+            "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+          ],
+          "negatives": [],
+          "injected": {
+            "handlerAttrs": 0,
+            "imgSrcX": 0,
+            "extraScripts": 2,
+            "xssFlag": false
+          },
+          "events": [
+            "Calculate Lifespan {\"age\":\"birthdate\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":true}"
+          ],
+          "pageErrors": [],
+          "consoleErrors": [
+            "warning: The specified value \"2026-02-30\" does not conform to the required format, \"yyyy-MM-dd\"."
+          ],
+          "dialogs": [],
+          "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+        },
+        "outcome": "BAD OUTPUT (NaN)",
+        "ms": 1998
+      }
+    ]
+  },
+  "deepLinks": [
+    {
+      "label": "control male 40",
+      "query": "g=male&a=40",
+      "snapshot": {
+        "url": "/?g=male&a=40",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2324
+    },
+    {
+      "label": "a=abc",
+      "query": "g=male&a=abc",
+      "snapshot": {
+        "url": "/?g=male&a=abc",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+          "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+          "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+          "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+          "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+          "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "warning: The specified value \"abc\" cannot be parsed, or is out of range.",
+          "warning: The specified value \"abc\" cannot be parsed, or is out of range."
+        ],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2196
+    },
+    {
+      "label": "a=-5",
+      "query": "g=male&a=-5",
+      "snapshot": {
+        "url": "/?g=male&a=-5",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": "75.3",
+        "compare": [
+          "Dig=75.3",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 3.6 år under det danske gennemsnit",
+        "lifeProgress": [
+          "0.0",
+          "-1.827",
+          "-184.161.600"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "75",
+          "Arbejdsår tilbage",
+          "5"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [
+          "K Dit livsforløb 0.0% Levet -1.827 Dage levet -184.161",
+          ".0% Levet -1.827 Dage levet -184.161.600 Hjerteslag Chance f",
+          "ng. Fun facts om dit liv 🌅 -1.827 Solopgange set 💨 -",
+          "🌅 -1.827 Solopgange set 💨 -36.832.320 Åndedrætninger 👣 -",
+          "6.832.320 Åndedrætninger 👣 -12.789.000 Skridt taget 😴 -14",
+          "-12.789.000 Skridt taget 😴 -14.616 Timer sovet 😊 -31."
+        ],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":-5,\"gender\":\"male\",\"expected\":\"75.3\"}]"
+      },
+      "outcome": "BAD OUTPUT (negative number)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2284
+    },
+    {
+      "label": "a=1e9",
+      "query": "g=male&a=1e9",
+      "snapshot": {
+        "url": "/?g=male&a=1e9",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "79.6",
+        "expectedAge": "80.6",
+        "compare": [
+          "Dig=80.6",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+        "lifeProgress": [
+          "1.2",
+          "365",
+          "36.792.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "78 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "69",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":1,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2301
+    },
+    {
+      "label": "a=1e3",
+      "query": "g=male&a=1e3",
+      "snapshot": {
+        "url": "/?g=male&a=1e3",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "79.6",
+        "expectedAge": "80.6",
+        "compare": [
+          "Dig=80.6",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+        "lifeProgress": [
+          "1.2",
+          "365",
+          "36.792.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "78 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "69",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":1,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2347
+    },
+    {
+      "label": "a=0",
+      "query": "g=male&a=0",
+      "snapshot": {
+        "url": "/?g=male&a=0",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": "80.3",
+        "compare": [
+          "Dig=80.3",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.4 år over det danske gennemsnit",
+        "lifeProgress": [
+          "0.0",
+          "0",
+          "0"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "70",
+          "Arbejdsår tilbage",
+          "10"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.3\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2324
+    },
+    {
+      "label": "a=1",
+      "query": "g=male&a=1",
+      "snapshot": {
+        "url": "/?g=male&a=1",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "79.6",
+        "expectedAge": "80.6",
+        "compare": [
+          "Dig=80.6",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+        "lifeProgress": [
+          "1.2",
+          "365",
+          "36.792.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "78 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "69",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":1,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2297
+    },
+    {
+      "label": "a=99",
+      "query": "g=male&a=99",
+      "snapshot": {
+        "url": "/?g=male&a=99",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "100.8",
+        "compare": [
+          "Dig=100.8",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 21.9 år over det danske gennemsnit",
+        "lifeProgress": [
+          "98.2",
+          "36.159",
+          "3.644.827.200"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "1.8 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "100:100%"
+        ],
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "36"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":99,\"gender\":\"male\",\"expected\":\"100.8\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2430
+    },
+    {
+      "label": "a=100",
+      "query": "g=male&a=100",
+      "snapshot": {
+        "url": "/?g=male&a=100",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "101.8",
+        "compare": [
+          "Dig=101.8",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 22.9 år over det danske gennemsnit",
+        "lifeProgress": [
+          "98.2",
+          "36.525",
+          "3.681.720.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "1.8 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "37"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":100,\"gender\":\"male\",\"expected\":\"101.8\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2295
+    },
+    {
+      "label": "a=150",
+      "query": "g=male&a=150",
+      "snapshot": {
+        "url": "/?g=male&a=150",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "151.8",
+        "compare": [
+          "Dig=151.8",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 72.9 år over det danske gennemsnit",
+        "lifeProgress": [
+          "98.8",
+          "54.787",
+          "5.522.529.600"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "1.8 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "87"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":150,\"gender\":\"male\",\"expected\":\"151.8\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2354
+    },
+    {
+      "label": "a=12.5",
+      "query": "g=male&a=12.5",
+      "snapshot": {
+        "url": "/?g=male&a=12.5",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "68.6",
+        "expectedAge": "80.6",
+        "compare": [
+          "Dig=80.6",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.7 år over det danske gennemsnit",
+        "lifeProgress": [
+          "14.9",
+          "4.383",
+          "441.806.400"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "67 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "58",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":12,\"gender\":\"male\",\"expected\":\"80.6\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2278
+    },
+    {
+      "label": "a=' 40 '",
+      "query": "g=male&a=%2040%20",
+      "snapshot": {
+        "url": "/?g=male&a=%2040%20",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "warning: The specified value \" 40 \" cannot be parsed, or is out of range.",
+          "warning: The specified value \" 40 \" cannot be parsed, or is out of range."
+        ],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2122
+    },
+    {
+      "label": "a=40abc",
+      "query": "g=male&a=40abc",
+      "snapshot": {
+        "url": "/?g=male&a=40abc",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "warning: The specified value \"40abc\" cannot be parsed, or is out of range.",
+          "warning: The specified value \"40abc\" cannot be parsed, or is out of range."
+        ],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2066
+    },
+    {
+      "label": "a=0x28",
+      "query": "g=male&a=0x28",
+      "snapshot": {
+        "url": "/?g=male&a=0x28",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "warning: The specified value \"0x28\" cannot be parsed, or is out of range.",
+          "warning: The specified value \"0x28\" cannot be parsed, or is out of range."
+        ],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2090
+    },
+    {
+      "label": "a=Infinity",
+      "query": "g=male&a=Infinity",
+      "snapshot": {
+        "url": "/?g=male&a=Infinity",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+          "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+          "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+          "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+          "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+          "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "warning: The specified value \"Infinity\" cannot be parsed, or is out of range.",
+          "warning: The specified value \"Infinity\" cannot be parsed, or is out of range."
+        ],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2076
+    },
+    {
+      "label": "a=NaN",
+      "query": "g=male&a=NaN",
+      "snapshot": {
+        "url": "/?g=male&a=NaN",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+          "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+          "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+          "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+          "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+          "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "warning: The specified value \"NaN\" cannot be parsed, or is out of range.",
+          "warning: The specified value \"NaN\" cannot be parsed, or is out of range."
+        ],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2002
+    },
+    {
+      "label": "a= (empty)",
+      "query": "g=male&a=",
+      "snapshot": {
+        "url": "/?g=male&a=",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": false,
+        "formShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": null,
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": null,
+        "preciseAge": null,
+        "countdown": [],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": {
+          "value": "",
+          "valid": false
+        },
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": null
+      },
+      "outcome": "IGNORED (form shown, no result)",
+      "rawPayloadInHtml": false,
+      "ms": 1653
+    },
+    {
+      "label": "a=1000",
+      "query": "g=male&a=1000",
+      "snapshot": {
+        "url": "/?g=male&a=1000",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "1001.8",
+        "compare": [
+          "Dig=1001.8",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 922.9 år over det danske gennemsnit",
+        "lifeProgress": [
+          "99.8",
+          "365.250",
+          "36.817.200.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "1.8 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "937"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":1000,\"gender\":\"male\",\"expected\":\"1001.8\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2559
+    },
+    {
+      "label": "a=10000",
+      "query": "g=male&a=10000",
+      "snapshot": {
+        "url": "/?g=male&a=10000",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "10001.8",
+        "compare": [
+          "Dig=10001.8",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 9922.9 år over det danske gennemsnit",
+        "lifeProgress": [
+          "100.0",
+          "3.652.500",
+          "368.172.000.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "1.8 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "9937"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":10000,\"gender\":\"male\",\"expected\":\"10001.8\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2725
+    },
+    {
+      "label": "a=100000",
+      "query": "g=male&a=100000",
+      "snapshot": {
+        "url": "/?g=male&a=100000",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "100001.8",
+        "compare": [
+          "Dig=100001.8",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 99922.9 år over det danske gennemsnit",
+        "lifeProgress": [
+          "100.0",
+          "36.525.000",
+          "3.681.720.000.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "1.8 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "99937"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":100000,\"gender\":\"male\",\"expected\":\"100001.8\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalError": "locator.click: Timeout 4000ms exceeded.",
+      "ms": 16255
+    },
+    {
+      "label": "a=1000000",
+      "query": "g=male&a=1000000",
+      "ms": 30004,
+      "outcome": "HANG (tab unresponsive for 30 s)",
+      "error": "page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "label": "a=100000000",
+      "query": "g=male&a=100000000",
+      "ms": 30003,
+      "outcome": "HANG (tab unresponsive for 30 s)",
+      "error": "page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "label": "a=999999999999999999999 (1e21)",
+      "query": "g=male&a=999999999999999999999",
+      "ms": 30008,
+      "outcome": "HANG (tab unresponsive for 30 s)",
+      "error": "page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "label": "g=other",
+      "query": "g=other&a=40",
+      "snapshot": {
+        "url": "/?g=other&a=40",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"other\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2246
+    },
+    {
+      "label": "g=MALE",
+      "query": "g=MALE&a=40",
+      "snapshot": {
+        "url": "/?g=MALE&a=40",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"MALE\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2159
+    },
+    {
+      "label": "g= (empty)",
+      "query": "g=&a=40",
+      "snapshot": {
+        "url": "/?g=&a=40",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": false,
+        "formShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": null,
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": null,
+        "preciseAge": null,
+        "countdown": [],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": {
+          "value": "",
+          "valid": false
+        },
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": null
+      },
+      "outcome": "IGNORED (form shown, no result)",
+      "rawPayloadInHtml": false,
+      "ms": 1735
+    },
+    {
+      "label": "g=female control",
+      "query": "g=female&a=40",
+      "snapshot": {
+        "url": "/?g=female&a=40",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "44.7",
+        "expectedAge": "84.7",
+        "compare": [
+          "Dig=84.7",
+          "Danmark (gennemsnit)=82.7"
+        ],
+        "verdict": "Du ligger ca. 2.0 år over det danske gennemsnit",
+        "lifeProgress": [
+          "47.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "43 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:73%",
+          "90:36%",
+          "95:14%",
+          "100:4%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "15"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"female\",\"expected\":\"84.7\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2072
+    },
+    {
+      "label": "b=2999-01-01",
+      "query": "g=male&b=2999-01-01",
+      "snapshot": {
+        "url": "/?g=male&b=2999-01-01",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": "-891.9",
+        "compare": [
+          "Dig=-891.9",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 970.8 år under det danske gennemsnit",
+        "lifeProgress": [
+          "0.0",
+          "-355.073",
+          "-35.791.358.400"
+        ],
+        "preciseAge": [
+          "-973 år, 10 mdr, 4 dage",
+          "1.1.2999 0.0% Levet -355.073 Dage levet -35.791.358.400 Hjerteslag"
+        ],
+        "countdown": [
+          "80 ÅR",
+          "96 DAGE",
+          "11 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "1042",
+          "Arbejdsår tilbage",
+          "0"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [
+          "beregning Din præcise alder -973 år, 10 mdr, 4 dage ",
+          "e Født: 1.1.2999 0.0% Levet -355.073 Dage levet -35.791.",
+          "% Levet -355.073 Dage levet -35.791.358.400 Hjerteslag Chance f",
+          "itiden Din forventede alder -891.9 Vælg en ændring ove",
+          "9 år) sat i perspektiv. Dig -891.9 år Danmark (gennems",
+          "ng. Fun facts om dit liv 🌅 -355.073 Solopgange set 💨 -"
+        ],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":-972,\"gender\":\"male\",\"expected\":\"-891.9\"}]"
+      },
+      "outcome": "BAD OUTPUT (negative number)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2129
+    },
+    {
+      "label": "b=1850-01-01",
+      "query": "g=male&b=1850-01-01",
+      "snapshot": {
+        "url": "/?g=male&b=1850-01-01",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "178.7",
+        "compare": [
+          "Dig=178.7",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 99.8 år over det danske gennemsnit",
+        "lifeProgress": [
+          "99.0",
+          "64.591",
+          "6.510.772.800"
+        ],
+        "preciseAge": [
+          "176 år, 10 mdr, 4 dage",
+          "1.1.1850 99.0% Levet 64.591 Dage levet 6.510.772.800 Hjerteslag"
+        ],
+        "countdown": [
+          "1 ÅR",
+          "303 DAGE",
+          "10 TIMER",
+          "18 MIN",
+          "32 SEK"
+        ],
+        "survival": null,
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "114"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":177,\"gender\":\"male\",\"expected\":\"178.7\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2090
+    },
+    {
+      "label": "b=today 2026-11-05",
+      "query": "g=male&b=2026-11-05",
+      "snapshot": {
+        "url": "/?g=male&b=2026-11-05",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": "80.3",
+        "compare": [
+          "Dig=80.3",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.4 år over det danske gennemsnit",
+        "lifeProgress": [
+          "0.0",
+          "0",
+          "0"
+        ],
+        "preciseAge": [
+          "0 år, 0 mdr, 0 dage",
+          "5.11.2026 0.0% Levet 0 Dage levet 0 Hjerteslag"
+        ],
+        "countdown": [
+          "80 ÅR",
+          "89 DAGE",
+          "11 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "70",
+          "Arbejdsår tilbage",
+          "10"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.3\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2105
+    },
+    {
+      "label": "b=tomorrow 2026-11-06",
+      "query": "g=male&b=2026-11-06",
+      "snapshot": {
+        "url": "/?g=male&b=2026-11-06",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": "80.2",
+        "compare": [
+          "Dig=80.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "0.0",
+          "-1",
+          "-100.800"
+        ],
+        "preciseAge": [
+          "-1 år, 11 mdr, 30 dage",
+          "6.11.2026 0.0% Levet -1 Dage levet -100.800 Hjerteslag"
+        ],
+        "countdown": [
+          "80 ÅR",
+          "89 DAGE",
+          "11 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "70",
+          "Arbejdsår tilbage",
+          "10"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [
+          "beregning Din præcise alder -1 år, 11 mdr, 30 dage",
+          " Født: 6.11.2026 0.0% Levet -1 Dage levet -100.800",
+          "26 0.0% Levet -1 Dage levet -100.800 Hjerteslag Chance f",
+          "ng. Fun facts om dit liv 🌅 -1 Solopgange set 💨 -",
+          "liv 🌅 -1 Solopgange set 💨 -20.160 Åndedrætninger 👣 -",
+          "\udca8 -20.160 Åndedrætninger 👣 -7.000 Skridt taget 😴 -8 "
+        ],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":0,\"gender\":\"male\",\"expected\":\"80.2\"}]"
+      },
+      "outcome": "BAD OUTPUT (negative number)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2089
+    },
+    {
+      "label": "b=notadate",
+      "query": "g=male&b=notadate",
+      "snapshot": {
+        "url": "/?g=male&b=notadate",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+          "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+          "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+          "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+          "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+          "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2017
+    },
+    {
+      "label": "b=not-a-date",
+      "query": "g=male&b=not-a-date",
+      "snapshot": {
+        "url": "/?g=male&b=not-a-date",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": [
+          "NaN år, NaN mdr, NaN dage",
+          "Invalid Date 0.0% Levet NaN Dage levet NaN Hjerteslag"
+        ],
+        "countdown": [
+          "80.3 ÅR",
+          "-- DAGE",
+          "-- TIMER",
+          "-- MIN",
+          "-- SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "beregning Din præcise alder NaN år, NaN mdr, NaN da",
+          "g Din præcise alder NaN år, NaN mdr, NaN dage Født:",
+          "cise alder NaN år, NaN mdr, NaN dage Født: Invalid ",
+          "år, NaN mdr, NaN dage Født: Invalid Date 0.0% Levet NaN Dage",
+          "dt: Invalid Date 0.0% Levet NaN Dage levet NaN Hjer",
+          "e 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN,Invalid Date)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2066
+    },
+    {
+      "label": "b=1985-6-15",
+      "query": "g=male&b=1985-6-15",
+      "snapshot": {
+        "url": "/?g=male&b=1985-6-15",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "39.9",
+        "expectedAge": "81.3",
+        "compare": [
+          "Dig=81.3",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.4 år over det danske gennemsnit",
+        "lifeProgress": [
+          "50.9",
+          "15.118",
+          "1.523.894.400"
+        ],
+        "preciseAge": [
+          "41 år, 4 mdr, 21 dage",
+          "15.6.1985 50.9% Levet 15.118 Dage levet 1.523.894.400 Hjerteslag"
+        ],
+        "countdown": [
+          "39 ÅR",
+          "323 DAGE",
+          "9 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "29",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":41,\"gender\":\"male\",\"expected\":\"81.3\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2080
+    },
+    {
+      "label": "b=2026-02-30",
+      "query": "g=male&b=2026-02-30",
+      "snapshot": {
+        "url": "/?g=male&b=2026-02-30",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "79.8",
+        "expectedAge": "80.5",
+        "compare": [
+          "Dig=80.5",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1.6 år over det danske gennemsnit",
+        "lifeProgress": [
+          "0.8",
+          "248",
+          "24.998.400"
+        ],
+        "preciseAge": [
+          "0 år, 8 mdr, 3 dage",
+          "2.3.2026 0.8% Levet 248 Dage levet 24.998.400 Hjerteslag"
+        ],
+        "countdown": [
+          "79 ÅR",
+          "283 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "69",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":1,\"gender\":\"male\",\"expected\":\"80.5\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2163
+    },
+    {
+      "label": "b and a both",
+      "query": "g=male&b=1985-06-15&a=40",
+      "snapshot": {
+        "url": "/?g=male&b=1985-06-15&a=40",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "39.9",
+        "expectedAge": "81.3",
+        "compare": [
+          "Dig=81.3",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.4 år over det danske gennemsnit",
+        "lifeProgress": [
+          "50.9",
+          "15.118",
+          "1.523.894.400"
+        ],
+        "preciseAge": [
+          "41 år, 4 mdr, 21 dage",
+          "15.6.1985 50.9% Levet 15.118 Dage levet 1.523.894.400 Hjerteslag"
+        ],
+        "countdown": [
+          "39 ÅR",
+          "323 DAGE",
+          "11 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "29",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":41,\"gender\":\"male\",\"expected\":\"81.3\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2107
+    },
+    {
+      "label": "b=0000-01-01",
+      "query": "g=male&b=0000-01-01",
+      "snapshot": {
+        "url": "/?g=male&b=0000-01-01",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "1.8",
+        "expectedAge": "2028.6",
+        "compare": [
+          "Dig=2028.6",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 1949.7 år over det danske gennemsnit",
+        "lifeProgress": [
+          "99.9",
+          "740.290",
+          "74.621.232.000"
+        ],
+        "preciseAge": [
+          "2026 år, 10 mdr, 4 dage",
+          "1.1.1 99.9% Levet 740.290 Dage levet 74.621.232.000 Hjerteslag"
+        ],
+        "countdown": [
+          "1 ÅR",
+          "290 DAGE",
+          "10 TIMER",
+          "18 MIN",
+          "32 SEK"
+        ],
+        "survival": null,
+        "pension": [
+          "65",
+          "0",
+          "Pensioneret",
+          "1964"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":2027,\"gender\":\"male\",\"expected\":\"2028.6\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 4196
+    },
+    {
+      "label": "b=ISO datetime",
+      "query": "g=male&b=1985-06-15T00:00:00Z",
+      "snapshot": {
+        "url": "/?g=male&b=1985-06-15T00:00:00Z",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "39.9",
+        "expectedAge": "81.3",
+        "compare": [
+          "Dig=81.3",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.4 år over det danske gennemsnit",
+        "lifeProgress": [
+          "50.9",
+          "15.118",
+          "1.523.894.400"
+        ],
+        "preciseAge": [
+          "41 år, 4 mdr, 21 dage",
+          "15.6.1985 50.9% Levet 15.118 Dage levet 1.523.894.400 Hjerteslag"
+        ],
+        "countdown": [
+          "39 ÅR",
+          "323 DAGE",
+          "11 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "29",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":41,\"gender\":\"male\",\"expected\":\"81.3\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2147
+    },
+    {
+      "label": "b=275760-09-13 (max Date)",
+      "query": "g=male&b=275760-09-13",
+      "snapshot": {
+        "url": "/?g=male&b=275760-09-13",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": "-273648.0",
+        "compare": [
+          "Dig=-273648.0",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 273726.9 år under det danske gennemsnit",
+        "lifeProgress": [
+          "0.0",
+          "-99.979.238",
+          "-10.077.907.190.400"
+        ],
+        "preciseAge": [
+          "-273734 år, 1 mdr, 23 dage",
+          "13.9.275760 0.0% Levet -99.979.238 Dage levet -10.077.907.190.400 Hjerteslag"
+        ],
+        "countdown": [
+          "85 ÅR",
+          "315 DAGE",
+          "9 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:61%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "273798",
+          "Arbejdsår tilbage",
+          "0"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "ge ❤️ 1 mia. hjerteslag ca. Invalid Date 99.989.159 dage 🎯 ",
+          "ge 🎯 10.000 dage levet ca. Invalid Date 99.989.238 dage Del"
+        ],
+        "negatives": [
+          "beregning Din præcise alder -273734 år, 1 mdr, 23 dage ",
+          "ødt: 13.9.275760 0.0% Levet -99.979.238 Dage levet -10.077.",
+          "evet -99.979.238 Dage levet -10.077.907.190.400 Hjerteslag Chance f",
+          "itiden Din forventede alder -273648.0 Vælg en ændring ove",
+          "0 år) sat i perspektiv. Dig -273648.0 år Danmark (gennems",
+          "ng. Fun facts om dit liv 🌅 -99.979.238 Solopgange set 💨 -"
+        ],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":-273728,\"gender\":\"male\",\"expected\":\"-273648.0\"}]"
+      },
+      "outcome": "BAD OUTPUT (Invalid Date)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2082
+    },
+    {
+      "label": "m=advanced&lf=garbage",
+      "query": "g=male&a=40&m=advanced&lf=garbage",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced&lf=garbage",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2158
+    },
+    {
+      "label": "lf wrong length 1,2,3",
+      "query": "g=male&a=40&m=advanced&lf=1,2,3",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced&lf=1,2,3",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2139
+    },
+    {
+      "label": "lf 16 zeros (control)",
+      "query": "g=male&a=40&m=advanced&lf=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced&lf=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2244
+    },
+    {
+      "label": "lf 999 x16",
+      "query": "g=male&a=40&m=advanced&lf=999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced&lf=999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999%2C999",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "53.2",
+        "expectedAge": "93.2",
+        "compare": [
+          "Dig=93.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 14.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "42.9",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "52 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "23"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"93.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2263
+    },
+    {
+      "label": "lf -999 x16",
+      "query": "g=male&a=40&m=advanced&lf=-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced&lf=-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999%2C-999",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "26.2",
+        "expectedAge": "66.2",
+        "compare": [
+          "Dig=66.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 12.7 år under det danske gennemsnit",
+        "lifeProgress": [
+          "60.4",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "25 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "0"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"66.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2217
+    },
+    {
+      "label": "lf non-numeric x16",
+      "query": "g=male&a=40&m=advanced&lf=x%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced&lf=x%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx%2Cx",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2174
+    },
+    {
+      "label": "lf decimals x16",
+      "query": "g=male&a=40&m=advanced&lf=1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced&lf=1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9%2C1.9",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "51.2",
+        "expectedAge": "91.2",
+        "compare": [
+          "Dig=91.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 12.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "43.8",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "50 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "21"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"91.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2177
+    },
+    {
+      "label": "m=weird",
+      "query": "g=male&a=40&m=weird&lf=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=weird&lf=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2158
+    },
+    {
+      "label": "m=advanced no lf",
+      "query": "g=male&a=40&m=advanced",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=advanced",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2263
+    },
+    {
+      "label": "lf ignored in simple mode",
+      "query": "g=male&a=40&lf=5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5",
+      "snapshot": {
+        "url": "/?g=male&a=40&lf=5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5%2C5",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2140
+    },
+    {
+      "label": "XSS g=img",
+      "query": "g=%3Cimg%20src%3Dx%20onerror%3Dwindow.__xss%3D1%3E&a=40",
+      "snapshot": {
+        "url": "/?g=%3Cimg%20src%3Dx%20onerror%3Dwindow.__xss%3D1%3E&a=40",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"<img src=x onerror=window.__xss=1>\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2146
+    },
+    {
+      "label": "XSS a=script",
+      "query": "g=male&a=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+      "snapshot": {
+        "url": "/?g=male&a=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+          "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+          "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+          "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+          "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+          "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "warning: The specified value \"\\u003Cscript\\u003Ewindow.__xss=1\\u003C/script\\u003E\" cannot be parsed, or is out of range.",
+          "warning: The specified value \"\\u003Cscript\\u003Ewindow.__xss=1\\u003C/script\\u003E\" cannot be parsed, or is out of range."
+        ],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2137
+    },
+    {
+      "label": "XSS b=svg",
+      "query": "g=male&b=%22%3E%3Csvg%20onload%3Dwindow.__xss%3D1%3E",
+      "snapshot": {
+        "url": "/?g=male&b=%22%3E%3Csvg%20onload%3Dwindow.__xss%3D1%3E",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+          "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+          "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+          "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+          "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+          "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2037
+    },
+    {
+      "label": "XSS m+lf",
+      "query": "g=male&a=40&m=%3Cb%3Ex%3C%2Fb%3E&lf=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+      "snapshot": {
+        "url": "/?g=male&a=40&m=%3Cb%3Ex%3C%2Fb%3E&lf=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2021
+    },
+    {
+      "label": "XSS all params",
+      "query": "g=%3Cimg%20src%3Dx%20onerror%3Dwindow.__xss%3D1%3E&a=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E&b=%22%3E%3Csvg%20onload%3Dwindow.__xss%3D1%3E&m=%3Cimg%20src%3Dx%20onerror%3Dwindow.__xss%3D1%3E&lf=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E&utm=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+      "snapshot": {
+        "url": "/?g=%3Cimg%20src%3Dx%20onerror%3Dwindow.__xss%3D1%3E&a=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E&b=%22%3E%3Csvg%20onload%3Dwindow.__xss%3D1%3E&m=%3Cimg%20src%3Dx%20onerror%3Dwindow.__xss%3D1%3E&lf=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E&utm=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "80.3",
+        "expectedAge": null,
+        "compare": null,
+        "verdict": null,
+        "lifeProgress": [
+          "0.0",
+          "NaN",
+          "NaN"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "79 ÅR",
+          "363 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": null,
+        "pension": null,
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [
+          "K Dit livsforløb 0.0% Levet NaN Dage levet NaN Hjer",
+          "b 0.0% Levet NaN Dage levet NaN Hjerteslag Dit liv ",
+          "ng. Fun facts om dit liv 🌅 NaN Solopgange set 💨 N",
+          "iv 🌅 NaN Solopgange set 💨 NaN Åndedrætninger 👣 N",
+          "et 💨 NaN Åndedrætninger 👣 NaN Skridt taget 😴 NaN",
+          "nger 👣 NaN Skridt taget 😴 NaN Timer sovet 😊 NaN "
+        ],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"<img src=x onerror=window.__xss=1>\",\"expected\":\"NaN\"}]"
+      },
+      "outcome": "BAD OUTPUT (NaN)",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2035
+    },
+    {
+      "label": "XSS unknown param only",
+      "query": "g=male&a=40&q=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+      "snapshot": {
+        "url": "/?g=male&a=40&q=%3Cscript%3Ewindow.__xss%3D1%3C%2Fscript%3E",
+        "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+        "resultShown": true,
+        "formShown": false,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "notFound": false,
+        "remainingYears": "41.2",
+        "expectedAge": "81.2",
+        "compare": [
+          "Dig=81.2",
+          "Danmark (gennemsnit)=78.9"
+        ],
+        "verdict": "Du ligger ca. 2.3 år over det danske gennemsnit",
+        "lifeProgress": [
+          "49.2",
+          "14.610",
+          "1.472.688.000"
+        ],
+        "preciseAge": null,
+        "countdown": [
+          "40 ÅR",
+          "364 DAGE",
+          "10 TIMER",
+          "25 MIN",
+          "4 SEK"
+        ],
+        "survival": [
+          "80:62%",
+          "90:23%",
+          "95:7%",
+          "100:1%"
+        ],
+        "pension": [
+          "70",
+          "30",
+          "Arbejdsår tilbage",
+          "11"
+        ],
+        "historyCard": null,
+        "ageInput": null,
+        "birthInput": null,
+        "badTokens": [],
+        "negatives": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "events": [],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "dialogs": [],
+        "storageHistory": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "rawPayloadInHtml": false,
+      "shareModalText": "",
+      "ms": 2088
+    }
+  ],
+  "history": [
+    {
+      "label": "control: 2 valid entries",
+      "seedLength": 129,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (3 beregninger, gemt lokalt). 4. nov. 2026 81.2 år (som 40-årig) 4. nov. 2026 81.9 år (som 41-årig) 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793800000000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"},{\"ts\":1793810000000,\"age\":41,\"gender\":\"male\",\"expected\":\"81.9\"},{\"ts\":1793882096000,\"age\":40,\"g... (193 chars)"
+      },
+      "outcome": "result shown",
+      "ms": 2168
+    },
+    {
+      "label": "invalid JSON \"{not json\"",
+      "seedLength": 9,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2221
+    },
+    {
+      "label": "truncated JSON",
+      "seedLength": 50,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2183
+    },
+    {
+      "label": "JSON string \"x\"",
+      "seedLength": 3,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2448
+    },
+    {
+      "label": "JSON number 123",
+      "seedLength": 3,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2706
+    },
+    {
+      "label": "JSON object {\"a\":1}",
+      "seedLength": 7,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2606
+    },
+    {
+      "label": "JSON null",
+      "seedLength": 4,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2411
+    },
+    {
+      "label": "empty array []",
+      "seedLength": 2,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2316
+    },
+    {
+      "label": "[null,null]",
+      "seedLength": 11,
+      "snapshot": {
+        "resultShown": false,
+        "errorBoundary": true,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 1,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [
+          "error: TypeError: Cannot read properties of null (reading 'expected')\n    at It (http://levetid.test:3010/assets/HomePage-HZThNJx7.js:11:30346)\n    at Oo (http://levetid.test:3010/assets/index-Dahj3lkh.js:9:47516)\n    at yc (ht"
+        ],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}",
+          "Error {\"message\":\"Cannot read properties of null (reading 'expected')\"}"
+        ],
+        "storageAfter": "[null,null,{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "CRASH (ErrorBoundary)",
+      "ms": 2439
+    },
+    {
+      "label": "[1,2]",
+      "seedLength": 5,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (3 beregninger, gemt lokalt). Invalid Date år Invalid Date år 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+        "badTokens": [
+          " beregninger, gemt lokalt). Invalid Date år Invalid Date år ",
+          "mt lokalt). Invalid Date år Invalid Date år 5. nov. 2026 81."
+        ],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[1,2,{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "BAD OUTPUT (Invalid Date)",
+      "ms": 2499
+    },
+    {
+      "label": "[null]",
+      "seedLength": 6,
+      "snapshot": {
+        "resultShown": false,
+        "errorBoundary": true,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 1,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [
+          "error: TypeError: Cannot read properties of null (reading 'expected')\n    at It (http://levetid.test:3010/assets/HomePage-HZThNJx7.js:11:30346)\n    at Oo (http://levetid.test:3010/assets/index-Dahj3lkh.js:9:47516)\n    at yc (ht"
+        ],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}",
+          "Error {\"message\":\"Cannot read properties of null (reading 'expected')\"}"
+        ],
+        "storageAfter": "[null,{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "CRASH (ErrorBoundary)",
+      "ms": 2277
+    },
+    {
+      "label": "[{\"ts\":1}]",
+      "seedLength": 10,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (2 beregninger, gemt lokalt). 1. jan. 1970 år 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2334
+    },
+    {
+      "label": "[{ts:\"x\",age:\"y\",expected:\"z\"}] x2",
+      "seedLength": 73,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (3 beregninger, gemt lokalt). Invalid Date z år Invalid Date z år 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+        "badTokens": [
+          " beregninger, gemt lokalt). Invalid Date z år Invalid Date z",
+          " lokalt). Invalid Date z år Invalid Date z år 5. nov. 2026 8"
+        ],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":\"x\",\"age\":\"y\",\"expected\":\"z\"},{\"ts\":\"x\",\"age\":\"y\",\"expected\":\"z\"},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "BAD OUTPUT (Invalid Date)",
+      "ms": 2461
+    },
+    {
+      "label": "expected not numeric x2",
+      "seedLength": 53,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (3 beregninger, gemt lokalt). 1. jan. 1970 abc år 1. jan. 1970 def år 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1,\"expected\":\"abc\"},{\"ts\":2,\"expected\":\"def\"},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      "outcome": "result shown",
+      "ms": 2278
+    },
+    {
+      "label": "ts = 1e20 (Invalid Date) x2",
+      "seedLength": 113,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (3 beregninger, gemt lokalt). Invalid Date 80.0 år (som 40-årig) Invalid Date 81.0 år (som 40-årig) 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er steget 1.2 år siden din første beregning 🎉",
+        "badTokens": [
+          " beregninger, gemt lokalt). Invalid Date 80.0 år (som 40-åri",
+          " Date 80.0 år (som 40-årig) Invalid Date 81.0 år (som 40-åri"
+        ],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":100000000000000000000,\"age\":40,\"expected\":\"80.0\"},{\"ts\":100000000000000000000,\"age\":40,\"expected\":\"81.0\"},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"e... (177 chars)"
+      },
+      "outcome": "BAD OUTPUT (Invalid Date)",
+      "ms": 2273
+    },
+    {
+      "label": "HTML in fields x2",
+      "seedLength": 130,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (3 beregninger, gemt lokalt). 1. jan. 1970 <img src=x onerror=window.__xss=1> år (som 40-årig) 1. jan. 1970 <script>window.__xss=1</script> år (som 40-årig) 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1,\"age\":40,\"expected\":\"<img src=x onerror=window.__xss=1>\"},{\"ts\":2,\"age\":40,\"expected\":\"<script>window.__xss=1</script>\"},{\"ts\":1793882096000,\"age\":40,\"... (194 chars)"
+      },
+      "outcome": "result shown",
+      "ms": 2388
+    },
+    {
+      "label": "1000 valid entries",
+      "seedLength": 64001,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (20 beregninger, gemt lokalt). 4. nov. 2026 80.0 år (som 40-årig) 4. nov. 2026 80.1 år (som 40-årig) 4. nov. 2026 80.2 år (som 40-årig) 4. nov. 2026 80.3 år (som 40-årig) 4. nov. 2026 80.4 år (som 40-årig) 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er steget 1.1 år siden din første beregning 🎉",
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":1793800000981,\"age\":40,\"gender\":\"male\",\"expected\":\"80.1\"},{\"ts\":1793800000982,\"age\":40,\"gender\":\"male\",\"expected\":\"80.2\"},{\"ts\":1793800000983,\"age\":40,\"g... (1281 chars)"
+      },
+      "outcome": "result shown",
+      "ms": 2359
+    },
+    {
+      "label": "duplicate ts keys x3",
+      "seedLength": 109,
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": "Din historik Sådan har dit estimat udviklet sig (4 beregninger, gemt lokalt). 1. jan. 1970 80.0 år (som 40-årig) 1. jan. 1970 81.0 år (som 40-årig) 1. jan. 1970 82.0 år (som 40-årig) 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er steget 1.2 år siden din første beregning 🎉",
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "[{\"ts\":5,\"age\":40,\"expected\":\"80.0\"},{\"ts\":5,\"age\":40,\"expected\":\"81.0\"},{\"ts\":5,\"age\":40,\"expected\":\"82.0\"},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expec... (173 chars)"
+      },
+      "outcome": "result shown",
+      "ms": 2475
+    },
+    {
+      "label": "localStorage getter throws (privacy mode)",
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [
+          "denied"
+        ],
+        "consoleErrors": [
+          "warning: SecurityError: denied"
+        ],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": "ERR SecurityError"
+      },
+      "outcome": "result shown",
+      "themeToggleAfter": {
+        "pageErrors": [
+          "denied"
+        ],
+        "boundary": false
+      },
+      "ms": 10550
+    },
+    {
+      "label": "localStorage.setItem throws (quota)",
+      "snapshot": {
+        "resultShown": true,
+        "errorBoundary": false,
+        "blankRoot": false,
+        "historyCard": null,
+        "badTokens": [],
+        "injected": {
+          "handlerAttrs": 0,
+          "imgSrcX": 0,
+          "extraScripts": 2,
+          "xssFlag": false
+        },
+        "pageErrors": [
+          "quota"
+        ],
+        "consoleErrors": [],
+        "events": [
+          "Calculate Lifespan {\"age\":\"40\",\"gender\":\"male\",\"location\":\"Unknown\",\"usedBirthdate\":false}"
+        ],
+        "storageAfter": ""
+      },
+      "outcome": "result shown",
+      "themeToggleError": "locator.click: Timeout 2500ms exceeded.",
+      "ms": 5093
+    }
+  ],
+  "misc": [
+    {
+      "widget": "insurance",
+      "income": "500000",
+      "years": "10",
+      "cover": "5.000.000 kr",
+      "link": "Sammenlign livsforsikringer fra ~5.000.000 kr →"
+    },
+    {
+      "widget": "insurance",
+      "income": "-1",
+      "years": "10",
+      "cover": null,
+      "link": "Sammenlign livsforsikringer →"
+    },
+    {
+      "widget": "insurance",
+      "income": "1e308",
+      "years": "40",
+      "cover": "∞ kr",
+      "link": "Sammenlign livsforsikringer fra ~∞ kr →"
+    },
+    {
+      "widget": "insurance",
+      "income": "1e308",
+      "years": "10",
+      "cover": "∞ kr",
+      "link": "Sammenlign livsforsikringer fra ~∞ kr →"
+    },
+    {
+      "widget": "insurance",
+      "income": "0",
+      "years": "10",
+      "cover": null,
+      "link": "Sammenlign livsforsikringer →"
+    },
+    {
+      "widget": "insurance",
+      "income": "500000",
+      "years": "-3",
+      "cover": null,
+      "link": "Sammenlign livsforsikringer →"
+    },
+    {
+      "widget": "insurance",
+      "income": "500000",
+      "years": "1e2",
+      "cover": "50.000.000 kr",
+      "link": "Sammenlign livsforsikringer fra ~50.000.000 kr →"
+    },
+    {
+      "widget": "insurance",
+      "income": "99999999999999999999",
+      "years": "40",
+      "cover": "4.000.000.000.000.000.000.000 kr",
+      "link": "Sammenlign livsforsikringer fra ~4.000.000.000.000.000.000.000 kr →"
+    },
+    {
+      "widget": "partner",
+      "partnerAge": "38",
+      "text": " Forventede år sammen (begge i live) 37.0 Om Begge i live Mindst én 10 år 98% 100% 20 år 92% 100% 30 år 77% 99% Antager uafhængig dødelighed — danske dødelighed"
+    },
+    {
+      "widget": "partner",
+      "partnerAge": "99",
+      "text": " Forventede år sammen (begge i live) 0.0 Om Begge i live Mindst én 10 år 99% 100% 20 år 95% 100% 30 år 84% 100% Antager uafhængig dødelighed — danske dødelighed"
+    },
+    {
+      "widget": "partner",
+      "partnerAge": "100",
+      "text": " Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+    },
+    {
+      "widget": "partner",
+      "partnerAge": "-1",
+      "text": " Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik)."
+    },
+    {
+      "widget": "partner",
+      "partnerAge": "12.5",
+      "text": " Forventede år sammen (begge i live) 40.4 Om Begge i live Mindst én 10 år 98% 100% 20 år 94% 100% 30 år 83% 100% Antager uafhængig dødelighed — danske dødelighe"
+    },
+    {
+      "widget": "partner",
+      "partnerAge": "1e1",
+      "text": " Forventede år sammen (begge i live) 40.6 Om Begge i live Mindst én 10 år 98% 100% 20 år 94% 100% 30 år 84% 100% Antager uafhængig dødelighed — danske dødelighe"
+    },
+    {
+      "widget": "partner",
+      "partnerAge": "0",
+      "text": " Forventede år sammen (begge i live) 40.4 Om Begge i live Mindst én 10 år 98% 100% 20 år 94% 100% 30 år 83% 100% Antager uafhængig dødelighed — danske dødelighe"
+    },
+    {
+      "widget": "errors after widget probing",
+      "pageErrors": [],
+      "console": []
+    }
+  ]
+}

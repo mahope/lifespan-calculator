@@ -1,0 +1,128 @@
+{
+  "@eslint/js": {
+    "current": "9.39.4",
+    "wanted": "9.39.5",
+    "latest": "10.0.1",
+    "dependent": "repo",
+    "location": "./node_modules/@eslint/js"
+  },
+  "@tailwindcss/postcss": {
+    "current": "4.3.2",
+    "wanted": "4.3.4",
+    "latest": "4.3.4",
+    "dependent": "repo",
+    "location": "./node_modules/@tailwindcss/postcss"
+  },
+  "@types/react": {
+    "current": "19.2.17",
+    "wanted": "19.3.0",
+    "latest": "19.3.0",
+    "dependent": "repo",
+    "location": "./node_modules/@types/react"
+  },
+  "@types/react-dom": {
+    "current": "19.2.3",
+    "wanted": "19.3.0",
+    "latest": "19.3.0",
+    "dependent": "repo",
+    "location": "./node_modules/@types/react-dom"
+  },
+  "@vitejs/plugin-react": {
+    "current": "6.0.3",
+    "wanted": "6.2.1",
+    "latest": "6.2.1",
+    "dependent": "repo",
+    "location": "./node_modules/@vitejs/plugin-react"
+  },
+  "eslint": {
+    "current": "9.39.4",
+    "wanted": "9.39.5",
+    "latest": "10.14.0",
+    "dependent": "repo",
+    "location": "./node_modules/eslint"
+  },
+  "eslint-plugin-react-refresh": {
+    "current": "0.5.3",
+    "wanted": "0.5.7",
+    "latest": "0.5.7",
+    "dependent": "repo",
+    "location": "./node_modules/eslint-plugin-react-refresh"
+  },
+  "globals": {
+    "current": "17.7.0",
+    "wanted": "17.14.0",
+    "latest": "17.14.0",
+    "dependent": "repo",
+    "location": "./node_modules/globals"
+  },
+  "lucide-react": {
+    "current": "1.23.0",
+    "wanted": "1.69.0",
+    "latest": "1.69.0",
+    "dependent": "repo",
+    "location": "./node_modules/lucide-react"
+  },
+  "postcss": {
+    "current": "8.5.26",
+    "wanted": "8.5.32",
+    "latest": "8.5.32",
+    "dependent": "repo",
+    "location": "./node_modules/postcss"
+  },
+  "prettier": {
+    "current": "3.9.4",
+    "wanted": "3.9.10",
+    "latest": "3.9.10",
+    "dependent": "repo",
+    "location": "./node_modules/prettier"
+  },
+  "react": {
+    "current": "19.2.7",
+    "wanted": "19.3.1",
+    "latest": "19.3.1",
+    "dependent": "repo",
+    "location": "./node_modules/react"
+  },
+  "react-dom": {
+    "current": "19.2.7",
+    "wanted": "19.3.1",
+    "latest": "19.3.1",
+    "dependent": "repo",
+    "location": "./node_modules/react-dom"
+  },
+  "react-router-dom": {
+    "current": "7.18.3",
+    "wanted": "7.18.5",
+    "latest": "7.18.5",
+    "dependent": "repo",
+    "location": "./node_modules/react-router-dom"
+  },
+  "tailwindcss": {
+    "current": "4.3.2",
+    "wanted": "4.3.4",
+    "latest": "4.3.4",
+    "dependent": "repo",
+    "location": "./node_modules/tailwindcss"
+  },
+  "vite": {
+    "current": "8.2.2",
+    "wanted": "8.3.6",
+    "latest": "8.3.6",
+    "dependent": "repo",
+    "location": "./node_modules/vite"
+  },
+  "vite-plugin-pwa": {
+    "current": "1.3.0",
+    "wanted": "1.3.0",
+    "latest": "2.0.0",
+    "dependent": "repo",
+    "location": "./node_modules/vite-plugin-pwa"
+  },
+  "vitest": {
+    "current": "4.1.9",
+    "wanted": "4.1.12",
+    "latest": "5.1.0",
+    "dependent": "repo",
+    "location": "./node_modules/vitest"
+  }
+}

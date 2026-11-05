@@ -71,6 +71,23 @@ playwright-core                            : 1.64.1 (published 2026-10-14)
 
 Sensitivity check (the harness must be able to fail): a copy of the Docker build's `HomePage-*.js` was patched (`*70` -> `*71` for heartbeats per minute, and the label "Dage levet" -> "Dage levede") and served on another port; the baseline diff against the unmodified build showed 32 changed lines, including the `Hjerteslag` figure `1.472.688.000 -> 1.493.726.400` and the changed label inside `sections[].text`. Note that the structured `headline.lifeProgress` regex returned `null` for the changed label: the `sections` text is the authoritative guard, `headline` is a convenience view.
 
+## Anomalies that are baked into this baseline
+
+The saved JSON records the site as it is, including behaviour that looks wrong. When one of these is fixed, the `diff` against `baseline-live-0a4c35c.json` will show it; that is expected. Key values for the four cases are in `summary.md`.
+
+| id | what the JSON shows | where in the JSON | source |
+|---|---|---|---|
+| A1 | Countdown ignores the fractional year in age mode: male 40 says 41.2 years remaining (`headline.remainingYears`) but the countdown is 40 y 364 d (`headline.countdown`); female 65: 21.4 vs 20 y 364 d; the birthdate case (39.9 vs 39 y 323 d) is consistent. "Tider tilbage" (weekends 2.139, full moons 507) uses the truncated 14,974 days. | `cases.*.headline`, `cases.*.sections[Tider tilbage]` | `useLifespanCalculator.js:103` `new Date(now.getFullYear() + remainingYears, ...)` truncates the year; the birthdate branch (lines 96-101) does not |
+| A2 | "Sammenlign med gennemsnittet" compares expected age at death given you are alive (81.2) with Denmark's life expectancy at birth (78.9): "Du ligger ca. 2.3 år over det danske gennemsnit" for every input in the baseline. | `cases.*.headline.comparison` | `Sammenlign.jsx:16` |
+| A3 | Case 4 (advanced mode, lifestyle factors change the result by +4 years) still renders the disclaimer "Individuelle faktorer påvirker ikke beregningen". | `cases.4-bonus-male-50-advanced.sections[Vigtige disclaimere]` | `HomePage.jsx:1317` |
+| A4 | Every route has two `meta description`, two `og:title`, two `og:description` and two `twitter:card` values (generic from `index.html` plus page-specific from react-helmet-async). | `routes.*.metaDescription`, `ogTitle`, `ogDescription`, `twitterCard` | `index.html:21-26` + `SEOHead.jsx` |
+| A5 | `/xyz` is HTTP 200, `robots: index, follow`, canonical `https://levetidsberegner.dk/404`. | `routes./xyz` | `NotFoundPage.jsx` (`SEOHead canonicalUrl="/404"`, no noindex) |
+| A6 | Third-party request on every page: `fonts.googleapis.com` (CSS `@import`), plus the Plausible script. | `routes.*.blockedThirdPartyHosts`, `plausibleEvents` | `src/index.css:1`, `index.html:29` |
+| A7 | The cookie banner is shown at start (`cookieBannerAtStart: "block"`), "Afvis" is clicked, and analytics events are still sent afterwards. | `cases.*.cookieBannerAtStart`, `plausibleEvents` | `index.html:44-53` |
+| A8 | The analytics event carries the typed age and gender: `Calculate Lifespan {"age":"40","gender":"male","location":"Unknown","usedBirthdate":false}`; the birthdate case sends `"age":"birthdate"`. A deep-link visit sends no such event. | `cases.*.plausibleEvents` | `HomePage.jsx:179-187` |
+| A9 | The two footers: `footers: 2` on every route (React footer plus the hard-coded footer in `index.html`), and the static "Om dette værktøj" boilerplate section is rendered below the app. | `routes.*.footers`, `routes.*.staticExplainer` | `index.html:35-59` |
+| A10 | The minute and second digits are only meaningful because the clock is frozen at a non-round time; at exactly `12:00:00Z` the tiles show `--` (`value \|\| '--'`). | (first development run, kept as ../data/baseline-local-try1-frozen-12-00-00Z.json; earlier harness version, local container) | `HomePage.jsx:1114-1130` |
+
 ## Limits
 
 No visual comparison, no accessibility check, no performance numbers, no mobile viewport, no real network time zone or locale variation. Only the 4 inputs above are exercised; the harness records what is on screen but does not assert that numbers are sane (it would happily record `NaN`). For invalid and hostile input see `validation.md`. Geolocation ("Brug min placering", Nominatim), the share modal and the theme toggle are not exercised.

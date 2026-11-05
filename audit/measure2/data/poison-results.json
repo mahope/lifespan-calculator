@@ -1,0 +1,36 @@
+[
+  {
+    "label": "a=abc",
+    "storedAfterBadLink": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]",
+    "historikAfterNormalCalc": "Din historik Sådan har dit estimat udviklet sig (2 beregninger, gemt lokalt). 5. nov. 2026 NaN år 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+    "storedAfterNormalCalc": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+  },
+  {
+    "label": "a=-5",
+    "storedAfterBadLink": "[{\"ts\":1793882096000,\"age\":-5,\"gender\":\"male\",\"expected\":\"75.3\"}]",
+    "historikAfterNormalCalc": "Din historik Sådan har dit estimat udviklet sig (2 beregninger, gemt lokalt). 5. nov. 2026 75.3 år (som -5-årig) 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er steget 5.9 år siden din første beregning 🎉",
+    "storedAfterNormalCalc": "[{\"ts\":1793882096000,\"age\":-5,\"gender\":\"male\",\"expected\":\"75.3\"},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+  },
+  {
+    "label": "b=not-a-date",
+    "storedAfterBadLink": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"}]",
+    "historikAfterNormalCalc": "Din historik Sådan har dit estimat udviklet sig (2 beregninger, gemt lokalt). 5. nov. 2026 NaN år 5. nov. 2026 81.2 år (som 40-årig) Dit estimat er stort set uændret",
+    "storedAfterNormalCalc": "[{\"ts\":1793882096000,\"age\":null,\"gender\":\"male\",\"expected\":\"NaN\"},{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+  },
+  {
+    "label": "crash persistence with seed [null]",
+    "crashes": [
+      {
+        "attempt": 1,
+        "errorBoundary": true,
+        "stored": "[null,{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      },
+      {
+        "attempt": 2,
+        "errorBoundary": true,
+        "stored": "[null,{\"ts\":1793882096000,\"age\":40,\"gender\":\"male\",\"expected\":\"81.2\"}]"
+      }
+    ],
+    "afterReloadFormShown": false
+  }
+]

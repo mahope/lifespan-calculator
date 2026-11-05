@@ -9,6 +9,6 @@ export function estimateCover(annualIncome, years, { sharePct = 100, existingCov
   const share = Number.isFinite(sharePct) ? Math.min(100, Math.max(0, sharePct)) : 100;
   const existing = Number.isFinite(existingCover) ? Math.max(0, existingCover) : 0;
   const raw = (annualIncome * share) / 100 * years - existing;
-  if (raw <= 0) return 0;
+  if (!Number.isFinite(raw) || raw <= 0) return 0;
   return Math.round(raw / 100000) * 100000; // nearest 100,000 kr
 }

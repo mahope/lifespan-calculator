@@ -27,6 +27,11 @@ describe('estimateCover with the deceased share and existing cover (#91)', () =>
     expect(estimateCover(500000, 10, { sharePct: NaN, existingCover: NaN })).toBe(5000000);
   });
 
+  it('never returns Infinity for absurd input', () => {
+    expect(estimateCover(1e308, 10)).toBe(0);
+    expect(Number.isFinite(estimateCover(Number.MAX_VALUE, 1000))).toBe(true);
+  });
+
   it('never goes below zero and clamps the share to 0-100', () => {
     expect(estimateCover(500000, 10, { existingCover: 9000000 })).toBe(0);
     expect(estimateCover(500000, 10, { sharePct: 250 })).toBe(5000000);

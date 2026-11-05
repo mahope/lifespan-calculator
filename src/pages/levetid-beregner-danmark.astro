@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHeader from '../components/PageHeader'
+import TrendChart from '../components/astro/TrendChart.astro'
+import KommuneTable from '../components/astro/KommuneTable.astro'
+import { Map } from 'lucide-react'
+import { SITE, breadcrumb } from '../lib/site.js'
+import { nationalFigures, trend, regionRows, kommuneRanking, dataMeta, fmt1, periodLabel } from '../lib/denmark.js'
+
+const path = '/levetid-beregner-danmark'
+const nat = nationalFigures()
+const rows = trend()
+const regions = regionRows()
+const komm = kommuneRanking()
+const meta = dataMeta()
+const p = periodLabel(nat.e0.male.period)
+const gain = nat.e0.male.value - rows[0].male
+const description = `Middellevetiden i Danmark er ${fmt1(nat.e0.male.value)} år for mænd og ${fmt1(nat.e0.female.value)} år for kvinder (${p}). Se udviklingen siden ${meta.firstYear}, regionerne og alle kommuner.`
+const dataset = {
+  '@type': 'Dataset',
+  name: 'Middellevetid for 0-årige og 65-årige i Danmark',
+  description: `Forventet levetid ved fødslen og ved 65 år for mænd og kvinder i Danmark, ${meta.firstYear}–${meta.lastYear}.`,
+  url: `${SITE}${path}`,
+  inLanguage: 'da-DK',
+  creator: { '@type': 'Organization', name: 'Danmarks Statistik', url: 'https://www.dst.dk' },
+  isBasedOn: 'https://www.statbank.dk/HISB8',
+  dateModified: meta.retrieved,
+  temporalCoverage: `${meta.firstYear}/${meta.lastYear}`,
+  spatialCoverage: 'Danmark',
+  variableMeasured: ['Middellevetid ved fødslen', 'Middellevetid ved 65 år'],
+}
+---
+
+<Base
+  title="Levetid i Danmark: middellevetid for mænd og kvinder"
+  description={description}
+  path={path}
+  jsonLd={[dataset, breadcrumb(['Levetid i Danmark', path])]}
+>
+  <PageHeader slot="header" icon={Map} title="Levetid i Danmark" subtitle="Middellevetid for mænd og kvinder, regionerne og alle kommuner." />
+  <main class="flex-1">
+    <div class="container py-8 sm:py-12">
+      <div class="mx-auto max-w-4xl space-y-10">
+        <section class="card"><div class="card-content pt-6 space-y-3">
+          <h2 class="text-xl font-bold">Hvad er middellevetiden i Danmark?</h2>
+          <p class="text-lg">
+            Drenge født i Danmark kan efter dødeligheden i {p} forvente at blive {fmt1(nat.e0.male.value)} år, piger {fmt1(nat.e0.female.value)} år.
+            Er man først fyldt 65, er der i gennemsnit {fmt1(nat.e65.male.value)} år tilbage for mænd og {fmt1(nat.e65.female.value)} år for kvinder.
+          </p>
+          <p class="text-sm text-muted-foreground">
+            Kilde: Danmarks Statistik, HISB8 (dødelighedstavle, {p}), hentet {meta.retrieved}. Det er gennemsnit for hele befolkningen, ikke et personligt svar.
+            <a href="/" class="text-primary hover:underline">Beregn din egen resterende levetid</a>.
+          </p>
+        </div></section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold">Siden {meta.firstYear} er mænds middellevetid steget {fmt1(gain)} år</h2>
+          <p class="text-muted-foreground">Mænd har indhentet en del af kvindernes forspring. Kilde: DST HISB8, middellevetid ved fødslen, 2-års perioder {meta.firstYear}–{meta.lastYear}.</p>
+          <div class="card"><div class="card-content pt-6">
+            <TrendChart rows={rows} label={`Middellevetid ved fødslen i Danmark ${meta.firstYear} til ${meta.lastYear}. Mænd fra ${fmt1(rows[0].male)} til ${fmt1(rows.at(-1).male)} år, kvinder fra ${fmt1(rows[0].female)} til ${fmt1(rows.at(-1).female)} år.`} />
+          </div></div>
+          <details class="text-sm">
+            <summary class="cursor-pointer py-2 text-primary">Vis tallene som tabel</summary>
+            <table class="w-full text-left mt-2">
+              <caption class="sr-only">Middellevetid ved fødslen pr. periode</caption>
+              <thead><tr class="border-b"><th scope="col" class="py-1 pr-3">Periode</th><th scope="col" class="py-1 pr-3">Mænd</th><th scope="col" class="py-1 pr-3">Kvinder</th></tr></thead>
+              <tbody>{rows.map((r) => <tr class="border-b"><th scope="row" class="py-1 pr-3 font-normal">{periodLabel(r.period)}</th><td class="py-1 pr-3">{fmt1(r.male)}</td><td class="py-1 pr-3">{fmt1(r.female)}</td></tr>)}</tbody>
+            </table>
+          </details>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold">Levetiden er højest i {regions[0].name}</h2>
+          <p class="text-muted-foreground">Middellevetid ved fødslen pr. region, {periodLabel(regions[0].total.period)}. Forskellene mellem regionerne er små i forhold til forskellen mellem kønnene. Kilde: DST HISBR.</p>
+          <table class="w-full text-left text-sm">
+            <caption class="sr-only">Middellevetid pr. region</caption>
+            <thead><tr class="border-b"><th scope="col" class="py-2 pr-3">Region</th><th scope="col" class="py-2 pr-3">I alt</th><th scope="col" class="py-2 pr-3">Mænd</th><th scope="col" class="py-2 pr-3">Kvinder</th></tr></thead>
+            <tbody>{regions.map((r) => <tr class="border-b"><th scope="row" class="py-2 pr-3 font-normal">{r.name}</th><td class="py-2 pr-3">{fmt1(r.total.value)}</td><td class="py-2 pr-3">{fmt1(r.male.value)}</td><td class="py-2 pr-3">{fmt1(r.female.value)}</td></tr>)}</tbody>
+          </table>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold">Alle kommuner, rangeret efter middellevetid</h2>
+          <p class="text-muted-foreground">
+            {komm.count} kommuner med tal, {komm.without.length} uden: {komm.without.join(', ')} står som «ikke opgivet», fordi tallene er for usikre. Det er middellevetid ved fødslen i femårsvinduet {periodLabel(komm.period)}
+            og en områdestatistik, ikke en effekt af at bo dér. Kilde: DST HISBK.
+            <a href="/levealder-kommuner" class="text-primary hover:underline">Se rangeringen efter mænd og kvinder hver for sig</a>.
+          </p>
+          <KommuneTable rows={komm.by.total} caption="Middellevetid ved fødslen pr. kommune, sorteret efter alle" sortKey="total" />
+          <p class="text-sm text-muted-foreground">Ikke opgivet: {komm.without.join(', ')}.</p>
+        </section>
+
+        <p class="text-sm text-muted-foreground">
+          Data opdateret: {meta.retrieved}. Udeladt i denne version: sammenligning med de nordiske lande, uddannelsesforskelle og sunde leveår.
+        </p>
+      </div>
+    </div>
+  </main>
+</Base>

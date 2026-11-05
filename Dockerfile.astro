@@ -1,0 +1,16 @@
+# Astro static build served by Caddy (real 404s, headers, immutable asset caching).
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM caddy:2-alpine
+RUN apk add --no-cache curl
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=build /app/dist /srv
+ENV XDG_CONFIG_HOME=/tmp XDG_DATA_HOME=/tmp
+USER 1000:1000
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s CMD curl -fsS http://127.0.0.1:3000/api/health || exit 1

@@ -1,0 +1,31 @@
+---
+import { fmt1 } from '../../lib/denmark.js'
+interface Props { rows: any[]; caption: string; sortKey: 'total' | 'male' | 'female' }
+const { rows, caption, sortKey } = Astro.props
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full text-left text-sm">
+    <caption class="text-left text-lg font-semibold pb-2">{caption}</caption>
+    <thead>
+      <tr class="border-b">
+        <th scope="col" class="py-2 pr-3">Plads</th>
+        <th scope="col" class="py-2 pr-3">Kommune</th>
+        <th scope="col" class="py-2 pr-3">I alt</th>
+        <th scope="col" class="py-2 pr-3">Mænd</th>
+        <th scope="col" class="py-2 pr-3">Kvinder</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr class="border-b">
+          <td class="py-1.5 pr-3">{r.ranks[sortKey]}</td>
+          <th scope="row" class="py-1.5 pr-3 font-normal">{r.name}</th>
+          <td class="py-1.5 pr-3">{fmt1(r.total.value)}</td>
+          <td class="py-1.5 pr-3">{fmt1(r.male.value)}</td>
+          <td class="py-1.5 pr-3">{fmt1(r.female.value)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,27 @@
+---
+// Two-line inline SVG (no chart library, no JS). A text table alternative is rendered by the page.
+interface Props { rows: { year: number; male: number; female: number }[]; label: string }
+const { rows, label } = Astro.props
+const W = 640, H = 300, L = 44, R = 16, T = 16, B = 34
+const y0 = rows[0].year, y1 = rows.at(-1)!.year
+const lo = 68, hi = 86
+const x = (yr: number) => L + ((yr - y0) / (y1 - y0)) * (W - L - R)
+const y = (v: number) => T + (1 - (v - lo) / (hi - lo)) * (H - T - B)
+const path = (key: 'male' | 'female') => rows.map((r, i) => `${i ? 'L' : 'M'}${x(r.year).toFixed(1)} ${y(r[key]).toFixed(1)}`).join(' ')
+const yTicks = [68, 72, 76, 80, 84]
+const xTicks = [1985, 1995, 2005, 2015, 2024].filter((t) => t >= y0 && t <= y1)
+---
+
+<svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={label} class="w-full h-auto text-foreground">
+  {yTicks.map((t) => (
+    <g>
+      <line x1={L} x2={W - R} y1={y(t)} y2={y(t)} stroke="currentColor" stroke-opacity="0.12"></line>
+      <text x={L - 6} y={y(t) + 4} text-anchor="end" font-size="11" fill="currentColor" fill-opacity="0.7">{t}</text>
+    </g>
+  ))}
+  {xTicks.map((t) => <text x={x(t)} y={H - 12} text-anchor="middle" font-size="11" fill="currentColor" fill-opacity="0.7">{t}</text>)}
+  <path d={path('female')} fill="none" stroke="hsl(var(--primary))" stroke-width="2.5" stroke-linejoin="round"></path>
+  <path d={path('male')} fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6 4" stroke-linejoin="round"></path>
+  <text x={x(y1) - 4} y={y(rows.at(-1)!.female) - 8} text-anchor="end" font-size="12" fill="hsl(var(--primary))" font-weight="600">Kvinder</text>
+  <text x={x(y1) - 4} y={y(rows.at(-1)!.male) + 18} text-anchor="end" font-size="12" fill="currentColor" font-weight="600">Mænd</text>
+</svg>

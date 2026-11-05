@@ -107,14 +107,14 @@ export function buildAgePage(sexSlug, age) {
   const paragraphs = [
     `Af alle ${age}-årige ${sex.plural} i dag er halvdelen stadig i live ved ${fmt1(median)} år. Gennemsnittet (${fmt1(death)} år) og midtpunktet er ikke det samme, fordi nogle dør tidligt og trækker gennemsnittet ned. Det svarer til ${fmt0(weeks)} uger eller ${fmt0(days)} dage tilbage i gennemsnit.`,
     coin.p >= 0.5
-      ? `Chancen for at fejre sin ${coin.age}-års fødselsdag er ${pct(coin.p)}, altså lidt bedre end et møntkast. Sandsynligheden for at nå ${upcoming.at(-1).age} år er ${pct(upcoming.at(-1).p)}.`
-      : `Chancen for at fejre sin ${coin.age}-års fødselsdag er ${pct(coin.p)}, altså lidt dårligere end et møntkast. Sandsynligheden for at nå ${upcoming.at(-1).age} år er ${pct(upcoming.at(-1).p)}.`,
+      ? `Chancen for at fejre sin ${coin.age}-års fødselsdag er ${pct(coin.p)}, altså bedre end et møntkast. Sandsynligheden for at nå ${upcoming.at(-1).age} år er ${pct(upcoming.at(-1).p)}.`
+      : `Chancen for at fejre sin ${coin.age}-års fødselsdag er ${pct(coin.p)}, altså dårligere end et møntkast. Sandsynligheden for at nå ${upcoming.at(-1).age} år er ${pct(upcoming.at(-1).p)}.`,
     `Siden 1981 er den forventede restlevetid for ${who} steget med ${fmt1(gain1981)} år (fra ${fmt1(hist[0].value)} til ${fmt1(nowValue)}), og siden 2000 med ${fmt1(gain2000)} år.`,
     diffOther >= 0
       ? `En ${age}-årig ${other.noun} har ${fmt1(exOther)} år tilbage, så ${sex.plural} på samme alder har ${fmt1(Math.abs(diffOther))} år mere.`
       : `En ${age}-årig ${other.noun} har ${fmt1(exOther)} år tilbage, så ${other.slug === 'mand' ? 'mænd' : 'kvinder'} på samme alder har ${fmt1(Math.abs(diffOther))} år mere.`,
     workLeft > 0
-      ? `Med en fødselsårgang omkring ${birthYear} er folkepensionsalderen ${pensionAge} år efter pension.js. Der er ${workLeft} arbejdsår tilbage, og ved pensionsalderen er den forventede restlevetid ${fmt1(retirementYears)} år som pensionist.`
+      ? `Med en fødselsårgang omkring ${birthYear} er folkepensionsalderen ${pensionAge} år efter de gældende regler. Der er ${workLeft} arbejdsår tilbage, og ved pensionsalderen er den forventede restlevetid ${fmt1(retirementYears)} år som pensionist.`
       : `Med en fødselsårgang omkring ${birthYear} er folkepensionsalderen ${pensionAge} år, og den er nået eller passeret. Den forventede restlevetid som pensionist er ${fmt1(ex)} år.`,
   ]
 

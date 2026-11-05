@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHeader from '../components/PageHeader'
+import KommuneTable from '../components/astro/KommuneTable.astro'
+import { MapPinned } from 'lucide-react'
+import { breadcrumb } from '../lib/site.js'
+import { kommuneRanking, dataMeta, fmt1, periodLabel } from '../lib/denmark.js'
+
+const path = '/levealder-kommuner'
+const komm = kommuneRanking()
+const meta = dataMeta()
+const top = komm.by.total[0]
+const bottom = komm.by.total.at(-1)
+---
+
+<Base
+  title={`Levealder i kommunerne: rangering af ${komm.count} kommuner`}
+  description={`${top.name} har den højeste middellevetid (${fmt1(top.total.value)} år), ${bottom.name} den laveste (${fmt1(bottom.total.value)} år). Se alle kommuner for mænd og kvinder.`}
+  path={path}
+  jsonLd={[breadcrumb(['Levetid i Danmark', '/levetid-beregner-danmark'], ['Levealder i kommunerne', path])]}
+>
+  <PageHeader slot="header" icon={MapPinned} title="Levealder i kommunerne" subtitle="Middellevetid ved fødslen i alle kommuner, for mænd og kvinder." />
+  <main class="flex-1">
+    <div class="container py-8 sm:py-12">
+      <div class="mx-auto max-w-4xl space-y-8">
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold">{top.name} er øverst, {bottom.name} nederst</h2>
+          <p class="text-muted-foreground leading-relaxed">
+            Tallet er middellevetid ved fødslen, målt over et femårsvindue ({periodLabel(komm.period)}): hvor længe et nyfødt barn i kommunen ville leve, hvis dødeligheden i vinduet blev ved.
+            Det er en områdestatistik og ikke et personligt svar, og den siger ikke, at kommunen er årsag til forskellen: uddannelse, indkomst og alderssammensætning varierer mellem kommunerne.
+            Kilde: Danmarks Statistik, HISBK, hentet {meta.retrieved}.
+            {komm.without.length} kommuner mangler: {komm.without.join(', ')} (ikke opgivet, tallene er for usikre).
+            Se også <a href="/levetid-beregner-danmark" class="text-primary hover:underline">tallene for hele Danmark</a>.
+          </p>
+        </section>
+        <KommuneTable rows={komm.by.total} caption="Sorteret efter alle" sortKey="total" />
+        <KommuneTable rows={komm.by.male} caption="Sorteret efter mænd" sortKey="male" />
+        <KommuneTable rows={komm.by.female} caption="Sorteret efter kvinder" sortKey="female" />
+      </div>
+    </div>
+  </main>
+</Base>

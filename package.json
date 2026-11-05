@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-guard.mjs dist",
     "preview": "astro preview",
     "start": "astro preview --port 3000",
     "test": "vitest run",

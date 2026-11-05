@@ -1,0 +1,57 @@
+{
+	admin off
+	auto_https off
+	servers {
+		# Dokploy/Traefik terminates TLS in front of this container.
+		trusted_proxies static private_ranges
+	}
+}
+
+:3000 {
+	root * /srv
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "SAMEORIGIN"
+		Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=()"
+		-Server
+	}
+
+	# Hashed build output: cache forever. A missing file is a real 404 (see handle_errors), never HTML.
+	handle /_astro/* {
+		header Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+
+	# Health endpoint for the Dokploy/Swarm healthcheck: a real file, plain text.
+	handle /api/health {
+		header Content-Type "text/plain; charset=utf-8"
+		header Cache-Control "no-store"
+		file_server
+	}
+
+	# Everything else (HTML, sw.js, registerSW.js, manifest, images): always revalidate.
+	handle {
+		header Cache-Control "no-cache"
+		@xml path *.xml
+		header @xml Content-Type "application/xml; charset=utf-8"
+		try_files {path} {path}.html {path}/index.html
+		file_server
+	}
+
+	handle_errors {
+		header X-Robots-Tag "noindex"
+		header >Cache-Control "no-store"
+		@missingAsset path /_astro/*
+		handle @missingAsset {
+			header Content-Type "text/plain; charset=utf-8"
+			respond "Not found" {err.status_code}
+		}
+		handle {
+			rewrite * /404.html
+			file_server
+		}
+	}
+}

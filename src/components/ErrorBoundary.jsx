@@ -16,7 +16,7 @@ class ErrorBoundary extends React.Component {
     // Best-effort telemetry; never throw from the error handler itself.
     try {
       if (typeof window !== 'undefined' && window.plausible) {
-        window.plausible('Error', { props: { message: String(error?.message || error) } });
+        window.plausible('Error', { props: { type: String(error?.name || 'Error') } });
       }
     } catch {
       /* noop */

@@ -7,7 +7,11 @@ const MAX = 20;
 
 const memoryStore = (() => {
   let v = null;
-  return { getItem: () => v, setItem: (_k, val) => { v = val; } };
+  return {
+    getItem: () => v,
+    setItem: (_k, val) => { v = val; },
+    removeItem: () => { v = null; },
+  };
 })();
 
 function defaultStore() {
@@ -19,11 +23,21 @@ function defaultStore() {
   return memoryStore;
 }
 
+const finite = (v) =>
+  (typeof v === 'number' || (typeof v === 'string' && v.trim() !== '')) &&
+  Number.isFinite(Number(v));
+
+function isValidEntry(e) {
+  return (
+    e !== null && typeof e === 'object' && finite(e.ts) && finite(e.age) && finite(e.expected)
+  );
+}
+
 export function loadHistory(store = defaultStore()) {
   try {
     const raw = store.getItem(KEY);
     const parsed = raw ? JSON.parse(raw) : [];
-    return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? parsed.filter(isValidEntry) : [];
   } catch {
     return [];
   }
@@ -51,4 +65,13 @@ export function saveEntry(entry, store = defaultStore()) {
     /* quota / privacy mode — history is best-effort */
   }
   return next;
+}
+
+/** Delete all stored history. Best-effort, never throws. */
+export function clearHistory(store = defaultStore()) {
+  try {
+    store.removeItem(KEY);
+  } catch {
+    /* privacy mode — nothing to clear */
+  }
 }

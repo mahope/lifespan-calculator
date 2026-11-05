@@ -1,23 +1,21 @@
 # 🕰️ Levetidsberegner (Lifespan Calculator)
 
-En webbaseret applikation der beregner din forventede resterende levetid baseret på din alder, køn og geografiske placering.
+En webbaseret applikation der beregner din forventede resterende levetid baseret på din alder og dit køn, med danske levetidstabeller.
 
 ## 📋 Funktioner
 
-- **Automatisk lokationsdetektering**: Bruger din browsers geolocation API til at finde din placering
-- **Præcise beregninger**: Baseret på WHO og nationale statistikker for forskellige lande
+- **Beregning i browseren**: Dine input forlader aldrig din enhed og sendes ikke til analytics
+- **Danske tal**: Baseret på Danmarks Statistik (HISB8, periode 2024:2025)
 - **Responsive design**: Fungerer på både desktop og mobile enheder
 - **Intuitivt interface**: Moderne og brugervenligt design
 - **Detaljerede resultater**: Viser resterende år, forventet levetid og estimeret slutdato
 - **Kontekstuelle beskeder**: Forskellige beskeder baseret på resultaterne
-- **Fallback til verdensgennemsnit**: Hvis lokation ikke kan bestemmes
 
 ## 🚀 Sådan bruges applikationen
 
 1. **Indtast din alder**: Angiv din nuværende alder i år
 2. **Vælg dit køn**: Vælg mellem mand og kvinde
-3. **Find din lokation**: Klik på "Find min lokation automatisk" for at tillade browser adgang til din placering
-4. **Beregn resultat**: Klik på "Beregn min resterende levetid" for at se resultatet
+3. **Beregn resultat**: Klik på "Beregn min resterende levetid" for at se resultatet
 
 ## 🛠️ Teknisk implementation
 
@@ -28,9 +26,8 @@ En webbaseret applikation der beregner din forventede resterende levetid baseret
 - **Responsive design**: Mobile-first tilgang
 
 ### APIs og data
-- **Geolocation API**: Browser-baseret positionsbestemmelse
-- **OpenStreetMap Nominatim API**: Gratis reverse geocoding
-- **Statiske levetidsdata**: Baseret på WHO og nationale statistikker
+- **Ingen eksterne API'er til beregningen**: Alt kører i browseren
+- **Statiske levetidsdata**: Danmarks Statistik (HISB8) samt landetabeller til sammenligning
 
 ### Databaser
 Applikationen bruger følgende levetidsdata (år 2024):
@@ -67,7 +64,6 @@ lifespan-calculator/
 ### Lokalt udvikling
 1. Klon eller download projektet
 2. Åbn `index.html` i en moderne webbrowser
-3. Tilladbrowser adgang til geolokation når du bliver spurgt
 
 ### Webserver
 Projektet kan hostes på enhver webserver der kan servere statiske filer:
@@ -76,13 +72,10 @@ Projektet kan hostes på enhver webserver der kan servere statiske filer:
 - Vercel
 - Apache/Nginx
 
-### HTTPS krav
-**Vigtigt**: Geolocation API kræver HTTPS i produktion. Sørg for at have SSL-certifikat på din webserver.
-
 ## 🔒 Privatlivspolitik
 
 - **Ingen data gemmes**: Alle beregninger sker lokalt i browseren
-- **Geolokation**: Kun brugt til at bestemme land - koordinater gemmes ikke
+- **Ingen lokation**: Appen beder ikke om din placering
 - **Ingen cookies**: Applikationen bruger ingen cookies eller tracking
 - **Ingen eksterne scripts**: Alt kode er selvstændig og transparent
 
@@ -91,7 +84,7 @@ Projektet kan hostes på enhver webserver der kan servere statiske filer:
 - **Kun statistiske estimater**: Resultaterne er baseret på gennemsnitsdata
 - **Mange faktorer ignoreres**: Livsstil, genetik, sundhedspleje, mv. påvirker levetiden
 - **Teknologiske fremskridt**: Fremtidens medicinske gennembrud kan forlænge levetiden
-- **Browserkompatibilitet**: Kræver moderne browser med geolocation support
+- **Browserkompatibilitet**: Kræver moderne browser
 
 ## 🎯 Fremtidige forbedringer
 

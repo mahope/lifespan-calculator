@@ -31,8 +31,9 @@ export default defineConfig({
         // No png: og-image.png is for crawlers only and the manifest icons are
         // fetched by the browser at install time, not needed offline.
         globPatterns: ['**/*.{js,css,html,svg,woff2}'],
+        globIgnores: ['**/404.html'],
         // Don't SPA-fallback the standalone static legal/policy .html pages.
-        navigateFallbackDenylist: [/\.html$/],
+        navigateFallbackDenylist: [/\.html$/, /^\/api\//, /\.(txt|xml)$/],
       },
     }),
   ],

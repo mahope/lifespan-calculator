@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
+import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 import { lifeExpectancyData as le } from '../utils/lifeExpectancyData';
 
 const fmtLE = (n) => n.toFixed(1);
@@ -40,16 +43,19 @@ const Rows = ({ rows }) => (
 const DanmarkPage = () => (
   <PageShell
     route="/levetid-beregner-danmark"
-    title="Dansk Levetidsberegner"
-    subtitle="Specialiseret levetidsberegner med præcise data fra Danmarks Statistik og danske sundhedsmyndigheder"
+    title="Levealder i Danmark"
+    subtitle="Gennemsnitlig levealder og middellevetid for danske mænd og kvinder fra Danmarks Statistik"
   >
+    <AnswerFirst text={answerFirst.danmark()} linkText="Beregn din egen levetid i levetidsberegneren" />
+
     <section className="card">
       <SectionHeader level={2} title="Levetid i Danmark" />
       <div className="card-content space-y-8">
         <p className="prose-page">
-          Danmark har en af verdens højeste levetider, og danske data adskiller sig på flere områder fra det
-          globale gennemsnit. Den danske levetidsberegner bruger de seneste tilgængelige data fra Danmarks
-          Statistik, Sundhedsstyrelsen og andre danske myndigheder.
+          Tallene her er den danske middellevetid fra Danmarks Statistiks dødelighedstavler
+          (tabel HISB8, {LIFE_TABLE_META.period}). Det er de samme tavler, som levetidsberegneren bruger.
+          Sammenligningen med Sverige, Norge og Finland kommer fra Eurostat, og tallene for Japan og verden
+          kommer fra Verdensbanken.
         </p>
         <div className="grid gap-x-12 gap-y-8 md:grid-cols-2">
           <div>
@@ -123,15 +129,14 @@ const DanmarkPage = () => (
     </section>
 
     <section className="card">
-      <SectionHeader level={2} title="Hvorfor bruge den danske version?" />
+      <SectionHeader level={2} title="Fra gennemsnit til dit eget tal" />
       <div className="card-content prose-page">
         <p>
-          Den danske levetidsberegner giver mere præcise resultater for danske borgere, da den bruger
-          landspecifikke data og tager højde for danske sundhedsmønstre, livsstil og miljøfaktorer.
-          Dette giver dig et mere realistisk estimat sammenlignet med globale kalkulatorer.
+          Gennemsnittet for alle danskere siger ikke, hvor gammel du selv bliver. Levetidsberegneren
+          bruger de samme danske tavler, men ud fra din egen alder og dit køn.
         </p>
         <p>
-          <Link to="/" className="btn btn-primary">Prøv den danske levetidsberegner</Link>
+          <Link to="/" className="btn btn-primary">Beregn din levetid ud fra danske tal</Link>
         </p>
       </div>
     </section>

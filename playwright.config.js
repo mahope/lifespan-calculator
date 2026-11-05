@@ -17,7 +17,14 @@ export default defineConfig({
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
   use: {
     baseURL: `http://${SITE_HOST}:${PORT}`,
-    launchOptions: { args: [`--host-resolver-rules=MAP ${SITE_HOST} 127.0.0.1`] },
+    // The embed test frames the site from a made-up public origin (framer.test); Chrome's local-network
+    // access check would block that frame because the site itself is on 127.0.0.1.
+    launchOptions: {
+      args: [
+        `--host-resolver-rules=MAP ${SITE_HOST} 127.0.0.1`,
+        '--disable-features=LocalNetworkAccessChecks,BlockInsecurePrivateNetworkRequests',
+      ],
+    },
     serviceWorkers: 'block',
     locale: 'da-DK',
     timezoneId: 'Europe/Copenhagen',

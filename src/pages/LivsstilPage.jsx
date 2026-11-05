@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 
 const TOPICS = [
   {
     title: 'Motion og fysisk aktivitet',
-    text: 'Regelmæssig motion kan tilføje 3-7 år til dit liv. Bare 150 minutter moderat aktivitet om ugen reducerer risikoen for hjertesygdomme, diabetes og kræft betydeligt.',
+    text: 'I en samlet analyse af seks store kohortestudier levede personer med ca. 150 minutters aktivitet om ugen i gennemsnit ca. 3,4 år længere end inaktive; selv under 75 minutter om ugen var forbundet med ca. 1,8 flere leveår (Moore m.fl., PLoS Medicine 2012). Det er statistiske sammenhænge.',
     listTitle: 'Anbefalinger:',
     items: [
       '150 min. moderat aktivitet per uge',
@@ -17,7 +19,7 @@ const TOPICS = [
   },
   {
     title: 'Ernæring og kost',
-    text: 'En sund kost kan forlænge livet med 2-8 år. Den mediterrane kost er den mest dokumenterede koststil for langt liv.',
+    text: 'En modelberegning viser, at en varig omlægning til mere bælgfrugter, fuldkorn og nødder og mindre forarbejdet kød kan give omkring 3-10 flere leveår, mest hvis man starter ung (Fadnes m.fl., PLoS Medicine 2022). Det er en modelberegning, ikke et forsøg.',
     listTitle: 'Kostvejledning:',
     items: [
       'Spis 5-7 portioner frugt og grønt dagligt',
@@ -28,7 +30,7 @@ const TOPICS = [
   },
   {
     title: 'Søvn og hvile',
-    text: '7-9 timers kvalitetssøvn er essentielt for et langt liv. Kronisk søvnmangel øger risikoen for hjertesygdomme, diabetes og tidlig død.',
+    text: 'Både meget kort og meget lang søvn er i store oversigtsstudier forbundet med lidt højere dødelighed, og risikoen er lavest ved omkring 7 timer (Yin m.fl. 2017; Cappuccio m.fl. 2010). En del af sammenhængen kan skyldes, at sygdom påvirker søvnen.',
     listTitle: 'Søvnhygiejne:',
     items: [
       'Gå i seng og stå op på samme tid hver dag',
@@ -39,18 +41,17 @@ const TOPICS = [
   },
   {
     title: 'Rygning og tobak',
-    text: 'Rygning er den enkeltstående livsstilsfaktor, der forkorter livet mest - op til 10 år. At stoppe med at ryge kan tilføje år til dit liv uanset alder.',
+    text: 'Rygere mister i gennemsnit mindst 10 leveår sammenlignet med aldrig-rygere (Jha m.fl., NEJM 2013).',
     listTitle: 'Rygningens påvirkning:',
     items: [
-      '1 pakke om dagen: -7 år i levetid',
-      '2 pakker om dagen: -10 år i levetid',
-      'Stop før 30 år: fuld levetidsgenopretning',
-      'Stop før 50 år: halverer overdødelighed',
+      'Også 1-10 cigaretter om dagen næsten fordobler dødeligheden (Pirie m.fl., Lancet 2013).',
+      'Hvis man stopper før 40 år, undgår man omkring 90 % af den ekstra dødelighed (Jha 2013).',
+      'I en britisk lægeundersøgelse genvandt mænd, der stoppede som 30-årige, ca. 10 leveår og som 50-årige ca. 6 (Doll m.fl., BMJ 2004).',
     ],
   },
   {
     title: 'Stress og mental sundhed',
-    text: 'Kronisk stress øger risikoen for hjertesygdomme, depression og tidlig død. Stressmanagement kan tilføje 2-3 år til dit liv.',
+    text: 'Langvarig stress på arbejdet er forbundet med en let forhøjet risiko for hjertesygdom (ca. 23 % højere i en stor europæisk analyse, Kivimäki m.fl., Lancet 2012), men der findes ikke solid dokumentation for et bestemt antal leveår ved stresshåndtering.',
     listTitle: 'Stresshåndtering:',
     items: [
       'Praktiser mindfulness eller meditation',
@@ -61,11 +62,10 @@ const TOPICS = [
   },
   {
     title: 'Alkohol',
-    text: 'Moderat alkoholforbrug kan have neutrale eller svagt positive effekter, mens stort forbrug forkorter livet betydeligt.',
+    text: 'Risikoen for tidlig død er lavest ved lavt forbrug og stiger derefter; ved 200-350 g alkohol om ugen (ca. 17-29 genstande) er forventet levetid ved 40 år ca. 1-2 år kortere end ved højst 100 g om ugen (ca. 8 genstande) (Wood m.fl., Lancet 2018).',
     listTitle: 'Anbefalinger:',
     items: [
-      'Kvinder: Max 7 genstande per uge',
-      'Mænd: Max 14 genstande per uge',
+      'Sundhedsstyrelsen anbefaler højst 10 genstande om ugen og højst 4 på samme dag, for både kvinder og mænd.',
       '2 alkoholfri dage per uge',
       'Undgå drukfester',
     ],
@@ -73,9 +73,9 @@ const TOPICS = [
 ];
 
 const EFFECTS = [
-  ['+12-14', 'År ekstra ved optimal livsstil'],
-  ['80%', 'Reduktion i hjertesygdomme'],
-  ['50%', 'Reduktion i kræftrisiko'],
+  ['+12,2-14,0', 'Flere leveår ved 50 år: fem mod ingen sunde levevaner'],
+  ['82 %', 'Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner (Li m.fl. 2018)'],
+  ['65 %', 'Lavere kræftdødelighed ved fem mod ingen sunde levevaner (Li m.fl. 2018)'],
 ];
 
 const LivsstilPage = () => (
@@ -84,11 +84,14 @@ const LivsstilPage = () => (
     title="Livsstil og Levetid"
     subtitle="Oplev hvordan dine daglige valg påvirker din levetid og lær at optimere din livsstil for et længere, sundere liv"
   >
+    <AnswerFirst text={answerFirst.livsstil()} linkText="Læg din livsstil ind i levetidsberegneren" />
+
     <section className="card">
       <SectionHeader level={2} title="Livsstilsfaktorer med størst påvirkning" />
       <div className="card-content prose-page">
         <p>
-          Forskning viser, at livsstil udgør op til 60% af de faktorer, der bestemmer din levetid. Her er de
+          I store amerikanske opfølgningsstudier kunne omkring 60 % af dødsfaldene tilskrives, at man ikke fulgte
+          fem sunde levevaner (Li m.fl., Circulation 2018). Tallet gælder en befolkning, ikke dig. Her er de
           vigtigste områder, hvor du kan gøre en forskel:
         </p>
       </div>
@@ -113,9 +116,10 @@ const LivsstilPage = () => (
       <SectionHeader title="Den kumulative effekt af livsstilsændringer" />
       <div className="card-content space-y-6">
         <p className="prose-page">
-          Studier viser, at mennesker, der følger alle fem hovedlivsstilsområder (ikke-rygning, sund vægt,
-          regelmæssig motion, sund kost og moderat alkoholforbrug), lever 12-14 år længere end dem, der ikke
-          følger nogen af dem.
+          I et amerikansk studie af ca. 123.000 sundhedsprofessionelle havde 50-årige, der levede efter alle fem
+          sunde levevaner (ikke-rygning, normalvægt, 30 minutters motion dagligt, moderat alkohol, sund kost),
+          en forventet restlevetid, der var 12,2 år (mænd) og 14,0 år (kvinder) længere end dem uden nogen af
+          dem (Li m.fl., Circulation 2018).
         </p>
         <dl className="grid gap-x-10 sm:grid-cols-3">
           {EFFECTS.map(([value, label]) => (

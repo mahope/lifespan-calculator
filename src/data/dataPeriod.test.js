@@ -50,8 +50,7 @@ describe('data period is single-sourced', () => {
 
   it('renders the period in the footer and the probability card', () => {
     const footer = renderToStaticMarkup(createElement(MemoryRouter, null, createElement(Footer)));
-    expect(footer).toContain(`periode ${LIFE_TABLE_META.tid}`);
-    expect(footer).toContain(`dødelighedstavler ${LIFE_TABLE_META.tid}`);
+    expect(footer.replace(/<!-- -->/g, '')).toContain(`dødelighedstavler for ${LIFE_TABLE_META.period} (tabel HISB8)`);
     const card = renderToStaticMarkup(createElement(Sandsynlighed, { resultData: { age: '40.00', gender: 'male' } }));
     expect(card.replace(/<!-- -->/g, '')).toContain(`Danmarks Statistik, ${LIFE_TABLE_META.period}`);
   });

@@ -5,9 +5,19 @@
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "Permissions-Policy", "value": "geolocation=(), camera=(), microphone=()" },
         { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    },
+    {
+      "source": "/{*,!(embed)/**}",
+      "headers": [{ "key": "X-Frame-Options", "value": "SAMEORIGIN" }]
+    },
+    {
+      "source": "/embed/index.html",
+      "headers": [
+        { "key": "Content-Security-Policy", "value": "frame-ancestors *" },
+        { "key": "X-Robots-Tag", "value": "noindex" }
       ]
     },
     {

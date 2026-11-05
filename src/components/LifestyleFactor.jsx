@@ -1,6 +1,6 @@
 import React, { useId, useRef } from 'react';
-
-const formatYears = (value = 0) => `${value > 0 ? `+${value}` : value} år`;
+import { ASSOCIATION_NOTE, factorHelper, factorYears, sourceLinks } from '../utils/lifestyleFactors';
+import { formatSignedYears } from '../utils/lifespanMath';
 
 /**
  * One lifestyle question rendered as a radio group: `role=radiogroup` with
@@ -10,7 +10,12 @@ const formatYears = (value = 0) => `${value > 0 ? `+${value}` : value} år`;
 const LifestyleFactor = ({ factor, value, onSelect }) => {
   const labelId = useId();
   const optionRefs = useRef([]);
-  const { label, options } = factor;
+  const { label, options, inSum } = factor;
+  const helperId = useId();
+  const noteId = useId();
+  const helper = factorHelper(factor);
+  const links = sourceLinks(factor);
+  const describedBy = [inSum ? null : noteId, helper ? helperId : null].filter(Boolean).join(' ') || undefined;
 
   const checkedIndex = options.findIndex((o) => o.value === value);
   // With no option checked (e.g. the neutral default has no button) the first
@@ -53,9 +58,20 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
     <div className="space-y-3">
       <div className="flex items-baseline justify-between gap-4">
         <span id={labelId} className="font-medium">{label}</span>
-        <span className="fig text-base font-medium text-muted-foreground">{formatYears(value)}</span>
+        <span
+          id={inSum ? undefined : noteId}
+          data-testid="factor-years"
+          className={`fig text-base text-muted-foreground ${inSum ? 'font-medium' : ''}`}
+        >
+          {inSum ? formatSignedYears(factorYears(factor.key, value)) : 'påvirker ikke beregningen'}
+        </span>
       </div>
-      <div role="radiogroup" aria-labelledby={labelId} className="flex flex-wrap gap-2">
+      <div
+        role="radiogroup"
+        aria-labelledby={labelId}
+        aria-describedby={describedBy}
+        className="flex flex-wrap gap-2"
+      >
         {options.map((option, index) => {
           const checked = index === checkedIndex;
           return (
@@ -75,6 +91,28 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
           );
         })}
       </div>
+      {helper && (
+        <p id={helperId} className="text-xs text-muted-foreground">
+          {helper}{factor.source ? ` ${ASSOCIATION_NOTE}` : ''}
+          {links.map((link) => {
+            const visible = links.length > 1 ? `Se kilden (${link.short})` : 'Se kilden';
+            return (
+              <React.Fragment key={link.pmid}>
+                {' '}
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${visible}, ${label}`}
+                  className="underline hover:text-primary"
+                >
+                  {visible}
+                </a>
+              </React.Fragment>
+            );
+          })}
+        </p>
+      )}
     </div>
   );
 };

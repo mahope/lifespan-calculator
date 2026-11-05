@@ -1,4 +1,6 @@
 import React from 'react';
+import { formatSignedYears, formatYears } from '../utils/lifespanMath';
+import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 // The card that is rendered to a PNG for sharing. It uses fixed colours rather than the theme tokens so the
 // image looks the same in light and dark mode.
@@ -18,9 +20,12 @@ const ShareCard = ({ resultData }) => {
       <p className="fig text-xl font-semibold">Mine levetidsresultater</p>
 
       <p className="fig mt-6 text-7xl leading-none font-semibold" style={{ color: ACCENT }}>
-        {resultData.remainingYears}
+        {formatYears(Number(resultData.remainingYears))}
       </p>
       <p className="mt-1 text-lg" style={{ color: MUTED }}>år tilbage, statistisk set</p>
+      <p className="mt-1 text-sm" style={{ color: MUTED }}>
+        {PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period}
+      </p>
 
       <div className="mt-6">
         <div style={row}>
@@ -35,8 +40,7 @@ const ShareCard = ({ resultData }) => {
           <div style={row}>
             <span style={{ color: MUTED }}>Livsstilspåvirkning</span>
             <span className="fig text-xl font-semibold">
-              {resultData.lifestyleImpact > 0 ? '+' : ''}
-              {resultData.lifestyleImpact} år
+              {formatSignedYears(resultData.lifestyleImpact)}
             </span>
           </div>
         )}

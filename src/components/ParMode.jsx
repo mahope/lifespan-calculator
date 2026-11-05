@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SectionHeader from './SectionHeader';
 import { jointLifeStats } from '../utils/lifeTableDK';
+import { formatYears } from '../utils/lifespanMath';
 
 // "Jer to sammen" — enter a partner's age/gender and see joint-life odds and the
 // expected number of years you both have left, from the Danish survivors table.
@@ -71,7 +72,7 @@ const ParMode = ({ resultData }) => {
             <div className="border-l-2 border-primary pl-4">
               <div className="text-[0.9375rem] text-muted-foreground">Forventede år sammen (begge i live)</div>
               <div className="fig text-5xl font-semibold text-primary">
-                {stats.expectedTogether.toFixed(1)}
+                {formatYears(stats.expectedTogether)}
               </div>
             </div>
             <div className="overflow-x-auto">
@@ -97,6 +98,11 @@ const ParMode = ({ resultData }) => {
           </div>
         )}
 
+        {resultData.projection === 'projected' && (
+          <p className="max-w-prose text-sm text-muted-foreground" data-testid="par-period-note">
+            Beregningen af jeres år sammen bruger nuværende dødelighed.
+          </p>
+        )}
         <p className="max-w-prose text-sm text-muted-foreground">
           Antager uafhængig dødelighed. Tallene er fra danske dødelighedstavler (Danmarks Statistik).
         </p>

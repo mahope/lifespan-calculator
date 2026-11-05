@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
+import OmTallene from './OmTallene';
 
 const PAGES = [
   { to: '/', label: 'Levetidsberegneren' },
-  { to: '/hvor-lang-tid-har-jeg-tilbage', label: 'Hvor lang tid har jeg tilbage at leve?' },
-  { to: '/dodsalder-calculator', label: 'Dødsalder Calculator' },
-  { to: '/levetid-beregner-danmark', label: 'Dansk levetidsberegner' },
+  { to: '/hvor-lang-tid-har-jeg-tilbage', label: 'Hvor mange år har jeg tilbage?' },
+  { to: '/dodsalder-calculator', label: 'Forventet dødsalder' },
   { to: '/livsstil-og-levetid', label: 'Livsstil og levetid' },
-  { to: '/pensionsalder', label: 'Pensionsalder' },
+  { to: '/pensionsalder', label: 'Hvornår kan jeg gå på pension?' },
+  { to: '/levetid-beregner-danmark', label: 'Levealder i Danmark' },
 ];
 
 const Footer = () => {
@@ -33,13 +33,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="space-y-3">
-            <h3 className="fig text-lg text-foreground">Datakilder og nøjagtighed</h3>
-            <p>
-              Tallene stammer fra Danmarks Statistiks dødelighedstavler (tabel HISB8, periode {LIFE_TABLE_META.tid}). Det
-              er gennemsnitstal, og de forudsiger ikke individuelle livsforløb.
-            </p>
-          </div>
+          <OmTallene className="md:col-span-2 lg:col-span-3" />
 
           <div className="space-y-3">
             <h3 className="fig text-lg text-foreground">Privatlivspolitik</h3>
@@ -74,13 +68,6 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 max-w-3xl space-y-2 border-t pt-6 text-sm text-muted-foreground">
-          <p className="font-medium text-foreground">
-            Data fra Danmarks Statistik (dødelighedstavler {LIFE_TABLE_META.tid}).
-          </p>
-          <p>
-            Tjenesten er kun til information og refleksion. Søg professionel medicinsk rådgivning ved
-            sundhedsrelaterede spørgsmål.
-          </p>
           <p>
             Udviklet af{' '}
             <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer" className="link">

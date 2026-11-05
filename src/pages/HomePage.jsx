@@ -24,16 +24,20 @@ import Forsikringsbehov from '../components/Forsikringsbehov';
 import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
-import { parseShareParams } from '../utils/shareState';
-import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
+import { parseShareParams, takeShareSearchParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
-import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
+import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
+import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
+import { COHORT_TABLE } from '../data/cohortTable.generated';
+import ProjectionToggle from '../components/ProjectionToggle';
 
 const HomePage = () => {
   const {
     resultData,
     currentMode,
+    setProjection,
+    resetProjection,
     lifestyleFactors,
     setCurrentMode,
     calculateLifespan,
@@ -85,7 +89,7 @@ const HomePage = () => {
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
-    const parsed = parseShareParams(searchParams);
+    const parsed = parseShareParams(takeShareSearchParams(searchParams));
     if (!parsed) return;
 
     setCurrentMode(parsed.mode);
@@ -146,6 +150,7 @@ const HomePage = () => {
   };
 
   const resetCalculation = () => {
+    resetProjection();
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
@@ -159,7 +164,7 @@ const HomePage = () => {
 
   // Bounded to match what the calculation actually applies (see #6).
   const rawLifestyleTotal = sumLifestyleFactors(lifestyleFactors);
-  const lifestyleTotal = Math.round(boundLifestyleAdjustment(rawLifestyleTotal));
+  const lifestyleTotal = roundedLifestyleAdjustment(rawLifestyleTotal);
 
   const funFacts = [
     ['Solopgange set', resultData?.sunrises?.toLocaleString()],
@@ -359,7 +364,7 @@ const HomePage = () => {
                       <div className="flex items-baseline justify-between gap-4 border-t pt-4">
                         <span className="font-medium">Livsstils påvirkning:</span>
                         <span className="fig text-2xl font-semibold text-primary">
-                          {lifestyleTotal > 0 ? `+${lifestyleTotal}` : lifestyleTotal} år
+                          {formatSignedYears(lifestyleTotal)}
                         </span>
                       </div>
                     </div>
@@ -393,15 +398,20 @@ const HomePage = () => {
               {/* Announced once for screen readers; the ticking grid below is
                   hidden from assistive tech to avoid per-second spam. */}
               <p className="sr-only" aria-live="polite">
-                Du har statistisk {resultData?.remainingYears} år tilbage at leve.
+                Du har statistisk {formatYears(Number(resultData?.remainingYears))} år tilbage at leve
+                {resultData?.projection === 'projected'
+                  ? ' (fremskrevet af Danmarks Statistik).'
+                  : ' (nuværende dødelighed).'}
               </p>
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 Statistisk set har du ca.{' '}
-                <strong className="fig font-semibold text-foreground">{resultData?.remainingYears} år</strong> tilbage.
+                <strong className="fig font-semibold text-foreground">
+                  {formatYears(Number(resultData?.remainingYears))} år
+                </strong> tilbage.
                 Det svarer til en forventet alder på{' '}
                 <strong className="fig font-semibold text-foreground">
                   {Number.isFinite(parseFloat(resultData?.adjustedLifeExpectancy))
-                    ? parseFloat(resultData.adjustedLifeExpectancy).toFixed(1)
+                    ? formatYears(parseFloat(resultData.adjustedLifeExpectancy))
                     : resultData?.adjustedLifeExpectancy}{' '}
                   år
                 </strong>
@@ -409,10 +419,11 @@ const HomePage = () => {
               </p>
               <div className="mt-8">
                 <Countdown key={resultData?.endTimestamp} endTimestamp={resultData?.endTimestamp} />
+                <ProjectionToggle resultData={resultData} onChange={setProjection} />
               </div>
             </div>
 
-            {/* Biological age (advanced mode) */}
+            {/* Equivalent age (advanced mode) */}
             <KropsAlder resultData={resultData} />
 
             {/* Probability of reaching ages, with the survival curve */}
@@ -537,18 +548,20 @@ const HomePage = () => {
             {/* Disclaimers */}
             <div className="card">
               <div className="card-header">
-                <h3 className="fig text-2xl leading-tight font-semibold">Om tallene</h3>
+                <h3 className="fig text-2xl leading-tight font-semibold">Bemærk</h3>
               </div>
               <div className="card-content max-w-prose space-y-3 text-[0.9375rem] text-muted-foreground">
                 <p>
-                  <strong className="text-foreground">Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data.
-                  Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt.
+                  Det her er statistik, ikke en prognose for dig, og ikke medicinsk rådgivning.{' '}
+                  <a href="#om-tallene" className="link">Læs mere under Om tallene</a>.
                 </p>
-                <ul className="list-disc space-y-1 pl-5">
-                  <li>Baseret på danske dødelighedstavler (Danmarks Statistik, {LIFE_TABLE_META.period})</li>
-                  <li>Individuelle faktorer påvirker ikke beregningen</li>
-                  <li>Kun til underholdning og refleksion</li>
-                </ul>
+                <p>
+                  Nuværende dødelighed viser, hvor mange år en gennemsnitlig dansker på din alder og dit køn har
+                  tilbage, hvis dødeligheden forbliver som i {LIFE_TABLE_META.period}. Fremskrevet bygger på Danmarks
+                  Statistiks antagelse om, at dødeligheden fortsat falder (befolkningsfremskrivning 2026, opdateret{' '}
+                  {COHORT_TABLE.tableUpdated.split('-').reverse().join('.')}). Fremskrivningen er en antagelse og
+                  mere usikker end de målte tal.
+                </p>
               </div>
             </div>
           </div>

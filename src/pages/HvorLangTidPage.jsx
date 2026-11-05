@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 
 const REASONS = [
   ['Målsætning og prioritering', 'At kende din forventede resterende levetid kan hjælpe dig med at prioritere mål og drømme i dit liv.'],
@@ -13,9 +15,11 @@ const REASONS = [
 const HvorLangTidPage = () => (
   <PageShell
     route="/hvor-lang-tid-har-jeg-tilbage"
-    title="Hvor lang tid har jeg tilbage?"
+    title="Hvor mange år har jeg tilbage?"
     subtitle="Få et statistisk estimat af din resterende levetid baseret på videnskabelige data"
   >
+    <AnswerFirst text={answerFirst.hvorLangTid()} linkText="Se din egen restlevetid i levetidsberegneren" />
+
     <section className="card">
       <SectionHeader level={2} title={'Hvad betyder "resterende levetid"?'} />
       <div className="card-content prose-page">
@@ -55,7 +59,7 @@ const HvorLangTidPage = () => (
           Dette giver dig ekstra fun facts som antallet af fuldmåner du har oplevet og præcis hvor mange sekunder du har levet.
         </p>
         <p>
-          <Link to="/" className="btn btn-primary">Beregn din resterende levetid nu</Link>
+          <Link to="/" className="btn btn-primary">Beregn din restlevetid i levetidsberegneren</Link>
         </p>
       </div>
     </section>

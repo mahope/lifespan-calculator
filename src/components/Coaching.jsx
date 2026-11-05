@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionHeader from './SectionHeader';
 import { topImprovements } from '../utils/lifestyleFactors';
+import { formatSignedYears } from '../utils/lifespanMath';
 
 // "Sådan kan du vinde flere år" — ranks the changes that would lift this user's
 // estimate most, with a citation where the effect size is grounded in research.
@@ -32,7 +33,9 @@ const Coaching = ({ lifestyleFactors }) => {
                   </a>
                 )}
               </div>
-              <div className="fig text-xl font-semibold text-primary">+{i.gain} år</div>
+              <div className="fig text-xl font-semibold text-primary">
+                {formatSignedYears(i.gain)}
+              </div>
             </li>
           ))}
         </ul>

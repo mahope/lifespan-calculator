@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 
 const STEPS = [
   ['Demografiske data', 'Vi bruger Danmarks Statistiks dødelighedstavler for dit køn og din alder.'],
@@ -28,9 +30,11 @@ const EXTEND = [
 const DodsalderPage = () => (
   <PageShell
     route="/dodsalder-calculator"
-    title="Dødsalder Calculator"
+    title="Forventet dødsalder"
     subtitle="Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer"
   >
+    <AnswerFirst text={answerFirst.dodsalder()} linkText="Beregn din forventede dødsalder i levetidsberegneren" />
+
     <section className="card">
       <SectionHeader level={2} title="Hvad er en dødsalder calculator?" />
       <div className="card-content space-y-8">
@@ -81,7 +85,7 @@ const DodsalderPage = () => (
           forudsigelse.
         </p>
         <p>
-          <Link to="/" className="btn btn-primary">Beregn din dødsalder nu</Link>
+          <Link to="/" className="btn btn-primary">Beregn din forventede dødsalder</Link>
         </p>
       </div>
     </section>

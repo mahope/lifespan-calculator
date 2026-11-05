@@ -39,16 +39,30 @@ update snapshots with `npm run test:e2e -- --update-snapshots`). `npm run build`
 - **`App.jsx`**: Route definitions. Pages are lazy-loaded via `React.lazy` +
   `Suspense`.
 - **`pages/`**: One component per route (HomePage, HvorLangTidPage,
-  DodsalderPage, LivsstilPage, DanmarkPage, PensionsalderPage, NotFoundPage).
+  DodsalderPage, LivsstilPage, DanmarkPage, PensionsalderPage, EmbedInfoPage,
+  EmbedPage, NotFoundPage).
 - **`components/`**: Shared UI (SEOHead, PageHeader with the `SiteNav` masthead, PageShell for the landing
   pages, SectionHeader, ThemeToggle, Footer, PromoBanner, Overlevelseskurve (survival curve), ShareCard, ShareModal).
 - **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure
   `computeResult(input, now)` in `utils/lifespanMath.js` (age, remaining time,
   end instant). No location lookup: the app never asks for or sends the user's position.
 - **`utils/lifestyleFactors.js`**: `LIFESTYLE_FACTORS` is the single source of the
-  advanced-mode questionnaire (key, icon, label, options with year deltas);
-  `components/LifestyleFactor.jsx` renders one factor as an accessible radio group.
-  To add or change an option, edit the data only.
+  advanced-mode questionnaire (key, icon, label, `inSum`, `evidence`, `source` with
+  cited figure/PMID/range, options `{ value, years, label }`; `value` is the stored
+  answer/share-link id, `years` the effect). Only `inSum` factors change the
+  estimate, and every `inSum` factor needs a source and evidence above `none`
+  (tested). `components/LifestyleFactor.jsx` renders one factor as an accessible
+  radio group with helper text generated from the table. To add or change an
+  option, edit the data only.
+- **`data/cohortTable.generated.js`**: projected (cohort) e_x per age 0-99 from DST
+  FRDK426, written by `node scripts/build-cohort-table.mjs` (needs network; leaves the
+  file untouched on any validation failure). `computeResult` takes `projection:
+  'period'|'projected'`; the period table stays the default and projected is only
+  offered below age 70 (`PROJECTION_MAX_AGE`, checked on the age after #118's +0.5, so
+  an entered 69 gets the toggle and 70 does not). Survival probabilities (`Sandsynlighed`)
+  and `ParMode` always use the period figures. The toggle state is page state only (reset
+  by "Ny beregning", never in the URL or storage). `BASE_YEAR` in the script is explicit;
+  a test fails when the table is more than a year older than `LIFE_TABLE_PERIOD`.
 - **`utils/lifeExpectancyData.js`**: Static country life-expectancy data with
   Danish translations, plus lookup/formatting helpers.
 - **`index.css`**: Tailwind v4 entry - `@import 'tailwindcss'`, `@theme` design
@@ -96,6 +110,16 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
   list lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates
   `public/sitemap.xml` from it. Adding a route means updating `ROUTES`,
   `App.jsx` and `ROUTE_META` in `src/routes.meta.js` (tests enforce this).
+  `/embed` (iframe widget, `EmbedPage`) is a normal route with `noindex: true`, listed in
+  `ROUTES` but also in `NOINDEX_ROUTES`, so it is not in the sitemap. `/embed-levetidsberegner`
+  (info page with copy-paste code and terms) is indexable. Framing: `X-Frame-Options:
+  SAMEORIGIN` is set on every file except `dist/embed/index.html`, which sends
+  `Content-Security-Policy: frame-ancestors *` and `X-Robots-Tag: noindex` (`serve`
+  matches header sources against the file it sends; the glob `/{*,!(embed)/**}` in
+  `public/serve.json` does the exclusion, tested end to end in `e2e/embed.e2e.js`). The widget
+  uses `computeEmbedResult` (`utils/embedResult.js`), which calls `computeResult`, so its
+  numbers equal the calculator's. It posts only `{type, height}` to the parent and tracks
+  `Embed Calculate` without props.
 - Hosted as a Dokploy app (`web`) on a worker server, build type `dockerfile`.
   **autoDeploy is off**: merging to `master` does not deploy; a deploy is
   triggered by hand.

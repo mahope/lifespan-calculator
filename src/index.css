@@ -483,3 +483,10 @@
     }
   }
 }
+
+/* /embed (iframe widget): optional transparent background (?bg=transparent). */
+html[data-embed-bg='transparent'],
+html[data-embed-bg='transparent'] body,
+html[data-embed-bg='transparent'] #root > div {
+  background: transparent !important;
+}

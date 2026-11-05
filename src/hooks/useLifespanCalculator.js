@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { computeResult } from '../utils/lifespanMath';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 
@@ -9,16 +9,37 @@ export const LIFESTYLE_KEYS = LIFESTYLE_FACTORS.map((f) => f.key);
 export const useLifespanCalculator = () => {
   const [resultData, setResultData] = useState(null);
   const [currentMode, setCurrentMode] = useState('simple');
+  // 'period' (default) or 'projected' (DST cohort). Page state only: never in the
+  // URL and never stored. `lastInput` lets a toggle recompute with the same `now`.
+  const [projection, setProjectionState] = useState('period');
+  const lastInput = useRef(null);
   const [lifestyleFactors, setLifestyleFactors] = useState(() =>
     Object.fromEntries(LIFESTYLE_KEYS.map((k) => [k, 0]))
   );
 
   // Calculate lifespan - accepts age (number) or birthdate (string/Date)
   const calculateLifespan = useCallback((ageOrBirthdate, gender, birthdate = null) => {
-    const result = computeResult({ ageOrBirthdate, gender, birthdate, lifestyleFactors }, new Date());
-    setResultData(result);
-    return result;
-  }, [lifestyleFactors]);
+    const now = new Date();
+    const input = { ageOrBirthdate, gender, birthdate, lifestyleFactors };
+    lastInput.current = { input, now };
+    setResultData(computeResult({ ...input, projection }, now));
+    // History always stores the period figure so entries stay comparable.
+    return computeResult(input, now);
+  }, [lifestyleFactors, projection]);
+
+  const setProjection = useCallback((mode) => {
+    if (lastInput.current) {
+      setProjectionState(mode);
+      const { input, now } = lastInput.current;
+      setResultData(computeResult({ ...input, projection: mode }, now));
+    }
+  }, []);
+
+  // "Ny beregning": back to the default (period) figure and forget the last input.
+  const resetProjection = useCallback(() => {
+    setProjectionState('period');
+    lastInput.current = null;
+  }, []);
 
   // Update lifestyle factors
   const updateLifestyleFactor = useCallback((factor, value) => {
@@ -36,6 +57,9 @@ export const useLifespanCalculator = () => {
   return {
     resultData,
     currentMode,
+    projection,
+    setProjection,
+    resetProjection,
     lifestyleFactors,
     setCurrentMode,
     calculateLifespan,

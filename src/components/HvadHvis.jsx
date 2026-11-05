@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import SectionHeader from './SectionHeader';
-import { LIFESTYLE_META } from '../utils/lifestyleFactors';
+import { factorYears, isSuggestible, LIFESTYLE_META } from '../utils/lifestyleFactors';
 import { projectedExpectancy } from '../utils/lifeTableDK';
+import { formatSignedYears, formatYears } from '../utils/lifespanMath';
 
 // "Hvad hvis?" — toggle hypothetical improvements and watch the projected age
 // update live. Consistent with the main estimate (same projectedExpectancy()).
@@ -15,15 +16,20 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
 
   const current = lifestyleFactors || {};
   // Only factors where there's room to improve.
-  const options = LIFESTYLE_META.filter((m) => (current[m.key] ?? 0) < m.best);
+  const options = LIFESTYLE_META.filter((m) => isSuggestible(m, current) && factorYears(m.key, current[m.key]) < m.best);
   if (!options.length) return null;
 
   const hypothetical = { ...current };
-  for (const m of options) if (applied[m.key]) hypothetical[m.key] = m.best;
+  for (const m of options) if (applied[m.key]) hypothetical[m.key] = m.bestValue;
 
   const currentExpected = parseFloat(resultData.adjustedLifeExpectancy);
-  const newExpected = projectedExpectancy(age, gender, hypothetical);
-  const delta = newExpected - currentExpected;
+  // Same inputs and table on both sides, so no choice gives exactly 0 (the shown
+  // result is rounded to one decimal and the age to two).
+  const { projection } = resultData;
+  const delta =
+    projectedExpectancy(age, gender, hypothetical, projection) -
+    projectedExpectancy(age, gender, current, projection);
+  const newExpected = currentExpected + delta;
   const anyApplied = Object.values(applied).some(Boolean);
 
   return (
@@ -51,8 +57,11 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
           <div className="text-[0.9375rem] text-muted-foreground">
             {anyApplied ? 'Ny forventet alder' : 'Din forventede alder'}
           </div>
-          <div className="fig text-5xl font-semibold text-primary">{newExpected.toFixed(1)}</div>
+          <div data-testid="hvadhvis-expected" className="fig text-5xl font-semibold text-primary">
+            {formatYears(newExpected)}
+          </div>
           <div
+            data-testid="hvadhvis-delta"
             className={`text-[0.9375rem] font-medium ${
               delta >= 0.05
                 ? 'text-primary'
@@ -62,9 +71,9 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
             }`}
           >
             {delta >= 0.05
-              ? `+${delta.toFixed(1)} år i forhold til nu`
+              ? `${formatSignedYears(delta)} i forhold til nu`
               : delta <= -0.05
-                ? `${delta.toFixed(1)} år i forhold til nu`
+                ? `${formatSignedYears(delta)} i forhold til nu`
                 : 'Vælg en ændring ovenfor'}
           </div>
         </div>

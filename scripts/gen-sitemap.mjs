@@ -14,7 +14,13 @@ export const ROUTES = [
   '/levetid-beregner-danmark',
   '/livsstil-og-levetid',
   '/pensionsalder',
+  '/embed-levetidsberegner',
+  '/embed',
 ]
+
+// Served by the app (and prerendered) but kept out of the sitemap: the iframe widget is noindex.
+export const NOINDEX_ROUTES = ['/embed']
+export const SITEMAP_ROUTES = ROUTES.filter((r) => !NOINDEX_ROUTES.includes(r))
 
 export function buildSitemap(routes) {
   const urls = routes.map((r) => `  <url>\n    <loc>${SITE_URL}${r}</loc>\n  </url>`).join('\n')
@@ -23,6 +29,6 @@ export function buildSitemap(routes) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const out = new URL('../public/sitemap.xml', import.meta.url)
-  writeFileSync(out, buildSitemap(ROUTES))
-  process.stdout.write(`sitemap: wrote ${ROUTES.length} routes to public/sitemap.xml` + '\n')
+  writeFileSync(out, buildSitemap(SITEMAP_ROUTES))
+  process.stdout.write(`sitemap: wrote ${SITEMAP_ROUTES.length} routes to public/sitemap.xml` + '\n')
 }

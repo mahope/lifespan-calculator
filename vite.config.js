@@ -28,7 +28,7 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
         // Don't SPA-fallback the standalone static legal/policy .html pages.
-        navigateFallbackDenylist: [/\.html$/],
+        navigateFallbackDenylist: [/\.html$/, /^\/api\//, /^\/robots\.txt$/, /^\/sitemap\.xml$/],
       },
     }),
   ],

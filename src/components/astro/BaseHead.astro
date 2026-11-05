@@ -1,0 +1,76 @@
+---
+import { SITE, OG_IMAGE } from '../../lib/site.js'
+
+export interface Props {
+  title: string
+  description: string
+  /** Absolute path of this page, e.g. "/pensionsalder". The canonical is always self. */
+  path: string
+  noindex?: boolean
+  /** Extra JSON-LD objects (WebApplication, Dataset, BreadcrumbList ...). */
+  jsonLd?: Record<string, unknown>[]
+  ogImage?: string
+}
+
+const { title, description, path, noindex = false, jsonLd = [], ogImage = OG_IMAGE } = Astro.props
+const canonical = new URL(path, SITE).toString()
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#2563eb" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/pwa-192x192.png" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+<link rel="canonical" href={canonical} />
+<link rel="manifest" href="/manifest.webmanifest" />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content="Levetidsberegner" />
+<meta property="og:locale" content="da_DK" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+{jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...obj })} />)}
+
+<!-- Apply the saved theme before first paint (no flash). -->
+<script is:inline>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<!-- Service worker (PWA): register, then warm the HTML cache so this page works offline after the first visit. -->
+<script is:inline>
+  if ('serviceWorker' in navigator) {
+    addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function () {
+        return navigator.serviceWorker.ready;
+      }).then(function () {
+        var warm = function () { fetch(location.href, { headers: { 'x-sw-warm': '1' } }).catch(function () {}); };
+        if (navigator.serviceWorker.controller) warm();
+        else navigator.serviceWorker.addEventListener('controllerchange', warm, { once: true });
+      }).catch(function () {});
+    });
+  }
+</script>
+
+<!-- Plausible Analytics (self-hosted), unchanged from the SPA -->
+<script is:inline defer data-domain="levetidsberegner.dk" src="https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"></script>
+<script is:inline>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>

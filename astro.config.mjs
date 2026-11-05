@@ -18,7 +18,7 @@ export default defineConfig({
     sitemap({ filter: (page) => indexable.has(new URL(page).pathname) }),
     AstroPWAIntegration({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      injectRegister: false, // registered by BaseHead (adds the HTML warm-up)
       manifest: {
         name: 'Levetidsberegner',
         short_name: 'Levetid',
@@ -34,16 +34,16 @@ export default defineConfig({
           { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
-      workbox: {
+      generateSW: {
         // Precache only what the calculator needs offline: its JS/CSS, the home page and the icon.
-        globPatterns: ['_astro/*.{js,css}', 'index.html', 'favicon.svg'],
+        globPatterns: ['_astro/*.{js,css}', 'index.html'],
         // No SPA fallback: every URL is a real file, unknown URLs must stay real 404s.
         navigateFallback: null,
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
             // HTML: network first, so a deploy is picked up immediately; cache only when offline.
-            urlPattern: ({ request }) => request.mode === 'navigate',
+            urlPattern: ({ request }) => request.mode === 'navigate' || request.headers.has('x-sw-warm'),
             handler: 'NetworkFirst',
             options: { cacheName: 'html', networkTimeoutSeconds: 3, expiration: { maxEntries: 20 } },
           },

@@ -1,0 +1,36 @@
+---
+import '../index.css'
+import BaseHead from '../components/astro/BaseHead.astro'
+import ThemeToggle from '../components/astro/ThemeToggle.astro'
+import Footer from '../components/astro/Footer.astro'
+import PromoBanner from '../components/PromoBanner'
+
+interface Props {
+  title: string
+  description: string
+  path: string
+  noindex?: boolean
+  jsonLd?: Record<string, unknown>[]
+  promo?: boolean
+}
+
+const { promo = true, ...head } = Astro.props
+---
+
+<!doctype html>
+<html lang="da">
+  <head>
+    <BaseHead {...head} />
+  </head>
+  <body>
+    <div class="min-h-screen bg-background font-sans antialiased">
+      <div class="flex min-h-screen flex-col">
+        <slot name="header" />
+        <slot />
+        {promo && <PromoBanner />}
+        <Footer />
+        <ThemeToggle />
+      </div>
+    </div>
+  </body>
+</html>

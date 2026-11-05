@@ -1,0 +1,90 @@
+---
+import Base from '../../../layouts/Base.astro'
+import PageHeader from '../../../components/PageHeader'
+import SurvivalCurve from '../../../components/astro/SurvivalCurve.astro'
+import { Activity } from 'lucide-react'
+import { allAgePages, evaluateAgePages } from '../../../lib/agePages.js'
+import { breadcrumb } from '../../../lib/site.js'
+
+export function getStaticPaths() {
+  const pages = allAgePages()
+  const verdict = new Map(evaluateAgePages(pages).map((r) => [r.id, r]))
+  return pages.map((page) => ({
+    params: { koen: page.sex.slug, alder: String(page.age) },
+    props: { page, indexable: verdict.get(page.id)!.pass },
+  }))
+}
+
+const { page, indexable } = Astro.props
+const p = page
+---
+
+<Base
+  title={p.title}
+  description={p.description}
+  path={p.id}
+  noindex={!indexable}
+  promo={false}
+  jsonLd={[breadcrumb(['Levetid', '/levetid-beregner-danmark'], [`${p.sex.noun === 'mand' ? 'Mand' : 'Kvinde'} ${p.age} år`, p.id])]}
+>
+  <PageHeader slot="header" icon={Activity} title={p.h1} subtitle={p.answer} />
+  <main class="flex-1">
+    <div class="container py-8 sm:py-12">
+      <div class="mx-auto max-w-3xl space-y-8">
+        <section class="card"><div class="card-content pt-6">
+          <h2 class="text-xl font-bold mb-3">Nøgletal</h2>
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {p.keyFigures.map(([k, v]: string[]) => (
+              <div class="rounded-lg bg-muted/40 p-3"><dt class="text-sm text-muted-foreground">{k}</dt><dd class="text-xl font-semibold">{v}</dd></div>
+            ))}
+          </dl>
+        </div></section>
+
+        <section class="space-y-3 text-muted-foreground leading-relaxed">
+          {p.paragraphs.map((t: string) => <p>{t}</p>)}
+        </section>
+
+        <figure class="card"><div class="card-content pt-6">
+          <SurvivalCurve points={p.curve} median={p.marks.median} death={p.marks.death} label={p.caption} />
+          <figcaption class="mt-2 text-sm text-muted-foreground">{p.caption}</figcaption>
+        </div></figure>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          {[
+            ['Chance for at nå en alder', p.reachRows],
+            ['Hvor længe er hvor mange i live?', p.shareRows],
+            ['De næste 10, 20 og 30 år', p.horizonRows],
+            ['Samme alder før og nu', p.historyRows],
+            ['Pension for årgangen', p.pensionRows],
+          ].map(([caption, rows]: any) => (
+            <table class="w-full text-left text-sm">
+              <caption class="text-left text-lg font-semibold pb-2">{caption}</caption>
+              <tbody>
+                {rows.map((r: string[]) => (
+                  <tr class="border-b">{r.map((c, i) => (i === 0 ? <th scope="row" class="py-2 pr-3 font-normal">{c}</th> : <td class="py-2 pr-3">{c}</td>))}</tr>
+                ))}
+              </tbody>
+            </table>
+          ))}
+        </div>
+
+        <nav class="space-y-2" aria-label="Relaterede sider">
+          <h2 class="text-lg font-semibold">Se også</h2>
+          <ul class="flex flex-wrap gap-x-6 gap-y-1 text-primary">
+            {p.links.younger && <li><a class="hover:underline inline-flex min-h-[44px] items-center" href={p.links.younger}>{Number(p.age) - 5} år, {p.sex.noun}</a></li>}
+            {p.links.older && <li><a class="hover:underline inline-flex min-h-[44px] items-center" href={p.links.older}>{Number(p.age) + 5} år, {p.sex.noun}</a></li>}
+            <li><a class="hover:underline inline-flex min-h-[44px] items-center" href={p.links.other}>{p.age} år, {p.other.noun}</a></li>
+            <li><a class="hover:underline inline-flex min-h-[44px] items-center" href={p.links.calculator}>Beregn din egen levetid</a></li>
+            <li><a class="hover:underline inline-flex min-h-[44px] items-center" href="/pensionsalder">Hvornår kan jeg gå på pension?</a></li>
+          </ul>
+        </nav>
+
+        <p class="text-sm text-muted-foreground">
+          Kilde: Danmarks Statistik, dødelighedstavle HISB8 (2-års tavler), perioderne 1981–82, 2000–01 og 2024–25. Tallene er
+          gennemsnit for alle danskere af samme køn og alder og siger ikke, hvor længe du selv lever. Tavlen slutter ved 99 år;
+          chancen for at nå 100 er et skøn, der forlænger den seneste årlige overlevelsesrate.
+        </p>
+      </div>
+    </div>
+  </main>
+</Base>

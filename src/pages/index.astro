@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHeader from '../components/PageHeader'
+import Calculator from '../islands/Calculator.jsx'
+import { Hourglass } from 'lucide-react'
+import { SITE, WEB_APPLICATION } from '../lib/site.js'
+
+const description =
+  'Gratis levetidsberegner: se din statistiske resterende levetid ud fra alder og køn, med live nedtælling. Danske tal fra Danmarks Statistik. Intet gemmes.'
+---
+
+<Base
+  title="Levetidsberegner: beregn din resterende levetid"
+  description={description}
+  path="/"
+  jsonLd={[{ ...WEB_APPLICATION, description }]}
+>
+  <PageHeader
+    slot="header"
+    icon={Hourglass}
+    title="Levetidsberegner"
+    subtitle="Beregn hvor mange år du statistisk set har tilbage, baseret på danske dødelighedstavler."
+  />
+  <Calculator client:load />
+  <section class="container pb-8">
+    <div class="mx-auto max-w-2xl space-y-3 text-sm text-muted-foreground leading-relaxed">
+      <h2 class="text-lg font-semibold text-foreground">Sådan beregnes din levetid</h2>
+      <p>
+        Beregneren slår din alder og dit køn op i Danmarks Statistiks dødelighedstavle (HISB8, 2024–2025) og viser den
+        gennemsnitlige restlevetid for danskere på din alder. I avanceret tilstand kan du lægge livsstilsfaktorer oven
+        i. De er illustrative og ikke medicinsk dokumenterede.
+      </p>
+      <p>
+        Alt regnes i din browser. Dine oplysninger sendes ikke til nogen server. Du kan også se
+        <a href="/levetid/mand/40" class="text-primary hover:underline">hvor længe en 40-årig mand lever</a>,
+        <a href="/pensionsalder" class="text-primary hover:underline">hvornår du kan gå på pension</a> og
+        <a href="/levetid-beregner-danmark" class="text-primary hover:underline">tallene for hele Danmark</a>.
+      </p>
+    </div>
+  </section>
+</Base>

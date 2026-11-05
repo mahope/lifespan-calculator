@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHeader from '../components/PageHeader'
+import PensionForm from '../islands/PensionForm.jsx'
+import { Landmark } from 'lucide-react'
+import { breadcrumb } from '../lib/site.js'
+import { ageBands } from '../lib/pensionCalc.js'
+
+const path = '/pensionsalder'
+const bands = ageBands(1950, 1975)
+const label = (b: { from: number; to: number }) =>
+  b.from === b.to ? `${b.from}` : b.to === 1975 ? `${b.from} og senere` : b.from === 1950 ? `${b.to} og tidligere` : `${b.from}–${b.to}`
+---
+
+<Base
+  title="Hvornår kan jeg gå på pension? Pensionsalder beregner"
+  description="Skriv din fødselsdato og se din folkepensionsalder, datoen du når den og hvor mange år du statistisk kan forvente som pensionist."
+  path={path}
+  jsonLd={[breadcrumb(['Pensionsalder', path])]}
+>
+  <PageHeader
+    slot="header"
+    icon={Landmark}
+    title="Hvornår kan jeg gå på pension?"
+    subtitle="Se din folkepensionsalder og hvor mange år du statistisk kan forvente som pensionist."
+  />
+  <main class="flex-1">
+    <div class="container py-8 sm:py-12">
+      <div class="mx-auto max-w-2xl space-y-8">
+        <PensionForm client:load />
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold">Folkepensionsalder efter fødselsår</h2>
+          <table class="w-full text-left text-sm">
+            <caption class="sr-only">Folkepensionsalder efter fødselsår</caption>
+            <thead><tr class="border-b"><th class="py-2 pr-4">Født</th><th class="py-2">Folkepensionsalder</th></tr></thead>
+            <tbody>
+              {bands.map((b) => (
+                <tr class="border-b"><td class="py-2 pr-4">{label(b)}</td><td class="py-2">{b.age} år</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-sm text-muted-foreground">
+            Aldrene følger Lov nr. 703 af 20. juni 2025 og er kontrolleret mod borger.dk. Tabellen viser hele år. Årgangene
+            1954 og 1955 rykker i halve år, og det regner beregneren endnu ikke på.
+          </p>
+        </section>
+
+        <section class="space-y-3 text-muted-foreground leading-relaxed">
+          <h2 class="text-xl font-bold text-foreground">Sådan regner vi</h2>
+          <p>
+            Folkepensionsalderen afhænger kun af dit fødselsår. Beregneren lægger den til din fødselsdato og viser den dato,
+            hvor du fylder pensionsalderen. Den kan afvige fra den dato, hvor Udbetaling Danmark begynder at udbetale,
+            så tjek altid på borger.dk, før du planlægger efter en bestemt dag.
+          </p>
+          <p>
+            Pensionsalderen er koblet til udviklingen i middellevetiden og kan ændres ved lov. Tallene for yngre
+            årgange er derfor ikke endelige.
+          </p>
+          <p>
+            Forventede år som pensionist kommer fra Danmarks Statistiks dødelighedstavle (HISB8, 2024–2025): den
+            gennemsnitlige restlevetid for en person på din pensionsalder. Det er et periodetal for alle danskere, ikke en
+            prognose for dig. Vil du se, hvad din livsstil statistisk betyder, kan du bruge
+            <a href="/" class="text-primary hover:underline">levetidsberegneren</a>.
+          </p>
+          <p class="text-sm">Din fødselsdato bliver i din browser. Den sendes ikke og gemmes ikke.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+</Base>

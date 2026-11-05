@@ -78,14 +78,21 @@ Reusable component classes are defined with Tailwind v4 `@utility`. Mobile-first
 main color scheme uses HSL custom properties (see `:root` / `.dark`).
 
 ## Deployment
-Built with Nixpacks (`nixpacks.toml`): `npm ci` -> `npm run build` -> serve
-`dist/` (`.dokploy` pins the Node version). The build output is also committed
-under `dist/`.
+Built with Dockerfile (Node 22) or Nixpacks (`nixpacks.toml`): `npm ci` ->
+`npm run build` -> `serve@14.2.6 dist` (`.dokploy` pins the Node version). The
+build output is also committed under `dist/`.
+
+SPA fallback comes from `public/serve.json` (rewrite everything except
+`/privatlivspolitik` and `/cookiepolitik` to `/index.html`). Never add `-s` to
+`serve`: it overrides `serve.json` and breaks the clean policy URLs.
+`serve.json` and the pinned version are guarded by `src/serveConfig.test.js`.
+`npm run dev`/`preview` use Vite's own fallback, so the policy links show the
+404 page locally; check them with `npx serve@14.2.6 dist` instead.
 
 ## File Structure
-- `index.html` - Vite entry HTML (also hosts static footer, cookie-consent
-  banner, and SEO copy outside the React root)
+- `index.html` - Vite entry HTML (also hosts SEO copy outside the React root)
 - `src/` - React application source (see Architecture above)
 - `dist/` - built static assets
 - `backup/` - legacy vanilla-JS version (not built)
-- `*.html` (root) - standalone legal/policy pages
+- `public/privatlivspolitik.html`, `public/cookiepolitik.html` - standalone
+  legal/policy pages, served at clean URLs via `public/serve.json`

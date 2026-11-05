@@ -5,7 +5,7 @@ En webbaseret applikation der beregner din forventede resterende levetid baseret
 ## 📋 Funktioner
 
 - **Beregning i browseren**: Dine input forlader aldrig din enhed og sendes ikke til analytics
-- **Danske tal**: Baseret på Danmarks Statistik (HISB8, periode 2024:2025)
+- **Danske tal**: Baseret på Danmarks Statistik (HISB8, dødelighedstavlen for den nyeste periode)
 - **Responsive design**: Fungerer på både desktop og mobile enheder
 - **Intuitivt interface**: Moderne og brugervenligt design
 - **Detaljerede resultater**: Viser resterende år, forventet levetid og estimeret slutdato

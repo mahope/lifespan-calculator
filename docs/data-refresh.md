@@ -22,7 +22,7 @@ unchanged data changes nothing (the retrieval date is only bumped when content c
 | `dst` | DST StatBank `HISB8` (l_x, q_x, e_x, ages 0-99, M/K), `HISB7` (newborn headline), `HISBR`, `HISBK`, `LABY21` (regional) | `src/data/lifeTableDK.generated.js` |
 | `countries` | World Bank WDI `SP.DYN.LE00*`, Eurostat `demo_mlexpec` | the `BEGIN/END GENERATED COUNTRY TABLE` block in `src/utils/lifeExpectancyData.js` |
 | `hly` | Eurostat `hlth_hlye` (`HLY_Y0`, `HLY_Y65`, `LE_Y65`) | `src/data/healthyLifeYears.generated.js` |
-| `cohort` | reserved for the cohort-projection work; currently prints a notice and does nothing | none |
+| `cohort` | reserved for the cohort-projection work (separate issue). Not implemented: `cohort` alone exits non-zero, and `all` prints a "SKIPPED" warning for it | none |
 | `all` | all of the above | all of the above |
 | `check` | `tableinfo/HISB8` | stdout (JSON): committed vs latest period, `stale` flag |
 
@@ -35,15 +35,20 @@ unchanged data changes nothing (the retrieval date is only bumped when content c
   complete (DST suppresses a few tiny municipalities; up to 10 % missing is accepted) and plausible.
   `l_100` is derived as l_99 * (1 - q_99) and written as `SURVIVORS_AT_100_DK`.
 - `countries`: Sweden, Norway and Finland come from Eurostat, Japan and the world average from the
-  World Bank (each row carries its source and year). The World Bank value for the same year is used
-  to cross-check Eurostat: a difference above 0.5 year prints a warning. A year older than the
-  committed one fails the run.
+  World Bank (each row carries its source and year). This deliberately keeps the choice made in #81
+  and differs from the issue text (World Bank primary, Eurostat cross-check). The World Bank value
+  for the same year is used to cross-check Eurostat: a difference above 0.5 year prints a warning
+  (and the check is skipped with a warning when World Bank has no value for that year). Japan and the
+  world average have no second source. A year older than the committed one fails the run.
 - `hly`: Denmark must have all three indicators for both sexes, values must be plausible and
-  HLY_Y65 may not exceed LE_Y65.
+  HLY_Y65 may not exceed LE_Y65. Years are compared per country/indicator/sex with the committed
+  file (countries publish at different times); a regression fails the run. The hly data and the
+  regional/newborn/survivor exports are not used by the UI yet.
 
 The generated life-table file exports `LIFE_TABLE_META` = `{ period, tid, tableUpdated, retrieved, source }`.
 UI and SEO copy read `LIFE_TABLE_META.period` / `.tid`; a vitest test fails if `2024-2025`,
-`2024–2025` or `2024:2025` appears anywhere in `src/` outside the generated files.
+`2024–2025` or `2024:2025` appears in a `.js/.jsx/.css/.html/.json/.snap` file under `src/` outside the generated files.
+The README does not state the period for the same reason.
 
 ## Procedure
 
@@ -70,7 +75,8 @@ UI and SEO copy read `LIFE_TABLE_META.period` / `.tid`; a vitest test fails if `
 `node scripts/refresh-data.mjs check`, which compares the committed `period` with the latest `Tid` of
 `tableinfo/HISB8`. When DST is ahead it opens an issue titled "Opdatér dødelighedstavle" or, if one
 is already open, comments on it (once per new period). It uses `GITHUB_TOKEN` with `issues: write`
-and never pushes.
+and never pushes. `check` only detects a new period (a later `Tid`); a re-publication of the same
+period with revised numbers is not flagged, which is what the March re-run is for.
 
 Manual dispatch has two inputs: `dry_run` (default on; prints the issue text instead of creating
 anything) and `simulate_latest` (e.g. `2025:2026`) to exercise the stale path before DST actually

@@ -12,6 +12,7 @@ import {
   validateLifeTable,
   validateRegional,
   validateHly,
+  parseCommittedHly,
   buildCountryRows,
   buildLifeTableSeries,
   decodeJsonStat,
@@ -218,5 +219,21 @@ describe('Eurostat helpers', () => {
     const errs = validateHly(broken).join('\n');
     expect(errs).toMatch(/DK HLY_Y65 male missing/);
     expect(errs).toMatch(/SE male: HLY_Y65 .* exceeds LE_Y65/);
+  });
+
+  it('compares hly years per geo against the committed data, not across geos', () => {
+    // SE moving ahead of DK must not fail DK.
+    const previous = structuredClone(HEALTHY_LIFE_YEARS);
+    const next = structuredClone(HEALTHY_LIFE_YEARS);
+    next.SE.HLY_Y0.male.year += 3;
+    expect(validateHly(next, { previous })).toEqual([]);
+    next.DK.HLY_Y0.male.year = previous.DK.HLY_Y0.male.year - 1;
+    expect(validateHly(next, { previous }).join('\n')).toMatch(/DK HLY_Y0 male: year .* older than the committed/);
+  });
+
+  it('parses the committed hly module source', () => {
+    const src = `export const HEALTHY_LIFE_YEARS_META = {};\nexport const HEALTHY_LIFE_YEARS = ${JSON.stringify(HEALTHY_LIFE_YEARS, null, 2)};\n`;
+    expect(parseCommittedHly(src)).toEqual(HEALTHY_LIFE_YEARS);
+    expect(parseCommittedHly(null)).toBeNull();
   });
 });

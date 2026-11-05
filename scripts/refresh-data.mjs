@@ -547,7 +547,18 @@ export function buildHly(rows) {
   return out;
 }
 
-export function validateHly(data, { previousYear } = {}) {
+/** Parse the committed HEALTHY_LIFE_YEARS object (JSON) out of the generated module source. */
+export function parseCommittedHly(src) {
+  const m = src?.match(/export const HEALTHY_LIFE_YEARS = (\{[\s\S]*?\n\});/);
+  if (!m) return null;
+  try {
+    return JSON.parse(m[1]);
+  } catch {
+    return null;
+  }
+}
+
+export function validateHly(data, { previous } = {}) {
   const errors = [];
   for (const ind of HLY_INDICATORS) {
     for (const sex of ['male', 'female']) {
@@ -556,7 +567,17 @@ export function validateHly(data, { previousYear } = {}) {
       else {
         const max = ind === 'HLY_Y0' ? 90 : 35;
         if (!(e.value > 0 && e.value < max)) errors.push(`DK ${ind} ${sex} = ${e.value} is implausible`);
-        if (previousYear && e.year < previousYear) errors.push(`DK ${ind} ${sex} year ${e.year} older than ${previousYear}`);
+      }
+    }
+  }
+  // Regression check per geo/indicator/sex against the committed value (geos publish at different times).
+  for (const [geo, g] of Object.entries(previous ?? {})) {
+    for (const [ind, bySex] of Object.entries(g)) {
+      for (const [sex, old] of Object.entries(bySex)) {
+        const now = data[geo]?.[ind]?.[sex];
+        if (now && old?.year && now.year < old.year) {
+          errors.push(`${geo} ${ind} ${sex}: year ${now.year} is older than the committed ${old.year}`);
+        }
       }
     }
   }
@@ -593,11 +614,7 @@ async function fetchHly(existingSrc) {
   for (const g of HLY_GEOS) qs.append('geo', g);
   const js = await getJson(`${EUROSTAT_API}/hlth_hlye?${qs}`);
   const data = buildHly(decodeJsonStat(js));
-  const previousYear = existingSrc
-    ? Math.max(0, ...[...existingSrc.matchAll(/"year":\s*(\d{4})/g)].map((m) => Number(m[1])).filter(Boolean))
-    : 0;
-  // previousYear is the max across geos; compare per-DK only loosely (older than 1 year back = regression).
-  const errors = validateHly(data, { previousYear: previousYear ? previousYear - 1 : undefined });
+  const errors = validateHly(data, { previous: parseCommittedHly(existingSrc) });
   if (errors.length) throw new ValidationError('hly', errors);
   return { data, updated: js.updated ?? null };
 }
@@ -673,8 +690,10 @@ async function planHly() {
   return [{ path: PATHS.hly, content, existing }];
 }
 
-async function planCohort() {
-  console.log('cohort: not implemented yet (tracked in the cohort-projection issue); skipped');
+async function planCohort({ inAll = false } = {}) {
+  const msg = 'cohort: NOT IMPLEMENTED yet (tracked in the cohort-projection issue)';
+  if (!inAll) throw new Error(msg);
+  console.warn(`${msg}; SKIPPED in "all"`);
   return [];
 }
 
@@ -721,7 +740,7 @@ export async function main(argv) {
     process.exit(2);
   }
   const writes = [];
-  for (const step of steps) writes.push(...(await PLANS[step]()));
+  for (const step of steps) writes.push(...(await PLANS[step]({ inAll: cmd === 'all' })));
   await applyWrites(writes, flags.has('--dry-run'));
 }
 

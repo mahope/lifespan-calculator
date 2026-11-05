@@ -11,8 +11,7 @@ const Historik = ({ resultData }) => {
   const [deleted, setDeleted] = useState(false);
   const statusRef = useRef(null);
 
-  // Depend on endTimestamp (stable across countdown ticks, which only replace
-  // `countdown`) so history is re-read on a genuinely new calculation, not every second.
+  // Depend on endTimestamp so history is re-read on a genuinely new calculation.
   useEffect(() => {
     setHistory(loadHistory());
     setConfirming(false);

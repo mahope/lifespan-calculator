@@ -41,8 +41,9 @@ npm ci && npm run lint && npm test && npm run build
   DodsalderPage, LivsstilPage, DanmarkPage, NotFoundPage).
 - **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
   ShareCard, ShareModal).
-- **`hooks/useLifespanCalculator.js`**: Core calculation logic (age, remaining
-  time). No location lookup: the app never asks for or sends the user's position.
+- **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure
+  `computeResult(input, now)` in `utils/lifespanMath.js` (age, remaining time,
+  end instant). No location lookup: the app never asks for or sends the user's position.
 - **`utils/lifeExpectancyData.js`**: Static country life-expectancy data with
   Danish translations, plus lookup/formatting helpers.
 - **`index.css`**: Tailwind v4 entry - `@import 'tailwindcss'`, `@theme` design

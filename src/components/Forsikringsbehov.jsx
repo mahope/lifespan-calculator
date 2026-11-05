@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { estimateCover } from '../utils/insurance';
+import { track } from '../utils/analytics';
 
 const AFFILIATE_URL =
   'https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner';
+
+const AFFILIATE_PROPS = { program: 'findforsikring', placement: 'result-insurance' };
 
 // Value-first version of the life-insurance CTA: a quick, transparent cover
 // estimate (income replacement over the support period), then the affiliate link
@@ -13,6 +16,25 @@ const Forsikringsbehov = ({ resultData }) => {
   const [years, setYears] = useState('10');
   const [share, setShare] = useState('');
   const [existing, setExisting] = useState('');
+
+  const cardRef = useRef(null);
+
+  // One impression per result, once at least half of the card is visible.
+  useEffect(() => {
+    const node = cardRef.current;
+    if (!resultData || !node || typeof IntersectionObserver === 'undefined') return undefined;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.5)) {
+          track('Affiliate Impression', AFFILIATE_PROPS);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [resultData]);
 
   if (!resultData) return null;
 
@@ -25,7 +47,7 @@ const Forsikringsbehov = ({ resultData }) => {
   const fmt = (n) => n.toLocaleString('da-DK');
 
   return (
-    <div className="card">
+    <div className="card" ref={cardRef}>
       <div className="card-content space-y-4 py-5">
         <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
           Annonce · værktøj
@@ -130,6 +152,7 @@ const Forsikringsbehov = ({ resultData }) => {
           target="_blank"
           rel="sponsored noopener noreferrer"
           className="btn btn-primary w-full"
+          onClick={() => track('Affiliate Click', AFFILIATE_PROPS)}
         >
           Sammenlign livsforsikringer{hasEstimate && cover > 0 ? ` (overslag på dækningsbehov: ~${fmt(cover)} kr)` : ''} →
         </a>

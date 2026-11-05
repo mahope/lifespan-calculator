@@ -1,4 +1,5 @@
 import React from 'react';
+import { track } from '../utils/analytics';
 
 // Catches render errors and failed lazy-chunk loads so a thrown error shows a
 // friendly fallback instead of a blank white screen.
@@ -14,13 +15,7 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error) {
     // Best-effort telemetry; never throw from the error handler itself.
-    try {
-      if (typeof window !== 'undefined' && window.plausible) {
-        window.plausible('Error', { props: { type: String(error?.name || 'Error') } });
-      }
-    } catch {
-      /* noop */
-    }
+    track('Error', { type: String(error?.name || 'Error') });
   }
 
   handleReload = () => {

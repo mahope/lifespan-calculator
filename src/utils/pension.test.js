@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort } from './pension';
+import { folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort, folkepensionDate } from './pension';
+import { toLocalISODate } from './lifespanMath';
 
 // Statutory ages as of 2026-11-05 (borger.dk "Før du går på folkepension";
 // Lov nr. 703 af 20. juni 2025): <=1953: 65, 1954 H1: 65½, 1954 H2: 66,
@@ -150,5 +151,44 @@ describe('pensionCohort', () => {
       // age 63: born 1962/1963 -> 64 and 65
       expect(pensionCohort({ age: 63, now: NOW }).efterloen).toBe('64-65 år');
     });
+  });
+});
+
+// Boundary dates for every cohort: statutory age and the date it is reached (#97).
+describe('folkepensionDate', () => {
+  const cases = [
+    ['1954-06-30', 65.5, '2019-12-30'],
+    ['1954-07-01', 66, '2020-07-01'],
+    ['1955-06-30', 66.5, '2021-12-30'],
+    ['1955-07-01', 67, '2022-07-01'],
+    ['1962-12-31', 67, '2029-12-31'],
+    ['1963-01-01', 68, '2031-01-01'],
+    ['1966-12-31', 68, '2034-12-31'],
+    ['1967-01-01', 69, '2036-01-01'],
+    ['1970-12-31', 69, '2039-12-31'],
+    ['1971-01-01', 70, '2041-01-01'],
+  ];
+  it.each(cases)('birth %s → age %s on %s', (birth, age, reached) => {
+    const r = folkepensionDate(birth);
+    expect(r.age).toBe(age);
+    expect(r.years).toBe(Math.floor(age));
+    expect(r.months).toBe(age % 1 ? 6 : 0);
+    expect(toLocalISODate(r.date)).toBe(reached);
+  });
+
+  it('clamps 29 February to 28 February in a non-leap target year', () => {
+    expect(toLocalISODate(folkepensionDate('1960-02-29').date)).toBe('2027-02-28');
+  });
+
+  it('does not roll a month-end birthday over a short month', () => {
+    expect(toLocalISODate(folkepensionDate('1954-08-31').date)).toBe('2020-08-31');
+    expect(toLocalISODate(folkepensionDate('1954-01-31').date)).toBe('2019-07-31');
+    expect(toLocalISODate(folkepensionDate('1953-08-31').date)).toBe('2018-08-31');
+    expect(toLocalISODate(folkepensionDate('1954-06-30').date)).toBe('2019-12-30');
+  });
+
+  it('returns null for an invalid date', () => {
+    expect(folkepensionDate('1999-02-30')).toBeNull();
+    expect(folkepensionDate('')).toBeNull();
   });
 });

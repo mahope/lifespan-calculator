@@ -8,6 +8,8 @@
 // Efterløn (borger.dk, same date): 1956 H2-1958 → 63, 1959 H1 → 63½,
 // 1959 H2-1962 → 64, 1963-1966 → 65, 1967-1970 → 66; later cohorts are not fixed.
 
+import { parseLocalDate } from './lifespanMath';
+
 /** Statutory age for a birth year and half (1 = Jan-Jun, 2 = Jul-Dec). */
 function pensionAgeFor(year, half) {
   if (year <= 1953) return 65;
@@ -103,4 +105,23 @@ export function pensionCohort({ birthYear = null, birthMonth = null, age, now = 
     label: fmtRange(min, max),
     efterloen,
   };
+}
+
+/**
+ * Exact statutory pension age and the calendar date it is reached for a birth date.
+ * `years`/`months` split the age (65½ → 65 y 6 m); the date adds that to the
+ * birth date, clamping to the last day of a shorter target month (29 Feb → 28 Feb).
+ * Returns null when the birth date is not a real calendar date.
+ * @param {string|Date} birthdate
+ */
+export function folkepensionDate(birthdate) {
+  const birth = parseLocalDate(birthdate);
+  if (Number.isNaN(birth.getTime())) return null;
+  const age = folkepensionAgeOn(birth.getFullYear(), birth.getMonth() + 1);
+  const years = Math.floor(age);
+  const months = Math.round((age - years) * 12);
+  const monthIndex = birth.getMonth() + months;
+  const lastDay = new Date(birth.getFullYear() + years, monthIndex + 1, 0).getDate();
+  const date = new Date(birth.getFullYear() + years, monthIndex, Math.min(birth.getDate(), lastDay));
+  return { age, years, months, date };
 }

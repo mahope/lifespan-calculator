@@ -35,12 +35,12 @@ come from Danmarks Statistik).
 
 | Old | New |
 |---|---|
-| Heading "Din biologiske alder" | "Din statistiske risikoalder" |
-| "Din livsstil svarer til en krop, der er ~N år yngre 🎉" / "... ældre" / "Din krop matcher din faktiske alder" | "Med de valg, du har lavet, svarer dit estimat for resterende leveår til det, en gennemsnitsdansker på ca. X år har tilbage (du er Y). Det er en statistisk omregning af leveår, ikke en måling af din krop eller din risiko." |
+| Heading "Din biologiske alder" | "Din alder efter gennemsnitlig restlevetid" |
+| "Din livsstil svarer til en krop, der er ~N år yngre 🎉" / "... ældre" / "Din krop matcher din faktiske alder" | "Med de valg, du har lavet, svarer dit estimat for resterende leveår til det, en gennemsnitsdansker på ca. X år har tilbage (du er Y). Det er en statistisk omregning af leveår, ikke en måling af din krop." |
 | "Beregnet ud fra dine livsstilsvalg og danske dødelighedstavler." | "Beregnet ud fra dine livsstilsvalg (vejledende justeringer) og danske dødelighedstavler." |
 
 The number is the age whose table remaining life expectancy equals the adjusted
-remaining years (`statisticalRiskAge`, renamed from `biologicalAge`). It is not a
+remaining years (`equivalentAge`, renamed from `biologicalAge`). It is not a
 mortality risk and not a body measurement, so the text no longer says so.
 
 ## `src/components/Pension.jsx`

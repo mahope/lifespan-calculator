@@ -3,7 +3,7 @@ import {
   LIFE_TABLE_DK,
   remainingLifeExpectancy,
   survivalProbability,
-  statisticalRiskAge,
+  equivalentAge,
   projectedExpectancy,
   jointLifeStats,
 } from './lifeTableDK';
@@ -94,25 +94,25 @@ describe('projectedExpectancy', () => {
   });
 });
 
-describe('statisticalRiskAge', () => {
+describe('equivalentAge', () => {
   it('returns ~chronological age when remaining equals the baseline e_x', () => {
     const remaining = remainingLifeExpectancy(40, 'male');
-    expect(statisticalRiskAge(remaining, 'male')).toBeCloseTo(40, 0);
+    expect(equivalentAge(remaining, 'male')).toBeCloseTo(40, 0);
   });
 
   it('is younger when the user has more remaining years than baseline', () => {
     const remaining = remainingLifeExpectancy(40, 'male') + 6;
-    expect(statisticalRiskAge(remaining, 'male')).toBeLessThan(40);
+    expect(equivalentAge(remaining, 'male')).toBeLessThan(40);
   });
 
   it('is older when the user has fewer remaining years than baseline', () => {
     const remaining = remainingLifeExpectancy(40, 'male') - 6;
-    expect(statisticalRiskAge(remaining, 'male')).toBeGreaterThan(40);
+    expect(equivalentAge(remaining, 'male')).toBeGreaterThan(40);
   });
 
   it('clamps to the table range', () => {
-    expect(statisticalRiskAge(999, 'male')).toBe(0);
-    expect(statisticalRiskAge(-1, 'female')).toBe(99);
+    expect(equivalentAge(999, 'male')).toBe(0);
+    expect(equivalentAge(-1, 'female')).toBe(99);
   });
 });
 

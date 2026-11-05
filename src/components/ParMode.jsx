@@ -101,6 +101,11 @@ const ParMode = ({ resultData }) => {
           </div>
         )}
 
+        {resultData.projection === 'projected' && (
+          <p className="text-center text-xs text-muted-foreground" data-testid="par-period-note">
+            Beregningen af jeres år sammen bruger nuværende dødelighed.
+          </p>
+        )}
         <p className="text-center text-xs text-muted-foreground">
           Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik).
         </p>

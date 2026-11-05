@@ -39,11 +39,15 @@ import { parseShareParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
+import { COHORT_TABLE } from '../data/cohortTable.generated';
+import ProjectionToggle from '../components/ProjectionToggle';
 
 const HomePage = () => {
   const {
     resultData,
     currentMode,
+    setProjection,
+    resetProjection,
     lifestyleFactors,
     setCurrentMode,
     calculateLifespan,
@@ -166,6 +170,7 @@ const HomePage = () => {
   };
 
   const resetCalculation = () => {
+    resetProjection();
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
@@ -418,12 +423,16 @@ const HomePage = () => {
                 {/* Announced once for screen readers; the ticking grid below is
                     hidden from assistive tech to avoid per-second spam. */}
                 <p className="sr-only" aria-live="polite">
-                  Du har statistisk {formatYears(Number(resultData?.remainingYears))} år tilbage at leve.
+                  Du har statistisk {formatYears(Number(resultData?.remainingYears))} år tilbage at leve
+                  {resultData?.projection === 'projected'
+                    ? ' (fremskrevet af Danmarks Statistik).'
+                    : ' (nuværende dødelighed).'}
                 </p>
                 <Countdown key={resultData?.endTimestamp} endTimestamp={resultData?.endTimestamp} />
+                <ProjectionToggle resultData={resultData} onChange={setProjection} />
               </div>
 
-              {/* Statistical risk age (advanced mode) */}
+              {/* Equivalent age (advanced mode) */}
               <KropsAlder resultData={resultData} />
 
               {/* Life Progress Bar */}
@@ -599,10 +608,17 @@ const HomePage = () => {
 
               {/* Disclaimers */}
               <div className="card border-yellow-200 dark:border-yellow-800 bg-yellow-50/50 dark:bg-yellow-950/20">
-                <div className="card-content">
+                <div className="card-content space-y-2">
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     Det her er statistik, ikke en prognose for dig, og ikke medicinsk rådgivning.{' '}
                     <a href="#om-tallene" className="text-primary hover:underline">Læs mere under Om tallene</a>.
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Nuværende dødelighed viser, hvor mange år en gennemsnitlig dansker på din alder og dit køn har
+                    tilbage, hvis dødeligheden forbliver som i {LIFE_TABLE_META.period}. Fremskrevet bygger på Danmarks
+                    Statistiks antagelse om, at dødeligheden fortsat falder (befolkningsfremskrivning 2026, opdateret{' '}
+                    {COHORT_TABLE.tableUpdated.split('-').reverse().join('.')}). Fremskrivningen er en antagelse og
+                    mere usikker end de målte tal.
                   </p>
                 </div>
               </div>

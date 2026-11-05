@@ -3,7 +3,9 @@
     { "source": "/hvor-lang-tid-har-jeg-tilbage", "destination": "/index.html" },
     { "source": "/dodsalder-calculator", "destination": "/index.html" },
     { "source": "/levetid-beregner-danmark", "destination": "/index.html" },
-    { "source": "/livsstil-og-levetid", "destination": "/index.html" }
+    { "source": "/livsstil-og-levetid", "destination": "/index.html" },
+    { "source": "/embed-levetidsberegner", "destination": "/index.html" },
+    { "source": "/embed", "destination": "/embed.html" }
   ],
   "headers": [
     {
@@ -11,9 +13,19 @@
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "Permissions-Policy", "value": "geolocation=(self), camera=(), microphone=()" },
         { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    },
+    {
+      "source": "/**/!(embed.html)",
+      "headers": [{ "key": "X-Frame-Options", "value": "SAMEORIGIN" }]
+    },
+    {
+      "source": "/embed.html",
+      "headers": [
+        { "key": "Content-Security-Policy", "value": "frame-ancestors *" },
+        { "key": "X-Robots-Tag", "value": "noindex" }
       ]
     },
     {

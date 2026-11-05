@@ -8,6 +8,8 @@ const HvorLangTidPage = lazy(() => import('./pages/HvorLangTidPage'))
 const DodsalderPage = lazy(() => import('./pages/DodsalderPage'))
 const LivsstilPage = lazy(() => import('./pages/LivsstilPage'))
 const DanmarkPage = lazy(() => import('./pages/DanmarkPage'))
+const EmbedPage = lazy(() => import('./pages/EmbedPage'))
+const EmbedInfoPage = lazy(() => import('./pages/EmbedInfoPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 // Loading fallback
@@ -31,6 +33,8 @@ function App() {
             <Route path="/dodsalder-calculator" element={<DodsalderPage />} />
             <Route path="/livsstil-og-levetid" element={<LivsstilPage />} />
             <Route path="/levetid-beregner-danmark" element={<DanmarkPage />} />
+            <Route path="/embed-levetidsberegner" element={<EmbedInfoPage />} />
+            <Route path="/embed" element={<EmbedPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

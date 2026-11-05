@@ -410,3 +410,16 @@ layer(base);
     }
   }
 }
+
+/* /embed (iframe widget): hide the static footer, cookie banner and SEO copy that
+   index.html carries outside the React root; optional transparent background. */
+html.embed body > footer,
+html.embed #cookie-consent-banner,
+html.embed [data-seo-explainer] {
+  display: none !important;
+}
+html[data-embed-bg='transparent'],
+html[data-embed-bg='transparent'] body,
+html[data-embed-bg='transparent'] #root > div {
+  background: transparent !important;
+}

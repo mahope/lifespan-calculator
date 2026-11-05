@@ -17,6 +17,17 @@
         } catch (e) {}
       })();
     </script>
+    <!-- /embed: iframe widget. Mark the document, pick theme/background from the query string,
+         and let CSS hide the static footer, cookie banner and SEO copy below. -->
+    <script>
+      (function () {
+        if (location.pathname.replace(/\/$/, '') !== '/embed') return;
+        var h = document.documentElement, q = new URLSearchParams(location.search);
+        h.classList.add('embed');
+        h.classList.toggle('dark', q.get('theme') === 'dark');
+        if (q.get('bg') === 'transparent') h.setAttribute('data-embed-bg', 'transparent');
+      })();
+    </script>
     <title>Dansk Levetidsberegner - Beregn din forventede levetid</title>
     <meta name="description" content="Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik." />
     <meta name="keywords" content="levetid, beregner, danmark, statistik, dødsalder, forventet levetid" />

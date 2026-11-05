@@ -13,7 +13,11 @@ export const ROUTES = [
   '/dodsalder-calculator',
   '/levetid-beregner-danmark',
   '/livsstil-og-levetid',
+  '/embed-levetidsberegner',
 ]
+
+// Routes served by the app but kept out of the sitemap (noindex).
+export const NOINDEX_ROUTES = ['/embed']
 
 export function buildSitemap(routes) {
   const urls = routes.map((r) => `  <url>\n    <loc>${SITE_URL}${r}</loc>\n  </url>`).join('\n')

@@ -2,10 +2,23 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// serve matches header rules against the file it ends up sending, so /embed needs a file
+// of its own (rewritten to /embed.html in public/serve.json) to get frame-friendly headers.
+const embedHtml = () => ({
+  name: 'embed-html',
+  enforce: 'post',
+  generateBundle(_, bundle) {
+    const index = bundle['index.html']
+    if (!index) return
+    this.emitFile({ type: 'asset', fileName: 'embed.html', source: index.source })
+  },
+})
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    embedHtml(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'og-image.png'],

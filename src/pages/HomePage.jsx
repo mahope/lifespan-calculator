@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   Hourglass,
-  MapPin,
   Zap,
   SlidersHorizontal,
   Hash,
@@ -33,18 +32,17 @@ import HvadHvis from '../components/HvadHvis';
 import ParMode from '../components/ParMode';
 import Forsikringsbehov from '../components/Forsikringsbehov';
 import { saveEntry } from '../utils/history';
-import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
-import { buildShareParams, parseLifestyle } from '../utils/shareState';
-import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors } from '../utils/lifespanMath';
+import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
+import { parseShareParams } from '../utils/shareState';
+import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate } from '../utils/lifespanMath';
+import { trackCalculate } from '../utils/analytics';
 
 const HomePage = () => {
   const {
-    userLocation,
     resultData,
     currentMode,
     lifestyleFactors,
     setCurrentMode,
-    getUserLocation,
     calculateLifespan,
     updateLifestyleFactor,
     applyLifestyleFactors,
@@ -103,23 +101,20 @@ const HomePage = () => {
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
-    const g = searchParams.get('g');
-    const a = searchParams.get('a');
-    const bd = searchParams.get('b');
-    if (!g || (!a && !bd)) return;
+    const parsed = parseShareParams(searchParams);
+    if (!parsed) return;
 
-    const mode = searchParams.get('m') === 'advanced' ? 'advanced' : 'simple';
-    setCurrentMode(mode);
-    if (bd) {
-      setFormData({ age: '', gender: g, birthdate: bd, useBirthdate: true });
-    } else {
-      setFormData({ age: a, gender: g, birthdate: '', useBirthdate: false });
-    }
-    if (mode === 'advanced') {
-      const parsed = parseLifestyle(searchParams.get('lf'), LIFESTYLE_KEYS);
-      if (parsed) applyLifestyleFactors(parsed);
-    }
+    setCurrentMode(parsed.mode);
+    setFormData({
+      age: parsed.useBirthdate ? '' : String(parsed.age),
+      gender: parsed.gender,
+      birthdate: parsed.birthdate,
+      useBirthdate: parsed.useBirthdate,
+    });
+    if (parsed.lifestyle) applyLifestyleFactors(parsed.lifestyle);
     setAutoSubmit(true);
+    // Drop the share params so a reload doesn't re-hydrate stale input.
+    setSearchParams({}, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -160,37 +155,15 @@ const HomePage = () => {
 
     runCalculation();
 
-    // Reflect the inputs in the URL so the result is shareable / reloadable.
-    setSearchParams(
-      buildShareParams({
-        gender: formData.gender,
-        age: formData.age,
-        birthdate: formData.birthdate,
-        useBirthdate: formData.useBirthdate,
-        mode: currentMode,
-        lifestyle: lifestyleFactors,
-        keys: LIFESTYLE_KEYS,
-      })
-    );
-
     // Track analytics
-    if (window.plausible) {
-      window.plausible('Calculate Lifespan', {
-        props: {
-          age: formData.useBirthdate ? 'birthdate' : formData.age,
-          gender: formData.gender,
-          location: userLocation || 'Unknown',
-          usedBirthdate: formData.useBirthdate
-        }
-      });
-    }
+    trackCalculate();
   };
 
   const resetCalculation = () => {
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
-    setSearchParams({});
+    setSearchParams({}, { replace: true });
   };
 
   const shareResults = () => {
@@ -205,10 +178,10 @@ const HomePage = () => {
     <div className="flex min-h-screen flex-col">
       <SEOHead
         title="Levetidsberegner - Beregn din resterende levetid baseret på statistik"
-        description="Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+        description="Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder og køn ud fra danske dødelighedstavler. Inkluderer live nedtælling og deling."
         keywords="levetidsberegner, resterende levetid, statistik, dødsalderen, levetid beregner, hvor længe lever jeg, lifespan calculator dansk"
         ogTitle="Levetidsberegner - Hvor lang tid har du tilbage?"
-        ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
+        ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på Danmarks Statistiks dødelighedstavler."
       />
 
       <PageHeader
@@ -335,7 +308,7 @@ const HomePage = () => {
                           id="birthdate"
                           name="birthdate"
                           required={formData.useBirthdate}
-                          max={new Date().toISOString().split('T')[0]}
+                          max={toLocalISODate()}
                           min="1900-01-01"
                           className="input w-full"
                           value={formData.birthdate}
@@ -371,26 +344,6 @@ const HomePage = () => {
                         </button>
                       </div>
                     </div>
-
-                    {/* Location */}
-                    {userLocation ? (
-                      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <MapPin className="h-3.5 w-3.5" /> {userLocation}
-                      </p>
-                    ) : (
-                      <div className="space-y-2">
-                        <p className="text-sm text-muted-foreground">
-                          Beregningen bruger danske gennemsnit. Vil du bruge din faktiske placering?
-                        </p>
-                        <button
-                          type="button"
-                          onClick={getUserLocation}
-                          className="btn btn-outline w-full gap-2"
-                        >
-                          <MapPin className="h-4 w-4" /> Brug min placering
-                        </button>
-                      </div>
-                    )}
 
                     {/* Lifestyle Factors (Advanced Mode) */}
                     {currentMode === 'advanced' && (
@@ -1311,6 +1264,8 @@ const HomePage = () => {
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
         resultData={resultData}
+        lifestyleFactors={lifestyleFactors}
+        isAdvanced={currentMode === 'advanced'}
       />
     </div>
   );

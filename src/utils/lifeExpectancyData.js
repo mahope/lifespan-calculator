@@ -16,12 +16,16 @@ export const lifeExpectancyData = {
     'World': { male: 72.6, female: 77.1, country: 'Verdensgennemsnit' }
 };
 
+// Own-property lookup so keys like "constructor" or "__proto__" fall back to World.
+const countryEntry = (country) =>
+    Object.hasOwn(lifeExpectancyData, country) ? lifeExpectancyData[country] : lifeExpectancyData['World'];
+
 export const getLifeExpectancyForCountry = (country, gender) => {
-    const countryData = lifeExpectancyData[country] || lifeExpectancyData['World'];
-    return countryData[gender] || countryData.male;
+    const countryData = countryEntry(country);
+    return (Object.hasOwn(countryData, gender) && countryData[gender]) || countryData.male;
 };
 
 export const formatCountryName = (country) => {
-    const countryData = lifeExpectancyData[country] || lifeExpectancyData['World'];
+    const countryData = countryEntry(country);
     return countryData.country;
 };

@@ -46,8 +46,8 @@ const HvorLangTidPage = () => {
                 <h2 className="text-xl sm:text-2xl font-bold">Hvad betyder "resterende levetid"?</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Din resterende levetid er et statistisk estimat baseret på demografiske data, som viser hvor mange år
-                  du gennemsnitligt kan forvente at leve fra dit nuværende tidspunkt. Dette tal bygger på nationale og
-                  internationale sundhedsstatistikker og er justeret for din alder, køn og geografiske placering.
+                  du gennemsnitligt kan forvente at leve fra dit nuværende tidspunkt. Dette tal bygger på Danmarks Statistiks
+                  dødelighedstavler og er justeret for din alder og dit køn.
                 </p>
 
                 <h3 className="text-lg sm:text-xl font-semibold">Faktorer der påvirker din resterende levetid:</h3>
@@ -59,10 +59,6 @@ const HvorLangTidPage = () => {
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
                     <span><strong className="text-foreground">Køn:</strong> Kvinder lever generelt længere end mænd i de fleste lande</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                    <span><strong className="text-foreground">Geografisk placering:</strong> Forskellige lande har forskellige levetidsforventninger</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />

@@ -2,7 +2,7 @@
 // input (age, sex, birthdate, lifestyle answers, location). Every call goes
 // through track(), which only lets whitelisted event names and prop keys out.
 // Keep docs/analytics.md in sync with this table.
-const EVENTS = {
+export const EVENTS = {
   'Calculate Lifespan': [],
   'Result Shown': ['mode'],
   'Affiliate Impression': ['program', 'placement'],

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { track, trackCalculate } from './analytics';
+import { EVENTS, track, trackCalculate } from './analytics';
 
 describe('trackCalculate', () => {
   afterEach(() => {
@@ -28,9 +28,9 @@ describe('track', () => {
   it('sends whitelisted events with whitelisted props only', () => {
     const plausible = vi.fn();
     globalThis.window = { plausible };
-    track('Affiliate Click', { program: 'findforsikring', placement: 'result', age: 42, gender: 'male' });
+    track('Affiliate Click', { program: 'findforsikring', placement: 'result-insurance', age: 42, gender: 'male' });
     expect(plausible).toHaveBeenCalledWith('Affiliate Click', {
-      props: { program: 'findforsikring', placement: 'result' },
+      props: { program: 'findforsikring', placement: 'result-insurance' },
     });
   });
 
@@ -67,5 +67,26 @@ describe('track', () => {
     };
     expect(() => track('Result Shown', { mode: 'simple' })).not.toThrow();
     expect(() => track('Result Shown', null)).not.toThrow();
+  });
+});
+
+describe('EVENTS whitelist', () => {
+  it('is pinned: a new event or prop key needs a deliberate change here and in docs/analytics.md', () => {
+    expect(EVENTS).toEqual({
+      'Calculate Lifespan': [],
+      'Result Shown': ['mode'],
+      'Affiliate Impression': ['program', 'placement'],
+      'Affiliate Click': ['program', 'placement'],
+      'Share Opened': [],
+      Share: ['method'],
+      Error: ['type'],
+    });
+  });
+
+  it('never allows a prop key that looks like user input', () => {
+    const userInput = /age|gender|sex|birth|location|country|lifestyle|factor/i;
+    for (const keys of Object.values(EVENTS)) {
+      for (const key of keys) expect(key).not.toMatch(userInput);
+    }
   });
 });

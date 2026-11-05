@@ -28,30 +28,42 @@ describe('packLifestyle / parseLifestyle', () => {
 });
 
 describe('buildShareParams', () => {
-  it('uses age in simple mode', () => {
+  it('shares only gender and whole-year age by default', () => {
     const p = buildShareParams({
       gender: 'male',
-      age: 34,
-      birthdate: '',
-      useBirthdate: false,
-      mode: 'simple',
-      lifestyle: {},
+      age: 34.7,
+      lifestyle: { smoking: -5, exercise: 2, diet: 3 },
       keys: KEYS,
     });
     expect(p).toEqual({ g: 'male', a: '34' });
   });
 
-  it('uses birthdate and packs lifestyle in advanced mode', () => {
+  it('never includes a birthdate or lifestyle unless opted in', () => {
     const p = buildShareParams({
       gender: 'female',
-      age: '',
-      birthdate: '1990-05-20',
-      useBirthdate: true,
-      mode: 'advanced',
+      age: '41.2',
+      birthdate: '1985-05-20',
+      lifestyle: { smoking: -5 },
+      keys: KEYS,
+    });
+    expect(Object.keys(p).sort()).toEqual(['a', 'g']);
+  });
+
+  it('packs lifestyle only with includeLifestyle', () => {
+    const p = buildShareParams({
+      gender: 'female',
+      age: 40,
+      includeLifestyle: true,
       lifestyle: { smoking: -5, exercise: 2, diet: 3 },
       keys: KEYS,
     });
-    expect(p).toEqual({ g: 'female', b: '1990-05-20', m: 'advanced', lf: '-5,2,3' });
+    expect(p).toEqual({ g: 'female', a: '40', m: 'advanced', lf: '-5,2,3' });
+  });
+
+  it('round-trips through parseShareParams', () => {
+    const p = buildShareParams({ gender: 'male', age: 40, keys: KEYS, lifestyle: {} });
+    const r = parseShareParams(new URLSearchParams(p));
+    expect(r).toMatchObject({ gender: 'male', age: 40, useBirthdate: false });
   });
 });
 

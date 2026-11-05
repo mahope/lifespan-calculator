@@ -32,8 +32,8 @@ import HvadHvis from '../components/HvadHvis';
 import ParMode from '../components/ParMode';
 import Forsikringsbehov from '../components/Forsikringsbehov';
 import { saveEntry } from '../utils/history';
-import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
-import { buildShareParams, parseShareParams } from '../utils/shareState';
+import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
+import { parseShareParams } from '../utils/shareState';
 import { boundLifestyleAdjustment } from '../utils/lifespanMath';
 
 const HomePage = () => {
@@ -156,19 +156,6 @@ const HomePage = () => {
     e.preventDefault();
 
     runCalculation();
-
-    // Reflect the inputs in the URL so the result is shareable / reloadable.
-    setSearchParams(
-      buildShareParams({
-        gender: formData.gender,
-        age: formData.age,
-        birthdate: formData.birthdate,
-        useBirthdate: formData.useBirthdate,
-        mode: currentMode,
-        lifestyle: lifestyleFactors,
-        keys: LIFESTYLE_KEYS,
-      })
-    );
 
     // Track analytics
     if (window.plausible) {
@@ -1329,6 +1316,8 @@ const HomePage = () => {
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
         resultData={resultData}
+        lifestyleFactors={lifestyleFactors}
+        isAdvanced={currentMode === 'advanced'}
       />
     </div>
   );

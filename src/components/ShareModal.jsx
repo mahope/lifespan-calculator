@@ -1,15 +1,30 @@
 import React, { useState, useRef } from 'react';
 import { toPng } from 'html-to-image';
 import ShareCard from './ShareCard';
+import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
+import { buildShareParams } from '../utils/shareState';
 
-const ShareModal = ({ isOpen, onClose, resultData }) => {
+const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced = false }) => {
   const [copySuccess, setCopySuccess] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  // Lifestyle answers are health-related: never in the link unless ticked.
+  const [includeLifestyle, setIncludeLifestyle] = useState(false);
   const shareCardRef = useRef(null);
 
   if (!isOpen || !resultData) return null;
 
-  const shareUrl = window.location.href;
+  // Minimal link: gender + whole-year age (never the birthdate). Lifestyle values
+  // are appended only when the user opts in.
+  const query = new URLSearchParams(
+    buildShareParams({
+      gender: resultData.gender,
+      age: parseFloat(resultData.age),
+      includeLifestyle: isAdvanced && includeLifestyle,
+      lifestyle: lifestyleFactors,
+      keys: LIFESTYLE_KEYS,
+    })
+  ).toString();
+  const shareUrl = `${window.location.origin}${window.location.pathname}?${query}`;
   const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve! 🕐 Beregn din egen levetid på`;
 
   // Copy link to clipboard
@@ -174,6 +189,25 @@ Beregn din egen: ${shareUrl}`;
             <div ref={shareCardRef}>
               <ShareCard resultData={resultData} />
             </div>
+
+            {/* Link privacy: the link only holds gender and age unless ticked */}
+            {isAdvanced && (
+              <label className="flex items-start gap-3 text-sm cursor-pointer">
+                <input
+                  type="checkbox"
+                  className="mt-1 h-4 w-4"
+                  checked={includeLifestyle}
+                  onChange={(e) => setIncludeLifestyle(e.target.checked)}
+                />
+                <span>
+                  Del også mine livsstilsvalg
+                  <span className="block text-xs text-muted-foreground">
+                    Linket indeholder som standard kun køn og alder. Livsstilsvalgene (fx rygning og alkohol) er
+                    helbredsoplysninger og tages kun med, hvis du krydser af.
+                  </span>
+                </span>
+              </label>
+            )}
 
             {/* Quick Actions */}
             <div className="space-y-3">

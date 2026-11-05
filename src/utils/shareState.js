@@ -97,12 +97,15 @@ export function parseLifestyle(str, keys) {
   return out;
 }
 
-/** Build the URL query object from the current form state. */
-export function buildShareParams({ gender, age, birthdate, useBirthdate, mode, lifestyle, keys }) {
-  const params = { g: gender };
-  if (useBirthdate) params.b = birthdate;
-  else params.a = String(age);
-  if (mode === 'advanced') {
+/**
+ * Build the URL query object for a share link. Privacy by default: only gender
+ * and whole-year age are included (a birthdate is never shared as `b`). The
+ * lifestyle answers (`m` + `lf`, health-related) are added only when the user
+ * explicitly opts in.
+ */
+export function buildShareParams({ gender, age, includeLifestyle = false, lifestyle, keys }) {
+  const params = { g: gender, a: String(Math.max(0, Math.floor(Number(age)) || 0)) };
+  if (includeLifestyle) {
     params.m = 'advanced';
     params.lf = packLifestyle(lifestyle, keys);
   }

@@ -43,9 +43,9 @@ export const LIFESTYLE_FACTORS = [
     },
     options: [
       { value: 0, years: 0, label: 'Ryger ikke' },
-      { value: 11, years: -1, label: 'Tidligere ryger, stoppede før 40' },
-      { value: 12, years: -3.5, label: 'Tidligere ryger, stoppede som 40-49-årig' },
-      { value: 13, years: -5, label: 'Tidligere ryger, stoppede som 50+' },
+      { value: 11, years: -1, label: 'Tidligere ryger, stoppet før 40' },
+      { value: 12, years: -3.5, label: 'Tidligere ryger, stoppet 40-49' },
+      { value: 13, years: -5, label: 'Tidligere ryger, stoppet 50+' },
       { value: -5, years: -6, label: 'Let (1-10/dag)' },
       { value: -10, years: -10, label: 'Kraftig (10+/dag)' },
     ],

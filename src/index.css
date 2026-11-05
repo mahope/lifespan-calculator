@@ -243,7 +243,7 @@
     @apply bg-primary text-primary-foreground border-primary shadow-xs;
   }
   @media (max-width: 640px) {
-    @apply px-2.5 py-3 text-xs flex-1 text-center;
+    @apply px-2.5 py-3 text-xs flex-1 text-center min-w-0 wrap-anywhere;
   }
 }
 
@@ -293,7 +293,7 @@
 }
 
 @utility lifestyle-grid {
-  @apply grid grid-cols-1 gap-6;
+  @apply grid grid-cols-[minmax(0,1fr)] gap-6;
 
   /* Lifestyle factor item styling */
   & > div {

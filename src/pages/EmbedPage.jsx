@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import SEOHead from '../components/SEOHead';
-import { computeEmbedResult, EMBED_MAX_AGE } from '../utils/embedResult';
+import { computeEmbedResult, EMBED_MAX_AGE, EMBED_HEIGHT_MESSAGE } from '../utils/embedResult';
 import { formatYears } from '../utils/lifespanMath';
 import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 import { track } from '../utils/analytics';
-
-export const EMBED_HEIGHT_MESSAGE = 'levetidsberegner:height';
 
 // Tell the embedding page how tall the content is. Carries the pixel height only,
 // never any input or result. Harmless if the parent does not listen.
@@ -40,11 +38,7 @@ const EmbedPage = () => {
     const r = computeEmbedResult(age, gender);
     if (!r) {
       setResult(null);
-      setError(
-        gender
-          ? `Angiv en alder mellem 0 og ${EMBED_MAX_AGE} år.`
-          : 'Vælg køn og angiv en alder mellem 0 og ' + EMBED_MAX_AGE + ' år.'
-      );
+      setError(`${gender ? 'Angiv' : 'Vælg køn og angiv'} en alder mellem 0 og ${EMBED_MAX_AGE} år.`);
       return;
     }
     setError('');

@@ -4,7 +4,7 @@ import SEOHead from '../components/SEOHead';
 import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
-import { EMBED_HEIGHT_MESSAGE } from './EmbedPage';
+import { EMBED_HEIGHT_MESSAGE } from '../utils/embedResult';
 import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 
 export const EMBED_CODE =
@@ -159,8 +159,9 @@ const EmbedInfoPage = () => {
                 </h2>
                 <p className="text-muted-foreground">
                   Beregningen foregår i den besøgendes browser. Alder og køn sendes ikke til os og
-                  gemmes ikke. Vi tæller kun, at beregneren er blevet brugt, uden oplysninger om,
-                  hvad der blev indtastet.
+                  gemmes ikke. Vi tæller anonymt, at siden vises (med oplysning om, hvilken side
+                  den er indsat på), og hvor mange der trykker Beregn, uden oplysninger om, hvad
+                  der blev indtastet.
                 </p>
               </div>
             </section>

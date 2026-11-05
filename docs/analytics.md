@@ -19,6 +19,10 @@ lifestyle answers, country) as a prop.
 | `Share` | `method` (`clipboard-link`, `clipboard-results`, `native`, `twitter`, `facebook`, `linkedin`, `whatsapp`, `download-image`) | A share action is completed |
 | `Error` | `type` (error class name) | The error boundary catches a render error |
 
+The Plausible script also loads inside the widget iframe, so every load of `/embed` on a host
+page counts as a pageview (with the host page as referrer), whether or not anyone presses
+Beregn. The pageview carries no props and no user input. The info page's privacy text says so.
+
 ## Goals to create in the Plausible UI
 
 - [ ] `Calculate Lifespan`

@@ -1,5 +1,6 @@
 import { computeResult, MAX_AGE_INPUT } from './lifespanMath';
 
+export const EMBED_HEIGHT_MESSAGE = 'levetidsberegner:height';
 export const EMBED_MIN_AGE = 0;
 export const EMBED_MAX_AGE = MAX_AGE_INPUT;
 

@@ -25,15 +25,15 @@ const links = [
         <p class="text-muted-foreground text-sm leading-relaxed">
           Beregningen kører i din browser. Alder, køn og fødselsdato sendes ikke til nogen server og gemmes ikke.
           Besøg tælles med selvhostet Plausible uden cookies.
-          <a href="/privatlivspolitik.html" class="text-primary hover:underline">Privatlivspolitik</a> ·
-          <a href="/cookiepolitik.html" class="text-primary hover:underline">Cookiepolitik</a>
+          <a href="/privatlivspolitik.html" class="text-primary underline underline-offset-2">Privatlivspolitik</a> ·
+          <a href="/cookiepolitik.html" class="text-primary underline underline-offset-2">Cookiepolitik</a>
         </p>
       </div>
       <div class="space-y-1">
         <h2 class="text-lg font-semibold text-foreground">Sider</h2>
         <ul>
           {links.map(([href, label]) => (
-            <li><a href={href} class="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">{label}</a></li>
+            <li><a href={href} class="text-primary underline underline-offset-2 text-sm inline-flex items-center min-h-[44px] py-2">{label}</a></li>
           ))}
         </ul>
       </div>
@@ -43,7 +43,7 @@ const links = [
         Kun til information og underholdning. Søg professionel rådgivning ved spørgsmål om helbred, pension eller forsikring.
       </p>
       <p class="text-sm text-muted-foreground">
-        Udviklet af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Mads Holst Jensen – Mahope.dk</a>
+        Udviklet af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2">Mads Holst Jensen – Mahope.dk</a>
       </p>
     </div>
   </div>

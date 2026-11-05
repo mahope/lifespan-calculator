@@ -49,7 +49,7 @@ const dataset = {
           </p>
           <p class="text-sm text-muted-foreground">
             Kilde: Danmarks Statistik, HISB8 (dødelighedstavle, {p}), hentet {meta.retrieved}. Det er gennemsnit for hele befolkningen, ikke et personligt svar.
-            <a href="/" class="text-primary hover:underline">Beregn din egen resterende levetid</a>.
+            <a href="/" class="text-primary underline underline-offset-2">Beregn din egen resterende levetid</a>.
           </p>
         </div></section>
 
@@ -84,7 +84,7 @@ const dataset = {
           <p class="text-muted-foreground">
             {komm.count} kommuner med tal, {komm.without.length} uden: {komm.without.join(', ')} står som «ikke opgivet», fordi tallene er for usikre. Det er middellevetid ved fødslen i femårsvinduet {periodLabel(komm.period)}
             og en områdestatistik, ikke en effekt af at bo dér. Kilde: DST HISBK.
-            <a href="/levealder-kommuner" class="text-primary hover:underline">Se rangeringen efter mænd og kvinder hver for sig</a>.
+            <a href="/levealder-kommuner" class="text-primary underline underline-offset-2">Se rangeringen efter mænd og kvinder hver for sig</a>.
           </p>
           <KommuneTable rows={komm.by.total} caption="Middellevetid ved fødslen pr. kommune, sorteret efter alle" sortKey="total" />
           <p class="text-sm text-muted-foreground">Ikke opgivet: {komm.without.join(', ')}.</p>

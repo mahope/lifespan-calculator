@@ -4,7 +4,7 @@ interface Props { rows: any[]; caption: string; sortKey: 'total' | 'male' | 'fem
 const { rows, caption, sortKey } = Astro.props
 ---
 
-<div class="overflow-x-auto">
+<div class="overflow-x-auto [content-visibility:auto] [contain-intrinsic-size:auto_2600px]">
   <table class="w-full text-left text-sm">
     <caption class="text-left text-lg font-semibold pb-2">{caption}</caption>
     <thead>

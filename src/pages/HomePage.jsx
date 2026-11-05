@@ -36,10 +36,10 @@ import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams, takeShareSearchParams } from '../utils/shareState';
-import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
+import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { COHORT_TABLE } from '../data/cohortTable.generated';
 import ProjectionToggle from '../components/ProjectionToggle';
 
@@ -433,7 +433,7 @@ const HomePage = () => {
                 <ProjectionToggle resultData={resultData} onChange={setProjection} />
               </div>
 
-              {/* Biological age (advanced mode) */}
+              {/* Equivalent age (advanced mode) */}
               <KropsAlder resultData={resultData} />
 
               {/* Life Progress Bar */}
@@ -608,32 +608,19 @@ const HomePage = () => {
               </div>
 
               {/* Disclaimers */}
-              <div className="space-y-3">
-                <div className="card border-yellow-200 dark:border-yellow-800 bg-yellow-50/50 dark:bg-yellow-950/20">
-                  <div className="card-content">
-                    <p className="text-sm text-muted-foreground">
-                      <strong className="text-foreground">Bemærk:</strong> Dette er kun et statistisk estimat baseret på gennemsnitlige data.
-                      Mange faktorer påvirker levetiden, herunder livsstil, genetik, sundhed og teknologiske fremskridt.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="card border-orange-200 dark:border-orange-800 bg-orange-50/50 dark:bg-orange-950/20">
-                  <div className="card-content space-y-2">
-                    <h4 className="text-sm font-semibold text-foreground">Vigtige disclaimere</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, {LIFE_TABLE_META.period})</li>
-                      <li>
-                        • Nuværende dødelighed viser, hvor mange år en gennemsnitlig dansker på din alder og dit køn har
-                        tilbage, hvis dødeligheden forbliver som i {LIFE_TABLE_META.period}. Fremskrevet bygger på Danmarks Statistiks
-                        antagelse om, at dødeligheden fortsat falder (befolkningsfremskrivning 2026, opdateret{' '}
-                        {COHORT_TABLE.tableUpdated.split('-').reverse().join('.')}). Fremskrivningen er en antagelse og
-                        mere usikker end de målte tal.
-                      </li>
-                      <li>• Individuelle faktorer påvirker ikke beregningen</li>
-                      <li>• Kun til underholdning og reflektion</li>
-                    </ul>
-                  </div>
+              <div className="card border-yellow-200 dark:border-yellow-800 bg-yellow-50/50 dark:bg-yellow-950/20">
+                <div className="card-content space-y-2">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Det her er statistik, ikke en prognose for dig, og ikke medicinsk rådgivning.{' '}
+                    <a href="#om-tallene" className="text-primary hover:underline">Læs mere under Om tallene</a>.
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Nuværende dødelighed viser, hvor mange år en gennemsnitlig dansker på din alder og dit køn har
+                    tilbage, hvis dødeligheden forbliver som i {LIFE_TABLE_META.period}. Fremskrevet bygger på Danmarks
+                    Statistiks antagelse om, at dødeligheden fortsat falder (befolkningsfremskrivning 2026, opdateret{' '}
+                    {COHORT_TABLE.tableUpdated.split('-').reverse().join('.')}). Fremskrivningen er en antagelse og
+                    mere usikker end de målte tal.
+                  </p>
                 </div>
               </div>
             </div>

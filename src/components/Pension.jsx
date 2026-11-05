@@ -94,9 +94,9 @@ const Pension = ({ resultData }) => {
         </p>
 
         <p className="text-center text-xs text-muted-foreground">
-          Folkepensionsalderen er lovbestemt (Lov nr. 703 af 20. juni 2025; aldre efter borger.dk,
-          november 2026) og kan stige yderligere for årgange fra 1975. Efterlønsaldre er
-          ligeledes fra borger.dk.
+          Folkepensionsalderen er 70 år for dem, der er født fra 1. januar 1971 (Lov nr. 703 af 20. juni 2025, som
+          også satte 69 år for 1967-1970). De øvrige aldre er efter borger.dk, november 2026, og alderen kan stige
+          yderligere for årgange fra 1975. Efterlønsaldre er ligeledes fra borger.dk.
         </p>
       </div>
     </div>

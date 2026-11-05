@@ -39,7 +39,8 @@ const LivsstilPage = () => {
               <div className="card-content space-y-6">
                 <h2 className="text-xl sm:text-2xl font-bold">Livsstilsfaktorer med størst påvirkning</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Forskning viser, at livsstil udgør op til 60% af de faktorer, der bestemmer din levetid. Her er de
+                  I store amerikanske opfølgningsstudier kunne omkring 60 % af dødsfaldene tilskrives, at man ikke fulgte
+                  fem sunde levevaner (Li m.fl., Circulation 2018). Tallet gælder en befolkning, ikke dig. Her er de
                   vigtigste områder, hvor du kan gøre en forskel:
                 </p>
 
@@ -53,8 +54,9 @@ const LivsstilPage = () => {
                         <h3 className="text-lg sm:text-xl font-semibold">Motion og fysisk aktivitet</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Regelmæssig motion kan tilføje 3-7 år til dit liv. Bare 150 minutter moderat aktivitet om ugen
-                        reducerer risikoen for hjertesygdomme, diabetes og kræft betydeligt.
+                        I en samlet analyse af seks store kohortestudier levede personer med ca. 150 minutters aktivitet om
+                        ugen i gennemsnit ca. 3,4 år længere end inaktive; selv under 75 minutter om ugen var forbundet med
+                        ca. 1,8 flere leveår (Moore m.fl., PLoS Medicine 2012). Det er statistiske sammenhænge.
                       </p>
                       <div className="space-y-2">
                         <h4 className="font-medium text-green-700 dark:text-green-400">Anbefalinger:</h4>
@@ -75,8 +77,9 @@ const LivsstilPage = () => {
                         <h3 className="text-lg sm:text-xl font-semibold">Ernæring og kost</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        En sund kost kan forlænge livet med 2-8 år. Den mediterrane kost er den mest dokumenterede
-                        koststil for langt liv.
+                        En modelberegning viser, at en varig omlægning til mere bælgfrugter, fuldkorn og nødder og mindre
+                        forarbejdet kød kan give omkring 3-10 flere leveår, mest hvis man starter ung (Fadnes m.fl., PLoS
+                        Medicine 2022). Det er en modelberegning, ikke et forsøg.
                       </p>
                       <div className="space-y-2">
                         <h4 className="font-medium text-green-700 dark:text-green-400">Kostvejledning:</h4>
@@ -97,8 +100,9 @@ const LivsstilPage = () => {
                         <h3 className="text-lg sm:text-xl font-semibold">Søvn og hvile</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        7-9 timers kvalitetssøvn er essentielt for et langt liv. Kronisk søvnmangel øger risikoen for
-                        hjertesygdomme, diabetes og tidlig død.
+                        Både meget kort og meget lang søvn er i store oversigtsstudier forbundet med lidt højere
+                        dødelighed, og risikoen er lavest ved omkring 7 timer (Yin m.fl. 2017; Cappuccio m.fl. 2010). En
+                        del af sammenhængen kan skyldes, at sygdom påvirker søvnen.
                       </p>
                       <div className="space-y-2">
                         <h4 className="font-medium text-green-700 dark:text-green-400">Søvnhygiejne:</h4>
@@ -121,16 +125,19 @@ const LivsstilPage = () => {
                         <h3 className="text-lg sm:text-xl font-semibold">Rygning og tobak</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Rygning er den enkeltstående livsstilsfaktor, der forkorter livet mest - op til 10 år. At stoppe
-                        med at ryge kan tilføje år til dit liv uanset alder.
+                        Rygere mister i gennemsnit mindst 10 leveår sammenlignet med aldrig-rygere (Jha m.fl., NEJM 2013).
                       </p>
                       <div className="space-y-2">
                         <h4 className="font-medium text-destructive">Rygningens påvirkning:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>• 1 pakke om dagen: -7 år i levetid</li>
-                          <li>• 2 pakker om dagen: -10 år i levetid</li>
-                          <li>• Stop før 30 år: fuld levetidsgenopretning</li>
-                          <li>• Stop før 50 år: halverer overdødelighed</li>
+                          <li>• Også 1-10 cigaretter om dagen næsten fordobler dødeligheden (Pirie m.fl., Lancet 2013).</li>
+                          <li>
+                            • Hvis man stopper før 40 år, undgår man omkring 90 % af den ekstra dødelighed (Jha 2013).
+                          </li>
+                          <li>
+                            • I en britisk lægeundersøgelse genvandt mænd, der stoppede som 30-årige, ca. 10 leveår og som
+                            50-årige ca. 6 (Doll m.fl., BMJ 2004).
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -143,8 +150,9 @@ const LivsstilPage = () => {
                         <h3 className="text-lg sm:text-xl font-semibold">Stress og mental sundhed</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Kronisk stress øger risikoen for hjertesygdomme, depression og tidlig død. Stressmanagement
-                        kan tilføje 2-3 år til dit liv.
+                        Langvarig stress på arbejdet er forbundet med en let forhøjet risiko for hjertesygdom (ca. 23 %
+                        højere i en stor europæisk analyse, Kivimäki m.fl., Lancet 2012), men der findes ikke solid
+                        dokumentation for et bestemt antal leveår ved stresshåndtering.
                       </p>
                       <div className="space-y-2">
                         <h4 className="font-medium text-green-700 dark:text-green-400">Stresshåndtering:</h4>
@@ -165,14 +173,17 @@ const LivsstilPage = () => {
                         <h3 className="text-lg sm:text-xl font-semibold">Alkohol</h3>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Moderat alkoholforbrug kan have neutrale eller svagt positive effekter, mens stort forbrug
-                        forkorter livet betydeligt.
+                        Risikoen for tidlig død er lavest ved lavt forbrug og stiger derefter; ved 200-350 g alkohol om
+                        ugen (ca. 17-29 genstande) er forventet levetid ved 40 år ca. 1-2 år kortere end ved højst 100 g om
+                        ugen (ca. 8 genstande) (Wood m.fl., Lancet 2018).
                       </p>
                       <div className="space-y-2">
                         <h4 className="font-medium text-yellow-700 dark:text-yellow-400">Anbefalinger:</h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>• Kvinder: Max 7 genstande per uge</li>
-                          <li>• Mænd: Max 14 genstande per uge</li>
+                          <li>
+                            • Sundhedsstyrelsen anbefaler højst 10 genstande om ugen og højst 4 på samme dag, for både
+                            kvinder og mænd.
+                          </li>
                           <li>• 2 alkoholfri dage per uge</li>
                           <li>• Undgå drukfester</li>
                         </ul>
@@ -187,23 +198,24 @@ const LivsstilPage = () => {
               <div className="card-content space-y-6">
                 <h3 className="text-lg sm:text-xl font-semibold">Den kumulative effekt af livsstilsændringer</h3>
                 <p className="text-muted-foreground">
-                  Studier viser, at mennesker, der følger alle fem hovedlivsstilsområder (ikke-rygning, sund vægt,
-                  regelmæssig motion, sund kost og moderat alkoholforbrug), lever 12-14 år længere end dem, der ikke
-                  følger nogen af dem.
+                  I et amerikansk studie af ca. 123.000 sundhedsprofessionelle havde 50-årige, der levede efter alle fem
+                  sunde levevaner (ikke-rygning, normalvægt, 30 minutters motion dagligt, moderat alkohol, sund kost),
+                  en forventet restlevetid, der var 12,2 år (mænd) og 14,0 år (kvinder) længere end dem uden nogen af
+                  dem (Li m.fl., Circulation 2018).
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-green-700 dark:text-green-400">+12-14</div>
-                    <div className="text-sm text-muted-foreground">År ekstra ved optimal livsstil</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-green-700 dark:text-green-400">+12,2-14,0</div>
+                    <div className="text-sm text-muted-foreground">Flere leveår ved 50 år: fem mod ingen sunde levevaner</div>
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary">80%</div>
-                    <div className="text-sm text-muted-foreground">Reduktion i hjertesygdomme</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-primary">82 %</div>
+                    <div className="text-sm text-muted-foreground">Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner (Li m.fl. 2018)</div>
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">50%</div>
-                    <div className="text-sm text-muted-foreground">Reduktion i kræftrisiko</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">65 %</div>
+                    <div className="text-sm text-muted-foreground">Lavere kræftdødelighed ved fem mod ingen sunde levevaner (Li m.fl. 2018)</div>
                   </div>
                 </div>
               </div>

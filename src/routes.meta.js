@@ -102,7 +102,7 @@ export function jsonLd(meta, path) {
     name: SITE_NAME,
     url,
     description: meta.description,
-    applicationCategory: 'HealthApplication',
+    applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'DKK' },
     author: { '@type': 'Person', name: 'Mads Holst Jensen' },

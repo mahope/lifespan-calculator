@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { toPng } from 'html-to-image';
 import ShareCard from './ShareCard';
 
 const ShareModal = ({ isOpen, onClose, resultData }) => {
@@ -121,6 +120,7 @@ Beregn din egen: ${shareUrl}`;
     setIsGenerating(true);
 
     try {
+      const { toPng } = await import('html-to-image');
       const dataUrl = await toPng(shareCardRef.current, {
         pixelRatio: 2,
         cacheBust: true,

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { computeResult } from '../utils/lifespanMath';
 
 // Stable, fixed order of the lifestyle factors — used for both the initial state
@@ -19,7 +19,6 @@ export const useLifespanCalculator = () => {
   const [lifestyleFactors, setLifestyleFactors] = useState(() =>
     Object.fromEntries(LIFESTYLE_KEYS.map((k) => [k, 0]))
   );
-  const [userAchievements, setUserAchievements] = useState([]);
 
   // Get user location manually (only on explicit user action)
   const getUserLocation = useCallback(() => {
@@ -72,42 +71,12 @@ export const useLifespanCalculator = () => {
     setLifestyleFactors(prev => ({ ...prev, ...partial }));
   }, []);
 
-  // Check achievements
-  const checkAchievements = useCallback(() => {
-    const newAchievements = [];
-
-    if (lifestyleFactors.smoking >= 0) {
-      newAchievements.push('non-smoker');
-    }
-    if (lifestyleFactors.exercise >= 2) {
-      newAchievements.push('active-lifestyle');
-    }
-    if (lifestyleFactors.diet >= 3) {
-      newAchievements.push('healthy-eater');
-    }
-    if (lifestyleFactors.stress >= 0 && lifestyleFactors.sleep >= 0) {
-      newAchievements.push('wellness-warrior');
-    }
-    if (Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0) >= 10) {
-      newAchievements.push('lifestyle-optimizer');
-    }
-
-    setUserAchievements(newAchievements);
-  }, [lifestyleFactors]);
-
-  // Update achievements when lifestyle factors change
-  useEffect(() => {
-    checkAchievements();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lifestyleFactors]);
-
   return {
     userLocation,
     lifeExpectancyForLocation,
     resultData,
     currentMode,
     lifestyleFactors,
-    userAchievements,
     setCurrentMode,
     getUserLocation,
     calculateLifespan,

@@ -24,6 +24,7 @@ const OFFERS = [
   },
 ];
 
+// Initial state only; the open state does not follow later resizes or rotation.
 const isDesktop = () =>
   typeof window !== 'undefined' &&
   typeof window.matchMedia === 'function' &&
@@ -34,16 +35,23 @@ const isDesktop = () =>
 const PraktiskePapirer = ({ resultData }) => {
   const [open, setOpen] = useState(isDesktop);
   const listRef = useRef(null);
+  const firedFor = useRef(null);
 
   // One impression per programme per result, once the links are at least half visible.
+  // The ref keeps collapsing and expanding again from firing a second time.
   useEffect(() => {
     const node = listRef.current;
-    if (!resultData || !open || !node || typeof IntersectionObserver === 'undefined') {
+    if (!resultData) {
+      firedFor.current = null;
+      return undefined;
+    }
+    if (!open || !node || firedFor.current === resultData || typeof IntersectionObserver === 'undefined') {
       return undefined;
     }
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.5)) {
+          firedFor.current = resultData;
           OFFERS.forEach((o) => track('Affiliate Impression', { program: o.program, placement: PLACEMENT }));
           observer.disconnect();
         }
@@ -59,7 +67,7 @@ const PraktiskePapirer = ({ resultData }) => {
   return (
     <div className="card">
       <div className="card-content space-y-3 py-5">
-        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Annonce</div>
+        <div className="text-xs font-semibold uppercase tracking-widest text-foreground/80">Annonce</div>
         <button
           type="button"
           className="flex w-full items-center gap-3 text-left"
@@ -107,7 +115,7 @@ const PraktiskePapirer = ({ resultData }) => {
               ))}
             </ul>
             <p className="text-center text-[11px] text-muted-foreground">
-              Annonce · Links til Jura-Docs og Dokument 24. Skabeloner er ikke juridisk rådgivning.
+              Links til Jura-Docs og Dokument 24. Skabeloner er ikke juridisk rådgivning.
             </p>
           </div>
         )}

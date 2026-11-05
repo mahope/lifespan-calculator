@@ -16,6 +16,9 @@ import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
 import { Link } from 'react-router-dom';
+import { lifeExpectancyData as le } from '../utils/lifeExpectancyData';
+
+const fmtLE = (n) => n.toFixed(1).replace('.', ',');
 
 const DanmarkPage = () => {
   return (
@@ -54,20 +57,20 @@ const DanmarkPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-primary flex items-center gap-2">
-                      <BarChart3 className="h-5 w-5 shrink-0" aria-hidden="true" /> Aktuelle danske tal (2024)
+                      <BarChart3 className="h-5 w-5 shrink-0" aria-hidden="true" /> Danske tal ved fødslen ({le.Denmark.year})
                     </h3>
                     <div className="space-y-3">
                       <div className="flex justify-between items-center p-3 bg-primary/10 rounded-lg">
                         <span className="font-medium">Kvinder:</span>
-                        <span className="text-xl font-bold text-primary">82.7 år</span>
+                        <span className="text-xl font-bold text-primary">{fmtLE(le.Denmark.female)} år</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-primary/10 rounded-lg">
                         <span className="font-medium">Mænd:</span>
-                        <span className="text-xl font-bold text-primary">78.9 år</span>
+                        <span className="text-xl font-bold text-primary">{fmtLE(le.Denmark.male)} år</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-primary/10 rounded-lg">
                         <span className="font-medium">Samlet gennemsnit:</span>
-                        <span className="text-xl font-bold text-primary">80.8 år</span>
+                        <span className="text-xl font-bold text-primary">{fmtLE((le.Denmark.male + le.Denmark.female) / 2)} år</span>
                       </div>
                     </div>
                   </div>
@@ -78,16 +81,16 @@ const DanmarkPage = () => {
                     </h3>
                     <div className="space-y-3">
                       <div className="flex justify-between items-center p-3 bg-green-500/10 rounded-lg">
-                        <span className="font-medium">Sverige:</span>
-                        <span className="text-lg font-bold text-green-600 dark:text-green-400">82.6 år</span>
+                        <span className="font-medium">Sverige ({le.Sweden.year}):</span>
+                        <span className="text-lg font-bold text-green-600 dark:text-green-400">{fmtLE(le.Sweden.total)} år</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-green-500/10 rounded-lg">
-                        <span className="font-medium">Norge:</span>
-                        <span className="text-lg font-bold text-green-600 dark:text-green-400">82.3 år</span>
+                        <span className="font-medium">Norge ({le.Norway.year}):</span>
+                        <span className="text-lg font-bold text-green-600 dark:text-green-400">{fmtLE(le.Norway.total)} år</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-green-500/10 rounded-lg">
-                        <span className="font-medium">Finland:</span>
-                        <span className="text-lg font-bold text-green-600 dark:text-green-400">81.6 år</span>
+                        <span className="font-medium">Finland ({le.Finland.year}):</span>
+                        <span className="text-lg font-bold text-green-600 dark:text-green-400">{fmtLE(le.Finland.total)} år</span>
                       </div>
                     </div>
                   </div>

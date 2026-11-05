@@ -27,7 +27,7 @@ const Countdown = ({ endTimestamp }) => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-3 sm:gap-4" aria-hidden="true">
+    <div className="flex flex-wrap items-end gap-x-5 gap-y-4 sm:gap-x-9" aria-hidden="true">
       {tiles.map(([value, label]) => (
         <div className="time-unit" key={label}>
           <span className="time-value">{value ?? '--'}</span>

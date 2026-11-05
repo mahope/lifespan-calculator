@@ -36,9 +36,9 @@ describe('HvadHvis (#93)', () => {
           const result = computeResult(input, NOW);
           if (!result) continue;
           render(result, zero);
-          const delta = container.querySelector('.text-sm.font-medium');
+          const delta = container.querySelector('[data-testid="hvadhvis-delta"]');
           expect(delta.textContent, `${gender} ${age + extra}`).toBe('Vælg en ændring ovenfor');
-          expect(container.querySelector('.text-4xl').textContent).toBe(
+          expect(container.querySelector('[data-testid="hvadhvis-expected"]').textContent).toBe(
             result.adjustedLifeExpectancy.replace('.', ','),
           );
         }

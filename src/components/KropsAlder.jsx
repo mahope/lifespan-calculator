@@ -23,14 +23,20 @@ const KropsAlder = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-content space-y-2 py-6 text-center">
-        <div className="text-sm text-muted-foreground">Din alder efter gennemsnitlig restlevetid</div>
-        <div className="flex items-end justify-center gap-3">
-          <span className="text-5xl font-bold text-primary">{equivalent}</span>
-          <span className="mb-1 text-lg text-muted-foreground">år · du er {chrono}</span>
-        </div>
-        <p className="text-sm font-medium">{message}</p>
-        <p className="text-xs text-muted-foreground">
+      <div className="card-header">
+        <h3 className="fig text-2xl leading-tight font-semibold">
+          Din alder efter gennemsnitlig restlevetid
+        </h3>
+      </div>
+      <div className="card-content space-y-2">
+        <p className="flex flex-wrap items-baseline gap-x-3">
+          <span data-testid="equivalent-age" className="fig text-6xl font-semibold text-primary">
+            {equivalent}
+          </span>
+          <span className="text-lg text-muted-foreground">år, og du er {chrono}</span>
+        </p>
+        <p className="font-medium">{message}</p>
+        <p className="text-sm text-muted-foreground">
           Beregnet ud fra dine livsstilsvalg (vejledende justeringer) og danske dødelighedstavler.
         </p>
       </div>

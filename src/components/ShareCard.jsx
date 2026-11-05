@@ -2,72 +2,53 @@ import React from 'react';
 import { formatSignedYears, formatYears } from '../utils/lifespanMath';
 import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
+// The card that is rendered to a PNG for sharing. It uses fixed colours rather than the theme tokens so the
+// image looks the same in light and dark mode.
+const PAPER = '#f5f8f9';
+const INK = '#151c27';
+const MUTED = '#4a5563';
+const ACCENT = '#164e5c';
+const RULE = '#cfd6dc';
+
 const ShareCard = ({ resultData }) => {
   if (!resultData) return null;
 
-  // Calculate top lifestyle factors
-  const lifestyleFactors = [];
-  if (resultData.lifestyleImpact !== 0) {
-    // This is a simplified version - in real implementation we'd track individual factors
-    if (resultData.lifestyleImpact > 0) {
-      lifestyleFactors.push('Sund livsstil', 'God motion', 'Balanceret kost');
-    } else {
-      lifestyleFactors.push('Rum for forbedring');
-    }
-  }
+  const row = { display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 16, borderTop: `1px solid ${RULE}`, padding: '10px 0' };
 
   return (
-    <div className="relative bg-linear-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-lg p-8 text-white shadow-lg overflow-hidden">
-      {/* Decorative circles */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16" />
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12" />
+    <div className="p-8" style={{ background: PAPER, color: INK, border: `1px solid ${RULE}` }}>
+      <p className="fig text-xl font-semibold">Mine levetidsresultater</p>
 
-      {/* Content */}
-      <div className="relative space-y-6">
-        {/* Header */}
-        <div className="text-center">
-          <div className="text-4xl mb-2">⏳</div>
-          <h3 className="text-2xl font-bold">Mine Levetidsresultater</h3>
+      <p className="fig mt-6 text-7xl leading-none font-semibold" style={{ color: ACCENT }}>
+        {formatYears(Number(resultData.remainingYears))}
+      </p>
+      <p className="mt-1 text-lg" style={{ color: MUTED }}>år tilbage, statistisk set</p>
+      <p className="mt-1 text-sm" style={{ color: MUTED }}>
+        {PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period}
+      </p>
+
+      <div className="mt-6">
+        <div style={row}>
+          <span style={{ color: MUTED }}>Forventet alder</span>
+          <span className="fig text-xl font-semibold">{resultData.adjustedLifeExpectancy}</span>
         </div>
-
-        {/* Main stat */}
-        <div className="text-center py-6 bg-white/10 backdrop-blur-xs rounded-lg">
-          <div className="text-6xl font-bold mb-2">{formatYears(Number(resultData.remainingYears))}</div>
-          <div className="text-lg text-white/90">år tilbage</div>
-          <div className="mt-1 text-sm text-white/80">
-            {PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period}
-          </div>
+        <div style={row}>
+          <span style={{ color: MUTED }}>Dage tilbage</span>
+          <span className="fig text-xl font-semibold">{resultData.remainingDays}</span>
         </div>
-
-        {/* Details grid */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold">{resultData.adjustedLifeExpectancy}</div>
-            <div className="text-sm text-white/80">Forventet alder</div>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
-            <div className="text-2xl font-bold">{resultData.remainingDays}</div>
-            <div className="text-sm text-white/80">Dage tilbage</div>
-          </div>
-        </div>
-
-        {/* Lifestyle impact */}
         {resultData.lifestyleImpact !== 0 && (
-          <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
-            <div className="text-sm text-white/80 mb-1">Livsstil påvirkning</div>
-            <div className={`text-3xl font-bold ${resultData.lifestyleImpact > 0 ? 'text-green-300' : 'text-orange-300'}`}>
+          <div style={row}>
+            <span style={{ color: MUTED }}>Livsstilspåvirkning</span>
+            <span className="fig text-xl font-semibold">
               {formatSignedYears(resultData.lifestyleImpact)}
-            </div>
+            </span>
           </div>
         )}
-
-        {/* Footer */}
-        <div className="text-center pt-4 border-t border-white/20">
-          <div className="text-sm text-white/80">Beregn din egen levetid på</div>
-          <div className="text-lg font-semibold">levetidsberegner.dk</div>
-        </div>
       </div>
+
+      <p className="mt-6 text-sm" style={{ color: MUTED }}>
+        Beregn din egen levetid på <span className="font-semibold" style={{ color: INK }}>levetidsberegner.dk</span>
+      </p>
     </div>
   );
 };

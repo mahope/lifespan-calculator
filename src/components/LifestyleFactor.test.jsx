@@ -139,7 +139,7 @@ describe('LifestyleFactor helper text and notes (#93)', () => {
     const stress = find('stress');
     render({ f: stress, initial: -2 });
     expect(container.textContent).toContain('påvirker ikke beregningen');
-    expect(container.querySelector('span.text-sm').textContent).toBe('påvirker ikke beregningen');
+    expect(container.querySelector('[data-testid="factor-years"]').textContent).toBe('påvirker ikke beregningen');
     const [note, helper] = describedText();
     expect(note).toBe('påvirker ikke beregningen');
     expect(helper).toContain('Kivimäki');

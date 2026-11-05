@@ -63,7 +63,7 @@ describe('KropsAlder (Alder efter restlevetid)', () => {
         NOW
       );
       act(() => root.render(<KropsAlder resultData={resultData} />));
-      return container.querySelector('.text-5xl').textContent;
+      return container.querySelector('[data-testid="equivalent-age"]').textContent;
     };
     expect(age('projected')).toBe(age('period'));
   });

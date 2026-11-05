@@ -1,89 +1,64 @@
 import React from 'react';
 
-const PromoBanner = () => {
-  const promos = [
-    {
-      title: 'Beregner.dk',
-      description: 'Gratis online beregnere til el, løn, BMI, feriepenge, børnepenge og SU',
-      emoji: '🧮',
-      url: 'https://beregner.holstjensen.eu',
-      highlight: 'Beregn alt fra elforbrug til nettoløn'
-    },
-    {
-      title: 'WhiteNoise.dk',
-      description: 'Alt om hvid støj til bedre søvn for babyer og voksne',
-      emoji: '😴',
-      url: 'https://whitenoise.dk',
-      highlight: 'Find den bedste white noise speaker'
-    },
-    {
-      title: 'QRtool.dk',
-      description: 'Gratis QR-kode generator med logo, farver og avancerede features',
-      emoji: '📱',
-      url: 'https://qrtool.dk',
-      highlight: 'Opret professionelle QR-koder på sekunder'
-    },
-    {
-      title: 'Pakkeliste.com',
-      description: 'Smart pakkeliste-generator til rejser, camping og weekendture',
-      emoji: '🎒',
-      url: 'https://pakkeliste.com',
-      highlight: 'Glem aldrig noget igen'
-    },
-    {
-      title: 'Mahope.dk',
-      description: 'Freelance webudvikling og digitale løsninger',
-      emoji: '💼',
-      url: 'https://mahope.dk',
-      highlight: 'Skræddersyede web-løsninger til din virksomhed'
-    }
-  ];
+const PROMOS = [
+  {
+    title: 'Beregner.dk',
+    description: 'Gratis beregnere til el, løn, BMI, feriepenge, børnepenge og SU.',
+    url: 'https://beregner.holstjensen.eu',
+  },
+  {
+    title: 'WhiteNoise.dk',
+    description: 'Alt om hvid støj til bedre søvn for babyer og voksne.',
+    url: 'https://whitenoise.dk',
+  },
+  {
+    title: 'QRtool.dk',
+    description: 'Gratis QR-kode generator med logo og egne farver.',
+    url: 'https://qrtool.dk',
+  },
+  {
+    title: 'Pakkeliste.com',
+    description: 'Pakkelister til rejser, camping og weekendture.',
+    url: 'https://pakkeliste.com',
+  },
+  {
+    title: 'Mahope.dk',
+    description: 'Freelance webudvikling og digitale løsninger.',
+    url: 'https://mahope.dk',
+  },
+];
 
-  return (
-    <div className="bg-linear-to-br from-[hsl(var(--gradient-from))]/5 to-[hsl(var(--gradient-to))]/5 border-t">
-      <div className="container py-8 sm:py-12">
-        <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold mb-2">Andre nyttige værktøjer</h2>
-          <p className="text-sm sm:text-base text-muted-foreground">Tjek mine andre gratis tools og services</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {promos.map((promo, index) => (
-            <a
-              key={index}
-              href={promo.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="promo-card group"
-            >
-              <div className="card-content pt-4 sm:pt-6">
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                  {promo.emoji}
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold mb-2 text-primary group-hover:text-primary/80 transition-colors">
-                  {promo.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  {promo.description}
-                </p>
-                <div className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
-                  <span>{promo.highlight}</span>
-                  <svg
-                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </a>
+// Other sites by the same maker: a plain list, one line each.
+const PromoBanner = () => (
+  <aside className="container" aria-labelledby="andre-vaerktoejer">
+    <div className="card">
+      <div className="card-header">
+        <h2 id="andre-vaerktoejer" className="fig text-2xl leading-tight font-semibold">
+          Andre værktøjer
+        </h2>
+        <p className="mt-2 max-w-prose text-[0.9375rem] leading-relaxed text-muted-foreground">
+          Gratis sider fra samme udvikler.
+        </p>
+      </div>
+      <div className="card-content">
+        <ul className="divide-y">
+          {PROMOS.map((promo) => (
+            <li key={promo.url} className="grid gap-x-8 gap-y-0.5 py-3 first:pt-0 sm:grid-cols-[11rem_minmax(0,1fr)]">
+              <a
+                href={promo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link inline-flex min-h-11 items-center font-medium sm:min-h-0 sm:items-baseline"
+              >
+                {promo.title}
+              </a>
+              <p className="text-[0.9375rem] text-muted-foreground">{promo.description}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
-  );
-};
+  </aside>
+);
 
 export default PromoBanner;

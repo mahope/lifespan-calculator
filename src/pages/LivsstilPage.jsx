@@ -1,251 +1,150 @@
 import React from 'react';
-import {
-  HeartPulse,
-  Activity,
-  Apple,
-  Moon,
-  CigaretteOff,
-  Brain,
-  Wine,
-  Target,
-  BarChart3,
-} from 'lucide-react';
-import SEOHead from '../components/SEOHead';
-import PageHeader from '../components/PageHeader';
-import Footer from '../components/Footer';
-import ThemeToggle from '../components/ThemeToggle';
-import PromoBanner from '../components/PromoBanner';
+import { Link } from 'react-router-dom';
+import PageShell from '../components/PageShell';
+import SectionHeader from '../components/SectionHeader';
 import AnswerFirst from '../components/AnswerFirst';
 import { answerFirst } from '../utils/answerFirst';
-import { Link } from 'react-router-dom';
 
-const LivsstilPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <SEOHead route="/livsstil-og-levetid" />
+const TOPICS = [
+  {
+    title: 'Motion og fysisk aktivitet',
+    text: 'I en samlet analyse af seks store kohortestudier levede personer med ca. 150 minutters aktivitet om ugen i gennemsnit ca. 3,4 år længere end inaktive; selv under 75 minutter om ugen var forbundet med ca. 1,8 flere leveår (Moore m.fl., PLoS Medicine 2012). Det er statistiske sammenhænge.',
+    listTitle: 'Anbefalinger:',
+    items: [
+      '150 min. moderat aktivitet per uge',
+      'Styrketræning 2 gange om ugen',
+      'Daglige gåture på mindst 30 minutter',
+      'Undgå stillesiddende perioder over 1 time',
+    ],
+  },
+  {
+    title: 'Ernæring og kost',
+    text: 'En modelberegning viser, at en varig omlægning til mere bælgfrugter, fuldkorn og nødder og mindre forarbejdet kød kan give omkring 3-10 flere leveår, mest hvis man starter ung (Fadnes m.fl., PLoS Medicine 2022). Det er en modelberegning, ikke et forsøg.',
+    listTitle: 'Kostvejledning:',
+    items: [
+      'Spis 5-7 portioner frugt og grønt dagligt',
+      'Vælg fuldkornsprodukter frem for raffinerede',
+      'Inkluder fede fisk 2-3 gange om ugen',
+      'Begræns rødt kød og forarbejdede fødevarer',
+    ],
+  },
+  {
+    title: 'Søvn og hvile',
+    text: 'Både meget kort og meget lang søvn er i store oversigtsstudier forbundet med lidt højere dødelighed, og risikoen er lavest ved omkring 7 timer (Yin m.fl. 2017; Cappuccio m.fl. 2010). En del af sammenhængen kan skyldes, at sygdom påvirker søvnen.',
+    listTitle: 'Søvnhygiejne:',
+    items: [
+      'Gå i seng og stå op på samme tid hver dag',
+      'Undgå skærme 1 time før sengetid',
+      'Hold soveværelset køligt og mørkt',
+      'Undgå koffein efter kl. 14',
+    ],
+  },
+  {
+    title: 'Rygning og tobak',
+    text: 'Rygere mister i gennemsnit mindst 10 leveår sammenlignet med aldrig-rygere (Jha m.fl., NEJM 2013).',
+    listTitle: 'Rygningens påvirkning:',
+    items: [
+      'Også 1-10 cigaretter om dagen næsten fordobler dødeligheden (Pirie m.fl., Lancet 2013).',
+      'Hvis man stopper før 40 år, undgår man omkring 90 % af den ekstra dødelighed (Jha 2013).',
+      'I en britisk lægeundersøgelse genvandt mænd, der stoppede som 30-årige, ca. 10 leveår og som 50-årige ca. 6 (Doll m.fl., BMJ 2004).',
+    ],
+  },
+  {
+    title: 'Stress og mental sundhed',
+    text: 'Langvarig stress på arbejdet er forbundet med en let forhøjet risiko for hjertesygdom (ca. 23 % højere i en stor europæisk analyse, Kivimäki m.fl., Lancet 2012), men der findes ikke solid dokumentation for et bestemt antal leveår ved stresshåndtering.',
+    listTitle: 'Stresshåndtering:',
+    items: [
+      'Praktiser mindfulness eller meditation',
+      'Dyrk hobbies og interesser',
+      'Vedligehold sociale relationer',
+      'Søg professionel hjælp ved behov',
+    ],
+  },
+  {
+    title: 'Alkohol',
+    text: 'Risikoen for tidlig død er lavest ved lavt forbrug og stiger derefter; ved 200-350 g alkohol om ugen (ca. 17-29 genstande) er forventet levetid ved 40 år ca. 1-2 år kortere end ved højst 100 g om ugen (ca. 8 genstande) (Wood m.fl., Lancet 2018).',
+    listTitle: 'Anbefalinger:',
+    items: [
+      'Sundhedsstyrelsen anbefaler højst 10 genstande om ugen og højst 4 på samme dag, for både kvinder og mænd.',
+      '2 alkoholfri dage per uge',
+      'Undgå drukfester',
+    ],
+  },
+];
 
-      <PageHeader
-        icon={HeartPulse}
-        title="Livsstil og Levetid"
-        subtitle="Oplev hvordan dine daglige valg påvirker din levetid og lær at optimere din livsstil for et længere, sundere liv"
-      />
+const EFFECTS = [
+  ['+12,2-14,0', 'Flere leveår ved 50 år: fem mod ingen sunde levevaner'],
+  ['82 %', 'Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner (Li m.fl. 2018)'],
+  ['65 %', 'Lavere kræftdødelighed ved fem mod ingen sunde levevaner (Li m.fl. 2018)'],
+];
 
-      <main className="flex-1">
-        <div className="container py-8 sm:py-12">
-          <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
-            <AnswerFirst text={answerFirst.livsstil()} linkText="Læg din livsstil ind i levetidsberegneren" />
+const LivsstilPage = () => (
+  <PageShell
+    route="/livsstil-og-levetid"
+    title="Livsstil og Levetid"
+    subtitle="Oplev hvordan dine daglige valg påvirker din levetid og lær at optimere din livsstil for et længere, sundere liv"
+  >
+    <AnswerFirst text={answerFirst.livsstil()} linkText="Læg din livsstil ind i levetidsberegneren" />
 
-            <div className="card animate-slideUp">
-              <div className="card-content space-y-6">
-                <h2 className="text-xl sm:text-2xl font-bold">Livsstilsfaktorer med størst påvirkning</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  I store amerikanske opfølgningsstudier kunne omkring 60 % af dødsfaldene tilskrives, at man ikke fulgte
-                  fem sunde levevaner (Li m.fl., Circulation 2018). Tallet gælder en befolkning, ikke dig. Her er de
-                  vigtigste områder, hvor du kan gøre en forskel:
-                </p>
+    <section className="card">
+      <SectionHeader level={2} title="Livsstilsfaktorer med størst påvirkning" />
+      <div className="card-content prose-page">
+        <p>
+          I store amerikanske opfølgningsstudier kunne omkring 60 % af dødsfaldene tilskrives, at man ikke fulgte
+          fem sunde levevaner (Li m.fl., Circulation 2018). Tallet gælder en befolkning, ikke dig. Her er de
+          vigtigste områder, hvor du kan gøre en forskel:
+        </p>
+      </div>
+    </section>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-                  <div className="space-y-6">
-                    <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                          <Activity className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-semibold">Motion og fysisk aktivitet</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        I en samlet analyse af seks store kohortestudier levede personer med ca. 150 minutters aktivitet om
-                        ugen i gennemsnit ca. 3,4 år længere end inaktive; selv under 75 minutter om ugen var forbundet med
-                        ca. 1,8 flere leveår (Moore m.fl., PLoS Medicine 2012). Det er statistiske sammenhænge.
-                      </p>
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-green-700 dark:text-green-400">Anbefalinger:</h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>• 150 min. moderat aktivitet per uge</li>
-                          <li>• Styrketræning 2 gange om ugen</li>
-                          <li>• Daglige gåture på mindst 30 minutter</li>
-                          <li>• Undgå stillesiddende perioder over 1 time</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                          <Apple className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-semibold">Ernæring og kost</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        En modelberegning viser, at en varig omlægning til mere bælgfrugter, fuldkorn og nødder og mindre
-                        forarbejdet kød kan give omkring 3-10 flere leveår, mest hvis man starter ung (Fadnes m.fl., PLoS
-                        Medicine 2022). Det er en modelberegning, ikke et forsøg.
-                      </p>
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-green-700 dark:text-green-400">Kostvejledning:</h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>• Spis 5-7 portioner frugt og grønt dagligt</li>
-                          <li>• Vælg fuldkornsprodukter frem for raffinerede</li>
-                          <li>• Inkluder fede fisk 2-3 gange om ugen</li>
-                          <li>• Begræns rødt kød og forarbejdede fødevarer</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
-                          <Moon className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-semibold">Søvn og hvile</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Både meget kort og meget lang søvn er i store oversigtsstudier forbundet med lidt højere
-                        dødelighed, og risikoen er lavest ved omkring 7 timer (Yin m.fl. 2017; Cappuccio m.fl. 2010). En
-                        del af sammenhængen kan skyldes, at sygdom påvirker søvnen.
-                      </p>
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-green-700 dark:text-green-400">Søvnhygiejne:</h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>• Gå i seng og stå op på samme tid hver dag</li>
-                          <li>• Undgå skærme 1 time før sengetid</li>
-                          <li>• Hold soveværelset køligt og mørkt</li>
-                          <li>• Undgå koffein efter kl. 14</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400">
-                          <CigaretteOff className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-semibold">Rygning og tobak</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Rygere mister i gennemsnit mindst 10 leveår sammenlignet med aldrig-rygere (Jha m.fl., NEJM 2013).
-                      </p>
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-destructive">Rygningens påvirkning:</h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>• Også 1-10 cigaretter om dagen næsten fordobler dødeligheden (Pirie m.fl., Lancet 2013).</li>
-                          <li>
-                            • Hvis man stopper før 40 år, undgår man omkring 90 % af den ekstra dødelighed (Jha 2013).
-                          </li>
-                          <li>
-                            • I en britisk lægeundersøgelse genvandt mænd, der stoppede som 30-årige, ca. 10 leveår og som
-                            50-årige ca. 6 (Doll m.fl., BMJ 2004).
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
-                          <Brain className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-semibold">Stress og mental sundhed</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Langvarig stress på arbejdet er forbundet med en let forhøjet risiko for hjertesygdom (ca. 23 %
-                        højere i en stor europæisk analyse, Kivimäki m.fl., Lancet 2012), men der findes ikke solid
-                        dokumentation for et bestemt antal leveår ved stresshåndtering.
-                      </p>
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-green-700 dark:text-green-400">Stresshåndtering:</h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>• Praktiser mindfulness eller meditation</li>
-                          <li>• Dyrk hobbies og interesser</li>
-                          <li>• Vedligehold sociale relationer</li>
-                          <li>• Søg professionel hjælp ved behov</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
-                          <Wine className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-semibold">Alkohol</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Risikoen for tidlig død er lavest ved lavt forbrug og stiger derefter; ved 200-350 g alkohol om
-                        ugen (ca. 17-29 genstande) er forventet levetid ved 40 år ca. 1-2 år kortere end ved højst 100 g om
-                        ugen (ca. 8 genstande) (Wood m.fl., Lancet 2018).
-                      </p>
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-yellow-700 dark:text-yellow-400">Anbefalinger:</h4>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                          <li>
-                            • Sundhedsstyrelsen anbefaler højst 10 genstande om ugen og højst 4 på samme dag, for både
-                            kvinder og mænd.
-                          </li>
-                          <li>• 2 alkoholfri dage per uge</li>
-                          <li>• Undgå drukfester</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="card-content space-y-6">
-                <h3 className="text-lg sm:text-xl font-semibold">Den kumulative effekt af livsstilsændringer</h3>
-                <p className="text-muted-foreground">
-                  I et amerikansk studie af ca. 123.000 sundhedsprofessionelle havde 50-årige, der levede efter alle fem
-                  sunde levevaner (ikke-rygning, normalvægt, 30 minutters motion dagligt, moderat alkohol, sund kost),
-                  en forventet restlevetid, der var 12,2 år (mænd) og 14,0 år (kvinder) længere end dem uden nogen af
-                  dem (Li m.fl., Circulation 2018).
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-                  <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-green-700 dark:text-green-400">+12,2-14,0</div>
-                    <div className="text-sm text-muted-foreground">Flere leveår ved 50 år: fem mod ingen sunde levevaner</div>
-                  </div>
-                  <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary">82 %</div>
-                    <div className="text-sm text-muted-foreground">Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner (Li m.fl. 2018)</div>
-                  </div>
-                  <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
-                    <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">65 %</div>
-                    <div className="text-sm text-muted-foreground">Lavere kræftdødelighed ved fem mod ingen sunde levevaner (Li m.fl. 2018)</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card border-green-500/20 bg-green-500/5">
-              <div className="card-content">
-                <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Target className="h-5 w-5 shrink-0 text-green-700 dark:text-green-400" aria-hidden="true" /> Start i dag
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-                  Du behøver ikke at ændre alt på én gang. Start med én livsstilsændring ad gangen og byg gradvist
-                  sundere vaner op. Selv små forbedringer kan have betydelig påvirkning på din levetid og livskvalitet.
-                </p>
-                <div className="text-center">
-                  <Link to="/" className="btn btn-primary gap-2">
-                    <BarChart3 className="h-5 w-5" aria-hidden="true" /> Se hvordan din livsstil påvirker din levetid
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+    {TOPICS.map((t) => (
+      <section key={t.title} className="card">
+        <SectionHeader title={t.title} />
+        <div className="card-content prose-page">
+          <p>{t.text}</p>
+          <h4>{t.listTitle}</h4>
+          <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
+            {t.items.map((i) => (
+              <li key={i}>{i}</li>
+            ))}
+          </ul>
         </div>
-      </main>
+      </section>
+    ))}
 
-      <PromoBanner />
-      <Footer />
-      <ThemeToggle />
-    </div>
-  );
-};
+    <section className="card">
+      <SectionHeader title="Den kumulative effekt af livsstilsændringer" />
+      <div className="card-content space-y-6">
+        <p className="prose-page">
+          I et amerikansk studie af ca. 123.000 sundhedsprofessionelle havde 50-årige, der levede efter alle fem
+          sunde levevaner (ikke-rygning, normalvægt, 30 minutters motion dagligt, moderat alkohol, sund kost),
+          en forventet restlevetid, der var 12,2 år (mænd) og 14,0 år (kvinder) længere end dem uden nogen af
+          dem (Li m.fl., Circulation 2018).
+        </p>
+        <dl className="grid gap-x-10 sm:grid-cols-3">
+          {EFFECTS.map(([value, label]) => (
+            <div key={label} className="flex flex-col-reverse justify-end border-t py-4">
+              <dt className="text-muted-foreground">{label}</dt>
+              <dd className="fig text-4xl font-semibold text-primary">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section className="card">
+      <SectionHeader title="Start i dag" />
+      <div className="card-content prose-page">
+        <p>
+          Du behøver ikke at ændre alt på én gang. Start med én livsstilsændring ad gangen og byg gradvist
+          sundere vaner op. Selv små forbedringer kan have betydelig påvirkning på din levetid og livskvalitet.
+        </p>
+        <p>
+          <Link to="/" className="btn btn-primary">Se hvordan din livsstil påvirker din levetid</Link>
+        </p>
+      </div>
+    </section>
+  </PageShell>
+);
 
 export default LivsstilPage;

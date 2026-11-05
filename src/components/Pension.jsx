@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Briefcase } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { pensionCohort } from '../utils/pension';
 
@@ -38,49 +37,48 @@ const Pension = ({ resultData }) => {
   return (
     <div className="card">
       <SectionHeader
-        icon={Briefcase}
         title="Pension & arbejdsår"
         description={`Baseret på din årgang (${cohortText}) og den danske folkepensionsalder.`}
       />
-      <div className="card-content space-y-4">
-        <div className="grid grid-cols-3 gap-3 text-center">
-          <div className="rounded-lg bg-muted/30 p-3">
-            <div className="text-2xl font-semibold">{cohort.label}</div>
-            <div className="text-xs text-muted-foreground wrap-anywhere">Folkepensionsalder</div>
+      <div className="card-content space-y-6">
+        <dl className="grid grid-cols-3 gap-4">
+          <div className="flex flex-col-reverse justify-end">
+            <dt className="mt-1 text-sm text-muted-foreground wrap-anywhere">Folkepensionsalder</dt>
+            <dd className="fig text-3xl font-semibold sm:text-4xl">{cohort.label}</dd>
           </div>
-          <div className="rounded-lg bg-muted/30 p-3">
-            <div className="text-2xl font-semibold text-primary">{workingYearsLeft}</div>
-            <div className="text-xs text-muted-foreground wrap-anywhere">
+          <div className="flex flex-col-reverse justify-end">
+            <dt className="mt-1 text-sm text-muted-foreground wrap-anywhere">
               {retired ? 'Pensioneret' : 'Arbejdsår tilbage'}
-            </div>
+            </dt>
+            <dd className="fig text-3xl font-semibold text-primary sm:text-4xl">{workingYearsLeft}</dd>
           </div>
-          <div className="rounded-lg bg-muted/30 p-3">
-            <div className="text-2xl font-semibold">{retirementYears}</div>
-            <div className="text-xs text-muted-foreground wrap-anywhere">Forventede pensionsår</div>
+          <div className="flex flex-col-reverse justify-end">
+            <dt className="mt-1 text-sm text-muted-foreground wrap-anywhere">Forventede pensionsår</dt>
+            <dd className="fig text-3xl font-semibold sm:text-4xl">{retirementYears}</dd>
           </div>
-        </div>
+        </dl>
 
         <div>
-          <div className="flex h-3 w-full overflow-hidden rounded-full bg-secondary">
-            <div className="h-full bg-primary" style={{ width: `${livedPct}%` }} title="Levet" />
+          <div className="flex h-3 w-full overflow-hidden bg-secondary">
+            <div className="h-full bg-lived" style={{ width: `${livedPct}%` }} title="Levet" />
             <div className="h-full bg-primary/40" style={{ width: `${workPct}%` }} title="Arbejdsår tilbage" />
-            <div className="h-full bg-muted-foreground/30" style={{ width: `${retirePct}%` }} title="Pensionsår" />
+            <div className="h-full bg-primary" style={{ width: `${retirePct}%` }} title="Pensionsår" />
           </div>
-          <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
-              <span className="inline-block h-2.5 w-2.5 rounded-[2px] bg-primary" /> Levet
+              <span className="inline-block h-2.5 w-2.5 bg-lived" /> Levet
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="inline-block h-2.5 w-2.5 rounded-[2px] bg-primary/40" /> Arbejde tilbage
+              <span className="inline-block h-2.5 w-2.5 bg-primary/40" /> Arbejde tilbage
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="inline-block h-2.5 w-2.5 rounded-[2px] bg-muted-foreground/30" /> Pension
+              <span className="inline-block h-2.5 w-2.5 bg-primary" /> Pension
             </span>
           </div>
         </div>
 
         {cohort.efterloen && (
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="max-w-prose text-[0.9375rem] text-muted-foreground">
             Efterlønsalder for din årgang:{' '}
             <span className="font-semibold text-foreground">
               {cohort.efterloen === 'ikke fastsat' ? 'ikke fastsat endnu' : cohort.efterloen}
@@ -89,11 +87,11 @@ const Pension = ({ resultData }) => {
           </p>
         )}
 
-        <p className="text-center text-sm">
-          <Link to="/pensionsalder" className="font-medium text-primary underline">Se alle pensionsaldre og din pensionsdato</Link>
+        <p>
+          <Link to="/pensionsalder" className="link font-medium">Se alle pensionsaldre og din pensionsdato</Link>
         </p>
 
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="max-w-prose text-sm text-muted-foreground">
           Folkepensionsalderen er 70 år for dem, der er født fra 1. januar 1971 (Lov nr. 703 af 20. juni 2025, som
           også satte 69 år for 1967-1970). De øvrige aldre er efter borger.dk, november 2026, og alderen kan stige
           yderligere for årgange fra 1975. Efterlønsaldre er ligeledes fra borger.dk.

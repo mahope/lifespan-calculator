@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { LineChart } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { loadHistory, clearHistory } from '../utils/history';
 import { formatYears } from '../utils/lifespanMath';
@@ -41,7 +40,7 @@ const Historik = ({ resultData }) => {
       tabIndex={-1}
       role="status"
       aria-live="polite"
-      className={deleted ? 'text-center text-sm text-muted-foreground outline-none' : 'sr-only'}
+      className={deleted ? 'text-sm text-muted-foreground outline-none' : 'sr-only'}
     >
       {deleted ? 'Historik slettet' : ''}
     </p>
@@ -57,7 +56,7 @@ const Historik = ({ resultData }) => {
 
   const trend =
     delta >= 0.05
-      ? `Dit estimat er steget ${formatYears(delta)} år siden din første beregning 🎉`
+      ? `Dit estimat er steget ${formatYears(delta)} år siden din første beregning`
       : delta <= -0.05
         ? `Dit estimat er faldet ${formatYears(Math.abs(delta))} år siden din første beregning`
         : 'Dit estimat er stort set uændret';
@@ -67,33 +66,32 @@ const Historik = ({ resultData }) => {
       {status}
       <div className="card">
         <SectionHeader
-          icon={LineChart}
           title="Din historik"
           description={`Sådan har dit estimat udviklet sig (${history.length} beregninger, gemt lokalt).`}
         />
-        <div className="card-content space-y-2">
+        <div className="card-content space-y-3">
           {history.slice(-6).map((h, idx) => (
             <div
               key={`${h.ts}-${idx}`}
-              className="flex items-center justify-between border-b border-border/40 pb-1 text-sm last:border-0"
+              className="flex items-baseline justify-between gap-4 border-b py-1.5 text-[0.9375rem]"
             >
               <span className="text-muted-foreground">{fmtDate(h.ts)}</span>
-              <span className="font-medium">
+              <span className="fig text-base font-medium">
                 {h.expected} år{Number.isFinite(Number(h.age)) ? ` (som ${Number(h.age)}-årig)` : ''}
               </span>
             </div>
           ))}
-          <p className="pt-1 text-center text-sm font-medium">{trend}</p>
-          <p className="text-center text-xs text-muted-foreground">
+          <p className="pt-1 font-medium">{trend}</p>
+          <p className="max-w-prose text-sm text-muted-foreground">
             Historikken gemmes kun i denne browser og forlader aldrig din enhed. Du kan slette den her.
           </p>
-          <div className="flex justify-center gap-2 pt-1">
+          <div className="flex flex-wrap gap-2 pt-1">
             {confirming ? (
               <>
                 <button
                   type="button"
                   onClick={handleDelete}
-                  className="rounded-md border border-destructive px-3 py-1 text-sm font-medium text-destructive focus-visible:outline-2 focus-visible:outline-offset-2"
+                  className="btn min-h-11 border border-destructive text-destructive"
                 >
                   Ja, slet historik
                 </button>
@@ -101,7 +99,7 @@ const Historik = ({ resultData }) => {
                   type="button"
                   autoFocus
                   onClick={() => setConfirming(false)}
-                  className="rounded-md border border-border px-3 py-1 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+                  className="btn btn-outline min-h-11"
                 >
                   Annuller
                 </button>
@@ -110,7 +108,7 @@ const Historik = ({ resultData }) => {
               <button
                 type="button"
                 onClick={() => setConfirming(true)}
-                className="rounded-md border border-border px-3 py-1 text-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="btn btn-outline min-h-11"
               >
                 Slet historik
               </button>

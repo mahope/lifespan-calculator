@@ -1,179 +1,95 @@
 import React from 'react';
-import {
-  Skull,
-  BarChart3,
-  Dna,
-  Sprout,
-  AlertTriangle,
-  Dumbbell,
-  X,
-  Check,
-  Lightbulb,
-  Calculator,
-} from 'lucide-react';
-import SEOHead from '../components/SEOHead';
-import PageHeader from '../components/PageHeader';
-import Footer from '../components/Footer';
-import ThemeToggle from '../components/ThemeToggle';
-import PromoBanner from '../components/PromoBanner';
+import { Link } from 'react-router-dom';
+import PageShell from '../components/PageShell';
+import SectionHeader from '../components/SectionHeader';
 import AnswerFirst from '../components/AnswerFirst';
 import { answerFirst } from '../utils/answerFirst';
-import { Link } from 'react-router-dom';
 
-const DodsalderPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <SEOHead route="/dodsalder-calculator" />
+const STEPS = [
+  ['Demografiske data', 'Vi bruger Danmarks Statistiks dødelighedstavler for dit køn og din alder.'],
+  ['Biologiske faktorer', 'Alder og køn er de stærkeste prædiktorer for levetid ifølge demografisk forskning.'],
+  ['Livsstilsjusteringer', 'Faktorer som rygning, motion, kost og stress kan justere dit estimat med flere år.'],
+];
 
-      <PageHeader
-        icon={Skull}
-        title="Forventet dødsalder"
-        subtitle="Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer"
-      />
+const SHORTEN = [
+  'Rygning (reducerer levetid med 7-10 år)',
+  'Overforbrug af alkohol',
+  'Fedme og usund kost',
+  'Kronisk stress',
+  'Mangel på motion',
+];
 
-      <main className="flex-1">
-        <div className="container py-8 sm:py-12">
-          <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
-            <AnswerFirst text={answerFirst.dodsalder()} linkText="Beregn din forventede dødsalder i levetidsberegneren" />
+const EXTEND = [
+  'Regelmæssig motion (tilføjer 3-7 år)',
+  'Mediterran kost',
+  'Sociale forbindelser',
+  'Tilstrækkelig søvn (7-9 timer)',
+  'Stressmanagement',
+];
 
-            <div className="card animate-slideUp">
-              <div className="card-content space-y-6">
-                <h2 className="text-xl sm:text-2xl font-bold">Hvad er en dødsalder calculator?</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  En dødsalder calculator er et statistisk værktøj, der estimerer den alder, hvor du sandsynligvis vil dø
-                  baseret på demografiske data, sundhedsstatistikker og livsstilsfaktorer. Det er vigtigt at forstå, at
-                  dette kun er et gennemsnit og ikke en præcis forudsigelse af dit individuelle livsforløb.
-                </p>
+const DodsalderPage = () => (
+  <PageShell
+    route="/dodsalder-calculator"
+    title="Forventet dødsalder"
+    subtitle="Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer"
+  >
+    <AnswerFirst text={answerFirst.dodsalder()} linkText="Beregn din forventede dødsalder i levetidsberegneren" />
 
-                <h3 className="text-lg sm:text-xl font-semibold">Hvordan fungerer beregningen?</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg">
-                    <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-                      <BarChart3 className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <h4 className="font-medium text-foreground">Demografiske data</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Vi bruger Danmarks Statistiks dødelighedstavler for dit køn og din alder.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg">
-                    <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
-                      <Dna className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <h4 className="font-medium text-foreground">Biologiske faktorer</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Alder og køn er de stærkeste prædiktorer for levetid ifølge demografisk forskning.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg">
-                    <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                      <Sprout className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <h4 className="font-medium text-foreground">Livsstilsjusteringer</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Faktorer som rygning, motion, kost og stress kan justere dit estimat med flere år.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+    <section className="card">
+      <SectionHeader level={2} title="Hvad er en dødsalder calculator?" />
+      <div className="card-content space-y-8">
+        <p className="prose-page">
+          En dødsalder calculator er et statistisk værktøj, der estimerer den alder, hvor du sandsynligvis vil dø
+          baseret på demografiske data, sundhedsstatistikker og livsstilsfaktorer. Det er vigtigt at forstå, at
+          dette kun er et gennemsnit og ikke en præcis forudsigelse af dit individuelle livsforløb.
+        </p>
+        <div>
+          <h3 className="fig text-xl font-semibold">Hvordan fungerer beregningen?</h3>
+          <dl className="mt-3 divide-y">
+            {STEPS.map(([term, text]) => (
+              <div key={term} className="grid gap-x-8 gap-y-1 py-4 sm:grid-cols-[13rem_minmax(0,1fr)]">
+                <dt className="font-semibold">{term}</dt>
+                <dd className="text-muted-foreground">{text}</dd>
               </div>
-            </div>
-
-            <div className="card">
-              <div className="card-content space-y-6">
-                <h3 className="text-lg sm:text-xl font-semibold">Livsstilsfaktorer der påvirker dødsalder</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h4 className="font-medium text-destructive flex items-center gap-2">
-                      <AlertTriangle className="h-5 w-5 shrink-0" aria-hidden="true" /> Faktorer der forkorter livet:
-                    </h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-center gap-2">
-                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                        <span>Rygning (reducerer levetid med 7-10 år)</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                        <span>Overforbrug af alkohol</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                        <span>Fedme og usund kost</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                        <span>Kronisk stress</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <X className="h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                        <span>Mangel på motion</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="space-y-4">
-                    <h4 className="font-medium text-green-700 dark:text-green-400 flex items-center gap-2">
-                      <Dumbbell className="h-5 w-5 shrink-0" aria-hidden="true" /> Faktorer der forlænger livet:
-                    </h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-center gap-2">
-                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                        <span>Regelmæssig motion (tilføjer 3-7 år)</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                        <span>Mediterran kost</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                        <span>Sociale forbindelser</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                        <span>Tilstrækkelig søvn (7-9 timer)</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Check className="h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                        <span>Stressmanagement</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card border-primary/20 bg-primary/5">
-              <div className="card-content">
-                <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Lightbulb className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" /> Vigtig påmindelse
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  En dødsalder calculator giver kun et statistisk estimat baseret på befolkningsdata. Din faktiske levetid
-                  påvirkes af mange faktorer, som ikke kan forudsiges, herunder genetik, ulykker, medicinske fremskridt,
-                  og personlige livsstilsvalg. Brug værktøjet som motivation til at leve sundere, men ikke som en definitiv
-                  forudsigelse.
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
-                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din forventede dødsalder
-              </Link>
-            </div>
-          </div>
+            ))}
+          </dl>
         </div>
-      </main>
+      </div>
+    </section>
 
-      <PromoBanner />
-      <Footer />
-      <ThemeToggle />
-    </div>
-  );
-};
+    <section className="card">
+      <SectionHeader level={2} title="Livsstilsfaktorer der påvirker dødsalder" />
+      <div className="card-content grid gap-8 sm:grid-cols-2">
+        <div>
+          <h3 className="fig text-lg font-semibold">Faktorer der forkorter livet:</h3>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground">
+            {SHORTEN.map((t) => <li key={t}>{t}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 className="fig text-lg font-semibold">Faktorer der forlænger livet:</h3>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground">
+            {EXTEND.map((t) => <li key={t}>{t}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="card">
+      <SectionHeader level={2} title="Vigtig påmindelse" />
+      <div className="card-content prose-page">
+        <p>
+          En dødsalder calculator giver kun et statistisk estimat baseret på befolkningsdata. Din faktiske levetid
+          påvirkes af mange faktorer, som ikke kan forudsiges, herunder genetik, ulykker, medicinske fremskridt,
+          og personlige livsstilsvalg. Brug værktøjet som motivation til at leve sundere, men ikke som en definitiv
+          forudsigelse.
+        </p>
+        <p>
+          <Link to="/" className="btn btn-primary">Beregn din forventede dødsalder</Link>
+        </p>
+      </div>
+    </section>
+  </PageShell>
+);
 
 export default DodsalderPage;

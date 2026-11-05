@@ -41,8 +41,8 @@ update snapshots with `npm run test:e2e -- --update-snapshots`). `npm run build`
 - **`pages/`**: One component per route (HomePage, HvorLangTidPage,
   DodsalderPage, LivsstilPage, DanmarkPage, PensionsalderPage, EmbedInfoPage,
   EmbedPage, NotFoundPage).
-- **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
-  ShareCard, ShareModal).
+- **`components/`**: Shared UI (SEOHead, PageHeader with the `SiteNav` masthead, PageShell for the landing
+  pages, SectionHeader, ThemeToggle, Footer, PromoBanner, Overlevelseskurve (survival curve), ShareCard, ShareModal).
 - **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure
   `computeResult(input, now)` in `utils/lifespanMath.js` (age, remaining time,
   end instant). No location lookup: the app never asks for or sends the user's position.
@@ -71,6 +71,9 @@ update snapshots with `npm run test:e2e -- --update-snapshots`). `npm run build`
 ### Key Technical Points
 - **Language**: Danish interface.
 - **Privacy**: All input stays in the browser; analytics events carry no user input.
+- **Design**: editorial statistics look, direction and tokens in `docs/redesign/retning.md`: Source Serif 4 for
+  headings and figures (self-hosted), Inter for text, one petrol accent, open ruled sections instead of cards.
+  `.card` is kept as a class name because the e2e capture reads it, but it is a ruled section, not a box.
 - **Dark mode**: `class` strategy - `.dark` is toggled on `<html>`; Tailwind v4
   `@custom-variant dark` in `index.css` drives the theming.
 

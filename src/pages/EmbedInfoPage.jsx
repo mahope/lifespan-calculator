@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Code2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
-import ThemeToggle from '../components/ThemeToggle';
 import { EMBED_HEIGHT_MESSAGE } from '../utils/embedResult';
 import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 
@@ -55,7 +53,6 @@ const EmbedInfoPage = () => {
       <SEOHead route="/embed-levetidsberegner" />
 
       <PageHeader
-        icon={Code2}
         title="Indlej beregneren"
         subtitle="Gratis widget til din hjemmeside. Én linje kode, ingen cookies og ingen data, der forlader besøgendes browser."
       />
@@ -170,7 +167,6 @@ const EmbedInfoPage = () => {
       </main>
 
       <Footer />
-      <ThemeToggle />
     </div>
   );
 };

@@ -1,19 +1,57 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
-// Shared page hero: a real (lucide) icon in a frosted-glass chip over a clean
-// title + subtitle on the brand gradient. Used across the calculator and the
-// content landing pages so the header is consistent (and free of emoji titles).
-const PageHeader = ({ icon: Icon, title, subtitle }) => (
-  <header className="header-gradient px-4 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-    <div className="container animate-fadeIn">
-      {Icon && (
-        <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur-sm">
-          <Icon className="h-7 w-7" strokeWidth={2} aria-hidden="true" />
-        </span>
-      )}
-      <h1 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">{title}</h1>
+const NAV = [
+  { to: '/', label: 'Beregner', end: true },
+  { to: '/hvor-lang-tid-har-jeg-tilbage', label: 'Tid tilbage' },
+  { to: '/dodsalder-calculator', label: 'Dødsalder' },
+  { to: '/levetid-beregner-danmark', label: 'Danmark' },
+  { to: '/livsstil-og-levetid', label: 'Livsstil' },
+  { to: '/pensionsalder', label: 'Pension' },
+];
+
+// Masthead: wordmark on the left, the site's pages as a real navigation, theme switch last.
+// On phones only the wordmark and the switch show; the pages are listed in the footer.
+export const SiteNav = () => (
+  <div className="border-b">
+    <div className="container flex items-center justify-between gap-4 py-2">
+      <Link to="/" className="fig -ml-1 inline-flex min-h-11 items-center px-1 text-xl font-semibold">
+        Levetidsberegner
+      </Link>
+      <div className="flex items-center gap-1">
+        <nav aria-label="Sider" className="hidden items-center md:flex">
+          {NAV.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
+              className={({ isActive }) =>
+                `inline-flex min-h-11 items-center px-3 text-[0.9375rem] hover:underline ${
+                  isActive ? 'font-semibold text-foreground underline decoration-2 underline-offset-8' : 'text-muted-foreground'
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+);
+
+// Page title block for the landing pages: left-aligned serif title, one plain sentence under it.
+const PageHeader = ({ title, subtitle }) => (
+  <header>
+    <SiteNav />
+    <div className="container pt-10 pb-6 sm:pt-16 sm:pb-8">
+      <h1 className="fig max-w-3xl text-[2.25rem] leading-[1.1] font-semibold sm:text-5xl lg:text-[3.5rem]">
+        {title}
+      </h1>
       {subtitle && (
-        <p className="mx-auto max-w-xl text-sm text-white/90 sm:text-base">{subtitle}</p>
+        <p className="mt-4 max-w-[38rem] text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
       )}
     </div>
   </header>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { BarChart3 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { getLifeExpectancyForCountry, lifeExpectancyData } from '../utils/lifeExpectancyData';
 import { formatYears } from '../utils/lifespanMath';
@@ -43,46 +42,68 @@ const Sammenlign = ({ resultData }) => {
       };
     }),
   ];
-  const max = Math.max(...rows.map((r) => r.value));
+  const lo = Math.floor((Math.min(...rows.map((r) => r.value)) - 2) / 5) * 5;
+  const hi = Math.ceil((Math.max(...rows.map((r) => r.value)) + 1) / 5) * 5;
+  const pos = (v) => ((v - lo) / (hi - lo)) * 100;
+  const ticks = [];
+  for (let t = lo; t <= hi; t += 5) ticks.push(t);
+  const grid = {
+    backgroundImage: 'linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px)',
+    backgroundSize: `${(5 / (hi - lo)) * 100}% 100%`,
+  };
 
   return (
     <div className="card">
       <SectionHeader
-        icon={BarChart3}
         title="Sammenlign med gennemsnittet"
         description={`Din forventede alder (${formatYears(you)} år) sat i perspektiv.`}
       />
-      <div className="card-content space-y-4">
-        <div className="space-y-3">
+      <div className="card-content space-y-5">
+        <ul className="space-y-4">
           {rows.map((r) => (
-            <div key={r.label} className="space-y-1">
-              <div className="flex items-center justify-between text-sm">
+            <li key={r.label}>
+              <div className="flex items-baseline justify-between gap-4 text-[0.9375rem]">
                 <span className={r.you ? 'font-semibold' : 'text-muted-foreground'}>
                   {r.label}
-                  {r.note && <span className="block text-xs">{r.note}</span>}
+                  {r.note && <span className="block text-sm">{r.note}</span>}
                 </span>
-                <span className={r.you ? 'font-semibold text-primary' : 'text-muted-foreground'}>
+                <span className={`fig shrink-0 text-lg ${r.you ? 'font-semibold' : 'text-muted-foreground'}`}>
                   {formatYears(r.value)} år
                 </span>
               </div>
-              <div className="h-2.5 w-full overflow-hidden rounded-full bg-secondary">
+              <div className="relative mt-1.5 h-4 border-r" style={grid} aria-hidden="true">
                 <div
-                  className={`h-full rounded-full transition-all duration-500 ${
-                    r.you ? 'bg-primary' : 'bg-muted-foreground/40'
+                  className="absolute top-1/2 h-px -translate-y-1/2 bg-foreground/30"
+                  style={{ left: 0, width: `${pos(r.value)}%` }}
+                />
+                <div
+                  className={`absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ${
+                    r.you ? 'bg-primary' : 'bg-lived'
                   }`}
-                  style={{ width: `${(r.value / max) * 100}%` }}
+                  style={{ left: `${pos(r.value)}%` }}
                 />
               </div>
-            </div>
+            </li>
+          ))}
+        </ul>
+        <div className="relative h-5 text-xs text-muted-foreground" style={{ fontVariantNumeric: 'tabular-nums' }} aria-hidden="true">
+          {ticks.map((t) => (
+            <span
+              key={t}
+              className="absolute whitespace-nowrap"
+              style={{ left: `${pos(t)}%`, transform: t === lo ? 'none' : t === hi ? 'translateX(-100%)' : 'translateX(-50%)' }}
+            >
+              {t} år
+            </span>
           ))}
         </div>
         {projected && (
-          <p className="text-center text-xs text-muted-foreground" data-testid="sammenlign-basis-note">
+          <p className="max-w-prose text-sm text-muted-foreground" data-testid="sammenlign-basis-note">
             "Dig" og gennemsnittet for din alder bruger fremskrevet dødelighed (DST). Rækkerne "ved fødslen" er
             målte tal for nuværende dødelighed og kan ikke sammenlignes direkte.
           </p>
         )}
-        <p className="text-center text-sm font-medium">{verdict.text}</p>
+        <p className="font-medium">{verdict.text}</p>
       </div>
     </div>
   );

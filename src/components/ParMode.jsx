@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { HeartHandshake } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { jointLifeStats } from '../utils/lifeTableDK';
 import { formatYears } from '../utils/lifespanMath';
@@ -26,14 +25,12 @@ const ParMode = ({ resultData }) => {
   return (
     <div className="card">
       <SectionHeader
-        icon={HeartHandshake}
-        tone="rose"
         title="Jer to sammen"
         description="Indtast din partners alder og køn og se, hvor mange år I statistisk har sammen."
       />
       <div className="card-content space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
-          <div className="flex-1 space-y-1">
+          <div className="space-y-1">
             <label htmlFor="partnerAge" className="label">
               Partnerens alder
             </label>
@@ -42,13 +39,13 @@ const ParMode = ({ resultData }) => {
               type="number"
               min="0"
               max="99"
-              className="input w-full"
+              className="input w-full sm:w-40"
               value={partnerAge}
               onChange={(e) => setPartnerAge(e.target.value)}
               placeholder="fx 38"
             />
           </div>
-          <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Partnerens køn">
+          <div className="segmented" role="radiogroup" aria-label="Partnerens køn">
             <button
               type="button"
               role="radio"
@@ -72,27 +69,27 @@ const ParMode = ({ resultData }) => {
 
         {stats && (
           <div className="space-y-4">
-            <div className="rounded-lg bg-muted/30 p-4 text-center">
-              <div className="text-sm text-muted-foreground">Forventede år sammen (begge i live)</div>
-              <div className="text-4xl font-bold text-primary">
+            <div className="border-l-2 border-primary pl-4">
+              <div className="text-[0.9375rem] text-muted-foreground">Forventede år sammen (begge i live)</div>
+              <div className="fig text-5xl font-semibold text-primary">
                 {formatYears(stats.expectedTogether)}
               </div>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full max-w-md text-[0.9375rem]">
                 <thead>
-                  <tr className="text-muted-foreground">
-                    <th className="py-1 text-left font-medium">Om</th>
-                    <th className="py-1 text-right font-medium">Begge i live</th>
-                    <th className="py-1 text-right font-medium">Mindst én</th>
+                  <tr className="border-b text-muted-foreground">
+                    <th className="py-2 text-left font-medium">Om</th>
+                    <th className="py-2 text-right font-medium">Begge i live</th>
+                    <th className="py-2 text-right font-medium">Mindst én</th>
                   </tr>
                 </thead>
                 <tbody>
                   {stats.at.map((r) => (
-                    <tr key={r.years} className="border-t border-border/40">
-                      <td className="py-1.5">{r.years} år</td>
-                      <td className="py-1.5 text-right font-semibold text-primary">{pct(r.both)}</td>
-                      <td className="py-1.5 text-right">{pct(r.either)}</td>
+                    <tr key={r.years} className="border-b last:border-0">
+                      <td className="py-2">{r.years} år</td>
+                      <td className="fig py-2 text-right text-lg font-semibold">{pct(r.both)}</td>
+                      <td className="fig py-2 text-right text-lg">{pct(r.either)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -102,12 +99,12 @@ const ParMode = ({ resultData }) => {
         )}
 
         {resultData.projection === 'projected' && (
-          <p className="text-center text-xs text-muted-foreground" data-testid="par-period-note">
+          <p className="max-w-prose text-sm text-muted-foreground" data-testid="par-period-note">
             Beregningen af jeres år sammen bruger nuværende dødelighed.
           </p>
         )}
-        <p className="text-center text-xs text-muted-foreground">
-          Antager uafhængig dødelighed — danske dødelighedstavler (Danmarks Statistik).
+        <p className="max-w-prose text-sm text-muted-foreground">
+          Antager uafhængig dødelighed. Tallene er fra danske dødelighedstavler (Danmarks Statistik).
         </p>
       </div>
     </div>

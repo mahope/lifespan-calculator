@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Wand2 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { factorYears, isSuggestible, LIFESTYLE_META } from '../utils/lifestyleFactors';
 import { projectedExpectancy } from '../utils/lifeTableDK';
@@ -36,8 +35,6 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
   return (
     <div className="card">
       <SectionHeader
-        icon={Wand2}
-        tone="violet"
         title="Hvad hvis?"
         description="Vælg ændringer og se effekten på dit estimat med det samme."
       />
@@ -51,27 +48,30 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
               className={`factor-btn basis-auto! ${applied[m.key] ? 'active' : ''}`}
               onClick={() => setApplied((a) => ({ ...a, [m.key]: !a[m.key] }))}
             >
-              <span aria-hidden="true">{m.icon}</span> {m.label}
+              {m.label}
             </button>
           ))}
         </div>
 
-        <div className="rounded-lg bg-muted/30 p-4 text-center">
-          <div className="text-sm text-muted-foreground">
+        <div className="border-l-2 border-primary pl-4">
+          <div className="text-[0.9375rem] text-muted-foreground">
             {anyApplied ? 'Ny forventet alder' : 'Din forventede alder'}
           </div>
-          <div className="text-4xl font-bold text-primary">{formatYears(newExpected)}</div>
+          <div data-testid="hvadhvis-expected" className="fig text-5xl font-semibold text-primary">
+            {formatYears(newExpected)}
+          </div>
           <div
-            className={`text-sm font-medium ${
+            data-testid="hvadhvis-delta"
+            className={`text-[0.9375rem] font-medium ${
               delta >= 0.05
-                ? 'text-green-700 dark:text-green-400'
+                ? 'text-primary'
                 : delta <= -0.05
-                  ? 'text-orange-700 dark:text-orange-400'
+                  ? 'text-foreground'
                   : 'text-muted-foreground'
             }`}
           >
             {delta >= 0.05
-              ? `${formatSignedYears(delta)} i forhold til nu 🎉`
+              ? `${formatSignedYears(delta)} i forhold til nu`
               : delta <= -0.05
                 ? `${formatSignedYears(delta)} i forhold til nu`
                 : 'Vælg en ændring ovenfor'}

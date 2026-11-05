@@ -69,14 +69,12 @@ test('the toggle is offered at entered age 69 but not at 70', async ({ session }
 
 // WCAG 2 contrast (>= 4.5:1, all text here is 14 px) for every text node in the toggle and
 // the second line, in both themes and both toggle states (the inactive button was
-// 3.2-4.0:1 before #92 was repaired). axe-core's color-contrast rule cannot be used here: on
-// the result card's gradient it either reports "incomplete" or blends Tailwind 4's
-// oklab() overlays over the page instead of the card (verified, it reported white on a light
-// grey that is not on screen). So the ratio is computed from the computed styles: the
-// translucent layers between the text and the card are composited over each colour stop of
-// the gradient, and over their average, which is the worst case of the ramp.
+// 3.2-4.0:1 before #92 was repaired). The ratio is computed from the computed styles: the
+// translucent layers between the text and the nearest painted ancestor are composited over
+// that background (over each colour stop and their average if it is a gradient, as the
+// result card was before the redesign).
 for (const theme of ['light', 'dark']) {
-  test(`toggle text has >= 4.5:1 contrast on the gradient (${theme})`, async ({ session }) => {
+  test(`toggle text has >= 4.5:1 contrast on its background (${theme})`, async ({ session }) => {
     const { page } = session;
     await submitCalculator(page, { gender: 'male', age: 40 });
     await page.evaluate((t) => document.documentElement.classList.toggle('dark', t === 'dark'), theme);
@@ -86,9 +84,14 @@ for (const theme of ['light', 'dark']) {
       const report = await page.evaluate(() => {
         const group = document.querySelector('[role="group"][aria-label*="Beregningsgrundlag"]');
         const line = document.querySelector('[data-testid="projection-second-line"]');
-        let host = group;
-        while (host && !getComputedStyle(host).backgroundImage.includes('gradient')) host = host.parentElement;
-        if (!host) return { error: 'no gradient ancestor found' };
+        // The nearest ancestor that paints a background: a gradient (stops measured) or an opaque colour.
+        const paints = (n) => {
+          const cs = getComputedStyle(n);
+          return cs.backgroundImage.includes('gradient') || !/rgba\([^)]*,\s*0\)|transparent/.test(cs.backgroundColor);
+        };
+        let host = group.parentElement;
+        while (host && !paints(host)) host = host.parentElement;
+        if (!host) host = document.documentElement;
         const ctx = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
         const rgba = (c) => {
           ctx.clearRect(0, 0, 1, 1);
@@ -102,8 +105,11 @@ for (const theme of ['light', 'dark']) {
           const [r, g, b] = c.slice(0, 3).map((v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
           return 0.2126 * r + 0.7152 * g + 0.0722 * b;
         };
-        const stops = (getComputedStyle(host).backgroundImage.match(/(?:oklch|oklab|rgba?|lab|lch|color)\([^)]*\)|#[0-9a-f]{3,8}\b/gi) || []).map(rgba);
-        if (stops.length < 2) return { error: 'could not read gradient stops' };
+        const hostStyle = getComputedStyle(host);
+        const stops = hostStyle.backgroundImage.includes('gradient')
+          ? (hostStyle.backgroundImage.match(/(?:oklch|oklab|rgba?|lab|lch|color)\([^)]*\)|#[0-9a-f]{3,8}\b/gi) || []).map(rgba)
+          : [rgba(hostStyle.backgroundColor)];
+        if (stops.length < 1) return { error: 'could not read the background' };
         const avg = [0, 1, 2].map((k) => stops.reduce((a, c) => a + c[k], 0) / stops.length).concat(1);
         const texts = [];
         for (const root of [group, line])

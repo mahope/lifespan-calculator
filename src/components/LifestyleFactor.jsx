@@ -10,7 +10,7 @@ import { formatSignedYears } from '../utils/lifespanMath';
 const LifestyleFactor = ({ factor, value, onSelect }) => {
   const labelId = useId();
   const optionRefs = useRef([]);
-  const { icon, label, options, inSum } = factor;
+  const { label, options, inSum } = factor;
   const helperId = useId();
   const noteId = useId();
   const helper = factorHelper(factor);
@@ -56,12 +56,13 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-xl" aria-hidden="true">{icon}</span>
-          <span id={labelId} className="font-medium">{label}</span>
-        </div>
-        <span id={inSum ? undefined : noteId} className={`text-sm ${inSum ? 'font-medium' : 'text-muted-foreground'}`}>
+      <div className="flex items-baseline justify-between gap-4">
+        <span id={labelId} className="font-medium">{label}</span>
+        <span
+          id={inSum ? undefined : noteId}
+          data-testid="factor-years"
+          className={`fig text-base text-muted-foreground ${inSum ? 'font-medium' : ''}`}
+        >
           {inSum ? formatSignedYears(factorYears(factor.key, value)) : 'påvirker ikke beregningen'}
         </span>
       </div>

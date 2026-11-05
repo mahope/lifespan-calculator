@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { toPng } from 'html-to-image';
 import ShareCard from './ShareCard';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams } from '../utils/shareState';
@@ -7,6 +6,7 @@ import { buildShareParams } from '../utils/shareState';
 const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced = false }) => {
   const [copySuccess, setCopySuccess] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [downloadError, setDownloadError] = useState(false);
   // Lifestyle answers are health-related: never in the link unless ticked.
   const [includeLifestyle, setIncludeLifestyle] = useState(false);
   const shareCardRef = useRef(null);
@@ -14,6 +14,7 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
   // Opt-in applies per opening: never carry a ticked box over to the next result.
   useEffect(() => {
     setIncludeLifestyle(false);
+    setDownloadError(false);
   }, [isOpen]);
 
   if (!isOpen || !resultData) return null;
@@ -139,8 +140,10 @@ Beregn din egen: ${shareUrl}`;
   const downloadImage = async () => {
     if (!shareCardRef.current) return;
     setIsGenerating(true);
+    setDownloadError(false);
 
     try {
+      const { toPng } = await import('html-to-image');
       const dataUrl = await toPng(shareCardRef.current, {
         pixelRatio: 2,
         cacheBust: true,
@@ -155,6 +158,7 @@ Beregn din egen: ${shareUrl}`;
       }
     } catch (err) {
       console.error('Failed to generate image:', err);
+      setDownloadError(true);
     } finally {
       setIsGenerating(false);
     }
@@ -323,6 +327,11 @@ Beregn din egen: ${shareUrl}`;
                   </>
                 )}
               </button>
+              {downloadError && (
+                <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+                  Billedet kunne ikke oprettes. Genindlæs siden og prøv igen.
+                </p>
+              )}
             </div>
           </div>
         </div>

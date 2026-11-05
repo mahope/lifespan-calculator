@@ -8,7 +8,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'og-image.png'],
+      includeAssets: ['favicon.svg'],
+      // Manifest icons are fetched at install time; keep them out of the precache.
+      includeManifestIcons: false,
       manifest: {
         name: 'Levetidsberegner',
         short_name: 'Levetid',
@@ -26,7 +28,9 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // No png: og-image.png is for crawlers only and the manifest icons are
+        // fetched by the browser at install time, not needed offline.
+        globPatterns: ['**/*.{js,css,html,svg,woff2}'],
         globIgnores: ['**/404.html'],
         // Don't SPA-fallback the standalone static legal/policy .html pages.
         navigateFallbackDenylist: [/\.html$/, /^\/api\//, /\.(txt|xml)$/],
@@ -39,16 +43,21 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: 'hidden',
     // Optimizations (Vite 8 uses Rolldown + Oxc by default)
     minify: 'oxc',
-    target: 'esnext',
+    // target omitted on purpose: Vite's default ('baseline-widely-available') keeps
+    // syntax parseable by older Safari, unlike 'esnext'.
     rollupOptions: {
       output: {
         manualChunks: (id) => {
           // Split react-router into its own chunk
           if (id.includes('react-router') || id.includes('@remix-run')) {
             return 'router'
+          }
+          // Group lucide icons into one chunk instead of dozens of tiny ones
+          if (id.includes('lucide-react')) {
+            return 'icons'
           }
         }
       }

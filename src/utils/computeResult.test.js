@@ -4,7 +4,7 @@ process.env.TZ = 'Europe/Copenhagen';
 import { describe, it, expect } from 'vitest';
 import { computeResult, breakdownRemaining, lifestyleTotal } from './lifespanMath';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
-import { LIFE_TABLE_PERIOD } from './lifeTableDK';
+import { LIFE_TABLE_META } from './lifeTableDK';
 import baseline from './masterBaseline.fixture.json';
 import { createHash } from 'node:crypto';
 
@@ -129,7 +129,7 @@ describe('computeResult projection mode (#92)', () => {
     expect(base.projection).toBe('period');
     expect(base.remainingYears).toBe('40.8');
     expect(base.adjustedLifeExpectancy).toBe('81.3');
-    expect(base.dataSource).toBe(`Danmarks Statistik (${LIFE_TABLE_PERIOD})`);
+    expect(base.dataSource).toBe(`Danmarks Statistik (${LIFE_TABLE_META.period})`);
     expect(base.projectionAvailable).toBe(true);
     expect(base.projectedRemainingYears).toBe('46.3');
     expect(computeResult({ ...m40, projection: 'period' }, NOW)).toEqual(base);

@@ -36,11 +36,11 @@ import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
+import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
 import { COHORT_TABLE } from '../data/cohortTable.generated';
-import { LIFE_TABLE_PERIOD } from '../utils/lifeTableDK';
 import ProjectionToggle from '../components/ProjectionToggle';
 
 const HomePage = () => {
@@ -622,10 +622,10 @@ const HomePage = () => {
                   <div className="card-content space-y-2">
                     <h4 className="text-sm font-semibold text-foreground">Vigtige disclaimere</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025)</li>
+                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, {LIFE_TABLE_META.period})</li>
                       <li>
                         • Nuværende dødelighed viser, hvor mange år en gennemsnitlig dansker på din alder og dit køn har
-                        tilbage, hvis dødeligheden forbliver som i {LIFE_TABLE_PERIOD}. Fremskrevet bygger på Danmarks Statistiks
+                        tilbage, hvis dødeligheden forbliver som i {LIFE_TABLE_META.period}. Fremskrevet bygger på Danmarks Statistiks
                         antagelse om, at dødeligheden fortsat falder (befolkningsfremskrivning 2026, opdateret{' '}
                         {COHORT_TABLE.tableUpdated.split('-').reverse().join('.')}). Fremskrivningen er en antagelse og
                         mere usikker end de målte tal.

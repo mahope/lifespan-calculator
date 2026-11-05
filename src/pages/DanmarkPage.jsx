@@ -43,8 +43,7 @@ const DanmarkPage = () => {
               <div className="card-content space-y-6">
                 <h2 className="text-xl sm:text-2xl font-bold">Levetid i Danmark</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Tallene her er den danske middellevetid fra Danmarks Statistiks dødelighedstavler (tabel HISB8,
-                  {LIFE_TABLE_META.period}). Det er de samme tavler, som levetidsberegneren bruger. Sammenligningen med Sverige, Norge og
+                  Tallene her er den danske middellevetid fra Danmarks Statistiks dødelighedstavler (tabel HISB8, {LIFE_TABLE_META.period}). Det er de samme tavler, som levetidsberegneren bruger. Sammenligningen med Sverige, Norge og
                   Finland kommer fra Eurostat, og tallene for Japan og verden kommer fra Verdensbanken.
                 </p>
 

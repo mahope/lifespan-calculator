@@ -61,6 +61,16 @@ describe('route copy', () => {
       expect(text.includes('hvor gammel bliver jeg')).toBe(r === '/')
     }
   })
+  it('renders the table reference with a space before the period', () => {
+    expect(html['/levetid-beregner-danmark']).toMatch(/HISB8, (<!-- -->)?\d{4}/)
+  })
+  it('routes.meta.js carries no year or period figures', () => {
+    for (const r of routes) expect(`${ROUTE_META[r].title} ${ROUTE_META[r].description}`).not.toMatch(/\b(19|20)\d{2}\b/)
+  })
+  it('/pensionsalder does not target the life-expectancy queries', () => {
+    const text = `${ROUTE_META['/pensionsalder'].title} ${ROUTE_META['/pensionsalder'].description} ${h1('/pensionsalder')}`.toLowerCase()
+    for (const q of ['levealder', 'hvor gammel bliver jeg', 'restlevetid', 'dødsalder']) expect(text).not.toContain(q)
+  })
   it('landing pages render the answer-first text and link to the calculator', () => {
     for (const [r, key] of Object.entries(ANSWER)) {
       expect(html[r]).toContain(unescape(answerFirst[key]()).replace(/'/g, '&#x27;'))

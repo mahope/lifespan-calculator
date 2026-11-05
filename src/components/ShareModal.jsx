@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { toPng } from 'html-to-image';
 import ShareCard from './ShareCard';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
@@ -10,6 +10,11 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
   // Lifestyle answers are health-related: never in the link unless ticked.
   const [includeLifestyle, setIncludeLifestyle] = useState(false);
   const shareCardRef = useRef(null);
+
+  // Opt-in applies per opening: never carry a ticked box over to the next result.
+  useEffect(() => {
+    setIncludeLifestyle(false);
+  }, [isOpen]);
 
   if (!isOpen || !resultData) return null;
 

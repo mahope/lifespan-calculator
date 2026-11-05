@@ -117,6 +117,8 @@ const HomePage = () => {
     });
     if (parsed.lifestyle) applyLifestyleFactors(parsed.lifestyle);
     setAutoSubmit(true);
+    // Drop the share params so a reload doesn't re-hydrate stale input.
+    setSearchParams({}, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

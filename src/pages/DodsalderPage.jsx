@@ -123,7 +123,7 @@ const DodsalderPage = () => {
                     </ul>
                   </div>
                   <div className="space-y-4">
-                    <h4 className="font-medium text-green-600 dark:text-green-400 flex items-center gap-2">
+                    <h4 className="font-medium text-green-700 dark:text-green-400 flex items-center gap-2">
                       <Dumbbell className="h-5 w-5 shrink-0" aria-hidden="true" /> Faktorer der forlænger livet:
                     </h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">

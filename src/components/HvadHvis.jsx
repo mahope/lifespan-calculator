@@ -58,7 +58,7 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
           <div
             className={`text-sm font-medium ${
               delta >= 0.05
-                ? 'text-green-600 dark:text-green-400'
+                ? 'text-green-700 dark:text-green-400'
                 : delta <= -0.05
                   ? 'text-orange-600 dark:text-orange-400'
                   : 'text-muted-foreground'

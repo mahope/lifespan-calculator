@@ -1141,7 +1141,7 @@ const HomePage = () => {
                 <div className="card-header">
                   <h3 className="text-lg font-semibold">Dit livsforløb</h3>
                   {resultData?.hasPreciseBirthdate && (
-                    <span className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
+                    <span className="text-xs text-green-700 dark:text-green-400 flex items-center gap-1">
                       🎯 Præcis beregning
                     </span>
                   )}

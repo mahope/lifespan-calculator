@@ -24,6 +24,8 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
   };
 
   const handleKeyDown = (e, index) => {
+    // Browser shortcuts (Alt+ArrowLeft = back, Ctrl+Home = top) are not ours to swallow.
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
     switch (e.key) {
       case 'ArrowRight':
       case 'ArrowDown':

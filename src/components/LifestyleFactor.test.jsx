@@ -46,6 +46,24 @@ const press = (el, key) =>
     el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }));
   });
 
+const pressWith = (el, key, mods) =>
+  act(() => {
+    el.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true, ...mods }));
+  });
+
+describe('LifestyleFactor modifier keys', () => {
+  it('leaves browser shortcuts alone (Alt+ArrowLeft is "back", Ctrl+Home is "scroll to top")', () => {
+    const spy = [];
+    render({ f: factor, initial: 2, spy });
+    const el = radios()[1];
+    for (const mods of [{ altKey: true }, { ctrlKey: true }, { metaKey: true }]) {
+      pressWith(el, 'ArrowLeft', mods);
+      pressWith(el, 'Home', mods);
+    }
+    expect(spy).toEqual([]);
+  });
+});
+
 describe('LifestyleFactor', () => {
   it('renders a labelled radiogroup with one radio per option', () => {
     render({ f: factor });

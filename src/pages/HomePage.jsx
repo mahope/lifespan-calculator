@@ -37,7 +37,7 @@ import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
-import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
+import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
 
 const HomePage = () => {
@@ -418,7 +418,7 @@ const HomePage = () => {
                 {/* Announced once for screen readers; the ticking grid below is
                     hidden from assistive tech to avoid per-second spam. */}
                 <p className="sr-only" aria-live="polite">
-                  Du har statistisk {resultData?.remainingYears} år tilbage at leve.
+                  Du har statistisk {formatYears(Number(resultData?.remainingYears))} år tilbage at leve.
                 </p>
                 <Countdown key={resultData?.endTimestamp} endTimestamp={resultData?.endTimestamp} />
               </div>

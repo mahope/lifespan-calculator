@@ -3,6 +3,7 @@ import { Wand2 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { factorYears, isSuggestible, LIFESTYLE_META } from '../utils/lifestyleFactors';
 import { projectedExpectancy } from '../utils/lifeTableDK';
+import { formatSignedYears, formatYears } from '../utils/lifespanMath';
 
 // "Hvad hvis?" — toggle hypothetical improvements and watch the projected age
 // update live. Consistent with the main estimate (same projectedExpectancy()).
@@ -54,7 +55,7 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
           <div className="text-sm text-muted-foreground">
             {anyApplied ? 'Ny forventet alder' : 'Din forventede alder'}
           </div>
-          <div className="text-4xl font-bold text-primary">{newExpected.toFixed(1)}</div>
+          <div className="text-4xl font-bold text-primary">{formatYears(newExpected)}</div>
           <div
             className={`text-sm font-medium ${
               delta >= 0.05
@@ -65,9 +66,9 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
             }`}
           >
             {delta >= 0.05
-              ? `+${delta.toFixed(1)} år i forhold til nu 🎉`
+              ? `${formatSignedYears(delta)} i forhold til nu 🎉`
               : delta <= -0.05
-                ? `${delta.toFixed(1)} år i forhold til nu`
+                ? `${formatSignedYears(delta)} i forhold til nu`
                 : 'Vælg en ændring ovenfor'}
           </div>
         </div>

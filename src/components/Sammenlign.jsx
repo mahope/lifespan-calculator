@@ -2,6 +2,7 @@ import React from 'react';
 import { BarChart3 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { getLifeExpectancyForCountry, lifeExpectancyData } from '../utils/lifeExpectancyData';
+import { formatYears } from '../utils/lifespanMath';
 import { compareWithDanishAverage, verdictFor } from '../utils/compareAverage';
 
 // "Sammenlign med gennemsnittet" — the user's estimate against the Danish
@@ -43,7 +44,7 @@ const Sammenlign = ({ resultData }) => {
       <SectionHeader
         icon={BarChart3}
         title="Sammenlign med gennemsnittet"
-        description={`Din forventede alder (${you.toFixed(1)} år) sat i perspektiv.`}
+        description={`Din forventede alder (${formatYears(you)} år) sat i perspektiv.`}
       />
       <div className="card-content space-y-4">
         <div className="space-y-3">
@@ -55,7 +56,7 @@ const Sammenlign = ({ resultData }) => {
                   {r.note && <span className="block text-xs">{r.note}</span>}
                 </span>
                 <span className={r.you ? 'font-semibold text-primary' : 'text-muted-foreground'}>
-                  {r.value.toFixed(1)} år
+                  {formatYears(r.value)} år
                 </span>
               </div>
               <div className="h-2.5 w-full overflow-hidden rounded-full bg-secondary">

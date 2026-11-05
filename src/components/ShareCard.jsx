@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatSignedYears } from '../utils/lifespanMath';
+import { formatSignedYears, formatYears } from '../utils/lifespanMath';
 
 const ShareCard = ({ resultData }) => {
   if (!resultData) return null;
@@ -31,7 +31,7 @@ const ShareCard = ({ resultData }) => {
 
         {/* Main stat */}
         <div className="text-center py-6 bg-white/10 backdrop-blur-xs rounded-lg">
-          <div className="text-6xl font-bold mb-2">{resultData.remainingYears}</div>
+          <div className="text-6xl font-bold mb-2">{formatYears(Number(resultData.remainingYears))}</div>
           <div className="text-lg text-white/90">år tilbage</div>
         </div>
 

@@ -84,12 +84,22 @@ export function lifestyleTotal(factors) {
  * @param {number} sum - raw sum from lifestyleTotal
  */
 export function roundedLifestyleAdjustment(sum) {
-  return Math.round(boundLifestyleAdjustment(sum) * 10) / 10 || 0;
+  return roundYears(boundLifestyleAdjustment(sum));
+}
+
+/** Round to one decimal, half away from zero (-8.75 -> -8.8, like +8.75 -> +8.8). */
+export function roundYears(years) {
+  return (Math.sign(years) * Math.round(Math.abs(years) * 10)) / 10 || 0;
+}
+
+/** Years with one decimal and a decimal comma: "77,8". */
+export function formatYears(years) {
+  return years.toLocaleString('da-DK', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 }
 
 /** Signed years in Danish number format: "+4,5 år", "-0,5 år", "0 år". */
 export function formatSignedYears(years) {
-  const n = Math.round(years * 10) / 10 || 0;
+  const n = roundYears(years);
   const body = Math.abs(n).toLocaleString('da-DK', { maximumFractionDigits: 1 });
   return `${n > 0 ? '+' : n < 0 ? '-' : ''}${body} år`;
 }

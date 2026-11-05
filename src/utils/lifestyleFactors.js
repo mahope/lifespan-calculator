@@ -246,7 +246,7 @@ export const LIFESTYLE_FACTORS = [
     inSum: false,
     evidence: 'none',
     source: {
-      cite: 'Danmarks Statistik, LABY21 (2024-2025)',
+      cite: 'Danmarks Statistik, LABY21',
       figure:
         'Middellevetiden i alt er 82,6 år i hovedstadskommuner, 82,3 i pendlerkommuner og 81,0 i landkommuner. Forskellene kan have mange årsager (alder, uddannelse, indkomst, livsstil), så området indgår ikke i beregningen.',
     },

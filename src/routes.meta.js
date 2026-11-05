@@ -55,6 +55,15 @@ export const ROUTE_META = {
     breadcrumbs: [HOME, { name: 'Livsstil og Levetid', url: '/livsstil-og-levetid' }],
     noindex: false,
   },
+  '/pensionsalder': {
+    title: 'Hvornår kan jeg gå på pension? Beregn din pensionsalder',
+    description:
+      'Se din folkepensionsalder, den dato du når den, og hvor mange år du i gennemsnit kan forvente som pensionist. Gratis, uden login.',
+    keywords:
+      'hvornår kan jeg gå på pension, pensionsalder beregner, folkepensionsalder, pensionsalder 2026',
+    breadcrumbs: [HOME, { name: 'Pensionsalder', url: '/pensionsalder' }],
+    noindex: false,
+  },
 }
 
 // Not a sitemap route: the catch-all 404 view. Runtime only (public/404.html is the served file).

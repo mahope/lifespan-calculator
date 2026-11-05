@@ -1,0 +1,46 @@
+{
+  "id": "1-male-40",
+  "input": {
+    "gender": "male",
+    "age": 40
+  },
+  "frozenClock": "2026-11-05T12:34:56Z",
+  "urlAfterSubmit": "/",
+  "yearsRemaining": "40.8",
+  "countdown": [
+    {
+      "label": "ÅR",
+      "value": "40"
+    },
+    {
+      "label": "DAGE",
+      "value": "273"
+    },
+    {
+      "label": "TIMER",
+      "value": "22"
+    },
+    {
+      "label": "MIN",
+      "value": "30"
+    },
+    {
+      "label": "SEK",
+      "value": "0"
+    }
+  ],
+  "partnerAdsLinks": [
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    }
+  ]
+}

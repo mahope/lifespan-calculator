@@ -117,7 +117,7 @@ describe('biologicalAge', () => {
 });
 
 describe('remainingLifeExpectancy (Danish e_x)', () => {
-  it('matches the DST 2024:2025 figures at key ages', () => {
+  it('matches the committed DST figures at key ages', () => {
     expect(remainingLifeExpectancy(0, 'male')).toBeCloseTo(80.25, 1);
     expect(remainingLifeExpectancy(0, 'female')).toBeCloseTo(83.9, 1);
     // A 70-year-old man has ~15 years left — NOT 78.9 - 70 = ~9.
@@ -176,7 +176,7 @@ describe('survivalProbability (Danish l_x)', () => {
 });
 
 describe('l_100 and P(reach 100) (#91)', () => {
-  // DST HISB8 2024:2025, q_99 = 41,188 (M) / 34,091 (F) per 100,000, so
+  // DST HISB8 (LIFE_TABLE_META.period), q_99 = 41,188 (M) / 34,091 (F) per 100,000, so
   // l_100 = l_99 * (1 - q_99): 1392 -> 819 (M), 4095 -> 2699 (F).
   it('has 101 survivor entries per sex and 100 e_x entries', () => {
     expect(LIFE_TABLE_DK.survivors.male).toHaveLength(101);

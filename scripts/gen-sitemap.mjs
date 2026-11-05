@@ -13,6 +13,7 @@ export const ROUTES = [
   '/dodsalder-calculator',
   '/levetid-beregner-danmark',
   '/livsstil-og-levetid',
+  '/pensionsalder',
 ]
 
 export function buildSitemap(routes) {

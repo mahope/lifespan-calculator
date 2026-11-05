@@ -1,7 +1,7 @@
 // Pure lifespan math, extracted from useLifespanCalculator so it can be
 // unit-tested in isolation. Keep this module free of React and side effects.
 
-import { remainingLifeExpectancy } from './lifeTableDK';
+import { remainingLifeExpectancy, LIFE_TABLE_META } from './lifeTableDK';
 
 /** Highest whole-year age accepted in age-only mode. The tables end at 99/100, so
  *  ages above 99 use the tail rule (e_99). */
@@ -233,7 +233,7 @@ export function computeResult(input, now) {
     lifestyleImpact: lifestyleAdjustment,
     endDate: exactEndDate.toLocaleDateString('da-DK'),
     endTimestamp: exactEndDate.getTime(),
-    dataSource: 'Danmarks Statistik (2024-2025)',
+    dataSource: `Danmarks Statistik (${LIFE_TABLE_META.period})`,
     age: typeof age === 'number' ? age.toFixed(2) : age,
     displayAge: preciseAgeData
       ? `${preciseAgeData.years} år, ${preciseAgeData.months} mdr, ${preciseAgeData.days} dage`

@@ -18,6 +18,6 @@ export const answerFirst = {
     `En 40-årig mand kan statistisk forvente at blive ${years(40 + e(40, 'male'))} og en 40-årig kvinde ${years(40 + e(40, 'female'))} ` +
     `(${SOURCE}). Det er et gennemsnit, ikke en prognose for den enkelte.`,
   livsstil: () =>
-    `Statistisk lever en nyfødt dreng ${years(e(0, 'male'))} og en nyfødt pige ${years(e(0, 'female'))} i Danmark (${SOURCE}). ` +
-    `Livsstilen er det, du selv kan flytte i forhold til de tal.`,
+    `Livsstilen er det, du selv kan flytte i forhold til gennemsnittet: rygning, kost, motion og alkohol ændrer hvor mange år, statistikken giver dig. ` +
+    `Svarene lægger du ind i levetidsberegneren, og de bliver i din browser.`,
 };

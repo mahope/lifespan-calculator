@@ -44,7 +44,7 @@ const DanmarkPage = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   Tallene her er den danske middellevetid fra Danmarks Statistiks dødelighedstavler (tabel HISB8,
                   2024-2025). Det er de samme tavler, som levetidsberegneren bruger. Sammenligningen med Sverige, Norge og
-                  Finland kommer fra Eurostat.
+                  Finland kommer fra Eurostat, og tallene for Japan og verden kommer fra Verdensbanken.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -87,7 +87,17 @@ for (const w of WIDTHS) {
     await page.getByRole('button', { name: 'Beregn levetid' }).click()
     await page.getByRole('heading', { name: 'Din resterende tid' }).waitFor()
     await page.waitForTimeout(500)
-    await page.screenshot({ path: `${out}/resultat-${scheme}-${w}.png`, fullPage: true })
+    // Grow the viewport to the page height first, so charts that measure their container settle before the shot.
+    const total = await page.evaluate(() => document.documentElement.scrollHeight)
+    await page.setViewportSize({ width: w, height: total })
+    await page.waitForTimeout(600)
+    await page.screenshot({ path: `${out}/resultat-${scheme}-${w}.png` })
+    if (process.env.SLICES) {
+      // Review aid: the long result page cut into screen-sized pieces (not part of the committed set).
+      for (let i = 0, y = 0; y < total; i++, y += 1400) {
+        await page.screenshot({ path: `${out}/slice-${scheme}-${w}-${i}.png`, clip: { x: 0, y, width: w, height: Math.min(1400, total - y) } })
+      }
+    }
     await page.context().close()
   }
 }

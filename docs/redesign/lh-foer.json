@@ -1,0 +1,62 @@
+{
+  "/": {
+    "performance": 80,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 2462,
+    "cls": 0,
+    "tbtMs": 614,
+    "transferKB": 190
+  },
+  "/hvor-lang-tid-har-jeg-tilbage": {
+    "performance": 93,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 2689,
+    "cls": 0,
+    "tbtMs": 162,
+    "transferKB": 193
+  },
+  "/dodsalder-calculator": {
+    "performance": 85,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 2950,
+    "cls": 0,
+    "tbtMs": 300,
+    "transferKB": 193
+  },
+  "/levetid-beregner-danmark": {
+    "performance": 93,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 2815,
+    "cls": 0,
+    "tbtMs": 72,
+    "transferKB": 193
+  },
+  "/livsstil-og-levetid": {
+    "performance": 76,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 3167,
+    "cls": 0,
+    "tbtMs": 532,
+    "transferKB": 193
+  },
+  "/pensionsalder": {
+    "performance": 94,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 2696,
+    "cls": 0,
+    "tbtMs": 76,
+    "transferKB": 194
+  }
+}

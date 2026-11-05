@@ -88,7 +88,7 @@ describe('biologicalAge', () => {
 });
 
 describe('remainingLifeExpectancy (Danish e_x)', () => {
-  it('matches the DST 2024:2025 figures at key ages', () => {
+  it('matches the committed DST figures at key ages', () => {
     expect(remainingLifeExpectancy(0, 'male')).toBeCloseTo(80.25, 1);
     expect(remainingLifeExpectancy(0, 'female')).toBeCloseTo(83.9, 1);
     // A 70-year-old man has ~15 years left — NOT 78.9 - 70 = ~9.

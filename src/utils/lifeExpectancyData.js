@@ -1,7 +1,7 @@
 // Life expectancy data by country
-import { LIFE_TABLE_DK } from './lifeTableDK';
+import { LIFE_TABLE_DK, LIFE_TABLE_META } from './lifeTableDK';
 
-// BEGIN GENERATED COUNTRY TABLE (scripts/update-country-table.mjs)
+// BEGIN GENERATED COUNTRY TABLE (scripts/refresh-data.mjs countries)
 export const countryTable = {
     "Sweden": { male: 82.3, female: 85.3, total: 83.8, country: "Sverige", source: "Eurostat demo_mlexpec", year: 2024 },
     "Norway": { male: 81.6, female: 84.8, total: 83.2, country: "Norge", source: "Eurostat demo_mlexpec", year: 2024 },
@@ -9,6 +9,7 @@ export const countryTable = {
     "Japan": { male: 81.1, female: 87.1, total: 84.0, country: "Japan", source: "Verdensbanken SP.DYN.LE00", year: 2024 },
     "World": { male: 71.1, female: 76.0, total: 73.5, country: "Verdensgennemsnit", source: "Verdensbanken SP.DYN.LE00", year: 2024 },
 };
+export const countryTableRetrieved = "2026-11-05";
 // END GENERATED COUNTRY TABLE
 
 // Life expectancy at birth by country. Denmark is derived from the same
@@ -19,7 +20,7 @@ export const lifeExpectancyData = {
         female: LIFE_TABLE_DK.remaining.female[0],
         country: 'Danmark',
         source: 'Danmarks Statistik HISB8',
-        year: '2024-2025',
+        year: LIFE_TABLE_META.period,
     },
     ...countryTable,
 };

@@ -1,0 +1,77 @@
+name: Data staleness
+
+# Weekly check: has Danmarks Statistik published a newer HISB8 period than the one
+# committed in src/data/lifeTableDK.generated.js? If so, open (or comment on) an issue.
+# This workflow never pushes; the refresh itself is done by hand (docs/data-refresh.md).
+
+on:
+  schedule:
+    - cron: '17 6 * * 1' # Mondays 06:17 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Print what would be done, do not touch issues'
+        type: boolean
+        default: true
+      simulate_latest:
+        description: 'Pretend DST published this period (e.g. 2025:2026) to test the stale path'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+      SIMULATE: ${{ github.event_name == 'workflow_dispatch' && inputs.simulate_latest || '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Compare committed period with DST
+        id: check
+        run: |
+          set -euo pipefail
+          if [ -n "$SIMULATE" ]; then
+            node scripts/refresh-data.mjs check --simulate-latest "$SIMULATE" | tee result.json
+          else
+            node scripts/refresh-data.mjs check | tee result.json
+          fi
+          echo "stale=$(jq -r .stale result.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the issue
+        if: steps.check.outputs.stale == 'true'
+        run: |
+          set -euo pipefail
+          title="Opdatér dødelighedstavle"
+          committed=$(jq -r .committed result.json)
+          latest=$(jq -r .latest result.json)
+          updated=$(jq -r .tableUpdated result.json)
+          body="Danmarks Statistik har udgivet en nyere periode i HISB8: **${latest}** (tabellen opdateret ${updated}). Repoet indeholder **${committed}**.
+
+          Kør \`node scripts/refresh-data.mjs all\`, gennemgå diffen og følg \`docs/data-refresh.md\`."
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "DRY RUN: would create or comment on issue \"$title\" for period $latest"
+            echo "$body"
+            exit 0
+          fi
+          number=$(gh issue list --state open --search "\"$title\" in:title" --json number,title \
+            --jq "map(select(.title == \"$title\")) | .[0].number // empty")
+          if [ -z "$number" ]; then
+            gh issue create --title "$title" --body "$body"
+          else
+            seen=$(gh issue view "$number" --json body,comments --jq '[.body, (.comments[].body)] | join("\n")')
+            if printf '%s' "$seen" | grep -qF "**${latest}**"; then
+              echo "Issue #$number already mentions $latest; nothing to do."
+            else
+              gh issue comment "$number" --body "$body"
+            fi
+          fi

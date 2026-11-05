@@ -35,7 +35,7 @@ import Forsikringsbehov from '../components/Forsikringsbehov';
 import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
-import { parseShareParams } from '../utils/shareState';
+import { parseShareParams, takeShareSearchParams } from '../utils/shareState';
 import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
@@ -110,7 +110,7 @@ const HomePage = () => {
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
-    const parsed = parseShareParams(searchParams);
+    const parsed = parseShareParams(takeShareSearchParams(searchParams));
     if (!parsed) return;
 
     setCurrentMode(parsed.mode);

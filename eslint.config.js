@@ -9,7 +9,7 @@ export default [
   { ignores: ['dist/**', 'backup/**', 'node_modules/**'] },
   js.configs.recommended,
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,mjs}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -35,7 +35,7 @@ export default [
   },
   // Node-context config + test files
   {
-    files: ['*.config.js', '**/*.test.{js,jsx}'],
+    files: ['*.config.js', '**/*.test.{js,jsx}', 'scripts/**/*.mjs'],
     languageOptions: { globals: { ...globals.node } },
   },
   prettier,

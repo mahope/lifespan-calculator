@@ -61,7 +61,7 @@ const DodsalderPage = () => {
                     <div>
                       <h4 className="font-medium text-foreground">Demografiske data</h4>
                       <p className="text-sm text-muted-foreground">
-                        Vi bruger officielle statistikker fra WHO og nationale sundhedsmyndigheder for dit land, køn og alder.
+                        Vi bruger Danmarks Statistiks dødelighedstavler for dit køn og din alder.
                       </p>
                     </div>
                   </div>

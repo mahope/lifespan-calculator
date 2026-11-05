@@ -1,7 +1,7 @@
 import React from 'react';
 import { Briefcase } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import { folkepensionAge } from '../utils/pension';
+import { pensionCohort } from '../utils/pension';
 
 // "Pension & arbejdsår" — from the user's cohort + estimate: statutory pension
 // age, working years left, and expected years in retirement, with a life-phase bar.
@@ -12,8 +12,14 @@ const Pension = ({ resultData }) => {
   const expectancy = parseFloat(resultData.adjustedLifeExpectancy);
   if (!Number.isFinite(age) || !Number.isFinite(expectancy)) return null;
 
-  const birthYear = new Date().getFullYear() - Math.floor(age);
-  const pensionAge = folkepensionAge(birthYear);
+  // Real birth year when a birthdate is known; otherwise the cohort is derived
+  // from the whole-year age and may straddle a pension-age boundary.
+  const cohort = pensionCohort({ birthYear: resultData.birthYear, age });
+  const { pensionAge } = cohort;
+  const cohortText =
+    cohort.birthYears.length === 1
+      ? String(cohort.birthYears[0])
+      : `${cohort.birthYears[0]}/${String(cohort.birthYears[1]).slice(2)}`;
   const retired = age >= pensionAge;
   const workingYearsLeft = retired ? 0 : Math.round(pensionAge - age);
   const retirementYears = Math.max(0, Math.round(expectancy - pensionAge));
@@ -29,23 +35,23 @@ const Pension = ({ resultData }) => {
       <SectionHeader
         icon={Briefcase}
         title="Pension & arbejdsår"
-        description={`Baseret på din årgang (${birthYear}) og den danske folkepensionsalder.`}
+        description={`Baseret på din årgang (${cohortText}) og den danske folkepensionsalder.`}
       />
       <div className="card-content space-y-4">
         <div className="grid grid-cols-3 gap-3 text-center">
           <div className="rounded-lg bg-muted/30 p-3">
-            <div className="text-2xl font-semibold">{pensionAge}</div>
-            <div className="text-xs text-muted-foreground">Folkepensionsalder</div>
+            <div className="text-2xl font-semibold">{cohort.label}</div>
+            <div className="text-xs text-muted-foreground wrap-anywhere">Folkepensionsalder</div>
           </div>
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold text-primary">{workingYearsLeft}</div>
-            <div className="text-xs text-muted-foreground">
+            <div className="text-xs text-muted-foreground wrap-anywhere">
               {retired ? 'Pensioneret' : 'Arbejdsår tilbage'}
             </div>
           </div>
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold">{retirementYears}</div>
-            <div className="text-xs text-muted-foreground">Forventede pensionsår</div>
+            <div className="text-xs text-muted-foreground wrap-anywhere">Forventede pensionsår</div>
           </div>
         </div>
 

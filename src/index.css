@@ -12,7 +12,19 @@
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Metric-matched fallback so the swap to Inter causes no layout shift. */
+/* Self-hosted Source Serif 4 (SIL OFL, see public/fonts/SourceSerif4-LICENSE.txt): headings and figures only. */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Metric-matched fallbacks so the swap to the web fonts causes no layout shift. */
 @font-face {
   font-family: 'Inter Fallback';
   src: local('Arial');
@@ -22,10 +34,20 @@
   line-gap-override: 0%;
 }
 
+@font-face {
+  font-family: 'Source Serif Fallback';
+  src: local('Georgia');
+  size-adjust: 92%;
+  ascent-override: 99%;
+  descent-override: 36%;
+  line-gap-override: 0%;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
   --font-sans: Inter, 'Inter Fallback', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Source Serif 4', 'Source Serif Fallback', Georgia, serif;
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -54,369 +76,399 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
+  --color-lived: hsl(var(--lived));
+
   --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-spin: spin 1s linear infinite;
-  --animate-bounce: bounce 1s infinite;
-  --animate-fadeIn: fadeIn 0.5s ease-in-out;
-  --animate-slideUp: slideUp 0.4s ease-out;
-  --animate-scaleIn: scaleIn 0.3s ease-out;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  @keyframes slideUp {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  @keyframes scaleIn {
-    0% {
-      transform: scale(0.95);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
+  --radius-md: calc(var(--radius) / 2);
+  --radius-sm: 0;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-@utility btn {
-  /* Clean, minimal buttons with proper touch targets */
-  @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200;
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-  @apply disabled:pointer-events-none disabled:opacity-50;
-  @apply active:scale-[0.98]; /* Touch feedback */
-  @apply min-h-[44px]; /* Minimum touch target */
-}
-
-@utility btn-primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg h-11 sm:h-12 px-6 py-2;
-}
-
-@utility btn-secondary {
-  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md h-11 sm:h-12 px-6 py-2;
-}
-
-@utility btn-outline {
-  @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 h-11 sm:h-12 px-6 py-2;
-}
-
-@utility card {
-  /* Minimal cards with responsive padding */
-  @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-xs hover:shadow-md transition-shadow duration-200;
-}
-
-@utility card-header {
-  @apply flex flex-col space-y-1.5 p-4 sm:p-6;
-}
-
-@utility card-content {
-  @apply p-4 sm:p-6 pt-0;
-  @media (max-width: 640px) {
-    /* Ensure adequate spacing in forms */
-    & .space-y-6 > * {
-      @apply scroll-mt-4;
-    }
-  }
-}
-
-@utility input {
-  /* Clean input fields with proper touch targets */
-  @apply flex h-11 sm:h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-base sm:text-sm;
-  @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
-  @apply placeholder:text-muted-foreground;
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-  @apply disabled:cursor-not-allowed disabled:opacity-50;
-  @apply transition-colors duration-200;
-  @media (max-width: 640px) {
-    font-size: 16px; /* Prevents iOS zoom */
-  }
-}
-
-@utility label {
-  /* Prevent zoom on input focus on iOS */
-  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
-}
-
-@utility progress {
-  /* Clean progress bar */
-  @apply relative h-2 w-full overflow-hidden rounded-full bg-secondary shadow-inner;
-}
-
-@utility container {
-  @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
-}
-
-@utility mode-btn {
-  /* Minimal mode selector */
-  @apply flex items-center gap-3 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-xs transition-all duration-200 cursor-pointer text-left;
-  @apply min-h-[56px]; /* Better touch target */
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-  @apply active:scale-[0.98]; /* Touch feedback */
-
-  &.active {
-    @apply bg-primary text-primary-foreground border-primary shadow-md;
+    border-color: hsl(var(--border));
   }
 
-  &.active .text-muted-foreground {
-    @apply text-primary-foreground;
-  }
-}
-
-@utility active {
-  &.mode-btn {
-    @apply bg-primary text-primary-foreground border-primary shadow-md;
-  }
-
-  &.mode-btn .text-muted-foreground {
-    @apply text-primary-foreground;
-  }
-
-  &.gender-btn {
-    @apply bg-primary text-primary-foreground border-primary shadow-md;
-  }
-
-  &.factor-btn {
-    @apply bg-primary text-primary-foreground border-primary shadow-xs;
-  }
-}
-
-@utility text-muted-foreground {
-  .mode-btn.active & {
-    @apply text-primary-foreground;
-  }
-}
-
-@utility gender-btn {
-  /* Clean gender selector */
-  @apply flex flex-col items-center justify-center gap-2 p-4 bg-card border rounded-lg hover:bg-accent hover:shadow-xs transition-all duration-200 cursor-pointer flex-1;
-  @apply min-h-[60px]; /* Better touch target */
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-  @apply active:scale-[0.98]; /* Touch feedback */
-
-  &.active {
-    @apply bg-primary text-primary-foreground border-primary shadow-md;
-  }
-}
-
-@utility factor-btn {
-  /* Simple factor buttons - improved touch targets */
-  @apply px-3 py-2.5 text-sm bg-card border rounded-md hover:bg-accent hover:border-primary/30 transition-all duration-150 cursor-pointer;
-  @apply min-h-[44px] min-w-[44px]; /* Accessibility: minimum touch target */
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-  @apply active:scale-95; /* Touch feedback */
-
-  &.active {
-    @apply bg-primary text-primary-foreground border-primary shadow-xs;
-  }
-  @media (max-width: 640px) {
-    @apply px-2.5 py-3 text-xs flex-1 text-center;
-  }
-}
-
-@utility life-bar {
-  /* Mobile optimizations for factor buttons */
-
-  /* Clean life bar */
-  @apply h-6 bg-secondary rounded-full overflow-hidden flex shadow-inner;
-}
-
-@utility life-lived {
-  @apply bg-linear-to-r from-primary to-primary/80 h-full transition-all duration-500;
-}
-
-@utility life-remaining {
-  @apply bg-muted h-full;
-}
-
-@utility countdown-timer {
-  /* Minimal countdown timer */
-  @apply bg-linear-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] rounded-xl p-6 sm:p-8 text-center shadow-lg;
-
-  & h2 {
-    @apply text-white text-xl sm:text-2xl font-semibold mb-4 sm:mb-6;
-  }
-}
-
-@utility time-unit {
-  @apply flex flex-col items-center bg-white/10 backdrop-blur-xs rounded-lg p-2 sm:p-3 min-w-[56px] sm:min-w-[70px] hover:bg-white/20 transition-all duration-200;
-}
-
-@utility time-value {
-  @apply text-xl sm:text-2xl md:text-3xl font-bold text-white tabular-nums;
-}
-
-@utility time-label {
-  @apply text-[10px] sm:text-xs text-white/80 uppercase tracking-wide mt-0.5 sm:mt-1;
-}
-
-@utility form-progress {
-  /* Clean progress indicator */
-  @apply mb-6;
-}
-
-@utility progress-fill {
-  @apply h-2 bg-linear-to-r from-primary to-primary/80 rounded-full transition-all duration-300;
-}
-
-@utility lifestyle-grid {
-  @apply grid grid-cols-1 gap-6;
-
-  /* Lifestyle factor item styling */
-  & > div {
-    @apply pb-4 border-b border-border/50 last:border-b-0 last:pb-0;
-  }
-}
-
-@utility footer-grid {
-  @apply grid grid-cols-1 gap-8;
-
-  @media (min-width: 640px) {
-    @apply grid-cols-2;
-  }
-
-  @media (min-width: 1024px) {
-    @apply grid-cols-3;
-  }
-}
-
-@utility header-gradient {
-  /* Header gradient */
-  @apply bg-linear-to-r from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] text-white;
-}
-
-@utility promo-card {
-  /* Promo cards in banner */
-  @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-xs;
-  @apply hover:shadow-xl transition-all duration-300 overflow-hidden;
-  @apply active:scale-[0.98]; /* Touch feedback */
-
-  @media (hover: hover) {
-    &:hover {
-      @apply scale-105;
-    }
-  }
-}
-
-@utility space-y-6 {
-  @media (max-width: 640px) {
-    /* Ensure adequate spacing in forms */
-    .card-content & > * {
-      @apply scroll-mt-4;
-    }
-  }
-}
-
-@layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    color-scheme: light;
+    --background: 200 20% 97.5%;
+    --foreground: 215 28% 12%;
+    --card: 200 20% 97.5%;
+    --card-foreground: 215 28% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 221 83% 53%;
+    --popover-foreground: 215 28% 12%;
+    /* The one accent: fjord petrol. Marks what is left of a life, links and the primary button. */
+    --primary: 188 62% 22%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 40%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 72% 42%;
+    --secondary: 200 16% 93%;
+    --secondary-foreground: 215 28% 12%;
+    --muted: 200 16% 93%;
+    --muted-foreground: 215 14% 34%;
+    --accent: 200 16% 93%;
+    --accent-foreground: 215 28% 12%;
+    --destructive: 0 62% 38%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
-    --radius: 0.5rem;
-
-    /* Gradient colors */
-    --gradient-from: 217 91% 60%;
-    --gradient-to: 221 83% 53%;
+    /* Hairlines are decorative; controls use --input, which meets 3:1 on the page. */
+    --border: 210 14% 84%;
+    --input: 212 10% 46%;
+    --ring: 188 62% 22%;
+    --lived: 215 10% 55%;
+    --radius: 0.25rem;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 64%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 91% 70%;
-    --destructive-foreground: 222 47% 11%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 224 76% 48%;
-
-    /* Gradient colors */
-    --gradient-from: 217 91% 60%;
-    --gradient-to: 263 70% 50%;
+    color-scheme: dark;
+    --background: 205 22% 8%;
+    --foreground: 200 20% 93%;
+    --card: 205 22% 8%;
+    --card-foreground: 200 20% 93%;
+    --popover: 205 22% 11%;
+    --popover-foreground: 200 20% 93%;
+    --primary: 172 42% 62%;
+    --primary-foreground: 205 22% 8%;
+    --secondary: 205 18% 13%;
+    --secondary-foreground: 200 20% 93%;
+    --muted: 205 18% 13%;
+    --muted-foreground: 205 12% 68%;
+    --accent: 205 18% 13%;
+    --accent-foreground: 200 20% 93%;
+    --destructive: 0 80% 72%;
+    --destructive-foreground: 205 22% 8%;
+    --border: 205 15% 21%;
+    --input: 205 10% 52%;
+    --ring: 172 42% 62%;
+    --lived: 205 10% 55%;
   }
 
-  * {
-    border-color: hsl(var(--border));
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    scroll-padding-block-start: 1rem;
   }
 
   body {
     @apply bg-background min-h-screen;
-    font-family: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
     color: hsl(var(--foreground));
-    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  h4 {
+    font-weight: 600;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: from-font;
+  }
+
+  input,
+  select {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
 @layer components {
-  /* Global touch-friendly adjustments for mobile */
+  /* Figures: Source Serif lining, tabular numerals so columns and tickers do not jitter. */
+  .fig {
+    font-family: var(--font-serif);
+    font-variant-numeric: lining-nums tabular-nums;
+    letter-spacing: -0.01em;
+  }
 
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
+  .container {
+    @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+    max-width: 72rem;
+  }
+
+  /* ----- Controls ----- */
+  .btn {
+    @apply inline-flex items-center justify-center text-base font-medium;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-md);
+    transition: background-color 120ms, color 120ms, border-color 120ms;
+    cursor: pointer;
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+  .btn-primary {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: hsl(var(--primary) / 0.88);
+  }
+  .btn-secondary {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border: 1px solid hsl(var(--input));
+  }
+  .btn-secondary:hover {
+    background: hsl(var(--accent));
+  }
+  .btn-outline {
+    border: 1px solid hsl(var(--input));
+    color: hsl(var(--foreground));
+  }
+  .btn-outline:hover {
+    background: hsl(var(--accent));
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid hsl(var(--input));
+    border-radius: var(--radius-md);
+    background-color: hsl(var(--background));
+    font-variant-numeric: tabular-nums;
+  }
+  .input::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+  .input:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* Segmented text controls (role=radio buttons): mode, age input, sex, what-if, lifestyle answers. */
+  .mode-btn,
+  .gender-btn,
+  .factor-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.3;
+    text-align: center;
+    border: 1px solid hsl(var(--input));
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    transition: background-color 120ms, color 120ms;
+  }
+  .mode-btn:hover,
+  .gender-btn:hover,
+  .factor-btn:hover {
+    background: hsl(var(--accent));
+  }
+  .mode-btn.active,
+  .gender-btn.active,
+  .factor-btn.active,
+  .factor-btn[aria-pressed='true'] {
+    background: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .factor-btn {
+    border-radius: var(--radius-md);
+  }
+  .segmented {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+  .segmented > * {
+    border-radius: 0;
+  }
+  .segmented > * + * {
+    margin-inline-start: -1px;
+  }
+  .segmented > :first-child {
+    border-start-start-radius: var(--radius-md);
+    border-end-start-radius: var(--radius-md);
+  }
+  .segmented > :last-child {
+    border-start-end-radius: var(--radius-md);
+    border-end-end-radius: var(--radius-md);
+  }
+  .segmented > .active {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ----- Sections: open, ruled, no boxes. The heading sits in a margin rail on wide screens. ----- */
+  .card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1.25rem;
+    padding-block: 2.5rem;
+    border-top: 1px solid hsl(var(--border));
+    color: hsl(var(--card-foreground));
+  }
+  .card-header {
+    display: block;
+  }
+  .card-content {
+    min-width: 0;
+  }
+  @media (min-width: 64rem) {
+    .card {
+      grid-template-columns: 15rem minmax(0, 1fr);
+      column-gap: 3rem;
+      padding-block: 3rem;
+    }
+    .card > .card-header {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .card > .card-content {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  /* ----- Countdown ----- */
+  .countdown-timer {
+    padding-block: 0.5rem 2.5rem;
+  }
+  .time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .time-value {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-size: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .time-label {
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    color: hsl(var(--muted-foreground));
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  @media (min-width: 40rem) {
+    .time-value {
+      font-size: 2.75rem;
+    }
+    .time-unit:first-child .time-value {
+      font-size: 4.5rem;
+    }
+  }
+
+  /* ----- Lifestyle questionnaire ----- */
+  .lifestyle-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  .lifestyle-grid > div {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  .lifestyle-grid > div:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  /* ----- Life bar ----- */
+  .life-bar {
+    display: flex;
+    height: 0.75rem;
+    overflow: hidden;
+    background: hsl(var(--muted));
+  }
+  .life-lived {
+    height: 100%;
+    background: hsl(var(--lived));
+  }
+  .life-remaining {
+    height: 100%;
+    background: hsl(var(--primary));
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+  @media (min-width: 40rem) {
+    .footer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 64rem) {
+    .footer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* Running text on the landing pages: serif-free, measured, and roomy. */
+  .prose-page {
+    max-width: 42rem;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .prose-page > * + * {
+    margin-top: 1rem;
+  }
+  .prose-page h2 {
+    margin-top: 2.5rem;
+    font-size: 1.75rem;
+  }
+  .prose-page h3 {
+    margin-top: 2rem;
+    font-size: 1.375rem;
+  }
+
+  .link {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+  }
+  .link:hover {
+    text-decoration-thickness: 2px;
   }
 
   /* Better focus visibility for keyboard navigation */
   *:focus-visible {
-    @apply outline-hidden ring-2 ring-primary ring-offset-2 ring-offset-background;
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 
   /* Reduced motion preference */
@@ -427,6 +479,7 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 }

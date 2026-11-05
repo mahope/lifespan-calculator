@@ -36,6 +36,7 @@ import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
+import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
@@ -612,7 +613,7 @@ const HomePage = () => {
                   <div className="card-content space-y-2">
                     <h4 className="text-sm font-semibold text-foreground">Vigtige disclaimere</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, 2024-2025)</li>
+                      <li>• Baseret på danske dødelighedstavler (Danmarks Statistik, {LIFE_TABLE_META.period})</li>
                       <li>• Individuelle faktorer påvirker ikke beregningen</li>
                       <li>• Kun til underholdning og reflektion</li>
                     </ul>

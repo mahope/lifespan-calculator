@@ -26,9 +26,10 @@ npm run preview    # serve the production build locally (http://localhost:4173)
 
 ### Validation (the gate; CI runs the same steps)
 ```bash
-npm ci && npm run lint && npm test && npm run build
+npm ci && npm run lint && npm test && npm run build && npm run test:e2e
 ```
-`npm run build` also acts as a smoke test - it fails on broken imports/JSX/CSS.
+CI runs the first four in job `build` and the e2e suite in job `e2e` (see `docs/testing.md`;
+update snapshots with `npm run test:e2e -- --update-snapshots`). `npm run build` also acts as a smoke test - it fails on broken imports/JSX/CSS.
 
 ## Architecture
 
@@ -38,7 +39,7 @@ npm ci && npm run lint && npm test && npm run build
 - **`App.jsx`**: Route definitions. Pages are lazy-loaded via `React.lazy` +
   `Suspense`.
 - **`pages/`**: One component per route (HomePage, HvorLangTidPage,
-  DodsalderPage, LivsstilPage, DanmarkPage, NotFoundPage).
+  DodsalderPage, LivsstilPage, DanmarkPage, PensionsalderPage, NotFoundPage).
 - **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
   ShareCard, ShareModal).
 - **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure

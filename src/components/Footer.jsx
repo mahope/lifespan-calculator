@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 
 const Footer = () => {
   return (
@@ -26,7 +27,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Datakilder og nøjagtighed</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Tallene stammer fra Danmarks Statistiks dødelighedstavler (tabel HISB8, periode 2024:2025). Dog skal det understreges, at dette kun
+              Tallene stammer fra Danmarks Statistiks dødelighedstavler (tabel HISB8, periode {LIFE_TABLE_META.tid}). Dog skal det understreges, at dette kun
               er gennemsnitstal og ikke forudsiger individuelle livsforløb.
             </p>
           </div>
@@ -84,7 +85,7 @@ const Footer = () => {
 
         <div className="border-t pt-8 mt-8 text-center space-y-4">
           <p className="text-sm font-medium text-foreground">
-            Data fra Danmarks Statistik (dødelighedstavler 2024:2025).
+            Data fra Danmarks Statistik (dødelighedstavler {LIFE_TABLE_META.tid}).
           </p>
           <p className="text-sm text-muted-foreground italic">
             Denne tjeneste er kun til informative og underholdende formål. Søg professionel medicinsk rådgivning for

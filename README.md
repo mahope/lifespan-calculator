@@ -5,7 +5,7 @@ En webbaseret applikation der beregner din forventede resterende levetid baseret
 ## 📋 Funktioner
 
 - **Beregning i browseren**: Dine input forlader aldrig din enhed og sendes ikke til analytics
-- **Danske tal**: Baseret på Danmarks Statistik (HISB8, periode 2024:2025)
+- **Danske tal**: Baseret på Danmarks Statistik (HISB8, dødelighedstavlen for den nyeste periode)
 - **Responsive design**: Fungerer på både desktop og mobile enheder
 - **Intuitivt interface**: Moderne og brugervenligt design
 - **Detaljerede resultater**: Viser resterende år, forventet levetid og estimeret slutdato
@@ -30,7 +30,7 @@ En webbaseret applikation der beregner din forventede resterende levetid baseret
 - **Statiske levetidsdata**: Danmarks Statistik (HISB8) samt landetabeller til sammenligning
 
 ### Databaser
-Landetabellen i `src/utils/lifeExpectancyData.js` (blokken mellem `BEGIN/END GENERATED COUNTRY TABLE`) genereres af `scripts/update-country-table.mjs` (Node 24, `node scripts/update-country-table.mjs`). Scriptet henter levetid ved fødslen fra Eurostat `demo_mlexpec` (Sverige, Norge, Finland) og Verdensbanken `SP.DYN.LE00.MA.IN` / `.FE.IN` / `.IN` (Japan og verdensgennemsnit), og bruger nyeste tilgængelige år. Resultatet afhænger derfor af de live API'er. Danmark udledes af Danmarks Statistik-tabellen (HISB8) i `lifeTableDK`.
+Landetabellen i `src/utils/lifeExpectancyData.js` (blokken mellem `BEGIN/END GENERATED COUNTRY TABLE`) genereres af `scripts/refresh-data.mjs` (`node scripts/refresh-data.mjs countries`; se `docs/data-refresh.md`). Scriptet henter levetid ved fødslen fra Eurostat `demo_mlexpec` (Sverige, Norge, Finland) og Verdensbanken `SP.DYN.LE00.MA.IN` / `.FE.IN` / `.IN` (Japan og verdensgennemsnit), og bruger nyeste tilgængelige år. Resultatet afhænger derfor af de live API'er. Danmark udledes af Danmarks Statistik-tabellen (HISB8) i `lifeTableDK`.
 
 | Land | Mænd | Kvinder | Samlet | Kilde |
 |------|------|---------|--------|-------|

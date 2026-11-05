@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Briefcase } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { pensionCohort } from '../utils/pension';
@@ -87,6 +88,10 @@ const Pension = ({ resultData }) => {
             . Kun alderen er med i overslaget; vilkår for efterløn indgår ikke.
           </p>
         )}
+
+        <p className="text-center text-sm">
+          <Link to="/pensionsalder" className="font-medium text-primary underline">Se alle pensionsaldre og din pensionsdato</Link>
+        </p>
 
         <p className="text-center text-xs text-muted-foreground">
           Folkepensionsalderen er lovbestemt (Lov nr. 703 af 20. juni 2025; aldre efter borger.dk,

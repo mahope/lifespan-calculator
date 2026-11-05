@@ -92,7 +92,7 @@ const Forsikringsbehov = ({ resultData }) => {
           rel="sponsored noopener noreferrer"
           className="btn btn-primary w-full"
         >
-          Sammenlign livsforsikringer{cover > 0 ? ` fra ~${fmt(cover)} kr` : ''} →
+          Sammenlign livsforsikringer{cover > 0 ? ` (overslag på dækningsbehov: ~${fmt(cover)} kr)` : ''} →
         </a>
         <p className="text-center text-[11px] text-muted-foreground">
           Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.

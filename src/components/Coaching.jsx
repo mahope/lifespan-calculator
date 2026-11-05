@@ -28,24 +28,28 @@ const Coaching = ({ lifestyleFactors }) => {
               <div className="min-w-0 flex-1">
                 <div className="font-medium">{i.label}</div>
                 {i.cite && (
-                  <a
-                    href={i.cite.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-muted-foreground underline hover:text-primary"
-                  >
-                    Kilde: {i.cite.text}
-                  </a>
+                  <>
+                    <a
+                      href={i.cite.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-muted-foreground underline hover:text-primary"
+                    >
+                      Kilde: {i.cite.text}
+                    </a>
+                    {i.figure && <p className="text-xs text-muted-foreground">I kilden: {i.figure}</p>}
+                  </>
                 )}
               </div>
               <div className="text-lg font-semibold text-green-600 dark:text-green-400">
                 +{i.gain} år
+                <div className="text-right text-[11px] font-normal text-muted-foreground">i dette estimat</div>
               </div>
             </li>
           ))}
         </ul>
         <p className="mt-3 text-center text-xs text-muted-foreground">
-          Illustrativt — de enkelte effekter overlapper og indgår samlet begrænset i estimatet.
+          Illustrativt: tallene i estimatet er vejledende og kan afvige fra kildens egne tal. De enkelte effekter overlapper og er statistiske sammenhænge.
         </p>
       </div>
     </div>

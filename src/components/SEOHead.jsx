@@ -25,7 +25,7 @@ const SEOHead = ({
     "name": "Levetidsberegner",
     "url": fullCanonicalUrl,
     "description": description,
-    "applicationCategory": "HealthApplication",
+    "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",

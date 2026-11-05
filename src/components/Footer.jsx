@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OmTallene from './OmTallene';
 
 const Footer = () => {
   return (
@@ -22,13 +23,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Datakilder og nøjagtighed</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Tallene stammer fra Danmarks Statistiks dødelighedstavler (tabel HISB8, periode 2024:2025). Dog skal det understreges, at dette kun
-              er gennemsnitstal og ikke forudsiger individuelle livsforløb.
-            </p>
-          </div>
+          <OmTallene className="md:col-span-2" />
 
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Privatlivspolitik</h3>
@@ -81,13 +76,6 @@ const Footer = () => {
         </div>
 
         <div className="border-t pt-8 mt-8 text-center space-y-4">
-          <p className="text-sm font-medium text-foreground">
-            Data fra Danmarks Statistik (dødelighedstavler 2024:2025).
-          </p>
-          <p className="text-sm text-muted-foreground italic">
-            Denne tjeneste er kun til informative og underholdende formål. Søg professionel medicinsk rådgivning for
-            sundhedsrelaterede spørgsmål.
-          </p>
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">
               🌐 Udviklet af{' '}

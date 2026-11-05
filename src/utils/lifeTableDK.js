@@ -78,13 +78,13 @@ export function jointLifeStats(age1, g1, age2, g2, targets = [10, 20, 30]) {
 }
 
 /**
- * "Biological age": the chronological age whose baseline remaining life expectancy
+ * "Statistical risk age": the chronological age whose baseline remaining life expectancy
  * equals the user's (lifestyle-adjusted) remaining years. e_x decreases with age,
  * so more adjusted remaining maps to a younger body age. Interpolated.
  * @param {number} adjustedRemaining
  * @param {'male'|'female'} gender
  */
-export function biologicalAge(adjustedRemaining, gender) {
+export function statisticalRiskAge(adjustedRemaining, gender) {
   const t = pick('remaining', gender);
   if (!Number.isFinite(adjustedRemaining)) return 0;
   if (adjustedRemaining >= t[0]) return 0;

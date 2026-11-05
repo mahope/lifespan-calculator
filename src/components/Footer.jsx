@@ -36,8 +36,8 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               Vi respekterer dit privatliv. Al behandling sker lokalt i din browser, og dine indtastninger gemmes ikke på
               nogen server. Vi tæller kun anonymt, at beregneren bruges, uden alder, køn eller andre oplysninger. Læs{' '}
-              <a href="/privatlivspolitik" className="text-primary hover:underline">privatlivspolitikken</a> og{' '}
-              <a href="/cookiepolitik" className="text-primary hover:underline">cookiepolitikken</a>.
+              <a href="/privatlivspolitik" className="text-primary underline">privatlivspolitikken</a> og{' '}
+              <a href="/cookiepolitik" className="text-primary underline">cookiepolitikken</a>.
             </p>
           </div>
 

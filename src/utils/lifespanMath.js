@@ -37,6 +37,14 @@ export function calculatePreciseAge(birthdate, now = new Date()) {
 }
 
 /**
+ * Raw sum of the lifestyle factor deltas (before bounding).
+ * @param {Record<string, number>} factors
+ */
+export function lifestyleTotal(factors) {
+  return Object.values(factors).reduce((sum, val) => sum + val, 0);
+}
+
+/**
  * Bound the summed lifestyle adjustment to a plausible range.
  * Full credit up to ±8 years, then diminishing returns, hard-capped at +12 / -15.
  * This keeps the (illustrative) additive model from producing absurd estimates
@@ -167,21 +175,18 @@ export function computeResult(input, now) {
 
   // Age-conditional remaining life expectancy (e_x) from the Danish period life table.
   const genderKey = gender === 'female' ? 'female' : 'male';
-  const rawLifestyleAdjustment = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
+  const rawLifestyleAdjustment = lifestyleTotal(lifestyleFactors);
   const lifestyleAdjustment = Math.round(boundLifestyleAdjustment(rawLifestyleAdjustment));
   const remainingBase = remainingLifeExpectancy(age, genderKey);
   const remainingYears = Math.max(0, remainingBase + lifestyleAdjustment);
   const adjustedLifeExpectancy = age + remainingYears; // expected age at death
 
-  if (preciseAgeData) {
-    const yearsToAdd = Math.floor(adjustedLifeExpectancy);
-    const fractionalYear = adjustedLifeExpectancy - yearsToAdd;
-    exactEndDate = new Date(preciseAgeData.birthDate);
-    exactEndDate.setFullYear(exactEndDate.getFullYear() + yearsToAdd);
-    exactEndDate.setDate(exactEndDate.getDate() + Math.floor(fractionalYear * 365.25));
-  } else {
-    exactEndDate = new Date(now.getFullYear() + remainingYears, now.getMonth(), now.getDate());
-  }
+  // One end instant for both modes, with the fractional year kept (the old age
+  // branch used the Date constructor, which truncated it to whole years).
+  const MS_PER_YEAR = 365.25 * 864e5;
+  exactEndDate = preciseAgeData
+    ? new Date(preciseAgeData.birthDate.getTime() + adjustedLifeExpectancy * MS_PER_YEAR)
+    : new Date(now.getTime() + remainingYears * MS_PER_YEAR);
 
   const timeRemaining = exactEndDate - now;
 
@@ -210,8 +215,6 @@ export function computeResult(input, now) {
 
     // Heart beats: average 70 bpm across rest and activity
     heartbeats: Math.floor(minutesLived * 70),
-
-    countdown: breakdownRemaining(timeRemaining),
 
     sunrises: daysLived,
     wordsSpoken: Math.floor(daysLived * 16000), // ~16,000 words/day average

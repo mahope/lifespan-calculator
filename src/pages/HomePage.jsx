@@ -18,6 +18,7 @@ import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import ShareModal from '../components/ShareModal';
+import Countdown from '../components/Countdown';
 import PromoBanner from '../components/PromoBanner';
 import LifeInWeeksGrid from '../components/LifeInWeeksGrid';
 import TidTilbage from '../components/TidTilbage';
@@ -34,7 +35,7 @@ import Forsikringsbehov from '../components/Forsikringsbehov';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams, parseLifestyle } from '../utils/shareState';
-import { boundLifestyleAdjustment } from '../utils/lifespanMath';
+import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors } from '../utils/lifespanMath';
 
 const HomePage = () => {
   const {
@@ -47,7 +48,6 @@ const HomePage = () => {
     calculateLifespan,
     updateLifestyleFactor,
     applyLifestyleFactors,
-    startCountdown,
     setResultData
   } = useLifespanCalculator();
 
@@ -90,9 +90,7 @@ const HomePage = () => {
         ? calculateLifespan(formData.birthdate, formData.gender)
         : calculateLifespan(parseInt(formData.age), formData.gender);
     setShowResults(true);
-    startCountdown();
-    // Persist to local history (captures the returned result, so the per-second
-    // countdown updates don't trigger saves).
+    // Persist to local history (captures the returned result).
     if (result) {
       saveEntry({
         ts: Date.now(),
@@ -101,7 +99,7 @@ const HomePage = () => {
         expected: result.adjustedLifeExpectancy,
       });
     }
-  }, [formData, calculateLifespan, startCountdown]);
+  }, [formData, calculateLifespan]);
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
@@ -200,7 +198,7 @@ const HomePage = () => {
   };
 
   // Bounded to match what the calculation actually applies (see #6).
-  const rawLifestyleTotal = Object.values(lifestyleFactors).reduce((sum, val) => sum + val, 0);
+  const rawLifestyleTotal = sumLifestyleFactors(lifestyleFactors);
   const lifestyleTotal = Math.round(boundLifestyleAdjustment(rawLifestyleTotal));
 
   return (
@@ -1109,28 +1107,7 @@ const HomePage = () => {
                 <p className="sr-only" aria-live="polite">
                   Du har statistisk {resultData?.remainingYears} år tilbage at leve.
                 </p>
-                <div className="flex flex-wrap justify-center gap-3 sm:gap-4" aria-hidden="true">
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.years || resultData?.remainingYears || '--'}</span>
-                    <span className="time-label">år</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.days || '--'}</span>
-                    <span className="time-label">dage</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.hours || '--'}</span>
-                    <span className="time-label">timer</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.minutes || '--'}</span>
-                    <span className="time-label">min</span>
-                  </div>
-                  <div className="time-unit">
-                    <span className="time-value">{resultData?.countdown?.seconds || '--'}</span>
-                    <span className="time-label">sek</span>
-                  </div>
-                </div>
+                <Countdown endTimestamp={resultData?.endTimestamp} />
               </div>
 
               {/* Biological age (advanced mode) */}

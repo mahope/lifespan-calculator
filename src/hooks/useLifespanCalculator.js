@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { breakdownRemaining, computeResult } from '../utils/lifespanMath';
+import { useState, useEffect, useCallback } from 'react';
+import { computeResult } from '../utils/lifespanMath';
 
 // Stable, fixed order of the lifestyle factors — used for both the initial state
 // and for packing/unpacking factors into a shareable URL.
@@ -14,7 +14,6 @@ export const useLifespanCalculator = () => {
   // third-party IP-geolocation service on mount — location is only resolved when
   // the user explicitly asks for it (privacy / GDPR).
   const [lifeExpectancyForLocation, setLifeExpectancyForLocation] = useState('Denmark');
-  const countdownRef = useRef(null);
   const [resultData, setResultData] = useState(null);
   const [currentMode, setCurrentMode] = useState('simple');
   const [lifestyleFactors, setLifestyleFactors] = useState(() =>
@@ -96,38 +95,6 @@ export const useLifespanCalculator = () => {
     setUserAchievements(newAchievements);
   }, [lifestyleFactors]);
 
-  // Start countdown timer. Counts against the exact end instant stored on the
-  // result (endTimestamp) rather than re-parsing a localized date string, so the
-  // seconds/minutes/hours stay accurate to the true computed moment.
-  const startCountdown = useCallback(() => {
-    // Clear any existing interval
-    if (countdownRef.current) {
-      clearInterval(countdownRef.current);
-    }
-
-    countdownRef.current = setInterval(() => {
-      setResultData(prev => {
-        if (!prev || !prev.endTimestamp) return prev;
-
-        const timeRemaining = prev.endTimestamp - Date.now();
-
-        if (timeRemaining > 0) {
-          return { ...prev, countdown: breakdownRemaining(timeRemaining) };
-        }
-        return prev;
-      });
-    }, 1000);
-  }, []);
-
-  // Cleanup countdown on unmount
-  useEffect(() => {
-    return () => {
-      if (countdownRef.current) {
-        clearInterval(countdownRef.current);
-      }
-    };
-  }, []);
-
   // Update achievements when lifestyle factors change
   useEffect(() => {
     checkAchievements();
@@ -146,7 +113,6 @@ export const useLifespanCalculator = () => {
     calculateLifespan,
     updateLifestyleFactor,
     applyLifestyleFactors,
-    startCountdown,
     setResultData
   };
 };

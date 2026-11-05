@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ShieldCheck } from 'lucide-react';
 import { estimateCover } from '../utils/insurance';
 import { track } from '../utils/analytics';
 
@@ -48,26 +47,16 @@ const Forsikringsbehov = ({ resultData }) => {
 
   return (
     <div className="card" ref={cardRef}>
-      <div className="card-content space-y-4 py-5">
-        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-          Annonce · værktøj
-        </div>
-        <div className="flex items-start gap-3">
-          <span
-            className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"
-            aria-hidden="true"
-          >
-            <ShieldCheck size={20} strokeWidth={2} />
-          </span>
-          <div className="flex-1">
-            <h3 className="mb-1 text-base font-semibold">
-              Hvor meget livsforsikring har din familie brug for?
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Et hurtigt overslag ud fra indkomst og forsørgelsesbehov, uden diskontering.
-            </p>
-          </div>
-        </div>
+      <div className="card-header">
+        <p className="mb-2 inline-block border border-input px-2 py-0.5 text-sm text-muted-foreground">Annonce</p>
+        <h3 className="fig text-2xl leading-tight font-semibold">
+          Hvor meget livsforsikring har din familie brug for?
+        </h3>
+        <p className="mt-2 max-w-prose text-[0.9375rem] leading-relaxed text-muted-foreground">
+          Et hurtigt overslag ud fra indkomst og forsørgelsesbehov, uden diskontering.
+        </p>
+      </div>
+      <div className="card-content space-y-4">
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div className="space-y-1">
@@ -135,12 +124,12 @@ const Forsikringsbehov = ({ resultData }) => {
         </div>
 
         {hasEstimate && (
-          <div className="rounded-lg bg-muted/30 p-4 text-center">
-            <div className="text-sm text-muted-foreground">Vejledende dækningsbehov</div>
-            <div className="text-3xl font-bold text-primary">
+          <div className="border-l-2 border-primary pl-4">
+            <div className="text-[0.9375rem] text-muted-foreground">Vejledende dækningsbehov</div>
+            <div className="fig text-4xl font-semibold text-primary">
               {cover > 0 ? `~${fmt(cover)} kr` : 'Dækningen ser rigelig ud'}
             </div>
-            <div className="mt-1 text-xs text-muted-foreground">
+            <div className="mt-1 text-sm text-muted-foreground">
               Den afdødes indkomst i forsørgelsesperioden minus eksisterende dækning, uden
               diskontering. Kun et overslag.
             </div>
@@ -151,13 +140,13 @@ const Forsikringsbehov = ({ resultData }) => {
           href={AFFILIATE_URL}
           target="_blank"
           rel="sponsored noopener noreferrer"
-          className="btn btn-primary w-full"
+          className="btn btn-primary w-full sm:w-auto"
           onClick={() => track('Affiliate Click', AFFILIATE_PROPS)}
         >
-          Sammenlign livsforsikringer{hasEstimate && cover > 0 ? ` (overslag på dækningsbehov: ~${fmt(cover)} kr)` : ''} →
+          Sammenlign livsforsikringer{hasEstimate && cover > 0 ? ` (overslag på dækningsbehov: ~${fmt(cover)} kr)` : ''}
         </a>
-        <p className="text-center text-[11px] text-muted-foreground">
-          Annonce · Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.
+        <p className="text-sm text-muted-foreground">
+          Annonce fra Findforsikring.dk. Overslaget er vejledende og ikke rådgivning.
         </p>
       </div>
     </div>

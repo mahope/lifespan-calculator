@@ -10,7 +10,7 @@ const formatYears = (value = 0) => `${value > 0 ? `+${value}` : value} år`;
 const LifestyleFactor = ({ factor, value, onSelect }) => {
   const labelId = useId();
   const optionRefs = useRef([]);
-  const { icon, label, options } = factor;
+  const { label, options } = factor;
 
   const checkedIndex = options.findIndex((o) => o.value === value);
   // With no option checked (e.g. the neutral default has no button) the first
@@ -51,12 +51,9 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-xl" aria-hidden="true">{icon}</span>
-          <span id={labelId} className="font-medium">{label}</span>
-        </div>
-        <span className="text-sm font-medium">{formatYears(value)}</span>
+      <div className="flex items-baseline justify-between gap-4">
+        <span id={labelId} className="font-medium">{label}</span>
+        <span className="fig text-base font-medium text-muted-foreground">{formatYears(value)}</span>
       </div>
       <div role="radiogroup" aria-labelledby={labelId} className="flex flex-wrap gap-2">
         {options.map((option, index) => {

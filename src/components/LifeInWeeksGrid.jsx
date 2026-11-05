@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { CalendarDays } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const WEEKS_PER_YEAR = 52;
@@ -73,11 +72,11 @@ const LifeInWeeksGrid = ({ resultData }) => {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, cssWidth, cssHeight);
 
-    const livedColor = tokenColor('--primary');
-    const remainingColor = tokenColor('--muted-foreground', 0.38);
-    const bonusColor = tokenColor('--muted-foreground', 0.12);
+    const livedColor = tokenColor('--lived');
+    const remainingColor = tokenColor('--primary');
+    const bonusColor = tokenColor('--muted-foreground', 0.16);
     const nowStroke = tokenColor('--foreground');
-    const radius = Math.max(1, cell * 0.2);
+    const radius = Math.max(0.5, cell * 0.08);
 
     for (let i = 0; i < totalWeeks; i++) {
       const col = i % WEEKS_PER_YEAR;
@@ -152,7 +151,6 @@ const LifeInWeeksGrid = ({ resultData }) => {
   return (
     <div className="card">
       <SectionHeader
-        icon={CalendarDays}
         title="Dit liv i uger"
         description={
           <>
@@ -162,34 +160,34 @@ const LifeInWeeksGrid = ({ resultData }) => {
           </>
         }
       />
-      <div className="card-content space-y-4">
+      <div className="card-content space-y-3">
         <div
           ref={wrapRef}
-          className="w-full"
+          className="w-full max-w-[34rem]"
           onMouseMove={handleMove}
           onMouseLeave={() => setHover(null)}
         >
           <canvas ref={canvasRef} className="w-full" role="img" aria-label="Dit liv visualiseret som uger" />
         </div>
 
-        <div className="min-h-[1.25rem] text-center text-sm text-muted-foreground" aria-live="polite">
+        <div className="min-h-6 text-sm text-muted-foreground" aria-live="polite">
           {hover
             ? `Alder ${hover.age} år · uge ${hover.week} — ${hover.lived ? 'levet' : 'endnu ikke levet'}`
             : 'Hold musen over en firkant for at se alderen'}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+        <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
           <span className="inline-flex items-center gap-2">
-            <span className="inline-block h-3 w-3 rounded-[3px] bg-primary" /> Uger levet
+            <span className="inline-block h-3 w-3 bg-lived" /> Uger levet
           </span>
           <span className="inline-flex items-center gap-2">
-            <span className="inline-block h-3 w-3 rounded-[3px] bg-muted-foreground/40" /> Forventede uger tilbage
+            <span className="inline-block h-3 w-3 bg-primary" /> Forventede uger tilbage
           </span>
           <span className="inline-flex items-center gap-2">
-            <span className="inline-block h-3 w-3 rounded-[3px] bg-muted-foreground/15" /> Bonus-uger
+            <span className="inline-block h-3 w-3 bg-muted-foreground/15" /> Bonus-uger
           </span>
           <span className="inline-flex items-center gap-2">
-            <span className="inline-block h-3 w-3 rounded-[3px] border-2 border-foreground" /> Nu
+            <span className="inline-block h-3 w-3 border-2 border-foreground" /> Nu
           </span>
         </div>
       </div>

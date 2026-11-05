@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FileText, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { track } from '../utils/analytics';
 
 const partnerUrl = (bannerId) =>
@@ -66,22 +66,19 @@ const PraktiskePapirer = ({ resultData }) => {
 
   return (
     <div className="card">
-      <div className="card-content space-y-3 py-5">
-        <div className="text-xs font-semibold uppercase tracking-widest text-foreground/80">Annonce</div>
+      <div className="card-header">
+        <p className="mb-2 inline-block border border-input px-2 py-0.5 text-sm text-muted-foreground">Annonce</p>
+        <h3 className="fig text-2xl leading-tight font-semibold">Få styr på det praktiske</h3>
+      </div>
+      <div className="card-content space-y-3">
         <button
           type="button"
-          className="flex w-full items-center gap-3 text-left"
+          className="flex min-h-11 w-full items-center justify-between gap-3 text-left font-medium"
           aria-expanded={open}
           aria-controls={open ? 'praktiske-papirer-indhold' : undefined}
           onClick={() => setOpen((v) => !v)}
         >
-          <span
-            className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary"
-            aria-hidden="true"
-          >
-            <FileText size={20} strokeWidth={2} />
-          </span>
-          <span className="flex-1 text-base font-semibold">Få styr på det praktiske</span>
+          <span>{open ? 'Skjul' : 'Vis'} skabeloner til testamente og fuldmagt</span>
           <ChevronDown
             size={18}
             aria-hidden="true"
@@ -90,16 +87,16 @@ const PraktiskePapirer = ({ resultData }) => {
         </button>
 
         {open && (
-          <div id="praktiske-papirer-indhold" className="space-y-3">
-            <p className="text-sm text-muted-foreground">
+          <div id="praktiske-papirer-indhold" className="space-y-4">
+            <p className="max-w-prose text-muted-foreground">
               Uanset hvor mange år du har tilbage, kan det være rart at have de praktiske papirer
               i orden.
             </p>
-            <ul ref={listRef} className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ul ref={listRef} className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2">
               {OFFERS.map((o) => (
-                <li key={o.program} className="flex flex-col gap-2 rounded-lg bg-muted/30 p-4">
-                  <h3 className="text-sm font-semibold">{o.title}</h3>
-                  <p className="flex-1 text-sm text-muted-foreground">{o.text}</p>
+                <li key={o.program} className="flex flex-col gap-2 border-t pt-4">
+                  <h4 className="fig text-lg font-semibold">{o.title}</h4>
+                  <p className="flex-1 text-[0.9375rem] text-muted-foreground">{o.text}</p>
                   <a
                     href={partnerUrl(o.bannerId)}
                     target="_blank"
@@ -109,12 +106,12 @@ const PraktiskePapirer = ({ resultData }) => {
                       track('Affiliate Click', { program: o.program, placement: PLACEMENT })
                     }
                   >
-                    {o.cta} →
+                    {o.cta}
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="text-center text-[11px] text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               Links til Jura-Docs og Dokument 24. Skabeloner er ikke juridisk rådgivning.
             </p>
           </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Hourglass } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 // "Tider tilbage" — translate the remaining-time estimate into finite, concrete
@@ -15,14 +14,14 @@ const TidTilbage = ({ resultData }) => {
   const fmt = (n) => Math.max(0, Math.floor(n)).toLocaleString('da-DK');
 
   const moments = [
-    { icon: '🌞', value: fmt(years), label: 'somre tilbage' },
-    { icon: '🎄', value: fmt(years), label: 'jul tilbage' },
-    { icon: '🍂', value: fmt(years * 4), label: 'årstider' },
-    { icon: '🌕', value: fmt(days / 29.53), label: 'fuldmåner' },
-    { icon: '🎂', value: fmt(years), label: 'fødselsdage' },
-    { icon: '🛌', value: fmt(days / 7), label: 'weekender' },
-    { icon: '☕', value: fmt(days * 2.5), label: 'kopper kaffe' },
-    { icon: '🍽️', value: fmt(days * 3), label: 'måltider' },
+    { value: fmt(years), label: 'somre tilbage' },
+    { value: fmt(years), label: 'jul tilbage' },
+    { value: fmt(years * 4), label: 'årstider' },
+    { value: fmt(days / 29.53), label: 'fuldmåner' },
+    { value: fmt(years), label: 'fødselsdage' },
+    { value: fmt(days / 7), label: 'weekender' },
+    { value: fmt(days * 2.5), label: 'kopper kaffe' },
+    { value: fmt(days * 3), label: 'måltider' },
   ];
 
   const visitsLeft = fmt(years * visitsPerYear);
@@ -30,36 +29,31 @@ const TidTilbage = ({ resultData }) => {
   return (
     <div className="card">
       <SectionHeader
-        icon={Hourglass}
         title="Tider tilbage"
         description="Statistisk set er dine oplevelser overraskende talbare. Her er nogle af dem."
       />
-      <div className="card-content space-y-6">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="card-content space-y-8">
+        <dl className="grid gap-x-10 sm:grid-cols-2">
           {moments.map((m) => (
-            <div key={m.label} className="text-center p-3 bg-muted/30 rounded-lg">
-              <div className="text-2xl mb-1">{m.icon}</div>
-              <div className="text-lg font-semibold">{m.value}</div>
-              <div className="text-xs text-muted-foreground">{m.label}</div>
+            <div key={m.label} className="flex items-baseline justify-between gap-4 border-b py-2.5">
+              <dt className="text-muted-foreground">{m.label}</dt>
+              <dd className="fig text-xl font-semibold">{m.value}</dd>
             </div>
           ))}
-        </div>
+        </dl>
 
         {/* Personalizable: time left with the people you love */}
-        <div className="rounded-lg border bg-muted/20 p-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">👨‍👩‍👧</span>
-              <div>
-                <div className="font-medium">Besøg hos dine kære</div>
-                <label htmlFor="visitFreq" className="text-xs text-muted-foreground">
-                  Hvor ofte ses I?
-                </label>
-              </div>
+        <div className="border-l-2 border-primary pl-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div className="font-medium">Besøg hos dine kære</div>
+              <label htmlFor="visitFreq" className="text-sm text-muted-foreground">
+                Hvor ofte ses I?
+              </label>
             </div>
             <select
               id="visitFreq"
-              className="input h-10 w-full sm:w-56"
+              className="input w-full sm:w-56"
               value={visitsPerYear}
               onChange={(e) => setVisitsPerYear(Number(e.target.value))}
             >
@@ -72,14 +66,14 @@ const TidTilbage = ({ resultData }) => {
               <option value={1}>1 gang om året</option>
             </select>
           </div>
-          <p className="mt-3 text-center text-sm">
-            Så når I hinanden ca. <span className="text-2xl font-bold text-primary">{visitsLeft}</span>{' '}
+          <p className="mt-3">
+            Så når I hinanden ca. <span className="fig text-3xl font-semibold text-primary">{visitsLeft}</span>{' '}
             gange mere.
           </p>
         </div>
 
-        <p className="text-xs text-muted-foreground text-center">
-          Baseret på statistiske gennemsnit — ikke en forudsigelse. Brug dine tider godt. 💛
+        <p className="max-w-prose text-sm text-muted-foreground">
+          Baseret på statistiske gennemsnit og ikke en forudsigelse.
         </p>
       </div>
     </div>

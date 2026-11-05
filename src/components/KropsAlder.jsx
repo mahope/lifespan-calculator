@@ -19,21 +19,23 @@ const KropsAlder = ({ resultData }) => {
 
   const message =
     delta > 0
-      ? `Din livsstil svarer til en krop, der er ~${delta} år yngre 🎉`
+      ? `Din livsstil svarer til en krop, der er ~${delta} år yngre`
       : delta < 0
         ? `Din livsstil svarer til en krop, der er ~${Math.abs(delta)} år ældre`
         : 'Din krop matcher din faktiske alder';
 
   return (
     <div className="card">
-      <div className="card-content space-y-2 py-6 text-center">
-        <div className="text-sm text-muted-foreground">Din biologiske alder</div>
-        <div className="flex items-end justify-center gap-3">
-          <span className="text-5xl font-bold text-primary">{bodyAge}</span>
-          <span className="mb-1 text-lg text-muted-foreground">år · du er {chrono}</span>
-        </div>
-        <p className="text-sm font-medium">{message}</p>
-        <p className="text-xs text-muted-foreground">
+      <div className="card-header">
+        <h3 className="fig text-2xl leading-tight font-semibold">Din biologiske alder</h3>
+      </div>
+      <div className="card-content space-y-2">
+        <p className="flex flex-wrap items-baseline gap-x-3">
+          <span className="fig text-6xl font-semibold text-primary">{bodyAge}</span>
+          <span className="text-lg text-muted-foreground">år, og du er {chrono}</span>
+        </p>
+        <p className="font-medium">{message}</p>
+        <p className="text-sm text-muted-foreground">
           Beregnet ud fra dine livsstilsvalg og danske dødelighedstavler.
         </p>
       </div>

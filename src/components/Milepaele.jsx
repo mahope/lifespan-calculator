@@ -1,5 +1,4 @@
 import React from 'react';
-import { Milestone } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { upcomingMilestones } from '../utils/lifespanMath';
 
@@ -21,26 +20,20 @@ const Milepaele = ({ resultData }) => {
   return (
     <div className="card">
       <SectionHeader
-        icon={Milestone}
         title="Dine næste milepæle"
         description="Runde tal er tættere på, end du tror."
       />
       <div className="card-content">
-        <ul className="divide-y divide-border/60">
+        <ul className="divide-y">
           {milestones.map((m) => (
-            <li key={m.day} className="flex items-center gap-3 py-3">
-              <span className="text-2xl" aria-hidden="true">
-                {m.icon}
-              </span>
-              <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{m.label}</div>
-                <div className="text-xs text-muted-foreground">ca. {dateFor(m.daysUntil)}</div>
+            <li key={m.day} className="flex items-baseline gap-4 py-3 first:pt-0">
+              <div className="min-w-0 flex-1">
+                <div className="font-medium">{m.label}</div>
+                <div className="text-sm text-muted-foreground">ca. {dateFor(m.daysUntil)}</div>
               </div>
-              <div className="text-right">
-                <div className="text-lg font-semibold text-primary">
-                  {m.daysUntil.toLocaleString('da-DK')}
-                </div>
-                <div className="text-xs text-muted-foreground">dage</div>
+              <div className="shrink-0 text-right">
+                <span className="fig text-xl font-semibold">{m.daysUntil.toLocaleString('da-DK')}</span>{' '}
+                <span className="text-sm text-muted-foreground">dage</span>
               </div>
             </li>
           ))}

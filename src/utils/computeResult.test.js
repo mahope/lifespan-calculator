@@ -4,6 +4,7 @@ process.env.TZ = 'Europe/Copenhagen';
 import { describe, it, expect } from 'vitest';
 import { computeResult, breakdownRemaining, lifestyleTotal } from './lifespanMath';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
+import { LIFESTYLE_FACTORS } from './lifestyleFactors';
 
 // Pins the numbers per input. The first commit recorded the pre-#76 formulas; the
 // fix commit updated the snapshot so the old -> new diff is visible in git.
@@ -17,7 +18,7 @@ const CASES = {
   'age 0': { ageOrBirthdate: 0, gender: 'female', lifestyleFactors: zero },
   'age 99': { ageOrBirthdate: 99, gender: 'male', lifestyleFactors: zero },
   'advanced two factors': {
-    ageOrBirthdate: 50, gender: 'male', lifestyleFactors: { ...zero, smoking: -3, exercise: 2 },
+    ageOrBirthdate: 50, gender: 'male', lifestyleFactors: { ...zero, smoking: -5, exercise: 2 }, // light smoker -6 y, light exercise +2 y
   },
 };
 
@@ -63,10 +64,15 @@ describe('computeResult consistency (#76)', () => {
   });
 });
 
+// Every counting factor at its worst answer.
+const worst = Object.fromEntries(
+  LIFESTYLE_FACTORS.map((f) => [f.key, f.options.reduce((a, b) => (b.years < a.years ? b : a)).value]),
+);
+
 describe('computeResult remainingDays clamp (#76 review)', () => {
   it('never reports negative days when nothing remains (birthdate mode, worst lifestyle, very old)', () => {
     const r = computeResult(
-      { ageOrBirthdate: '1920-01-01', gender: 'male', lifestyleFactors: { ...zero, smoking: -15 } },
+      { ageOrBirthdate: '1920-01-01', gender: 'male', lifestyleFactors: worst },
       NOW,
     );
     // The end instant falls just before `now` in this case, which Math.floor turned into -1.
@@ -77,9 +83,15 @@ describe('computeResult remainingDays clamp (#76 review)', () => {
 });
 
 describe('lifestyleTotal', () => {
-  it('sums factor deltas', () => {
-    expect(lifestyleTotal({ a: 2, b: -3, c: 0 })).toBe(-1);
+  it('sums the years of the stored answers', () => {
+    // exercise answer 2 = +2 y, smoking answer -5 = -6 y, alcohol answer 11 = -0.5 y
+    expect(lifestyleTotal({ exercise: 2, smoking: -5, alcohol: 11 })).toBe(-4.5);
     expect(lifestyleTotal({})).toBe(0);
+  });
+
+  it('ignores factors that do not count and answers the table does not know', () => {
+    expect(lifestyleTotal({ stress: -4, health: -5, education: 3, income: -3, environment: -2 })).toBe(0);
+    expect(lifestyleTotal({ smoking: -99, unknown: 5 })).toBe(0);
   });
 });
 

@@ -36,7 +36,7 @@ import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
-import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate } from '../utils/lifespanMath';
+import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, toLocalISODate } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
 
 const HomePage = () => {
@@ -176,7 +176,7 @@ const HomePage = () => {
 
   // Bounded to match what the calculation actually applies (see #6).
   const rawLifestyleTotal = sumLifestyleFactors(lifestyleFactors);
-  const lifestyleTotal = Math.round(boundLifestyleAdjustment(rawLifestyleTotal));
+  const lifestyleTotal = roundedLifestyleAdjustment(rawLifestyleTotal);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -376,7 +376,7 @@ const HomePage = () => {
                           <div className="flex items-center justify-between">
                             <span className="font-medium">Livsstils påvirkning:</span>
                             <span className="font-bold text-primary">
-                              {lifestyleTotal > 0 ? `+${lifestyleTotal}` : lifestyleTotal} år
+                              {formatSignedYears(lifestyleTotal)}
                             </span>
                           </div>
                         </div>

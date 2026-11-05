@@ -4,7 +4,7 @@
 //   SURVIVORS (l_x, TAVLE=1): of 100,000 born, how many are still alive at age x.
 // Index = age (0..99). Regenerate by curling the HISB8 CSV for TAVLE=3 and =1.
 
-import { boundLifestyleAdjustment } from './lifespanMath';
+import { lifestyleTotal, roundedLifestyleAdjustment } from './lifespanMath';
 
 export const LIFE_TABLE_DK = {
   remaining: {
@@ -39,10 +39,9 @@ export function remainingLifeExpectancy(age, gender) {
  * @param {Record<string, number>} factors
  */
 export function projectedExpectancy(age, gender, factors) {
-  const sum = Object.values(factors || {}).reduce((s, v) => s + (v || 0), 0);
   const remaining = Math.max(
     0,
-    remainingLifeExpectancy(age, gender) + Math.round(boundLifestyleAdjustment(sum))
+    remainingLifeExpectancy(age, gender) + roundedLifestyleAdjustment(lifestyleTotal(factors))
   );
   return age + remaining;
 }

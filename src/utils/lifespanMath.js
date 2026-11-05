@@ -2,6 +2,7 @@
 // unit-tested in isolation. Keep this module free of React and side effects.
 
 import { remainingLifeExpectancy } from './lifeTableDK';
+import { lifestyleYears } from './lifestyleFactors';
 
 /**
  * Parse a calendar date as LOCAL midnight. `new Date('YYYY-MM-DD')` is UTC
@@ -65,11 +66,28 @@ export function calculatePreciseAge(birthdate, now = new Date()) {
 }
 
 /**
- * Raw sum of the lifestyle factor deltas (before bounding).
- * @param {Record<string, number>} factors
+ * Raw sum of the lifestyle years (before bounding): the years of each stored
+ * answer, counting only the factors that are `inSum` (see lifestyleFactors.js).
+ * @param {Record<string, number>} factors - stored answer per factor key
  */
 export function lifestyleTotal(factors) {
-  return Object.values(factors).reduce((sum, val) => sum + val, 0);
+  return lifestyleYears(factors);
+}
+
+/**
+ * Bound and round the lifestyle sum to one decimal (the table has half years,
+ * so whole-year rounding would turn +4.5 into +5, above its source).
+ * @param {number} sum - raw sum from lifestyleTotal
+ */
+export function roundedLifestyleAdjustment(sum) {
+  return Math.round(boundLifestyleAdjustment(sum) * 10) / 10 || 0;
+}
+
+/** Signed years in Danish number format: "+4,5 år", "-0,5 år", "0 år". */
+export function formatSignedYears(years) {
+  const n = Math.round(years * 10) / 10 || 0;
+  const body = Math.abs(n).toLocaleString('da-DK', { maximumFractionDigits: 1 });
+  return `${n > 0 ? '+' : n < 0 ? '-' : ''}${body} år`;
 }
 
 /**
@@ -203,7 +221,7 @@ export function computeResult(input, now) {
   // Age-conditional remaining life expectancy (e_x) from the Danish period life table.
   const genderKey = gender === 'female' ? 'female' : 'male';
   const rawLifestyleAdjustment = lifestyleTotal(lifestyleFactors);
-  const lifestyleAdjustment = Math.round(boundLifestyleAdjustment(rawLifestyleAdjustment));
+  const lifestyleAdjustment = roundedLifestyleAdjustment(rawLifestyleAdjustment);
   const remainingBase = remainingLifeExpectancy(age, genderKey);
   const remainingYears = Math.max(0, remainingBase + lifestyleAdjustment);
   const adjustedLifeExpectancy = age + remainingYears; // expected age at death

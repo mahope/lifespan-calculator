@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Wand2 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
-import { LIFESTYLE_META } from '../utils/lifestyleFactors';
+import { factorYears, LIFESTYLE_META } from '../utils/lifestyleFactors';
 import { projectedExpectancy } from '../utils/lifeTableDK';
 
 // "Hvad hvis?" — toggle hypothetical improvements and watch the projected age
@@ -16,11 +16,11 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
 
   const current = lifestyleFactors || {};
   // Only factors where there's room to improve.
-  const options = LIFESTYLE_META.filter((m) => (current[m.key] ?? 0) < m.best);
+  const options = LIFESTYLE_META.filter((m) => factorYears(m.key, current[m.key]) < m.best);
   if (!options.length) return null;
 
   const hypothetical = { ...current };
-  for (const m of options) if (applied[m.key]) hypothetical[m.key] = m.best;
+  for (const m of options) if (applied[m.key]) hypothetical[m.key] = m.bestValue;
 
   const currentExpected = parseFloat(resultData.adjustedLifeExpectancy);
   const newExpected = projectedExpectancy(age, gender, hypothetical);

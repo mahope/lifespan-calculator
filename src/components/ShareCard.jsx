@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatSignedYears } from '../utils/lifespanMath';
 
 const ShareCard = ({ resultData }) => {
   if (!resultData) return null;
@@ -52,7 +53,7 @@ const ShareCard = ({ resultData }) => {
           <div className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center">
             <div className="text-sm text-white/80 mb-1">Livsstil påvirkning</div>
             <div className={`text-3xl font-bold ${resultData.lifestyleImpact > 0 ? 'text-green-300' : 'text-orange-300'}`}>
-              {resultData.lifestyleImpact > 0 ? '+' : ''}{resultData.lifestyleImpact} år
+              {formatSignedYears(resultData.lifestyleImpact)}
             </div>
           </div>
         )}

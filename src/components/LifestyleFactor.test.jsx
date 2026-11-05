@@ -90,7 +90,7 @@ describe('LifestyleFactor', () => {
     render({ f: factor, spy });
     act(() => radios()[3].click());
     expect(spy).toEqual([['exercise', 6]]);
-    expect(container.textContent).toContain('+6 år');
+    expect(container.textContent).toContain('+4,5 år');
   });
 
   it('moves selection and focus with the arrow keys, wrapping around', () => {

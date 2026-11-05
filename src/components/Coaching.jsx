@@ -2,6 +2,7 @@ import React from 'react';
 import { Sprout } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { topImprovements } from '../utils/lifestyleFactors';
+import { formatSignedYears } from '../utils/lifespanMath';
 
 // "Sådan kan du vinde flere år" — ranks the changes that would lift this user's
 // estimate most, with a citation where the effect size is grounded in research.
@@ -39,7 +40,7 @@ const Coaching = ({ lifestyleFactors }) => {
                 )}
               </div>
               <div className="text-lg font-semibold text-green-700 dark:text-green-400">
-                +{i.gain} år
+                {formatSignedYears(i.gain)}
               </div>
             </li>
           ))}

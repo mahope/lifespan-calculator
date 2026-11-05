@@ -53,8 +53,8 @@ describe('projectedExpectancy', () => {
 
   it('adds a positive lifestyle adjustment', () => {
     const base = projectedExpectancy(40, 'male', {});
-    const better = projectedExpectancy(40, 'male', { exercise: 6 });
-    expect(better - base).toBeCloseTo(6, 5);
+    const better = projectedExpectancy(40, 'male', { exercise: 6 }); // answer 6 = intensive, +4.5 years
+    expect(better - base).toBeCloseTo(4.5, 5);
   });
 
   it('treats missing/empty factors the same as all-zero', () => {

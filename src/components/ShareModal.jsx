@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ShareCard from './ShareCard';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams } from '../utils/shareState';
+import { formatSignedYears } from '../utils/lifespanMath';
 import { track } from '../utils/analytics';
 
 const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced = false }) => {
@@ -58,7 +59,7 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
 📅 Estimeret slutdato: ${resultData.endDate}
 📍 Baseret på: ${resultData.dataSource}
 
-${resultData.lifestyleImpact !== 0 ? `💪 Livsstil påvirkning: ${resultData.lifestyleImpact > 0 ? '+' : ''}${resultData.lifestyleImpact} år` : ''}
+${resultData.lifestyleImpact !== 0 ? `💪 Livsstil påvirkning: ${formatSignedYears(resultData.lifestyleImpact)}` : ''}
 
 Beregn din egen: ${shareUrl}`;
 

@@ -1,6 +1,6 @@
 import React, { useId, useRef } from 'react';
-
-const formatYears = (value = 0) => `${value > 0 ? `+${value}` : value} år`;
+import { ASSOCIATION_NOTE, factorHelper, factorYears } from '../utils/lifestyleFactors';
+import { formatSignedYears } from '../utils/lifespanMath';
 
 /**
  * One lifestyle question rendered as a radio group: `role=radiogroup` with
@@ -10,7 +10,9 @@ const formatYears = (value = 0) => `${value > 0 ? `+${value}` : value} år`;
 const LifestyleFactor = ({ factor, value, onSelect }) => {
   const labelId = useId();
   const optionRefs = useRef([]);
-  const { icon, label, options } = factor;
+  const { icon, label, options, inSum } = factor;
+  const helperId = useId();
+  const helper = factorHelper(factor);
 
   const checkedIndex = options.findIndex((o) => o.value === value);
   // With no option checked (e.g. the neutral default has no button) the first
@@ -56,9 +58,16 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
           <span className="text-xl" aria-hidden="true">{icon}</span>
           <span id={labelId} className="font-medium">{label}</span>
         </div>
-        <span className="text-sm font-medium">{formatYears(value)}</span>
+        <span className={`text-sm ${inSum ? 'font-medium' : 'text-muted-foreground'}`}>
+          {inSum ? formatSignedYears(factorYears(factor.key, value)) : 'påvirker ikke beregningen'}
+        </span>
       </div>
-      <div role="radiogroup" aria-labelledby={labelId} className="flex flex-wrap gap-2">
+      <div
+        role="radiogroup"
+        aria-labelledby={labelId}
+        aria-describedby={helper ? helperId : undefined}
+        className="flex flex-wrap gap-2"
+      >
         {options.map((option, index) => {
           const checked = index === checkedIndex;
           return (
@@ -78,6 +87,24 @@ const LifestyleFactor = ({ factor, value, onSelect }) => {
           );
         })}
       </div>
+      {helper && (
+        <p id={helperId} className="text-xs text-muted-foreground">
+          {helper} {ASSOCIATION_NOTE}
+          {factor.source?.pmid && (
+            <>
+              {' '}
+              <a
+                href={`https://pubmed.ncbi.nlm.nih.gov/${factor.source.pmid}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                Se kilden
+              </a>
+            </>
+          )}
+        </p>
+      )}
     </div>
   );
 };

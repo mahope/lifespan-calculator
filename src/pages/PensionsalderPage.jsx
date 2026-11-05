@@ -7,51 +7,17 @@ import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
-import { efterloenAgeOn, pensionOutlook } from '../utils/pension';
+import { PENSION_AGE_ROWS, efterloenAgeOn, folkepensionAgeOn, pensionOutlook } from '../utils/pension';
+import { FAQ, faqJsonLd } from '../utils/pensionFaq';
 import { parseLocalDate, toLocalISODate } from '../utils/lifespanMath';
 
 const MIN_BIRTH = '1930-01-01';
-
-const AGE_TABLE = [
-  ['Før 1. jan. 1954', '65 år'],
-  ['1. jan.-30. juni 1954', '65½ år'],
-  ['1. juli-31. dec. 1954', '66 år'],
-  ['1. jan.-30. juni 1955', '66½ år'],
-  ['1. juli 1955-1962', '67 år'],
-  ['1963-1966', '68 år'],
-  ['1967-1970', '69 år'],
-  ['1971 og senere', '70 år'],
-];
-
-const FAQ = [
-  [
-    'Hvornår kan jeg gå på folkepension?',
-    'Det afhænger af din fødselsdato. Er du født 1955 (2. halvår) til 1962, er alderen 67 år; er du født i 1971 eller senere, er den 70 år. Skriv din fødselsdato ovenfor for at se dato og alder.',
-  ],
-  [
-    'Hvad betyder regulering i 2030?',
-    'Folkepensionsalderen følger udviklingen i middellevetiden. Ved reguleringen i 2030 kan alderen for de yngste årgange (født 1975 eller senere) blive sat op igen.',
-  ],
-  [
-    'Hvor længe er jeg pensionist?',
-    'Tallet er forventede år tilbage ved pensionsalderen ifølge Danmarks Statistiks dødelighedstabel. Det er et gennemsnit for mange mennesker og ikke en prognose for dig.',
-  ],
-];
 
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 const fmtDate = (d) => d.toLocaleDateString('da-DK', { day: 'numeric', month: 'long', year: 'numeric' });
 const fmtYears = (n) => n.toLocaleString('da-DK', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const fmtAge = (years, months) => (months ? `${years}½ år` : `${years} år`);
-
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQ.map(([q, a]) => ({
-    '@type': 'Question',
-    name: q,
-    acceptedAnswer: { '@type': 'Answer', text: a },
-  })),
-};
+const splitAge = (age) => [Math.floor(age), age % 1 ? 6 : 0];
 
 const PensionsalderPage = () => {
   const [birthdate, setBirthdate] = useState('');
@@ -59,13 +25,14 @@ const PensionsalderPage = () => {
   const today = toLocalISODate(new Date());
 
   const parsed = birthdate ? parseLocalDate(birthdate) : null;
-  const valid = parsed && !Number.isNaN(parsed.getTime()) && birthdate >= MIN_BIRTH && birthdate <= today;
-  const outlook = valid ? pensionOutlook(birthdate) : null;
+  const inRange = birthdate >= MIN_BIRTH && birthdate <= today;
+  const outlook = inRange ? pensionOutlook(birthdate) : null;
+  const valid = outlook !== null;
   const error =
     birthdate && !valid
       ? `Skriv en gyldig fødselsdato mellem ${fmtDate(parseLocalDate(MIN_BIRTH))} og i dag.`
       : null;
-  const efterloen = outlook ? efterloenAgeOn(parsed.getFullYear(), parsed.getMonth() + 1) : undefined;
+  const efterloen = outlook && parsed ? efterloenAgeOn(parsed.getFullYear(), parsed.getMonth() + 1) : undefined;
   const sexes = gender ? [gender] : ['male', 'female'];
   const sexLabel = { male: 'mænd', female: 'kvinder' };
 
@@ -180,7 +147,7 @@ const PensionsalderPage = () => {
                   {efterloen !== undefined && (
                     <p className="text-sm text-muted-foreground">
                       Efterlønsalderen for din årgang er{' '}
-                      {efterloen === null ? 'ikke fastsat endnu' : fmtAge(Math.floor(efterloen), efterloen % 1 ? 6 : 0)}
+                      {efterloen === null ? 'ikke fastsat endnu' : fmtAge(...splitAge(efterloen))}
                       . Kun alderen er med; vilkår for efterløn indgår ikke.
                     </p>
                   )}
@@ -207,17 +174,17 @@ const PensionsalderPage = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {AGE_TABLE.map(([born, age]) => (
-                      <tr key={born} className="border-b last:border-0">
-                        <th scope="row" className="py-2 pr-4 text-left font-normal">{born}</th>
-                        <td className="py-2">{age}</td>
+                    {PENSION_AGE_ROWS.map(({ label, from }) => (
+                      <tr key={label} className="border-b last:border-0">
+                        <th scope="row" className="py-2 pr-4 text-left font-normal">{label}</th>
+                        <td className="py-2">{fmtAge(...splitAge(folkepensionAgeOn(...from)))}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
                 <p className="leading-relaxed text-muted-foreground">
                   Regulering 2030 betyder, at Folketinget i 2030 igen tager stilling til, om alderen skal op for de
-                  yngste årgange (født 1975 eller senere). Tallene ovenfor kan derfor ændre sig for dem.
+                  yngste årgange (født 1975 eller senere; se borger.dk). Tallene ovenfor kan derfor ændre sig for dem.
                 </p>
                 <p className="leading-relaxed text-muted-foreground">
                   Pensionsårene beregnes med den danske dødelighedstabel: vi aflæser den forventede restlevetid ved

@@ -38,7 +38,7 @@ npm ci && npm run lint && npm test && npm run build
 - **`App.jsx`**: Route definitions. Pages are lazy-loaded via `React.lazy` +
   `Suspense`.
 - **`pages/`**: One component per route (HomePage, HvorLangTidPage,
-  DodsalderPage, LivsstilPage, DanmarkPage, NotFoundPage).
+  DodsalderPage, LivsstilPage, DanmarkPage, PensionsalderPage, NotFoundPage).
 - **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
   ShareCard, ShareModal).
 - **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure

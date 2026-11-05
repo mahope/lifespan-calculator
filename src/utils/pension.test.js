@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort, folkepensionDate, pensionOutlook } from './pension';
+import { PENSION_AGE_ROWS, folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort, folkepensionDate, pensionOutlook } from './pension';
 import { remainingLifeExpectancy } from './lifeTableDK';
 import { toLocalISODate } from './lifespanMath';
 
@@ -212,5 +212,27 @@ describe('pensionOutlook', () => {
   it('rejects invalid and future dates', () => {
     expect(pensionOutlook('2030-01-01', now)).toBeNull();
     expect(pensionOutlook('2001-02-30', now)).toBeNull();
+  });
+});
+
+describe('PENSION_AGE_ROWS (table shown on /pensionsalder)', () => {
+  it('has one constant age per row, equal to the calculator at both ends', () => {
+    for (const { label, from, to } of PENSION_AGE_ROWS) {
+      expect(folkepensionAgeOn(...from), label).toBe(folkepensionAgeOn(...to));
+    }
+  });
+
+  it('is contiguous and covers 1930-2100 without gaps or overlaps', () => {
+    const next = ([y, m]) => (m === 12 ? [y + 1, 1] : [y, m + 1]);
+    expect(PENSION_AGE_ROWS[0].from).toEqual([1930, 1]);
+    for (let i = 1; i < PENSION_AGE_ROWS.length; i++) {
+      expect(PENSION_AGE_ROWS[i].from, PENSION_AGE_ROWS[i].label).toEqual(next(PENSION_AGE_ROWS[i - 1].to));
+    }
+  });
+
+  it('changes age between neighbouring rows', () => {
+    for (let i = 1; i < PENSION_AGE_ROWS.length; i++) {
+      expect(folkepensionAgeOn(...PENSION_AGE_ROWS[i].from)).not.toBe(folkepensionAgeOn(...PENSION_AGE_ROWS[i - 1].from));
+    }
   });
 });

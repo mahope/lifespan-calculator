@@ -56,6 +56,22 @@ export function efterloenAgeOn(birthYear, birthMonth) {
   return efterloenAgeFor(birthYear, halfOf(birthMonth));
 }
 
+/**
+ * Statutory ages by birth-date range for display. Each row lists its first and last
+ * birth date; the age is looked up with `folkepensionAgeOn` so a table can never
+ * disagree with the calculator (a test checks both ends of every row).
+ */
+export const PENSION_AGE_ROWS = [
+  { label: 'Før 1. jan. 1954', from: [1930, 1], to: [1953, 12] },
+  { label: '1. jan.-30. juni 1954', from: [1954, 1], to: [1954, 6] },
+  { label: '1. juli-31. dec. 1954', from: [1954, 7], to: [1954, 12] },
+  { label: '1. jan.-30. juni 1955', from: [1955, 1], to: [1955, 6] },
+  { label: '1. juli 1955-1962', from: [1955, 7], to: [1962, 12] },
+  { label: '1963-1966', from: [1963, 1], to: [1966, 12] },
+  { label: '1967-1970', from: [1967, 1], to: [1970, 12] },
+  { label: '1971 og senere', from: [1971, 1], to: [2100, 12] },
+];
+
 const fmtAge = (n) => (Number.isInteger(n) ? String(n) : `${Math.floor(n)}½`);
 const fmtRange = (min, max) => (min === max ? fmtAge(min) : `${fmtAge(min)}-${fmtAge(max)} år`);
 

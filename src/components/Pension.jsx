@@ -89,8 +89,11 @@ const Pension = ({ resultData }) => {
           </p>
         )}
 
+        <p className="text-center text-sm">
+          <Link to="/pensionsalder" className="font-medium text-primary underline">Se alle pensionsaldre og din pensionsdato</Link>
+        </p>
+
         <p className="text-center text-xs text-muted-foreground">
-          <Link to="/pensionsalder" className="underline">Se alle pensionsaldre og din pensionsdato</Link>.{' '}
           Folkepensionsalderen er lovbestemt (Lov nr. 703 af 20. juni 2025; aldre efter borger.dk,
           november 2026) og kan stige yderligere for årgange fra 1975. Efterlønsaldre er
           ligeledes fra borger.dk.

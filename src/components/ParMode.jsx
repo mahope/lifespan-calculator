@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { HeartHandshake } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { jointLifeStats } from '../utils/lifeTableDK';
+import { formatYears } from '../utils/lifespanMath';
 
 // "Jer to sammen" — enter a partner's age/gender and see joint-life odds and the
 // expected number of years you both have left, from the Danish survivors table.
@@ -74,7 +75,7 @@ const ParMode = ({ resultData }) => {
             <div className="rounded-lg bg-muted/30 p-4 text-center">
               <div className="text-sm text-muted-foreground">Forventede år sammen (begge i live)</div>
               <div className="text-4xl font-bold text-primary">
-                {stats.expectedTogether.toFixed(1)}
+                {formatYears(stats.expectedTogether)}
               </div>
             </div>
             <div className="overflow-x-auto">

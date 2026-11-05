@@ -104,7 +104,7 @@ export function prerender(distDir, routes = ROUTES, metaByRoute = ROUTE_META) {
       writeFileSync(new URL('index.html', dir), html)
     }
   }
-  // dist/404.html is copied from public/404.html (already noindex); nothing to generate.
+  // dist/404.html is copied from public/404.html (noindex, asserted in prerender-head.test.js).
   return routes.length
 }
 

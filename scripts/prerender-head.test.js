@@ -124,3 +124,10 @@ describe('prerender', () => {
     expect(() => prerender(pathToFileURL(dir + '/'), ['/', '/a'], dup)).toThrow(/duplicates/)
   })
 })
+
+describe('404 page', () => {
+  it('public/404.html is noindex (copied unchanged into dist)', () => {
+    const html = readFileSync(new URL('../public/404.html', import.meta.url), 'utf8')
+    expect(html).toMatch(/<meta name="robots" content="noindex"/)
+  })
+})

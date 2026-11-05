@@ -69,7 +69,7 @@ const DanmarkPage = () => {
                         <span className="text-xl font-bold text-primary">{fmtLE(le.Denmark.male)} år</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-primary/10 rounded-lg">
-                        <span className="font-medium">Samlet gennemsnit:</span>
+                        <span className="font-medium">Gennemsnit af mænd og kvinder (beregnet):</span>
                         <span className="text-xl font-bold text-primary">{fmtLE((le.Denmark.male + le.Denmark.female) / 2)} år</span>
                       </div>
                     </div>

@@ -10,7 +10,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground">Om Levetidsberegneren</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Vores gratis levetidsberegner hjælper dig med at få et statistisk indblik i din forventede resterende levetid.
-              Værktøjet anvender data fra Verdenssundhedsorganisationen (WHO) og nationale statistikker fra over 12 lande for at
+              Værktøjet anvender data fra Verdenssundhedsorganisationen (WHO) og nationale statistikker (Danmarks Statistik, Eurostat, Verdensbanken) for at
               give dig et estimat baseret på din alder, køn og geografiske placering.
             </p>
           </div>
@@ -45,9 +45,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-foreground">Understøttede lande</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Værktøjet indeholder specifik data for Danmark, Sverige, Norge, Tyskland, Storbritannien, USA, Frankrig,
-              Holland, Finland, Island, Schweiz og Japan. For andre lande anvendes verdensgennemsnittet baseret på WHO's
-              globale statistikker.
+              Værktøjet indeholder specifik data for Danmark (Danmarks Statistik), Sverige, Norge og Finland (Eurostat)
+              samt Japan (Verdensbanken). For andre lande anvendes Verdensbankens verdensgennemsnit.
             </p>
             <p className="text-sm">
               <strong className="text-foreground">Se også:</strong>{' '}

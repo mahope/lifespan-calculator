@@ -8,7 +8,9 @@ const KropsAlder = ({ resultData }) => {
   if (!resultData || resultData.lifestyleImpact === 0) return null;
 
   const age = parseFloat(resultData.age);
-  const remaining = parseFloat(resultData.remainingYears);
+  // Body age is defined against the period table, so it always uses the period
+  // figure; the projection toggle must not change it.
+  const remaining = parseFloat(resultData.periodRemainingYears ?? resultData.remainingYears);
   const gender = resultData.gender === 'female' ? 'female' : 'male';
   if (!Number.isFinite(age) || !Number.isFinite(remaining)) return null;
 

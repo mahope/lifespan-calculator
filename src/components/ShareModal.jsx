@@ -33,7 +33,10 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
   ).toString();
   const shareUrl = `${window.location.origin}${window.location.pathname}?${query}`;
   const basis = PROJECTION_LABELS[resultData.projection] || PROJECTION_LABELS.period;
-  const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve (${basis.toLowerCase()})! 🕐 Beregn din egen levetid på`;
+  const basisLower = basis.charAt(0).toLowerCase() + basis.slice(1);
+  // The link carries no projection state (page state only), so it opens the period view.
+  const linkNote = resultData.projection === 'projected' ? ' Linket viser nuværende dødelighed.' : '';
+  const shareText = `Jeg har statistisk ${resultData.remainingYears} år tilbage at leve (${basisLower})!${linkNote} 🕐 Beregn din egen levetid på`;
 
   // Copy link to clipboard
   const copyLink = async () => {
@@ -60,7 +63,7 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
 ⏳ Resterende tid: ${resultData.remainingYears} år (${resultData.remainingDays} dage)
 📅 Estimeret slutdato: ${resultData.endDate}
 📍 Baseret på: ${resultData.dataSource}
-🔎 Grundlag: ${basis}
+🔎 Grundlag: ${basis}${linkNote}
 
 ${resultData.lifestyleImpact !== 0 ? `💪 Livsstil påvirkning: ${resultData.lifestyleImpact > 0 ? '+' : ''}${resultData.lifestyleImpact} år` : ''}
 

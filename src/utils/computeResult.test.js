@@ -170,7 +170,10 @@ describe('computeResult projection mode (#92)', () => {
 // #92 must not change any default number. The fixture was generated from master's
 // computeResult (1e551f1, after #118) and is compared field by field.
 describe('default results are byte-identical to master (#92)', () => {
-  const pick = (r) => Object.fromEntries(baseline.masterKeys.map((k) => [k, r[k]]));
+  // dataSource carries the live period (LIFE_TABLE_META.period); the fixture stores a
+  // placeholder so a table refresh does not need a fixture edit.
+  const norm = (k, v) => (k === 'dataSource' ? v.replace(LIFE_TABLE_META.period, '__PERIOD__') : v);
+  const pick = (r) => Object.fromEntries(baseline.masterKeys.map((k) => [k, norm(k, r[k])]));
   const input = (a, g) => ({ ageOrBirthdate: a, gender: g, lifestyleFactors: zero });
 
   it.each([
@@ -188,7 +191,7 @@ describe('default results are byte-identical to master (#92)', () => {
       for (let a = 0; a <= 99; a++) {
         const r = computeResult(input(a, g), NOW);
         all[`${g} ${a}`] = pick(r);
-        fields[`${g} ${a}`] = Object.fromEntries(baseline.gridFields.map((k) => [k, r[k]]));
+        fields[`${g} ${a}`] = Object.fromEntries(baseline.gridFields.map((k) => [k, norm(k, r[k])]));
       }
     }
     expect(fields).toEqual(baseline.grid);

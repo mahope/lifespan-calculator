@@ -34,7 +34,7 @@ import Forsikringsbehov from '../components/Forsikringsbehov';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
-import { boundLifestyleAdjustment } from '../utils/lifespanMath';
+import { boundLifestyleAdjustment, toLocalISODate } from '../utils/lifespanMath';
 
 const HomePage = () => {
   const {
@@ -319,7 +319,7 @@ const HomePage = () => {
                           id="birthdate"
                           name="birthdate"
                           required={formData.useBirthdate}
-                          max={new Date().toISOString().split('T')[0]}
+                          max={toLocalISODate()}
                           min="1900-01-01"
                           className="input w-full"
                           value={formData.birthdate}

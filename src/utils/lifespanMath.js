@@ -35,7 +35,7 @@ export function toLocalISODate(date = new Date()) {
  * @param {Date} [now] - injectable "current time" so tests are deterministic.
  */
 export function calculatePreciseAge(birthdate, now = new Date()) {
-  const birth = new Date(birthdate);
+  const birth = parseLocalDate(birthdate);
 
   const msPerDay = 1000 * 60 * 60 * 24;
   const totalDaysLived = Math.floor((now - birth) / msPerDay);

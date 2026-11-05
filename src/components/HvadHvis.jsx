@@ -42,7 +42,7 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
               key={m.key}
               type="button"
               aria-pressed={!!applied[m.key]}
-              className={`factor-btn ${applied[m.key] ? 'active' : ''}`}
+              className={`factor-btn basis-auto! ${applied[m.key] ? 'active' : ''}`}
               onClick={() => setApplied((a) => ({ ...a, [m.key]: !a[m.key] }))}
             >
               <span aria-hidden="true">{m.icon}</span> {m.label}
@@ -58,9 +58,9 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
           <div
             className={`text-sm font-medium ${
               delta >= 0.05
-                ? 'text-green-600 dark:text-green-400'
+                ? 'text-green-700 dark:text-green-400'
                 : delta <= -0.05
-                  ? 'text-orange-600 dark:text-orange-400'
+                  ? 'text-orange-700 dark:text-orange-400'
                   : 'text-muted-foreground'
             }`}
           >

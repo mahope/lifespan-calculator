@@ -32,8 +32,9 @@ export default defineConfig({
         // fetched by the browser at install time, not needed offline.
         globPatterns: ['**/*.{js,css,html,svg,woff2}'],
         globIgnores: ['**/404.html'],
-        // Don't SPA-fallback the standalone static legal/policy .html pages.
-        navigateFallbackDenylist: [/\.html$/, /^\/api\//, /\.(txt|xml)$/],
+        // Never SPA-fallback the standalone policy pages (real files in public/, served at
+        // clean URLs as well as .html), the health file or static text and XML files.
+        navigateFallbackDenylist: [/\.html$/, /^\/(privatlivspolitik|cookiepolitik)\/?$/, /^\/api\//, /\.(txt|xml)$/],
       },
     }),
   ],

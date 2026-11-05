@@ -45,17 +45,17 @@ const Pension = ({ resultData }) => {
         <div className="grid grid-cols-3 gap-3 text-center">
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold">{cohort.label}</div>
-            <div className="text-xs text-muted-foreground">Folkepensionsalder</div>
+            <div className="text-xs text-muted-foreground wrap-anywhere">Folkepensionsalder</div>
           </div>
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold text-primary">{workingYearsLeft}</div>
-            <div className="text-xs text-muted-foreground">
+            <div className="text-xs text-muted-foreground wrap-anywhere">
               {retired ? 'Pensioneret' : 'Arbejdsår tilbage'}
             </div>
           </div>
           <div className="rounded-lg bg-muted/30 p-3">
             <div className="text-2xl font-semibold">{retirementYears}</div>
-            <div className="text-xs text-muted-foreground">Forventede pensionsår</div>
+            <div className="text-xs text-muted-foreground wrap-anywhere">Forventede pensionsår</div>
           </div>
         </div>
 

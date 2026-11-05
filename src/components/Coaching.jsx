@@ -38,7 +38,7 @@ const Coaching = ({ lifestyleFactors }) => {
                   </a>
                 )}
               </div>
-              <div className="text-lg font-semibold text-green-600 dark:text-green-400">
+              <div className="text-lg font-semibold text-green-700 dark:text-green-400">
                 +{i.gain} år
               </div>
             </li>

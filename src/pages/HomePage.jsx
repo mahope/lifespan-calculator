@@ -33,7 +33,7 @@ import ParMode from '../components/ParMode';
 import Forsikringsbehov from '../components/Forsikringsbehov';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator, LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
-import { buildShareParams, parseLifestyle } from '../utils/shareState';
+import { buildShareParams, parseShareParams } from '../utils/shareState';
 import { boundLifestyleAdjustment } from '../utils/lifespanMath';
 
 const HomePage = () => {
@@ -105,22 +105,17 @@ const HomePage = () => {
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
-    const g = searchParams.get('g');
-    const a = searchParams.get('a');
-    const bd = searchParams.get('b');
-    if (!g || (!a && !bd)) return;
+    const parsed = parseShareParams(searchParams);
+    if (!parsed) return;
 
-    const mode = searchParams.get('m') === 'advanced' ? 'advanced' : 'simple';
-    setCurrentMode(mode);
-    if (bd) {
-      setFormData({ age: '', gender: g, birthdate: bd, useBirthdate: true });
-    } else {
-      setFormData({ age: a, gender: g, birthdate: '', useBirthdate: false });
-    }
-    if (mode === 'advanced') {
-      const parsed = parseLifestyle(searchParams.get('lf'), LIFESTYLE_KEYS);
-      if (parsed) applyLifestyleFactors(parsed);
-    }
+    setCurrentMode(parsed.mode);
+    setFormData({
+      age: parsed.useBirthdate ? '' : String(parsed.age),
+      gender: parsed.gender,
+      birthdate: parsed.birthdate,
+      useBirthdate: parsed.useBirthdate,
+    });
+    if (parsed.lifestyle) applyLifestyleFactors(parsed.lifestyle);
     setAutoSubmit(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

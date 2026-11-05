@@ -2,6 +2,34 @@
 // unit-tested in isolation. Keep this module free of React and side effects.
 
 /**
+ * Parse a calendar date as LOCAL midnight. `new Date('YYYY-MM-DD')` is UTC
+ * midnight, which is the previous day west of UTC; `YYYY-MM-DD` strings are
+ * therefore built with the (y, m, d) constructor. Returns an Invalid Date for
+ * strings that are not a real calendar date. Date instances are copied.
+ * @param {string|Date} value
+ */
+export function parseLocalDate(value) {
+  if (value instanceof Date) return new Date(value.getTime());
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value));
+  if (!m) return new Date(value);
+  const y = Number(m[1]);
+  const mo = Number(m[2]);
+  const d = Number(m[3]);
+  const date = new Date(y, mo - 1, d);
+  // Reject overflow such as 2021-02-30 (would roll into March).
+  if (date.getFullYear() !== y || date.getMonth() !== mo - 1 || date.getDate() !== d) {
+    return new Date(NaN);
+  }
+  return date;
+}
+
+/** Local calendar date as `YYYY-MM-DD` (unlike toISOString, never UTC-shifted). */
+export function toLocalISODate(date = new Date()) {
+  const p = (n, w = 2) => String(n).padStart(w, '0');
+  return `${p(date.getFullYear(), 4)}-${p(date.getMonth() + 1)}-${p(date.getDate())}`;
+}
+
+/**
  * Precise age from a birthdate.
  * @param {string|Date} birthdate
  * @param {Date} [now] - injectable "current time" so tests are deterministic.

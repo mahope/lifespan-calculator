@@ -24,12 +24,16 @@ export const achievements = [
     { id: 'lifestyle-optimizer', icon: '🎆', title: 'Livsstils optimerer', desc: 'Du har optimeret alle aspekter af din livsstil' }
 ];
 
+// Own-property lookup so keys like "constructor" or "__proto__" fall back to World.
+const countryEntry = (country) =>
+    Object.hasOwn(lifeExpectancyData, country) ? lifeExpectancyData[country] : lifeExpectancyData['World'];
+
 export const getLifeExpectancyForCountry = (country, gender) => {
-    const countryData = lifeExpectancyData[country] || lifeExpectancyData['World'];
-    return countryData[gender] || countryData.male;
+    const countryData = countryEntry(country);
+    return (Object.hasOwn(countryData, gender) && countryData[gender]) || countryData.male;
 };
 
 export const formatCountryName = (country) => {
-    const countryData = lifeExpectancyData[country] || lifeExpectancyData['World'];
+    const countryData = countryEntry(country);
     return countryData.country;
 };

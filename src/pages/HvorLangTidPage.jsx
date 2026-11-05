@@ -19,18 +19,7 @@ import { Link } from 'react-router-dom';
 const HvorLangTidPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner"
-        description="Få svar på hvor lang tid du har tilbage at leve baseret på statistiske data. Vores levetidsberegner giver dig et realistisk estimat af din resterende levetid."
-        keywords="hvor lang tid har jeg tilbage, resterende levetid, levetid beregning, dødsalder, livslængde, levetidsberegner"
-        ogTitle="Hvor lang tid har jeg tilbage at leve?"
-        ogDescription="Beregn din statistiske resterende levetid med vores præcise levetidsberegner baseret på danske data"
-        canonicalUrl="/hvor-lang-tid-har-jeg-tilbage"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Hvor lang tid har jeg tilbage', url: '/hvor-lang-tid-har-jeg-tilbage' },
-        ]}
-      />
+      <SEOHead route="/hvor-lang-tid-har-jeg-tilbage" />
 
       <PageHeader
         icon={CalendarClock}

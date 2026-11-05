@@ -1,11 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/hvor-lang-tid-har-jeg-tilbage", "destination": "/index.html" },
-    { "source": "/dodsalder-calculator", "destination": "/index.html" },
-    { "source": "/levetid-beregner-danmark", "destination": "/index.html" },
-    { "source": "/livsstil-og-levetid", "destination": "/index.html" },
-    { "source": "/pensionsalder", "destination": "/index.html" }
-  ],
   "headers": [
     {
       "source": "**",

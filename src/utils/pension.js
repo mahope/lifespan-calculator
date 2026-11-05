@@ -1,9 +1,11 @@
 // Danish statutory state-pension age (folkepensionsalder) by birth date.
 // Source: borger.dk "Før du går på folkepension", as of 2026-11-05, and
 // Lov nr. 703 af 20. juni 2025 (69 for births 1967-1970, 70 from 1971):
-//   <= 1953 → 65, 1954 H1 → 65½, 1954 H2 → 66, 1955 H1 → 66½,
+//   1939-07-01..1953 → 65, 1954 H1 → 65½, 1954 H2 → 66, 1955 H1 → 66½,
 //   1955 H2-1962 → 67, 1963-1966 → 68, 1967-1970 → 69, 1971+ → 70.
-// Earlier cohorts (already retired) use their historical ages; the age can be
+// Births before 1939-07-01 had a pension age of 67; they are outside the supported
+// range of the pension page (MIN_BIRTH in PensionsalderPage.jsx), so `pensionAgeFor`
+// returns 65 for every year up to 1953 and must not be used for them. The age can be
 // raised further by law for those born 1975 or later.
 // Efterløn (borger.dk, same date): 1956 H2-1958 → 63, 1959 H1 → 63½,
 // 1959 H2-1962 → 64, 1963-1966 → 65, 1967-1970 → 66; later cohorts are not fixed.
@@ -62,7 +64,7 @@ export function efterloenAgeOn(birthYear, birthMonth) {
  * disagree with the calculator (a test checks both ends of every row).
  */
 export const PENSION_AGE_ROWS = [
-  { label: 'Før 1. jan. 1954', from: [1930, 1], to: [1953, 12] },
+  { label: '1. juli 1939-1953', from: [1939, 7], to: [1953, 12] },
   { label: '1. jan.-30. juni 1954', from: [1954, 1], to: [1954, 6] },
   { label: '1. juli-31. dec. 1954', from: [1954, 7], to: [1954, 12] },
   { label: '1. jan.-30. juni 1955', from: [1955, 1], to: [1955, 6] },
@@ -143,6 +145,25 @@ export function folkepensionDate(birthdate) {
   return { age, years, months, date };
 }
 
+/** `date` plus `n` months, clamped to the last day of a shorter target month. */
+function addMonthsClamped(date, n) {
+  const first = new Date(date.getFullYear(), date.getMonth() + n, 1);
+  const lastDay = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
+  return new Date(first.getFullYear(), first.getMonth(), Math.min(date.getDate(), lastDay));
+}
+
+/**
+ * Whole years, months and days from `from` to `to` (local dates, `to` >= `from`).
+ * Months are added to `from` with end-of-month clamping, like `folkepensionDate`, so
+ * the day count is never negative.
+ */
+export function timeUntil(from, to) {
+  let total = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth());
+  if (addMonthsClamped(from, total) > to) total--;
+  const days = Math.round((to - addMonthsClamped(from, total)) / 864e5);
+  return { years: Math.floor(total / 12), months: total % 12, days };
+}
+
 /**
  * Pension outlook for the pension page: statutory age and date, time until then,
  * and period life-table e_x at the pension age (at the current age when already
@@ -157,12 +178,12 @@ export function pensionOutlook(birthdate, now = new Date()) {
   const birth = parseLocalDate(birthdate);
   if (birth > today) return null;
   const retired = base.date <= today;
-  const until = retired ? null : calculatePreciseAge(today, base.date);
+  const until = retired ? null : timeUntil(today, base.date);
   const atAge = retired ? calculatePreciseAge(birth, today).preciseAge : base.age;
   return {
     ...base,
     retired,
-    until: until && { years: until.years, months: until.months, days: until.days },
+    until,
     yearsInRetirement: {
       male: remainingLifeExpectancy(atAge, 'male'),
       female: remainingLifeExpectancy(atAge, 'female'),

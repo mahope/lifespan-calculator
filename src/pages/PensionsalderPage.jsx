@@ -11,7 +11,8 @@ import { PENSION_AGE_ROWS, efterloenAgeOn, folkepensionAgeOn, pensionOutlook } f
 import { FAQ, faqJsonLd } from '../utils/pensionFaq';
 import { parseLocalDate, toLocalISODate } from '../utils/lifespanMath';
 
-const MIN_BIRTH = '1930-01-01';
+// Before 1939-07-01 the pension age was 67, which the age schedule in utils/pension.js does not cover.
+const MIN_BIRTH = '1939-07-01';
 
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 const fmtDate = (d) => d.toLocaleDateString('da-DK', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -22,6 +23,7 @@ const splitAge = (age) => [Math.floor(age), age % 1 ? 6 : 0];
 const PensionsalderPage = () => {
   const [birthdate, setBirthdate] = useState('');
   const [gender, setGender] = useState('');
+  const [touched, setTouched] = useState(false);
   const today = toLocalISODate(new Date());
 
   const parsed = birthdate ? parseLocalDate(birthdate) : null;
@@ -29,8 +31,8 @@ const PensionsalderPage = () => {
   const outlook = inRange ? pensionOutlook(birthdate) : null;
   const valid = outlook !== null;
   const error =
-    birthdate && !valid
-      ? `Skriv en gyldig fødselsdato mellem ${fmtDate(parseLocalDate(MIN_BIRTH))} og i dag.`
+    touched && birthdate && !valid
+      ? `Skriv en gyldig fødselsdato mellem ${fmtDate(parseLocalDate(MIN_BIRTH))} og i dag. Siden dækker ikke dem, der er født før.`
       : null;
   const efterloen = outlook && parsed ? efterloenAgeOn(parsed.getFullYear(), parsed.getMonth() + 1) : undefined;
   const sexes = gender ? [gender] : ['male', 'female'];
@@ -38,16 +40,7 @@ const PensionsalderPage = () => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Hvornår kan jeg gå på pension? Beregn din pensionsalder"
-        description="Se din folkepensionsalder, den dato du når den, og hvor mange år du i gennemsnit kan forvente som pensionist. Gratis, uden login."
-        keywords="hvornår kan jeg gå på pension, pensionsalder beregner, folkepensionsalder, pensionsalder 2026"
-        canonicalUrl="/pensionsalder"
-        breadcrumbs={[
-          { name: 'Forside', url: '/' },
-          { name: 'Pensionsalder', url: '/pensionsalder' },
-        ]}
-      />
+      <SEOHead route="/pensionsalder" />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
@@ -73,7 +66,11 @@ const PensionsalderPage = () => {
                       value={birthdate}
                       min={MIN_BIRTH}
                       max={today}
-                      onChange={(e) => setBirthdate(e.target.value)}
+                      onChange={(e) => {
+                        setBirthdate(e.target.value);
+                        setTouched(false);
+                      }}
+                      onBlur={() => setTouched(true)}
                       aria-invalid={error ? 'true' : undefined}
                       aria-describedby={error ? 'pension-birthdate-error' : undefined}
                     />
@@ -103,8 +100,9 @@ const PensionsalderPage = () => {
               </div>
             </div>
 
-            {outlook && (
-              <div className="card" aria-live="polite">
+            <div aria-live="polite">
+              {outlook && (
+              <div className="card">
                 <div className="card-content space-y-4">
                   <div className="grid grid-cols-1 gap-3 text-center sm:grid-cols-3">
                     <div className="rounded-lg bg-muted/30 p-3">
@@ -126,13 +124,13 @@ const PensionsalderPage = () => {
                       <div className="text-xs text-muted-foreground">
                         {outlook.retired
                           ? 'Alderen er nået'
-                          : `og ${plural(outlook.until.months, 'måned', 'måneder')} og ${plural(outlook.until.days, 'dag', 'dage')} til pension`}
+                          : `og ${plural(outlook.until.months, 'måned', 'måneder')} og ${plural(outlook.until.days, 'dag', 'dage')} til du når folkepensionsalderen`}
                       </div>
                     </div>
                   </div>
 
                   <p className="text-sm leading-relaxed">
-                    {outlook.retired ? 'Forventede år tilbage i dag' : 'Forventede pensionsår'}
+                    {outlook.retired ? 'Forventede år tilbage i dag' : 'Forventede pensionsår, hvis du når pensionsalderen'}
                     {sexes.map((s, i) => (
                       <span key={s}>
                         {i ? ', ' : ': '}
@@ -143,6 +141,12 @@ const PensionsalderPage = () => {
                     . Perioderestlevetid fra Danmarks Statistik (2024-2025), et gennemsnit for alle på samme alder
                     og ikke en prognose for dig.
                   </p>
+
+                  {!outlook.retired && (
+                    <p className="text-sm text-muted-foreground">
+                      Retten til folkepension begynder den 1. i måneden efter, at du har nået folkepensionsalderen.
+                    </p>
+                  )}
 
                   {efterloen !== undefined && (
                     <p className="text-sm text-muted-foreground">
@@ -157,13 +161,14 @@ const PensionsalderPage = () => {
                   </Link>
                 </div>
               </div>
-            )}
+              )}
+            </div>
 
             <div className="card">
               <div className="card-content space-y-4">
                 <h2 className="text-xl font-bold sm:text-2xl">Folkepensionsalder efter fødselsår</h2>
                 <p className="leading-relaxed text-muted-foreground">
-                  Alderen er fastsat i Lov nr. 703 af 20. juni 2025 og svarer til oplysningerne på borger.dk.
+                  Alderen følger Lov om social pension, senest ændret ved Lov nr. 703 af 20. juni 2025 (70 år fra årgang 1971; de øvrige aldre stammer fra tidligere ændringer), og svarer til oplysningerne på borger.dk.
                 </p>
                 <table className="w-full text-sm">
                   <caption className="sr-only">Folkepensionsalder efter fødselsdato</caption>
@@ -184,7 +189,7 @@ const PensionsalderPage = () => {
                 </table>
                 <p className="leading-relaxed text-muted-foreground">
                   Regulering 2030 betyder, at Folketinget i 2030 igen tager stilling til, om alderen skal op for de
-                  yngste årgange (født 1975 eller senere; se borger.dk). Tallene ovenfor kan derfor ændre sig for dem.
+                  yngste årgange (født 1975 eller senere). Det sker ikke automatisk. Tallene ovenfor kan derfor ændre sig for dem.
                 </p>
                 <p className="leading-relaxed text-muted-foreground">
                   Pensionsårene beregnes med den danske dødelighedstabel: vi aflæser den forventede restlevetid ved

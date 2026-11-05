@@ -7,6 +7,7 @@
     "dev": "vite",
     "prebuild": "node scripts/gen-sitemap.mjs",
     "build": "vite build",
+    "postbuild": "node scripts/prerender-head.mjs",
     "preview": "vite preview",
     "start": "vite preview --port 3000",
     "test": "vitest run",

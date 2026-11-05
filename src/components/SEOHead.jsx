@@ -1,100 +1,62 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import {
+  ROUTE_META,
+  NOT_FOUND_META,
+  OG_IMAGE,
+  SITE_NAME,
+  absoluteUrl,
+  jsonLd,
+} from '../routes.meta.js';
 
-const SEOHead = ({
-  title = 'Dansk Levetidsberegner - Beregn din forventede levetid',
-  description = 'Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.',
-  keywords = 'levetid, beregner, danmark, statistik, dødsalder, forventet levetid',
-  ogTitle,
-  ogDescription,
-  ogImage = 'https://levetidsberegner.dk/og-image.png',
-  canonicalUrl = 'https://levetidsberegner.dk',
-  breadcrumbs
-}) => {
-  const fullCanonicalUrl = canonicalUrl.startsWith('http')
-    ? canonicalUrl
-    : `https://levetidsberegner.dk${canonicalUrl}`;
-  const fullOgImage = ogImage.startsWith('http')
-    ? ogImage
-    : `https://levetidsberegner.dk${ogImage}`;
-    
-  // Structured data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Levetidsberegner",
-    "url": fullCanonicalUrl,
-    "description": description,
-    "applicationCategory": "HealthApplication",
-    "operatingSystem": "Any",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "DKK"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "Mads Holst Jensen"
-    },
-    "inLanguage": "da-DK"
-  };
+// Head values come from src/routes.meta.js, the same table scripts/prerender-head.mjs bakes into
+// the raw HTML. Pass `route` (a key of ROUTE_META) or, for the 404 view, `notFound`.
+const SEOHead = ({ route = '/', notFound = false }) => {
+  const meta = notFound ? NOT_FOUND_META : ROUTE_META[route];
+  const canonical = absoluteUrl(notFound ? '/404' : route);
+  const ogTitle = meta.ogTitle || meta.title;
+  const ogDescription = meta.ogDescription || meta.description;
 
-  // Optional BreadcrumbList structured data (Forside -> ... -> current page).
-  const breadcrumbData =
-    breadcrumbs && breadcrumbs.length
-      ? {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": breadcrumbs.map((crumb, i) => ({
-            "@type": "ListItem",
-            "position": i + 1,
-            "name": crumb.name,
-            "item": crumb.url.startsWith('http')
-              ? crumb.url
-              : `https://levetidsberegner.dk${crumb.url}`,
-          })),
-        }
-      : null;
+  // Drop the head tags baked in by scripts/prerender-head.mjs now that Helmet has rendered its own.
+  useEffect(() => {
+    document.head.querySelectorAll('[data-prerender]').forEach((el) => el.remove());
+  }, []);
 
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      <meta name="robots" content="index, follow" />
+      <title>{meta.title}</title>
+      <meta name="description" content={meta.description} />
+      <meta name="keywords" content={meta.keywords} />
+      <meta name="robots" content={meta.noindex ? 'noindex, follow' : 'index, follow'} />
       <meta name="author" content="Mads Holst Jensen" />
       <meta name="language" content="Danish" />
 
       {/* Open Graph */}
-      <meta property="og:title" content={ogTitle || title} />
-      <meta property="og:description" content={ogDescription || description} />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:description" content={ogDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={fullCanonicalUrl} />
-      <meta property="og:site_name" content="Levetidsberegner" />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="da_DK" />
-      <meta property="og:image" content={fullOgImage} />
+      <meta property="og:image" content={OG_IMAGE} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={ogTitle || title} />
+      <meta property="og:image:alt" content={ogTitle} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={ogTitle || title} />
-      <meta name="twitter:description" content={ogDescription || description} />
-      <meta name="twitter:image" content={fullOgImage} />
+      <meta name="twitter:title" content={ogTitle} />
+      <meta name="twitter:description" content={ogDescription} />
+      <meta name="twitter:image" content={OG_IMAGE} />
 
-      {/* Canonical URL */}
-      <link rel="canonical" href={fullCanonicalUrl} />
+      <link rel="canonical" href={canonical} />
 
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-      {breadcrumbData && (
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbData)}
+      {/* Structured data: WebApplication and, below the home page, BreadcrumbList */}
+      {jsonLd(meta, canonical).map((data) => (
+        <script key={data['@type']} type="application/ld+json">
+          {JSON.stringify(data)}
         </script>
-      )}
+      ))}
     </Helmet>
   );
 };

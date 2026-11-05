@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PENSION_AGE_ROWS, folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort, folkepensionDate, pensionOutlook } from './pension';
+import { PENSION_AGE_ROWS, timeUntil, folkepensionAge, folkepensionAgeOn, efterloenAgeOn, pensionCohort, folkepensionDate, pensionOutlook } from './pension';
 import { remainingLifeExpectancy } from './lifeTableDK';
 import { toLocalISODate } from './lifespanMath';
 
@@ -209,6 +209,31 @@ describe('pensionOutlook', () => {
     expect(o.until).toBeNull();
     expect(o.yearsInRetirement.male).toBeCloseTo(remainingLifeExpectancy(72.35, 'male'), 0);
   });
+  it('never reports negative days at the end of a month', () => {
+    const o = pensionOutlook('1971-03-01', new Date(2027, 0, 31));
+    expect(toLocalISODate(o.date)).toBe('2041-03-01');
+    expect(o.until).toEqual({ years: 14, months: 1, days: 1 });
+  });
+  it.each([
+    [[2027, 0, 31], [2027, 2, 1], { years: 0, months: 1, days: 1 }],
+    [[2027, 0, 31], [2027, 1, 28], { years: 0, months: 1, days: 0 }],
+    [[2027, 0, 30], [2027, 1, 27], { years: 0, months: 0, days: 28 }],
+    [[2024, 1, 29], [2025, 1, 28], { years: 1, months: 0, days: 0 }],
+    [[2026, 11, 5], [2026, 11, 5], { years: 0, months: 0, days: 0 }],
+    [[2026, 2, 31], [2030, 3, 30], { years: 4, months: 1, days: 0 }],
+  ])('timeUntil %j to %j', (a, b, expected) => {
+    expect(timeUntil(new Date(...a), new Date(...b))).toEqual(expected);
+  });
+  it('timeUntil is never negative for any day-of-month pair in a year', () => {
+    for (let d = 0; d < 365; d += 3) {
+      const from = new Date(2027, 0, 1 + d);
+      const to = new Date(2040, 0, 1 + ((d * 7) % 365));
+      const t = timeUntil(from, to);
+      expect(t.days).toBeGreaterThanOrEqual(0);
+      expect(t.days).toBeLessThan(32);
+      expect(t.months).toBeLessThan(12);
+    }
+  });
   it('rejects invalid and future dates', () => {
     expect(pensionOutlook('2030-01-01', now)).toBeNull();
     expect(pensionOutlook('2001-02-30', now)).toBeNull();
@@ -222,9 +247,9 @@ describe('PENSION_AGE_ROWS (table shown on /pensionsalder)', () => {
     }
   });
 
-  it('is contiguous and covers 1930-2100 without gaps or overlaps', () => {
+  it('is contiguous and covers 1939-07 to 2100 without gaps or overlaps', () => {
     const next = ([y, m]) => (m === 12 ? [y + 1, 1] : [y, m + 1]);
-    expect(PENSION_AGE_ROWS[0].from).toEqual([1930, 1]);
+    expect(PENSION_AGE_ROWS[0].from).toEqual([1939, 7]);
     for (let i = 1; i < PENSION_AGE_ROWS.length; i++) {
       expect(PENSION_AGE_ROWS[i].from, PENSION_AGE_ROWS[i].label).toEqual(next(PENSION_AGE_ROWS[i - 1].to));
     }

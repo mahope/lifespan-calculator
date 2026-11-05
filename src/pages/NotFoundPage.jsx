@@ -18,12 +18,7 @@ import { Link } from 'react-router-dom';
 const NotFoundPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Side ikke fundet - Dansk Levetidsberegner"
-        description="Siden du leder efter blev ikke fundet. Gå tilbage til levetidsberegneren for at beregne din forventede levetid."
-        keywords="404, side ikke fundet, levetidsberegner"
-        canonicalUrl="/404"
-      />
+      <SEOHead notFound />
 
       <PageHeader
         icon={SearchX}

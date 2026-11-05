@@ -32,6 +32,7 @@ import Historik from '../components/Historik';
 import HvadHvis from '../components/HvadHvis';
 import ParMode from '../components/ParMode';
 import Forsikringsbehov from '../components/Forsikringsbehov';
+import PraktiskePapirer from '../components/PraktiskePapirer';
 import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
@@ -182,13 +183,7 @@ const HomePage = () => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead
-        title="Levetidsberegner - Beregn din resterende levetid baseret på statistik"
-        description="Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder og køn ud fra danske dødelighedstavler. Inkluderer live nedtælling og deling."
-        keywords="levetidsberegner, resterende levetid, statistik, dødsalderen, levetid beregner, hvor længe lever jeg, lifespan calculator dansk"
-        ogTitle="Levetidsberegner - Hvor lang tid har du tilbage?"
-        ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på Danmarks Statistiks dødelighedstavler."
-      />
+      <SEOHead route="/" />
 
       <PageHeader
         icon={Hourglass}
@@ -509,6 +504,9 @@ const HomePage = () => {
 
               {/* Value-first livsforsikring CTA — high-intent moment */}
               <Forsikringsbehov resultData={resultData} />
+
+              {/* Calm will / power of attorney pointer (advertising) */}
+              <PraktiskePapirer resultData={resultData} />
 
               {/* Fun Facts Section */}
               <div className="card">

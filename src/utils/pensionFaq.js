@@ -2,15 +2,15 @@
 export const FAQ = [
   [
     'Hvornår kan jeg gå på folkepension?',
-    'Det afhænger af din fødselsdato. Er du født 1955 (2. halvår) til 1962, er alderen 67 år; er du født i 1971 eller senere, er den 70 år. Skriv din fødselsdato ovenfor for at se dato og alder.',
+    'Det afhænger af din fødselsdato. Er du født 1955 (2. halvår) til 1962, er alderen 67 år; er du født i 1971 eller senere, er den 70 år. Retten til folkepension begynder den 1. i måneden efter, at du har nået folkepensionsalderen. Skriv din fødselsdato ovenfor for at se dato og alder.',
   ],
   [
     'Hvad betyder regulering i 2030?',
-    'Folkepensionsalderen følger udviklingen i middellevetiden. Ved reguleringen i 2030 kan alderen for de yngste årgange (født 1975 eller senere) blive sat op igen.',
+    'Folkepensionsalderen er fastsat i Lov om social pension, senest ændret ved Lov nr. 703 af 20. juni 2025 (70 år for dem født fra 1971; de øvrige aldre stammer fra tidligere ændringer). I 2030 tager Folketinget igen stilling til, om alderen skal sættes op for de yngste årgange (født 1975 eller senere). Det sker ikke automatisk.',
   ],
   [
     'Hvor længe er jeg pensionist?',
-    'Tallet er forventede år tilbage ved pensionsalderen ifølge Danmarks Statistiks dødelighedstabel. Det er et gennemsnit for mange mennesker og ikke en prognose for dig.',
+    'Tallet er forventede år tilbage, hvis du når pensionsalderen, ifølge Danmarks Statistiks dødelighedstabel. Det er et gennemsnit for mange mennesker og ikke en prognose for dig.',
   ],
 ];
 

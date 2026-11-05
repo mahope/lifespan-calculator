@@ -15,3 +15,21 @@ describe('estimateCover', () => {
     expect(estimateCover(500000, NaN)).toBe(0);
   });
 });
+
+describe('estimateCover with the deceased share and existing cover (#91)', () => {
+  it('multiplies by the share of income (percent) and subtracts existing cover', () => {
+    expect(estimateCover(600000, 10, { sharePct: 50 })).toBe(3000000);
+    expect(estimateCover(600000, 10, { sharePct: 50, existingCover: 1000000 })).toBe(2000000);
+  });
+
+  it('defaults to 100 % and no existing cover', () => {
+    expect(estimateCover(500000, 10, {})).toBe(5000000);
+    expect(estimateCover(500000, 10, { sharePct: NaN, existingCover: NaN })).toBe(5000000);
+  });
+
+  it('never goes below zero and clamps the share to 0-100', () => {
+    expect(estimateCover(500000, 10, { existingCover: 9000000 })).toBe(0);
+    expect(estimateCover(500000, 10, { sharePct: 250 })).toBe(5000000);
+    expect(estimateCover(500000, 10, { sharePct: -5 })).toBe(0);
+  });
+});

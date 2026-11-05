@@ -1,0 +1,226 @@
+{
+  "320": {
+    "vw": 320,
+    "base": 354,
+    "culprits": [
+      {
+        "el": "div#root.",
+        "clientW": 320,
+        "scrollW": 354,
+        "left": 0,
+        "text": "{\"@context\":\"https://schema.org\",\"@type\":\"WebAppli"
+      },
+      {
+        "el": "div.min-h-screen.bg-background.font-sans.antialiased",
+        "clientW": 320,
+        "scrollW": 354,
+        "left": 0,
+        "text": "{\"@context\":\"https://schema.org\",\"@type\":\"WebAppli"
+      },
+      {
+        "el": "div.flex.min-h-screen.flex-col",
+        "clientW": 320,
+        "scrollW": 354,
+        "left": 0,
+        "text": "{\"@context\":\"https://schema.org\",\"@type\":\"WebAppli"
+      },
+      {
+        "el": "main.flex-1",
+        "clientW": 320,
+        "scrollW": 354,
+        "left": 0,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag"
+      },
+      {
+        "el": "div.container.py-8",
+        "clientW": 320,
+        "scrollW": 354,
+        "left": 0,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag"
+      },
+      {
+        "el": "div.mx-auto.max-w-6xl.space-y-8",
+        "clientW": 288,
+        "scrollW": 338,
+        "left": 16,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag"
+      },
+      {
+        "el": "div.card",
+        "clientW": 286,
+        "scrollW": 337,
+        "left": 16,
+        "text": "Dit livsforløb49.2%Levet14.610Dage levet1.472.688."
+      },
+      {
+        "el": "div.card-content.space-y-4",
+        "clientW": 286,
+        "scrollW": 337,
+        "left": 17,
+        "text": "49.2%Levet14.610Dage levet1.472.688.000Hjerteslag"
+      }
+    ],
+    "smallestHidingFixes": [
+      {
+        "el": "div.text-center.space-y-1",
+        "after": 320,
+        "text": "49.2%Levet",
+        "depth": 11
+      },
+      {
+        "el": "div.text-center.space-y-1",
+        "after": 320,
+        "text": "14.610Dage levet",
+        "depth": 11
+      },
+      {
+        "el": "div.text-center.space-y-1",
+        "after": 320,
+        "text": "1.472.688.000Hjerteslag",
+        "depth": 11
+      },
+      {
+        "el": "div.grid.grid-cols-3.gap-4",
+        "after": 320,
+        "text": "49.2%Levet14.610Dage levet1.472.688.000Hjerteslag",
+        "depth": 10
+      },
+      {
+        "el": "div.card-content.space-y-4",
+        "after": 320,
+        "text": "49.2%Levet14.610Dage levet1.472.688.000Hjerteslag",
+        "depth": 9
+      },
+      {
+        "el": "div.card",
+        "after": 320,
+        "text": "Dit livsforløb49.2%Levet14.610Dage levet1.472.688.",
+        "depth": 8
+      },
+      {
+        "el": "div.mx-auto.max-w-6xl.space-y-8",
+        "after": 320,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag",
+        "depth": 7
+      },
+      {
+        "el": "div.container.py-8",
+        "after": 320,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag",
+        "depth": 6
+      }
+    ]
+  },
+  "390": {
+    "vw": 390,
+    "base": 401,
+    "culprits": [
+      {
+        "el": "div#root.",
+        "clientW": 390,
+        "scrollW": 401,
+        "left": 0,
+        "text": "{\"@context\":\"https://schema.org\",\"@type\":\"WebAppli"
+      },
+      {
+        "el": "div.min-h-screen.bg-background.font-sans.antialiased",
+        "clientW": 390,
+        "scrollW": 401,
+        "left": 0,
+        "text": "{\"@context\":\"https://schema.org\",\"@type\":\"WebAppli"
+      },
+      {
+        "el": "div.flex.min-h-screen.flex-col",
+        "clientW": 390,
+        "scrollW": 401,
+        "left": 0,
+        "text": "{\"@context\":\"https://schema.org\",\"@type\":\"WebAppli"
+      },
+      {
+        "el": "main.flex-1",
+        "clientW": 390,
+        "scrollW": 401,
+        "left": 0,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag"
+      },
+      {
+        "el": "div.container.py-8",
+        "clientW": 390,
+        "scrollW": 401,
+        "left": 0,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag"
+      },
+      {
+        "el": "div.mx-auto.max-w-6xl.space-y-8",
+        "clientW": 358,
+        "scrollW": 385,
+        "left": 16,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag"
+      },
+      {
+        "el": "div.card",
+        "clientW": 356,
+        "scrollW": 384,
+        "left": 16,
+        "text": "Dit livsforløb49.2%Levet14.610Dage levet1.472.688."
+      },
+      {
+        "el": "div.card-content.space-y-4",
+        "clientW": 356,
+        "scrollW": 384,
+        "left": 17,
+        "text": "49.2%Levet14.610Dage levet1.472.688.000Hjerteslag"
+      }
+    ],
+    "smallestHidingFixes": [
+      {
+        "el": "div.text-center.space-y-1",
+        "after": 392,
+        "text": "49.2%Levet",
+        "depth": 11
+      },
+      {
+        "el": "div.text-center.space-y-1",
+        "after": 392,
+        "text": "14.610Dage levet",
+        "depth": 11
+      },
+      {
+        "el": "div.text-center.space-y-1",
+        "after": 392,
+        "text": "1.472.688.000Hjerteslag",
+        "depth": 11
+      },
+      {
+        "el": "div.grid.grid-cols-3.gap-4",
+        "after": 392,
+        "text": "49.2%Levet14.610Dage levet1.472.688.000Hjerteslag",
+        "depth": 10
+      },
+      {
+        "el": "div.card-content.space-y-4",
+        "after": 392,
+        "text": "49.2%Levet14.610Dage levet1.472.688.000Hjerteslag",
+        "depth": 9
+      },
+      {
+        "el": "div.card",
+        "after": 392,
+        "text": "Dit livsforløb49.2%Levet14.610Dage levet1.472.688.",
+        "depth": 8
+      },
+      {
+        "el": "div.mx-auto.max-w-6xl.space-y-8",
+        "after": 390,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag",
+        "depth": 7
+      },
+      {
+        "el": "div.container.py-8",
+        "after": 390,
+        "text": "Din resterende tidDu har statistisk 41.2 år tilbag",
+        "depth": 6
+      }
+    ]
+  }
+}

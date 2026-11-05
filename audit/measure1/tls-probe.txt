@@ -1,0 +1,9 @@
+# TLS probe (openssl 3.5.7 s_client, client security level relaxed with -cipher DEFAULT:@SECLEVEL=0), run 2026-11-05 from agent-worker
+tls1:     Protocol  : TLSv1
+tls1_1:     Protocol  : TLSv1.1
+tls1_2:     Protocol  : TLSv1.2
+tls1_3: no protocol line (handshake failed)
+
+# sw.js grep: registerRoute=1 NavigationRoute=1 precacheAndRoute=1 (no runtime caching strategies such as StaleWhileRevalidate/CacheFirst)
+# StaleWhileRevalidate/CacheFirst/NetworkFirst occurrences: 0
+# NOTE: the tls1_3 line is an artefact of the grep (TLS 1.3 prints no "Protocol  :" session line in OpenSSL 3.5); TLS 1.3 is proven by `curl --tlsv1.3` returning HTTP 200 and `curl -v` showing "TLSv1.3 (IN), TLS handshake, Server hello" (headers.txt / section 7).

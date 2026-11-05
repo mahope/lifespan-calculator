@@ -1,0 +1,807 @@
+{
+ "layoutShifts": {
+  "score": 0,
+  "displayValue": "1 layout shift found",
+  "details": {
+   "type": "table",
+   "headings": [
+    {
+     "key": "node",
+     "valueType": "node",
+     "subItemsHeading": {
+      "key": "extra"
+     },
+     "label": "Element"
+    },
+    {
+     "key": "score",
+     "valueType": "numeric",
+     "subItemsHeading": {
+      "key": "cause",
+      "valueType": "text"
+     },
+     "granularity": 0.001,
+     "label": "Layout shift score"
+    }
+   ],
+   "items": [
+    {
+     "node": {
+      "type": "node",
+      "lhId": "page-1-BODY",
+      "path": "1,HTML,1,BODY",
+      "selector": "body",
+      "boundingRect": {
+       "top": 0,
+       "bottom": 4538,
+       "left": 0,
+       "right": 412,
+       "width": 412,
+       "height": 4538
+      },
+      "snippet": "<body>",
+      "nodeLabel": "body"
+     },
+     "score": 1
+    }
+   ]
+  }
+ },
+ "clsCulprits": {
+  "score": 0,
+  "details": {
+   "type": "list",
+   "items": [
+    {
+     "type": "table",
+     "headings": [
+      {
+       "key": "node",
+       "valueType": "node",
+       "subItemsHeading": {
+        "key": "extra"
+       },
+       "label": "Element"
+      },
+      {
+       "key": "score",
+       "valueType": "numeric",
+       "subItemsHeading": {
+        "key": "cause",
+        "valueType": "text"
+       },
+       "granularity": 0.001,
+       "label": "Layout shift score"
+      }
+     ],
+     "items": [
+      {
+       "node": {
+        "type": "text",
+        "value": "Total"
+       },
+       "score": 1
+      },
+      {
+       "node": {
+        "type": "node",
+        "lhId": "page-1-BODY",
+        "path": "1,HTML,1,BODY",
+        "selector": "body",
+        "boundingRect": {
+         "top": 0,
+         "bottom": 4538,
+         "left": 0,
+         "right": 412,
+         "width": 412,
+         "height": 4538
+        },
+        "snippet": "<body>",
+        "nodeLabel": "body"
+       },
+       "score": 1
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "lcpElement": null,
+ "lcpBreakdown": {
+  "score": 1,
+  "details": {
+   "type": "list",
+   "items": [
+    {
+     "type": "table",
+     "headings": [
+      {
+       "key": "label",
+       "valueType": "text",
+       "label": "Subpart"
+      },
+      {
+       "key": "duration",
+       "valueType": "ms",
+       "label": "Duration"
+      }
+     ],
+     "items": [
+      {
+       "subpart": "timeToFirstByte",
+       "label": "Time to first byte",
+       "duration": 223.792
+      },
+      {
+       "subpart": "elementRenderDelay",
+       "label": "Element render delay",
+       "duration": 169.207
+      }
+     ]
+    },
+    {
+     "type": "node",
+     "lhId": "page-0-P",
+     "path": "1,HTML,1,BODY,4,SECTION,2,P",
+     "selector": "body > section > p",
+     "boundingRect": {
+      "top": 4178,
+      "bottom": 4370,
+      "left": 16,
+      "right": 396,
+      "width": 380,
+      "height": 192
+     },
+     "snippet": "<p>",
+     "nodeLabel": "Værktøjet er udviklet med fokus på enkelhed, hastighed og pålidelighed. Vi fork…"
+    }
+   ]
+  }
+ },
+ "networkDependencyTree": {
+  "score": 0,
+  "details": {
+   "type": "list",
+   "items": [
+    {
+     "type": "list-section",
+     "value": {
+      "type": "network-tree",
+      "chains": {
+       "15974B231AD6831C355314D35BB50AC7": {
+        "url": "https://levetidsberegner.dk/",
+        "navStartToEndTime": 251,
+        "transferSize": 2902,
+        "isLongest": true,
+        "children": {
+         "1848510.6": {
+          "url": "https://levetidsberegner.dk/assets/index-C-Av8HlY.css",
+          "navStartToEndTime": 298,
+          "transferSize": 11288,
+          "isLongest": true,
+          "children": {
+           "1848510.15": {
+            "url": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap",
+            "navStartToEndTime": 338,
+            "transferSize": 1100,
+            "isLongest": true,
+            "children": {
+             "1848510.22": {
+              "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+              "navStartToEndTime": 539,
+              "transferSize": 48464,
+              "isLongest": true,
+              "children": {}
+             }
+            }
+           }
+          }
+         },
+         "1848510.3": {
+          "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+          "navStartToEndTime": 377,
+          "transferSize": 64685,
+          "children": {}
+         },
+         "1848510.14": {
+          "url": "https://levetidsberegner.dk/manifest.webmanifest",
+          "navStartToEndTime": 370,
+          "transferSize": 857,
+          "children": {}
+         },
+         "1848510.7": {
+          "url": "https://levetidsberegner.dk/registerSW.js",
+          "navStartToEndTime": 286,
+          "transferSize": 656,
+          "children": {}
+         }
+        }
+       }
+      },
+      "longestChain": {
+       "duration": 539
+      }
+     }
+    },
+    {
+     "type": "list-section",
+     "title": "Preconnected origins",
+     "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+     "value": {
+      "type": "text",
+      "value": "No origins were preconnected"
+     }
+    },
+    {
+     "type": "list-section",
+     "title": "Preconnect candidates",
+     "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4",
+     "value": {
+      "type": "table",
+      "headings": [
+       {
+        "key": "origin",
+        "valueType": "text",
+        "label": "Origin"
+       },
+       {
+        "key": "wastedMs",
+        "valueType": "ms",
+        "label": "Est LCP savings"
+       }
+      ],
+      "items": [
+       {
+        "origin": "https://fonts.googleapis.com",
+        "wastedMs": 104.119
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "renderBlocking": {
+  "score": 0,
+  "displayValue": "Est savings of 680 ms",
+  "details": {
+   "type": "table",
+   "headings": [
+    {
+     "key": "url",
+     "valueType": "url",
+     "label": "URL"
+    },
+    {
+     "key": "totalBytes",
+     "valueType": "bytes",
+     "label": "Transfer Size"
+    },
+    {
+     "key": "wastedMs",
+     "valueType": "timespanMs",
+     "label": "Duration"
+    }
+   ],
+   "items": [
+    {
+     "url": "https://levetidsberegner.dk/assets/index-C-Av8HlY.css",
+     "totalBytes": 11288
+    },
+    {
+     "url": "https://levetidsberegner.dk/registerSW.js",
+     "totalBytes": 656,
+     "wastedMs": 162
+    },
+    {
+     "url": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap",
+     "totalBytes": 1100,
+     "wastedMs": 804
+    }
+   ]
+  }
+ },
+ "robotsTxt": {
+  "score": 0,
+  "displayValue": "63 errors found",
+  "details": {
+   "type": "table",
+   "headings": [
+    {
+     "key": "index",
+     "valueType": "text",
+     "label": "Line #"
+    },
+    {
+     "key": "line",
+     "valueType": "code",
+     "label": "Content"
+    },
+    {
+     "key": "message",
+     "valueType": "code",
+     "label": "Error"
+    }
+   ],
+   "items": [
+    {
+     "index": "131",
+     "line": "<!DOCTYPE html>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "132",
+     "line": "<html lang=\"da\">",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "133",
+     "line": "  <head>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "134",
+     "line": "    <meta charset=\"UTF-8\" />",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "135",
+     "line": "    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\" />",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "136",
+     "line": "    <link rel=\"apple-touch-icon\" href=\"/favicon.svg\" />",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "137",
+     "line": "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "138",
+     "line": "    <meta name=\"theme-color\" content=\"#2563eb\" />",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "139",
+     "line": "    <!-- Apply theme before first paint to avoid a flash of the wrong theme (FOUC) -->",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "140",
+     "line": "    <script>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "141",
+     "line": "      (function () {",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "142",
+     "line": "        try {",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "143",
+     "line": "          var t = localStorage.getItem('theme');",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "144",
+     "line": "          if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "145",
+     "line": "            document.documentElement.classList.add('dark');",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "146",
+     "line": "          }",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "147",
+     "line": "        } catch (e) {}",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "148",
+     "line": "      })();",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "149",
+     "line": "    </script>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "150",
+     "line": "    <title>Dansk Levetidsberegner - Beregn din forventede levetid</title>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "151",
+     "line": "    <meta name=\"description\" content=\"Beregn din forventede levetid baseret på danske statistikker. Gratis online levetidsberegner med præcise data fra Danmarks Statistik.\" />",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "152",
+     "line": "    <meta name=\"keywords\" content=\"levetid, beregner, danmark, statistik, dødsalder, forventet levetid\" />",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "153",
+     "line": "    <meta property=\"og:title\" content=\"Dansk Levetidsberegner\" />",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "154",
+     "line": "    <meta property=\"og:description\" content=\"Beregn din forventede levetid baseret på danske statistikker\" />",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "155",
+     "line": "    <meta property=\"og:type\" content=\"website\" />",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "156",
+     "line": "    <meta name=\"twitter:card\" content=\"summary\" />",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "158",
+     "line": "    <!-- Plausible Analytics -->",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "159",
+     "line": "    <script defer data-domain=\"levetidsberegner.dk\" src=\"https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js\"></script>",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "160",
+     "line": "    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "161",
+     "line": "    <script type=\"module\" crossorigin src=\"/assets/index-Dahj3lkh.js\"></script>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "162",
+     "line": "    <link rel=\"modulepreload\" crossorigin href=\"/assets/rolldown-runtime-CbXtAM7H.js\">",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "163",
+     "line": "    <link rel=\"modulepreload\" crossorigin href=\"/assets/router-CBLz_W24.js\">",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "164",
+     "line": "    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-C-Av8HlY.css\">",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "165",
+     "line": "  <link rel=\"manifest\" href=\"/manifest.webmanifest\"><script id=\"vite-plugin-pwa:register-sw\" src=\"/registerSW.js\"></script></head>",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "166",
+     "line": "  <body>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "167",
+     "line": "    <div id=\"root\"></div>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "168",
+     "line": "<footer style=\"margin-top:2rem;padding:1rem 0;border-top:1px solid #e5e7eb;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#374151\">",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "169",
+     "line": "  <div style=\"max-width:960px;margin:0 auto;padding:0 1rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:space-between\">",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "170",
+     "line": "    <div>© 2026 Mahope.dk – Gratis online værktøjer</div>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "171",
+     "line": "    <nav style=\"display:flex;gap:1rem\">",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "172",
+     "line": "      <a href=\"/privatlivspolitik.html\">Privatlivspolitik</a>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "173",
+     "line": "      <a href=\"/cookiepolitik.html\">Cookiepolitik</a>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "174",
+     "line": "    </nav>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "175",
+     "line": "  </div>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "176",
+     "line": "</footer>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "177",
+     "line": "<div id=\"cookie-consent-banner\" style=\"position:fixed;left:0;right:0;bottom:0;background:#111827;color:#fff;padding:12px 16px;display:none;z-index:9999;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif\">",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "178",
+     "line": "  <div style=\"max-width:960px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap\">",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "179",
+     "line": "    <span style=\"font-size:14px;line-height:1.4\">Vi bruger kun nødvendige cookies til at huske dine indstillinger. Valgfrie cookies bruges kun med samtykke.</span>",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "180",
+     "line": "    <div style=\"display:flex;gap:8px\">",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "181",
+     "line": "      <button id=\"cookie-accept\" style=\"background:#10b981;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer\">Accepter</button>",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "182",
+     "line": "      <button id=\"cookie-decline\" style=\"background:#374151;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer\">Afvis</button>",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "183",
+     "line": "    </div>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "184",
+     "line": "  </div>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "185",
+     "line": "</div>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "186",
+     "line": "<script>(function(){try{var k='consent:v1';var s=localStorage.getItem(k);var b=document.getElementById('cookie-consent-banner');function hide(){b&&(b.style.display='none')}function show(){b&&(b.style.display='block')}if(!s){show()}document.getElementById('cookie-accept')?.addEventListener('click',function(){localStorage.setItem(k,'accepted');hide()});document.getElementById('cookie-decline')?.addEventListener('click',function(){localStorage.setItem(k,'declined');hide()});}catch(e){console.warn(e)}})();</script>",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "187",
+     "line": "<section data-seo-explainer style=\"max-width:960px;margin:2rem auto;padding:0 1rem;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#374151\">",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "188",
+     "line": "  <h2 style=\"font-size:1.25rem;margin-bottom:.5rem\">Om dette værktøj</h2>",
+     "message": "Unknown directive"
+    },
+    {
+     "index": "189",
+     "line": "  <p>Dette gratis online værktøj er lavet for at gøre hverdagen lidt lettere. Her på siden kan du hurtigt og uden installation løse en konkret opgave direkte i din browser. Alt kører lokalt hos dig – vi gemmer ikke dine indtastninger, og du kan frit bruge resultatet, som du vil.</p>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "190",
+     "line": "  <p>Værktøjet er udviklet med fokus på enkelhed, hastighed og pålidelighed. Vi forklarer, hvordan beregningen fungerer, giver tips til bedre resultater og linker til relevante kilder. På den måde kan du både forstå metoden og bruge den sikkert i praksis. Hvis du har forslag til forbedringer eller nye funktioner, hører vi meget gerne fra dig.</p>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "191",
+     "line": "  <p>Formålet er at samle små, nyttige værktøjer ét sted, så du ikke behøver at installere apps eller oprette en konto. Vi prioriterer tilgængelighed, så siden virker på mobil, tablet og computer. Har du brug for at dele resultatet, kan du ofte kopiere det direkte eller downloade en fil.</p>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "192",
+     "line": "</section>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "193",
+     "line": "  </body>",
+     "message": "Syntax not understood"
+    },
+    {
+     "index": "194",
+     "line": "</html>",
+     "message": "Syntax not understood"
+    }
+   ]
+  }
+ },
+ "llmsTxt": {
+  "score": 0,
+  "details": {
+   "type": "table",
+   "headings": [
+    {
+     "key": "message",
+     "valueType": "text",
+     "label": "Error"
+    }
+   ],
+   "items": [
+    {
+     "message": "File is missing a required H1 header (e.g., \"# Title\")."
+    },
+    {
+     "message": "File does not appear to contain any links."
+    }
+   ]
+  }
+ },
+ "ardSchema": {
+  "score": 0,
+  "details": {
+   "type": "table",
+   "headings": [
+    {
+     "key": "element",
+     "valueType": "text",
+     "label": "Element"
+    },
+    {
+     "key": "issue",
+     "valueType": "text",
+     "label": "Issue"
+    },
+    {
+     "key": "severity",
+     "valueType": "text",
+     "label": "Severity"
+    }
+   ],
+   "items": [
+    {
+     "element": "Root",
+     "issue": "Malformed JSON in manifest: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+     "severity": "Error"
+    }
+   ]
+  }
+ },
+ "cacheInsight": {
+  "score": 0.5,
+  "displayValue": "Est savings of 88 KiB",
+  "details": {
+   "type": "table",
+   "headings": [
+    {
+     "key": "url",
+     "valueType": "url",
+     "label": "Request"
+    },
+    {
+     "key": "cacheLifetimeMs",
+     "valueType": "ms",
+     "label": "Cache TTL",
+     "displayUnit": "duration"
+    },
+    {
+     "key": "totalBytes",
+     "valueType": "bytes",
+     "label": "Transfer Size",
+     "displayUnit": "kb",
+     "granularity": 1
+    }
+   ],
+   "items": [
+    {
+     "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 64685,
+     "wastedBytes": 43985.799999999996
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/HomePage-HZThNJx7.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 27766,
+     "wastedBytes": 18880.879999999997
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/router-CBLz_W24.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 17623,
+     "wastedBytes": 11983.64
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/index-C-Av8HlY.css",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 11288,
+     "wastedBytes": 7675.839999999999
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/ThemeToggle-Czrs-HhS.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 4685,
+     "wastedBytes": 3185.7999999999997
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/PromoBanner-DTex3IyN.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 1814,
+     "wastedBytes": 1233.52
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/rolldown-runtime-CbXtAM7H.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 928,
+     "wastedBytes": 631.04
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/map-pin-Bv4MY4MA.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 817,
+     "wastedBytes": 555.56
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/sprout-D1RdRLSa.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 804,
+     "wastedBytes": 546.7199999999999
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/chart-column-K7azZjxw.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 769,
+     "wastedBytes": 522.92
+    },
+    {
+     "url": "https://levetidsberegner.dk/assets/clock-CfTIcxLr.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 741,
+     "wastedBytes": 503.87999999999994
+    },
+    {
+     "url": "https://levetidsberegner.dk/registerSW.js",
+     "cacheLifetimeMs": 14400000,
+     "totalBytes": 656,
+     "wastedBytes": 446.08
+    }
+   ],
+   "sortedBy": [
+    "wastedBytes"
+   ],
+   "skipSumming": [
+    "cacheLifetimeMs"
+   ],
+   "debugData": {
+    "type": "debugdata",
+    "wastedBytes": 90151.68000000001
+   }
+  }
+ }
+}

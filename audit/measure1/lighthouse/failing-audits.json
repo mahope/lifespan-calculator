@@ -1,0 +1,148 @@
+[
+ {
+  "id": "cumulative-layout-shift",
+  "title": "Cumulative Layout Shift",
+  "categories": [
+   "performance",
+   "agentic-browsing"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": null,
+  "displayValue": "0.704",
+  "runCount": 14
+ },
+ {
+  "id": "layout-shifts",
+  "title": "Avoid large layout shifts",
+  "categories": [
+   "performance"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": {
+   "selector": "body",
+   "snippet": "<body>"
+  },
+  "displayValue": "1 layout shift found",
+  "runCount": 14
+ },
+ {
+  "id": "color-contrast",
+  "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+  "categories": [
+   "accessibility"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": {
+   "selector": "div.card-content > div.grid > div.space-y-4 > h3.text-lg",
+   "snippet": "<h3 class=\"text-lg font-semibold text-green-600 dark:text-green-400 flex items-center…\">",
+   "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #00a63e, background color: #ffffff, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
+  },
+  "displayValue": null,
+  "runCount": 14
+ },
+ {
+  "id": "unused-javascript",
+  "title": "Reduce unused JavaScript",
+  "categories": [
+   "performance"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": {
+   "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js"
+  },
+  "displayValue": "Est savings of 26 KiB",
+  "runCount": 14
+ },
+ {
+  "id": "robots-txt",
+  "title": "robots.txt is not valid",
+  "categories": [
+   "seo"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": null,
+  "displayValue": "63 errors found",
+  "runCount": 14
+ },
+ {
+  "id": "llms-txt",
+  "title": "llms.txt does not follow recommendations",
+  "categories": [
+   "agentic-browsing"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": null,
+  "displayValue": null,
+  "runCount": 14
+ },
+ {
+  "id": "ard-schema",
+  "title": "ARD manifest is invalid",
+  "categories": [
+   "agentic-browsing"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": null,
+  "displayValue": null,
+  "runCount": 14
+ },
+ {
+  "id": "cache-insight",
+  "title": "Use efficient cache lifetimes",
+  "categories": [
+   "performance"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": {
+   "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js"
+  },
+  "displayValue": "Est savings of 73 KiB",
+  "runCount": 14
+ },
+ {
+  "id": "cls-culprits-insight",
+  "title": "Layout shift culprits",
+  "categories": [
+   "performance"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": null,
+  "displayValue": null,
+  "runCount": 14
+ },
+ {
+  "id": "network-dependency-tree-insight",
+  "title": "Network dependency tree",
+  "categories": [
+   "performance"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": null,
+  "displayValue": null,
+  "runCount": 14
+ },
+ {
+  "id": "render-blocking-insight",
+  "title": "Render-blocking requests",
+  "categories": [
+   "performance"
+  ],
+  "runs": "danmark-desktop-1, danmark-mobile-1, dodsalder-desktop-1 ... (14 runs)",
+  "example": {
+   "url": "https://levetidsberegner.dk/registerSW.js"
+  },
+  "displayValue": "Est savings of 210 ms",
+  "runCount": 14
+ },
+ {
+  "id": "forced-reflow-insight",
+  "title": "Forced reflow",
+  "categories": [
+   "performance"
+  ],
+  "runs": "dodsalder-desktop-1",
+  "example": null,
+  "displayValue": null,
+  "runCount": 1
+ }
+]

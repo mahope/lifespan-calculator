@@ -1,0 +1,1356 @@
+[
+  {
+    "name": "home-320-light",
+    "page": "home",
+    "path": "/",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 23,
+    "small": [],
+    "pageHeight": 5216
+  },
+  {
+    "name": "home-result-320-light",
+    "page": "home-result",
+    "path": "/",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/?g=male&a=40",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 354,
+      "bodyScrollWidth": 354,
+      "horizontalScroll": true,
+      "offenders": []
+    },
+    "interactive": 34,
+    "small": [],
+    "pageHeight": 10556
+  },
+  {
+    "name": "hvor-lang-tid-320-light",
+    "page": "hvor-lang-tid",
+    "path": "/hvor-lang-tid-har-jeg-tilbage",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/hvor-lang-tid-har-jeg-tilbage",
+    "title": "Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner",
+    "h1": "Hvor lang tid har jeg tilbage?",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 6318
+  },
+  {
+    "name": "dodsalder-320-light",
+    "page": "dodsalder",
+    "path": "/dodsalder-calculator",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/dodsalder-calculator",
+    "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+    "h1": "Dødsalder Calculator",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 6275
+  },
+  {
+    "name": "livsstil-320-light",
+    "page": "livsstil",
+    "path": "/livsstil-og-levetid",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/livsstil-og-levetid",
+    "title": "Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?",
+    "h1": "Livsstil og Levetid",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 7998
+  },
+  {
+    "name": "danmark-320-light",
+    "page": "danmark",
+    "path": "/levetid-beregner-danmark",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/levetid-beregner-danmark",
+    "title": "Dansk Levetidsberegner - Specialiseret til danske forhold",
+    "h1": "Dansk Levetidsberegner",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 7392
+  },
+  {
+    "name": "404-320-light",
+    "page": "404",
+    "path": "/xyz",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/xyz",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 4197
+  },
+  {
+    "name": "privatlivspolitik-320-light",
+    "page": "privatlivspolitik",
+    "path": "/privatlivspolitik",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 4197
+  },
+  {
+    "name": "privatlivspolitik-html-320-light",
+    "page": "privatlivspolitik-html",
+    "path": "/privatlivspolitik.html",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 4197
+  },
+  {
+    "name": "cookiepolitik-html-320-light",
+    "page": "cookiepolitik-html",
+    "path": "/cookiepolitik.html",
+    "width": 320,
+    "status": 200,
+    "finalPath": "/cookiepolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 320,
+      "docScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [],
+    "pageHeight": 4197
+  },
+  {
+    "name": "home-390-light",
+    "page": "home",
+    "path": "/",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 23,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 4670
+  },
+  {
+    "name": "home-result-390-light",
+    "page": "home-result",
+    "path": "/",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/?g=male&a=40",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 401,
+      "bodyScrollWidth": 401,
+      "horizontalScroll": true,
+      "offenders": []
+    },
+    "interactive": 34,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 9811
+  },
+  {
+    "name": "hvor-lang-tid-390-light",
+    "page": "hvor-lang-tid",
+    "path": "/hvor-lang-tid-har-jeg-tilbage",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/hvor-lang-tid-har-jeg-tilbage",
+    "title": "Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner",
+    "h1": "Hvor lang tid har jeg tilbage?",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 5502
+  },
+  {
+    "name": "dodsalder-390-light",
+    "page": "dodsalder",
+    "path": "/dodsalder-calculator",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/dodsalder-calculator",
+    "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+    "h1": "Dødsalder Calculator",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 5480
+  },
+  {
+    "name": "livsstil-390-light",
+    "page": "livsstil",
+    "path": "/livsstil-og-levetid",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/livsstil-og-levetid",
+    "title": "Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?",
+    "h1": "Livsstil og Levetid",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 6944
+  },
+  {
+    "name": "danmark-390-light",
+    "page": "danmark",
+    "path": "/levetid-beregner-danmark",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/levetid-beregner-danmark",
+    "title": "Dansk Levetidsberegner - Specialiseret til danske forhold",
+    "h1": "Dansk Levetidsberegner",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 6597
+  },
+  {
+    "name": "404-390-light",
+    "page": "404",
+    "path": "/xyz",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/xyz",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3764
+  },
+  {
+    "name": "privatlivspolitik-390-light",
+    "page": "privatlivspolitik",
+    "path": "/privatlivspolitik",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3764
+  },
+  {
+    "name": "privatlivspolitik-html-390-light",
+    "page": "privatlivspolitik-html",
+    "path": "/privatlivspolitik.html",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3764
+  },
+  {
+    "name": "cookiepolitik-html-390-light",
+    "page": "cookiepolitik-html",
+    "path": "/cookiepolitik.html",
+    "width": 390,
+    "status": 200,
+    "finalPath": "/cookiepolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 390,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3764
+  },
+  {
+    "name": "home-768-light",
+    "page": "home",
+    "path": "/",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 23,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3558
+  },
+  {
+    "name": "home-result-768-light",
+    "page": "home-result",
+    "path": "/",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/?g=male&a=40",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 34,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 8930
+  },
+  {
+    "name": "hvor-lang-tid-768-light",
+    "page": "hvor-lang-tid",
+    "path": "/hvor-lang-tid-har-jeg-tilbage",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/hvor-lang-tid-har-jeg-tilbage",
+    "title": "Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner",
+    "h1": "Hvor lang tid har jeg tilbage?",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3896
+  },
+  {
+    "name": "dodsalder-768-light",
+    "page": "dodsalder",
+    "path": "/dodsalder-calculator",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/dodsalder-calculator",
+    "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+    "h1": "Dødsalder Calculator",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3963
+  },
+  {
+    "name": "livsstil-768-light",
+    "page": "livsstil",
+    "path": "/livsstil-og-levetid",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/livsstil-og-levetid",
+    "title": "Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?",
+    "h1": "Livsstil og Levetid",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 5245
+  },
+  {
+    "name": "danmark-768-light",
+    "page": "danmark",
+    "path": "/levetid-beregner-danmark",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/levetid-beregner-danmark",
+    "title": "Dansk Levetidsberegner - Specialiseret til danske forhold",
+    "h1": "Dansk Levetidsberegner",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 4538
+  },
+  {
+    "name": "404-768-light",
+    "page": "404",
+    "path": "/xyz",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/xyz",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2659
+  },
+  {
+    "name": "privatlivspolitik-768-light",
+    "page": "privatlivspolitik",
+    "path": "/privatlivspolitik",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2659
+  },
+  {
+    "name": "privatlivspolitik-html-768-light",
+    "page": "privatlivspolitik-html",
+    "path": "/privatlivspolitik.html",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2659
+  },
+  {
+    "name": "cookiepolitik-html-768-light",
+    "page": "cookiepolitik-html",
+    "path": "/cookiepolitik.html",
+    "width": 768,
+    "status": 200,
+    "finalPath": "/cookiepolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 768,
+      "docScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Specialiseret dansk levetidsbe\"",
+        "w": 243.9,
+        "h": 17,
+        "inlineInText": false,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      },
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2659
+  },
+  {
+    "name": "home-1440-light",
+    "page": "home",
+    "path": "/",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 23,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3083
+  },
+  {
+    "name": "home-result-1440-light",
+    "page": "home-result",
+    "path": "/",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/?g=male&a=40",
+    "title": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+    "h1": "Levetidsberegner",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 34,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 8498
+  },
+  {
+    "name": "hvor-lang-tid-1440-light",
+    "page": "hvor-lang-tid",
+    "path": "/hvor-lang-tid-har-jeg-tilbage",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/hvor-lang-tid-har-jeg-tilbage",
+    "title": "Hvor lang tid har jeg tilbage at leve? - Dansk Levetidsberegner",
+    "h1": "Hvor lang tid har jeg tilbage?",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3331
+  },
+  {
+    "name": "dodsalder-1440-light",
+    "page": "dodsalder",
+    "path": "/dodsalder-calculator",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/dodsalder-calculator",
+    "title": "Dødsalder Calculator - Beregn din forventede dødsalder",
+    "h1": "Dødsalder Calculator",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3419
+  },
+  {
+    "name": "livsstil-1440-light",
+    "page": "livsstil",
+    "path": "/livsstil-og-levetid",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/livsstil-og-levetid",
+    "title": "Livsstil og Levetid - Hvordan påvirker din livsstil din levetid?",
+    "h1": "Livsstil og Levetid",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3926
+  },
+  {
+    "name": "danmark-1440-light",
+    "page": "danmark",
+    "path": "/levetid-beregner-danmark",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/levetid-beregner-danmark",
+    "title": "Dansk Levetidsberegner - Specialiseret til danske forhold",
+    "h1": "Dansk Levetidsberegner",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 3837
+  },
+  {
+    "name": "404-1440-light",
+    "page": "404",
+    "path": "/xyz",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/xyz",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2406
+  },
+  {
+    "name": "privatlivspolitik-1440-light",
+    "page": "privatlivspolitik",
+    "path": "/privatlivspolitik",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2406
+  },
+  {
+    "name": "privatlivspolitik-html-1440-light",
+    "page": "privatlivspolitik-html",
+    "path": "/privatlivspolitik.html",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/privatlivspolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2406
+  },
+  {
+    "name": "cookiepolitik-html-1440-light",
+    "page": "cookiepolitik-html",
+    "path": "/cookiepolitik.html",
+    "width": 1440,
+    "status": 200,
+    "finalPath": "/cookiepolitik",
+    "title": "Side ikke fundet - Dansk Levetidsberegner",
+    "h1": "Side ikke fundet",
+    "overflow": {
+      "innerWidth": 1440,
+      "docScrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "horizontalScroll": false,
+      "offenders": []
+    },
+    "interactive": 15,
+    "small": [
+      {
+        "el": "a.text-primary.hover:underline \"Mads Holst Jensen - Mahope.dk\"",
+        "w": 215.3,
+        "h": 17,
+        "inlineInText": true,
+        "spacingClash": 0,
+        "wcag258Fail": false
+      }
+    ],
+    "pageHeight": 2406
+  },
+  {
+    "name": "home-banner-390-light",
+    "cover": {
+      "bannerVisible": true,
+      "banner": {
+        "top": 665,
+        "height": 135
+      },
+      "viewportH": 800,
+      "cta": {
+        "top": 977,
+        "bottom": 1021,
+        "covered": false
+      },
+      "age": {
+        "top": 685,
+        "bottom": 729,
+        "covered": true
+      },
+      "pageHeight": 4670,
+      "bannerPosition": "fixed",
+      "bannerZ": "9999"
+    },
+    "intercept": {
+      "ctaBottom": 1021,
+      "ctaTop": 977,
+      "vh": 800,
+      "topElementIsCta": false,
+      "topElement": null
+    }
+  },
+  {
+    "name": "home-banner-390-dark",
+    "cover": {
+      "bannerVisible": true,
+      "banner": {
+        "top": 665,
+        "height": 135
+      },
+      "viewportH": 800,
+      "cta": {
+        "top": 977,
+        "bottom": 1021,
+        "covered": false
+      },
+      "age": {
+        "top": 685,
+        "bottom": 729,
+        "covered": true
+      },
+      "pageHeight": 4670,
+      "bannerPosition": "fixed",
+      "bannerZ": "9999"
+    },
+    "intercept": {
+      "ctaBottom": 1021,
+      "ctaTop": 977,
+      "vh": 800,
+      "topElementIsCta": false,
+      "topElement": null
+    }
+  },
+  {
+    "name": "home-banner-1440-light",
+    "cover": {
+      "bannerVisible": true,
+      "banner": {
+        "top": 736,
+        "height": 64
+      },
+      "viewportH": 800,
+      "cta": {
+        "top": 1044,
+        "bottom": 1092,
+        "covered": false
+      },
+      "age": {
+        "top": 764,
+        "bottom": 812,
+        "covered": true
+      },
+      "pageHeight": 3083,
+      "bannerPosition": "fixed",
+      "bannerZ": "9999"
+    },
+    "intercept": {
+      "ctaBottom": 1092,
+      "ctaTop": 1044,
+      "vh": 800,
+      "topElementIsCta": false,
+      "topElement": null
+    }
+  },
+  {
+    "name": "home-banner-1440-dark",
+    "cover": {
+      "bannerVisible": true,
+      "banner": {
+        "top": 736,
+        "height": 64
+      },
+      "viewportH": 800,
+      "cta": {
+        "top": 1044,
+        "bottom": 1092,
+        "covered": false
+      },
+      "age": {
+        "top": 764,
+        "bottom": 812,
+        "covered": true
+      },
+      "pageHeight": 3083,
+      "bannerPosition": "fixed",
+      "bannerZ": "9999"
+    },
+    "intercept": {
+      "ctaBottom": 1092,
+      "ctaTop": 1044,
+      "vh": 800,
+      "topElementIsCta": false,
+      "topElement": null
+    }
+  }
+]

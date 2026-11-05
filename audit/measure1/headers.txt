@@ -1,0 +1,371 @@
+# Raw response headers (curl -sI = HEAD; "br,gzip" = HEAD with Accept-Encoding: br,gzip; GET size = bytes on the wire for GET with that encoding)
+# captured 2026-11-05T13:10:49.394Z from agent-worker
+
+=== html /
+--- curl -sI https://levetidsberegner.dk/
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:49 GMT
+content-type: text/html; charset=utf-8
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="index.html"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+cf-cache-status: DYNAMIC
+server: cloudflare
+cf-ray: a55c19cf1ad1b1e1-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+vary: Accept-Encoding
+content-encoding: br
+GET size br,gzip: 2189 bytes; identity: 5371 bytes
+
+=== js (main hashed) /assets/index-Dahj3lkh.js
+--- curl -sI https://levetidsberegner.dk/assets/index-Dahj3lkh.js
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:49 GMT
+content-type: application/javascript; charset=utf-8
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="index-Dahj3lkh.js"
+etag: W/"7f55d0c30ac60cf69337e83c95c0297b51b711aa"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+age: 430
+cache-control: max-age=14400
+cf-cache-status: HIT
+server: cloudflare
+cf-ray: a55c19d20b7782d1-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/assets/index-Dahj3lkh.js
+HTTP/2 200 
+content-type: application/javascript; charset=utf-8
+content-encoding: br
+etag: "7f55d0c30ac60cf69337e83c95c0297b51b711aa"
+vary: Accept-Encoding
+cache-control: max-age=14400
+GET size br,gzip: 64117 bytes; identity: 202868 bytes
+
+=== css /assets/index-C-Av8HlY.css
+--- curl -sI https://levetidsberegner.dk/assets/index-C-Av8HlY.css
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:50 GMT
+content-type: text/css; charset=utf-8
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="index-C-Av8HlY.css"
+etag: W/"4e007f2d262507ddfedac708931cc0bead4d1376"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+age: 378
+cache-control: max-age=14400
+cf-cache-status: HIT
+server: cloudflare
+cf-ray: a55c19d43f7357e3-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/assets/index-C-Av8HlY.css
+HTTP/2 200 
+content-type: text/css; charset=utf-8
+content-encoding: br
+etag: "4e007f2d262507ddfedac708931cc0bead4d1376"
+vary: Accept-Encoding
+cache-control: max-age=14400
+GET size br,gzip: 10739 bytes; identity: 71358 bytes
+
+=== manifest /manifest.webmanifest
+--- curl -sI https://levetidsberegner.dk/manifest.webmanifest
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:50 GMT
+content-type: application/manifest+json; charset=utf-8
+content-length: 491
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="manifest.webmanifest"
+etag: "e4c7f16566b96d5f3f6a14d19fcf0ec687ee14ec"
+vary: Accept-Encoding
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+server: cloudflare
+cf-ray: a55c19d679d45cc8-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/manifest.webmanifest
+HTTP/2 200 
+content-type: application/manifest+json; charset=utf-8
+vary: Accept-Encoding
+etag: W/"e4c7f16566b96d5f3f6a14d19fcf0ec687ee14ec"
+content-encoding: br
+GET size br,gzip: 275 bytes; identity: 491 bytes
+
+=== sw /sw.js
+--- curl -sI https://levetidsberegner.dk/sw.js
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:51 GMT
+content-type: application/javascript; charset=utf-8
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="sw.js"
+etag: W/"c8d1b8ca750e2745c775c9e6c817e5b4915bd38c"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+age: 565
+cache-control: max-age=14400
+cf-cache-status: HIT
+server: cloudflare
+cf-ray: a55c19d93a662c6f-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/sw.js
+HTTP/2 200 
+content-type: application/javascript; charset=utf-8
+content-encoding: br
+etag: "c8d1b8ca750e2745c775c9e6c817e5b4915bd38c"
+vary: Accept-Encoding
+cache-control: max-age=14400
+GET size br,gzip: 1237 bytes; identity: 2849 bytes
+
+=== registerSW /registerSW.js
+--- curl -sI https://levetidsberegner.dk/registerSW.js
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:51 GMT
+content-type: application/javascript; charset=utf-8
+content-length: 134
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="registerSW.js"
+etag: "c9c67122268adf04cb7726eed7b2e2042dd0df30"
+vary: Accept-Encoding
+age: 560
+cache-control: max-age=14400
+cf-cache-status: HIT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+server: cloudflare
+cf-ray: a55c19db59f9f3c7-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/registerSW.js
+HTTP/2 200 
+content-type: application/javascript; charset=utf-8
+vary: Accept-Encoding
+etag: W/"c9c67122268adf04cb7726eed7b2e2042dd0df30"
+cache-control: max-age=14400
+content-encoding: br
+GET size br,gzip: 90 bytes; identity: 134 bytes
+
+=== og-image /og-image.png
+--- curl -sI https://levetidsberegner.dk/og-image.png
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:51 GMT
+content-type: image/png
+content-length: 414915
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="og-image.png"
+etag: "b972840733d8e52ca2ab6c6bbe3b41207e07f018"
+age: 560
+cache-control: max-age=14400
+cf-cache-status: HIT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+server: cloudflare
+cf-ray: a55c19dd7dd2584f-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/og-image.png
+HTTP/2 200 
+content-type: image/png
+content-length: 414915
+etag: "b972840733d8e52ca2ab6c6bbe3b41207e07f018"
+cache-control: max-age=14400
+GET size br,gzip: 414915 bytes; identity: 414915 bytes
+
+=== favicon /favicon.svg
+--- curl -sI https://levetidsberegner.dk/favicon.svg
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:52 GMT
+content-type: image/svg+xml
+content-length: 555
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="favicon.svg"
+etag: "46231370c3946dcbcf3b18317fa90fa6145a4a3e"
+vary: Accept-Encoding
+age: 561
+cache-control: max-age=14400
+cf-cache-status: HIT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+server: cloudflare
+cf-ray: a55c19dfbcac9bb2-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/favicon.svg
+HTTP/2 200 
+content-type: image/svg+xml
+vary: Accept-Encoding
+etag: W/"46231370c3946dcbcf3b18317fa90fa6145a4a3e"
+cache-control: max-age=14400
+content-encoding: br
+GET size br,gzip: 308 bytes; identity: 555 bytes
+
+=== robots /robots.txt
+--- curl -sI https://levetidsberegner.dk/robots.txt
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:52 GMT
+content-type: text/plain; charset=utf-8
+content-length: 2676
+alt-svc: h3=":443"; ma=86400
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+age: 567
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+cache-control: max-age=14400
+cf-cache-status: HIT
+server: cloudflare
+cf-ray: a55c19e1b9b6562f-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/robots.txt
+HTTP/2 200 
+content-type: text/plain; charset=utf-8
+vary: Accept-Encoding
+cache-control: max-age=14400
+content-encoding: br
+GET size br,gzip: 3204 bytes; identity: 8047 bytes
+
+=== sitemap /sitemap.xml
+--- curl -sI https://levetidsberegner.dk/sitemap.xml
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:52 GMT
+content-type: text/html; charset=utf-8
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="index.html"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+cf-cache-status: DYNAMIC
+server: cloudflare
+cf-ray: a55c19e37db3c63f-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/sitemap.xml
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+vary: Accept-Encoding
+content-encoding: br
+GET size br,gzip: 2189 bytes; identity: 5371 bytes
+
+=== ads.txt /ads.txt
+--- curl -sI https://levetidsberegner.dk/ads.txt
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:53 GMT
+content-type: text/html; charset=utf-8
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="index.html"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+cf-cache-status: DYNAMIC
+server: cloudflare
+cf-ray: a55c19e60b3bb7a8-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/ads.txt
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+vary: Accept-Encoding
+content-encoding: br
+GET size br,gzip: 2189 bytes; identity: 5371 bytes
+
+=== 404 path (soft-404?) /xyz
+--- curl -sI https://levetidsberegner.dk/xyz
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:53 GMT
+content-type: text/html; charset=utf-8
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="index.html"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+cf-cache-status: DYNAMIC
+server: cloudflare
+cf-ray: a55c19e899431fc5-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/xyz
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+vary: Accept-Encoding
+content-encoding: br
+GET size br,gzip: 2189 bytes; identity: 5371 bytes
+
+=== privatlivspolitik /privatlivspolitik
+--- curl -sI https://levetidsberegner.dk/privatlivspolitik
+HTTP/2 200 
+date: Thu, 05 Nov 2026 13:10:53 GMT
+content-type: text/html; charset=utf-8
+accept-ranges: bytes
+alt-svc: h3=":443"; ma=86400
+content-disposition: inline; filename="index.html"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+vary: Accept-Encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+cf-cache-status: DYNAMIC
+server: cloudflare
+cf-ray: a55c19eb2a6e5610-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/privatlivspolitik
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+vary: Accept-Encoding
+content-encoding: br
+GET size br,gzip: 2189 bytes; identity: 5371 bytes
+
+=== privatlivspolitik.html /privatlivspolitik.html
+--- curl -sI https://levetidsberegner.dk/privatlivspolitik.html
+HTTP/2 301 
+date: Thu, 05 Nov 2026 13:10:54 GMT
+alt-svc: h3=":443"; ma=86400
+location: /privatlivspolitik
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+server: cloudflare
+cf-ray: a55c19eda9dad046-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/privatlivspolitik.html
+HTTP/2 301 
+GET size br,gzip: 0 bytes; identity: 0 bytes
+
+=== cookiepolitik.html /cookiepolitik.html
+--- curl -sI https://levetidsberegner.dk/cookiepolitik.html
+HTTP/2 301 
+date: Thu, 05 Nov 2026 13:10:54 GMT
+alt-svc: h3=":443"; ma=86400
+location: /cookiepolitik
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"http...
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":60480...
+server: cloudflare
+cf-ray: a55c19f01fdbeff6-ARN
+--- curl -sI -H "Accept-Encoding: br,gzip" https://levetidsberegner.dk/cookiepolitik.html
+HTTP/2 301 
+GET size br,gzip: 0 bytes; identity: 0 bytes
+
+=== source maps (HEAD)
+/assets/index-Dahj3lkh.js.map -> HTTP/2 200  content-type=application/json; charset=utf-8 content-length=880988
+/assets/rolldown-runtime-CbXtAM7H.js.map -> HTTP/2 200  content-type=text/html; charset=utf-8 content-length=undefined
+/assets/router-CBLz_W24.js.map -> HTTP/2 200  content-type=application/json; charset=utf-8 content-length=459985
+/sw.js.map -> HTTP/2 200  content-type=application/json; charset=utf-8 content-length=6242
+
+=== redirects
+http://levetidsberegner.dk/ => 200 -> https://levetidsberegner.dk/ (redirects=1, first_hop_ms=0.072385) | first hop: HTTP/1.1 308 Permanent Redirect location=https://levetidsberegner.dk/
+http://www.levetidsberegner.dk/ => CURL_EXIT_6 000 -> http://www.levetidsberegner.dk/ (redirects=0, first_hop_ms=0.000000) | first hop:  location=
+https://www.levetidsberegner.dk/ => CURL_EXIT_6 000 -> https://www.levetidsberegner.dk/ (redirects=0, first_hop_ms=0.000000) | first hop:  location=
+https://levetidsberegner.dk/index.html => 200 -> https://levetidsberegner.dk/ (redirects=2, first_hop_ms=0.120024) | first hop: HTTP/2 301  location=/index
+https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage/ => 200 -> https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage/ (redirects=0, first_hop_ms=0.000000) | first hop: HTTP/2 200  location=
+https://levetidsberegner.dk// => 200 -> https://levetidsberegner.dk// (redirects=0, first_hop_ms=0.000000) | first hop: HTTP/2 200  location=
+
+=== TLS
+tls1.0 max: CURL_EXIT_35 OK http=000 ssl=
+tls1.1 max: CURL_EXIT_35 OK http=000 ssl=
+tls1.2 only: OK http=200 ssl=
+tls1.3: OK http=200 ssl=
+issuer=C=US, O=Google Trust Services, CN=WE1
+subject=CN=levetidsberegner.dk
+notBefore=Sep 14 06:31:57 2026 GMT
+notAfter=Dec 13 07:30:37 2026 GMT
+X509v3 Subject Alternative Name: 
+    DNS:levetidsberegner.dk, DNS:*.levetidsberegner.dk
+
+HTTP/1.1: HTTP/1.1 200 OK
+HTTP/3 attempt: HTTP/3 200
+
+=== DNS www A: {"Status":3,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"www.levetidsberegner.dk.","type":1}],"Authority":[{"name":"levetidsberegner.dk.","type":6,"TTL":1800,"data":"amanda.ns.cloudflare.com. dns.cloudflare.com. 2416525565 10000 2400 604800 1800"}],"Comment":"Response from 162.159.44.228."}
+
+# CORRECTION (added after the run): the two TLS lines above reading CURL_EXIT_35 for tls1.0/tls1.1 were a client-side refusal by the worker curl/OpenSSL default security level, NOT a server refusal. See tls-probe.txt: Cloudflare completes TLSv1 and TLSv1.1 handshakes when the client allows them.

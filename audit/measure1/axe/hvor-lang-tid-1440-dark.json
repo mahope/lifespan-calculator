@@ -1,0 +1,97 @@
+{
+  "page": "hvor-lang-tid",
+  "path": "/hvor-lang-tid-har-jeg-tilbage",
+  "width": 1440,
+  "scheme": "dark",
+  "banner": false,
+  "url": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+  "htmlDark": true,
+  "bannerVisible": false,
+  "axeVersion": "4.14.0",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes": 13,
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "example": {
+        "target": "p:nth-child(3) > .hover\\:underline[href$=\"levetid-beregner-danmark\"][data-discover=\"true\"]",
+        "html": "<a class=\"text-primary hover:underline\" href=\"/levetid-beregner-danmark\" data-discover=\"true\">Specialiseret dansk levetidsberegner</a>",
+        "summary": "Fix any of the following: Element has insufficient color contrast of 4.48 (foreground color: #3c83f6, background color: #162031, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      "more_targets": [
+        "a[href=\"/hvor-lang-tid-har-jeg-tilbage\"]",
+        "a[href$=\"dodsalder-calculator\"]",
+        "a[href$=\"livsstil-og-levetid\"]"
+      ]
+    },
+    {
+      "id": "landmark-no-duplicate-contentinfo",
+      "impact": "moderate",
+      "nodes": 1,
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/landmark-no-duplicate-contentinfo?application=playwright",
+      "help": "Document should not have more than one contentinfo landmark",
+      "tags": [
+        "best-practice"
+      ],
+      "example": {
+        "target": ".bg-muted\\/50",
+        "html": "<footer class=\"bg-muted/50 border-t mt-8 sm:mt-16\">",
+        "summary": "Fix any of the following: Document has more than one contentinfo landmark"
+      },
+      "more_targets": []
+    },
+    {
+      "id": "landmark-unique",
+      "impact": "moderate",
+      "nodes": 1,
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=playwright",
+      "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+      "tags": [
+        "best-practice"
+      ],
+      "example": {
+        "target": ".bg-muted\\/50",
+        "html": "<footer class=\"bg-muted/50 border-t mt-8 sm:mt-16\">",
+        "summary": "Fix any of the following: The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+      },
+      "more_targets": []
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "nodes": 22,
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=playwright",
+      "help": "All page content should be contained by landmarks",
+      "tags": [
+        "best-practice"
+      ],
+      "example": {
+        "target": ".mb-6",
+        "html": "<div class=\"text-center mb-6 sm:mb-8\"><h2 class=\"text-xl sm:text-2xl font-bold mb-2\">Andre nyttige værktøjer</h2><p class=\"text-sm sm:text-base text-muted-foreg",
+        "summary": "Fix any of the following: Some page content is not contained by landmarks"
+      },
+      "more_targets": [
+        ".promo-card.group[target=\"_blank\"]:nth-child(1) > .pt-4.sm\\:pt-6.card-content > .sm\\:mb-4.group-hover\\:scale-110.duration-300",
+        ".promo-card.group[target=\"_blank\"]:nth-child(1) > .pt-4.sm\\:pt-6.card-content > .group-hover\\:text-primary\\/80.transition-colors.mb-2",
+        ".promo-card.group[target=\"_blank\"]:nth-child(1) > .pt-4.sm\\:pt-6.card-content > .mb-3.text-muted-foreground"
+      ]
+    }
+  ],
+  "violation_count": 4,
+  "violation_nodes": 37,
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes": 4,
+      "example": "h1"
+    }
+  ],
+  "passes": 32
+}

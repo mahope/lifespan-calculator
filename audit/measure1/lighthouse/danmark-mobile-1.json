@@ -1,0 +1,557 @@
+{
+  "requestedUrl": "https://levetidsberegner.dk/levetid-beregner-danmark",
+  "finalUrl": "https://levetidsberegner.dk/levetid-beregner-danmark",
+  "fetchTime": "2026-11-05T13:06:54.635Z",
+  "lighthouseVersion": "13.6.0",
+  "formFactor": "mobile",
+  "throttlingMethod": "simulate",
+  "throttling": {
+    "rttMs": 150,
+    "throughputKbps": 1638.4,
+    "requestLatencyMs": 562.5,
+    "downloadThroughputKbps": 1474.5600000000002,
+    "uploadThroughputKbps": 675,
+    "cpuSlowdownMultiplier": 4
+  },
+  "environment": {
+    "benchmarkIndex": 1381,
+    "hostUserAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "loadavg_after": "5.49 13.90 20.02"
+  },
+  "runWarnings": [],
+  "runtimeError": null,
+  "scores": {
+    "performance": 74,
+    "accessibility": 95,
+    "best-practices": 100,
+    "seo": 92,
+    "agentic-browsing": 26
+  },
+  "metrics": {
+    "fcp_ms": 1697,
+    "lcp_ms": 1697,
+    "tbt_ms": 20,
+    "cls": 1,
+    "si_ms": 1697,
+    "tti_ms": 2185,
+    "server_response_ms": 71
+  },
+  "network": {
+    "total_requests": 20,
+    "total_transfer_bytes": 176322,
+    "js_transfer_bytes": 100802,
+    "css_transfer_bytes": 12381,
+    "resourceSummary": {
+      "total": {
+        "requests": 20,
+        "transferSize": 176322
+      },
+      "script": {
+        "requests": 13,
+        "transferSize": 100802
+      },
+      "font": {
+        "requests": 1,
+        "transferSize": 48464
+      },
+      "stylesheet": {
+        "requests": 2,
+        "transferSize": 12381
+      },
+      "other": {
+        "requests": 3,
+        "transferSize": 11770
+      },
+      "document": {
+        "requests": 1,
+        "transferSize": 2905
+      },
+      "image": {
+        "requests": 0,
+        "transferSize": 0
+      },
+      "media": {
+        "requests": 0,
+        "transferSize": 0
+      },
+      "third-party": {
+        "requests": 3,
+        "transferSize": 52367
+      }
+    },
+    "third_party_hosts": [
+      "analytics.holstjensen.eu",
+      "fonts.googleapis.com",
+      "fonts.gstatic.com"
+    ],
+    "top_requests": [
+      {
+        "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 64675,
+        "resourceSize": 202868,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+        "host": "fonts.gstatic.com",
+        "type": "Font",
+        "status": 200,
+        "transferSize": 48464,
+        "resourceSize": 48432,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/router-CBLz_W24.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 17620,
+        "resourceSize": 46853,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/index-C-Av8HlY.css",
+        "host": "levetidsberegner.dk",
+        "type": "Stylesheet",
+        "status": 200,
+        "transferSize": 11279,
+        "resourceSize": 71358,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/pwa-192x192.png",
+        "host": "levetidsberegner.dk",
+        "type": "Other",
+        "status": 200,
+        "transferSize": 10059,
+        "resourceSize": 9557,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/ThemeToggle-Czrs-HhS.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 4681,
+        "resourceSize": 11209,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/DanmarkPage-ByDEqYZO.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 3396,
+        "resourceSize": 12131,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/levetid-beregner-danmark",
+        "host": "levetidsberegner.dk",
+        "type": "Document",
+        "status": 200,
+        "transferSize": 2905,
+        "resourceSize": 5371,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js",
+        "host": "analytics.holstjensen.eu",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 2801,
+        "resourceSize": 5021,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/PromoBanner-DTex3IyN.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 1805,
+        "resourceSize": 2737,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap",
+        "host": "fonts.googleapis.com",
+        "type": "Stylesheet",
+        "status": 200,
+        "transferSize": 1102,
+        "resourceSize": 2535,
+        "protocol": "h2"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/triangle-alert-BWI8zlSJ.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 986,
+        "resourceSize": 819,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/rolldown-runtime-CbXtAM7H.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 928,
+        "resourceSize": 589,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/calculator-CK2VJ7XU.js",
+        "host": "levetidsberegner.dk",
+        "type": "Script",
+        "status": 200,
+        "transferSize": 871,
+        "resourceSize": 573,
+        "protocol": "h3"
+      },
+      {
+        "url": "https://levetidsberegner.dk/manifest.webmanifest",
+        "host": "levetidsberegner.dk",
+        "type": "Manifest",
+        "status": 200,
+        "transferSize": 865,
+        "resourceSize": 491,
+        "protocol": "h3"
+      }
+    ]
+  },
+  "diagnostics": {
+    "mainthread_work_ms": 1059,
+    "mainthread_breakdown": [
+      {
+        "group": "Other",
+        "ms": 373
+      },
+      {
+        "group": "Style & Layout",
+        "ms": 346
+      },
+      {
+        "group": "Script Evaluation",
+        "ms": 252
+      },
+      {
+        "group": "Rendering",
+        "ms": 56
+      },
+      {
+        "group": "Parse HTML & CSS",
+        "ms": 18
+      },
+      {
+        "group": "Script Parsing & Compilation",
+        "ms": 14
+      }
+    ],
+    "bootup_ms": 257,
+    "bootup_top": [
+      {
+        "url": "https://levetidsberegner.dk/levetid-beregner-danmark",
+        "total": 434,
+        "scripting": 16,
+        "scriptParseCompile": 8
+      },
+      {
+        "url": "Unattributable",
+        "total": 249,
+        "scripting": 11,
+        "scriptParseCompile": 0
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+        "total": 244,
+        "scripting": 200,
+        "scriptParseCompile": 2
+      },
+      {
+        "url": "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js",
+        "total": 76,
+        "scripting": 19,
+        "scriptParseCompile": 1
+      }
+    ],
+    "third_party": [],
+    "dom_size": null,
+    "long_tasks": [
+      {
+        "url": "https://levetidsberegner.dk/levetid-beregner-danmark",
+        "start": 889,
+        "dur": 138
+      },
+      {
+        "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+        "start": 2115,
+        "dur": 70
+      },
+      {
+        "url": "Unattributable",
+        "start": 797,
+        "dur": 63
+      }
+    ],
+    "lcp_element": null
+  },
+  "opportunities": [
+    {
+      "id": "layout-shifts",
+      "title": "Avoid large layout shifts",
+      "score": 0,
+      "displayValue": "1 layout shift found",
+      "metricSavings": {
+        "CLS": 1
+      },
+      "overallSavingsMs": null,
+      "overallSavingsBytes": null
+    },
+    {
+      "id": "unused-javascript",
+      "title": "Reduce unused JavaScript",
+      "score": 0.5,
+      "displayValue": "Est savings of 26 KiB",
+      "metricSavings": {
+        "FCP": 0,
+        "LCP": 0
+      },
+      "overallSavingsMs": null,
+      "overallSavingsBytes": 26474
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "score": 0.5,
+      "displayValue": "Est savings of 73 KiB",
+      "metricSavings": {
+        "FCP": 0,
+        "LCP": 0
+      },
+      "overallSavingsMs": null,
+      "overallSavingsBytes": null
+    },
+    {
+      "id": "cls-culprits-insight",
+      "title": "Layout shift culprits",
+      "score": 0,
+      "displayValue": null,
+      "metricSavings": {
+        "CLS": 0
+      },
+      "overallSavingsMs": null,
+      "overallSavingsBytes": null
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree",
+      "score": 0,
+      "displayValue": null,
+      "metricSavings": {
+        "LCP": 0
+      },
+      "overallSavingsMs": null,
+      "overallSavingsBytes": null
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render-blocking requests",
+      "score": 0.5,
+      "displayValue": null,
+      "metricSavings": {
+        "FCP": 0,
+        "LCP": 0
+      },
+      "overallSavingsMs": null,
+      "overallSavingsBytes": null
+    }
+  ],
+  "failing": [
+    {
+      "id": "cumulative-layout-shift",
+      "title": "Cumulative Layout Shift",
+      "score": 0.02,
+      "categories": [
+        "performance",
+        "agentic-browsing"
+      ],
+      "displayValue": "1",
+      "itemCount": 1,
+      "sample": []
+    },
+    {
+      "id": "layout-shifts",
+      "title": "Avoid large layout shifts",
+      "score": 0,
+      "categories": [
+        "performance"
+      ],
+      "displayValue": "1 layout shift found",
+      "itemCount": 1,
+      "sample": [
+        {
+          "selector": "body",
+          "snippet": "<body>"
+        }
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+      "score": 0,
+      "categories": [
+        "accessibility"
+      ],
+      "displayValue": null,
+      "itemCount": 17,
+      "sample": [
+        {
+          "selector": "div.card-content > div.grid > div.space-y-4 > h3.text-lg",
+          "snippet": "<h3 class=\"text-lg font-semibold text-green-600 dark:text-green-400 flex items-center…\">",
+          "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 3.21 (foreground color: #00a63e, background color: #ffffff, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "selector": "div.space-y-4 > div.space-y-3 > div.flex > span.text-lg",
+          "snippet": "<span class=\"text-lg font-bold text-green-600 dark:text-green-400\">",
+          "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 2.94 (foreground color: #00a63e, background color: #e5faee, font size: 13.5pt (18px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "selector": "div.space-y-4 > div.space-y-3 > div.flex > span.text-lg",
+          "snippet": "<span class=\"text-lg font-bold text-green-600 dark:text-green-400\">",
+          "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 2.94 (foreground color: #00a63e, background color: #e5faee, font size: 13.5pt (18px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "selector": "div.space-y-4 > div.space-y-3 > div.flex > span.text-lg",
+          "snippet": "<span class=\"text-lg font-bold text-green-600 dark:text-green-400\">",
+          "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 2.94 (foreground color: #00a63e, background color: #e5faee, font size: 13.5pt (18px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "selector": "div.card-content > div.grid > div.space-y-4 > h4.font-semibold",
+          "snippet": "<h4 class=\"font-semibold text-destructive flex items-center gap-2\">",
+          "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 3.66 (foreground color: #ef4444, background color: #fbfcfd, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "unused-javascript",
+      "title": "Reduce unused JavaScript",
+      "score": 0.5,
+      "categories": [
+        "performance"
+      ],
+      "displayValue": "Est savings of 26 KiB",
+      "itemCount": 1,
+      "sample": [
+        {
+          "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js"
+        }
+      ]
+    },
+    {
+      "id": "robots-txt",
+      "title": "robots.txt is not valid",
+      "score": 0,
+      "categories": [
+        "seo"
+      ],
+      "displayValue": "63 errors found",
+      "itemCount": 63,
+      "sample": []
+    },
+    {
+      "id": "llms-txt",
+      "title": "llms.txt does not follow recommendations",
+      "score": 0,
+      "categories": [
+        "agentic-browsing"
+      ],
+      "displayValue": null,
+      "itemCount": 2,
+      "sample": []
+    },
+    {
+      "id": "ard-schema",
+      "title": "ARD manifest is invalid",
+      "score": 0,
+      "categories": [
+        "agentic-browsing"
+      ],
+      "displayValue": null,
+      "itemCount": 1,
+      "sample": []
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "score": 0.5,
+      "categories": [
+        "performance"
+      ],
+      "displayValue": "Est savings of 73 KiB",
+      "itemCount": 13,
+      "sample": [
+        {
+          "url": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js"
+        },
+        {
+          "url": "https://levetidsberegner.dk/assets/router-CBLz_W24.js"
+        },
+        {
+          "url": "https://levetidsberegner.dk/assets/index-C-Av8HlY.css"
+        },
+        {
+          "url": "https://levetidsberegner.dk/assets/ThemeToggle-Czrs-HhS.js"
+        },
+        {
+          "url": "https://levetidsberegner.dk/assets/DanmarkPage-ByDEqYZO.js"
+        }
+      ]
+    },
+    {
+      "id": "cls-culprits-insight",
+      "title": "Layout shift culprits",
+      "score": 0,
+      "categories": [
+        "performance"
+      ],
+      "displayValue": null,
+      "itemCount": 1,
+      "sample": []
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree",
+      "score": 0,
+      "categories": [
+        "performance"
+      ],
+      "displayValue": null,
+      "itemCount": 3,
+      "sample": []
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render-blocking requests",
+      "score": 0.5,
+      "categories": [
+        "performance"
+      ],
+      "displayValue": null,
+      "itemCount": 3,
+      "sample": [
+        {
+          "url": "https://levetidsberegner.dk/assets/index-C-Av8HlY.css"
+        },
+        {
+          "url": "https://levetidsberegner.dk/registerSW.js"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+        }
+      ]
+    }
+  ]
+}

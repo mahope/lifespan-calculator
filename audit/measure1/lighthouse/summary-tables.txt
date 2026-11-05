@@ -1,0 +1,50 @@
+| page | form | n | perf | a11y | BP | SEO | LCP ms | CLS | TBT ms | FCP ms | SI ms | transfer KB | JS KB | reqs |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| danmark | mobile | 1 | 74 | 95 | 100 | 92 | 1697 | 1 | 20 | 1697 | 1697 | 172 | 98 | 20 |
+| danmark | desktop | 1 | 77 | 95 | 100 | 92 | 465 | 0.7041 | 0 | 465 | 657 | 172 | 98 | 20 |
+| dodsalder | mobile | 1 | 75 | 95 | 100 | 92 | 1624 | 1 | 28 | 1624 | 1624 | 173 | 99 | 21 |
+| dodsalder | desktop | 1 | 76 | 95 | 100 | 92 | 599 | 0.7041 | 0 | 599 | 752 | 173 | 99 | 21 |
+| home | mobile | 3 | 74 | 96 | 100 | 92 | 1684 | 1 | 27 | 1684 | 1684 | 195 | 121 | 19 |
+| home | desktop | 3 | 77 | 96 | 100 | 92 | 457 | 0.7041 | 0 | 457 | 546 | 195 | 121 | 19 |
+| hvor-lang-tid | mobile | 1 | 74 | 95 | 100 | 92 | 1677 | 1 | 10 | 1677 | 1677 | 172 | 98 | 21 |
+| hvor-lang-tid | desktop | 1 | 77 | 95 | 100 | 92 | 463 | 0.7041 | 0 | 463 | 611 | 172 | 98 | 21 |
+| livsstil | mobile | 1 | 75 | 95 | 100 | 92 | 1599 | 1 | 40 | 1599 | 1599 | 171 | 97 | 18 |
+| livsstil | desktop | 1 | 77 | 95 | 100 | 92 | 458 | 0.7041 | 0 | 458 | 579 | 171 | 97 | 18 |
+
+FAILING:
+cumulative-layout-shift [performance,agentic-browsing] runs=14/14 0.704
+layout-shifts [performance] runs=14/14 1 layout shift found
+color-contrast [accessibility] runs=14/14 
+unused-javascript [performance] runs=14/14 Est savings of 26 KiB
+robots-txt [seo] runs=14/14 63 errors found
+llms-txt [agentic-browsing] runs=14/14 
+ard-schema [agentic-browsing] runs=14/14 
+cache-insight [performance] runs=14/14 Est savings of 73 KiB
+cls-culprits-insight [performance] runs=14/14 
+network-dependency-tree-insight [performance] runs=14/14 
+render-blocking-insight [performance] runs=14/14 Est savings of 210 ms
+forced-reflow-insight [performance] runs=1/14 
+
+OPPS home mobile run1:
+server-response-time score=1 Root document took 190 ms {"FCP":100,"LCP":100}
+mainthread-work-breakdown score=1 1.5 s {"TBT":50}
+bootup-time score=1 0.4 s {"TBT":50}
+layout-shifts score=0 1 layout shift found {"CLS":1}
+long-tasks score=1 4 long tasks found {"TBT":50}
+unused-javascript score=0.5 Est savings of 22 KiB {"FCP":0,"LCP":0}
+cache-insight score=0.5 Est savings of 88 KiB {"FCP":0,"LCP":0}
+cls-culprits-insight score=0  {"CLS":0}
+network-dependency-tree-insight score=0  {"LCP":0}
+render-blocking-insight score=0 Est savings of 680 ms {"FCP":700,"LCP":700}
+
+OPPS home desktop run1:
+layout-shifts score=0 1 layout shift found {"CLS":0.704}
+unused-javascript score=0.5 Est savings of 22 KiB {"FCP":0,"LCP":0}
+cache-insight score=0.5 Est savings of 88 KiB {"FCP":0,"LCP":0}
+cls-culprits-insight score=0  {"CLS":0}
+network-dependency-tree-insight score=0  {"LCP":0}
+render-blocking-insight score=0 Est savings of 210 ms {"FCP":200,"LCP":200}
+
+MAINTHREAD home mobile: [{"group":"Other","ms":612},{"group":"Script Evaluation","ms":458},{"group":"Style & Layout","ms":357},{"group":"Rendering","ms":65},{"group":"Parse HTML & CSS","ms":19},{"group":"Script Parsing & Compilation","ms":12}] bootup 429
+
+range perf home mobile 74/74/75 tbt 64/27/4 bench 1717.5/1342.5/1774 load 15.23 18.64 22.20 | 13.59 18.12 21.97 | 11.37 17.41 21.68

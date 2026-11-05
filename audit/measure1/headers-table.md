@@ -16,8 +16,8 @@
 | /privatlivspolitik.html | 301  |  | - / 0 vs 0 | (none) | (none) |
 | /cookiepolitik.html | 301  |  | - / 0 vs 0 | (none) | (none) |
 
-| URL | HSTS | CSP | XCTO | XFO | Referrer-Policy | Permissions-Policy | COOP | CORP |
-|---|---|---|---|---|---|---|---|---|
+| URL | HSTS | CSP | X-Content-Type-Options | X-Frame-Options | Referrer-Policy | Permissions-Policy | COOP | CORP | COEP |
+|---|---|---|---|---|---|---|---|---|---|
 | / | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING |
 | /assets/index-Dahj3lkh.js | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING |
 | /assets/index-C-Av8HlY.css | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING | MISSING |

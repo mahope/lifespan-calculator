@@ -1,0 +1,212 @@
+{
+  "light": {
+    "count": 10,
+    "rows": [
+      {
+        "target": "de\"] > .active.mode-btn[role=\"radio\"] > .text-left.w-full > .text-xs.text-muted-foreground",
+        "ratio": 3.89,
+        "fg": "#d3e0fb",
+        "bg": "#2463eb",
+        "size": "9.0pt (12px)",
+        "text": "<div class=\"text-xs text-muted-foreground\">Hurtig beregning</div>"
+      },
+      {
+        "target": "up\"] > .active.mode-btn[role=\"radio\"] > .text-left.w-full > .text-xs.text-muted-foreground",
+        "ratio": 3.89,
+        "fg": "#d3e0fb",
+        "bg": "#2463eb",
+        "size": "9.0pt (12px)",
+        "text": "<div class=\"text-xs text-muted-foreground\">Hurtig</div>"
+      },
+      {
+        "target": ".space-y-4:nth-child(1) > .leading-relaxed",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "10.5pt (14px)",
+        "text": "<p class=\"text-muted-foreground text-sm leading-relaxed\">"
+      },
+      {
+        "target": ".space-y-4:nth-child(2) > .leading-relaxed",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "10.5pt (14px)",
+        "text": "<p class=\"text-muted-foreground text-sm leading-relaxed\">"
+      },
+      {
+        "target": ".space-y-4:nth-child(3) > .leading-relaxed",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "10.5pt (14px)",
+        "text": "<p class=\"text-muted-foreground text-sm leading-relaxed\">"
+      },
+      {
+        "target": ".space-y-4:nth-child(4) > .leading-relaxed",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "10.5pt (14px)",
+        "text": "<p class=\"text-muted-foreground text-sm leading-relaxed\">"
+      },
+      {
+        "target": ".space-y-4:nth-child(5) > .leading-relaxed",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "10.5pt (14px)",
+        "text": "<p class=\"text-muted-foreground text-sm leading-relaxed\">Værktøjet ind"
+      },
+      {
+        "target": ".italic",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "10.5pt (14px)",
+        "text": "<p class=\"text-sm text-muted-foreground italic\">Denne tjeneste er kun "
+      },
+      {
+        "target": ".pt-8 > .space-y-2 > p:nth-child(1)",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "10.5pt (14px)",
+        "text": "<p class=\"text-sm text-muted-foreground\">🌐 Udviklet af <a href=\"https"
+      },
+      {
+        "target": ".space-y-2 > .text-xs",
+        "ratio": 4.48,
+        "fg": "#65758b",
+        "bg": "#f8fafc",
+        "size": "9.0pt (12px)",
+        "text": "<p class=\"text-xs text-muted-foreground\">Specialiseret i WordPress web"
+      }
+    ]
+  },
+  "dark": {
+    "count": 15,
+    "rows": [
+      {
+        "target": "de\"] > .active.mode-btn[role=\"radio\"] > .text-left.w-full > .text-xs.text-muted-foreground",
+        "ratio": 3.79,
+        "fg": "#182c52",
+        "bg": "#3c83f6",
+        "size": "9.0pt (12px)",
+        "text": "<div class=\"text-xs text-muted-foreground\">Hurtig beregning</div>"
+      },
+      {
+        "target": "up\"] > .active.mode-btn[role=\"radio\"] > .text-left.w-full > .text-xs.text-muted-foreground",
+        "ratio": 3.79,
+        "fg": "#182c52",
+        "bg": "#3c83f6",
+        "size": "9.0pt (12px)",
+        "text": "<div class=\"text-xs text-muted-foreground\">Hurtig</div>"
+      },
+      {
+        "target": "p:nth-child(3) > .hover\\:underline[href$=\"levetid-beregner-danmark\"][data-discover=\"true\"]",
+        "ratio": 4.48,
+        "fg": "#3c83f6",
+        "bg": "#162031",
+        "size": "10.5pt (14px)",
+        "text": "<a class=\"text-primary hover:underline\" href=\"/levetid-beregner-danmar"
+      },
+      {
+        "target": "a[href=\"/hvor-lang-tid-har-jeg-tilbage\"]",
+        "ratio": 4.48,
+        "fg": "#3c83f6",
+        "bg": "#162031",
+        "size": "10.5pt (14px)",
+        "text": "<a class=\"text-primary hover:underline text-sm inline-flex items-cente"
+      },
+      {
+        "target": "a[href$=\"dodsalder-calculator\"]",
+        "ratio": 4.48,
+        "fg": "#3c83f6",
+        "bg": "#162031",
+        "size": "10.5pt (14px)",
+        "text": "<a class=\"text-primary hover:underline text-sm inline-flex items-cente"
+      },
+      {
+        "target": "a[href$=\"livsstil-og-levetid\"]",
+        "ratio": 4.48,
+        "fg": "#3c83f6",
+        "bg": "#162031",
+        "size": "10.5pt (14px)",
+        "text": "<a class=\"text-primary hover:underline text-sm inline-flex items-cente"
+      },
+      {
+        "target": ".min-h-\\[44px\\].py-2[href$=\"levetid-beregner-danmark\"]",
+        "ratio": 4.48,
+        "fg": "#3c83f6",
+        "bg": "#162031",
+        "size": "10.5pt (14px)",
+        "text": "<a class=\"text-primary hover:underline text-sm inline-flex items-cente"
+      },
+      {
+        "target": ".hover\\:underline[href$=\"mahope.dk\"][target=\"_blank\"]",
+        "ratio": 4.48,
+        "fg": "#3c83f6",
+        "bg": "#162031",
+        "size": "10.5pt (14px)",
+        "text": "<a href=\"https://mahope.dk\" target=\"_blank\" rel=\"noopener noreferrer\" "
+      },
+      {
+        "target": "body > footer > div > div",
+        "ratio": 1.73,
+        "fg": "#374151",
+        "bg": "#0f1729",
+        "size": "12.0pt (16px)",
+        "text": "<div>© 2026 Mahope.dk – Gratis online værktøjer</div>"
+      },
+      {
+        "target": "a[href$=\"privatlivspolitik.html\"]",
+        "ratio": 1.73,
+        "fg": "#374151",
+        "bg": "#0f1729",
+        "size": "12.0pt (16px)",
+        "text": "<a href=\"/privatlivspolitik.html\">Privatlivspolitik</a>"
+      },
+      {
+        "target": "a[href$=\"cookiepolitik.html\"]",
+        "ratio": 1.73,
+        "fg": "#374151",
+        "bg": "#0f1729",
+        "size": "12.0pt (16px)",
+        "text": "<a href=\"/cookiepolitik.html\">Cookiepolitik</a>"
+      },
+      {
+        "target": "section > h2",
+        "ratio": 1.73,
+        "fg": "#374151",
+        "bg": "#0f1729",
+        "size": "15.0pt (20px)",
+        "text": "<h2 style=\"font-size:1.25rem;margin-bottom:.5rem\">Om dette værktøj</h2"
+      },
+      {
+        "target": "section > p:nth-child(2)",
+        "ratio": 1.73,
+        "fg": "#374151",
+        "bg": "#0f1729",
+        "size": "12.0pt (16px)",
+        "text": "<p>Dette gratis online værktøj er lavet for at gøre hverdagen lidt let"
+      },
+      {
+        "target": "section > p:nth-child(3)",
+        "ratio": 1.73,
+        "fg": "#374151",
+        "bg": "#0f1729",
+        "size": "12.0pt (16px)",
+        "text": "<p>"
+      },
+      {
+        "target": "p:nth-child(4)",
+        "ratio": 1.73,
+        "fg": "#374151",
+        "bg": "#0f1729",
+        "size": "12.0pt (16px)",
+        "text": "<p>Formålet er at samle små, nyttige værktøjer ét sted, så du ikke beh"
+      }
+    ]
+  }
+}

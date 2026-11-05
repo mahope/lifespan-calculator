@@ -1,0 +1,755 @@
+{
+  "profile": {
+    "mobile": {
+      "userAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+      "viewport": {
+        "width": 412,
+        "height": 892
+      },
+      "deviceScaleFactor": 2.625,
+      "isMobile": true,
+      "hasTouch": true
+    },
+    "net": {
+      "offline": false,
+      "latency": 60,
+      "downloadThroughput": 1179648,
+      "uploadThroughput": 196608
+    },
+    "cpu": 4,
+    "n": 3,
+    "node": "v24.22.2",
+    "cores": 16
+  },
+  "runs": [
+    {
+      "scenario": "mobile-4g-firstvisit-banner",
+      "loadavg_start": 39.03,
+      "loadavg_end": 39.27,
+      "goto_load_ms": 617,
+      "fcp": 496,
+      "lcp": 496,
+      "lcp_el": {
+        "t": 496,
+        "size": 69938,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Værktøjet er udviklet med fokus på enkelhed, hasti",
+        "url": ""
+      },
+      "cls_total": 0,
+      "cls_session": 0,
+      "cls_entries": [],
+      "longtasks_pre": 2,
+      "tbt_like_ms": 122,
+      "longtasks_pre_top": [
+        {
+          "t": 478.4000000022352,
+          "d": 123
+        },
+        {
+          "t": 610.1000000014901,
+          "d": 99
+        }
+      ],
+      "nav": {
+        "ttfb": 79.5,
+        "dcl": 594.3000000007451,
+        "load": 597.6999999992549,
+        "resources": 15,
+        "transfer": 133780
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1
+    },
+    {
+      "scenario": "mobile-4g-firstvisit-banner",
+      "loadavg_start": 39.27,
+      "loadavg_end": 39.56,
+      "goto_load_ms": 642,
+      "fcp": 480,
+      "lcp": 480,
+      "lcp_el": {
+        "t": 480,
+        "size": 69938,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Værktøjet er udviklet med fokus på enkelhed, hasti",
+        "url": ""
+      },
+      "cls_total": 0,
+      "cls_session": 0,
+      "cls_entries": [],
+      "longtasks_pre": 2,
+      "tbt_like_ms": 178,
+      "longtasks_pre_top": [
+        {
+          "t": 465.30000000074506,
+          "d": 172
+        },
+        {
+          "t": 647.3000000007451,
+          "d": 106
+        }
+      ],
+      "nav": {
+        "ttfb": 80.80000000074506,
+        "dcl": 631.3000000007451,
+        "load": 634.3000000007451,
+        "resources": 15,
+        "transfer": 133780
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1
+    },
+    {
+      "scenario": "mobile-4g-firstvisit-banner",
+      "loadavg_start": 39.56,
+      "loadavg_end": 39.28,
+      "goto_load_ms": 581,
+      "fcp": 440,
+      "lcp": 440,
+      "lcp_el": {
+        "t": 440,
+        "size": 69938,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Værktøjet er udviklet med fokus på enkelhed, hasti",
+        "url": ""
+      },
+      "cls_total": 0,
+      "cls_session": 0,
+      "cls_entries": [],
+      "longtasks_pre": 2,
+      "tbt_like_ms": 110,
+      "longtasks_pre_top": [
+        {
+          "t": 434.69999999925494,
+          "d": 130
+        },
+        {
+          "t": 573.2999999970198,
+          "d": 80
+        }
+      ],
+      "nav": {
+        "ttfb": 79.5,
+        "dcl": 560.6999999992549,
+        "load": 562.5999999977648,
+        "resources": 15,
+        "transfer": 133780
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1
+    },
+    {
+      "scenario": "mobile-4g-declined-submit",
+      "loadavg_start": 39.28,
+      "loadavg_end": 38.94,
+      "goto_load_ms": 673,
+      "fcp": 552,
+      "lcp": 552,
+      "lcp_el": {
+        "t": 552,
+        "size": 69938,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Værktøjet er udviklet med fokus på enkelhed, hasti",
+        "url": ""
+      },
+      "cls_total": 0,
+      "cls_session": 0,
+      "cls_entries": [],
+      "longtasks_pre": 2,
+      "tbt_like_ms": 133,
+      "longtasks_pre_top": [
+        {
+          "t": 524.0999999977648,
+          "d": 140
+        },
+        {
+          "t": 675.5999999977648,
+          "d": 93
+        }
+      ],
+      "nav": {
+        "ttfb": 91,
+        "dcl": 659.0999999977648,
+        "load": 662.0999999977648,
+        "resources": 15,
+        "transfer": 133780
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1,
+      "submit": {
+        "click_to_results_dom_ms": 572,
+        "click_to_results_paint_ms": 965,
+        "playwright_wall_ms": 1247,
+        "longtasks_after_click": 1,
+        "longtasks_after_click_total_ms": 249,
+        "blocking_ms_after_click": 199,
+        "longest_task_ms": 249,
+        "longtasks_in_idle_window_after_results": 0,
+        "idle_longest_ms": 0,
+        "inp_like_ms": 0,
+        "interaction_events": [],
+        "loaf_after_click": [
+          {
+            "t": 11086.099999997765,
+            "d": 59.400000002235174,
+            "block": 7,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 49.100000001490116
+              }
+            ]
+          },
+          {
+            "t": 7211,
+            "d": 54.29999999701977,
+            "block": 0,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 40.69999999925494
+              }
+            ]
+          },
+          {
+            "t": 16081.699999999255,
+            "d": 54.19999999925494,
+            "block": 0,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 42.900000002235174
+              }
+            ]
+          }
+        ],
+        "cls_after_click": 0,
+        "cls_total_after_results": 0.0001,
+        "cls_entries_after_click": [],
+        "dom_elements_after_results": 627,
+        "images": 0,
+        "url_after": "?g=male&a=40"
+      }
+    },
+    {
+      "scenario": "mobile-4g-declined-submit",
+      "loadavg_start": 40.16,
+      "loadavg_end": 40.38,
+      "goto_load_ms": 744,
+      "fcp": 556,
+      "lcp": 556,
+      "lcp_el": {
+        "t": 556,
+        "size": 69938,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Værktøjet er udviklet med fokus på enkelhed, hasti",
+        "url": ""
+      },
+      "cls_total": 0,
+      "cls_session": 0,
+      "cls_entries": [],
+      "longtasks_pre": 2,
+      "tbt_like_ms": 230,
+      "longtasks_pre_top": [
+        {
+          "t": 529.7999999970198,
+          "d": 209
+        },
+        {
+          "t": 764.7999999970198,
+          "d": 121
+        }
+      ],
+      "nav": {
+        "ttfb": 86.19999999925494,
+        "dcl": 726.8999999985099,
+        "load": 732.3999999985099,
+        "resources": 15,
+        "transfer": 133780
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1,
+      "submit": {
+        "click_to_results_dom_ms": 771,
+        "click_to_results_paint_ms": 1110,
+        "playwright_wall_ms": 1430,
+        "longtasks_after_click": 5,
+        "longtasks_after_click_total_ms": 1159,
+        "blocking_ms_after_click": 909,
+        "longest_task_ms": 778,
+        "longtasks_in_idle_window_after_results": 3,
+        "idle_longest_ms": 61,
+        "inp_like_ms": 0,
+        "interaction_events": [],
+        "loaf_after_click": [
+          {
+            "t": 6438.89999999851,
+            "d": 929,
+            "block": 776.8,
+            "scripts": [
+              {
+                "inv": "DIV#root.onsubmit",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 762.5999999977648
+              },
+              {
+                "inv": "ResizeObserverCallback",
+                "src": "https://levetidsberegner.dk/assets/HomePage-HZThNJx7.js",
+                "d": 42.19999999925494
+              }
+            ]
+          },
+          {
+            "t": 9552.29999999702,
+            "d": 78,
+            "block": 21,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 61
+              }
+            ]
+          },
+          {
+            "t": 12557.699999999255,
+            "d": 69.30000000074506,
+            "block": 13.8,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 55.19999999925494
+              }
+            ]
+          }
+        ],
+        "cls_after_click": 0,
+        "cls_total_after_results": 0.0001,
+        "cls_entries_after_click": [],
+        "dom_elements_after_results": 627,
+        "images": 0,
+        "url_after": "?g=male&a=40"
+      }
+    },
+    {
+      "scenario": "mobile-4g-declined-submit",
+      "loadavg_start": 41.34,
+      "loadavg_end": 40.59,
+      "goto_load_ms": 773,
+      "fcp": 588,
+      "lcp": 588,
+      "lcp_el": {
+        "t": 588,
+        "size": 69938,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Værktøjet er udviklet med fokus på enkelhed, hasti",
+        "url": ""
+      },
+      "cls_total": 0,
+      "cls_session": 0,
+      "cls_entries": [],
+      "longtasks_pre": 3,
+      "tbt_like_ms": 275,
+      "longtasks_pre_top": [
+        {
+          "t": 569.4000000022352,
+          "d": 198
+        },
+        {
+          "t": 783.1000000014901,
+          "d": 150
+        },
+        {
+          "t": 1953.300000000745,
+          "d": 77
+        }
+      ],
+      "nav": {
+        "ttfb": 88.40000000223517,
+        "dcl": 757,
+        "load": 762.1999999992549,
+        "resources": 15,
+        "transfer": 133780
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1,
+      "submit": {
+        "click_to_results_dom_ms": 797,
+        "click_to_results_paint_ms": 1247,
+        "playwright_wall_ms": 1592,
+        "longtasks_after_click": 5,
+        "longtasks_after_click_total_ms": 500,
+        "blocking_ms_after_click": 250,
+        "longest_task_ms": 268,
+        "longtasks_in_idle_window_after_results": 2,
+        "idle_longest_ms": 60,
+        "inp_like_ms": 0,
+        "interaction_events": [],
+        "loaf_after_click": [
+          {
+            "t": 8431.900000002235,
+            "d": 95.89999999850988,
+            "block": 31.9,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 67.59999999776483
+              }
+            ]
+          },
+          {
+            "t": 9025.699999999255,
+            "d": 69.40000000223517,
+            "block": 16.1,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 59.899999998509884
+              }
+            ]
+          },
+          {
+            "t": 12025.60000000149,
+            "d": 66.80000000074506,
+            "block": 8.9,
+            "scripts": [
+              {
+                "inv": "MessagePort.onmessage",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 49.30000000074506
+              }
+            ]
+          }
+        ],
+        "cls_after_click": 0,
+        "cls_total_after_results": 0.0001,
+        "cls_entries_after_click": [
+          {
+            "t": 10048.60000000149,
+            "v": 0.000014365634798862261,
+            "src": [
+              "SPAN.time-value"
+            ]
+          }
+        ],
+        "dom_elements_after_results": 627,
+        "images": 0,
+        "url_after": "?g=male&a=40"
+      }
+    },
+    {
+      "scenario": "desktop-unthrottled-declined-submit",
+      "loadavg_start": 41.46,
+      "loadavg_end": 41.99,
+      "goto_load_ms": 313,
+      "fcp": 288,
+      "lcp": 288,
+      "lcp_el": {
+        "t": 288,
+        "size": 62042,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Formålet er at samle små, nyttige værktøjer ét ste",
+        "url": ""
+      },
+      "cls_total": 0.625,
+      "cls_session": 0.625,
+      "cls_entries": [
+        {
+          "t": 323.80000000074506,
+          "v": 0.625,
+          "src": [
+            "BODY."
+          ]
+        }
+      ],
+      "longtasks_pre": 0,
+      "tbt_like_ms": 0,
+      "longtasks_pre_top": [],
+      "nav": {
+        "ttfb": 83.5,
+        "dcl": 291,
+        "load": 291.3999999985099,
+        "resources": 15,
+        "transfer": 133773
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1,
+      "submit": {
+        "click_to_results_dom_ms": 155,
+        "click_to_results_paint_ms": 245,
+        "playwright_wall_ms": 333,
+        "longtasks_after_click": 1,
+        "longtasks_after_click_total_ms": 163,
+        "blocking_ms_after_click": 113,
+        "longest_task_ms": 163,
+        "longtasks_in_idle_window_after_results": 0,
+        "idle_longest_ms": 0,
+        "inp_like_ms": 280,
+        "interaction_events": [
+          {
+            "name": "pointerup",
+            "d": 280,
+            "ps_minus_start": 4,
+            "proc": 0
+          },
+          {
+            "name": "click",
+            "d": 280,
+            "ps_minus_start": 4,
+            "proc": 155
+          }
+        ],
+        "loaf_after_click": [
+          {
+            "t": 4872.89999999851,
+            "d": 199.10000000149012,
+            "block": 124,
+            "scripts": [
+              {
+                "inv": "DIV#root.onsubmit",
+                "src": "https://levetidsberegner.dk/assets/index-Dahj3lkh.js",
+                "d": 153.89999999850988
+              },
+              {
+                "inv": "ResizeObserverCallback",
+                "src": "https://levetidsberegner.dk/assets/HomePage-HZThNJx7.js",
+                "d": 8.100000001490116
+              }
+            ]
+          }
+        ],
+        "cls_after_click": 0,
+        "cls_total_after_results": 0.625,
+        "cls_entries_after_click": [],
+        "dom_elements_after_results": 627,
+        "images": 0,
+        "url_after": "?g=male&a=40"
+      }
+    },
+    {
+      "scenario": "desktop-unthrottled-declined-submit",
+      "loadavg_start": 36.39,
+      "loadavg_end": 34.67,
+      "goto_load_ms": 231,
+      "fcp": 208,
+      "lcp": 208,
+      "lcp_el": {
+        "t": 208,
+        "size": 62042,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Formålet er at samle små, nyttige værktøjer ét ste",
+        "url": ""
+      },
+      "cls_total": 0.625,
+      "cls_session": 0.625,
+      "cls_entries": [
+        {
+          "t": 250.39999999850988,
+          "v": 0.625,
+          "src": [
+            "BODY."
+          ]
+        }
+      ],
+      "longtasks_pre": 0,
+      "tbt_like_ms": 0,
+      "longtasks_pre_top": [],
+      "nav": {
+        "ttfb": 61.69999999925494,
+        "dcl": 219.39999999850988,
+        "load": 220.10000000149012,
+        "resources": 15,
+        "transfer": 133773
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1,
+      "submit": {
+        "click_to_results_dom_ms": 96,
+        "click_to_results_paint_ms": 164,
+        "playwright_wall_ms": 251,
+        "longtasks_after_click": 1,
+        "longtasks_after_click_total_ms": 102,
+        "blocking_ms_after_click": 52,
+        "longest_task_ms": 102,
+        "longtasks_in_idle_window_after_results": 0,
+        "idle_longest_ms": 0,
+        "inp_like_ms": 200,
+        "interaction_events": [
+          {
+            "name": "pointerup",
+            "d": 200,
+            "ps_minus_start": 5,
+            "proc": 0
+          },
+          {
+            "name": "click",
+            "d": 200,
+            "ps_minus_start": 5,
+            "proc": 96
+          }
+        ],
+        "loaf_after_click": [],
+        "cls_after_click": 0,
+        "cls_total_after_results": 0.625,
+        "cls_entries_after_click": [],
+        "dom_elements_after_results": 627,
+        "images": 0,
+        "url_after": "?g=male&a=40"
+      }
+    },
+    {
+      "scenario": "desktop-unthrottled-declined-submit",
+      "loadavg_start": 30.66,
+      "loadavg_end": 29.4,
+      "goto_load_ms": 239,
+      "fcp": 220,
+      "lcp": 220,
+      "lcp_el": {
+        "t": 220,
+        "size": 62042,
+        "tag": "P",
+        "cls": "",
+        "id": "",
+        "text": "Formålet er at samle små, nyttige værktøjer ét ste",
+        "url": ""
+      },
+      "cls_total": 0.625,
+      "cls_session": 0.625,
+      "cls_entries": [
+        {
+          "t": 251.30000000074506,
+          "v": 0.625,
+          "src": [
+            "BODY."
+          ]
+        }
+      ],
+      "longtasks_pre": 0,
+      "tbt_like_ms": 0,
+      "longtasks_pre_top": [],
+      "nav": {
+        "ttfb": 65.59999999776483,
+        "dcl": 223.89999999850988,
+        "load": 224.59999999776483,
+        "resources": 15,
+        "transfer": 133773
+      },
+      "console": [
+        "error: Failed to load resource: net::ERR_FAILED",
+        "warning: Service Worker registration blocked by Playwright"
+      ],
+      "blocked": 1,
+      "submit": {
+        "click_to_results_dom_ms": 96,
+        "click_to_results_paint_ms": 155,
+        "playwright_wall_ms": 231,
+        "longtasks_after_click": 0,
+        "longtasks_after_click_total_ms": 0,
+        "blocking_ms_after_click": 0,
+        "longest_task_ms": 0,
+        "longtasks_in_idle_window_after_results": 0,
+        "idle_longest_ms": 0,
+        "inp_like_ms": 0,
+        "interaction_events": [],
+        "loaf_after_click": [],
+        "cls_after_click": 0,
+        "cls_total_after_results": 0.625,
+        "cls_entries_after_click": [
+          {
+            "t": 11705.599999997765,
+            "v": 0.000007112630208333333,
+            "src": [
+              "SPAN.time-value"
+            ]
+          }
+        ],
+        "dom_elements_after_results": 627,
+        "images": 0,
+        "url_after": "?g=male&a=40"
+      }
+    }
+  ],
+  "medians": {
+    "mobile-4g-firstvisit-banner": {
+      "n": 3,
+      "fcp": 480,
+      "lcp": 480,
+      "cls": 0,
+      "tbt_like_ms": 122,
+      "load_ms": 597.6999999992549
+    },
+    "mobile-4g-declined-submit": {
+      "n": 3,
+      "fcp": 556,
+      "lcp": 556,
+      "cls": 0,
+      "tbt_like_ms": 230,
+      "load_ms": 732.3999999985099,
+      "click_to_results_paint_ms": 1110,
+      "blocking_ms_after_click": 250,
+      "longest_task_ms": 268,
+      "inp_like_ms": 0,
+      "cls_after_click": 0
+    },
+    "desktop-unthrottled-declined-submit": {
+      "n": 3,
+      "fcp": 220,
+      "lcp": 220,
+      "cls": 0.625,
+      "tbt_like_ms": 0,
+      "load_ms": 224.59999999776483,
+      "click_to_results_paint_ms": 164,
+      "blocking_ms_after_click": 52,
+      "longest_task_ms": 102,
+      "inp_like_ms": 200,
+      "cls_after_click": 0
+    }
+  }
+}

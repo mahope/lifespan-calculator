@@ -1,0 +1,298 @@
+{
+  "overflow_result_state": {
+    "320": {
+      "vw": 320,
+      "docScrollWidth": 354,
+      "bodyScrollWidth": 354,
+      "count": 0,
+      "sample": []
+    },
+    "390": {
+      "vw": 390,
+      "docScrollWidth": 401,
+      "bodyScrollWidth": 401,
+      "count": 0,
+      "sample": []
+    }
+  },
+  "layout_shift": {
+    "playwright-chromium-mobile": {
+      "ls": [
+        {
+          "t": 320,
+          "v": 1,
+          "recentInput": true,
+          "src": [
+            {
+              "node": "BODY. \"Indlæser...\n\n  \n    © 202\"",
+              "prev": {
+                "t": 32,
+                "l": 0,
+                "w": 412,
+                "h": 860
+              },
+              "cur": {
+                "t": 0,
+                "l": 0,
+                "w": 412,
+                "h": 892
+              }
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "t": 102,
+          "k": "-1/-1",
+          "rootChildren": -1,
+          "rootText": "",
+          "footTop": -1
+        },
+        {
+          "t": 235,
+          "k": "0/32",
+          "rootChildren": 0,
+          "rootText": "",
+          "footTop": 32
+        },
+        {
+          "t": 318,
+          "k": "1/924",
+          "rootChildren": 1,
+          "rootText": "Indlæser...",
+          "footTop": 924
+        },
+        {
+          "t": 687,
+          "k": "1/3867",
+          "rootChildren": 1,
+          "rootText": "Levetidsberegner\n\nBe",
+          "footTop": 3867
+        }
+      ],
+      "total": 0
+    },
+    "playwright-chromium-desktop": {
+      "ls": [
+        {
+          "t": 312,
+          "v": 0.625,
+          "recentInput": false,
+          "src": [
+            {
+              "node": "BODY. \"Indlæser...\n\n  \n    © 202\"",
+              "prev": {
+                "t": 32,
+                "l": 0,
+                "w": 1440,
+                "h": 868
+              },
+              "cur": {
+                "t": 0,
+                "l": 0,
+                "w": 1440,
+                "h": 900
+              }
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "t": 87,
+          "k": "-1/-1",
+          "rootChildren": -1,
+          "rootText": "",
+          "footTop": -1
+        },
+        {
+          "t": 233,
+          "k": "0/32",
+          "rootChildren": 0,
+          "rootText": "",
+          "footTop": 32
+        },
+        {
+          "t": 310,
+          "k": "1/932",
+          "rootChildren": 1,
+          "rootText": "Indlæser...",
+          "footTop": 932
+        },
+        {
+          "t": 673,
+          "k": "1/2708",
+          "rootChildren": 1,
+          "rootText": "Levetidsberegner\n\nBe",
+          "footTop": 2708
+        }
+      ],
+      "total": 0.625
+    },
+    "google-chrome-157-mobile": {
+      "ls": [
+        {
+          "t": 341,
+          "v": 1,
+          "recentInput": true,
+          "src": [
+            {
+              "node": "BODY. \"Indlæser...\n\n  \n    © 202\"",
+              "prev": {
+                "t": 32,
+                "l": 0,
+                "w": 412,
+                "h": 860
+              },
+              "cur": {
+                "t": 0,
+                "l": 0,
+                "w": 412,
+                "h": 892
+              }
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "t": 118,
+          "k": "-1/-1",
+          "rootChildren": -1,
+          "rootText": "",
+          "footTop": -1
+        },
+        {
+          "t": 246,
+          "k": "0/32",
+          "rootChildren": 0,
+          "rootText": "",
+          "footTop": 32
+        },
+        {
+          "t": 338,
+          "k": "1/924",
+          "rootChildren": 1,
+          "rootText": "Indlæser...",
+          "footTop": 924
+        },
+        {
+          "t": 713,
+          "k": "1/3867",
+          "rootChildren": 1,
+          "rootText": "Levetidsberegner\n\nBe",
+          "footTop": 3867
+        }
+      ],
+      "total": 0
+    },
+    "google-chrome-157-desktop": {
+      "ls": [
+        {
+          "t": 270,
+          "v": 0.625,
+          "recentInput": false,
+          "src": [
+            {
+              "node": "BODY. \"Indlæser...\n\n  \n    © 202\"",
+              "prev": {
+                "t": 32,
+                "l": 0,
+                "w": 1440,
+                "h": 868
+              },
+              "cur": {
+                "t": 0,
+                "l": 0,
+                "w": 1440,
+                "h": 900
+              }
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "t": 92,
+          "k": "-1/-1",
+          "rootChildren": -1,
+          "rootText": "",
+          "footTop": -1
+        },
+        {
+          "t": 190,
+          "k": "0/32",
+          "rootChildren": 0,
+          "rootText": "",
+          "footTop": 32
+        },
+        {
+          "t": 268,
+          "k": "1/932",
+          "rootChildren": 1,
+          "rootText": "Indlæser...",
+          "footTop": 932
+        },
+        {
+          "t": 619,
+          "k": "1/2708",
+          "rootChildren": 1,
+          "rootText": "Levetidsberegner\n\nBe",
+          "footTop": 2708
+        }
+      ],
+      "total": 0.625
+    }
+  },
+  "banner": {
+    "390": {
+      "banner": {
+        "top": 665,
+        "height": 135,
+        "vh": 800,
+        "pctViewport": 17
+      },
+      "ctaAfterScroll": {
+        "top": 748,
+        "bottom": 792,
+        "topElementId": "DIV",
+        "coveredByBanner": true
+      },
+      "ageInputAtLoad": {
+        "top": 685,
+        "bottom": 729,
+        "overlapsBanner": true
+      },
+      "pageBottom": {
+        "sectionBottom": 768,
+        "bannerTop": 665,
+        "lastLinesCovered": true
+      }
+    },
+    "1440": {
+      "banner": {
+        "top": 736,
+        "height": 64,
+        "vh": 800,
+        "pctViewport": 8
+      },
+      "ctaAfterScroll": {
+        "top": 744,
+        "bottom": 792,
+        "topElementId": "SPAN",
+        "coveredByBanner": true
+      },
+      "ageInputAtLoad": {
+        "top": 764,
+        "bottom": 812,
+        "overlapsBanner": true
+      },
+      "pageBottom": {
+        "sectionBottom": 768,
+        "bannerTop": 736,
+        "lastLinesCovered": true
+      }
+    }
+  }
+}

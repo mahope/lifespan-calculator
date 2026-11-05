@@ -1,0 +1,258 @@
+[
+  {
+    "name": "home-initial-390-light",
+    "violations": 4,
+    "nodes": 34,
+    "ids": "color-contrast(serious,10) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-initial-390-dark",
+    "violations": 4,
+    "nodes": 39,
+    "ids": "color-contrast(serious,15) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-initial-1440-light",
+    "violations": 4,
+    "nodes": 34,
+    "ids": "color-contrast(serious,10) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-initial-1440-dark",
+    "violations": 4,
+    "nodes": 39,
+    "ids": "color-contrast(serious,15) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-result-390-light",
+    "violations": 4,
+    "nodes": 32,
+    "ids": "color-contrast(serious,8) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-result-390-dark",
+    "violations": 4,
+    "nodes": 37,
+    "ids": "color-contrast(serious,13) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-result-1440-light",
+    "violations": 4,
+    "nodes": 32,
+    "ids": "color-contrast(serious,8) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-result-1440-dark",
+    "violations": 4,
+    "nodes": 37,
+    "ids": "color-contrast(serious,13) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "hvor-lang-tid-390-light",
+    "violations": 4,
+    "nodes": 33,
+    "ids": "color-contrast(serious,9) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "hvor-lang-tid-390-dark",
+    "violations": 4,
+    "nodes": 37,
+    "ids": "color-contrast(serious,13) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "hvor-lang-tid-1440-light",
+    "violations": 4,
+    "nodes": 33,
+    "ids": "color-contrast(serious,9) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "hvor-lang-tid-1440-dark",
+    "violations": 4,
+    "nodes": 37,
+    "ids": "color-contrast(serious,13) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "dodsalder-390-light",
+    "violations": 4,
+    "nodes": 35,
+    "ids": "color-contrast(serious,11) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "dodsalder-390-dark",
+    "violations": 4,
+    "nodes": 38,
+    "ids": "color-contrast(serious,14) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "dodsalder-1440-light",
+    "violations": 4,
+    "nodes": 35,
+    "ids": "color-contrast(serious,11) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "dodsalder-1440-dark",
+    "violations": 4,
+    "nodes": 38,
+    "ids": "color-contrast(serious,14) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "livsstil-390-light",
+    "violations": 4,
+    "nodes": 39,
+    "ids": "color-contrast(serious,15) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "livsstil-390-dark",
+    "violations": 4,
+    "nodes": 38,
+    "ids": "color-contrast(serious,14) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "livsstil-1440-light",
+    "violations": 4,
+    "nodes": 39,
+    "ids": "color-contrast(serious,15) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "livsstil-1440-dark",
+    "violations": 4,
+    "nodes": 38,
+    "ids": "color-contrast(serious,14) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "danmark-390-light",
+    "violations": 4,
+    "nodes": 40,
+    "ids": "color-contrast(serious,16) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "danmark-390-dark",
+    "violations": 4,
+    "nodes": 38,
+    "ids": "color-contrast(serious,14) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "danmark-1440-light",
+    "violations": 4,
+    "nodes": 40,
+    "ids": "color-contrast(serious,16) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "danmark-1440-dark",
+    "violations": 4,
+    "nodes": 38,
+    "ids": "color-contrast(serious,14) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,22)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "404-390-light",
+    "violations": 4,
+    "nodes": 11,
+    "ids": "color-contrast(serious,8) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,1)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "404-390-dark",
+    "violations": 4,
+    "nodes": 16,
+    "ids": "color-contrast(serious,13) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,1)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "404-1440-light",
+    "violations": 4,
+    "nodes": 11,
+    "ids": "color-contrast(serious,8) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,1)",
+    "htmlDark": false,
+    "bannerVisible": false
+  },
+  {
+    "name": "404-1440-dark",
+    "violations": 4,
+    "nodes": 16,
+    "ids": "color-contrast(serious,13) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,1)",
+    "htmlDark": true,
+    "bannerVisible": false
+  },
+  {
+    "name": "home-initial-390-light-banner",
+    "violations": 4,
+    "nodes": 36,
+    "ids": "color-contrast(serious,11) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,23)",
+    "htmlDark": false,
+    "bannerVisible": true
+  },
+  {
+    "name": "home-initial-390-dark-banner",
+    "violations": 4,
+    "nodes": 41,
+    "ids": "color-contrast(serious,16) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,23)",
+    "htmlDark": true,
+    "bannerVisible": true
+  },
+  {
+    "name": "home-initial-1440-light-banner",
+    "violations": 4,
+    "nodes": 36,
+    "ids": "color-contrast(serious,11) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,23)",
+    "htmlDark": false,
+    "bannerVisible": true
+  },
+  {
+    "name": "home-initial-1440-dark-banner",
+    "violations": 4,
+    "nodes": 41,
+    "ids": "color-contrast(serious,16) landmark-no-duplicate-contentinfo(moderate,1) landmark-unique(moderate,1) region(moderate,23)",
+    "htmlDark": true,
+    "bannerVisible": true
+  }
+]

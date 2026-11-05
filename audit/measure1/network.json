@@ -1,0 +1,898 @@
+{
+  "pass1_firstload": {
+    "total_requests": 17,
+    "total_body_bytes": 185670,
+    "js_body_bytes": 121266,
+    "css_body_bytes": 12370,
+    "hosts": {
+      "levetidsberegner.dk": 14,
+      "analytics.holstjensen.eu": 1,
+      "fonts.googleapis.com": 1,
+      "fonts.gstatic.com": 1
+    },
+    "third_party_hosts_attempted": [
+      "analytics.holstjensen.eu",
+      "fonts.googleapis.com",
+      "fonts.gstatic.com"
+    ],
+    "blocked_by_us": [
+      "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"
+    ],
+    "requests": [
+      {
+        "t": 30,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/",
+        "type": "document",
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "cenc": "zstd",
+        "bodyBytes": 2899,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 141,
+        "method": "GET",
+        "host": "analytics.holstjensen.eu",
+        "path": "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js",
+        "type": "script",
+        "failed": "net::ERR_FAILED"
+      },
+      {
+        "t": 148,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/index-Dahj3lkh.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "br",
+        "cache": "max-age=14400",
+        "bodyBytes": 64681,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 148,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/rolldown-runtime-CbXtAM7H.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "zstd",
+        "cache": "max-age=14400",
+        "bodyBytes": 930,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 148,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/router-CBLz_W24.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "br",
+        "cache": "max-age=14400",
+        "bodyBytes": 17618,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 148,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/index-C-Av8HlY.css",
+        "type": "stylesheet",
+        "status": 200,
+        "ctype": "text/css; charset=utf-8",
+        "cenc": "br",
+        "cache": "max-age=14400",
+        "bodyBytes": 11277,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 148,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/registerSW.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "zstd",
+        "cache": "max-age=14400",
+        "bodyBytes": 659,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 213,
+        "method": "GET",
+        "host": "fonts.googleapis.com",
+        "path": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap",
+        "type": "stylesheet",
+        "status": 200,
+        "ctype": "text/css; charset=utf-8",
+        "cenc": "gzip",
+        "cache": "private, max-age=86400, stale-while-revalidate=604800",
+        "bodyBytes": 1093,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 332,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/HomePage-HZThNJx7.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "br",
+        "cache": "max-age=14400",
+        "bodyBytes": 27763,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 338,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/ThemeToggle-Czrs-HhS.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "br",
+        "cache": "max-age=14400",
+        "bodyBytes": 4686,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 338,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/chart-column-K7azZjxw.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "zstd",
+        "cache": "max-age=14400",
+        "bodyBytes": 775,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 338,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/clock-CfTIcxLr.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "zstd",
+        "cache": "max-age=14400",
+        "bodyBytes": 736,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 338,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/map-pin-Bv4MY4MA.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "zstd",
+        "cache": "max-age=14400",
+        "bodyBytes": 811,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 338,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/sprout-D1RdRLSa.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "zstd",
+        "cache": "max-age=14400",
+        "bodyBytes": 797,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 339,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/assets/PromoBanner-DTex3IyN.js",
+        "type": "script",
+        "status": 200,
+        "ctype": "application/javascript; charset=utf-8",
+        "cenc": "br",
+        "cache": "max-age=14400",
+        "bodyBytes": 1810,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 346,
+        "method": "GET",
+        "host": "fonts.gstatic.com",
+        "path": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+        "type": "font",
+        "status": 200,
+        "ctype": "font/woff2",
+        "cache": "public, max-age=31536000",
+        "bodyBytes": 48288,
+        "headerBytes": 0,
+        "fromSW": false
+      },
+      {
+        "t": 398,
+        "method": "GET",
+        "host": "levetidsberegner.dk",
+        "path": "/favicon.svg",
+        "type": "other",
+        "status": 200,
+        "ctype": "image/svg+xml",
+        "cenc": "zstd",
+        "cache": "max-age=14400",
+        "bodyBytes": 847,
+        "headerBytes": 0,
+        "fromSW": false
+      }
+    ],
+    "console": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "loc": "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js:0"
+      },
+      {
+        "type": "warning",
+        "text": "Service Worker registration blocked by Playwright",
+        "loc": ""
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "loc": "https://nominatim.openstreetmap.org/reverse?lat=55.676&lon=12.568&format=json&accept-language=en:0"
+      },
+      {
+        "type": "error",
+        "text": "Error fetching location: TypeError: Failed to fetch\n    at https://levetidsberegner.dk/assets/HomePage-HZThNJx7.js:11:38949",
+        "loc": "/assets/HomePage-HZThNJx7.js:10"
+      }
+    ],
+    "state": {
+      "cookie": "",
+      "localStorageKeys": [],
+      "localStorage": {},
+      "sessionStorageKeys": [],
+      "idb": [],
+      "geoCalls": [],
+      "geoPermission": "prompt",
+      "swSupported": true,
+      "swControlled": false,
+      "bannerVisible": true,
+      "plausibleScriptTag": "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js",
+      "plausibleDefined": "function",
+      "docTitle": "Levetidsberegner - Beregn din resterende levetid baseret på statistik",
+      "lang": "da"
+    },
+    "cookies_before_consent": []
+  },
+  "pass1_head": {
+    "scripts": [
+      {
+        "src": "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js",
+        "defer": true,
+        "async": false,
+        "type": ""
+      },
+      {
+        "src": "/assets/index-Dahj3lkh.js",
+        "defer": false,
+        "async": false,
+        "type": "module"
+      },
+      {
+        "src": "/registerSW.js",
+        "defer": false,
+        "async": false,
+        "type": ""
+      }
+    ],
+    "links": [
+      {
+        "rel": "icon",
+        "href": "/favicon.svg"
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "/favicon.svg"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "/assets/rolldown-runtime-CbXtAM7H.js"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "/assets/router-CBLz_W24.js"
+      },
+      {
+        "rel": "stylesheet",
+        "href": "/assets/index-C-Av8HlY.css"
+      },
+      {
+        "rel": "manifest",
+        "href": "/manifest.webmanifest"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "https://levetidsberegner.dk/assets/HomePage-HZThNJx7.js"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "https://levetidsberegner.dk/assets/ThemeToggle-Czrs-HhS.js"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "https://levetidsberegner.dk/assets/chart-column-K7azZjxw.js"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "https://levetidsberegner.dk/assets/clock-CfTIcxLr.js"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "https://levetidsberegner.dk/assets/map-pin-Bv4MY4MA.js"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "https://levetidsberegner.dk/assets/sprout-D1RdRLSa.js"
+      },
+      {
+        "rel": "modulepreload",
+        "href": "https://levetidsberegner.dk/assets/PromoBanner-DTex3IyN.js"
+      },
+      {
+        "rel": "canonical",
+        "href": "https://levetidsberegner.dk"
+      }
+    ],
+    "imgs_without_dims": 0,
+    "imgs": 0
+  },
+  "user_action_geolocation": {
+    "geoCalls": [
+      {
+        "fn": "getCurrentPosition",
+        "t": 5433.199999999255
+      }
+    ],
+    "nominatim_attempts": [
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?lat=<coord>&lon=<coord>&format=json&accept-language=en",
+        "referer": "https://levetidsberegner.dk/",
+        "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l"
+      }
+    ],
+    "new_requests_after_click": 1,
+    "note": "Nominatim request aborted by the harness; only the attempt (host, params shape, Referer) is recorded. Coordinates are a fixed public Copenhagen point."
+  },
+  "user_action_submit": {
+    "new_requests": [
+      {
+        "host": "levetidsberegner.dk",
+        "path": "https://levetidsberegner.dk/favicon.svg",
+        "type": "other",
+        "status": 200,
+        "bodyBytes": 849
+      }
+    ],
+    "blocked_total_after": [
+      "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"
+    ],
+    "localStorageKeys_after": [
+      "lifespan:history"
+    ],
+    "url_after": "?g=male&a=40",
+    "outbound_links": [
+      {
+        "href": "https://www.partner-ads.com/dk/klikbanner.php?partnerid=42553&bannerid=60068&uid=levetidsberegner",
+        "rel": "sponsored noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://beregner.holstjensen.eu/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://whitenoise.dk/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://qrtool.dk/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://pakkeliste.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://mahope.dk/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://mahope.dk/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      }
+    ],
+    "external_images": []
+  },
+  "pass1b_declined": {
+    "analytics_attempted_after_decline": [
+      "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"
+    ],
+    "bannerVisible": false
+  },
+  "pass2_service_worker": {
+    "registrations": [
+      {
+        "scope": "https://levetidsberegner.dk/",
+        "active": "activated",
+        "script": "https://levetidsberegner.dk/sw.js",
+        "installing": false,
+        "waiting": false
+      }
+    ],
+    "caches": [
+      {
+        "name": "workbox-precache-v2-https://levetidsberegner.dk/",
+        "entries": 31,
+        "total_bytes_uncompressed": 1000537,
+        "sample": [
+          {
+            "url": "/registerSW.js?__WB_REVISION__=1872c500de691dce40960bb85481de07",
+            "size": 134,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/pwa-512x512.png?__WB_REVISION__=f0052f024eb58573917be20769a04254",
+            "size": 82184,
+            "type": "image/png"
+          },
+          {
+            "url": "/pwa-192x192.png?__WB_REVISION__=9814341d40bfd264231db1726743d6a3",
+            "size": 9557,
+            "type": "image/png"
+          },
+          {
+            "url": "/og-image.png?__WB_REVISION__=8389b2f3341c5341578671789936fd40",
+            "size": 414915,
+            "type": "image/png"
+          },
+          {
+            "url": "/index.html?__WB_REVISION__=29b28d6b4116faac45bd6084bae647be",
+            "size": 5371,
+            "type": "text/html; charset=utf-8"
+          },
+          {
+            "url": "/favicon.svg?__WB_REVISION__=28f272c0ce9e5a1f9a4081638ffe8ba0",
+            "size": 555,
+            "type": "image/svg+xml"
+          },
+          {
+            "url": "/assets/wallet-CRcoJfAU.js",
+            "size": 325,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/triangle-alert-BWI8zlSJ.js",
+            "size": 819,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/target-RtjBdjnr.js",
+            "size": 446,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/sprout-D1RdRLSa.js",
+            "size": 348,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/skull-hHad-khJ.js",
+            "size": 385,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/router-CBLz_W24.js",
+            "size": 46853,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/rolldown-runtime-CbXtAM7H.js",
+            "size": 589,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/map-pin-Bv4MY4MA.js",
+            "size": 299,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/index-Dahj3lkh.js",
+            "size": 202868,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/index-C-Av8HlY.css",
+            "size": 71358,
+            "type": "text/css; charset=utf-8"
+          },
+          {
+            "url": "/assets/heart-pulse-DlldhmxD.js",
+            "size": 377,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/clock-CfTIcxLr.js",
+            "size": 207,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/check-Bc__bVJA.js",
+            "size": 162,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/chart-column-K7azZjxw.js",
+            "size": 296,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/calendar-clock-CcoAsGgn.js",
+            "size": 425,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/calculator-CK2VJ7XU.js",
+            "size": 573,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/ThemeToggle-Czrs-HhS.js",
+            "size": 11209,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/PromoBanner-DTex3IyN.js",
+            "size": 2737,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/NotFoundPage-DzucCQgG.js",
+            "size": 5119,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/LivsstilPage-D70VFXNE.js",
+            "size": 13035,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/HvorLangTidPage-ilLpvYiL.js",
+            "size": 7238,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/HomePage-HZThNJx7.js",
+            "size": 100308,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/DodsalderPage-VlKsdD2g.js",
+            "size": 9223,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/assets/DanmarkPage-ByDEqYZO.js",
+            "size": 12131,
+            "type": "application/javascript; charset=utf-8"
+          },
+          {
+            "url": "/manifest.webmanifest?__WB_REVISION__=7dd077d4a629a01c6df4dc08417a794e",
+            "size": 491,
+            "type": "application/manifest+json; charset=utf-8"
+          }
+        ]
+      }
+    ],
+    "controller": true,
+    "sw_js_bytes": 2847,
+    "precache_urls_in_sw_js": [
+      "registerSW.js",
+      "pwa-512x512.png",
+      "pwa-192x192.png",
+      "og-image.png",
+      "index.html",
+      "favicon.svg",
+      "assets/wallet-CRcoJfAU.js",
+      "assets/triangle-alert-BWI8zlSJ.js",
+      "assets/target-RtjBdjnr.js",
+      "assets/sprout-D1RdRLSa.js",
+      "assets/skull-hHad-khJ.js",
+      "assets/router-CBLz_W24.js",
+      "assets/rolldown-runtime-CbXtAM7H.js",
+      "assets/map-pin-Bv4MY4MA.js",
+      "assets/index-Dahj3lkh.js",
+      "assets/index-C-Av8HlY.css",
+      "assets/heart-pulse-DlldhmxD.js",
+      "assets/clock-CfTIcxLr.js",
+      "assets/check-Bc__bVJA.js",
+      "assets/chart-column-K7azZjxw.js",
+      "assets/calendar-clock-CcoAsGgn.js",
+      "assets/calculator-CK2VJ7XU.js",
+      "assets/ThemeToggle-Czrs-HhS.js",
+      "assets/PromoBanner-DTex3IyN.js",
+      "assets/NotFoundPage-DzucCQgG.js",
+      "assets/LivsstilPage-D70VFXNE.js",
+      "assets/HvorLangTidPage-ilLpvYiL.js",
+      "assets/HomePage-HZThNJx7.js",
+      "assets/DodsalderPage-VlKsdD2g.js",
+      "assets/DanmarkPage-ByDEqYZO.js",
+      "favicon.svg",
+      "og-image.png",
+      "pwa-192x192.png",
+      "pwa-512x512.png",
+      "manifest.webmanifest"
+    ],
+    "precache_count": 35,
+    "has_navigateFallback": true,
+    "denylist_html": true,
+    "skipWaiting_or_claim": {
+      "skipWaiting": true,
+      "clientsClaim": true
+    },
+    "runtimeCaching": "see sw.js",
+    "precache_payload": {
+      "fetched_bytes_total": 1507748,
+      "per_file": [
+        {
+          "u": "registerSW.js",
+          "status": 200,
+          "raw": 134,
+          "enc": "br"
+        },
+        {
+          "u": "pwa-512x512.png",
+          "status": 200,
+          "raw": 82184,
+          "enc": null
+        },
+        {
+          "u": "pwa-192x192.png",
+          "status": 200,
+          "raw": 9557,
+          "enc": null
+        },
+        {
+          "u": "og-image.png",
+          "status": 200,
+          "raw": 414915,
+          "enc": null
+        },
+        {
+          "u": "index.html",
+          "status": 200,
+          "raw": 5371,
+          "enc": "br"
+        },
+        {
+          "u": "favicon.svg",
+          "status": 200,
+          "raw": 555,
+          "enc": "br"
+        },
+        {
+          "u": "assets/wallet-CRcoJfAU.js",
+          "status": 200,
+          "raw": 325,
+          "enc": "br"
+        },
+        {
+          "u": "assets/triangle-alert-BWI8zlSJ.js",
+          "status": 200,
+          "raw": 819,
+          "enc": "br"
+        },
+        {
+          "u": "assets/target-RtjBdjnr.js",
+          "status": 200,
+          "raw": 446,
+          "enc": "br"
+        },
+        {
+          "u": "assets/sprout-D1RdRLSa.js",
+          "status": 200,
+          "raw": 348,
+          "enc": "br"
+        },
+        {
+          "u": "assets/skull-hHad-khJ.js",
+          "status": 200,
+          "raw": 385,
+          "enc": "br"
+        },
+        {
+          "u": "assets/router-CBLz_W24.js",
+          "status": 200,
+          "raw": 46853,
+          "enc": "br"
+        },
+        {
+          "u": "assets/rolldown-runtime-CbXtAM7H.js",
+          "status": 200,
+          "raw": 589,
+          "enc": "br"
+        },
+        {
+          "u": "assets/map-pin-Bv4MY4MA.js",
+          "status": 200,
+          "raw": 299,
+          "enc": "br"
+        },
+        {
+          "u": "assets/index-Dahj3lkh.js",
+          "status": 200,
+          "raw": 202868,
+          "enc": "br"
+        },
+        {
+          "u": "assets/index-C-Av8HlY.css",
+          "status": 200,
+          "raw": 71358,
+          "enc": "br"
+        },
+        {
+          "u": "assets/heart-pulse-DlldhmxD.js",
+          "status": 200,
+          "raw": 377,
+          "enc": "br"
+        },
+        {
+          "u": "assets/clock-CfTIcxLr.js",
+          "status": 200,
+          "raw": 207,
+          "enc": "br"
+        },
+        {
+          "u": "assets/check-Bc__bVJA.js",
+          "status": 200,
+          "raw": 162,
+          "enc": "br"
+        },
+        {
+          "u": "assets/chart-column-K7azZjxw.js",
+          "status": 200,
+          "raw": 296,
+          "enc": "br"
+        },
+        {
+          "u": "assets/calendar-clock-CcoAsGgn.js",
+          "status": 200,
+          "raw": 425,
+          "enc": "br"
+        },
+        {
+          "u": "assets/calculator-CK2VJ7XU.js",
+          "status": 200,
+          "raw": 573,
+          "enc": "br"
+        },
+        {
+          "u": "assets/ThemeToggle-Czrs-HhS.js",
+          "status": 200,
+          "raw": 11209,
+          "enc": "br"
+        },
+        {
+          "u": "assets/PromoBanner-DTex3IyN.js",
+          "status": 200,
+          "raw": 2737,
+          "enc": "br"
+        },
+        {
+          "u": "assets/NotFoundPage-DzucCQgG.js",
+          "status": 200,
+          "raw": 5119,
+          "enc": "br"
+        },
+        {
+          "u": "assets/LivsstilPage-D70VFXNE.js",
+          "status": 200,
+          "raw": 13035,
+          "enc": "br"
+        },
+        {
+          "u": "assets/HvorLangTidPage-ilLpvYiL.js",
+          "status": 200,
+          "raw": 7238,
+          "enc": "br"
+        },
+        {
+          "u": "assets/HomePage-HZThNJx7.js",
+          "status": 200,
+          "raw": 100308,
+          "enc": "br"
+        },
+        {
+          "u": "assets/DodsalderPage-VlKsdD2g.js",
+          "status": 200,
+          "raw": 9223,
+          "enc": "br"
+        },
+        {
+          "u": "assets/DanmarkPage-ByDEqYZO.js",
+          "status": 200,
+          "raw": 12131,
+          "enc": "br"
+        },
+        {
+          "u": "favicon.svg",
+          "status": 200,
+          "raw": 555,
+          "enc": "br"
+        },
+        {
+          "u": "og-image.png",
+          "status": 200,
+          "raw": 414915,
+          "enc": null
+        },
+        {
+          "u": "pwa-192x192.png",
+          "status": 200,
+          "raw": 9557,
+          "enc": null
+        },
+        {
+          "u": "pwa-512x512.png",
+          "status": 200,
+          "raw": 82184,
+          "enc": null
+        },
+        {
+          "u": "manifest.webmanifest",
+          "status": 200,
+          "raw": 491,
+          "enc": "br"
+        }
+      ]
+    },
+    "console": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_FAILED",
+        "loc": "https://analytics.holstjensen.eu/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js:0"
+      }
+    ]
+  }
+}

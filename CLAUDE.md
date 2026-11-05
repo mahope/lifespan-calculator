@@ -43,8 +43,9 @@ npm run build      # acts as a smoke test - fails on broken imports/JSX/CSS
   DodsalderPage, LivsstilPage, DanmarkPage, NotFoundPage).
 - **`components/`**: Shared UI (SEOHead, ThemeToggle, Footer, PromoBanner,
   ShareCard, ShareModal).
-- **`hooks/useLifespanCalculator.js`**: Core calculation logic (age, remaining
-  time, geolocation-driven country lookup).
+- **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure
+  `computeResult(input, now)` in `utils/lifespanMath.js` (age, remaining time,
+  end instant) plus geolocation-driven country lookup.
 - **`utils/lifeExpectancyData.js`**: Static country life-expectancy data with
   Danish translations, plus lookup/formatting helpers.
 - **`index.css`**: Tailwind v4 entry - `@import 'tailwindcss'`, `@theme` design

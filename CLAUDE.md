@@ -15,9 +15,6 @@ Tech stack (kept current):
 - Tailwind CSS 4 (CSS-first config via `@theme` in `src/index.css`, `@tailwindcss/postcss`)
 - Node.js >= 20.19 (see `engines` in `package.json`)
 
-> Note: the pre-React vanilla-JS version (`script.js`, standalone HTML pages) is
-> preserved under `backup/` for reference and is not part of the build.
-
 ## Development Commands
 
 ```bash
@@ -27,10 +24,11 @@ npm run build      # production build to dist/
 npm run preview    # serve the production build locally (http://localhost:4173)
 ```
 
-### Validation
+### Validation (the gate; CI runs the same steps)
 ```bash
-npm run build      # acts as a smoke test - fails on broken imports/JSX/CSS
+npm ci && npm run lint && npm test && npm run build
 ```
+`npm run build` also acts as a smoke test - it fails on broken imports/JSX/CSS.
 
 ## Architecture
 
@@ -78,18 +76,37 @@ Reusable component classes are defined with Tailwind v4 `@utility`. Mobile-first
 main color scheme uses HSL custom properties (see `:root` / `.dark`).
 
 ## Deployment
-Built with the `Dockerfile` (Node 22): `npm ci` -> `npm run build` -> `serve dist`
-(no `-s`, so unknown paths return a real 404). `public/serve.json` rewrites the
-known routes to `/index.html` and sets headers; `public/404.html` and
-`public/api/health` (Swarm healthcheck) are copied into `dist/`. The route list
-lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates
-`public/sitemap.xml` from it. Adding a route means updating `ROUTES`,
-`App.jsx` and `public/serve.json` (a test enforces this).
+- `Dockerfile` is the only build definition: stage 1 (`node:22-alpine`) runs
+  `npm ci` + `npm run build`; stage 2 copies `dist/` and serves it with
+  `serve dist -l 3000` as the non-root `node` user. There is no `-s`, so
+  unknown paths return a real 404. `public/serve.json` rewrites the known
+  routes to `/index.html` and sets headers; `public/404.html` and
+  `public/api/health` (Swarm healthcheck) are copied into `dist/`. The route
+  list lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates
+  `public/sitemap.xml` from it. Adding a route means updating `ROUTES`,
+  `App.jsx` and `public/serve.json` (a test enforces this).
+- Hosted as a Dokploy app (`web`) on a worker server, build type `dockerfile`.
+  **autoDeploy is off**: merging to `master` does not deploy; a deploy is
+  triggered by hand.
+- `master` is the default branch. CI (`.github/workflows/ci.yml`) runs
+  `npm ci`, lint, tests and build on pushes to `master` and on PRs.
+- `dist/` is a build artifact and is **not committed** (it is in `.gitignore`
+  and `.dockerignore`); never add it back.
+- `.github/dependabot.yml` opens weekly npm PRs with a 3-day cooldown.
+
+## Project Rules
+- The calculation runs 100% in the browser. User input (age, sex, birthdate,
+  lifestyle answers, location) must never be sent to or stored on a server,
+  and must never appear in analytics event props.
+- New npm packages must be at least 3 days old (`npm view <pkg> time`) and
+  pinned to an exact version. Avoid adding packages unless needed.
+- No medical claims without a cited source. Danish UI copy, correct æøå (UTF-8).
+- Before finishing: run the gate above.
 
 ## File Structure
 - `index.html` - Vite entry HTML (also hosts static footer, cookie-consent
   banner, and SEO copy outside the React root)
 - `src/` - React application source (see Architecture above)
-- `dist/` - built static assets
-- `backup/` - legacy vanilla-JS version (not built)
+- `public/` - static assets copied as-is into the build
+- `Dockerfile` - production image (build + `serve`)
 - `*.html` (root) - standalone legal/policy pages

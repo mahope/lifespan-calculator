@@ -11,62 +11,47 @@ const HOME = { name: 'Forside', url: '/' }
 
 export const ROUTE_META = {
   '/': {
-    title: 'Levetidsberegner - resterende levetid baseret på statistik',
-    description:
-      'Gratis levetidsberegner der beregner din statistiske resterende levetid ud fra alder og køn og danske dødelighedstavler. Med live nedtælling og deling.',
-    keywords:
-      'levetidsberegner, resterende levetid, statistik, dødsalderen, levetid beregner, hvor længe lever jeg, lifespan calculator dansk',
-    ogTitle: 'Levetidsberegner - Hvor lang tid har du tilbage?',
-    ogDescription:
-      'Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på Danmarks Statistiks dødelighedstavler.',
+    title: 'Hvor gammel bliver jeg? Levetidsberegner med danske tal',
+    description: 'Levetidsberegner: se din statistiske restlevetid ud fra alder og køn i Danmarks Statistiks tavler 2024-2025. Med nedtælling.',
+    keywords: 'hvor gammel bliver jeg, levetidsberegner, hvor gammel bliver jeg beregner, hvor gammel bliver jeg test, hvor længe lever jeg',
+    ogTitle: 'Hvor gammel bliver jeg? Beregn din levetid',
+    ogDescription: 'Beregn din statistiske levetid ud fra alder og køn. Baseret på Danmarks Statistiks dødelighedstavler 2024-2025.',
     breadcrumbs: [],
     noindex: false,
   },
   '/hvor-lang-tid-har-jeg-tilbage': {
-    title: 'Hvor lang tid har jeg tilbage at leve? - Levetidsberegner',
-    description:
-      'Få svar på hvor lang tid du har tilbage at leve baseret på statistiske data. Levetidsberegneren giver dig et realistisk estimat af din resterende levetid.',
-    keywords:
-      'hvor lang tid har jeg tilbage, resterende levetid, levetid beregning, dødsalder, livslængde, levetidsberegner',
-    ogTitle: 'Hvor lang tid har jeg tilbage at leve?',
-    ogDescription:
-      'Beregn din statistiske resterende levetid med vores præcise levetidsberegner baseret på danske data',
+    title: 'Hvor mange år har jeg tilbage? Beregn din restlevetid',
+    description: 'Hvor mange år har du statistisk tilbage? Se restlevetiden for din alder og dit køn i Danmarks Statistiks tavler 2024-2025.',
+    keywords: 'hvor mange år har jeg tilbage, restlevetid, resterende levetid, hvor lang tid har jeg tilbage',
+    ogTitle: 'Hvor mange år har jeg tilbage?',
+    ogDescription: 'Se din statistiske restlevetid ud fra alder og køn, baseret på Danmarks Statistiks dødelighedstavler.',
     breadcrumbs: [HOME, { name: 'Hvor lang tid har jeg tilbage', url: '/hvor-lang-tid-har-jeg-tilbage' }],
     noindex: false,
   },
   '/dodsalder-calculator': {
-    title: 'Dødsalder Calculator - Beregn din forventede dødsalder',
-    description:
-      'Beregn din statistiske dødsalder baseret på alder, køn og livsstil. Gratis dødsalder calculator med data fra sundhedsmyndigheder.',
-    keywords:
-      'dødsalder calculator, dødsalder beregner, forventet dødsalder, levetid, statistisk dødsalder, hvornår dør jeg',
-    ogTitle: 'Dødsalder Calculator - Hvornår dør jeg statistisk?',
-    ogDescription:
-      'Få et statistisk estimat af din dødsalder baseret på demografiske data og livsstilsfaktorer',
+    title: 'Forventet dødsalder: beregn din statistiske dødsalder',
+    description: 'Forventet dødsalder for din alder og dit køn, beregnet af Danmarks Statistiks tavler 2024-2025. Se også, hvad livsstil kan ændre.',
+    keywords: 'forventet dødsalder, dødsalder beregner, dødsalder calculator, statistisk dødsalder, hvornår dør jeg',
+    ogTitle: 'Forventet dødsalder: hvornår dør jeg statistisk?',
+    ogDescription: 'Et statistisk estimat af din forventede dødsalder ud fra alder og køn, baseret på Danmarks Statistik.',
     breadcrumbs: [HOME, { name: 'Dødsalder Calculator', url: '/dodsalder-calculator' }],
     noindex: false,
   },
   '/levetid-beregner-danmark': {
-    title: 'Dansk Levetidsberegner - Specialiseret til danske forhold',
-    description:
-      'Beregn din levetid med data specifikt fra Danmarks Statistik. Vores danske levetidsberegner bruger de seneste data fra danske sundhedsmyndigheder.',
-    keywords:
-      'dansk levetidsberegner, danmark levetid, danmarks statistik levetid, dansk dødsalder, levetid danmark, forventet levealder danmark',
-    ogTitle: 'Dansk Levetidsberegner - Præcise data fra Danmarks Statistik',
-    ogDescription:
-      'Specialiseret levetidsberegner med data fra Danmarks Statistik og danske sundhedsmyndigheder',
+    title: 'Levealder i Danmark: tal for mænd og kvinder 2024-2025',
+    description: 'Gennemsnitlig levealder i Danmark for mænd og kvinder fra Danmarks Statistik 2024-2025, plus middellevetid sammenlignet med nabolande.',
+    keywords: 'levealder danmark, gennemsnitlig levealder, middellevetid danmark, levetid danmark, danmarks statistik levealder',
+    ogTitle: 'Levealder i Danmark: aktuelle tal fra Danmarks Statistik',
+    ogDescription: 'Gennemsnitlig levealder for danske mænd og kvinder 2024-2025 og sammenligning med Sverige, Norge og Finland.',
     breadcrumbs: [HOME, { name: 'Levetidsberegner Danmark', url: '/levetid-beregner-danmark' }],
     noindex: false,
   },
   '/livsstil-og-levetid': {
-    title: 'Livsstil og Levetid - Hvordan påvirker livsstil levetiden?',
-    description:
-      'Lær hvordan livsstilsfaktorer som motion, kost, rygning og stress påvirker din levetid. Videnskabsbaseret guide til sundere og længere liv.',
-    keywords:
-      'livsstil levetid, motion levetid, sund kost levetid, rygning påvirkning, stress sundhed, længere liv, sundhed',
-    ogTitle: 'Livsstil og Levetid - Forlæng dit liv med de rigtige valg',
-    ogDescription:
-      'Videnskabsbaseret guide til hvordan du kan forlænge dit liv gennem livsstilsændringer',
+    title: 'Livsstil og levetid: hvad kan motion og rygning ændre?',
+    description: 'Livsstil og levetid: hvordan motion, kost, rygning og søvn påvirker den forventede levetid, og hvordan du lægger det ind i et estimat.',
+    keywords: 'livsstil og levetid, motion levetid, rygning levetid, sund kost levetid, længere liv',
+    ogTitle: 'Livsstil og levetid: hvad flytter dit estimat?',
+    ogDescription: 'Hvordan motion, kost, rygning og søvn hænger sammen med levetid, og hvordan du bruger det i beregneren.',
     breadcrumbs: [HOME, { name: 'Livsstil og Levetid', url: '/livsstil-og-levetid' }],
     noindex: false,
   },

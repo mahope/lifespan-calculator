@@ -50,7 +50,7 @@ const Footer = () => {
             <p className="text-sm">
               <strong className="text-foreground">Se også:</strong>{' '}
               <Link to="/levetid-beregner-danmark" className="text-primary hover:underline">
-                Specialiseret dansk levetidsberegner
+                Levealder i Danmark: tal fra Danmarks Statistik
               </Link>
             </p>
           </div>
@@ -60,22 +60,22 @@ const Footer = () => {
             <ul className="space-y-1">
               <li>
                 <Link to="/hvor-lang-tid-har-jeg-tilbage" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
-                  📅 Hvor lang tid har jeg tilbage at leve?
+                  📅 Hvor mange år har jeg tilbage?
                 </Link>
               </li>
               <li>
                 <Link to="/dodsalder-calculator" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
-                  ⚰️ Dødsalder Calculator
+                  ⚰️ Forventet dødsalder
                 </Link>
               </li>
               <li>
                 <Link to="/livsstil-og-levetid" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
-                  💪 Livsstil og Levetid
+                  💪 Livsstil og levetid
                 </Link>
               </li>
               <li>
                 <Link to="/levetid-beregner-danmark" className="text-primary hover:underline text-sm inline-flex items-center min-h-[44px] py-2">
-                  🇩🇰 Dansk Levetidsberegner
+                  🇩🇰 Levealder i Danmark
                 </Link>
               </li>
             </ul>

@@ -14,6 +14,8 @@ import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 import { Link } from 'react-router-dom';
 
 const HvorLangTidPage = () => {
@@ -23,13 +25,15 @@ const HvorLangTidPage = () => {
 
       <PageHeader
         icon={CalendarClock}
-        title="Hvor lang tid har jeg tilbage?"
+        title="Hvor mange år har jeg tilbage?"
         subtitle="Få et statistisk estimat af din resterende levetid baseret på videnskabelige data"
       />
 
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
           <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
+            <AnswerFirst text={answerFirst.hvorLangTid()} linkText="Se din egen restlevetid i levetidsberegneren" />
+
             <div className="card animate-slideUp">
               <div className="card-content space-y-6">
                 <h2 className="text-xl sm:text-2xl font-bold">Hvad betyder "resterende levetid"?</h2>
@@ -111,7 +115,7 @@ const HvorLangTidPage = () => {
 
             <div className="text-center">
               <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
-                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din resterende levetid nu
+                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din restlevetid i levetidsberegneren
               </Link>
             </div>
           </div>

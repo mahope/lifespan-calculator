@@ -16,6 +16,8 @@ import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import ThemeToggle from '../components/ThemeToggle';
 import PromoBanner from '../components/PromoBanner';
+import AnswerFirst from '../components/AnswerFirst';
+import { answerFirst } from '../utils/answerFirst';
 import { Link } from 'react-router-dom';
 
 const DodsalderPage = () => {
@@ -25,13 +27,15 @@ const DodsalderPage = () => {
 
       <PageHeader
         icon={Skull}
-        title="Dødsalder Calculator"
+        title="Forventet dødsalder"
         subtitle="Beregn din statistiske dødsalder baseret på demografiske data og livsstilsfaktorer"
       />
 
       <main className="flex-1">
         <div className="container py-8 sm:py-12">
           <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
+            <AnswerFirst text={answerFirst.dodsalder()} linkText="Beregn din forventede dødsalder i levetidsberegneren" />
+
             <div className="card animate-slideUp">
               <div className="card-content space-y-6">
                 <h2 className="text-xl sm:text-2xl font-bold">Hvad er en dødsalder calculator?</h2>
@@ -158,7 +162,7 @@ const DodsalderPage = () => {
 
             <div className="text-center">
               <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
-                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din dødsalder nu
+                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din forventede dødsalder
               </Link>
             </div>
           </div>

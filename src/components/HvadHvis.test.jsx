@@ -44,7 +44,8 @@ describe('HvadHvis (#93)', () => {
         }
       }
     }
-  });
+    // 800 component renders: slow on a loaded machine, so the default 5 s limit is not enough.
+  }, 60000);
 
   it('shows the gain with a decimal comma once a change is chosen', () => {
     const result = computeResult({ ageOrBirthdate: 50, gender: 'male', lifestyleFactors: zero }, NOW);

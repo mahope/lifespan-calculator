@@ -28,8 +28,8 @@ come from Danmarks Statistik).
 | Alkohol, liste | "Kvinder: Max 7 genstande per uge" / "Mænd: Max 14 genstande per uge" | "Sundhedsstyrelsen anbefaler højst 10 genstande om ugen og højst 4 på samme dag, for både kvinder og mænd." |
 | Kumulativ effekt | "Studier viser, at ... lever 12-14 år længere end dem, der ikke følger nogen af dem." | Li 2018: 50-årige med alle fem vaner har 12,2 (mænd) og 14,0 (kvinder) års længere forventet restlevetid (ca. 123.000 sundhedsprofessionelle, USA) |
 | Flise 1 (audit row 12) | "+12-14 / År ekstra ved optimal livsstil" | "+12,2-14,0 / Flere leveår ved 50 år: fem mod ingen sunde levevaner" |
-| Flise 2 (audit row 12) | "80% / Reduktion i hjertesygdomme" | "82 % / Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner" |
-| Flise 3 (audit row 12) | "50% / Reduktion i kræftrisiko" | "65 % / Lavere kræftdødelighed ved fem mod ingen sunde levevaner" |
+| Flise 2 (audit row 12) | "80% / Reduktion i hjertesygdomme" | "82 % / Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner (Li m.fl. 2018)" |
+| Flise 3 (audit row 12) | "50% / Reduktion i kræftrisiko" | "65 % / Lavere kræftdødelighed ved fem mod ingen sunde levevaner (Li m.fl. 2018)" |
 
 ## `src/components/KropsAlder.jsx`
 
@@ -59,7 +59,7 @@ returns 70 for births from 1971 and 69 for 1967-1970.
 | Footer "Datakilder og nøjagtighed" (short note) | One "Om tallene" section (`OmTallene.jsx`, `#om-tallene`): method and period, what the lifestyle adjustments are, not medical advice, source list, "Dine data" |
 | Footer line "Data fra Danmarks Statistik (dødelighedstavler ...)" and the italic "kun til informative og underholdende formål" line | removed (now in Om tallene) |
 | Result page: yellow "Bemærk: ..." card plus orange "Vigtige disclaimere" card ("Individuelle faktorer påvirker ikke beregningen", "Kun til underholdning og reflektion") | One card: "Det her er statistik, ikke en prognose for dig, og ikke medicinsk rådgivning. Læs mere under Om tallene." |
-| (new) data note | "Dine indtastninger bliver i din browser og sendes ikke til en server, medmindre du selv deler et link: det indeholder dit køn og din alder i hele år (og livsstilssvar, hvis du har valgt dem)." Consistent with `public/privatlivspolitik.html` (sharing section). |
+| (new) data note | "Dine indtastninger bliver i din browser og sendes ikke til en server, medmindre du selv deler eller åbner et delt link: det indeholder dit køn og din alder i hele år (og livsstilssvar, hvis du har valgt dem)." Consistent with `public/privatlivspolitik.html` (sharing section). |
 
 Period and update date in Om tallene come from `LIFE_TABLE_META` through
 `src/utils/dataSource.js`, never typed by hand.
@@ -78,7 +78,11 @@ medical advice), so the neutral category is used.
 ## Guard
 
 `src/copyGuard.test.js` fails if `WHO`, "geografisk(e) placering", "livsstil
-udgør op til 60" or "Max 7/14 genstande" reappear anywhere in `src/`, or if a
-`track(` / `plausible(` call carries a prop that names user input. Each pattern
-is also checked against a sample string so a pattern that can no longer match is
-itself a failing test.
+udgør op til 60" or "Max 7 genstande" / "Max 14 genstande" appear in `src/`,
+`index.html` or `public/*.html`, or if a `track(` / `plausible(` call carries a
+prop that names user input. The analytics check matches parentheses, so nested
+calls and ternaries are covered. Each pattern is checked against a sample string,
+and the file scanner is run on a temp tree that holds every forbidden string in
+`src/`, `index.html` and `public/`, so neither a dead pattern nor a dead scanner
+passes. Limits: it only knows these strings (it is a regression guard, not a
+fact-checker), and it does not scan `docs/` or the e2e files.

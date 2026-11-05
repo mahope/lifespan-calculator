@@ -4,7 +4,7 @@ Three levels, from fast to slow. Only the first two run on every pull request.
 
 | Level | Command | Runs in CI | What it protects |
 | --- | --- | --- | --- |
-| Unit (vitest) | `npm test` | yes, job `build` | Calculation, data and helper code in `src/` |
+| Unit (vitest) | `npm test` | yes, job `build` | Calculation, data and helper code in `src/`; `src/copyGuard.test.js` keeps removed unsourced wording and user-input analytics props out of `src/`, `index.html` and `public/*.html` |
 | End to end (Playwright) | `npm run build && npm run test:e2e` | yes, job `e2e` | What a visitor sees and what leaves the browser |
 | Performance budget | `node scripts/lighthouse-budget.mjs` | no, run by hand | LCP, CLS and JavaScript weight |
 

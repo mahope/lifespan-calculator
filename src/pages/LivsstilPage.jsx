@@ -211,11 +211,11 @@ const LivsstilPage = () => {
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
                     <div className="text-2xl sm:text-3xl font-bold text-primary">82 %</div>
-                    <div className="text-sm text-muted-foreground">Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner</div>
+                    <div className="text-sm text-muted-foreground">Lavere dødelighed af hjerte-kar-sygdom ved fem mod ingen sunde levevaner (Li m.fl. 2018)</div>
                   </div>
                   <div className="text-center space-y-2 p-4 bg-muted/30 rounded-lg">
                     <div className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">65 %</div>
-                    <div className="text-sm text-muted-foreground">Lavere kræftdødelighed ved fem mod ingen sunde levevaner</div>
+                    <div className="text-sm text-muted-foreground">Lavere kræftdødelighed ved fem mod ingen sunde levevaner (Li m.fl. 2018)</div>
                   </div>
                 </div>
               </div>

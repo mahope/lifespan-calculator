@@ -39,6 +39,7 @@ import { parseShareParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
+import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { COHORT_TABLE } from '../data/cohortTable.generated';
 import ProjectionToggle from '../components/ProjectionToggle';
 

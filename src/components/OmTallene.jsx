@@ -30,7 +30,7 @@ const OmTallene = ({ className = '' }) => (
     </p>
     <p>
       <strong className="text-foreground">Dine data:</strong> Dine indtastninger bliver i din browser og sendes ikke til
-      en server, medmindre du selv deler et link: det indeholder dit køn og din alder i hele år (og livsstilssvar, hvis
+      en server, medmindre du selv deler eller åbner et delt link: det indeholder dit køn og din alder i hele år (og livsstilssvar, hvis
       du har valgt dem). Din historik gemmes kun lokalt i din browser. Jeg bruger anonym besøgsstatistik uden cookies.
     </p>
   </section>

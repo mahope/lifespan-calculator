@@ -2,15 +2,15 @@
 
 exports[`computeResult characterization > advanced two factors 1`] = `
 {
-  "adjustedLifeExpectancy": "80.8",
+  "adjustedLifeExpectancy": "77.8",
   "age": "50.50",
   "countdown": undefined,
   "daysLived": 18445,
-  "endTimestamp": 2749598316000,
-  "lifePercentage": "62.5",
-  "lifestyleImpact": -1,
-  "remainingDays": 11061,
-  "remainingYears": "30.3",
+  "endTimestamp": 2654925516000,
+  "lifePercentage": "64.9",
+  "lifestyleImpact": -4,
+  "remainingDays": 9965,
+  "remainingYears": "27.3",
 }
 `;
 

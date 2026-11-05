@@ -8,7 +8,7 @@
 // 4095 * 0.65909 = 2699 (women) for the current period. It lets P(reach 100) differ
 // from P(reach 99). e_x stops at 99; older ages use e_99 (the tail rule).
 
-import { boundLifestyleAdjustment } from './lifespanMath';
+import { lifestyleTotal, roundedLifestyleAdjustment } from './lifespanMath';
 import { LIFE_TABLE_DK, LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 
 export { LIFE_TABLE_DK, LIFE_TABLE_META };
@@ -35,10 +35,9 @@ export function remainingLifeExpectancy(age, gender) {
  * @param {Record<string, number>} factors
  */
 export function projectedExpectancy(age, gender, factors) {
-  const sum = Object.values(factors || {}).reduce((s, v) => s + (v || 0), 0);
   const remaining = Math.max(
     0,
-    remainingLifeExpectancy(age, gender) + Math.round(boundLifestyleAdjustment(sum))
+    remainingLifeExpectancy(age, gender) + roundedLifestyleAdjustment(lifestyleTotal(factors))
   );
   return age + remaining;
 }

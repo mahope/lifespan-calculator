@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { LineChart } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { loadHistory, clearHistory } from '../utils/history';
+import { formatYears } from '../utils/lifespanMath';
 
 // "Din historik" — shows how the user's estimate has moved across past visits
 // (localStorage only). Hidden until there are at least two saved calculations.
@@ -56,9 +57,9 @@ const Historik = ({ resultData }) => {
 
   const trend =
     delta >= 0.05
-      ? `Dit estimat er steget ${delta.toFixed(1)} år siden din første beregning 🎉`
+      ? `Dit estimat er steget ${formatYears(delta)} år siden din første beregning 🎉`
       : delta <= -0.05
-        ? `Dit estimat er faldet ${Math.abs(delta).toFixed(1)} år siden din første beregning`
+        ? `Dit estimat er faldet ${formatYears(Math.abs(delta))} år siden din første beregning`
         : 'Dit estimat er stort set uændret';
 
   return (

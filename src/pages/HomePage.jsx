@@ -307,7 +307,7 @@ const HomePage = () => {
                           Alder angivet i hele år, regnet som midt i året.
                         </p>
                         {ageTooHigh && (
-                          <p role="alert" className="text-xs text-destructive">
+                          <p role="alert" className="text-xs text-red-600 dark:text-red-400">
                             Indtast en alder mellem 0 og {MAX_AGE_INPUT} år.
                           </p>
                         )}

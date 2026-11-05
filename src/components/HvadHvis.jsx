@@ -24,8 +24,10 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
   for (const m of options) if (applied[m.key]) hypothetical[m.key] = m.bestValue;
 
   const currentExpected = parseFloat(resultData.adjustedLifeExpectancy);
-  const newExpected = projectedExpectancy(age, gender, hypothetical);
-  const delta = newExpected - currentExpected;
+  // Same inputs on both sides, so no choice gives exactly 0 (the shown result
+  // is rounded to one decimal and the age to two).
+  const delta = projectedExpectancy(age, gender, hypothetical) - projectedExpectancy(age, gender, current);
+  const newExpected = currentExpected + delta;
   const anyApplied = Object.values(applied).some(Boolean);
 
   return (

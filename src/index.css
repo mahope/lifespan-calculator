@@ -114,10 +114,6 @@ layer(base);
   @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-primary/50 h-11 sm:h-12 px-6 py-2;
 }
 
-@utility btn-ghost {
-  @apply hover:bg-accent hover:text-accent-foreground h-11 sm:h-12 px-6 py-2;
-}
-
 @utility card {
   /* Minimal cards with responsive padding */
   @apply rounded-lg sm:rounded-xl border bg-card text-card-foreground shadow-xs hover:shadow-md transition-shadow duration-200;
@@ -125,14 +121,6 @@ layer(base);
 
 @utility card-header {
   @apply flex flex-col space-y-1.5 p-4 sm:p-6;
-}
-
-@utility card-title {
-  @apply text-xl sm:text-2xl font-semibold leading-none tracking-tight;
-}
-
-@utility card-description {
-  @apply text-sm text-muted-foreground;
 }
 
 @utility card-content {
@@ -143,10 +131,6 @@ layer(base);
       @apply scroll-mt-4;
     }
   }
-}
-
-@utility card-footer {
-  @apply flex items-center p-4 sm:p-6 pt-0;
 }
 
 @utility input {
@@ -167,34 +151,9 @@ layer(base);
   @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
 }
 
-@utility badge {
-  /* Simple badges */
-  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors;
-}
-
-@utility badge-default {
-  @apply border-transparent bg-primary text-primary-foreground;
-}
-
-@utility badge-secondary {
-  @apply border-transparent bg-secondary text-secondary-foreground;
-}
-
-@utility badge-outline {
-  @apply text-foreground;
-}
-
 @utility progress {
   /* Clean progress bar */
   @apply relative h-2 w-full overflow-hidden rounded-full bg-secondary shadow-inner;
-}
-
-@utility progress-bar {
-  @apply h-full w-full flex-1 bg-linear-to-r from-primary to-primary/80 transition-all duration-300;
-}
-
-@utility separator {
-  @apply shrink-0 bg-border h-px w-full my-6;
 }
 
 @utility container {
@@ -350,15 +309,6 @@ layer(base);
       @apply scale-105;
     }
   }
-}
-
-@utility result-card {
-  /* Result card animations */
-  @apply animate-scaleIn;
-}
-
-@utility stat-item {
-  @apply hover:scale-105 transition-transform duration-200;
 }
 
 @utility space-y-6 {

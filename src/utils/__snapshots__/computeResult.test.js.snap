@@ -76,7 +76,7 @@ exports[`computeResult characterization > male born 1985-06-15 1`] = `
   "age": "41.39",
   "countdown": undefined,
   "daysLived": 15118,
-  "endTimestamp": 3052697760000,
+  "endTimestamp": 3052690560000,
   "lifePercentage": "50.9",
   "lifestyleImpact": 0,
   "remainingDays": 14569,

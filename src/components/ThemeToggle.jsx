@@ -31,11 +31,12 @@ const ThemeToggle = () => {
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 p-3 min-w-[48px] min-h-[48px] rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-200 z-50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="-mr-2 inline-grid min-h-11 min-w-11 place-items-center text-muted-foreground hover:text-foreground"
       aria-label={theme === 'light' ? 'Skift til mørk tilstand' : 'Skift til lys tilstand'}
     >
-      {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+      {theme === 'light' ? <Moon className="h-5 w-5" aria-hidden="true" /> : <Sun className="h-5 w-5" aria-hidden="true" />}
     </button>
   );
 };

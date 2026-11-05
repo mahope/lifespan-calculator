@@ -9,6 +9,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
+      // Manifest icons are fetched at install time; keep them out of the precache.
+      includeManifestIcons: false,
       manifest: {
         name: 'Levetidsberegner',
         short_name: 'Levetid',

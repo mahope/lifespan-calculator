@@ -36,7 +36,7 @@ import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
-import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate } from '../utils/lifespanMath';
+import { boundLifestyleAdjustment, lifestyleTotal as sumLifestyleFactors, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
 
 const HomePage = () => {
@@ -95,7 +95,7 @@ const HomePage = () => {
       track('Result Shown', { mode: currentMode });
       saveEntry({
         ts: Date.now(),
-        age: Math.round(parseFloat(result.age)),
+        age: Math.floor(parseFloat(result.age)),
         gender: result.gender,
         expected: result.adjustedLifeExpectancy,
       });
@@ -129,6 +129,8 @@ const HomePage = () => {
     runCalculation();
     setAutoSubmit(false);
   }, [autoSubmit, formData, runCalculation]);
+
+  const ageTooHigh = !formData.useBirthdate && Number(formData.age) > MAX_AGE_INPUT;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -295,14 +297,24 @@ const HomePage = () => {
                             id="age"
                             name="age"
                             min="0"
-                            max="120"
+                            max={MAX_AGE_INPUT}
                             required={!formData.useBirthdate}
                             className="input flex-1"
                             value={formData.age}
                             onChange={handleInputChange}
+                            aria-describedby="age-hint"
+                            aria-invalid={ageTooHigh || undefined}
                           />
                           <span className="text-sm text-muted-foreground">år</span>
                         </div>
+                        <p id="age-hint" className="text-xs text-muted-foreground">
+                          Alder angivet i hele år, regnet som midt i året.
+                        </p>
+                        {ageTooHigh && (
+                          <p role="alert" className="text-xs text-red-600 dark:text-red-400">
+                            Indtast en alder mellem 0 og {MAX_AGE_INPUT} år.
+                          </p>
+                        )}
                       </div>
                     ) : (
                       <div className="space-y-2">
@@ -386,7 +398,7 @@ const HomePage = () => {
                     <button
                       type="submit"
                       className="btn btn-primary w-full"
-                      disabled={(!formData.useBirthdate && !formData.age) || (formData.useBirthdate && !formData.birthdate) || !formData.gender}
+                      disabled={(!formData.useBirthdate && (!formData.age || ageTooHigh)) || (formData.useBirthdate && !formData.birthdate) || !formData.gender}
                     >
                       Beregn levetid
                     </button>
@@ -430,6 +442,12 @@ const HomePage = () => {
                   )}
                 </div>
                 <div className="card-content space-y-4">
+                  {resultData?.usesTailRule && (
+                    <p className="rounded-lg bg-muted/50 p-3 text-xs text-muted-foreground">
+                      Danmarks Statistiks tavle slutter ved 99 år. Fra den alder bruges den sidste
+                      værdi (forventet restlevetid ved 99 år) som overslag.
+                    </p>
+                  )}
                   {/* Show precise age if birthdate was used */}
                   {resultData?.hasPreciseBirthdate && (
                     <div className="text-center p-3 bg-muted/50 rounded-lg">

@@ -6,7 +6,7 @@ import { parseLocalDate, toLocalISODate } from './lifespanMath';
 const GENDERS = ['male', 'female'];
 const MODES = ['simple', 'advanced'];
 const MIN_AGE = 0;
-const MAX_AGE = 120;
+const MAX_AGE = 110; // same cap as the age input
 const MIN_BIRTHDATE = '1900-01-01';
 
 /**
@@ -15,7 +15,7 @@ const MIN_BIRTHDATE = '1900-01-01';
  * otherwise a form-ready object:
  *   { gender, age, birthdate, useBirthdate, mode, lifestyle|null }
  *
- * - `g` must be male|female; `a` is clamped to an integer 0-120;
+ * - `g` must be male|female; `a` is clamped to an integer 0-110;
  * - `b` must be a real calendar date YYYY-MM-DD in [1900-01-01, today] (wins over `a`);
  * - `m` is simple|advanced (absent = simple); `lf` is only read in advanced
  *   mode and every value must be one the questionnaire can produce;

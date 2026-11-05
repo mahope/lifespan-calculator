@@ -63,6 +63,19 @@ describe('computeResult consistency (#76)', () => {
   });
 });
 
+describe('computeResult remainingDays clamp (#76 review)', () => {
+  it('never reports negative days when nothing remains (birthdate mode, worst lifestyle, very old)', () => {
+    const r = computeResult(
+      { ageOrBirthdate: '1920-01-01', gender: 'male', lifestyleFactors: { ...zero, smoking: -15 } },
+      NOW,
+    );
+    // The end instant falls just before `now` in this case, which Math.floor turned into -1.
+    expect(r.endTimestamp - NOW.getTime()).toBeLessThanOrEqual(0);
+    expect(r.endTimestamp - NOW.getTime()).toBeGreaterThan(-864e5);
+    expect(r.remainingDays).toBe(0);
+  });
+});
+
 describe('lifestyleTotal', () => {
   it('sums factor deltas', () => {
     expect(lifestyleTotal({ a: 2, b: -3, c: 0 })).toBe(-1);

@@ -222,7 +222,7 @@ export function computeResult(input, now) {
 
   return {
     remainingYears: remainingYears.toFixed(1),
-    remainingDays: Math.floor(timeRemaining / (1000 * 60 * 60 * 24)),
+    remainingDays: Math.max(0, Math.floor(timeRemaining / (1000 * 60 * 60 * 24))),
     adjustedLifeExpectancy: adjustedLifeExpectancy.toFixed(1),
     lifestyleImpact: lifestyleAdjustment,
     endDate: exactEndDate.toLocaleDateString('da-DK'),

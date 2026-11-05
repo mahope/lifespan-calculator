@@ -34,7 +34,9 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground">Privatlivspolitik</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Vi respekterer dit privatliv. Al behandling sker lokalt i din browser, og dine indtastninger gemmes ikke på
-              nogen server. Vi tæller kun anonymt, at beregneren bruges, uden alder, køn eller andre oplysninger.
+              nogen server. Vi tæller kun anonymt, at beregneren bruges, uden alder, køn eller andre oplysninger. Læs{' '}
+              <a href="/privatlivspolitik" className="text-primary hover:underline">privatlivspolitikken</a> og{' '}
+              <a href="/cookiepolitik" className="text-primary hover:underline">cookiepolitikken</a>.
             </p>
           </div>
 

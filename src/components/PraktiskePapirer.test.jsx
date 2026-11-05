@@ -89,4 +89,20 @@ describe('PraktiskePapirer', () => {
     visible();
     expect(track).toHaveBeenCalledTimes(4);
   });
+
+  it('starts collapsed on a narrow screen: no links, no impression until it is opened', () => {
+    window.matchMedia = () => ({ matches: false });
+    render({ id: 1 });
+    const toggle = container.querySelector('button');
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(toggle.hasAttribute('aria-controls')).toBe(false);
+    expect(container.querySelectorAll('a')).toHaveLength(0);
+    visible();
+    expect(track).not.toHaveBeenCalled();
+    act(() => toggle.click());
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(container.querySelectorAll('a')).toHaveLength(2);
+    visible();
+    expect(track).toHaveBeenCalledTimes(2);
+  });
 });

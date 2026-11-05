@@ -72,7 +72,7 @@ const PraktiskePapirer = ({ resultData }) => {
           type="button"
           className="flex w-full items-center gap-3 text-left"
           aria-expanded={open}
-          aria-controls="praktiske-papirer-indhold"
+          aria-controls={open ? 'praktiske-papirer-indhold' : undefined}
           onClick={() => setOpen((v) => !v)}
         >
           <span

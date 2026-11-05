@@ -1,0 +1,46 @@
+{
+  "id": "2-female-65",
+  "input": {
+    "gender": "female",
+    "age": 65
+  },
+  "frozenClock": "2026-11-05T12:34:56Z",
+  "urlAfterSubmit": "/",
+  "yearsRemaining": "21.0",
+  "countdown": [
+    {
+      "label": "ÅR",
+      "value": "20"
+    },
+    {
+      "label": "DAGE",
+      "value": "354"
+    },
+    {
+      "label": "TIMER",
+      "value": "7"
+    },
+    {
+      "label": "MIN",
+      "value": "1"
+    },
+    {
+      "label": "SEK",
+      "value": "12"
+    }
+  ],
+  "partnerAdsLinks": [
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "rel": "sponsored noopener noreferrer",
+      "target": "_blank"
+    }
+  ]
+}

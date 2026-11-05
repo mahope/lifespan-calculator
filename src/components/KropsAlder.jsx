@@ -15,7 +15,8 @@ const KropsAlder = ({ resultData }) => {
   if (!Number.isFinite(age) || !Number.isFinite(remaining)) return null;
 
   const bodyAge = Math.round(biologicalAge(remaining, gender));
-  const chrono = Math.round(age);
+  // Age-only input is treated as mid-year (age + 0.5); round down so a 40-year-old is not shown as 41.
+  const chrono = Math.floor(age);
   const delta = chrono - bodyAge; // positive → body younger than actual age
 
   const message =

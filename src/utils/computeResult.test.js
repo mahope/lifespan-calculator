@@ -4,6 +4,9 @@ process.env.TZ = 'Europe/Copenhagen';
 import { describe, it, expect } from 'vitest';
 import { computeResult, breakdownRemaining, lifestyleTotal } from './lifespanMath';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
+import { LIFE_TABLE_PERIOD } from './lifeTableDK';
+import baseline from './masterBaseline.fixture.json';
+import { createHash } from 'node:crypto';
 
 // Pins the numbers per input. The first commit recorded the pre-#76 formulas; the
 // fix commit updated the snapshot so the old -> new diff is visible in git.
@@ -56,10 +59,10 @@ describe('computeResult consistency (#76)', () => {
     expect('countdown' in r).toBe(false);
   });
 
-  it('keeps the fractional year in age mode (male 40: 41.2 years, not 41.0)', () => {
+  it('keeps the fractional year in age mode (male 40: 40.75 years, not 41.0)', () => {
     const r = computeResult(CASES['male 40'], NOW);
-    expect(r.remainingDays).toBeGreaterThan(41.1 * 365.25);
-    expect(r.remainingDays).toBeLessThan(41.3 * 365.25);
+    expect(r.remainingDays).toBeGreaterThan(40.65 * 365.25);
+    expect(r.remainingDays).toBeLessThan(40.85 * 365.25);
   });
 });
 
@@ -90,17 +93,45 @@ describe('computeResult invalid input', () => {
   });
 });
 
+describe('age-only input is an age in a year (#91)', () => {
+  const r = (age, gender = 'male') =>
+    computeResult({ ageOrBirthdate: age, gender, lifestyleFactors: zero }, NOW);
+
+  it('looks e_x up at age + 0.5', () => {
+    // e_40 = 41.23, e_41 = 40.27 (HISB8 male): midpoint 40.75
+    expect(r(40).remainingYears).toBe('40.8');
+    expect(r(40).age).toBe('40.50');
+    expect(r(40).ageIsMidYear).toBe(true);
+    // female 65: midpoint of e_65 = 21.39 and e_66 = 20.55 (was 21.4 at exact 65.0)
+    expect(r(65, 'female').remainingYears).toBe('21.0');
+  });
+
+  it('does not change the birthdate result', () => {
+    const b = computeResult({ ageOrBirthdate: '1985-06-15', gender: 'male', lifestyleFactors: zero }, NOW);
+    expect(b.remainingYears).toBe('39.9');
+    expect(b.ageIsMidYear).toBe(false);
+  });
+
+  it('caps the age at 110 and flags the tail rule above 99', () => {
+    expect(r(120).age).toBe('110.50');
+    expect(r(99).usesTailRule).toBe(true);
+    expect(r(98).usesTailRule).toBe(false);
+    // a 120-year-old woman no longer gets "expected age at death 122.2"
+    expect(Number(r(120, 'female').adjustedLifeExpectancy)).toBeLessThan(113);
+  });
+});
+
 describe('computeResult projection mode (#92)', () => {
   const m40 = CASES['male 40'];
 
   it('defaults to the period table: same numbers as before, with the projected figure alongside', () => {
     const base = computeResult(m40, NOW);
     expect(base.projection).toBe('period');
-    expect(base.remainingYears).toBe('41.2');
-    expect(base.adjustedLifeExpectancy).toBe('81.2');
-    expect(base.dataSource).toBe('Danmarks Statistik (2024-2025)');
+    expect(base.remainingYears).toBe('40.8');
+    expect(base.adjustedLifeExpectancy).toBe('81.3');
+    expect(base.dataSource).toBe(`Danmarks Statistik (${LIFE_TABLE_PERIOD})`);
     expect(base.projectionAvailable).toBe(true);
-    expect(base.projectedRemainingYears).toBe('46.8');
+    expect(base.projectedRemainingYears).toBe('46.3');
     expect(computeResult({ ...m40, projection: 'period' }, NOW)).toEqual(base);
   });
 
@@ -108,12 +139,12 @@ describe('computeResult projection mode (#92)', () => {
     const p = computeResult({ ...m40, projection: 'projected' }, NOW);
     const base = computeResult(m40, NOW);
     expect(p.projection).toBe('projected');
-    expect(p.remainingYears).toBe('46.8');
+    expect(p.remainingYears).toBe('46.3');
     expect(p.adjustedLifeExpectancy).toBe('86.8');
     expect(p.endTimestamp).toBeGreaterThan(base.endTimestamp);
     expect(p.remainingDays).toBeGreaterThan(base.remainingDays);
-    expect(p.periodRemainingYears).toBe('41.2');
-    expect(p.projectedRemainingYears).toBe('46.8');
+    expect(p.periodRemainingYears).toBe('40.8');
+    expect(p.projectedRemainingYears).toBe('46.3');
   });
 
   it('applies the lifestyle adjustment to both figures', () => {
@@ -124,7 +155,7 @@ describe('computeResult projection mode (#92)', () => {
     expect(base.projectedRemainingYears).toBe(p.remainingYears);
   });
 
-  it('is not offered from age 70, and a projected request falls back to period', () => {
+  it('is not offered from age 70 (the entered age, not the +0.5 lookup age), and a projected request falls back to period', () => {
     const old = { ageOrBirthdate: 70, gender: 'male', lifestyleFactors: zero };
     const r = computeResult({ ...old, projection: 'projected' }, NOW);
     expect(r.projectionAvailable).toBe(false);
@@ -133,5 +164,39 @@ describe('computeResult projection mode (#92)', () => {
     expect(r).toEqual(computeResult(old, NOW));
     const young = computeResult({ ...old, ageOrBirthdate: 69, projection: 'projected' }, NOW);
     expect(young.projection).toBe('projected');
+  });
+});
+
+// #92 must not change any default number. The fixture was generated from master's
+// computeResult (1e551f1, after #118) and is compared field by field.
+describe('default results are byte-identical to master (#92)', () => {
+  const pick = (r) => Object.fromEntries(baseline.masterKeys.map((k) => [k, r[k]]));
+  const input = (a, g) => ({ ageOrBirthdate: a, gender: g, lifestyleFactors: zero });
+
+  it.each([
+    ['male 40', 40, 'male'],
+    ['female 65', 65, 'female'],
+    ['male born 1985-06-15', '1985-06-15', 'male'],
+  ])('baseline %s', (name, a, g) => {
+    expect(pick(computeResult(input(a, g), NOW))).toEqual(baseline.baselines[name]);
+  });
+
+  it('every age 0-99 and both sexes', () => {
+    const all = {};
+    const fields = {};
+    for (const g of ['male', 'female']) {
+      for (let a = 0; a <= 99; a++) {
+        const r = computeResult(input(a, g), NOW);
+        all[`${g} ${a}`] = pick(r);
+        fields[`${g} ${a}`] = Object.fromEntries(baseline.gridFields.map((k) => [k, r[k]]));
+      }
+    }
+    expect(fields).toEqual(baseline.grid);
+    expect(createHash('sha256').update(JSON.stringify(all)).digest('hex')).toBe(baseline.gridSha256);
+  });
+
+  it('passing projection: "period" equals passing nothing', () => {
+    expect(computeResult({ ...input(40, 'male'), projection: 'period' }, NOW))
+      .toEqual(computeResult(input(40, 'male'), NOW));
   });
 });

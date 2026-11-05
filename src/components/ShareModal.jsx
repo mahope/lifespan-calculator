@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ShareCard from './ShareCard';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { buildShareParams } from '../utils/shareState';
+import { track } from '../utils/analytics';
 import { PROJECTION_LABELS } from '../utils/projectionLabels';
 
 const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced = false }) => {
@@ -45,9 +46,7 @@ const ShareModal = ({ isOpen, onClose, resultData, lifestyleFactors, isAdvanced 
       setCopySuccess('link');
 
       // Track with Plausible
-      if (window.plausible) {
-        window.plausible('Share', { props: { method: 'clipboard-link' } });
-      }
+      track('Share', { method: 'clipboard-link' });
 
       setTimeout(() => setCopySuccess(''), 2000);
     } catch (err) {
@@ -73,9 +72,7 @@ Beregn din egen: ${shareUrl}`;
       await navigator.clipboard.writeText(text);
       setCopySuccess('results');
 
-      if (window.plausible) {
-        window.plausible('Share', { props: { method: 'clipboard-results' } });
-      }
+      track('Share', { method: 'clipboard-results' });
 
       setTimeout(() => setCopySuccess(''), 2000);
     } catch (err) {
@@ -93,9 +90,7 @@ Beregn din egen: ${shareUrl}`;
           url: shareUrl
         });
 
-        if (window.plausible) {
-          window.plausible('Share', { props: { method: 'native' } });
-        }
+        track('Share', { method: 'native' });
       } catch (err) {
         if (err.name !== 'AbortError') {
           console.error('Error sharing:', err);
@@ -110,36 +105,28 @@ Beregn din egen: ${shareUrl}`;
     const url = encodeURIComponent(shareUrl);
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'width=550,height=420');
 
-    if (window.plausible) {
-      window.plausible('Share', { props: { method: 'twitter' } });
-    }
+    track('Share', { method: 'twitter' });
   };
 
   const shareToFacebook = () => {
     const url = encodeURIComponent(shareUrl);
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=550,height=420');
 
-    if (window.plausible) {
-      window.plausible('Share', { props: { method: 'facebook' } });
-    }
+    track('Share', { method: 'facebook' });
   };
 
   const shareToLinkedIn = () => {
     const url = encodeURIComponent(shareUrl);
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=550,height=420');
 
-    if (window.plausible) {
-      window.plausible('Share', { props: { method: 'linkedin' } });
-    }
+    track('Share', { method: 'linkedin' });
   };
 
   const shareToWhatsApp = () => {
     const text = encodeURIComponent(`${shareText} ${shareUrl}`);
     window.open(`https://wa.me/?text=${text}`, '_blank');
 
-    if (window.plausible) {
-      window.plausible('Share', { props: { method: 'whatsapp' } });
-    }
+    track('Share', { method: 'whatsapp' });
   };
 
   // Download the actual preview card as a PNG (so download == preview).
@@ -159,9 +146,7 @@ Beregn din egen: ${shareUrl}`;
       a.download = 'levetidsresultater.png';
       a.click();
 
-      if (window.plausible) {
-        window.plausible('Share', { props: { method: 'download-image' } });
-      }
+      track('Share', { method: 'download-image' });
     } catch (err) {
       console.error('Failed to generate image:', err);
       setDownloadError(true);

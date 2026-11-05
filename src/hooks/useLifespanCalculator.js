@@ -1,12 +1,10 @@
 import { useState, useCallback, useRef } from 'react';
 import { computeResult } from '../utils/lifespanMath';
+import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 
 // Stable, fixed order of the lifestyle factors — used for both the initial state
 // and for packing/unpacking factors into a shareable URL.
-export const LIFESTYLE_KEYS = [
-  'smoking', 'exercise', 'diet', 'alcohol', 'sleep', 'stress', 'health', 'bmi',
-  'social', 'mental', 'work', 'environment', 'education', 'income', 'commute', 'screentime',
-];
+export const LIFESTYLE_KEYS = LIFESTYLE_FACTORS.map((f) => f.key);
 
 export const useLifespanCalculator = () => {
   const [resultData, setResultData] = useState(null);

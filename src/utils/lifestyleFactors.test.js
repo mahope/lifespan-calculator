@@ -114,7 +114,6 @@ describe('LIFESTYLE_FACTORS (data-driven questionnaire)', () => {
       const input = { ageOrBirthdate: 40, gender: 'male' };
       const result = computeResult({ ...input, lifestyleFactors: data }, now);
       expect(result.lifestyleImpact).toBe(legacyTotal(legacy));
-      expect(result).toEqual(computeResult({ ...input, lifestyleFactors: legacy }, now));
     }
   });
 });

@@ -1,6 +1,6 @@
 import React, { useId, useRef } from 'react';
 
-const formatYears = (value) => `${value > 0 ? `+${value}` : value} år`;
+const formatYears = (value = 0) => `${value > 0 ? `+${value}` : value} år`;
 
 /**
  * One lifestyle question rendered as a radio group: `role=radiogroup` with

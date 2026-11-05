@@ -60,7 +60,7 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
               delta >= 0.05
                 ? 'text-green-700 dark:text-green-400'
                 : delta <= -0.05
-                  ? 'text-orange-600 dark:text-orange-400'
+                  ? 'text-orange-700 dark:text-orange-400'
                   : 'text-muted-foreground'
             }`}
           >

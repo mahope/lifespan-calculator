@@ -30,7 +30,7 @@ const SEX = { Mænd: 'male', Kvinder: 'female' };
 export function parseCsv(text) {
   const q = new Map(); // `${sex}|${year}|${age}` -> probability
   const e = new Map(); // same key -> DST's period e_x
-  const lines = text.replace(/^﻿/, '').split(/\r?\n/).filter(Boolean);
+  const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/).filter(Boolean);
   if (!lines.length || !lines[0].startsWith('KØN;ALDER;TAVLE;TID;INDHOLD')) {
     throw new Error(`Unexpected CSV header: ${lines[0]}`);
   }

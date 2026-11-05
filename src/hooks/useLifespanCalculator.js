@@ -91,6 +91,7 @@ export const useLifespanCalculator = () => {
       hoursLived,
       minutesLived,
       hasPreciseBirthdate: !!preciseAgeData,
+      birthYear: preciseAgeData ? preciseAgeData.birthDate.getFullYear() : null,
       birthdate: preciseAgeData?.birthDate?.toLocaleDateString('da-DK') || null,
       
       // Heart beats: average 70 bpm (range 60-100 at rest, higher during activity)

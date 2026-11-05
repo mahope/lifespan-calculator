@@ -57,10 +57,10 @@ describe('computeResult consistency (#76)', () => {
     expect('countdown' in r).toBe(false);
   });
 
-  it('keeps the fractional year in age mode (male 40: 41.2 years, not 41.0)', () => {
+  it('keeps the fractional year in age mode (male 40: 40.75 years, not 41.0)', () => {
     const r = computeResult(CASES['male 40'], NOW);
-    expect(r.remainingDays).toBeGreaterThan(41.1 * 365.25);
-    expect(r.remainingDays).toBeLessThan(41.3 * 365.25);
+    expect(r.remainingDays).toBeGreaterThan(40.65 * 365.25);
+    expect(r.remainingDays).toBeLessThan(40.85 * 365.25);
   });
 });
 
@@ -99,5 +99,33 @@ describe('computeResult invalid input', () => {
   it.each([NaN, 'abc', -5])('does not throw for age input %s and keeps a finite end instant', (v) => {
     const r = computeResult({ ageOrBirthdate: v, gender: 'male', lifestyleFactors: zero }, NOW);
     expect(Number.isFinite(r.endTimestamp)).toBe(true);
+  });
+});
+
+describe('age-only input is an age in a year (#91)', () => {
+  const r = (age, gender = 'male') =>
+    computeResult({ ageOrBirthdate: age, gender, lifestyleFactors: zero }, NOW);
+
+  it('looks e_x up at age + 0.5', () => {
+    // e_40 = 41.23, e_41 = 40.27 (HISB8 male): midpoint 40.75
+    expect(r(40).remainingYears).toBe('40.8');
+    expect(r(40).age).toBe('40.50');
+    expect(r(40).ageIsMidYear).toBe(true);
+    // female 65: midpoint of e_65 = 21.39 and e_66 = 20.55 (was 21.4 at exact 65.0)
+    expect(r(65, 'female').remainingYears).toBe('21.0');
+  });
+
+  it('does not change the birthdate result', () => {
+    const b = computeResult({ ageOrBirthdate: '1985-06-15', gender: 'male', lifestyleFactors: zero }, NOW);
+    expect(b.remainingYears).toBe('39.9');
+    expect(b.ageIsMidYear).toBe(false);
+  });
+
+  it('caps the age at 110 and flags the tail rule above 99', () => {
+    expect(r(120).age).toBe('110.50');
+    expect(r(99).usesTailRule).toBe(true);
+    expect(r(98).usesTailRule).toBe(false);
+    // a 120-year-old woman no longer gets "expected age at death 122.2"
+    expect(Number(r(120, 'female').adjustedLifeExpectancy)).toBeLessThan(113);
   });
 });

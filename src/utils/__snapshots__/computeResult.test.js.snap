@@ -2,38 +2,38 @@
 
 exports[`computeResult characterization > advanced two factors 1`] = `
 {
-  "adjustedLifeExpectancy": "77.8",
-  "age": "50.00",
+  "adjustedLifeExpectancy": "80.8",
+  "age": "50.50",
   "countdown": undefined,
-  "daysLived": 18262,
-  "endTimestamp": 2669599800000,
-  "lifePercentage": "64.3",
-  "lifestyleImpact": -4,
-  "remainingDays": 10135,
-  "remainingYears": "27.8",
+  "daysLived": 18445,
+  "endTimestamp": 2749598316000,
+  "lifePercentage": "62.5",
+  "lifestyleImpact": -1,
+  "remainingDays": 11061,
+  "remainingYears": "30.3",
 }
 `;
 
 exports[`computeResult characterization > age 0 1`] = `
 {
-  "adjustedLifeExpectancy": "83.9",
-  "age": "0.00",
+  "adjustedLifeExpectancy": "84.1",
+  "age": "0.50",
   "countdown": undefined,
-  "daysLived": 0,
-  "endTimestamp": 4441559040000,
-  "lifePercentage": "0.0",
+  "daysLived": 182,
+  "endTimestamp": 4431302820000,
+  "lifePercentage": "0.6",
   "lifestyleImpact": 0,
-  "remainingDays": 30644,
-  "remainingYears": "83.9",
+  "remainingDays": 30525,
+  "remainingYears": "83.6",
 }
 `;
 
 exports[`computeResult characterization > age 99 1`] = `
 {
-  "adjustedLifeExpectancy": "100.8",
-  "age": "99.00",
+  "adjustedLifeExpectancy": "101.3",
+  "age": "99.50",
   "countdown": undefined,
-  "daysLived": 36159,
+  "daysLived": 36342,
   "endTimestamp": 1851942384000,
   "lifePercentage": "98.2",
   "lifestyleImpact": 0,
@@ -44,29 +44,29 @@ exports[`computeResult characterization > age 99 1`] = `
 
 exports[`computeResult characterization > female 65 1`] = `
 {
-  "adjustedLifeExpectancy": "86.4",
-  "age": "65.00",
+  "adjustedLifeExpectancy": "86.5",
+  "age": "65.50",
   "countdown": undefined,
-  "daysLived": 23741,
-  "endTimestamp": 2468893464000,
-  "lifePercentage": "75.2",
+  "daysLived": 23923,
+  "endTimestamp": 2455639272000,
+  "lifePercentage": "75.7",
   "lifestyleImpact": 0,
-  "remainingDays": 7812,
-  "remainingYears": "21.4",
+  "remainingDays": 7659,
+  "remainingYears": "21.0",
 }
 `;
 
 exports[`computeResult characterization > male 40 1`] = `
 {
-  "adjustedLifeExpectancy": "81.2",
-  "age": "40.00",
+  "adjustedLifeExpectancy": "81.3",
+  "age": "40.50",
   "countdown": undefined,
-  "daysLived": 14610,
-  "endTimestamp": 3094996248000,
-  "lifePercentage": "49.2",
+  "daysLived": 14792,
+  "endTimestamp": 3079848600000,
+  "lifePercentage": "49.8",
   "lifestyleImpact": 0,
-  "remainingDays": 15059,
-  "remainingYears": "41.2",
+  "remainingDays": 14883,
+  "remainingYears": "40.8",
 }
 `;
 

@@ -4,7 +4,8 @@ import { PROJECTION_LABELS } from '../utils/projectionLabels';
 // Result header: switches the headline between the period figure (default) and
 // the projected one, and shows the other figure as a second line. Rendered only
 // when a projected figure exists (entered age under 70). State lives in the page.
-// The dark scrims keep white text at >= 4.5:1 on the light-mode gradient.
+// The dark scrims keep the text at >= 4.5:1 on the gradient; e2e/projection.e2e.js measures
+// it in both themes and both states (including the active white button) and fails below 4.5.
 const ProjectionToggle = ({ resultData, onChange }) => {
   if (!resultData?.projectionAvailable) return null;
   const { projection, periodRemainingYears, projectedRemainingYears } = resultData;

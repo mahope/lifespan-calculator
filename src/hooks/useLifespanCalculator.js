@@ -28,8 +28,8 @@ export const useLifespanCalculator = () => {
   }, [lifestyleFactors, projection]);
 
   const setProjection = useCallback((mode) => {
-    setProjectionState(mode);
     if (lastInput.current) {
+      setProjectionState(mode);
       const { input, now } = lastInput.current;
       setResultData(computeResult({ ...input, projection: mode }, now));
     }

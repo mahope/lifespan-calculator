@@ -66,3 +66,71 @@ test('the toggle is offered at entered age 69 but not at 70', async ({ session }
   await page.getByRole('heading', { name: 'Din resterende tid' }).waitFor();
   await expect(page.getByRole('group', { name: /Beregningsgrundlag/ })).toHaveCount(0);
 });
+
+// WCAG 2 contrast (>= 4.5:1, all text here is 14 px) for every text node in the toggle and
+// the second line, in both themes and both toggle states (the inactive button was
+// 3.2-4.0:1 before #92 was repaired). axe-core's color-contrast rule cannot be used here: on
+// the result card's gradient it either reports "incomplete" or blends Tailwind 4's
+// oklab() overlays over the page instead of the card (verified, it reported white on a light
+// grey that is not on screen). So the ratio is computed from the computed styles: the
+// translucent layers between the text and the card are composited over each colour stop of
+// the gradient, and over their average, which is the worst case of the ramp.
+for (const theme of ['light', 'dark']) {
+  test(`toggle text has >= 4.5:1 contrast on the gradient (${theme})`, async ({ session }) => {
+    const { page } = session;
+    await submitCalculator(page, { gender: 'male', age: 40 });
+    await page.evaluate((t) => document.documentElement.classList.toggle('dark', t === 'dark'), theme);
+    for (const state of ['Nuværende dødelighed', 'Fremskrevet (DST)']) {
+      await toggle(page, state).click();
+      await page.mouse.move(0, 0);
+      const report = await page.evaluate(() => {
+        const group = document.querySelector('[role="group"][aria-label*="Beregningsgrundlag"]');
+        const line = document.querySelector('[data-testid="projection-second-line"]');
+        let host = group;
+        while (host && !getComputedStyle(host).backgroundImage.includes('gradient')) host = host.parentElement;
+        if (!host) return { error: 'no gradient ancestor found' };
+        const ctx = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+        const rgba = (c) => {
+          ctx.clearRect(0, 0, 1, 1);
+          ctx.fillStyle = c;
+          ctx.fillRect(0, 0, 1, 1);
+          const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+          return [r, g, b, a / 255];
+        };
+        const over = (top, bottom) => [0, 1, 2].map((k) => top[k] * top[3] + bottom[k] * (1 - top[3])).concat(1);
+        const lum = (c) => {
+          const [r, g, b] = c.slice(0, 3).map((v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+          return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        };
+        const stops = (getComputedStyle(host).backgroundImage.match(/(?:oklch|oklab|rgba?|lab|lch|color)\([^)]*\)|#[0-9a-f]{3,8}\b/gi) || []).map(rgba);
+        if (stops.length < 2) return { error: 'could not read gradient stops' };
+        const avg = [0, 1, 2].map((k) => stops.reduce((a, c) => a + c[k], 0) / stops.length).concat(1);
+        const texts = [];
+        for (const root of [group, line])
+          for (const el of [root, ...root.querySelectorAll('*')])
+            if ([...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) texts.push(el);
+        let min = { ratio: Infinity };
+        for (const base of [...stops, avg]) {
+          for (const el of texts) {
+            let bg = base;
+            const layers = [];
+            for (let n = el; n && n !== host; n = n.parentElement) layers.push(rgba(getComputedStyle(n).backgroundColor));
+            for (const l of layers.reverse()) bg = over(l, bg);
+            const fg = over(rgba(getComputedStyle(el).color), bg);
+            const [hi, lo] = [lum(fg), lum(bg)].sort((a, b) => b - a);
+            const ratio = (hi + 0.05) / (lo + 0.05);
+            if (ratio < min.ratio) min = { ratio, text: el.textContent.trim().slice(0, 30) };
+          }
+        }
+        return { ...min, texts: texts.length };
+      });
+      expect(report.error).toBeUndefined();
+      expect(report.texts, 'text nodes measured').toBeGreaterThanOrEqual(4);
+      expect(report.ratio, `${theme}, ${state}: lowest ratio on "${report.text}"`).toBeGreaterThanOrEqual(4.5);
+      console.log(`contrast ${theme} / ${state}: min ${report.ratio.toFixed(2)}:1 ("${report.text}")`);
+    }
+    if (process.env.PROJECTION_SHOTS) {
+      await page.screenshot({ path: `${process.env.PROJECTION_SHOTS}/${theme}.jpg`, type: 'jpeg', quality: 60, fullPage: true });
+    }
+  });
+}

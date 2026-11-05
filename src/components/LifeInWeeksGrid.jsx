@@ -3,6 +3,8 @@ import { CalendarDays } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const WEEKS_PER_YEAR = 52;
+// Hard cap so no input can create an unbounded draw loop.
+const MAX_YEARS = 130;
 
 // Resolve an HSL design token (e.g. "221 83% 53%") to a canvas-usable color string.
 // Falls back gracefully during SSR / if the variable is missing.
@@ -44,7 +46,7 @@ const LifeInWeeksGrid = ({ resultData }) => {
 
   const weeksLived = Math.max(0, Math.floor(daysLived / 7));
   const expectedWeeks = Math.round(expectancy * WEEKS_PER_YEAR);
-  const totalYears = Math.max(90, Math.ceil(expectancy));
+  const totalYears = Math.min(MAX_YEARS, Math.max(90, Math.ceil(expectancy)));
   const totalWeeks = totalYears * WEEKS_PER_YEAR;
 
   const draw = useCallback(() => {

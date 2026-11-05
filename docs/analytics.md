@@ -29,3 +29,10 @@ lifestyle answers, country) as a prop.
 - [ ] `Error` (custom property `type`)
 
 Funnel suggestion: pageview `/` -> `Result Shown` -> `Affiliate Impression` -> `Affiliate Click`.
+
+## Testing note
+
+Plausible ignores automated browsers (`navigator.webdriver`) and `localhost`. To
+check events with Playwright against `npm run preview`, use a `*.localhost`
+host name, set `navigator.webdriver` to false, fulfil `analytics.holstjensen.eu`
+requests locally and abort `partner-ads.com`.

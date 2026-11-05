@@ -11,6 +11,7 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               Vores gratis levetidsberegner hjælper dig med at få et statistisk indblik i din forventede resterende levetid.
               Værktøjet anvender Danmarks Statistiks dødelighedstavler til at give dig et estimat baseret på din alder og dit køn.
+              Sammenligningen med andre lande bruger tal fra Eurostat og Verdensbanken.
             </p>
           </div>
 
@@ -34,14 +35,17 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-foreground">Privatlivspolitik</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Vi respekterer dit privatliv. Al behandling sker lokalt i din browser, og dine indtastninger gemmes ikke på
-              nogen server. Vi tæller kun anonymt, at beregneren bruges, uden alder, køn eller andre oplysninger.
+              nogen server. Vi tæller kun anonymt, at beregneren bruges, uden alder, køn eller andre oplysninger. Læs{' '}
+              <a href="/privatlivspolitik" className="text-primary underline">privatlivspolitikken</a> og{' '}
+              <a href="/cookiepolitik" className="text-primary underline">cookiepolitikken</a>.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Kun danske tal</h3>
+            <h3 className="text-lg font-semibold text-foreground">Sammenligning med andre lande</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Beregningen bruger danske dødelighedstavler for alle brugere. Der slås ikke noget land eller nogen placering op.
+              Dit estimat bygger kun på danske dødelighedstavler. Til sammenligning viser siden tal for Sverige, Norge og
+              Finland (Eurostat) samt Japan og verden (Verdensbanken). Der slås ikke noget land eller nogen placering op.
             </p>
             <p className="text-sm">
               <strong className="text-foreground">Se også:</strong>{' '}

@@ -22,6 +22,19 @@ describe('route list', () => {
   })
 })
 
+describe('serving layer files', () => {
+  it('ships health, 404 and serve.json in public/', () => {
+    for (const f of ['../public/api/health', '../public/404.html', '../public/serve.json']) {
+      expect(read(f).length).toBeGreaterThan(0)
+    }
+  })
+  it('serves in non-SPA mode (no -s flag) so unknown paths return 404', () => {
+    const cmd = read('../Dockerfile').match(/^CMD (.*)$/m)[1]
+    expect(cmd).toContain('"serve"')
+    expect(cmd).not.toMatch(/"-s"|"--single"/)
+  })
+})
+
 describe('buildSitemap', () => {
   it('lists every route exactly once with absolute URLs', () => {
     const xml = buildSitemap(ROUTES)

@@ -78,9 +78,13 @@ Reusable component classes are defined with Tailwind v4 `@utility`. Mobile-first
 main color scheme uses HSL custom properties (see `:root` / `.dark`).
 
 ## Deployment
-Built with Nixpacks (`nixpacks.toml`): `npm ci` -> `npm run build` -> serve
-`dist/` (`.dokploy` pins the Node version). The build output is also committed
-under `dist/`.
+Built with the `Dockerfile` (Node 22): `npm ci` -> `npm run build` -> `serve dist`
+(no `-s`, so unknown paths return a real 404). `public/serve.json` rewrites the
+known routes to `/index.html` and sets headers; `public/404.html` and
+`public/api/health` (Swarm healthcheck) are copied into `dist/`. The route list
+lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates
+`public/sitemap.xml` from it. Adding a route means updating `ROUTES`,
+`App.jsx` and `public/serve.json` (a test enforces this).
 
 ## File Structure
 - `index.html` - Vite entry HTML (also hosts static footer, cookie-consent

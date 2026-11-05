@@ -20,7 +20,7 @@ for (const { id, input, years } of CASES) {
       const url = new URL(page.url());
       const result = await captureResult(page);
       // Explicit golden number: changes only when the calculation or the life table changes.
-      expect(result.srAnnouncement).toContain(`${years} år`);
+      expect(result.srAnnouncement).toMatch(new RegExp(`(^|[^\\d.,])${years.replace('.', '\\.')} år`));
       // Numbers only, no copy: the snapshot must not break when wording changes.
       const snapshot = {
         id,
@@ -65,12 +65,17 @@ for (const { id, input, years } of CASES) {
       for (const e of rec.events) {
         expect(e.unparsable, 'unparsable analytics body').toBeUndefined();
         expect(Object.keys(allowedProps), `event "${e.n}" is not in EVENTS (or pageview)`).toContain(e.n);
-        for (const [key, value] of Object.entries(e.p ?? {})) {
+        // Gender is checked on prop values only: the event URL legitimately contains the share parameter.
+      const genderWords = ['male', 'female', 'mand', 'kvinde', input.gender];
+      for (const [key, value] of Object.entries(e.p ?? {})) {
+        expect(genderWords, `event "${e.n}" prop "${key}" carries the gender`).not.toContain(String(value).toLowerCase());
           expect(allowedProps[e.n], `event "${e.n}" carries prop "${key}" outside its whitelist`).toContain(key);
           // Prop values are compared whole, so "40" cannot hide inside unrelated digits.
           expect(typed, `event "${e.n}" prop "${key}" carries a typed input value`).not.toContain(String(value));
         }
       }
+      // At least one prop-carrying event must have been seen, otherwise the prop checks above are vacuous.
+      expect(rec.events.some((e) => Object.keys(e.p ?? {}).length > 0), 'no analytics event with props was recorded').toBe(true);
       const everything = rec.eventBodies.join('\n');
       for (const v of typed) {
         // An age like "40" can appear inside unrelated digits, so test it as a JSON/prop value, not a substring.

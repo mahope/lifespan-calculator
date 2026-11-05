@@ -21,7 +21,7 @@ exactly like in production. `vite preview` ignores `serve.json` and would hide t
 - `calculator.e2e.js`: three baseline inputs (male 40, female 65, male born 1985-06-15) with the clock frozen at
   2026-11-05T12:34:56Z. The golden remaining years are explicit assertions (40.8, 21.0 and 39.9 years; age-only input
   counts as mid-year) and a small JSON snapshot in `e2e/__snapshots__/<case>.json` holds numbers only (years, the
-  countdown values, the affiliate link attributes), never page copy. The same file checks that only the site and the
+  countdown values, the affiliate link rel/target, no banner IDs), never page copy. The same file checks that only the site and the
   analytics host are contacted, that every analytics event is whitelisted in `EVENTS` (`src/utils/analytics.js`:
   the event name is a key, every prop key is listed for that event, Plausible's own `pageview` carries no props),
   that no prop value and no request body contains a typed input value (age, birthdate, gender), that nothing is

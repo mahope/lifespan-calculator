@@ -93,7 +93,6 @@ export function captureResult(page) {
         return { heading: h ? n(h.innerText) : null, text: n(el.innerText) };
       }),
       partnerAdsLinks: [...document.querySelectorAll('a[href*="partner-ads.com"]')].map((a) => ({
-        href: a.getAttribute('href'),
         rel: a.getAttribute('rel'),
         target: a.getAttribute('target'),
       })),

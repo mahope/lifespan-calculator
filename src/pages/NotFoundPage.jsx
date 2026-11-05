@@ -1,106 +1,58 @@
 import React from 'react';
-import {
-  SearchX,
-  Compass,
-  Clock,
-  CalendarClock,
-  Skull,
-  HeartPulse,
-  MapPin,
-  Home,
-} from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
-import ThemeToggle from '../components/ThemeToggle';
-import { Link } from 'react-router-dom';
 
-const NotFoundPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <SEOHead notFound />
+const PAGES = [
+  ['/', 'Levetidsberegner', 'Beregn din resterende levetid'],
+  ['/hvor-lang-tid-har-jeg-tilbage', 'Hvor lang tid har jeg tilbage?', 'Lær om resterende levetid'],
+  ['/dodsalder-calculator', 'Dødsalder Calculator', 'Beregn din statistiske dødsalder'],
+  ['/livsstil-og-levetid', 'Livsstil og Levetid', 'Optimer din livsstil'],
+  ['/levetid-beregner-danmark', 'Dansk Levetidsberegner', 'Specialiseret til Danmark med data fra Danmarks Statistik'],
+  ['/pensionsalder', 'Pensionsalder', 'Se din folkepensionsalder og pensionsdato'],
+];
 
-      <PageHeader
-        icon={SearchX}
-        title="Side ikke fundet"
-        subtitle="Den side du leder efter eksisterer ikke eller er blevet flyttet"
-      />
+const NotFoundPage = () => (
+  <div className="flex min-h-screen flex-col">
+    <SEOHead notFound />
 
-      <main className="flex-1">
-        <div className="container py-8 sm:py-12">
-          <div className="mx-auto max-w-2xl text-center space-y-6 sm:space-y-8">
-            <div className="flex justify-center">
-              <span className="inline-grid h-24 w-24 place-items-center rounded-3xl bg-primary/10 text-primary">
-                <Compass className="h-12 w-12" strokeWidth={1.75} />
-              </span>
-            </div>
+    <PageHeader
+      title="Side ikke fundet"
+      subtitle="Den side du leder efter eksisterer ikke eller er blevet flyttet"
+    />
 
-            <div className="space-y-4">
-              <h2 className="text-xl sm:text-2xl font-bold">Hmm, denne side findes ikke</h2>
-              <p className="text-muted-foreground">
-                Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse.
-                Lad os få dig tilbage på rette spor!
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Populære sider:</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <Link to="/" className="card hover:shadow-md hover:border-primary/50 transition-all">
-                  <div className="card-content text-center space-y-2 py-4">
-                    <Clock className="mx-auto h-7 w-7 text-primary" />
-                    <div className="font-medium">Levetidsberegner</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Beregn din resterende levetid</div>
-                  </div>
-                </Link>
-
-                <Link to="/hvor-lang-tid-har-jeg-tilbage" className="card hover:shadow-md hover:border-primary/50 transition-all">
-                  <div className="card-content text-center space-y-2 py-4">
-                    <CalendarClock className="mx-auto h-7 w-7 text-primary" />
-                    <div className="font-medium">Hvor lang tid har jeg tilbage?</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Lær om resterende levetid</div>
-                  </div>
-                </Link>
-
-                <Link to="/dodsalder-calculator" className="card hover:shadow-md hover:border-primary/50 transition-all">
-                  <div className="card-content text-center space-y-2 py-4">
-                    <Skull className="mx-auto h-7 w-7 text-primary" />
-                    <div className="font-medium">Dødsalder Calculator</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Beregn din statistiske dødsalder</div>
-                  </div>
-                </Link>
-
-                <Link to="/livsstil-og-levetid" className="card hover:shadow-md hover:border-primary/50 transition-all">
-                  <div className="card-content text-center space-y-2 py-4">
-                    <HeartPulse className="mx-auto h-7 w-7 text-primary" />
-                    <div className="font-medium">Livsstil og Levetid</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Optimer din livsstil</div>
-                  </div>
-                </Link>
-
-                <Link to="/levetid-beregner-danmark" className="card hover:shadow-md hover:border-primary/50 transition-all sm:col-span-2">
-                  <div className="card-content text-center space-y-2 py-4">
-                    <MapPin className="mx-auto h-7 w-7 text-primary" />
-                    <div className="font-medium">Dansk Levetidsberegner</div>
-                    <div className="text-xs sm:text-sm text-muted-foreground">Specialiseret til Danmark med data fra Danmarks Statistik</div>
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            <div className="pt-4 sm:pt-6">
-              <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
-                <Home className="h-5 w-5" aria-hidden="true" /> Gå til forsiden
-              </Link>
-            </div>
+    <main className="flex-1">
+      <div className="container pb-12">
+        <section className="card">
+          <div className="card-header">
+            <h2 className="fig text-2xl leading-tight font-semibold">Siden findes ikke</h2>
+            <p className="mt-2 max-w-prose text-[0.9375rem] leading-relaxed text-muted-foreground">
+              Du er måske kommet hertil via et forældet link eller har tastet en forkert adresse.
+            </p>
           </div>
-        </div>
-      </main>
+          <div className="card-content">
+            <h3 className="fig mb-2 text-lg font-semibold">Populære sider:</h3>
+            <ul className="divide-y">
+              {PAGES.map(([to, title, text]) => (
+                <li key={to} className="grid gap-x-8 py-3 sm:grid-cols-[16rem_minmax(0,1fr)]">
+                  <Link to={to} className="link inline-flex min-h-11 items-center font-medium sm:min-h-0">
+                    {title}
+                  </Link>
+                  <p className="text-[0.9375rem] text-muted-foreground">{text}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6">
+              <Link to="/" className="btn btn-primary">Gå til forsiden</Link>
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
 
-      <Footer />
-      <ThemeToggle />
-    </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
 export default NotFoundPage;

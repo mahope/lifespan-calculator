@@ -1,128 +1,65 @@
 import React from 'react';
-import {
-  CalendarClock,
-  Check,
-  Target,
-  Wallet,
-  Activity,
-  Clock,
-  Cake,
-  Calculator,
-} from 'lucide-react';
-import SEOHead from '../components/SEOHead';
-import PageHeader from '../components/PageHeader';
-import Footer from '../components/Footer';
-import ThemeToggle from '../components/ThemeToggle';
-import PromoBanner from '../components/PromoBanner';
 import { Link } from 'react-router-dom';
+import PageShell from '../components/PageShell';
+import SectionHeader from '../components/SectionHeader';
 
-const HvorLangTidPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <SEOHead route="/hvor-lang-tid-har-jeg-tilbage" />
+const REASONS = [
+  ['Målsætning og prioritering', 'At kende din forventede resterende levetid kan hjælpe dig med at prioritere mål og drømme i dit liv.'],
+  ['Finansiel planlægning', 'Pensionsopsparing og økonomiske beslutninger kan træffes mere informeret.'],
+  ['Sundhedsmotivation', 'Indsigt i hvordan livsstil påvirker levetid kan motivere til sundere valg.'],
+  ['Tidsperspektiv', 'At forstå livets begrænsninger kan føre til mere bevidste valg om hvordan vi bruger vores tid.'],
+];
 
-      <PageHeader
-        icon={CalendarClock}
-        title="Hvor lang tid har jeg tilbage?"
-        subtitle="Få et statistisk estimat af din resterende levetid baseret på videnskabelige data"
-      />
+const HvorLangTidPage = () => (
+  <PageShell
+    route="/hvor-lang-tid-har-jeg-tilbage"
+    title="Hvor lang tid har jeg tilbage?"
+    subtitle="Få et statistisk estimat af din resterende levetid baseret på videnskabelige data"
+  >
+    <section className="card">
+      <SectionHeader level={2} title={'Hvad betyder "resterende levetid"?'} />
+      <div className="card-content prose-page">
+        <p>
+          Din resterende levetid er et statistisk estimat baseret på demografiske data, som viser hvor mange år
+          du gennemsnitligt kan forvente at leve fra dit nuværende tidspunkt. Dette tal bygger på Danmarks Statistiks
+          dødelighedstavler og er justeret for din alder og dit køn.
+        </p>
+        <h3>Faktorer der påvirker din resterende levetid:</h3>
+        <ul className="list-disc space-y-2 pl-5">
+          <li><strong>Alder:</strong> Jo ældre du er, jo færre år har du statistisk tilbage</li>
+          <li><strong>Køn:</strong> Kvinder lever generelt længere end mænd i de fleste lande</li>
+          <li><strong>Livsstil:</strong> Motion, kost, rygning og andre faktorer påvirker betydeligt</li>
+        </ul>
+      </div>
+    </section>
 
-      <main className="flex-1">
-        <div className="container py-8 sm:py-12">
-          <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
-            <div className="card animate-slideUp">
-              <div className="card-content space-y-6">
-                <h2 className="text-xl sm:text-2xl font-bold">Hvad betyder "resterende levetid"?</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Din resterende levetid er et statistisk estimat baseret på demografiske data, som viser hvor mange år
-                  du gennemsnitligt kan forvente at leve fra dit nuværende tidspunkt. Dette tal bygger på Danmarks Statistiks
-                  dødelighedstavler og er justeret for din alder og dit køn.
-                </p>
-
-                <h3 className="text-lg sm:text-xl font-semibold">Faktorer der påvirker din resterende levetid:</h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                    <span><strong className="text-foreground">Alder:</strong> Jo ældre du er, jo færre år har du statistisk tilbage</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                    <span><strong className="text-foreground">Køn:</strong> Kvinder lever generelt længere end mænd i de fleste lande</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500 dark:text-green-400" aria-hidden="true" />
-                    <span><strong className="text-foreground">Livsstil:</strong> Motion, kost, rygning og andre faktorer påvirker betydeligt</span>
-                  </li>
-                </ul>
-              </div>
+    <section className="card">
+      <SectionHeader level={2} title="Hvorfor beregne resterende levetid?" />
+      <div className="card-content">
+        <dl className="divide-y">
+          {REASONS.map(([term, text]) => (
+            <div key={term} className="grid gap-x-8 gap-y-1 py-4 first:pt-0 sm:grid-cols-[13rem_minmax(0,1fr)]">
+              <dt className="font-semibold">{term}</dt>
+              <dd className="text-muted-foreground">{text}</dd>
             </div>
+          ))}
+        </dl>
+      </div>
+    </section>
 
-            <div className="card">
-              <div className="card-content space-y-4">
-                <h3 className="text-lg sm:text-xl font-semibold">Hvorfor beregne resterende levetid?</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                    <h4 className="font-medium text-primary flex items-center gap-2">
-                      <Target className="h-5 w-5 shrink-0" aria-hidden="true" /> Målsætning og prioritering
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      At kende din forventede resterende levetid kan hjælpe dig med at prioritere mål og drømme i dit liv.
-                    </p>
-                  </div>
-                  <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                    <h4 className="font-medium text-primary flex items-center gap-2">
-                      <Wallet className="h-5 w-5 shrink-0" aria-hidden="true" /> Finansiel planlægning
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Pensionsopsparing og økonomiske beslutninger kan træffes mere informeret.
-                    </p>
-                  </div>
-                  <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                    <h4 className="font-medium text-primary flex items-center gap-2">
-                      <Activity className="h-5 w-5 shrink-0" aria-hidden="true" /> Sundhedsmotivation
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Indsigt i hvordan livsstil påvirker levetid kan motivere til sundere valg.
-                    </p>
-                  </div>
-                  <div className="space-y-3 p-4 bg-muted/30 rounded-lg">
-                    <h4 className="font-medium text-primary flex items-center gap-2">
-                      <Clock className="h-5 w-5 shrink-0" aria-hidden="true" /> Tidsperspektiv
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      At forstå livets begrænsninger kan føre til mere bevidste valg om hvordan vi bruger vores tid.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card border-primary/20 bg-primary/5">
-              <div className="card-content space-y-4">
-                <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
-                  <Cake className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" /> Prøv med din fødselsdato
-                </h3>
-                <p className="text-muted-foreground">
-                  For den mest præcise beregning kan du indtaste din fødselsdato i stedet for bare din alder. 
-                  Dette giver dig ekstra fun facts som antallet af fuldmåner du har oplevet og præcis hvor mange sekunder du har levet!
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Link to="/" className="btn btn-primary gap-2 text-base sm:text-lg px-6 sm:px-8 py-3">
-                <Calculator className="h-5 w-5" aria-hidden="true" /> Beregn din resterende levetid nu
-              </Link>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <PromoBanner />
-      <Footer />
-      <ThemeToggle />
-    </div>
-  );
-};
+    <section className="card">
+      <SectionHeader level={2} title="Prøv med din fødselsdato" />
+      <div className="card-content prose-page">
+        <p>
+          For den mest præcise beregning kan du indtaste din fødselsdato i stedet for bare din alder.
+          Dette giver dig ekstra fun facts som antallet af fuldmåner du har oplevet og præcis hvor mange sekunder du har levet.
+        </p>
+        <p>
+          <Link to="/" className="btn btn-primary">Beregn din resterende levetid nu</Link>
+        </p>
+      </div>
+    </section>
+  </PageShell>
+);
 
 export default HvorLangTidPage;

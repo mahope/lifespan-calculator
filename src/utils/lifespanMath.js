@@ -1,7 +1,7 @@
 // Pure lifespan math, extracted from useLifespanCalculator so it can be
 // unit-tested in isolation. Keep this module free of React and side effects.
 
-import { remainingLifeExpectancy } from './lifeTableDK';
+import { remainingFor, effectiveProjection } from './lifeTableDK';
 
 /**
  * Parse a calendar date as LOCAL midnight. `new Date('YYYY-MM-DD')` is UTC
@@ -183,7 +183,7 @@ export function breakdownRemaining(msRemaining) {
  * @param {Date} now
  */
 export function computeResult(input, now) {
-  const { ageOrBirthdate, gender, birthdate = null, lifestyleFactors } = input;
+  const { ageOrBirthdate, gender, birthdate = null, lifestyleFactors, projection: requested = 'period' } = input;
   let age;
   let preciseAgeData = null;
   let daysLived;
@@ -204,8 +204,17 @@ export function computeResult(input, now) {
   const genderKey = gender === 'female' ? 'female' : 'male';
   const rawLifestyleAdjustment = lifestyleTotal(lifestyleFactors);
   const lifestyleAdjustment = Math.round(boundLifestyleAdjustment(rawLifestyleAdjustment));
-  const remainingBase = remainingLifeExpectancy(age, genderKey);
+  // 'period' (default) or 'projected' (DST cohort table, only below age 70).
+  const projection = effectiveProjection(age, requested);
+  const remainingBase = remainingFor(age, genderKey, projection);
   const remainingYears = Math.max(0, remainingBase + lifestyleAdjustment);
+  // The other table's figure with the same lifestyle adjustment, for the
+  // second line under the headline. Only offered below the projection age limit.
+  const projectionAvailable = effectiveProjection(age, 'projected') === 'projected';
+  const periodRemaining = Math.max(0, remainingFor(age, genderKey, 'period') + lifestyleAdjustment);
+  const projectedRemaining = projectionAvailable
+    ? Math.max(0, remainingFor(age, genderKey, 'projected') + lifestyleAdjustment)
+    : null;
   const adjustedLifeExpectancy = age + remainingYears; // expected age at death
 
   // One end instant for both modes, with the fractional year kept (the old age
@@ -221,13 +230,20 @@ export function computeResult(input, now) {
   const hoursLived = daysLived * 24;
 
   return {
+    projection,
+    projectionAvailable,
+    periodRemainingYears: periodRemaining.toFixed(1),
+    projectedRemainingYears: projectedRemaining === null ? null : projectedRemaining.toFixed(1),
     remainingYears: remainingYears.toFixed(1),
     remainingDays: Math.max(0, Math.floor(timeRemaining / (1000 * 60 * 60 * 24))),
     adjustedLifeExpectancy: adjustedLifeExpectancy.toFixed(1),
     lifestyleImpact: lifestyleAdjustment,
     endDate: exactEndDate.toLocaleDateString('da-DK'),
     endTimestamp: exactEndDate.getTime(),
-    dataSource: 'Danmarks Statistik (2024-2025)',
+    dataSource:
+      projection === 'projected'
+        ? 'Danmarks Statistiks befolkningsfremskrivning 2026 (fremskrevet)'
+        : 'Danmarks Statistik (2024-2025)',
     age: typeof age === 'number' ? age.toFixed(2) : age,
     displayAge: preciseAgeData
       ? `${preciseAgeData.years} år, ${preciseAgeData.months} mdr, ${preciseAgeData.days} dage`

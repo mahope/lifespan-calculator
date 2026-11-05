@@ -89,3 +89,49 @@ describe('computeResult invalid input', () => {
     expect(Number.isFinite(r.endTimestamp)).toBe(true);
   });
 });
+
+describe('computeResult projection mode (#92)', () => {
+  const m40 = CASES['male 40'];
+
+  it('defaults to the period table: same numbers as before, with the projected figure alongside', () => {
+    const base = computeResult(m40, NOW);
+    expect(base.projection).toBe('period');
+    expect(base.remainingYears).toBe('41.2');
+    expect(base.adjustedLifeExpectancy).toBe('81.2');
+    expect(base.dataSource).toBe('Danmarks Statistik (2024-2025)');
+    expect(base.projectionAvailable).toBe(true);
+    expect(base.projectedRemainingYears).toBe('46.8');
+    expect(computeResult({ ...m40, projection: 'period' }, NOW)).toEqual(base);
+  });
+
+  it('projected mode switches headline, expected age, end instant and days', () => {
+    const p = computeResult({ ...m40, projection: 'projected' }, NOW);
+    const base = computeResult(m40, NOW);
+    expect(p.projection).toBe('projected');
+    expect(p.remainingYears).toBe('46.8');
+    expect(p.adjustedLifeExpectancy).toBe('86.8');
+    expect(p.endTimestamp).toBeGreaterThan(base.endTimestamp);
+    expect(p.remainingDays).toBeGreaterThan(base.remainingDays);
+    expect(p.periodRemainingYears).toBe('41.2');
+    expect(p.projectedRemainingYears).toBe('46.8');
+  });
+
+  it('applies the lifestyle adjustment to both figures', () => {
+    const adv = CASES['advanced two factors'];
+    const base = computeResult(adv, NOW);
+    const p = computeResult({ ...adv, projection: 'projected' }, NOW);
+    expect(parseFloat(p.remainingYears) - parseFloat(base.remainingYears)).toBeGreaterThan(4);
+    expect(base.projectedRemainingYears).toBe(p.remainingYears);
+  });
+
+  it('is not offered from age 70, and a projected request falls back to period', () => {
+    const old = { ageOrBirthdate: 70, gender: 'male', lifestyleFactors: zero };
+    const r = computeResult({ ...old, projection: 'projected' }, NOW);
+    expect(r.projectionAvailable).toBe(false);
+    expect(r.projectedRemainingYears).toBeNull();
+    expect(r.projection).toBe('period');
+    expect(r).toEqual(computeResult(old, NOW));
+    const young = computeResult({ ...old, ageOrBirthdate: 69, projection: 'projected' }, NOW);
+    expect(young.projection).toBe('projected');
+  });
+});

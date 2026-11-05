@@ -5,6 +5,7 @@
 // Index = age (0..99). Regenerate by curling the HISB8 CSV for TAVLE=3 and =1.
 
 import { boundLifestyleAdjustment } from './lifespanMath';
+import { COHORT_TABLE } from '../data/cohortTable.generated';
 
 export const LIFE_TABLE_DK = {
   remaining: {
@@ -30,6 +31,36 @@ export function remainingLifeExpectancy(age, gender) {
   return t[lo] + (t[lo + 1] - t[lo]) * (age - lo);
 }
 
+/** Projected (cohort) remaining life expectancy at an exact age, from DST FRDK426. */
+export function projectedRemainingLifeExpectancy(age, gender) {
+  const t = COHORT_TABLE.remaining[gender] || COHORT_TABLE.remaining.male;
+  if (!Number.isFinite(age) || age <= 0) return t[0];
+  if (age >= t.length - 1) return t[t.length - 1];
+  const lo = Math.floor(age);
+  return t[lo] + (t[lo + 1] - t[lo]) * (age - lo);
+}
+
+/** Projected figures are only offered below this age (#92). */
+export const PROJECTION_MAX_AGE = 70;
+
+/**
+ * The table behind a result: 'projected' only when asked for AND the age is
+ * below PROJECTION_MAX_AGE, otherwise the period table.
+ * @returns {'period'|'projected'}
+ */
+export function effectiveProjection(age, requested) {
+  return requested === 'projected' && Number.isFinite(age) && age < PROJECTION_MAX_AGE
+    ? 'projected'
+    : 'period';
+}
+
+/** e_x from the period table or, for 'projected', the cohort table. */
+export function remainingFor(age, gender, projection = 'period') {
+  return projection === 'projected'
+    ? projectedRemainingLifeExpectancy(age, gender)
+    : remainingLifeExpectancy(age, gender);
+}
+
 /**
  * Projected expected age at death for a given age/gender and a set of lifestyle
  * factors: age + max(0, e_x + bounded lifestyle adjustment). Mirrors the hook's
@@ -38,11 +69,11 @@ export function remainingLifeExpectancy(age, gender) {
  * @param {'male'|'female'} gender
  * @param {Record<string, number>} factors
  */
-export function projectedExpectancy(age, gender, factors) {
+export function projectedExpectancy(age, gender, factors, projection = 'period') {
   const sum = Object.values(factors || {}).reduce((s, v) => s + (v || 0), 0);
   const remaining = Math.max(
     0,
-    remainingLifeExpectancy(age, gender) + Math.round(boundLifestyleAdjustment(sum))
+    remainingFor(age, gender, projection) + Math.round(boundLifestyleAdjustment(sum))
   );
   return age + remaining;
 }

@@ -2,7 +2,8 @@
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { describe, expect, it } from 'vitest';
-import Sandsynlighed, { formatPct } from './Sandsynlighed';
+import Sandsynlighed from './Sandsynlighed';
+import { formatPct } from '../utils/formatPct';
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 

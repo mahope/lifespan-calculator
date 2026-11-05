@@ -2,13 +2,9 @@ import React from 'react';
 import { Dices } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { survivalProbability } from '../utils/lifeTableDK';
+import { formatPct } from '../utils/formatPct';
 
 const TARGETS = [80, 90, 95, 100];
-
-// One decimal below 10 % so small tail probabilities (0,83 %) are not rounded
-// to 1 % or 0 %; whole percent otherwise.
-export const formatPct = (pct) =>
-  pct < 10 ? `${pct.toFixed(1).replace('.', ',')}%` : `${Math.round(pct)}%`;
 
 // "Chance for at nå…" — probability of reaching selected ages from the user's
 // current age, straight from the Danish survivors table (l_x). Population

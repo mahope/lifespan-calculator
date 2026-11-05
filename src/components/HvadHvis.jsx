@@ -42,7 +42,7 @@ const HvadHvis = ({ resultData, lifestyleFactors }) => {
               key={m.key}
               type="button"
               aria-pressed={!!applied[m.key]}
-              className={`factor-btn ${applied[m.key] ? 'active' : ''}`}
+              className={`factor-btn basis-auto! ${applied[m.key] ? 'active' : ''}`}
               onClick={() => setApplied((a) => ({ ...a, [m.key]: !a[m.key] }))}
             >
               <span aria-hidden="true">{m.icon}</span> {m.label}

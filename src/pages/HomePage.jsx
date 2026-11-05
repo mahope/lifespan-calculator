@@ -1168,17 +1168,17 @@ const HomePage = () => {
                       style={{ width: `${100 - resultData?.lifePercentage}%` }}
                     ></div>
                   </div>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                     <div className="text-center space-y-1">
                       <div className="text-xl font-semibold">{resultData?.lifePercentage}%</div>
                       <div className="text-xs text-muted-foreground">Levet</div>
                     </div>
                     <div className="text-center space-y-1">
-                      <div className="text-xl font-semibold">{resultData?.daysLived?.toLocaleString()}</div>
+                      <div className="text-xl font-semibold break-words">{resultData?.daysLived?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Dage levet</div>
                     </div>
-                    <div className="text-center space-y-1">
-                      <div className="text-xl font-semibold">{resultData?.heartbeats?.toLocaleString()}</div>
+                    <div className="text-center space-y-1 col-span-2 sm:col-span-1">
+                      <div className="text-xl font-semibold break-words">{resultData?.heartbeats?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Hjerteslag</div>
                     </div>
                   </div>
@@ -1216,59 +1216,59 @@ const HomePage = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">🌅</div>
-                      <div className="text-lg font-semibold">{resultData?.sunrises?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{resultData?.sunrises?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Solopgange set</div>
                     </div>
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">💨</div>
-                      <div className="text-lg font-semibold">{resultData?.breaths?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{resultData?.breaths?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Åndedrætninger</div>
                     </div>
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">👣</div>
-                      <div className="text-lg font-semibold">{resultData?.steps?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{resultData?.steps?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Skridt taget</div>
                     </div>
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">😴</div>
-                      <div className="text-lg font-semibold">{resultData?.sleepHours?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{resultData?.sleepHours?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Timer sovet</div>
                     </div>
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">😊</div>
-                      <div className="text-lg font-semibold">{resultData?.laughs?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{resultData?.laughs?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Gange grint</div>
                     </div>
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">🍽️</div>
-                      <div className="text-lg font-semibold">{resultData?.meals?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{resultData?.meals?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Måltider spist</div>
                     </div>
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">💧</div>
-                      <div className="text-lg font-semibold">{resultData?.waterLiters?.toLocaleString()}</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{resultData?.waterLiters?.toLocaleString()}</div>
                       <div className="text-xs text-muted-foreground">Liter vand drukket</div>
                     </div>
                     <div className="text-center p-3 bg-muted/30 rounded-lg">
                       <div className="text-2xl mb-1">🚀</div>
-                      <div className="text-lg font-semibold">{(resultData?.spaceKm / 1000000000)?.toFixed(1)} mia</div>
+                      <div className="text-lg font-semibold wrap-anywhere">{(resultData?.spaceKm / 1000000000)?.toFixed(1)} mia</div>
                       <div className="text-xs text-muted-foreground">km rejst i rummet</div>
                     </div>
                     {resultData?.hasPreciseBirthdate && (
                       <>
                         <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
                           <div className="text-2xl mb-1">🌙</div>
-                          <div className="text-lg font-semibold">{resultData?.fullMoons?.toLocaleString()}</div>
+                          <div className="text-lg font-semibold wrap-anywhere">{resultData?.fullMoons?.toLocaleString()}</div>
                           <div className="text-xs text-muted-foreground">Fuldmåner oplevet</div>
                         </div>
                         <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
                           <div className="text-2xl mb-1">🍂</div>
-                          <div className="text-lg font-semibold">{resultData?.seasons?.toLocaleString()}</div>
+                          <div className="text-lg font-semibold wrap-anywhere">{resultData?.seasons?.toLocaleString()}</div>
                           <div className="text-xs text-muted-foreground">Årstider oplevet</div>
                         </div>
                         <div className="text-center p-3 bg-muted/30 rounded-lg border-2 border-primary/20">
                           <div className="text-2xl mb-1">⏱️</div>
-                          <div className="text-lg font-semibold">{resultData?.secondsLived?.toLocaleString()}</div>
+                          <div className="text-lg font-semibold wrap-anywhere">{resultData?.secondsLived?.toLocaleString()}</div>
                           <div className="text-xs text-muted-foreground">Sekunder levet</div>
                         </div>
                       </>

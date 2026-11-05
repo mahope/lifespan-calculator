@@ -165,7 +165,7 @@ const HomePage = () => {
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
-    setSearchParams({});
+    setSearchParams({}, { replace: true });
   };
 
   const shareResults = () => {

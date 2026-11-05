@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+  sourceLinks,
   topImprovements,
   LIFESTYLE_META,
   LIFESTYLE_FACTORS,
@@ -231,3 +232,26 @@ describe('helper texts', () => {
     for (const f of LIFESTYLE_FACTORS) expect(factorHelper(f)).not.toContain(ASSOCIATION_NOTE);
   });
 });
+
+describe('sourceLinks (#93)', () => {
+  it('has one pmid per paper the cite names, in order', () => {
+    for (const f of LIFESTYLE_FACTORS.filter((x) => x.source?.pmid)) {
+      const links = sourceLinks(f);
+      expect(links.length, f.key).toBe(f.source.cite.split(';').length);
+      expect(links.every((l) => /^\d+$/.test(l.pmid) && l.short), f.key).toBe(true);
+      expect(new Set(links.map((l) => l.pmid)).size, f.key).toBe(links.length);
+    }
+  });
+
+  it('names the first author of each paper', () => {
+    const bmi = LIFESTYLE_FACTORS.find((f) => f.key === 'bmi');
+    expect(sourceLinks(bmi).map((l) => l.short)).toEqual(['Global BMI Mortality Collaboration', 'Prospective Studies Collaboration']);
+    expect(factorHelper(bmi)).toContain('PMID 27423262, 19299006');
+  });
+
+  it('gives no links for a source without a pmid', () => {
+    expect(sourceLinks({ source: { cite: 'Danmarks Statistik, LABY21' } })).toEqual([]);
+    expect(sourceLinks({})).toEqual([]);
+  });
+});
+

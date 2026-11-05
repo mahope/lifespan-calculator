@@ -37,6 +37,7 @@ export const LIFESTYLE_FACTORS = [
     source: {
       cite: 'Jha m.fl., NEJM 2013; Pirie m.fl., Lancet 2013; Doll m.fl., BMJ 2004',
       pmid: '23343063',
+      also: ['23107252', '15213107'],
       figure:
         'Rygere mister i gennemsnit mindst 10 leveår sammenlignet med aldrig-rygere, og 1-10 cigaretter om dagen næsten fordobler dødeligheden. Stopper man før 40 år, undgår man omkring 90 % af merdødeligheden; at stoppe som 50-årig genvinder ca. 6 af de ca. 10 år.',
       range: { min: -12, max: -1 },
@@ -118,6 +119,7 @@ export const LIFESTYLE_FACTORS = [
     source: {
       cite: 'Cappuccio m.fl., Sleep 2010; Yin m.fl., JAHA 2017',
       pmid: '20469800',
+      also: ['28889101'],
       figure:
         'Både kort og lang søvn er forbundet med højere dødelighed: kort søvn RR 1,12 (1,06-1,18), lang søvn RR 1,30 (1,22-1,38), lavest ved ca. 7 timer. Omregningen til leveår er vores skøn, og en del af sammenhængen skyldes sandsynligvis, at sygdom påvirker søvnen.',
       range: { min: -3, max: -0.5 },
@@ -170,6 +172,7 @@ export const LIFESTYLE_FACTORS = [
     source: {
       cite: 'Global BMI Mortality Collaboration, Lancet 2016; Prospective Studies Collaboration, Lancet 2009',
       pmid: '27423262',
+      also: ['19299006'],
       figure:
         'Dødeligheden (HR) ift. BMI 22,5-25: 1,07 ved 25-27,5, 1,20 ved 27,5-30, 1,45 ved 30-35, 1,94 ved 35-40 og 2,76 ved 40+. BMI 30-35 forkorter medianlevetiden med 2-4 år og BMI 40-45 med 8-10 år. Undervægt hænger sammen med højere dødelighed (HR 1,51), men delvist fordi sygdom giver lav vægt.',
       range: { min: -10, max: -0.5 },
@@ -212,6 +215,7 @@ export const LIFESTYLE_FACTORS = [
     source: {
       cite: 'Plana-Ripoll m.fl., Lancet 2019; Walker m.fl., JAMA Psychiatry 2015',
       pmid: '31668728',
+      also: ['25671328'],
       figure:
         'I danske registerdata (7,4 mio. personer) mistede personer med en psykisk lidelse mellem 5,4 og 14,8 leveår afhængigt af diagnose og køn; medianen i en stor oversigt er ca. 10 år. Det er gennemsnit for grupper, ikke en vurdering af den enkelte.',
       range: { min: -10, max: -4 },
@@ -341,13 +345,30 @@ export function lifestyleYears(factors) {
 }
 
 /**
+ * One link per paper the `cite` names: the first `;`-separated part belongs to
+ * `source.pmid`, the following ones to `source.also` in order. `short` is the
+ * first author or body ("Jha"), used to tell the links apart.
+ */
+export function sourceLinks(factor) {
+  const { cite = '', pmid, also = [] } = factor.source || {};
+  if (!pmid) return [];
+  const parts = cite.split(';').map((p) => p.trim());
+  return [pmid, ...also].map((id, i) => ({
+    pmid: id,
+    url: `https://pubmed.ncbi.nlm.nih.gov/${id}/`,
+    short: (parts[i] || '').split(',')[0].replace(/ m\.fl\.$/, ''),
+  }));
+}
+
+/**
  * Helper text under a factor, generated from the table: the source's own figure,
  * its citation and the evidence grade. The caller appends ASSOCIATION_NOTE.
  */
 export function factorHelper(factor) {
   const text = factor.source?.figure ?? factor.info;
   if (!text) return '';
-  const cite = factor.source?.cite ? ` Kilde: ${factor.source.cite}${factor.source.pmid ? ` (PMID ${factor.source.pmid})` : ''}.` : '';
+  const pmids = sourceLinks(factor).map((l) => l.pmid);
+  const cite = factor.source?.cite ? ` Kilde: ${factor.source.cite}${pmids.length ? ` (PMID ${pmids.join(', ')})` : ''}.` : '';
   return `${text}${cite} Evidens: ${EVIDENCE_LABELS[factor.evidence]}.`;
 }
 

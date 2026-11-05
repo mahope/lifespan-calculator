@@ -2,7 +2,7 @@
 process.env.TZ = 'Europe/Copenhagen';
 
 import { describe, it, expect } from 'vitest';
-import { computeResult, breakdownRemaining, lifestyleTotal } from './lifespanMath';
+import { computeResult, breakdownRemaining, lifestyleTotal, roundYears, roundedLifestyleAdjustment, formatSignedYears, formatYears } from './lifespanMath';
 import { LIFESTYLE_KEYS } from '../hooks/useLifespanCalculator';
 import { LIFESTYLE_FACTORS } from './lifestyleFactors';
 
@@ -127,5 +127,24 @@ describe('age-only input is an age in a year (#91)', () => {
     expect(r(98).usesTailRule).toBe(false);
     // a 120-year-old woman no longer gets "expected age at death 122.2"
     expect(Number(r(120, 'female').adjustedLifeExpectancy)).toBeLessThan(113);
+  });
+});
+
+describe('lifestyle rounding and number format (#93)', () => {
+  it('rounds half values symmetrically', () => {
+    expect(roundYears(8.75)).toBe(8.8);
+    expect(roundYears(-8.75)).toBe(-8.8);
+    expect(roundYears(-0.04)).toBe(0);
+    expect(Object.is(roundYears(-0.04), -0)).toBe(false);
+    expect(roundedLifestyleAdjustment(-8.75)).toBe(-roundedLifestyleAdjustment(8.75));
+    expect(formatSignedYears(-8.75)).toBe('-8,8 år');
+    expect(formatSignedYears(8.75)).toBe('+8,8 år');
+  });
+
+  it('writes years with a decimal comma', () => {
+    expect(formatYears(77.8)).toBe('77,8');
+    expect(formatYears(80)).toBe('80,0');
+    expect(formatSignedYears(4.5)).toBe('+4,5 år');
+    expect(formatSignedYears(0)).toBe('0 år');
   });
 });

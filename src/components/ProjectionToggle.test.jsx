@@ -38,7 +38,7 @@ describe('ProjectionToggle', () => {
     expect(projected.getAttribute('aria-pressed')).toBe('false');
     act(() => projected.click());
     expect(calls).toEqual(['projected']);
-    expect(el.querySelector('[data-testid="projection-second-line"]').textContent).toContain('46.3');
+    expect(el.querySelector('[data-testid="projection-second-line"]').textContent).toContain('46,3');
   });
 });
 
@@ -67,7 +67,7 @@ describe('ShareModal text', () => {
     const twitter = [...document.body.querySelectorAll('button')].find((b) => b.textContent.includes('Twitter'));
     act(() => twitter.click());
     const text = decodeURIComponent(new URL(opened[0]).searchParams.get('text'));
-    expect(text).toContain('46.3 år tilbage at leve (fremskrevet af Danmarks Statistik)!');
+    expect(text).toContain('46,3 år tilbage at leve (fremskrevet af Danmarks Statistik)!');
     expect(text).not.toMatch(/\([^()]*\([^()]*\)[^()]*\)/);
     expect(el).toBeTruthy();
   });

@@ -11,7 +11,6 @@ import { PENSION_AGE_ROWS, efterloenAgeOn, folkepensionAgeOn, pensionOutlook } f
 import { FAQ, faqJsonLd } from '../utils/pensionFaq';
 import { LIFE_TABLE_META } from '../utils/lifeTableDK';
 import { parseLocalDate, toLocalISODate } from '../utils/lifespanMath';
-import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 
 // Before 1939-07-01 the pension age was 67, which the age schedule in utils/pension.js does not cover.
 const MIN_BIRTH = '1939-07-01';

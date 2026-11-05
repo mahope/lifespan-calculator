@@ -11,7 +11,7 @@ test('male 40: period is the default, the toggle switches the headline and is ke
   const { page, rec } = session;
   await submitCalculator(page, { gender: 'male', age: 40 });
 
-  expect(await srText(page)).toMatch(/40\.8 år tilbage at leve \(nuværende dødelighed\)/);
+  expect(await srText(page)).toMatch(/40,8 år tilbage at leve \(nuværende dødelighed\)/);
   await expect(toggle(page, 'Nuværende dødelighed')).toHaveAttribute('aria-pressed', 'true');
   await expect(toggle(page, 'Fremskrevet (DST)')).toHaveAttribute('aria-pressed', 'false');
   await expect(page.getByTestId('projection-second-line')).toContainText('ca. 46,3 år');
@@ -19,7 +19,7 @@ test('male 40: period is the default, the toggle switches the headline and is ke
   // Keyboard only: focus the inactive button, activate with Space.
   await toggle(page, 'Fremskrevet (DST)').focus();
   await page.keyboard.press('Space');
-  expect(await srText(page)).toMatch(/46\.3 år tilbage at leve \(fremskrevet af Danmarks Statistik\)/);
+  expect(await srText(page)).toMatch(/46,3 år tilbage at leve \(fremskrevet af Danmarks Statistik\)/);
   await expect(toggle(page, 'Fremskrevet (DST)')).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByTestId('projection-second-line')).toContainText('ca. 40,8 år');
   await expect(page.getByTestId('sammenlign-basis-note')).toBeVisible();
@@ -28,7 +28,7 @@ test('male 40: period is the default, the toggle switches the headline and is ke
   // Enter works too, and goes back.
   await toggle(page, 'Nuværende dødelighed').focus();
   await page.keyboard.press('Enter');
-  expect(await srText(page)).toMatch(/40\.8 år tilbage at leve \(nuværende dødelighed\)/);
+  expect(await srText(page)).toMatch(/40,8 år tilbage at leve \(nuværende dødelighed\)/);
 
   // Page state only: nothing in the URL, nothing stored, only whitelisted analytics events.
   expect(new URL(page.url()).search).toBe('');
@@ -45,13 +45,13 @@ test('"Ny beregning" resets the toggle to the period figure', async ({ session }
   const { page } = session;
   await submitCalculator(page, { gender: 'male', age: 40 });
   await toggle(page, 'Fremskrevet (DST)').click();
-  expect(await srText(page)).toMatch(/46\.3 år/);
+  expect(await srText(page)).toMatch(/46,3 år/);
   await page.getByRole('button', { name: 'Ny beregning' }).click();
   await page.getByLabel('Din alder:').fill('40');
   await page.getByRole('radio', { name: 'Mand', exact: true }).click();
   await page.getByRole('button', { name: 'Beregn levetid' }).click();
   await page.getByRole('heading', { name: 'Din resterende tid' }).waitFor();
-  expect(await srText(page)).toMatch(/40\.8 år tilbage at leve \(nuværende dødelighed\)/);
+  expect(await srText(page)).toMatch(/40,8 år tilbage at leve \(nuværende dødelighed\)/);
   await expect(toggle(page, 'Nuværende dødelighed')).toHaveAttribute('aria-pressed', 'true');
 });
 

@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { survivalProbability } from '../utils/lifeTableDK';
 import { formatPct } from '../utils/formatPct';
+import { formatYears } from '../utils/lifespanMath';
 
 const MARGIN = { top: 28, right: 14, bottom: 30, left: 46 };
 const Y_TICKS = [0, 25, 50, 75, 100];
@@ -50,7 +51,11 @@ const Overlevelseskurve = ({ age, gender, expectedAge }) => {
 
   const marks = [80, 90].filter((a) => a > age);
   const expected = Number.isFinite(expectedAge) ? Math.min(Math.max(expectedAge, age), maxAge) : null;
-  const expectedLeft = expected !== null && x(expected) > MARGIN.left + innerW * 0.62;
+  // Shorter wording on narrow charts; the label flips to the left of the line when it would not fit on the right
+  // (width estimated at ~7 px per character for 12 px semibold).
+  const expectedLabel =
+    expected === null ? '' : `${w < 520 ? 'Forventet alder' : 'Justeret forventet alder'} ${formatYears(expected)}`;
+  const expectedLeft = expected !== null && x(expected) + 6 + expectedLabel.length * 7 > w - MARGIN.right;
 
   const onMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -109,7 +114,7 @@ const Overlevelseskurve = ({ age, gender, expectedAge }) => {
                 fontWeight="600"
                 className="fill-foreground"
               >
-                Justeret forventet alder {expected.toFixed(1)}
+                {expectedLabel}
               </text>
             </g>
           )}

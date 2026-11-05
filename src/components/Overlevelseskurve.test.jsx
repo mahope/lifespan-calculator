@@ -33,6 +33,6 @@ describe('Overlevelseskurve', () => {
   });
 
   it('labels the expected age as adjusted', () => {
-    expect(render({ age: 40, expectedAge: 84.2 }).textContent).toContain('Justeret forventet alder 84.2');
+    expect(render({ age: 40, expectedAge: 84.2 }).textContent).toMatch(/Forventet alder 84,2/i);
   });
 });

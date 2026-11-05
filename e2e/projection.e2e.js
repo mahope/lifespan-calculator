@@ -69,12 +69,10 @@ test('the toggle is offered at entered age 69 but not at 70', async ({ session }
 
 // WCAG 2 contrast (>= 4.5:1, all text here is 14 px) for every text node in the toggle and
 // the second line, in both themes and both toggle states (the inactive button was
-// 3.2-4.0:1 before #92 was repaired). axe-core's color-contrast rule cannot be used here: on
-// the result card's gradient it either reports "incomplete" or blends Tailwind 4's
-// oklab() overlays over the page instead of the card (verified, it reported white on a light
-// grey that is not on screen). So the ratio is computed from the computed styles: the
-// translucent layers between the text and the card are composited over each colour stop of
-// the gradient, and over their average, which is the worst case of the ramp.
+// 3.2-4.0:1 before #92 was repaired). The ratio is computed from the computed styles: the
+// translucent layers between the text and the nearest painted ancestor are composited over
+// that background (over each colour stop and their average if it is a gradient, as the
+// result card was before the redesign).
 for (const theme of ['light', 'dark']) {
   test(`toggle text has >= 4.5:1 contrast on its background (${theme})`, async ({ session }) => {
     const { page } = session;

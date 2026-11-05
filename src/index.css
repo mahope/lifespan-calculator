@@ -1,11 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap')
-layer(base);
 @import 'tailwindcss';
+
+/* Self-hosted Inter (SIL OFL, see public/fonts/Inter-LICENSE.txt). Latin subset covers æ, ø, å. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Metric-matched fallback so the swap to Inter causes no layout shift. */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107.12%;
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+  --font-sans: Inter, 'Inter Fallback', system-ui, -apple-system, sans-serif;
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -380,7 +400,7 @@ layer(base);
 
   body {
     @apply bg-background min-h-screen;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
     color: hsl(var(--foreground));
     transition: background-color 0.3s ease, color 0.3s ease;
   }

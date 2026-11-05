@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   Hourglass,
-  MapPin,
   Zap,
   SlidersHorizontal,
   Hash,
@@ -35,15 +34,14 @@ import { saveEntry } from '../utils/history';
 import { useLifespanCalculator } from '../hooks/useLifespanCalculator';
 import { parseShareParams } from '../utils/shareState';
 import { boundLifestyleAdjustment, toLocalISODate } from '../utils/lifespanMath';
+import { trackCalculate } from '../utils/analytics';
 
 const HomePage = () => {
   const {
-    userLocation,
     resultData,
     currentMode,
     lifestyleFactors,
     setCurrentMode,
-    getUserLocation,
     calculateLifespan,
     updateLifestyleFactor,
     applyLifestyleFactors,
@@ -160,16 +158,7 @@ const HomePage = () => {
     runCalculation();
 
     // Track analytics
-    if (window.plausible) {
-      window.plausible('Calculate Lifespan', {
-        props: {
-          age: formData.useBirthdate ? 'birthdate' : formData.age,
-          gender: formData.gender,
-          location: userLocation || 'Unknown',
-          usedBirthdate: formData.useBirthdate
-        }
-      });
-    }
+    trackCalculate();
   };
 
   const resetCalculation = () => {
@@ -191,10 +180,10 @@ const HomePage = () => {
     <div className="flex min-h-screen flex-col">
       <SEOHead
         title="Levetidsberegner - Beregn din resterende levetid baseret på statistik"
-        description="Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder, køn og geografisk placering. Inkluderer live nedtælling og deling."
+        description="Gratis levetidsberegner der beregner din statistiske resterende levetid baseret på alder og køn ud fra danske dødelighedstavler. Inkluderer live nedtælling og deling."
         keywords="levetidsberegner, resterende levetid, statistik, dødsalderen, levetid beregner, hvor længe lever jeg, lifespan calculator dansk"
         ogTitle="Levetidsberegner - Hvor lang tid har du tilbage?"
-        ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på WHO data og nationale statistikker."
+        ogDescription="Beregn din statistiske resterende levetid med vores gratis levetidsberegner. Baseret på Danmarks Statistiks dødelighedstavler."
       />
 
       <PageHeader
@@ -357,26 +346,6 @@ const HomePage = () => {
                         </button>
                       </div>
                     </div>
-
-                    {/* Location */}
-                    {userLocation ? (
-                      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <MapPin className="h-3.5 w-3.5" /> {userLocation}
-                      </p>
-                    ) : (
-                      <div className="space-y-2">
-                        <p className="text-sm text-muted-foreground">
-                          Beregningen bruger danske gennemsnit. Vil du bruge din faktiske placering?
-                        </p>
-                        <button
-                          type="button"
-                          onClick={getUserLocation}
-                          className="btn btn-outline w-full gap-2"
-                        >
-                          <MapPin className="h-4 w-4" /> Brug min placering
-                        </button>
-                      </div>
-                    )}
 
                     {/* Lifestyle Factors (Advanced Mode) */}
                     {currentMode === 'advanced' && (

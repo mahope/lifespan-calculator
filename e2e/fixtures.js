@@ -60,8 +60,6 @@ export const test = base.extend({
 
 export { expect };
 
-const norm = (s) => (s || '').replace(/\s+/g, ' ').trim();
-
 /** Fills the form the way a user does and submits it. */
 export async function submitCalculator(page, input) {
   await page.goto('/', { waitUntil: 'networkidle' });
@@ -102,5 +100,3 @@ export function captureResult(page) {
     };
   });
 }
-
-export { norm };

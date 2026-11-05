@@ -33,7 +33,7 @@ async function waitForServer(url, ms = 30000) {
   throw new Error(`preview server did not start on ${url}`);
 }
 
-const server = spawn('npx', ['vite', 'preview', '--host', '127.0.0.1', '--port', String(PORT), '--strictPort'], { stdio: 'ignore' });
+const server = spawn('npx', ['vite', 'preview', '--host', '127.0.0.1', '--port', String(PORT), '--strictPort'], { stdio: 'ignore', detached: true });
 const tmp = mkdtempSync(path.join(tmpdir(), 'lh-budget-'));
 let failed = false;
 try {
@@ -72,7 +72,12 @@ try {
   console.error(e.message);
   failed = true;
 } finally {
-  server.kill();
+  // npx forks vite as a child: kill the whole process group so port is freed for the next run.
+  try {
+    process.kill(-server.pid);
+  } catch {
+    /* already gone */
+  }
   rmSync(tmp, { recursive: true, force: true });
 }
 process.exit(failed ? 1 : 0);

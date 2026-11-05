@@ -5,7 +5,7 @@ const PORT = Number(process.env.E2E_PORT ?? 4173);
 const SITE_HOST = 'levetid.test';
 
 // The suite runs against the built app (`npm run build` first), served the way production
-// serves it: `serve` with public/serve.json (same pinned version as the Dockerfile), so
+// serves it: `serve` with public/serve.json (devDependency, same pinned version as the Dockerfile), so
 // unknown paths are a real 404. `vite preview` ignores serve.json and would hide that.
 export default defineConfig({
   testDir: 'e2e',
@@ -27,7 +27,7 @@ export default defineConfig({
     acceptDownloads: false,
   },
   webServer: {
-    command: `npx --yes serve@14.2.6 dist -l ${PORT}`,
+    command: `npx serve dist -l ${PORT}`,
     url: `http://127.0.0.1:${PORT}/api/health`,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,

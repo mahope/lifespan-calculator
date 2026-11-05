@@ -1,4 +1,4 @@
-import { test, expect, submitCalculator, captureResult } from './fixtures.js';
+import { test, expect, submitCalculator, captureResult, ANALYTICS_HOST } from './fixtures.js';
 
 // The three baseline inputs of the 2026-11-05 audit (audit/measure2/baseline), clock frozen.
 export const CASES = [
@@ -48,7 +48,7 @@ for (const { id, input } of CASES) {
       await submitCalculator(page, input);
 
       const hosts = [...rec.hosts].sort();
-      expect(hosts.filter((h) => h !== siteHost && h !== 'analytics.holstjensen.eu'), `unexpected hosts: ${hosts}`).toEqual([]);
+      expect(hosts.filter((h) => h !== siteHost && h !== ANALYTICS_HOST), `unexpected hosts: ${hosts}`).toEqual([]);
 
       // The analytics script must really have run (a pageview was sent), otherwise the checks below prove nothing.
       expect(rec.events.length).toBeGreaterThan(0);
@@ -71,7 +71,7 @@ for (const { id, input } of CASES) {
 }
 
 test('a crafted share link leaves the page responsive', async ({ session }) => {
-  const { page, rec } = session;
+  const { page, rec, siteHost } = session;
   await page.goto('/?g=constructor&a=99999999', { waitUntil: 'networkidle' });
   // Invalid link: the empty form is shown and still works.
   await expect(page.getByLabel('Din alder:')).toBeVisible();
@@ -79,6 +79,7 @@ test('a crafted share link leaves the page responsive', async ({ session }) => {
   await page.getByRole('radio', { name: 'Mand', exact: true }).click();
   await page.getByRole('button', { name: 'Beregn levetid' }).click();
   await expect(page.getByRole('heading', { name: 'Din resterende tid' })).toBeVisible();
+  expect([...rec.hosts].filter((h) => h !== siteHost && h !== ANALYTICS_HOST)).toEqual([]);
   expect(rec.pageErrors).toEqual([]);
   expect(rec.console).toEqual([]);
 });

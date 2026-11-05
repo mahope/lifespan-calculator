@@ -15,7 +15,7 @@ Vitest, files next to the code as `*.test.js`. Pure logic (`src/utils/*`) and a 
 ## End to end tests (`e2e/`)
 
 `@playwright/test` (pinned) drives the built app in Chromium. `playwright.config.js` serves `dist/` with
-`serve@14.2.6` (the version the Dockerfile uses) and `public/serve.json`, so unknown paths are a real 404
+`serve@14.2.6` (a pinned devDependency, the version the Dockerfile uses) and `public/serve.json`, so unknown paths are a real 404
 exactly like in production. `vite preview` ignores `serve.json` and would hide that. Run `npm run build` first.
 
 - `calculator.e2e.js`: three baseline inputs (male 40, female 65, male born 1985-06-15) with the clock frozen at
@@ -47,7 +47,7 @@ The fixture in `e2e/fixtures.js` routes every request. Same-origin requests go t
 host is answered locally (the Plausible script is replayed from the pinned copy, events are recorded and
 acknowledged with 202, never forwarded). Every other host, including partner ads, fonts and geocoding, is aborted
 and recorded, and the test fails if one was contacted. Affiliate links are only inspected, never clicked. The suite
-therefore never sends anything to analytics or to partners, and needs no internet except to install `serve` via npx.
+therefore never sends anything to analytics or to partners, and needs no internet at all once `npm ci` has run.
 
 The site is opened as `http://levetid.test:4173`, which Chrome maps to 127.0.0.1, because the Plausible script
 ignores localhost and 127.x and the privacy check needs it to run.

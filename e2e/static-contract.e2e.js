@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures.js';
 
 // Needs the production serving layer (serve + public/serve.json). Skipped with a clear message
 // when /sitemap.xml is not XML, i.e. when the app is served by something that falls back to the SPA.
@@ -37,12 +37,14 @@ test.describe('static contract', () => {
     expect(await res.text()).toMatch(/privatliv/i);
   });
 
-  test('unknown paths are a real 404 that serves the 404 page', async ({ request, page }) => {
+  test('unknown paths are a real 404 that serves the 404 page', async ({ request, session }) => {
+    const { page, rec, siteHost } = session;
     const res = await request.get('/xyz');
     expect(res.status()).toBe(404);
     const response = await page.goto('/xyz');
     expect(response.status()).toBe(404);
     await expect(page.locator('body')).toContainText('Siden findes ikke');
+    expect([...rec.hosts].filter((h) => h !== siteHost)).toEqual([]);
   });
 
   test('/api/health answers 200', async ({ request }) => {

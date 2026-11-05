@@ -12,8 +12,8 @@ lifestyle answers, country) as a prop.
 | --- | --- | --- |
 | `Calculate Lifespan` | none | The user submits the form |
 | `Result Shown` | `mode` (`simple` / `advanced`) | A result is computed and shown (also for share-link auto-runs) |
-| `Affiliate Impression` | `program` (`findforsikring`), `placement` (`result-insurance`) | Once per result, when the insurance card is at least 50 % visible (`IntersectionObserver`) |
-| `Affiliate Click` | `program`, `placement` | The Findforsikring link is clicked |
+| `Affiliate Impression` | `program` (`findforsikring`, `jura-docs`, `dokument24`), `placement` (`result-insurance`, `result-practical`) | Once per result, when the insurance card (or the expanded practical-papers links) is at least 50 % visible (`IntersectionObserver`) |
+| `Affiliate Click` | `program`, `placement` | A partner link is clicked |
 | `Share Opened` | none | The share dialog is opened |
 | `Share` | `method` (`clipboard-link`, `clipboard-results`, `native`, `twitter`, `facebook`, `linkedin`, `whatsapp`, `download-image`) | A share action is completed |
 | `Error` | `type` (error class name) | The error boundary catches a render error |

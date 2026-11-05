@@ -13,7 +13,7 @@ describe('policy pages', () => {
   })
 
   it('are not rewritten to the SPA and are kept away from the service worker fallback', () => {
-    const { rewrites } = JSON.parse(read('public/serve.json'))
+    const { rewrites = [] } = JSON.parse(read('public/serve.json'))
     expect(rewrites.map((r) => r.source).filter((s) => /politik/.test(s))).toEqual([])
     expect(read('vite.config.js')).toMatch(/privatlivspolitik\|cookiepolitik/)
   })

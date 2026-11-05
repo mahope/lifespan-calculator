@@ -79,12 +79,19 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
 - `Dockerfile` is the only build definition: stage 1 (`node:22-alpine`) runs
   `npm ci` + `npm run build`; stage 2 copies `dist/` and serves it with
   `serve dist -l 3000` as the non-root `node` user. There is no `-s`, so
-  unknown paths return a real 404. `public/serve.json` rewrites the known
-  routes to `/index.html` and sets headers; `public/404.html` and
+  unknown paths return a real 404. The known routes are real files:
+  `postbuild` runs `scripts/prerender-head.mjs`, which writes `dist/<route>/index.html`
+  with each route's own title, description, canonical, Open Graph/Twitter tags and
+  JSON-LD in the raw HTML (values from `src/routes.meta.js`, the single source for
+  `SEOHead` and the script; the build fails on duplicate or too long titles
+  (60) / descriptions (160)). `public/serve.json` must **not** have rewrites for
+  them: `serve` applies rewrites before the filesystem and would hide those files.
+  `SEOHead` removes the baked-in `data-prerender` tags at runtime so nothing is
+  duplicated. `public/serve.json` sets headers; `public/404.html` and
   `public/api/health` (Swarm healthcheck) are copied into `dist/`. The route
   list lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates
   `public/sitemap.xml` from it. Adding a route means updating `ROUTES`,
-  `App.jsx` and `public/serve.json` (a test enforces this).
+  `App.jsx` and `ROUTE_META` in `src/routes.meta.js` (tests enforce this).
 - Hosted as a Dokploy app (`web`) on a worker server, build type `dockerfile`.
   **autoDeploy is off**: merging to `master` does not deploy; a deploy is
   triggered by hand.

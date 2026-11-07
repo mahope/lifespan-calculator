@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import SEOHead from '../components/SEOHead';
 import { computeEmbedResult, EMBED_MAX_AGE, EMBED_HEIGHT_MESSAGE } from '../utils/embedResult';
 import { formatYears } from '../utils/lifespanMath';
 import { LIFE_TABLE_META } from '../utils/lifeTableDK';
@@ -50,7 +49,6 @@ const EmbedPage = () => {
   return (
     <div ref={rootRef}>
       <main className="mx-auto w-full max-w-md p-3 text-foreground">
-        <SEOHead route="/embed" />
 
         <h1 className="sr-only">Levetidsberegner</h1>
         <form

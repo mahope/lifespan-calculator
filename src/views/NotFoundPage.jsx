@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import SEOHead from '../components/SEOHead';
 import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 
@@ -15,7 +13,6 @@ const PAGES = [
 
 const NotFoundPage = () => (
   <div className="flex min-h-screen flex-col">
-    <SEOHead notFound />
 
     <PageHeader
       title="Side ikke fundet"
@@ -36,15 +33,15 @@ const NotFoundPage = () => (
             <ul className="divide-y">
               {PAGES.map(([to, title, text]) => (
                 <li key={to} className="grid gap-x-8 py-3 sm:grid-cols-[16rem_minmax(0,1fr)]">
-                  <Link to={to} className="link inline-flex min-h-11 items-center font-medium sm:min-h-0">
+                  <a href={to} className="link inline-flex min-h-11 items-center font-medium sm:min-h-0">
                     {title}
-                  </Link>
+                  </a>
                   <p className="text-[0.9375rem] text-muted-foreground">{text}</p>
                 </li>
               ))}
             </ul>
             <p className="mt-6">
-              <Link to="/" className="btn btn-primary">Gå til forsiden</Link>
+              <a href="/" className="btn btn-primary">Gå til forsiden</a>
             </p>
           </div>
         </section>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
 import AnswerFirst from '../components/AnswerFirst';
@@ -136,7 +135,7 @@ const DanmarkPage = () => (
           bruger de samme danske tavler, men ud fra din egen alder og dit køn.
         </p>
         <p>
-          <Link to="/" className="btn btn-primary">Beregn din levetid ud fra danske tal</Link>
+          <a href="/" className="btn btn-primary">Beregn din levetid ud fra danske tal</a>
         </p>
       </div>
     </section>

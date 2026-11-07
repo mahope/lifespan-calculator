@@ -1,0 +1,8 @@
+---
+// The iframe widget (noindex, not in the sitemap). Framing headers: Caddyfile.
+import Base from '../layouts/Base.astro'
+import EmbedWidget from '../islands/EmbedWidget.jsx'
+---
+<Base route="/embed" embed>
+  <EmbedWidget client:load />
+</Base>

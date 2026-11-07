@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import React, { useEffect, useState } from 'react';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
 import { PENSION_AGE_ROWS, efterloenAgeOn, folkepensionAgeOn, pensionOutlook } from '../utils/pension';
-import { FAQ, faqJsonLd } from '../utils/pensionFaq';
+import { FAQ } from '../utils/pensionFaq';
 import { parseLocalDate, toLocalISODate } from '../utils/lifespanMath';
 import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 
@@ -17,11 +15,14 @@ const fmtYears = (n) => n.toLocaleString('da-DK', { minimumFractionDigits: 1, ma
 const fmtAge = (years, months) => (months ? `${years}½ år` : `${years} år`);
 const splitAge = (age) => [Math.floor(age), age % 1 ? 6 : 0];
 
-const PensionsalderPage = () => {
+// The form and the result: the island hydrated on /pensionsalder. The tables and the FAQ around it are static.
+export const PensionForm = () => {
   const [birthdate, setBirthdate] = useState('');
   const [gender, setGender] = useState('');
   const [touched, setTouched] = useState(false);
-  const today = toLocalISODate(new Date());
+  // "Today" is read in the browser after hydration, never frozen into the HTML at build time.
+  const [today, setToday] = useState('');
+  useEffect(() => setToday(toLocalISODate(new Date())), []);
 
   const parsed = birthdate ? parseLocalDate(birthdate) : null;
   const inRange = birthdate >= MIN_BIRTH && birthdate <= today;
@@ -36,15 +37,7 @@ const PensionsalderPage = () => {
   const sexLabel = { male: 'mænd', female: 'kvinder' };
 
   return (
-    <PageShell
-      route="/pensionsalder"
-      title="Hvornår kan jeg gå på pension?"
-      subtitle="Skriv din fødselsdato og se din folkepensionsalder, datoen du når den, og hvor mange pensionsår du i gennemsnit kan forvente"
-    >
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
-      </Helmet>
-
+    <>
       <section className="card" aria-label="Din fødselsdato">
         <div className="card-content max-w-xl">
           <div className="grid gap-6 sm:grid-cols-2">
@@ -56,7 +49,7 @@ const PensionsalderPage = () => {
                 className="input"
                 value={birthdate}
                 min={MIN_BIRTH}
-                max={today}
+                max={today || undefined}
                 onChange={(e) => {
                   setBirthdate(e.target.value);
                   setTouched(false);
@@ -145,11 +138,23 @@ const PensionsalderPage = () => {
                 </p>
               )}
 
-              <Link to="/" className="btn btn-primary">Beregn din forventede levetid</Link>
+              <a href="/" className="btn btn-primary">Beregn din forventede levetid</a>
             </div>
           </section>
         )}
       </div>
+    </>
+  );
+};
+
+// The FAQPage JSON-LD (utils/pensionFaq.js) is written into the head by src/pages/pensionsalder.astro.
+const PensionsalderPage = ({ form = <PensionForm /> }) => (
+    <PageShell
+      route="/pensionsalder"
+      title="Hvornår kan jeg gå på pension?"
+      subtitle="Skriv din fødselsdato og se din folkepensionsalder, datoen du når den, og hvor mange pensionsår du i gennemsnit kan forvente"
+    >
+      {form}
 
       <section className="card">
         <SectionHeader level={2} title="Folkepensionsalder efter fødselsår" />
@@ -184,7 +189,7 @@ const PensionsalderPage = () => {
               netop din pensionsalder. Tabellen beskriver dødeligheden i {LIFE_TABLE_META.period} og tager ikke højde for, at vi
               lever længere i fremtiden. Er du allerede pensionist, bruger vi din alder i dag. Du kan få et mere
               personligt bud i{' '}
-              <Link to="/" className="link">levetidsberegneren</Link>, som også kan tage højde for din
+              <a href="/" className="link">levetidsberegneren</a>, som også kan tage højde for din
               livsstil.
             </p>
             <p className="text-sm">
@@ -209,7 +214,6 @@ const PensionsalderPage = () => {
         </div>
       </section>
     </PageShell>
-  );
-};
+);
 
 export default PensionsalderPage;

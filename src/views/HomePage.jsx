@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { Share2, RefreshCw } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 import { SiteNav } from '../components/PageHeader';
-import SEOHead from '../components/SEOHead';
 import Footer from '../components/Footer';
 import ShareModal from '../components/ShareModal';
 import Countdown from '../components/Countdown';
@@ -32,7 +30,18 @@ import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { COHORT_TABLE } from '../data/cohortTable.generated';
 import ProjectionToggle from '../components/ProjectionToggle';
 
-const HomePage = () => {
+// The pages are static HTML, so the query string is read and cleared with the History API directly.
+// Clearing drops every parameter, like the router's setSearchParams({}) did before.
+const currentSearchParams = () => new URLSearchParams(window.location.search);
+const clearSearchParams = () => {
+  if (window.location.search) {
+    window.history.replaceState(window.history.state, '', window.location.pathname + window.location.hash);
+  }
+};
+
+// The calculator island (hydrated on `/`): the form, the result view and the share dialog.
+// The masthead, the other-tools list and the footer around it are static HTML (src/pages/index.astro).
+export const Calculator = () => {
   const {
     resultData,
     currentMode,
@@ -45,8 +54,6 @@ const HomePage = () => {
     applyLifestyleFactors,
     setResultData
   } = useLifespanCalculator();
-
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const [formData, setFormData] = useState({
     age: '',
@@ -89,7 +96,7 @@ const HomePage = () => {
 
   // Hydrate the form from a shared deep-link (?g=&a=/&b=&m=&lf=) exactly once.
   useEffect(() => {
-    const parsed = parseShareParams(takeShareSearchParams(searchParams));
+    const parsed = parseShareParams(takeShareSearchParams(currentSearchParams()));
     if (!parsed) return;
 
     setCurrentMode(parsed.mode);
@@ -102,7 +109,7 @@ const HomePage = () => {
     if (parsed.lifestyle) applyLifestyleFactors(parsed.lifestyle);
     setAutoSubmit(true);
     // Drop the share params so a reload doesn't re-hydrate stale input.
-    setSearchParams({}, { replace: true });
+    clearSearchParams();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -154,7 +161,7 @@ const HomePage = () => {
     setShowResults(false);
     setResultData(null);
     setFormData({ age: '', gender: '', birthdate: '', useBirthdate: false });
-    setSearchParams({}, { replace: true });
+    clearSearchParams();
   };
 
   const shareResults = () => {
@@ -185,13 +192,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <SEOHead route="/" />
-
-      <header>
-        <SiteNav />
-      </header>
-
+    <>
       <main className="flex-1">
         {!showResults ? (
           <div className="container grid gap-10 py-10 sm:py-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-20">
@@ -568,9 +569,6 @@ const HomePage = () => {
         )}
       </main>
 
-      <PromoBanner />
-      <Footer />
-
       {/* Share Modal */}
       <ShareModal
         isOpen={isShareModalOpen}
@@ -579,8 +577,21 @@ const HomePage = () => {
         lifestyleFactors={lifestyleFactors}
         isAdvanced={currentMode === 'advanced'}
       />
-    </div>
+    </>
   );
 };
+
+// The whole page as one React tree, for tests and server rendering checks. The site itself renders the
+// same parts from src/pages/index.astro, with only <Calculator> hydrated.
+const HomePage = () => (
+  <div className="flex min-h-screen flex-col">
+    <header>
+      <SiteNav current="/" />
+    </header>
+    <Calculator />
+    <PromoBanner />
+    <Footer />
+  </div>
+);
 
 export default HomePage;

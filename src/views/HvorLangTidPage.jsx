@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
 import AnswerFirst from '../components/AnswerFirst';
@@ -59,7 +58,7 @@ const HvorLangTidPage = () => (
           Dette giver dig ekstra fun facts som antallet af fuldmåner du har oplevet og præcis hvor mange sekunder du har levet.
         </p>
         <p>
-          <Link to="/" className="btn btn-primary">Beregn din restlevetid i levetidsberegneren</Link>
+          <a href="/" className="btn btn-primary">Beregn din restlevetid i levetidsberegneren</a>
         </p>
       </div>
     </section>

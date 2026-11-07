@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
 import AnswerFirst from '../components/AnswerFirst';
@@ -140,7 +139,7 @@ const LivsstilPage = () => (
           sundere vaner op. Selv små forbedringer kan have betydelig påvirkning på din levetid og livskvalitet.
         </p>
         <p>
-          <Link to="/" className="btn btn-primary">Se hvordan din livsstil påvirker din levetid</Link>
+          <a href="/" className="btn btn-primary">Se hvordan din livsstil påvirker din levetid</a>
         </p>
       </div>
     </section>

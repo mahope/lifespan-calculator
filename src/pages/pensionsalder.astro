@@ -1,0 +1,12 @@
+---
+// Static page with one island: the form and its result (PensionForm). The age table and the FAQ are HTML.
+import Base from '../layouts/Base.astro'
+import PensionsalderPage from '../views/PensionsalderPage.jsx'
+import PensionFormIsland from '../islands/PensionFormIsland.jsx'
+import { faqJsonLd } from '../utils/pensionFaq'
+---
+<Base route="/pensionsalder" extraJsonLd={[faqJsonLd]}>
+  <PensionsalderPage>
+    <PensionFormIsland slot="form" client:load />
+  </PensionsalderPage>
+</Base>

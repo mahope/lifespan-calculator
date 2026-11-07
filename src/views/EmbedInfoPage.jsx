@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import SEOHead from '../components/SEOHead';
+import React from 'react';
 import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 import { EMBED_HEIGHT_MESSAGE } from '../utils/embedResult';
@@ -28,29 +27,42 @@ const CodeBlock = ({ label, code, children }) => (
       readOnly
       rows={code.split('\n').length > 1 ? 7 : 4}
       value={code}
-      onFocus={(e) => e.target.select()}
+      data-select-on-focus
       className="input h-auto font-mono text-xs"
     />
     {children}
   </div>
 );
 
-const EmbedInfoPage = () => {
-  const [copied, setCopied] = useState(false);
-
-  const copy = async () => {
+// Static HTML. Copy button and select-on-focus are wired by EMBED_INFO_SCRIPT (inline, see
+// src/pages/embed-levetidsberegner.astro), so the page ships no JavaScript bundle.
+export const EMBED_INFO_SCRIPT = `(function () {
+  document.querySelectorAll('[data-select-on-focus]').forEach(function (t) {
+    t.addEventListener('focus', function () { t.select(); });
+  });
+  var button = document.querySelector('[data-copy-embed]');
+  var status = document.querySelector('[data-copy-status]');
+  var code = document.getElementById('embed-code');
+  if (!button || !code) return;
+  var timer;
+  button.addEventListener('click', function () {
+    var done = function () {
+      status.textContent = 'Koden er kopieret';
+      clearTimeout(timer);
+      timer = setTimeout(function () { status.textContent = ''; }, 2500);
+    };
+    var fail = function () { code.select(); };
     try {
-      await navigator.clipboard.writeText(EMBED_CODE);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
-    } catch {
-      document.getElementById('embed-code')?.select();
+      navigator.clipboard.writeText(code.value).then(done, fail);
+    } catch (e) {
+      fail();
     }
-  };
+  });
+})();`;
 
+const EmbedInfoPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <SEOHead route="/embed-levetidsberegner" />
 
       <PageHeader
         title="Indlej beregneren"
@@ -87,12 +99,10 @@ const EmbedInfoPage = () => {
                 </p>
                 <CodeBlock label={{ id: 'embed-code', text: 'Indlejringskode' }} code={EMBED_CODE}>
                   <div className="mt-2 flex items-center gap-3">
-                    <button type="button" onClick={copy} className="btn btn-primary">
+                    <button type="button" data-copy-embed className="btn btn-primary">
                       Kopiér koden
                     </button>
-                    <span role="status" className="text-sm text-muted-foreground">
-                      {copied ? 'Koden er kopieret' : ''}
-                    </span>
+                    <span role="status" data-copy-status className="text-sm text-muted-foreground"></span>
                   </div>
                 </CodeBlock>
 

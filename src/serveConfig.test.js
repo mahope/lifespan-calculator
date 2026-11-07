@@ -63,6 +63,11 @@ describe('Dockerfile', () => {
     expect(docker).toMatch(/^COPY Caddyfile \/etc\/caddy\/Caddyfile$/m)
     expect(docker).toMatch(/^EXPOSE 3000$/m)
   })
+  it('uses the same Caddy image as the e2e suite and the performance budget', () => {
+    const tag = docker.match(/^FROM (caddy:\S+)$/m)[1]
+    expect(read('playwright.config.js')).toContain(`const CADDY_IMAGE = '${tag}'`)
+    expect(read('scripts/lighthouse-budget.mjs')).toContain(`const CADDY_IMAGE = '${tag}'`)
+  })
   it('has a healthcheck on /api/health and curl for Dokploy', () => {
     expect(docker).toMatch(/HEALTHCHECK[^\n]*\n\s+CMD curl -fsS http:\/\/127\.0\.0\.1:3000\/api\/health/)
     expect(docker).toMatch(/apk add --no-cache curl/)

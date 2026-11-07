@@ -13,7 +13,7 @@ if (problems.length) throw new Error(`route meta invalid:\n  ${problems.join('\n
 export default defineConfig({
   site: SITE_URL,
   // dist/<route>/index.html, the same files the SPA build wrote, served at /<route> by Caddy.
-  build: { format: 'directory', assets: '_astro' },
+  build: { format: 'directory', assets: '_astro', inlineStylesheets: 'always' },
   trailingSlash: 'ignore',
   // Islands (the calculator, the pension form and the embed widget) are React; everything else ships as HTML.
   integrations: [react()],

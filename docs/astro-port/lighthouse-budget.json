@@ -1,54 +1,54 @@
 {
   "home": {
-    "lcpMs": 951.905,
+    "lcpMs": 1062.815,
     "cls": 0.0006876668487974473,
-    "tbtMs": 25.490000000000236,
+    "tbtMs": 26.28099999999995,
     "scriptTransferBytes": 110392
   },
   "homeRuns": [
     {
-      "lcpMs": 941.068,
+      "lcpMs": 1093.13,
       "cls": 0.0006876668487974473,
-      "tbtMs": 36.521999999999935
+      "tbtMs": 46.15699999999924
     },
     {
-      "lcpMs": 951.905,
+      "lcpMs": 1020.261,
       "cls": 0.0006876668487974473,
-      "tbtMs": 14.396000000000186
+      "tbtMs": 26.28099999999995
     },
     {
-      "lcpMs": 1067.198,
+      "lcpMs": 1062.815,
       "cls": 0.0006876668487974473,
-      "tbtMs": 25.490000000000236
+      "tbtMs": 19.727000000000317
     }
   ],
   "contentPages": {
     "/hvor-lang-tid-har-jeg-tilbage": {
-      "lcpMs": 965.967,
+      "lcpMs": 1053.573,
       "cls": 0.0157278259477436,
       "scripts": [],
       "scriptTransferBytes": 0
     },
     "/dodsalder-calculator": {
-      "lcpMs": 999.858,
+      "lcpMs": 1089.576,
       "cls": 0.0024735118317829427,
       "scripts": [],
       "scriptTransferBytes": 0
     },
     "/livsstil-og-levetid": {
-      "lcpMs": 962.669,
+      "lcpMs": 1036.047,
       "cls": 0.000653623935490643,
       "scripts": [],
       "scriptTransferBytes": 0
     },
     "/levetid-beregner-danmark": {
-      "lcpMs": 999.917,
+      "lcpMs": 1112.049,
       "cls": 0.016522374778231926,
       "scripts": [],
       "scriptTransferBytes": 0
     },
     "/embed-levetidsberegner": {
-      "lcpMs": 1013.229,
+      "lcpMs": 1060.312,
       "cls": 0.001010812809707101,
       "scripts": [],
       "scriptTransferBytes": 0

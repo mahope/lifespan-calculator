@@ -22,8 +22,10 @@ throttling, Caddy image with compression):
 
 | Page | LCP (median of 3 on `/`) | CLS | Same-origin script files |
 | --- | --- | --- | --- |
-| `/` | 0.95 s (0.94, 0.95, 1.07) | 0.00 | the calculator island, 86.5 KB brotli (SPA: about 97 KB) |
-| content pages | 0.96 to 1.01 s | 0.00 | none (0 KB) |
+| `/` | 1.06 s (1.09, 1.02, 1.06) | 0.00 | the calculator island, 86.5 KB brotli (SPA: about 97 KB) |
+| content pages | 1.04 to 1.11 s | 0.00 | none (0 KB) |
+
+An earlier run the same evening gave 0.95 s on `/` (0.94, 0.95, 1.07); the budget is 1.5 s.
 
 For comparison, the redesign measurements of the SPA (`docs/redesign/lh-efter.json`, simulated throttling)
 had LCP 2.8 to 3.2 s. Inlining the CSS was needed: with a separate stylesheet the render-blocking CSS shared

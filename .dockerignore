@@ -1,7 +1,10 @@
 node_modules
 dist
 .git
+.astro
 .env
 .env.*
 *.log
 .DS_Store
+playwright-report
+test-results

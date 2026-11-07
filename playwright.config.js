@@ -1,12 +1,16 @@
 import { defineConfig } from '@playwright/test';
 
-const PORT = Number(process.env.E2E_PORT ?? 4173);
+// A free-ish port per run unless E2E_PORT is set; set on process.env so the test workers see the same value.
+process.env.E2E_PORT ||= String(20000 + Math.floor(Math.random() * 20000));
+const PORT = Number(process.env.E2E_PORT);
 // The Plausible script ignores localhost and 127.x, so the site is opened under a made-up host that Chrome maps to 127.0.0.1.
 const SITE_HOST = 'levetid.test';
+// Same image tag as the Dockerfile; src/serveConfig.test.js keeps them in sync.
+const CADDY_IMAGE = 'caddy:2.11.7-alpine';
 
-// The suite runs against the built app (`npm run build` first), served the way production
-// serves it: `serve` with public/serve.json (devDependency, same pinned version as the Dockerfile), so
-// unknown paths are a real 404. `vite preview` ignores serve.json and would hide that.
+// The suite runs against the built site (`npm run build` first), served the way production serves it: the
+// production Caddyfile in the Caddy image, with dist/ mounted read-only. So unknown paths are a real 404 and
+// every header comes from the real config. Needs Docker. `astro preview` would hide all of that.
 export default defineConfig({
   testDir: 'e2e',
   testMatch: '**/*.e2e.js', // not *.spec.js: vitest would pick those up
@@ -34,9 +38,13 @@ export default defineConfig({
     acceptDownloads: false,
   },
   webServer: {
-    command: `NO_UPDATE_CHECK=1 npx serve dist -l tcp://127.0.0.1:${PORT} --no-port-switching`,
+    // --rm and the forwarded SIGTERM remove the container when the run ends.
+    command:
+      `docker run --rm --name levetid-e2e-${PORT} -p 127.0.0.1:${PORT}:3000 ` +
+      `-v "${process.cwd()}/dist:/srv:ro" -v "${process.cwd()}/Caddyfile:/etc/caddy/Caddyfile:ro" ${CADDY_IMAGE}`,
     url: `http://127.0.0.1:${PORT}/api/health`,
-    reuseExistingServer: !process.env.CI,
-    timeout: 60_000,
+    reuseExistingServer: false,
+    timeout: 120_000,
+    gracefulShutdown: { signal: 'SIGTERM', timeout: 10_000 },
   },
 });

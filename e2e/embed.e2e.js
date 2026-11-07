@@ -1,6 +1,6 @@
 import { test, expect } from './fixtures.js';
 
-const PORT = process.env.E2E_PORT ?? 4173;
+const PORT = process.env.E2E_PORT;
 const FRAMER = 'http://framer.test';
 const page_html = (src, id) =>
   `<!doctype html><title>host</title><iframe id="${id}" src="${src}" width="500" height="400"></iframe>

@@ -5,7 +5,7 @@
    - install never fails (each file is cached on its own), so a failed download can never leave the old
      worker in charge,
    - activate deletes every other cache, including the old worker's workbox-precache-* cache with its
-     index.html fallback, and takes control of open tabs at once,
+     index.html fallback, takes control of open tabs at once and, on that first switch only, reloads them,
    - pages are fetched from the network first; the copy cached at install is only used offline or when the
      network does not answer within NETWORK_TIMEOUT_MS. There is no SPA fallback: unknown paths go to the
      network and get the server's real 404. */
@@ -36,13 +36,26 @@ self.addEventListener('install', (event) => {
   );
 });
 
+// Tabs that the SPA's worker served from its precache are still running the old app. When that cache is
+// found (first activation after the SPA), they are reloaded once so they show the new site; later deploys
+// leave open tabs alone.
+const LEGACY_CACHE = /^workbox-/;
+
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches
-      .keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
-      .then(() => self.clients.claim()),
-  );
+  const switched = (async () => {
+    const keys = await caches.keys();
+    const fromSpa = keys.some((key) => LEGACY_CACHE.test(key));
+    await Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)));
+    await self.clients.claim();
+    return fromSpa;
+  })();
+  event.waitUntil(switched);
+  // Not inside waitUntil: the reload's own request is only handled once activation has finished.
+  switched.then(async (fromSpa) => {
+    if (!fromSpa) return;
+    const tabs = await self.clients.matchAll({ type: 'window' });
+    tabs.forEach((tab) => tab.navigate(tab.url).catch(() => undefined));
+  });
 });
 
 function fromCache(key) {

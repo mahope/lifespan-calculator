@@ -1,0 +1,521 @@
+{
+  "sitemap": [
+    "https://levetidsberegner.dk/",
+    "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+    "https://levetidsberegner.dk/dodsalder-calculator",
+    "https://levetidsberegner.dk/levetid-beregner-danmark",
+    "https://levetidsberegner.dk/livsstil-og-levetid",
+    "https://levetidsberegner.dk/pensionsalder",
+    "https://levetidsberegner.dk/embed-levetidsberegner"
+  ],
+  "routes": {
+    "/": {
+      "title": [
+        "Hvor gammel bliver jeg? Levetidsberegner med danske tal"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Levetidsberegner: se din statistiske restlevetid ud fra alder og køn i Danmarks Statistiks dødelighedstavler. Med nedtælling.",
+        "keywords": "hvor gammel bliver jeg, levetidsberegner, hvor gammel bliver jeg beregner, hvor gammel bliver jeg test, hvor længe lever jeg",
+        "language": "Danish",
+        "og:description": "Beregn din statistiske levetid ud fra alder og køn. Baseret på Danmarks Statistiks dødelighedstavler.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Hvor gammel bliver jeg? Beregn din levetid",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Hvor gammel bliver jeg? Beregn din levetid",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/",
+        "robots": "index, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Beregn din statistiske levetid ud fra alder og køn. Baseret på Danmarks Statistiks dødelighedstavler.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Hvor gammel bliver jeg? Beregn din levetid"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/",
+          "description": "Levetidsberegner: se din statistiske restlevetid ud fra alder og køn i Danmarks Statistiks dødelighedstavler. Med nedtælling.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        }
+      ]
+    },
+    "/hvor-lang-tid-har-jeg-tilbage": {
+      "title": [
+        "Hvor mange år har jeg tilbage? Beregn din restlevetid"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Hvor mange år har du statistisk tilbage? Se restlevetiden for din alder og dit køn i Danmarks Statistiks tavler.",
+        "keywords": "hvor mange år har jeg tilbage, restlevetid, resterende levetid, hvor lang tid har jeg tilbage",
+        "language": "Danish",
+        "og:description": "Se din statistiske restlevetid ud fra alder og køn, baseret på Danmarks Statistiks dødelighedstavler.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Hvor mange år har jeg tilbage?",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Hvor mange år har jeg tilbage?",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+        "robots": "index, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Se din statistiske restlevetid ud fra alder og køn, baseret på Danmarks Statistiks dødelighedstavler.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Hvor mange år har jeg tilbage?"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage",
+          "description": "Hvor mange år har du statistisk tilbage? Se restlevetiden for din alder og dit køn i Danmarks Statistiks tavler.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Forside",
+              "item": "https://levetidsberegner.dk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Hvor lang tid har jeg tilbage",
+              "item": "https://levetidsberegner.dk/hvor-lang-tid-har-jeg-tilbage"
+            }
+          ]
+        }
+      ]
+    },
+    "/dodsalder-calculator": {
+      "title": [
+        "Forventet dødsalder: beregn din statistiske dødsalder"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Forventet dødsalder for din alder og dit køn, beregnet af Danmarks Statistiks tavler. Se også, hvad livsstil kan ændre.",
+        "keywords": "forventet dødsalder, dødsalder beregner, dødsalder calculator, statistisk dødsalder, hvornår dør jeg",
+        "language": "Danish",
+        "og:description": "Et statistisk estimat af din forventede dødsalder ud fra alder og køn, baseret på Danmarks Statistik.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Forventet dødsalder: hvornår dør jeg statistisk?",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Forventet dødsalder: hvornår dør jeg statistisk?",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/dodsalder-calculator",
+        "robots": "index, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Et statistisk estimat af din forventede dødsalder ud fra alder og køn, baseret på Danmarks Statistik.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Forventet dødsalder: hvornår dør jeg statistisk?"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/dodsalder-calculator"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/dodsalder-calculator",
+          "description": "Forventet dødsalder for din alder og dit køn, beregnet af Danmarks Statistiks tavler. Se også, hvad livsstil kan ændre.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Forside",
+              "item": "https://levetidsberegner.dk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Dødsalder Calculator",
+              "item": "https://levetidsberegner.dk/dodsalder-calculator"
+            }
+          ]
+        }
+      ]
+    },
+    "/levetid-beregner-danmark": {
+      "title": [
+        "Levealder i Danmark: tal for mænd og kvinder"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Gennemsnitlig levealder i Danmark for mænd og kvinder fra Danmarks Statistik, plus middellevetid sammenlignet med nabolande.",
+        "keywords": "levealder danmark, gennemsnitlig levealder, middellevetid danmark, levetid danmark, danmarks statistik levealder",
+        "language": "Danish",
+        "og:description": "Gennemsnitlig levealder for danske mænd og kvinder og sammenligning med Sverige, Norge og Finland.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Levealder i Danmark: aktuelle tal fra Danmarks Statistik",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Levealder i Danmark: aktuelle tal fra Danmarks Statistik",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/levetid-beregner-danmark",
+        "robots": "index, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Gennemsnitlig levealder for danske mænd og kvinder og sammenligning med Sverige, Norge og Finland.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Levealder i Danmark: aktuelle tal fra Danmarks Statistik"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/levetid-beregner-danmark"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/levetid-beregner-danmark",
+          "description": "Gennemsnitlig levealder i Danmark for mænd og kvinder fra Danmarks Statistik, plus middellevetid sammenlignet med nabolande.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Forside",
+              "item": "https://levetidsberegner.dk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Levetidsberegner Danmark",
+              "item": "https://levetidsberegner.dk/levetid-beregner-danmark"
+            }
+          ]
+        }
+      ]
+    },
+    "/livsstil-og-levetid": {
+      "title": [
+        "Livsstil og levetid: hvad kan motion og rygning ændre?"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Livsstil og levetid: hvordan motion, kost, rygning og søvn påvirker den forventede levetid, og hvordan du lægger det ind i et estimat.",
+        "keywords": "livsstil og levetid, motion levetid, rygning levetid, sund kost levetid, længere liv",
+        "language": "Danish",
+        "og:description": "Hvordan motion, kost, rygning og søvn hænger sammen med levetid, og hvordan du bruger det i beregneren.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Livsstil og levetid: hvad flytter dit estimat?",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Livsstil og levetid: hvad flytter dit estimat?",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/livsstil-og-levetid",
+        "robots": "index, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Hvordan motion, kost, rygning og søvn hænger sammen med levetid, og hvordan du bruger det i beregneren.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Livsstil og levetid: hvad flytter dit estimat?"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/livsstil-og-levetid"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/livsstil-og-levetid",
+          "description": "Livsstil og levetid: hvordan motion, kost, rygning og søvn påvirker den forventede levetid, og hvordan du lægger det ind i et estimat.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Forside",
+              "item": "https://levetidsberegner.dk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Livsstil og Levetid",
+              "item": "https://levetidsberegner.dk/livsstil-og-levetid"
+            }
+          ]
+        }
+      ]
+    },
+    "/pensionsalder": {
+      "title": [
+        "Hvornår kan jeg gå på pension? Beregn din pensionsalder"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Se din folkepensionsalder, den dato du når den, og hvor mange år du i gennemsnit kan forvente som pensionist. Gratis, uden login.",
+        "keywords": "hvornår kan jeg gå på pension, pensionsalder beregner, folkepensionsalder, pensionsalder 2026",
+        "language": "Danish",
+        "og:description": "Se din folkepensionsalder, den dato du når den, og hvor mange år du i gennemsnit kan forvente som pensionist. Gratis, uden login.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Hvornår kan jeg gå på pension? Beregn din pensionsalder",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Hvornår kan jeg gå på pension? Beregn din pensionsalder",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/pensionsalder",
+        "robots": "index, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Se din folkepensionsalder, den dato du når den, og hvor mange år du i gennemsnit kan forvente som pensionist. Gratis, uden login.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Hvornår kan jeg gå på pension? Beregn din pensionsalder"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/pensionsalder"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/pensionsalder",
+          "description": "Se din folkepensionsalder, den dato du når den, og hvor mange år du i gennemsnit kan forvente som pensionist. Gratis, uden login.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Forside",
+              "item": "https://levetidsberegner.dk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pensionsalder",
+              "item": "https://levetidsberegner.dk/pensionsalder"
+            }
+          ]
+        }
+      ]
+    },
+    "/embed-levetidsberegner": {
+      "title": [
+        "Indlej levetidsberegneren på din hjemmeside, gratis"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Gratis levetidsberegner til din hjemmeside. Kopiér én linje HTML, og besøgende kan se deres restlevetid. Alt beregnes i browseren, og der gemmes ingen data.",
+        "keywords": "indlejr levetidsberegner, embed levetidsberegner, widget forventet levetid, iframe levetid",
+        "language": "Danish",
+        "og:description": "Gratis levetidsberegner til din hjemmeside. Kopiér én linje HTML, og besøgende kan se deres restlevetid. Alt beregnes i browseren, og der gemmes ingen data.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Indlej levetidsberegneren på din hjemmeside, gratis",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Indlej levetidsberegneren på din hjemmeside, gratis",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/embed-levetidsberegner",
+        "robots": "index, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Gratis levetidsberegner til din hjemmeside. Kopiér én linje HTML, og besøgende kan se deres restlevetid. Alt beregnes i browseren, og der gemmes ingen data.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Indlej levetidsberegneren på din hjemmeside, gratis"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/embed-levetidsberegner"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/embed-levetidsberegner",
+          "description": "Gratis levetidsberegner til din hjemmeside. Kopiér én linje HTML, og besøgende kan se deres restlevetid. Alt beregnes i browseren, og der gemmes ingen data.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Forside",
+              "item": "https://levetidsberegner.dk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Indlej levetidsberegneren",
+              "item": "https://levetidsberegner.dk/embed-levetidsberegner"
+            }
+          ]
+        }
+      ]
+    },
+    "/embed": {
+      "title": [
+        "Levetidsberegner (indlejret widget)"
+      ],
+      "meta": {
+        "author": "Mads Holst Jensen",
+        "description": "Lille levetidsberegner til indlejring i en iframe. Se /embed-levetidsberegner for kode og vilkår.",
+        "keywords": "levetidsberegner widget",
+        "language": "Danish",
+        "og:description": "Lille levetidsberegner til indlejring i en iframe. Se /embed-levetidsberegner for kode og vilkår.",
+        "og:image": "https://levetidsberegner.dk/og-image.png",
+        "og:image:alt": "Levetidsberegner (indlejret widget)",
+        "og:image:height": "630",
+        "og:image:width": "1200",
+        "og:locale": "da_DK",
+        "og:site_name": "Levetidsberegner",
+        "og:title": "Levetidsberegner (indlejret widget)",
+        "og:type": "website",
+        "og:url": "https://levetidsberegner.dk/embed",
+        "robots": "noindex, follow",
+        "twitter:card": "summary_large_image",
+        "twitter:description": "Lille levetidsberegner til indlejring i en iframe. Se /embed-levetidsberegner for kode og vilkår.",
+        "twitter:image": "https://levetidsberegner.dk/og-image.png",
+        "twitter:title": "Levetidsberegner (indlejret widget)"
+      },
+      "canonical": [
+        "https://levetidsberegner.dk/embed"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Levetidsberegner",
+          "url": "https://levetidsberegner.dk/embed",
+          "description": "Lille levetidsberegner til indlejring i en iframe. Se /embed-levetidsberegner for kode og vilkår.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DKK"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+          },
+          "inLanguage": "da-DK"
+        }
+      ]
+    }
+  }
+}

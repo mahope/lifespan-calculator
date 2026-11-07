@@ -1,0 +1,32 @@
+/                                             200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/index.html                                   301 loc=/ ct= cc=no-cache xfo=SAMEORIGIN csp= xr=
+/hvor-lang-tid-har-jeg-tilbage                200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/hvor-lang-tid-har-jeg-tilbage/               200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/hvor-lang-tid-har-jeg-tilbage/index.html     301 loc=/hvor-lang-tid-har-jeg-tilbage ct= cc=no-cache xfo=SAMEORIGIN csp= xr=
+/dodsalder-calculator                         200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/livsstil-og-levetid                          200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/levetid-beregner-danmark                     200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/pensionsalder                                200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/embed-levetidsberegner                       200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/embed                                        200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo= csp=frame-ancestors * xr=noindex
+/embed/                                       200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo= csp=frame-ancestors * xr=noindex
+/privatlivspolitik                            200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/privatlivspolitik.html                       301 loc=/privatlivspolitik ct= cc=no-cache xfo=SAMEORIGIN csp= xr=
+/privatlivspolitik/                           301 loc=/privatlivspolitik ct= cc=no-cache xfo=SAMEORIGIN csp= xr=
+/cookiepolitik                                200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/findes-ikke                                  404 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=noindex
+/findes/ikke/                                 404 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=noindex
+/assets/x.js                                  404 loc= ct=text/plain; charset=utf-8 cc=no-store xfo=SAMEORIGIN csp= xr=
+/_astro/x.js                                  404 loc= ct=text/plain; charset=utf-8 cc=no-store xfo=SAMEORIGIN csp= xr=
+/api/health                                   200 loc= ct=text/plain; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/robots.txt                                   200 loc= ct=text/plain; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/sitemap.xml                                  200 loc= ct=application/xml; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/sw.js                                        200 loc= ct=text/javascript; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/registerSW.js                                200 loc= ct=text/javascript; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/manifest.webmanifest                         200 loc= ct=application/manifest+json cc=no-cache xfo=SAMEORIGIN csp= xr=
+/og-image.png                                 200 loc= ct=image/png cc=no-cache xfo=SAMEORIGIN csp= xr=
+/favicon.svg                                  200 loc= ct=image/svg+xml cc=no-cache xfo=SAMEORIGIN csp= xr=
+/404.html                                     301 loc=/404 ct= cc=no-cache xfo=SAMEORIGIN csp= xr=
+/fonts/inter-latin-wght-normal.woff2          200 loc= ct=font/woff2 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/?g=male&a=40                                 200 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=
+/HVOR-LANG-TID-HAR-JEG-TILBAGE                404 loc= ct=text/html; charset=utf-8 cc=no-cache xfo=SAMEORIGIN csp= xr=noindex

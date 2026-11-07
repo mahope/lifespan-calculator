@@ -1,8 +1,6 @@
 // @vitest-environment jsdom
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
-import { MemoryRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import PensionsalderPage from './PensionsalderPage';
 import { FAQ, faqJsonLd } from '../utils/pensionFaq';
@@ -22,11 +20,7 @@ beforeEach(() => {
   root = createRoot(container);
   act(() =>
     root.render(
-      <HelmetProvider>
-        <MemoryRouter>
-          <PensionsalderPage />
-        </MemoryRouter>
-      </HelmetProvider>,
+      <PensionsalderPage />,
     ),
   );
 });

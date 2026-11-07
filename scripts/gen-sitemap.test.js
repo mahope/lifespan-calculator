@@ -1,21 +1,23 @@
 import { describe, it, expect } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { ROUTES, NOINDEX_ROUTES, SITEMAP_ROUTES, SITE_URL, buildSitemap } from './gen-sitemap.mjs'
 
 const read = (p) => readFileSync(new URL(p, import.meta.url), 'utf8')
 
+// Every .astro file in src/pages is a route (404.astro is the error page, not a route).
+const astroRoutes = () =>
+  readdirSync(new URL('../src/pages/', import.meta.url), { recursive: true })
+    .filter((f) => f.endsWith('.astro') && f !== '404.astro')
+    .map((f) => (f === 'index.astro' ? '/' : `/${f.replace(/\.astro$/, '').replace(/\/index$/, '')}`))
+
 describe('route list', () => {
-  it('matches the routes declared in App.jsx', () => {
-    const app = read('../src/App.jsx')
-    const declared = [...app.matchAll(/<Route path="([^"*]+)"/g)].map((m) => m[1])
-    expect([...ROUTES].sort()).toEqual(declared.sort())
+  it('matches the pages in src/pages', () => {
+    expect([...ROUTES].sort()).toEqual(astroRoutes().sort())
   })
 
-  it('is served from generated dist/<route>/index.html, so serve.json has no rewrites', () => {
-    // serve applies rewrites before it looks at the filesystem; a rewrite would hide the
-    // per-route HTML written by scripts/prerender-head.mjs.
-    const cfg = JSON.parse(read('../public/serve.json'))
-    expect(cfg.rewrites).toBeUndefined()
+  it('has no React page component left in src/pages (Astro would route it)', () => {
+    const files = readdirSync(new URL('../src/pages/', import.meta.url), { recursive: true })
+    expect(files.filter((f) => !f.endsWith('.astro'))).toEqual([])
   })
 
   it('keeps the iframe widget out of the sitemap but indexes its info page', () => {
@@ -23,33 +25,6 @@ describe('route list', () => {
     expect(ROUTES).toContain('/embed')
     expect(ROUTES).toContain('/embed-levetidsberegner')
     expect(read('../public/sitemap.xml')).not.toMatch(/<loc>[^<]*\/embed<\/loc>/)
-  })
-
-  it('allows framing only for dist/embed/index.html; every other file keeps SAMEORIGIN', () => {
-    // The real behaviour (serve matching these globs) is checked end-to-end in e2e/embed.e2e.js.
-    const cfg = JSON.parse(read('../public/serve.json'))
-    const withKey = (key) => cfg.headers.filter((h) => h.headers.some((x) => x.key === key))
-    const xfo = withKey('X-Frame-Options')
-    expect(xfo).toHaveLength(1)
-    expect(xfo[0].headers.find((x) => x.key === 'X-Frame-Options').value).toBe('SAMEORIGIN')
-    const embed = cfg.headers.find((h) => h.source === '/embed/index.html')
-    const get = (k) => embed.headers.find((x) => x.key === k)?.value
-    expect(get('Content-Security-Policy')).toBe('frame-ancestors *')
-    expect(get('X-Robots-Tag')).toBe('noindex')
-    expect(get('X-Frame-Options')).toBeUndefined()
-  })
-})
-
-describe('serving layer files', () => {
-  it('ships health, 404 and serve.json in public/', () => {
-    for (const f of ['../public/api/health', '../public/404.html', '../public/serve.json']) {
-      expect(read(f).length).toBeGreaterThan(0)
-    }
-  })
-  it('serves in non-SPA mode (no -s flag) so unknown paths return 404', () => {
-    const cmd = read('../Dockerfile').match(/^CMD (.*)$/m)[1]
-    expect(cmd).toContain('"serve"')
-    expect(cmd).not.toMatch(/"-s"|"--single"/)
   })
 })
 

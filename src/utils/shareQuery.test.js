@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { SHARE_KEYS, takeShareSearchParams, parseShareParams } from './shareState';
 
-// Runs the exact inline script from index.html against a fake window/location.
-const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
-const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+// Runs the exact inline script from the page layout (src/layouts/Base.astro) against a fake window/location.
+const html = readFileSync(new URL('../layouts/Base.astro', import.meta.url), 'utf8');
+const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
 const inline = scripts.find((s) => s.includes('__shareQuery'));
 
 function run(url) {
@@ -18,7 +18,7 @@ function run(url) {
   return { win, calls };
 }
 
-describe('inline share-query script (index.html)', () => {
+describe('inline share-query script (Base.astro)', () => {
   it('exists and comes before the analytics script', () => {
     expect(inline).toBeTruthy();
     expect(html.indexOf('__shareQuery')).toBeLessThan(html.indexOf('analytics.holstjensen.eu'));

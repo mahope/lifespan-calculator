@@ -64,7 +64,7 @@ export function snapshot(dist, routes = ROUTES) {
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b)
 
 // Returns a list of problems; empty means the build matches the SPA.
-export function compare(reference, dist) {
+export function compare(reference, dist, { added: addedByRoute = ADDED_JSON_LD } = {}) {
   const problems = []
   const locs = sitemapLocs(readFileSync(join(dist, 'sitemap.xml'), 'utf8'))
   if (!same(locs, reference.sitemap)) problems.push(`sitemap differs: ${JSON.stringify(locs)} vs ${JSON.stringify(reference.sitemap)}`)
@@ -75,7 +75,7 @@ export function compare(reference, dist) {
       continue
     }
     const got = headSummary(readFileSync(file, 'utf8'))
-    const added = ADDED_JSON_LD[route] || []
+    const added = addedByRoute[route] || []
     const extra = got.jsonLd.filter((d) => added.includes(d['@type']))
     const jsonLd = got.jsonLd.filter((d) => !added.includes(d['@type']))
     if (extra.length !== added.length) problems.push(`${route}: expected added JSON-LD ${added.join(', ')}`)

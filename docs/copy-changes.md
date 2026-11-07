@@ -78,11 +78,11 @@ medical advice), so the neutral category is used.
 ## Guard
 
 `src/copyGuard.test.js` fails if `WHO`, "geografisk(e) placering", "livsstil
-udgør op til 60" or "Max 7 genstande" / "Max 14 genstande" appear in `src/`,
-`index.html` or `public/*.html`, or if a `track(` / `plausible(` call carries a
+udgør op til 60" or "Max 7 genstande" / "Max 14 genstande" appear in `src/`
+(including the `.astro` pages and layout) or `public/*.html`, or if a `track(` / `plausible(` call carries a
 prop that names user input. The analytics check matches parentheses, so nested
 calls and ternaries are covered. Each pattern is checked against a sample string,
 and the file scanner is run on a temp tree that holds every forbidden string in
-`src/`, `index.html` and `public/`, so neither a dead pattern nor a dead scanner
+`src/` (jsx and astro) and `public/`, so neither a dead pattern nor a dead scanner
 passes. Limits: it only knows these strings (it is a regression guard, not a
 fact-checker), and it does not scan `docs/` or the e2e files.

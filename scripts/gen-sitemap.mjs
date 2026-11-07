@@ -1,6 +1,6 @@
 // Generates public/sitemap.xml from the single ROUTES list below.
-// Run automatically via `prebuild`. A test keeps ROUTES in sync with
-// src/App.jsx and with ROUTE_META in src/routes.meta.js.
+// Run automatically via `prebuild`. Tests keep ROUTES in sync with the pages in
+// src/pages/*.astro and with ROUTE_META in src/routes.meta.js.
 import { writeFileSync } from 'node:fs'
 import process from 'node:process'
 import { URL, fileURLToPath } from 'node:url'

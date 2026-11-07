@@ -55,7 +55,7 @@ const tags = notFound ? notFoundTags(meta) : headTags(meta, route, extraJsonLd)
     <link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Theme before first paint (no flash of the wrong theme). /embed (iframe widget) takes theme and background
          from the query string; every other page uses the saved choice and also drops the key the old cookie
-         banner wrote (utils/legacyStorage.js). -->
+         banner wrote (consent:v1; nothing reads it, and the privacy policy lists what is stored). -->
     {embed ? (
       <script is:inline>
         (function () {

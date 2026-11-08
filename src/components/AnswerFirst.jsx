@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Short, quotable answer directly under the H1 of a landing page, with a descriptive link
 // to the calculator. `text` comes from utils/answerFirst.js (computed from LIFE_TABLE_DK).
@@ -8,7 +7,7 @@ const AnswerFirst = ({ text, linkText }) => (
     <div className="card-content space-y-2">
       <p data-answer-first className="leading-relaxed text-foreground">{text}</p>
       <p className="text-sm">
-        <Link to="/" className="text-primary underline">{linkText}</Link>
+        <a href="/" className="text-primary underline">{linkText}</a>
       </p>
     </div>
   </section>

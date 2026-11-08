@@ -1,0 +1,86 @@
+# Static server for the Astro build (dist/ -> /srv). Behind Dokploy's Traefik, so plain HTTP on :3000.
+# Tested end to end by e2e/static-contract.e2e.js and e2e/embed.e2e.js, which run against this image.
+{
+	admin off
+	auto_https off
+	persist_config off
+}
+
+# Sent with every response, error pages included.
+(security_headers) {
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "geolocation=(), camera=(), microphone=()"
+		X-Frame-Options SAMEORIGIN
+		-Server
+	}
+}
+
+:3000 {
+	root * /srv
+	encode zstd gzip
+	import security_headers
+	# Default only (`?`): the more specific rules below win.
+	header ?Cache-Control no-cache
+
+	# The iframe widget may be framed by any site and is never indexed.
+	@embed path /embed /embed/
+	header @embed {
+		-X-Frame-Options
+		Content-Security-Policy "frame-ancestors *"
+		X-Robots-Tag noindex
+	}
+
+	# Hashed build output never changes under the same name.
+	@hashed {
+		path /_astro/*
+		file
+	}
+	header @hashed Cache-Control "public, max-age=31536000, immutable"
+
+	@health path /api/health
+	header @health Content-Type "text/plain; charset=utf-8"
+	@sitemap path /sitemap.xml
+	header @sitemap Content-Type "application/xml; charset=utf-8"
+
+	# Clean URLs only: /index.html, /x/index.html, /x.html and the policy pages with a slash redirect.
+	redir /index.html / 301
+	redir /privatlivspolitik/ /privatlivspolitik 301
+	redir /cookiepolitik/ /cookiepolitik 301
+	@indexhtml path_regexp indexhtml ^(/.+)/index\.html$
+	redir @indexhtml {re.indexhtml.1} 301
+	@dothtml path_regexp dothtml ^(/.+)\.html$
+	redir @dothtml {re.dothtml.1} 301
+
+	# /x is served from /x/index.html (Astro pages) or /x.html (the policy pages), without a redirect.
+	try_files {path}/index.html {path}.html {path}
+	file_server
+
+	handle_errors {
+		import security_headers
+		@notfound expression {err.status_code} == 404
+		handle @notfound {
+			# Missing build files get a short text body (never the HTML page, never cached).
+			@asset path /_astro/* /assets/*
+			handle @asset {
+				header Cache-Control no-store
+				header Content-Type "text/plain; charset=utf-8"
+				respond "Not found" 404
+			}
+			# Everything else: the real 404 page, with status 404 and noindex.
+			handle {
+				header Cache-Control no-cache
+				header X-Robots-Tag noindex
+				rewrite * /404.html
+				file_server {
+					status 404
+				}
+			}
+		}
+		handle {
+			header Cache-Control no-store
+			respond "{err.status_code} {err.status_text}" {err.status_code}
+		}
+	}
+}

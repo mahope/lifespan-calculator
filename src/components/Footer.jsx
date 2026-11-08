@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import OmTallene from './OmTallene';
 
 const PAGES = [
@@ -58,9 +57,9 @@ const Footer = () => {
             <ul>
               {PAGES.map((p) => (
                 <li key={p.to}>
-                  <Link to={p.to} className="link inline-flex min-h-11 items-center sm:min-h-8">
+                  <a href={p.to} className="link inline-flex min-h-11 items-center sm:min-h-8">
                     {p.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

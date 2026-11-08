@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SectionHeader from './SectionHeader';
 import { pensionCohort } from '../utils/pension';
 
@@ -88,7 +87,7 @@ const Pension = ({ resultData }) => {
         )}
 
         <p>
-          <Link to="/pensionsalder" className="link font-medium">Se alle pensionsaldre og din pensionsdato</Link>
+          <a href="/pensionsalder" className="link font-medium">Se alle pensionsaldre og din pensionsdato</a>
         </p>
 
         <p className="max-w-prose text-sm text-muted-foreground">

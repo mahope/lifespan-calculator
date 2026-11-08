@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Privacy: runs before every other script (notably the analytics script). Moves the share-link
+         parameters (g, a, b, m, lf) out of the address into window.__shareQuery (memory only) so they are never
+         sent to the statistics server. Other parameters (utm_source, ref, ...) stay. Mirrored by SHARE_KEYS in
+         src/utils/shareState.js; index.shareQuery.test.js runs this exact script. -->
+    <script>
+      (function () {
+        try {
+          var s = location.search;
+          if (!s || s.length < 2) return;
+          var keys = { g: 1, a: 1, b: 1, m: 1, lf: 1 };
+          var own = [];
+          var rest = [];
+          s.slice(1).split('&').forEach(function (part) {
+            var k = part.split('=')[0];
+            try { k = decodeURIComponent(k.replace(/\+/g, ' ')); } catch (e) {}
+            (Object.prototype.hasOwnProperty.call(keys, k) ? own : rest).push(part);
+          });
+          if (!own.length) return;
+          window.__shareQuery = own.join('&');
+          history.replaceState(history.state, '', location.pathname + (rest.length ? '?' + rest.join('&') : '') + location.hash);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f8f9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101519" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Apply theme before first paint to avoid a flash of the wrong theme (FOUC) -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- /embed (iframe widget): theme and background from the query string, before first paint. -->
+    <script>
+      (function () {
+        if (location.pathname.replace(/\/$/, '') !== '/embed') return;
+        var h = document.documentElement, q = new URLSearchParams(location.search);
+        h.classList.toggle('dark', q.get('theme') === 'dark');
+        if (q.get('bg') === 'transparent') h.setAttribute('data-embed-bg', 'transparent');
+      })();
+    </script>
+
+    <!-- Plausible Analytics -->
+    <script defer data-domain="levetidsberegner.dk" src="https://analytics.holstjensen.eu/js/script.file-downloads.outbound-links.pageview-props.tagged-events.js"></script>
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script type="module" crossorigin src="/assets/index-BugAaLgy.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-WkwZ5CU-.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-eEsSDEvR.js">
+    <link rel="modulepreload" crossorigin href="/assets/router-xFAnLbm-.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-C1ykjDMg.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script>    <title data-prerender="true">Levealder i Danmark: tal for mænd og kvinder</title>
+    <meta name="description" content="Gennemsnitlig levealder i Danmark for mænd og kvinder fra Danmarks Statistik, plus middellevetid sammenlignet med nabolande." data-prerender="true" />
+    <meta name="keywords" content="levealder danmark, gennemsnitlig levealder, middellevetid danmark, levetid danmark, danmarks statistik levealder" data-prerender="true" />
+    <meta name="robots" content="index, follow" data-prerender="true" />
+    <meta name="author" content="Mads Holst Jensen" data-prerender="true" />
+    <meta name="language" content="Danish" data-prerender="true" />
+    <meta property="og:title" content="Levealder i Danmark: aktuelle tal fra Danmarks Statistik" data-prerender="true" />
+    <meta property="og:description" content="Gennemsnitlig levealder for danske mænd og kvinder og sammenligning med Sverige, Norge og Finland." data-prerender="true" />
+    <meta property="og:type" content="website" data-prerender="true" />
+    <meta property="og:url" content="https://levetidsberegner.dk/levetid-beregner-danmark" data-prerender="true" />
+    <meta property="og:site_name" content="Levetidsberegner" data-prerender="true" />
+    <meta property="og:locale" content="da_DK" data-prerender="true" />
+    <meta property="og:image" content="https://levetidsberegner.dk/og-image.png" data-prerender="true" />
+    <meta property="og:image:width" content="1200" data-prerender="true" />
+    <meta property="og:image:height" content="630" data-prerender="true" />
+    <meta property="og:image:alt" content="Levealder i Danmark: aktuelle tal fra Danmarks Statistik" data-prerender="true" />
+    <meta name="twitter:card" content="summary_large_image" data-prerender="true" />
+    <meta name="twitter:title" content="Levealder i Danmark: aktuelle tal fra Danmarks Statistik" data-prerender="true" />
+    <meta name="twitter:description" content="Gennemsnitlig levealder for danske mænd og kvinder og sammenligning med Sverige, Norge og Finland." data-prerender="true" />
+    <meta name="twitter:image" content="https://levetidsberegner.dk/og-image.png" data-prerender="true" />
+    <link rel="canonical" href="https://levetidsberegner.dk/levetid-beregner-danmark" data-prerender="true" />
+    <script type="application/ld+json" data-prerender="true">{"@context":"https://schema.org","@type":"WebApplication","name":"Levetidsberegner","url":"https://levetidsberegner.dk/levetid-beregner-danmark","description":"Gennemsnitlig levealder i Danmark for mænd og kvinder fra Danmarks Statistik, plus middellevetid sammenlignet med nabolande.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"DKK"},"author":{"@type":"Person","name":"Mads Holst Jensen"},"inLanguage":"da-DK"}</script>
+    <script type="application/ld+json" data-prerender="true">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forside","item":"https://levetidsberegner.dk/"},{"@type":"ListItem","position":2,"name":"Levetidsberegner Danmark","item":"https://levetidsberegner.dk/levetid-beregner-danmark"}]}</script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss/index.css';
 
 /* Self-hosted Inter (SIL OFL, see public/fonts/Inter-LICENSE.txt). Latin subset covers æ, ø, å. */
 @font-face {

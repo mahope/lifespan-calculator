@@ -1,5 +1,5 @@
-// Single source of truth for per-route head metadata. Read by <SEOHead> at runtime and by
-// scripts/prerender-head.mjs, which bakes the same values into dist/<route>/index.html.
+// Single source of truth for per-route head metadata. src/lib/head.js turns it into the <head> tags that
+// src/layouts/Base.astro writes into each page's HTML.
 // Keep this file free of imports (it is loaded by plain Node during the build).
 // The route list itself lives in scripts/gen-sitemap.mjs (ROUTES); a test keeps both in sync.
 

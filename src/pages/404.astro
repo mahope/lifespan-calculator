@@ -1,0 +1,8 @@
+---
+// dist/404.html: Caddy serves it with status 404 for every unknown path (noindex).
+import Base from '../layouts/Base.astro'
+import NotFoundPage from '../views/NotFoundPage.jsx'
+---
+<Base notFound>
+  <NotFoundPage />
+</Base>

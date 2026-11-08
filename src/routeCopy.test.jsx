@@ -1,15 +1,13 @@
 import { describe, it, expect } from 'vitest'
 import { renderToString } from 'react-dom/server'
-import { MemoryRouter } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
 import { ROUTE_META } from './routes.meta.js'
 import { answerFirst } from './utils/answerFirst'
-import HomePage from './pages/HomePage'
-import HvorLangTidPage from './pages/HvorLangTidPage'
-import DodsalderPage from './pages/DodsalderPage'
-import DanmarkPage from './pages/DanmarkPage'
-import LivsstilPage from './pages/LivsstilPage'
-import PensionsalderPage from './pages/PensionsalderPage'
+import HomePage from './views/HomePage'
+import HvorLangTidPage from './views/HvorLangTidPage'
+import DodsalderPage from './views/DodsalderPage'
+import DanmarkPage from './views/DanmarkPage'
+import LivsstilPage from './views/LivsstilPage'
+import PensionsalderPage from './views/PensionsalderPage'
 
 const PAGES = {
   '/': HomePage,
@@ -28,13 +26,7 @@ const ANSWER = {
 const unescape = (s) => s.replace(/&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&')
 
 const render = (Page) =>
-  renderToString(
-    <HelmetProvider context={{}}>
-      <MemoryRouter>
-        <Page />
-      </MemoryRouter>
-    </HelmetProvider>
-  )
+  renderToString(<Page />)
 
 const routes = Object.keys(PAGES)
 const html = Object.fromEntries(routes.map((r) => [r, render(PAGES[r])]))

@@ -20,12 +20,12 @@ const INPUT_PROP = /\b(age|alder|gender|sex|koen|køn|birth\w*|fodselsdato|føds
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 
-// Copy lives in src/ (jsx/js/css), in the entry HTML and in the standalone pages in public/.
+// Copy lives in src/ (jsx/js/css/astro, including the page layout) and in the standalone pages in public/.
 function sourceFiles(dir, { includeHtml = false } = {}) {
   return readdirSync(dir).flatMap((name) => {
     const path = join(dir, name);
     if (statSync(path).isDirectory()) return sourceFiles(path, { includeHtml });
-    const ok = /\.(jsx?|css)$/.test(name) || (includeHtml && name.endsWith('.html'));
+    const ok = /\.(jsx?|css|astro)$/.test(name) || (includeHtml && name.endsWith('.html'));
     return ok && !/\.test\./.test(name) ? [path] : [];
   });
 }
@@ -33,7 +33,6 @@ function sourceFiles(dir, { includeHtml = false } = {}) {
 function copyFiles(base) {
   const files = sourceFiles(join(base, 'src'), { includeHtml: true });
   files.push(...sourceFiles(join(base, 'public'), { includeHtml: true }).filter((f) => f.endsWith('.html')));
-  files.push(join(base, 'index.html'));
   return files;
 }
 
@@ -66,9 +65,10 @@ function analyticsViolations(text) {
 describe('copy guard', () => {
   const files = copyFiles(root);
 
-  it('scans src/, index.html and public/*.html', () => {
+  it('scans src/ (with the .astro pages and layout) and public/*.html', () => {
     expect(files.length).toBeGreaterThan(20);
-    expect(files.some((f) => f.endsWith('index.html'))).toBe(true);
+    expect(files.some((f) => f.endsWith('Base.astro'))).toBe(true);
+    expect(files.some((f) => f.endsWith('index.astro'))).toBe(true);
     expect(files.some((f) => f.endsWith('privatlivspolitik.html'))).toBe(true);
   });
 
@@ -80,12 +80,13 @@ describe('copy guard', () => {
     expect(re.test(sample)).toBe(true);
   });
 
-  it('the scanner finds each forbidden string in src, index.html and public html', () => {
+  it('the scanner finds each forbidden string in src (jsx and astro) and public html', () => {
     const base = mkdtempSync(join(tmpdir(), 'copyguard-'));
     try {
       mkdirSync(join(base, 'src', 'pages'), { recursive: true });
+      mkdirSync(join(base, 'src', 'layouts'), { recursive: true });
       mkdirSync(join(base, 'public'));
-      const places = ['src/pages/A.jsx', 'index.html', 'public/policy.html'];
+      const places = ['src/pages/A.jsx', 'src/pages/b.astro', 'src/layouts/Base.astro', 'public/policy.html'];
       for (const place of places) writeFileSync(join(base, place), '<p>ren tekst</p>');
       for (const { re, sample } of FORBIDDEN) {
         for (const place of places) {

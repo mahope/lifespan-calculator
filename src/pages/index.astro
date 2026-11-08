@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro'
+import { SiteNav } from '../components/PageHeader.jsx'
+import PromoBanner from '../components/PromoBanner.jsx'
+import Footer from '../components/Footer.jsx'
+import HomeCalculator from '../islands/HomeCalculator.jsx'
+---
+<Base route="/">
+  <div class="flex min-h-screen flex-col">
+    <header>
+      <SiteNav current="/" />
+    </header>
+    <HomeCalculator client:load />
+    <PromoBanner />
+    <Footer />
+  </div>
+</Base>

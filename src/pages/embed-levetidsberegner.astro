@@ -1,0 +1,9 @@
+---
+// Static page. The copy button is wired by a small inline script, so no JavaScript bundle ships.
+import Base from '../layouts/Base.astro'
+import EmbedInfoPage, { EMBED_INFO_SCRIPT } from '../views/EmbedInfoPage.jsx'
+---
+<Base route="/embed-levetidsberegner">
+  <EmbedInfoPage />
+  <script is:inline set:html={EMBED_INFO_SCRIPT} />
+</Base>

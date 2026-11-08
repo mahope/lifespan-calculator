@@ -4,45 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Danish lifespan calculator web application. A React single-page app built with
-Vite, styled with Tailwind CSS, and deployed as static assets.
+Danish lifespan calculator web application. A static Astro site: every URL is a
+prerendered HTML file, and only the interactive parts hydrate as React islands.
+Styled with Tailwind CSS, served by Caddy in Docker (#88, ported from the Vite SPA).
 
 Tech stack (kept current):
-- React 19 + React DOM 19
-- React Router 7 (client-side routing)
-- react-helmet-async 3 (per-page `<title>`/meta for SEO)
-- Vite 8 (Rolldown/Oxc-based build, `oxc` minifier)
-- Tailwind CSS 4 (CSS-first config via `@theme` in `src/index.css`, `@tailwindcss/postcss`)
-- Node.js >= 20.19 (see `engines` in `package.json`)
+- Astro 7 (static output, `build.format: 'directory'`, CSS inlined) with `@astrojs/react`
+- React 19 + React DOM 19 for the islands and for rendering the page components to HTML
+- Tailwind CSS 4 (CSS-first config via `@theme` in `src/index.css`, through `@tailwindcss/postcss` in `astro.config.mjs`)
+- Caddy 2 (pinned image tag) as the production server, config in `Caddyfile`
+- Node.js >= 22.23.4 (Astro 7; see `engines` in `package.json`)
 
 ## Development Commands
 
 ```bash
 npm install        # install dependencies
-npm run dev        # start Vite dev server (http://localhost:5173)
-npm run build      # production build to dist/
-npm run preview    # serve the production build locally (http://localhost:4173)
+npm run dev        # Astro dev server (http://localhost:4321)
+npm run build      # dist/ + postbuild: sw.js, SPA parity check, JS budget
+npm run preview    # astro preview of dist/ (without the Caddyfile's headers and 404 handling)
 ```
 
 ### Validation (the gate; CI runs the same steps)
 ```bash
 npm ci && npm run lint && npm test && npm run build && npm run test:e2e
 ```
-CI runs the first four in job `build` and the e2e suite in job `e2e` (see `docs/testing.md`;
-update snapshots with `npm run test:e2e -- --update-snapshots`). `npm run build` also acts as a smoke test - it fails on broken imports/JSX/CSS.
+CI runs the first four in job `build`, the e2e suite in job `e2e` and `node scripts/lighthouse-budget.mjs`
+in job `perf` (see `docs/testing.md`; update snapshots with `npm run test:e2e -- --update-snapshots`).
+`npm run build` also acts as a smoke test - it fails on broken imports/JSX/CSS, on a head or sitemap that differs
+from the SPA (`scripts/check-parity.mjs`) and on script files on a content page (`scripts/check-js-budget.mjs`).
+The e2e suite and the budget run the Caddy image with `dist/` mounted, so they need Docker.
 
 ## Architecture
 
 ### Core Structure (`src/`)
-- **`main.jsx`**: App entry - mounts React into `#root`, wraps app in
-  `HelmetProvider` + `BrowserRouter`.
-- **`App.jsx`**: Route definitions. Pages are lazy-loaded via `React.lazy` +
-  `Suspense`.
-- **`pages/`**: One component per route (HomePage, HvorLangTidPage,
-  DodsalderPage, LivsstilPage, DanmarkPage, PensionsalderPage, EmbedInfoPage,
-  EmbedPage, NotFoundPage).
-- **`components/`**: Shared UI (SEOHead, PageHeader with the `SiteNav` masthead, PageShell for the landing
-  pages, SectionHeader, ThemeToggle, Footer, PromoBanner, Overlevelseskurve (survival curve), ShareCard, ShareModal).
+- **`pages/*.astro`**: One file per URL (plus `404.astro`). Only `.astro` files may live here (Astro routes
+  every file in it; a test enforces this). Each renders a component from `views/` inside `layouts/Base.astro`.
+- **`layouts/Base.astro`**: the HTML document: head tags from `lib/head.js` (values from `routes.meta.js`),
+  the inline scripts (share-link scrubber before analytics, theme before first paint, theme switch, service
+  worker registration), Plausible (not on 404) and the manifest. Props: `route`, `notFound`, `embed`, `extraJsonLd`.
+- **`views/`**: Page content as React components (HomePage, HvorLangTidPage, DodsalderPage, LivsstilPage,
+  DanmarkPage, PensionsalderPage, EmbedInfoPage, EmbedPage, NotFoundPage). Rendered to HTML at build time;
+  links are plain `<a href>` (there is no router).
+- **`islands/`**: The only hydrated components (`client:load`), each wrapped in `ErrorBoundary`:
+  `HomeCalculator` (the `Calculator` export of `views/HomePage.jsx`; the masthead, other-tools list and footer
+  around it are static), `PensionFormIsland` (the `PensionForm` export, passed into `PensionsalderPage` as the
+  `form` slot) and `EmbedWidget`. A new interactive part must be an island; content pages must stay script-free.
+- **`components/`**: Shared UI (PageHeader with the `SiteNav` masthead, which takes `current` for the active
+  link, PageShell for the landing pages, SectionHeader, ThemeToggle (static button, switched by the inline script
+  in `Base.astro`), Footer, PromoBanner, Overlevelseskurve (survival curve), ShareCard, ShareModal).
 - **`hooks/useLifespanCalculator.js`**: State wrapper; calls the pure
   `computeResult(input, now)` in `utils/lifespanMath.js` (age, remaining time,
   end instant). No location lookup: the app never asks for or sends the user's position.
@@ -95,36 +104,44 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
 
 ## Deployment
 - `Dockerfile` is the only build definition: stage 1 (`node:22-alpine`) runs
-  `npm ci` + `npm run build`; stage 2 copies `dist/` and serves it with
-  `serve dist -l 3000` as the non-root `node` user. There is no `-s`, so
-  unknown paths return a real 404. The known routes are real files:
-  `postbuild` runs `scripts/prerender-head.mjs`, which writes `dist/<route>/index.html`
-  with each route's own title, description, canonical, Open Graph/Twitter tags and
-  JSON-LD in the raw HTML (values from `src/routes.meta.js`, the single source for
-  `SEOHead` and the script; the build fails on duplicate or too long titles
-  (60) / descriptions (160)). `public/serve.json` must **not** have rewrites for
-  them: `serve` applies rewrites before the filesystem and would hide those files.
-  `SEOHead` removes the baked-in `data-prerender` tags at runtime so nothing is
-  duplicated. `public/serve.json` sets headers; `public/404.html` and
-  `public/api/health` (Swarm healthcheck) are copied into `dist/`. The route
-  list lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates
-  `public/sitemap.xml` from it. Adding a route means updating `ROUTES`,
-  `App.jsx` and `ROUTE_META` in `src/routes.meta.js` (tests enforce this).
-  `/embed` (iframe widget, `EmbedPage`) is a normal route with `noindex: true`, listed in
-  `ROUTES` but also in `NOINDEX_ROUTES`, so it is not in the sitemap. `/embed-levetidsberegner`
-  (info page with copy-paste code and terms) is indexable. Framing: `X-Frame-Options:
-  SAMEORIGIN` is set on every file except `dist/embed/index.html`, which sends
-  `Content-Security-Policy: frame-ancestors *` and `X-Robots-Tag: noindex` (`serve`
-  matches header sources against the file it sends; the glob `/{*,!(embed)/**}` in
-  `public/serve.json` does the exclusion, tested end to end in `e2e/embed.e2e.js`). The widget
-  uses `computeEmbedResult` (`utils/embedResult.js`), which calls `computeResult`, so its
-  numbers equal the calculator's. It posts only `{type, height}` to the parent and tracks
-  `Embed Calculate` without props.
+  `npm ci` + `npm run build`; stage 2 (`caddy:<pinned>-alpine`, the same tag as in
+  `playwright.config.js` and `scripts/lighthouse-budget.mjs`, tested) serves `dist/` from `/srv` on
+  port 3000 as the non-root user `web`, with `curl` for the healthcheck (`HEALTHCHECK` on `/api/health`,
+  file `public/api/health`). `Caddyfile`: `/x` is served from `x/index.html` or `x.html` (no SPA fallback;
+  unknown paths get `404.html` with status 404 and noindex, a missing `/_astro/*` or `/assets/*` file a
+  short `no-store` text 404); `/x.html`, `/x/index.html`, `/index.html` and the policy pages with a slash
+  redirect 301 to the clean URL; `/_astro/*` is immutable, everything else `no-cache` (the `?` default);
+  security headers on every response, also errors. Framing: `X-Frame-Options: SAMEORIGIN` everywhere except
+  `/embed`, which sends `Content-Security-Policy: frame-ancestors *` and `X-Robots-Tag: noindex` (tested end
+  to end in `e2e/embed.e2e.js` against the real Caddyfile).
+- Head and SEO: each page's title, description, canonical, Open Graph/Twitter tags and JSON-LD are written
+  into its HTML by `layouts/Base.astro` from `src/routes.meta.js` (single source); `astro.config.mjs` fails
+  the build on duplicate or too long titles (60) / descriptions (160). `/pensionsalder` adds the FAQPage
+  JSON-LD (`utils/pensionFaq.js`) via `extraJsonLd`. `scripts/check-parity.mjs` (postbuild) compares every page
+  head and the sitemap with `scripts/fixtures/spa-parity.json` (the SPA build of master `ddb8c1c`); a deliberate
+  SEO change means updating that fixture in the same commit, and the same for `e2e/fixtures/spa-rendered.json`
+  (visible text, links, headings) checked by `e2e/content-parity.e2e.js`.
+- The route list lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates `public/sitemap.xml`
+  from it. Adding a route means adding `src/pages/<route>.astro`, `ROUTES` and `ROUTE_META` (tests enforce
+  this), plus the parity fixtures. `/embed` (iframe widget, `EmbedPage`) is a normal route with
+  `noindex: true`, listed in `ROUTES` but also in `NOINDEX_ROUTES`, so it is not in the sitemap. It does not
+  register the service worker. `/embed-levetidsberegner` (info page with copy-paste code and terms) is
+  indexable and script-free (copy button wired by an inline script). The widget uses `computeEmbedResult`
+  (`utils/embedResult.js`), which calls `computeResult`, so its numbers equal the calculator's. It posts only
+  `{type, height}` to the parent and tracks `Embed Calculate` without props.
+- Service worker: `scripts/build-sw.mjs` (postbuild) writes `dist/sw.js` from `scripts/sw-template.js` (no
+  Workbox). Same URL and scope as the SPA's Workbox worker, which it replaces: install cannot fail, activate
+  deletes every other cache and, when it finds the old `workbox-*` cache, reloads the open tabs once. Pages are
+  network first with the build's own copy as offline fallback; no navigation fallback. Keep `/sw.js` at that
+  URL and `public/registerSW.js` (the old HTML loads it). Tested in `e2e/sw-migration.e2e.js` against
+  `e2e/fixtures/legacy-prod/`, a frozen copy of production before the port (do not edit it).
 - Hosted as a Dokploy app (`web`) on a worker server, build type `dockerfile`.
   **autoDeploy is off**: merging to `master` does not deploy; a deploy is
   triggered by hand.
 - `master` is the default branch. CI (`.github/workflows/ci.yml`) runs
-  `npm ci`, lint, tests and build on pushes to `master` and on PRs.
+  `npm ci`, lint, tests and build, the e2e suite and the performance budget on pushes to `master` and on PRs.
+- Production sits behind Cloudflare (proxied DNS). It overrides `Cache-Control` for static extensions
+  (`/sw.js` came back as `max-age=14400`); browsers ignore that for the worker script, but purge `/sw.js` after a deploy.
 - `dist/` is a build artifact and is **not committed** (it is in `.gitignore`
   and `.dockerignore`); never add it back.
 - `.github/dependabot.yml` opens weekly npm PRs with a 3-day cooldown.
@@ -139,10 +156,10 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
 - Before finishing: run the gate above.
 
 ## File Structure
-- `index.html` - Vite entry HTML (meta tags, theme bootstrap and analytics script; no page copy outside the React root)
-- `src/` - React application source (see Architecture above)
+- `astro.config.mjs` - Astro config (static output, React integration, Tailwind via PostCSS, meta validation)
+- `src/` - pages, layout, islands and the React source (see Architecture above)
 - `public/` - static assets copied as-is into the build, including the standalone
   policy pages `privatlivspolitik.html` and `cookiepolitik.html` (served at the clean
-  URLs `/privatlivspolitik` and `/cookiepolitik`; link to them with plain `<a href>`,
-  never the router `Link`)
-- `Dockerfile` - production image (build + `serve`)
+  URLs `/privatlivspolitik` and `/cookiepolitik`; link to them with plain `<a href>`),
+  `manifest.webmanifest`, `registerSW.js` (kept for the old SPA HTML), `robots.txt`, `sitemap.xml`, `api/health`
+- `Dockerfile` - production image (build + Caddy), `Caddyfile` - the server config

@@ -4,7 +4,6 @@ import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { MemoryRouter } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Sandsynlighed from '../components/Sandsynlighed';
 import { LIFE_TABLE_META } from './lifeTableDK.generated.js';
@@ -49,7 +48,7 @@ describe('data period is single-sourced', () => {
   });
 
   it('renders the period in the footer and the probability card', () => {
-    const footer = renderToStaticMarkup(createElement(MemoryRouter, null, createElement(Footer)));
+    const footer = renderToStaticMarkup(createElement(Footer));
     expect(footer.replace(/<!-- -->/g, '')).toContain(`dødelighedstavler for ${LIFE_TABLE_META.period} (tabel HISB8)`);
     const card = renderToStaticMarkup(createElement(Sandsynlighed, { resultData: { age: '40.00', gender: 'male' } }));
     expect(card.replace(/<!-- -->/g, '')).toContain(`Danmarks Statistik, ${LIFE_TABLE_META.period}`);

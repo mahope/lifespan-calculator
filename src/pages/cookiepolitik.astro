@@ -1,14 +1,18 @@
+---
+import ThirdPartyHead from '../layouts/ThirdPartyHead.astro'
+---
 <!doctype html>
 <html lang="da">
 <head>
 <meta charset="utf-8">
+<ThirdPartyHead />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#2563eb">
 <title>Cookiepolitik | Levetidsberegner</title>
-<meta name="description" content="Levetidsberegner.dk sætter ingen cookies. Her kan du se, hvad siden gemmer i din browser, og hvordan du sletter det.">
+<meta name="description" content="Læs om lokal lagring, Google AdSense og dine valg om cookies på Levetidsberegner.dk.">
 <link rel="canonical" href="https://levetidsberegner.dk/cookiepolitik">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<script>
+<script is:inline>
 (function () {
   try {
     var t = localStorage.getItem('theme');
@@ -18,7 +22,7 @@
   } catch (e) {}
 })();
 </script>
-<style>
+<style is:inline>
 :root{--background:0 0% 100%;--foreground:222 47% 11%;--primary:221 83% 53%;--muted:210 40% 96.1%;--muted-foreground:215 16% 40%;--border:214 32% 91%}
 .dark{--background:222 47% 11%;--foreground:210 40% 98%;--primary:217 91% 70%;--muted:217 33% 17%;--muted-foreground:215 20% 72%;--border:217 33% 25%}
 *{box-sizing:border-box}
@@ -38,10 +42,10 @@ nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;border-top:1px solid hsl(var(-
 <main>
 <p><a href="/">&larr; Til levetidsberegneren</a></p>
 <h1>Cookiepolitik</h1>
-<p class="meta">Sidst opdateret 5. november 2026</p>
+<p class="meta">Sidst opdateret 20. november 2026</p>
 
 <h2>Kort fortalt</h2>
-<p>Siden sætter ingen cookies og sporer dig ikke på tværs af sider. Derfor er der heller intet cookiebanner. Resultatsiden kan vise et tydeligt mærket link til en partner (&raquo;Annonce&laquo;), men intet indlæses fra partneren, før du selv klikker på det.</p>
+<p>Beregneren gemmer tema og historik lokalt i din browser. Google AdSense kan bruge cookies til annoncer. Når du åbner et delt link, indlæser siden ikke AdSense på den sidevisning.</p>
 
 <h2>Hvad siden gemmer i din browser</h2>
 <p>I stedet for cookies bruger siden browserens lokale lager, som kun din egen enhed kan læse:</p>
@@ -52,11 +56,16 @@ nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;border-top:1px solid hsl(var(-
 </ul>
 <p>Tidligere gemte siden en indstilling med navnet <code>consent:v1</code>. Den blev aldrig brugt til noget og slettes automatisk, når du åbner siden.</p>
 
+<h2>Google AdSense og samtykke</h2>
+<p>For besøgende i EØS, Storbritannien og Schweiz viser Google en samtykkedialog via &raquo;Privatliv og meddelelser&laquo;. Google kan gemme dit valg i browseren. I dialogen kan du acceptere, afslå eller vælge, hvad du vil give samtykke til.</p>
+<p>Du kan ændre dit valg via linket til privatlivs- og cookieindstillinger nederst på de sider, hvor Google viser samtykkedialogen.</p>
+<p>Google kan behandle din IP-adresse, sidens adresse og oplysninger fra cookies for at vise og måle annoncer og forebygge svindel. Dit valg har betydning for, om Google kan bruge cookies og tilpasse annoncerne til dig. <a href="https://policies.google.com/technologies/partner-sites?hl=da">Sådan bruger Google oplysninger fra partnersider</a>.</p>
+
 <h2>Statistik</h2>
 <p>Besøgsstatistikken (Plausible, på min egen server) bruger ingen cookies. Læs mere i <a href="/privatlivspolitik">privatlivspolitikken</a>.</p>
 
 <h2>Sådan sletter du det</h2>
-<p>Fjern websitedata for levetidsberegner.dk i din browsers indstillinger. Så forsvinder tema, historik og cache.</p>
+<p>Fjern websitedata for levetidsberegner.dk i din browsers indstillinger. Så forsvinder blandt andet tema, historik og cache. Du kan også slette eller blokere tredjepartscookies i browserens indstillinger.</p>
 
 <nav>
 <a href="/">Forside</a>

@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { SHARE_KEYS, takeShareSearchParams, parseShareParams } from './shareState';
 
-// Runs the exact inline script from the page layout (src/layouts/Base.astro) against a fake window/location.
-const html = readFileSync(new URL('../layouts/Base.astro', import.meta.url), 'utf8');
+// Runs the exact inline script from the shared head against a fake window/location.
+const html = readFileSync(new URL('../layouts/ThirdPartyHead.astro', import.meta.url), 'utf8');
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
 const inline = scripts.find((s) => s.includes('__shareQuery'));
 
@@ -14,14 +14,16 @@ function run(url) {
     location: { search: u.search, pathname: u.pathname, hash: u.hash },
     history: { state: null, replaceState: (...a) => calls.push(a) },
   };
-  new Function('window', 'location', 'history', inline)(win, win.location, win.history);
+  new Function('window', 'location', 'history', 'document', inline)(win, win.location, win.history, {
+    currentScript: { dataset: {} },
+  });
   return { win, calls };
 }
 
-describe('inline share-query script (Base.astro)', () => {
-  it('exists and comes before the analytics script', () => {
+describe('inline share-query script (ThirdPartyHead.astro)', () => {
+  it('returns from the share branch before loading any third-party script', () => {
     expect(inline).toBeTruthy();
-    expect(html.indexOf('__shareQuery')).toBeLessThan(html.indexOf('analytics.holstjensen.eu'));
+    expect(inline.indexOf('return;')).toBeLessThan(inline.indexOf('document.createElement'));
   });
 
   it('strips share keys and keeps them in memory', () => {

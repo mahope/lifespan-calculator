@@ -11,8 +11,8 @@ function fakeDist(extra = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'build-sw-'))
   const files = {
     'index.html': '<h1>home</h1>',
-    'privatlivspolitik.html': 'p',
-    'cookiepolitik.html': 'c',
+    'privatlivspolitik/index.html': 'p',
+    'cookiepolitik/index.html': 'c',
     '_astro/client.abc.js': 'js',
     '_astro/client.abc.js.map': 'map',
     '_astro/site.def.css': 'css',

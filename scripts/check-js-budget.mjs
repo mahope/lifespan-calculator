@@ -1,7 +1,7 @@
 // Post-build JavaScript budget (deterministic, runs in every build): the content pages load no script file
 // from this site and no island, and the pages with an island stay under their brotli budget.
 // Inline bootstrap scripts (share-link scrubber, theme, service worker registration) and the third-party
-// analytics script are not counted. The browser-side check (Lighthouse, LCP) is scripts/lighthouse-budget.mjs.
+// analytics and AdSense scripts are not counted. The browser-side check (Lighthouse, LCP) is scripts/lighthouse-budget.mjs.
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import process from 'node:process'

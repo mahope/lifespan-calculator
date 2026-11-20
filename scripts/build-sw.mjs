@@ -6,13 +6,13 @@ import { readFileSync, readdirSync, statSync, writeFileSync, existsSync } from '
 import { join, relative, sep } from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
-import { ROUTES } from './gen-sitemap.mjs'
+import { ROUTES, POLICY_ROUTES } from './gen-sitemap.mjs'
 
 // /embed is left out: it runs inside other sites and does not register the worker.
-export const OFFLINE_PAGES = [...ROUTES.filter((r) => r !== '/embed'), '/privatlivspolitik', '/cookiepolitik']
+export const OFFLINE_PAGES = [...ROUTES.filter((r) => r !== '/embed'), ...POLICY_ROUTES]
 const FILE_PATTERN = /^(?:_astro\/.+\.(?:js|css)|fonts\/.+\.woff2|favicon\.svg)$/
 
-// The file a clean page path is served from: dist/<route>/index.html, or dist/<name>.html for the policy pages.
+// The file a clean page path is served from: dist/<route>/index.html, or a flat HTML file if present.
 export function pageFile(dist, route) {
   if (route === '/') return 'index.html'
   const dir = `${route.slice(1)}/index.html`

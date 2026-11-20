@@ -69,7 +69,7 @@ describe('copy guard', () => {
     expect(files.length).toBeGreaterThan(20);
     expect(files.some((f) => f.endsWith('Base.astro'))).toBe(true);
     expect(files.some((f) => f.endsWith('index.astro'))).toBe(true);
-    expect(files.some((f) => f.endsWith('privatlivspolitik.html'))).toBe(true);
+    expect(files.some((f) => f.endsWith('privatlivspolitik.astro'))).toBe(true);
   });
 
   it.each(FORBIDDEN.map((f) => [String(f.re), f]))('the copy does not contain %s', (_label, { re }) => {

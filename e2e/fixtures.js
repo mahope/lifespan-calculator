@@ -3,6 +3,7 @@
 // - Same-origin requests pass through to the preview server.
 // - The analytics host is fulfilled locally: the Plausible script is replayed from a pinned
 //   copy and POST /api/event is recorded and answered 202, never forwarded.
+// - The AdSense loader is replaced with a probe that records the address it sees when executed.
 // - Every other host (partner ads, fonts, geocoding, ...) is aborted and its hostname recorded.
 // Nothing in this suite ever reaches the internet.
 import { readFileSync } from 'node:fs';
@@ -10,6 +11,8 @@ import { test as base, expect } from '@playwright/test';
 
 export const FROZEN_ISO = '2026-11-05T12:34:56Z'; // off a minute boundary: the countdown shows '--' for units equal to 0
 export const ANALYTICS_HOST = 'analytics.holstjensen.eu';
+export const ADSENSE_SRC = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1902871361369866';
+export const ADSENSE_HOST = new URL(ADSENSE_SRC).hostname;
 const PLAUSIBLE_SRC = readFileSync(new URL('./fixtures/plausible-script.pinned.js', import.meta.url), 'utf8');
 
 export const test = base.extend({
@@ -21,6 +24,12 @@ export const test = base.extend({
       const req = route.request();
       const u = new URL(req.url());
       rec.hosts.add(u.hostname);
+      if (req.url() === ADSENSE_SRC) {
+        return route.fulfill({
+          contentType: 'application/javascript',
+          body: 'window.__adsensePageUrl = location.href;',
+        });
+      }
       if (u.hostname === ANALYTICS_HOST) {
         if (req.method() === 'POST' && u.pathname === '/api/event') {
           const raw = req.postData() || '';

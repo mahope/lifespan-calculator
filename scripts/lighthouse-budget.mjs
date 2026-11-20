@@ -11,7 +11,7 @@
 // Why not the default simulated throttling: against a local server the fonts and island scripts finish before
 // the first paint, so the simulation puts them on the LCP path and reports about 2.4 s for a page that paints
 // its LCP text at about 0.9 s under applied throttling (measured 2026-11-07, see docs/testing.md).
-// The analytics host is blocked, so nothing leaves the machine and its script is not measured.
+// Plausible and AdSense are blocked so the budget measures the site without third-party requests.
 // Lighthouse is fetched with npx at an exact pinned version (13.5.0, published 2026-09-18, no install scripts); it is
 // not a project dependency, so this needs network access to the npm registry. Install scripts are disabled for it.
 // Env: CHROME_PATH (browser; on agent-worker /opt/google/chrome/chrome), BUDGET_OUT (write the JSON summary there).
@@ -58,6 +58,7 @@ function lighthouse(url, out) {
       '--quiet',
       '--throttling-method=devtools',
       '--blocked-url-patterns=*analytics.holstjensen.eu*',
+      '--blocked-url-patterns=*pagead2.googlesyndication.com*',
       '--chrome-flags=--headless=new',
     ],
     { stdio: ['ignore', 'inherit', 'inherit'], env: { ...process.env, npm_config_ignore_scripts: 'true', npm_config_audit: 'false', npm_config_fund: 'false' } },

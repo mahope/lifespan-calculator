@@ -27,7 +27,7 @@ strukturerede data og brødtekst. Kun de interaktive dele hydreres som React 19-
 | `/` | beregneren (`src/islands/HomeCalculator.jsx`) |
 | `/pensionsalder` | formularen (`src/islands/PensionFormIsland.jsx`) |
 | `/embed` | widgetten (`src/islands/EmbedWidget.jsx`) |
-| `/hvor-lang-tid-har-jeg-tilbage`, `/dodsalder-calculator`, `/livsstil-og-levetid`, `/levetid-beregner-danmark`, `/embed-levetidsberegner`, 404 | ingen scriptfiler, kun små inline-scripts (tema, service worker) |
+| `/hvor-lang-tid-har-jeg-tilbage`, `/dodsalder-calculator`, `/livsstil-og-levetid`, `/levetid-beregner-danmark`, `/embed-levetidsberegner`, 404 | ingen scriptfiler fra eget domæne |
 
 - **Sider**: `src/pages/*.astro` (én fil pr. URL) rendrer React-komponenterne i `src/views/` og `src/components/` til HTML ved build.
 - **Layout og `<head>`**: `src/layouts/Base.astro`. Værdierne kommer fra `src/routes.meta.js` via `src/lib/head.js`.
@@ -71,7 +71,7 @@ lifespan-calculator/
 │   ├── lib/head.js         # SEO-tags pr. side
 │   ├── routes.meta.js      # Titler, beskrivelser, breadcrumbs
 │   └── utils/, hooks/, data/
-├── public/                 # Kopieres uændret (politiksider, ikoner, fonte, robots.txt, sitemap.xml, api/health)
+├── public/                 # Kopieres uændret (ikoner, fonte, robots.txt, sitemap.xml, api/health)
 ├── scripts/                # Sitemap, service worker, paritets- og JS-budget-tjek, Lighthouse, datascripts
 └── e2e/                    # Playwright mod Caddy-imaget
 ```
@@ -87,7 +87,7 @@ npm run build      # dist/ + service worker + paritetstjek mod SPA'en + JS-budge
 npm run preview    # astro preview af dist/ (uden Caddyfile'ens headers)
 npm test           # vitest
 npm run test:e2e   # Playwright mod dist/ i Caddy-imaget (kræver Docker)
-node scripts/lighthouse-budget.mjs   # mobil-LCP og 0 KB JS på indholdssider (kræver Docker og Chrome)
+node scripts/lighthouse-budget.mjs   # mobil-LCP og CLS, 0 KB JS fra eget domæne på indholdssider (kræver Docker og Chrome)
 ```
 
 Se `docs/testing.md` for detaljer.
@@ -97,7 +97,7 @@ Se `docs/testing.md` for detaljer.
 `Dockerfile` bygger sitet med `node:22-alpine` (`npm ci` og `npm run build`) og serverer `dist/` med
 `caddy:2.11.7-alpine` på port 3000 som en bruger uden root-rettigheder. Konfigurationen er `Caddyfile`:
 
-- **Rene URL'er**: `/x` serveres fra `x/index.html` (Astro) eller `x.html` (politiksiderne) uden redirect.
+- **Rene URL'er**: `/x` serveres fra `x/index.html` uden redirect, også for politiksiderne.
   `/x/` giver også siden. `/x.html`, `/x/index.html` og `/index.html` redirecter med 301 til den rene adresse.
 - **404**: ukendte stier får `404.html` med status 404 og `X-Robots-Tag: noindex`. En manglende fil under
   `/_astro/` eller `/assets/` får en kort tekst-404 med `Cache-Control: no-store`, aldrig HTML.
@@ -131,10 +131,11 @@ levetidsberegner.dk. Kildeperioden hentes fra `LIFE_TABLE_META.period`.
 
 ## 🔒 Privatlivspolitik
 
-- **Ingen data gemmes**: Alle beregninger sker lokalt i browseren
-- **Ingen lokation**: Appen beder ikke om din placering
-- **Ingen cookies**: Applikationen sætter ingen cookies
-- **Kun ét eksternt script**: anonym besøgsstatistik (Plausible, uden cookies og uden dine indtastninger)
+- Beregningen og historikken ligger lokalt i browseren. Plausible tæller besøg uden cookies.
+- Det fælles Astro-head indlæser AdSense på alle sider, inklusive politiksiderne, med undtagelse af widgetten (`/embed`). Ved åbning af et delingslink fjerner siden beregnerens parametre fra adressen og springer både AdSense og Plausible over på den sidevisning. Browserens Navigation Timing API kan stadig vise den oprindelige adresse.
+- `public/ads.txt` autoriserer udgiverkontoen og serveres af Caddy på `/ads.txt`.
+- Publicér den danske samtykkedialog for EØS, Storbritannien og Schweiz under **Privatliv og meddelelser** i AdSense før deploy. Vælg **Afslå** som synlig mulighed, og angiv `https://levetidsberegner.dk/privatlivspolitik` som link til privatlivspolitikken. Hold automatiske annoncer slået fra, indtil annonceplaceringer er besluttet.
+- Se [privatlivspolitikken](src/pages/privatlivspolitik.astro) og [cookiepolitikken](src/pages/cookiepolitik.astro) for Googles behandling af oplysninger og brug af cookies.
 
 ## ⚠️ Begrænsninger og disclaimers
 

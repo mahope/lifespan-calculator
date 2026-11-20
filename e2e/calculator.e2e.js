@@ -1,4 +1,4 @@
-import { test, expect, submitCalculator, captureResult, ANALYTICS_HOST } from './fixtures.js';
+import { test, expect, submitCalculator, captureResult, ANALYTICS_HOST, ADSENSE_HOST } from './fixtures.js';
 import { EVENTS } from '../src/utils/analytics.js';
 
 // The three baseline inputs of the 2026-11-05 audit (audit/measure2/baseline), clock frozen.
@@ -50,12 +50,12 @@ for (const { id, input, years } of CASES) {
       expect(second.countdown).toEqual(first.countdown);
     });
 
-    test('contacts only the site and analytics, sends no input, logs no errors', async ({ session }) => {
+    test('contacts only the site, analytics and AdSense, sends no input, logs no errors', async ({ session }) => {
       const { page, rec, siteHost } = session;
       await submitCalculator(page, input);
 
       const hosts = [...rec.hosts].sort();
-      expect(hosts.filter((h) => h !== siteHost && h !== ANALYTICS_HOST), `unexpected hosts: ${hosts}`).toEqual([]);
+      expect(hosts.filter((h) => ![siteHost, ANALYTICS_HOST, ADSENSE_HOST].includes(h)), `unexpected hosts: ${hosts}`).toEqual([]);
 
       // The analytics script must really have run (a pageview was sent), otherwise the checks below prove nothing.
       expect(rec.events.length).toBeGreaterThan(0);
@@ -103,7 +103,7 @@ test('a crafted share link leaves the page responsive', async ({ session }) => {
   await page.getByRole('radio', { name: 'Mand', exact: true }).click();
   await page.getByRole('button', { name: 'Beregn levetid' }).click();
   await expect(page.getByRole('heading', { name: 'Din resterende tid' })).toBeVisible();
-  expect([...rec.hosts].filter((h) => h !== siteHost && h !== ANALYTICS_HOST)).toEqual([]);
+  expect([...rec.hosts].filter((h) => ![siteHost, ANALYTICS_HOST, ADSENSE_HOST].includes(h))).toEqual([]);
   expect(rec.pageErrors).toEqual([]);
   expect(rec.console).toEqual([]);
 });

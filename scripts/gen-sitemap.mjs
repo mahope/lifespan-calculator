@@ -1,6 +1,6 @@
 // Generates public/sitemap.xml from the single ROUTES list below.
 // Run automatically via `prebuild`. Tests keep ROUTES in sync with the pages in
-// src/pages/*.astro and with ROUTE_META in src/routes.meta.js.
+// src/pages/*.astro (alongside standalone policy routes) and with ROUTE_META in src/routes.meta.js.
 import { writeFileSync } from 'node:fs'
 import process from 'node:process'
 import { URL, fileURLToPath } from 'node:url'
@@ -17,6 +17,9 @@ export const ROUTES = [
   '/embed-levetidsberegner',
   '/embed',
 ]
+
+// Standalone Astro pages outside the calculator's sitemap and SEO metadata.
+export const POLICY_ROUTES = ['/privatlivspolitik', '/cookiepolitik']
 
 // Served by the app (and prerendered) but kept out of the sitemap: the iframe widget is noindex.
 export const NOINDEX_ROUTES = ['/embed']

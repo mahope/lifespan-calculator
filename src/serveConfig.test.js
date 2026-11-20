@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { existsSync, readFileSync } from 'node:fs'
+import { OFFLINE_PAGES } from '../scripts/build-sw.mjs'
+import { POLICY_ROUTES } from '../scripts/gen-sitemap.mjs'
 
 // Static checks of the serving layer. The real behaviour (status codes, headers, framing) is tested end to end
 // against the Caddy image in e2e/static-contract.e2e.js and e2e/embed.e2e.js.
@@ -8,16 +10,17 @@ const read = (p) => readFileSync(url(p), 'utf8')
 const caddy = read('Caddyfile')
 
 describe('policy pages', () => {
-  it('ship from public/ (real files), with no stray copy in the repo root', () => {
-    for (const f of ['privatlivspolitik', 'cookiepolitik']) {
-      expect(existsSync(url(`public/${f}.html`))).toBe(true)
-      expect(existsSync(url(`${f}.html`))).toBe(false)
+  it('build as Astro pages, with no stale public copy', () => {
+    for (const route of POLICY_ROUTES) {
+      expect(existsSync(url(`src/pages${route}.astro`))).toBe(true)
+      expect(existsSync(url(`public${route}.html`))).toBe(false)
+      expect(existsSync(url(`${route.slice(1)}.html`))).toBe(false)
     }
   })
 
-  it('are served at the clean URL (try_files {path}.html) and kept offline by the service worker', () => {
+  it('are served at the clean URL (try_files {path}/index.html) and kept offline by the service worker', () => {
     expect(caddy).toMatch(/try_files \{path\}\/index\.html \{path\}\.html \{path\}/)
-    expect(read('scripts/build-sw.mjs')).toMatch(/'\/privatlivspolitik', '\/cookiepolitik'/)
+    expect(OFFLINE_PAGES).toEqual(expect.arrayContaining(POLICY_ROUTES))
   })
 
   it('are linked from the footer with plain anchors', () => {

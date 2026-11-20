@@ -1,0 +1,52 @@
+---
+interface Props {
+  ads?: boolean
+  analytics?: boolean
+}
+
+const { ads = true, analytics = false } = Astro.props
+const adsSrc = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1902871361369866'
+const analyticsSrc = 'https://analytics.holstjensen.eu/js/script.file-downloads.outbound-links.pageview-props.tagged-events.js'
+---
+<script is:inline data-share-scrubber data-adsense={ads ? adsSrc : undefined} data-analytics={analytics ? analyticsSrc : undefined}>
+  (function () {
+    var keys = { g: 1, a: 1, b: 1, m: 1, lf: 1 };
+    var own = [];
+    var rest = [];
+    // Keep this list in sync with SHARE_KEYS in src/utils/shareState.js.
+    location.search.slice(1).split('&').forEach(function (part) {
+      var k = part.split('=')[0];
+      try { k = decodeURIComponent(k.replace(/\+/g, ' ')); } catch (e) {}
+      (Object.prototype.hasOwnProperty.call(keys, k) ? own : rest).push(part);
+    });
+    if (own.length) {
+      window.__shareQuery = own.join('&');
+      try {
+        history.replaceState(history.state, '', location.pathname + (rest.length ? '?' + rest.join('&') : '') + location.hash);
+      } catch (e) {}
+      // Navigation Timing still exposes the original URL after replaceState.
+      // Skip third-party scripts for the lifetime of this document.
+      return;
+    }
+
+    var sources = document.currentScript.dataset;
+    if (sources.adsense) {
+      var ads = document.createElement('script');
+      ads.async = true;
+      ads.crossOrigin = 'anonymous';
+      ads.src = sources.adsense;
+      document.head.appendChild(ads);
+    }
+    if (sources.analytics) {
+      window.plausible = window.plausible || function () {
+        (window.plausible.q = window.plausible.q || []).push(arguments);
+      };
+      document.addEventListener('DOMContentLoaded', function () {
+        var analytics = document.createElement('script');
+        analytics.dataset.domain = 'levetidsberegner.dk';
+        analytics.src = sources.analytics;
+        document.head.appendChild(analytics);
+      });
+    }
+  })();
+</script>

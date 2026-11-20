@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync, readdirSync } from 'node:fs'
-import { ROUTES, NOINDEX_ROUTES, SITEMAP_ROUTES, SITE_URL, buildSitemap } from './gen-sitemap.mjs'
+import { ROUTES, POLICY_ROUTES, NOINDEX_ROUTES, SITEMAP_ROUTES, SITE_URL, buildSitemap } from './gen-sitemap.mjs'
 
 const read = (p) => readFileSync(new URL(p, import.meta.url), 'utf8')
 
@@ -12,7 +12,7 @@ const astroRoutes = () =>
 
 describe('route list', () => {
   it('matches the pages in src/pages', () => {
-    expect([...ROUTES].sort()).toEqual(astroRoutes().sort())
+    expect([...ROUTES, ...POLICY_ROUTES].sort()).toEqual(astroRoutes().sort())
   })
 
   it('has no React page component left in src/pages (Astro would route it)', () => {

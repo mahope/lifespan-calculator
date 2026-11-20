@@ -71,7 +71,7 @@ lifespan-calculator/
 │   ├── lib/head.js         # SEO-tags pr. side
 │   ├── routes.meta.js      # Titler, beskrivelser, breadcrumbs
 │   └── utils/, hooks/, data/
-├── public/                 # Kopieres uændret (politiksider, ikoner, fonte, robots.txt, sitemap.xml, api/health)
+├── public/                 # Kopieres uændret (ikoner, fonte, robots.txt, sitemap.xml, api/health)
 ├── scripts/                # Sitemap, service worker, paritets- og JS-budget-tjek, Lighthouse, datascripts
 └── e2e/                    # Playwright mod Caddy-imaget
 ```
@@ -97,7 +97,7 @@ Se `docs/testing.md` for detaljer.
 `Dockerfile` bygger sitet med `node:22-alpine` (`npm ci` og `npm run build`) og serverer `dist/` med
 `caddy:2.11.7-alpine` på port 3000 som en bruger uden root-rettigheder. Konfigurationen er `Caddyfile`:
 
-- **Rene URL'er**: `/x` serveres fra `x/index.html` (Astro) eller `x.html` (politiksiderne) uden redirect.
+- **Rene URL'er**: `/x` serveres fra `x/index.html` uden redirect, også for politiksiderne.
   `/x/` giver også siden. `/x.html`, `/x/index.html` og `/index.html` redirecter med 301 til den rene adresse.
 - **404**: ukendte stier får `404.html` med status 404 og `X-Robots-Tag: noindex`. En manglende fil under
   `/_astro/` eller `/assets/` får en kort tekst-404 med `Cache-Control: no-store`, aldrig HTML.
@@ -132,10 +132,10 @@ levetidsberegner.dk. Kildeperioden hentes fra `LIFE_TABLE_META.period`.
 ## 🔒 Privatlivspolitik
 
 - Beregningen og historikken ligger lokalt i browseren. Plausible tæller besøg uden cookies.
-- AdSense-tagget ligger i Astro-layoutet efter scriptet, der fjerner beregnerens delingsparametre fra adressen. Widgetten (`/embed`) og de selvstændige politiksider indlæser ikke tagget.
+- Det fælles Astro-head indlæser AdSense på alle sider, inklusive politiksiderne, med undtagelse af widgetten (`/embed`). Ved åbning af et delingslink fjerner siden beregnerens parametre fra adressen og springer både AdSense og Plausible over på den sidevisning. Browserens Navigation Timing API kan stadig vise den oprindelige adresse.
 - `public/ads.txt` autoriserer udgiverkontoen og serveres af Caddy på `/ads.txt`.
 - Publicér den danske samtykkedialog for EØS, Storbritannien og Schweiz under **Privatliv og meddelelser** i AdSense før deploy. Vælg **Afslå** som synlig mulighed, og angiv `https://levetidsberegner.dk/privatlivspolitik` som link til privatlivspolitikken. Hold automatiske annoncer slået fra, indtil annonceplaceringer er besluttet.
-- Se [privatlivspolitikken](public/privatlivspolitik.html) og [cookiepolitikken](public/cookiepolitik.html) for Googles behandling af oplysninger og brug af cookies.
+- Se [privatlivspolitikken](src/pages/privatlivspolitik.astro) og [cookiepolitikken](src/pages/cookiepolitik.astro) for Googles behandling af oplysninger og brug af cookies.
 
 ## ⚠️ Begrænsninger og disclaimers
 

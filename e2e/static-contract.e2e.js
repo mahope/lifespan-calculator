@@ -17,24 +17,35 @@ test.describe('static contract', () => {
     expect((await res.text()).trim()).toBe('google.com, pub-1902871361369866, DIRECT, f08c47fec0942fa0');
   });
 
-  test('the Astro head loads AdSense after the share scrubber except in the widget', async ({ request }) => {
-    for (const route of [...Object.keys(SPA.routes), '/xyz']) {
+  test('the shared head configures AdSense once on every page except the widget', async ({ request }) => {
+    for (const route of [...Object.keys(SPA.routes), '/privatlivspolitik', '/cookiepolitik', '/xyz']) {
       const html = await (await request.get(route)).text();
       const head = html.split('</head>')[0];
-      const adScripts = [...html.matchAll(/<script\b[^>]*adsbygoogle\.js[^>]*>/g)];
-      expect(adScripts, route).toHaveLength(route === '/embed' ? 0 : 1);
-      if (route !== '/embed') {
-        const [script] = adScripts[0];
-        expect(head, route).toContain(script);
-        expect(script, route).toContain(`src="${ADSENSE_SRC}"`);
-        expect(script, route).toContain(' async');
-        expect(script, route).toContain('crossorigin="anonymous"');
-        expect(head, route).toContain('data-share-scrubber');
-        expect(head.indexOf(script), route).toBeGreaterThan(head.indexOf('data-share-scrubber'));
-      }
+      const [bootstrap] = head.match(/<script\b[^>]*data-share-scrubber[^>]*>/g) ?? [];
+      expect(bootstrap, route).toBeDefined();
+      const adSources = [...html.matchAll(/ data-adsense="([^"]+)"/g)];
+      expect(adSources.map((m) => m[1]), route).toEqual(route === '/embed' ? [] : [ADSENSE_SRC]);
+      if (route !== '/embed') expect(bootstrap, route).toContain(`data-adsense="${ADSENSE_SRC}"`);
       expect(html, route).not.toMatch(/<ins\b[^>]*adsbygoogle/);
     }
   });
+
+  for (const route of ['/privatlivspolitik', '/cookiepolitik']) {
+    test(`${route} loads AdSense without analytics`, async ({ session }) => {
+      const { page, rec, siteHost } = session;
+      const response = await page.goto(route, { waitUntil: 'networkidle' });
+      expect(response.status()).toBe(200);
+      expect([...rec.hosts].filter((host) => host !== siteHost)).toEqual([ADSENSE_HOST]);
+      expect(await page.evaluate(() => window.__adsensePageUrl)).toBe(page.url());
+    });
+
+    test(`${route} strips share parameters without loading AdSense`, async ({ session }) => {
+      const { page, rec, siteHost } = session;
+      await page.goto(`${route}?g=male&b=1985-06-15`, { waitUntil: 'networkidle' });
+      expect(new URL(page.url()).search).toBe('');
+      expect([...rec.hosts]).toEqual([siteHost]);
+    });
+  }
 
   test('robots.txt allows crawling and points at the sitemap', async ({ request }) => {
     const res = await request.get('/robots.txt');

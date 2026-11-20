@@ -40,15 +40,18 @@ The e2e suite and the budget run the Caddy image with `dist/` mounted, so they n
 - **`pages/*.astro`**: One file per URL (plus `404.astro`). Only `.astro` files may live here (Astro routes
   every file in it; a test enforces this). Each renders a component from `views/` inside `layouts/Base.astro`.
 - **`layouts/Base.astro`**: the HTML document: head tags from `lib/head.js` (values from `routes.meta.js`),
-  the inline scripts (share-link scrubber before analytics, theme before first paint, theme switch, service
-  worker registration), Plausible (not on 404) and the manifest. Props: `route`, `notFound`, `embed`, `extraJsonLd`.
+  theme before first paint, theme switch, service worker registration and the manifest.
+  Props: `route`, `notFound`, `embed`, `extraJsonLd`.
+- **`layouts/ThirdPartyHead.astro`**: shared by Base and the policy pages. It scrubs share links and skips
+  external scripts for those documents. Ordinary visits load AdSense except on `/embed`, and Plausible
+  except on the policy pages and 404.
 - **`views/`**: Page content as React components (HomePage, HvorLangTidPage, DodsalderPage, LivsstilPage,
   DanmarkPage, PensionsalderPage, EmbedInfoPage, EmbedPage, NotFoundPage). Rendered to HTML at build time;
   links are plain `<a href>` (there is no router).
 - **`islands/`**: The only hydrated components (`client:load`), each wrapped in `ErrorBoundary`:
   `HomeCalculator` (the `Calculator` export of `views/HomePage.jsx`; the masthead, other-tools list and footer
   around it are static), `PensionFormIsland` (the `PensionForm` export, passed into `PensionsalderPage` as the
-  `form` slot) and `EmbedWidget`. A new interactive part must be an island; content pages must stay script-free.
+  `form` slot) and `EmbedWidget`. A new interactive part must be an island; content pages must load zero same-origin script files.
 - **`components/`**: Shared UI (PageHeader with the `SiteNav` masthead, which takes `current` for the active
   link, PageShell for the landing pages, SectionHeader, ThemeToggle (static button, switched by the inline script
   in `Base.astro`), Footer, PromoBanner, Overlevelseskurve (survival curve), ShareCard, ShareModal).
@@ -126,7 +129,7 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
   this), plus the parity fixtures. `/embed` (iframe widget, `EmbedPage`) is a normal route with
   `noindex: true`, listed in `ROUTES` but also in `NOINDEX_ROUTES`, so it is not in the sitemap. It does not
   register the service worker. `/embed-levetidsberegner` (info page with copy-paste code and terms) is
-  indexable and script-free (copy button wired by an inline script). The widget uses `computeEmbedResult`
+  indexable (copy button wired by an inline script). The widget uses `computeEmbedResult`
   (`utils/embedResult.js`), which calls `computeResult`, so its numbers equal the calculator's. It posts only
   `{type, height}` to the parent and tracks `Embed Calculate` without props.
 - Service worker: `scripts/build-sw.mjs` (postbuild) writes `dist/sw.js` from `scripts/sw-template.js` (no
@@ -158,8 +161,6 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
 ## File Structure
 - `astro.config.mjs` - Astro config (static output, React integration, Tailwind via PostCSS, meta validation)
 - `src/` - pages, layout, islands and the React source (see Architecture above)
-- `public/` - static assets copied as-is into the build, including the standalone
-  policy pages `privatlivspolitik.html` and `cookiepolitik.html` (served at the clean
-  URLs `/privatlivspolitik` and `/cookiepolitik`; link to them with plain `<a href>`),
-  `manifest.webmanifest`, `registerSW.js` (kept for the old SPA HTML), `robots.txt`, `sitemap.xml`, `api/health`
+- `src/pages/` includes the standalone policies at `/privatlivspolitik` and `/cookiepolitik`. Link to them with plain `<a href>`.
+- `public/` - static assets copied as-is into the build, including `manifest.webmanifest`, `registerSW.js` (kept for the old SPA HTML), `robots.txt`, `sitemap.xml`, `api/health`
 - `Dockerfile` - production image (build + Caddy), `Caddyfile` - the server config

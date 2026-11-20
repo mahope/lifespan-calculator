@@ -1,14 +1,18 @@
+---
+import ThirdPartyHead from '../layouts/ThirdPartyHead.astro'
+---
 <!doctype html>
 <html lang="da">
 <head>
 <meta charset="utf-8">
+<ThirdPartyHead />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#2563eb">
 <title>Privatlivspolitik | Levetidsberegner</title>
 <meta name="description" content="Sådan behandler Levetidsberegner.dk oplysninger: beregningen kører i din browser, og dine indtastninger sendes ikke til en server.">
 <link rel="canonical" href="https://levetidsberegner.dk/privatlivspolitik">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<script>
+<script is:inline>
 (function () {
   try {
     var t = localStorage.getItem('theme');
@@ -18,7 +22,7 @@
   } catch (e) {}
 })();
 </script>
-<style>
+<style is:inline>
 :root{--background:0 0% 100%;--foreground:222 47% 11%;--primary:221 83% 53%;--muted:210 40% 96.1%;--muted-foreground:215 16% 40%;--border:214 32% 91%}
 .dark{--background:222 47% 11%;--foreground:210 40% 98%;--primary:217 91% 70%;--muted:217 33% 17%;--muted-foreground:215 20% 72%;--border:217 33% 25%}
 *{box-sizing:border-box}
@@ -53,13 +57,13 @@ nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;border-top:1px solid hsl(var(-
 <p>Du kan slette alt dette ved at fjerne websitedata for levetidsberegner.dk i din browsers indstillinger.</p>
 
 <h2>Besøgsstatistik</h2>
-<p>Jeg bruger Plausible Analytics, som kører på min egen server (analytics.holstjensen.eu). Den bruger ingen cookies og gemmer intet i din browser. Den tæller sidevisninger, hvor besøget kom fra, samt browser, styresystem, enhedstype og land. Når du beregner, registreres kun, at der er foretaget en beregning, og om du brugte enkel eller avanceret tilstand. Statistikken registrerer også, om annoncekortene på resultatsiden er blevet vist og klikket på. Det sker anonymt: kun hvilken partner og hvilken placering, aldrig dine oplysninger. Dine tal, dit køn og din fødselsdato indgår ikke. Statistikken registrerer også, hvilken delingsknap du bruger, hvilket eksternt link du klikker på, og hvis der opstår en fejl i siden (kun fejltypen). Statistikken gemmer kun sidens sti, ikke parametre i adressen. Åbner du et delt link, fjernes linkets parametre (alder, køn og evt. livsstil) fra adressen, før statistikken kører, og de sendes aldrig til den.</p>
+<p>Jeg bruger Plausible Analytics, som kører på min egen server (analytics.holstjensen.eu). Den bruger ingen cookies og gemmer intet i din browser. Den tæller sidevisninger, hvor besøget kom fra, samt browser, styresystem, enhedstype og land. Når du beregner, registreres kun, at der er foretaget en beregning, og om du brugte enkel eller avanceret tilstand. Statistikken registrerer også, om annoncekortene på resultatsiden er blevet vist og klikket på. Det sker anonymt: kun hvilken partner og hvilken placering, aldrig dine oplysninger. Dine tal, dit køn og din fødselsdato indgår ikke. Statistikken registrerer også, hvilken delingsknap du bruger, hvilket eksternt link du klikker på, og hvis der opstår en fejl i siden (kun fejltypen). Statistikken gemmer kun sidens sti, ikke parametre i adressen. Når du åbner et delt link, fjerner siden beregnerens parametre fra adressen og springer besøgsstatistikken over på den sidevisning.</p>
 
 <h2>Deling</h2>
 <p>Når du deler et resultat, indeholder linket kun dit køn og din alder i hele år, aldrig din fødselsdato. Svar om livsstil kommer kun med, hvis du selv sætter hak i det. Del kun linket, hvis du er tryg ved, at modtageren kan se oplysningerne. Vælger du en delingsknap til en anden tjeneste, forlader du siden, og den tjenestes egne vilkår gælder.</p>
 
 <h2>Google AdSense</h2>
-<p>Siden bruger Google AdSense til annoncer. Google kan modtage din IP-adresse og adressen på den side, du besøger. Google kan læse eller gemme cookies og bruge oplysningerne til at vise og måle annoncer og forebygge svindel. Dit valg har betydning for, om annoncerne tilpasses dig. Beregneren sender ikke dine indtastninger til Google. Åbner du et delt link, fjerner siden beregnerens parametre, før annoncescriptet kører.</p>
+<p>Siden bruger Google AdSense til annoncer. Google kan modtage din IP-adresse og adressen på den side, du besøger. Google kan læse eller gemme cookies og bruge oplysningerne til at vise og måle annoncer og forebygge svindel. Dit valg har betydning for, om annoncerne tilpasses dig. Beregneren sender ikke dine indtastninger til Google. Når du åbner et delt link, indlæser siden ikke AdSense på den sidevisning.</p>
 <p>Google viser en samtykkedialog via sin løsning &raquo;Privatliv og meddelelser&laquo; til besøgende i EØS, Storbritannien og Schweiz. Her kan du acceptere, afslå eller tilpasse dit samtykke. Læs også <a href="/cookiepolitik">cookiepolitikken</a>.</p>
 <p><a href="https://policies.google.com/technologies/partner-sites?hl=da">Sådan bruger Google oplysninger fra partnersider</a>.</p>
 

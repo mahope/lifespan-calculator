@@ -53,7 +53,7 @@
 	@dothtml path_regexp dothtml ^(/.+)\.html$
 	redir @dothtml {re.dothtml.1} 301
 
-	# /x is served from /x/index.html (Astro pages) or /x.html (the policy pages), without a redirect.
+	# Serve clean URLs without a redirect, including the Astro policy pages.
 	try_files {path}/index.html {path}.html {path}
 	file_server
 

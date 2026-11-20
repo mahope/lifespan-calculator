@@ -110,7 +110,7 @@ new site from then on. `public/registerSW.js` stays at its old address for HTML 
 on), runs Lighthouse (`npx lighthouse@13.5.0`, mobile preset, `--throttling-method=devtools`) and fails when the
 median of three runs on `/` has an LCP above 1.5 s or a CLS above 0.1, or when a content page loads any script
 file from the site (the `/embed` preview iframe on `/embed-levetidsberegner` is a separate document and is not
-counted). The analytics host is blocked. It prints the runs and medians as JSON (`BUDGET_OUT` writes them to a
+counted). Plausible and AdSense requests are blocked. It prints the runs and medians as JSON (`BUDGET_OUT` writes them to a
 file; CI uploads it as the `lighthouse-budget` artifact).
 
 DevTools throttling applies the slow 4G and 4x CPU profile to the real page load. The default simulated

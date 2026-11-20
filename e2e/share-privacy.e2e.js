@@ -1,7 +1,5 @@
-// Share links must never reach the analytics server (issue #139). The inline script in index.html moves the
-// share parameters out of the address before the analytics script runs; this suite records every request to the
-// analytics origin (URL, headers, body) and fails if any of them carries a share parameter or input value.
-import { test, expect, ANALYTICS_HOST } from './fixtures.js';
+// Share parameters must be stripped before third-party scripts run (issue #139).
+import { test, expect, ANALYTICS_HOST, ADSENSE_SRC } from './fixtures.js';
 
 
 const LINKS = [
@@ -22,10 +20,13 @@ async function recordAnalytics(page) {
 }
 
 for (const { id, path } of LINKS) {
-  test(`share link "${id}" never reaches analytics and still hydrates`, async ({ session }) => {
+  test(`share link "${id}" is scrubbed before analytics and AdSense and still hydrates`, async ({ session }) => {
     const { page, rec } = session;
     const seen = await recordAnalytics(page);
-    await page.goto(path, { waitUntil: 'networkidle' });
+    const [adRequest] = await Promise.all([
+      page.waitForRequest(ADSENSE_SRC),
+      page.goto(path, { waitUntil: 'networkidle' }),
+    ]);
     await page.getByRole('heading', { name: 'Din resterende tid' }).waitFor();
     await page.waitForTimeout(500);
 
@@ -42,6 +43,8 @@ for (const { id, path } of LINKS) {
     // The address is clean and the result is shown.
     expect(new URL(page.url()).search).toBe('');
     expect(await page.evaluate(() => '__shareQuery' in window)).toBe(false);
+    expect(await page.evaluate(() => window.__adsensePageUrl)).toBe(page.url());
+    expect((await adRequest.allHeaders()).referer).toBe(`${new URL(page.url()).origin}/`);
   });
 }
 

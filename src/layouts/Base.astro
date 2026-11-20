@@ -1,7 +1,7 @@
 ---
 // The one HTML document for every page. Head tags come from src/routes.meta.js via src/lib/head.js.
 // Inline scripts are `is:inline` (Astro must not bundle or defer them); their order matters:
-// 1. the share-link scrubber runs before the analytics script ever loads,
+// 1. the share-link scrubber runs before third-party scripts,
 // 2. the theme is applied before first paint.
 import '../index.css'
 import { ROUTE_META, NOT_FOUND_META } from '../routes.meta.js'
@@ -23,10 +23,10 @@ const tags = notFound ? notFoundTags(meta) : headTags(meta, route, extraJsonLd)
 <html lang="da">
   <head>
     <meta charset="UTF-8" />
-    <!-- Privacy: runs before every other script (notably the analytics script). Moves the share-link
-         parameters (g, a, b, m, lf) out of the address into window.__shareQuery (memory only) so they are never
-         sent to the statistics server. Other parameters (utm_source, ref, ...) stay. Mirrored by SHARE_KEYS in
-         src/utils/shareState.js; src/utils/shareQuery.test.js runs this exact script. -->
+    <!-- Privacy: remove share parameters (g, a, b, m, lf) from the URL before third-party scripts run.
+         The calculator reads them from window.__shareQuery. Cross-origin requests carry at most the
+         origin as referrer. Other parameters (utm_source, ref, ...) stay. Keep this list in sync with
+         SHARE_KEYS in src/utils/shareState.js; src/utils/shareQuery.test.js runs this exact script. -->
     <script is:inline data-share-scrubber>
       (function () {
         try {
@@ -46,6 +46,9 @@ const tags = notFound ? notFoundTags(meta) : headTags(meta, route, extraJsonLd)
         } catch (e) {}
       })();
     </script>
+    {!embed && (
+      <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1902871361369866" crossorigin="anonymous"></script>
+    )}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

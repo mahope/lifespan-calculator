@@ -93,7 +93,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Mobile LCP under 1.5 s on / (median of 3) and no script files on the content pages.
+      # Mobile LCP under 1.5 s on / (median of 3) and no same-origin script files on the content pages.
       - name: Performance budget (Lighthouse)
         run: CHROME_PATH="$(command -v google-chrome || command -v google-chrome-stable)" BUDGET_OUT=lighthouse-budget.json node scripts/lighthouse-budget.mjs
 

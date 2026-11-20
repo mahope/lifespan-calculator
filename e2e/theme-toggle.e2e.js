@@ -1,7 +1,7 @@
 // The theme switch is plain HTML plus the inline script in src/layouts/Base.astro (no React on content pages).
 import { test, expect } from './fixtures.js';
 
-test('the theme switch works on a script-free page, is remembered and applied before paint on the next page', async ({ session }) => {
+test('the theme switch works on a page without an island, is remembered and applied before paint on the next page', async ({ session }) => {
   const { page, rec } = session;
   await page.goto('/dodsalder-calculator');
   const toggle = page.getByRole('button', { name: 'Skift til mørk tilstand' });

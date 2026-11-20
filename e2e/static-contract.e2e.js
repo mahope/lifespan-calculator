@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { test, expect } from './fixtures.js';
+import { test, expect, ADSENSE_HOST, ADSENSE_SRC } from './fixtures.js';
 
 // The SPA's sitemap and routes (master ddb8c1c), see scripts/check-parity.mjs.
 const SPA = JSON.parse(readFileSync(new URL('../scripts/fixtures/spa-parity.json', import.meta.url), 'utf8'));
@@ -10,6 +10,32 @@ const SPA = JSON.parse(readFileSync(new URL('../scripts/fixtures/spa-parity.json
 test.use({ baseURL: `http://127.0.0.1:${process.env.E2E_PORT}` });
 
 test.describe('static contract', () => {
+  test('ads.txt serves the AdSense publisher record as plain text', async ({ request }) => {
+    const res = await request.get('/ads.txt', { maxRedirects: 0 });
+    expect(res.status()).toBe(200);
+    expect(res.headers()['content-type']).toMatch(/^text\/plain\b/);
+    expect((await res.text()).trim()).toBe('google.com, pub-1902871361369866, DIRECT, f08c47fec0942fa0');
+  });
+
+  test('the Astro head loads AdSense after the share scrubber except in the widget', async ({ request }) => {
+    for (const route of [...Object.keys(SPA.routes), '/xyz']) {
+      const html = await (await request.get(route)).text();
+      const head = html.split('</head>')[0];
+      const adScripts = [...html.matchAll(/<script\b[^>]*adsbygoogle\.js[^>]*>/g)];
+      expect(adScripts, route).toHaveLength(route === '/embed' ? 0 : 1);
+      if (route !== '/embed') {
+        const [script] = adScripts[0];
+        expect(head, route).toContain(script);
+        expect(script, route).toContain(`src="${ADSENSE_SRC}"`);
+        expect(script, route).toContain(' async');
+        expect(script, route).toContain('crossorigin="anonymous"');
+        expect(head, route).toContain('data-share-scrubber');
+        expect(head.indexOf(script), route).toBeGreaterThan(head.indexOf('data-share-scrubber'));
+      }
+      expect(html, route).not.toMatch(/<ins\b[^>]*adsbygoogle/);
+    }
+  });
+
   test('robots.txt allows crawling and points at the sitemap', async ({ request }) => {
     const res = await request.get('/robots.txt');
     expect(res.status()).toBe(200);
@@ -41,7 +67,7 @@ test.describe('static contract', () => {
     const response = await page.goto('/xyz');
     expect(response.status()).toBe(404);
     await expect(page.locator('body')).toContainText('Siden findes ikke');
-    expect([...rec.hosts].filter((h) => h !== siteHost)).toEqual([]);
+    expect([...rec.hosts].filter((h) => h !== siteHost)).toEqual([ADSENSE_HOST]);
   });
 
   test('every URL of the SPA answers 200 at the same address, with its own canonical and body text in the HTML', async ({ request }) => {

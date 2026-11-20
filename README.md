@@ -27,7 +27,7 @@ strukturerede data og brødtekst. Kun de interaktive dele hydreres som React 19-
 | `/` | beregneren (`src/islands/HomeCalculator.jsx`) |
 | `/pensionsalder` | formularen (`src/islands/PensionFormIsland.jsx`) |
 | `/embed` | widgetten (`src/islands/EmbedWidget.jsx`) |
-| `/hvor-lang-tid-har-jeg-tilbage`, `/dodsalder-calculator`, `/livsstil-og-levetid`, `/levetid-beregner-danmark`, `/embed-levetidsberegner`, 404 | ingen scriptfiler, kun små inline-scripts (tema, service worker) |
+| `/hvor-lang-tid-har-jeg-tilbage`, `/dodsalder-calculator`, `/livsstil-og-levetid`, `/levetid-beregner-danmark`, `/embed-levetidsberegner`, 404 | ingen scriptfiler fra eget domæne |
 
 - **Sider**: `src/pages/*.astro` (én fil pr. URL) rendrer React-komponenterne i `src/views/` og `src/components/` til HTML ved build.
 - **Layout og `<head>`**: `src/layouts/Base.astro`. Værdierne kommer fra `src/routes.meta.js` via `src/lib/head.js`.
@@ -87,7 +87,7 @@ npm run build      # dist/ + service worker + paritetstjek mod SPA'en + JS-budge
 npm run preview    # astro preview af dist/ (uden Caddyfile'ens headers)
 npm test           # vitest
 npm run test:e2e   # Playwright mod dist/ i Caddy-imaget (kræver Docker)
-node scripts/lighthouse-budget.mjs   # mobil-LCP og 0 KB JS på indholdssider (kræver Docker og Chrome)
+node scripts/lighthouse-budget.mjs   # mobil-LCP og CLS, 0 KB JS fra eget domæne på indholdssider (kræver Docker og Chrome)
 ```
 
 Se `docs/testing.md` for detaljer.
@@ -131,10 +131,11 @@ levetidsberegner.dk. Kildeperioden hentes fra `LIFE_TABLE_META.period`.
 
 ## 🔒 Privatlivspolitik
 
-- **Ingen data gemmes**: Alle beregninger sker lokalt i browseren
-- **Ingen lokation**: Appen beder ikke om din placering
-- **Ingen cookies**: Applikationen sætter ingen cookies
-- **Kun ét eksternt script**: anonym besøgsstatistik (Plausible, uden cookies og uden dine indtastninger)
+- Beregningen og historikken ligger lokalt i browseren. Plausible tæller besøg uden cookies.
+- AdSense-tagget ligger i Astro-layoutet efter scriptet, der fjerner beregnerens delingsparametre fra adressen. Widgetten (`/embed`) og de selvstændige politiksider indlæser ikke tagget.
+- `public/ads.txt` autoriserer udgiverkontoen og serveres af Caddy på `/ads.txt`.
+- Publicér den danske samtykkedialog for EØS, Storbritannien og Schweiz under **Privatliv og meddelelser** i AdSense før deploy. Vælg **Afslå** som synlig mulighed, og angiv `https://levetidsberegner.dk/privatlivspolitik` som link til privatlivspolitikken. Hold automatiske annoncer slået fra, indtil annonceplaceringer er besluttet.
+- Se [privatlivspolitikken](public/privatlivspolitik.html) og [cookiepolitikken](public/cookiepolitik.html) for Googles behandling af oplysninger og brug af cookies.
 
 ## ⚠️ Begrænsninger og disclaimers
 

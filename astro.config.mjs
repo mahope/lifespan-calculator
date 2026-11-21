@@ -1,12 +1,16 @@
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import tailwindcss from '@tailwindcss/postcss'
-import { ROUTES } from './scripts/gen-sitemap.mjs'
+import { ROUTES, PSEO_ROUTES } from './scripts/gen-sitemap.mjs'
 import { ROUTE_META, SITE_URL } from './src/routes.meta.js'
 import { validateMeta } from './src/lib/head.js'
+import { pseoMeta } from './src/lib/pseo.js'
 
 // Duplicate or too long titles/descriptions stop the build before anything is written.
-const problems = validateMeta(ROUTES, ROUTE_META)
+const problems = validateMeta(
+  [...ROUTES, ...PSEO_ROUTES],
+  { ...ROUTE_META, ...Object.fromEntries(PSEO_ROUTES.map((r) => [r, pseoMeta(r)])) },
+)
 if (problems.length) throw new Error(`route meta invalid:\n  ${problems.join('\n  ')}`)
 
 // https://docs.astro.build/en/reference/configuration-reference/

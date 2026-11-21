@@ -1,0 +1,15 @@
+---
+// One static page per municipality with DST figures (src/lib/pseo.js).
+import Base from '../../layouts/Base.astro'
+import Page from '../../views/KommunePage.jsx'
+import { kommuner, kommuneRoute } from '../../lib/pseo.js'
+
+export function getStaticPaths() {
+  return kommuner().map((k) => ({ params: { kommune: k.slug } }))
+}
+
+const { kommune } = Astro.params
+---
+<Base route={kommuneRoute(kommune)}>
+  <Page slug={kommune} />
+</Base>

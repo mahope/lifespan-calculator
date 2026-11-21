@@ -58,7 +58,10 @@ The README does not state the period for the same reason.
 2. `node scripts/refresh-data.mjs all` (or one sub-command).
 3. Read `git diff`: the period, `tableUpdated` and the sanity of the new numbers.
 4. Run the gate: `npm run lint && npm test && npm run build`. Update tests that pin concrete
-   DST values (`src/utils/lifeTableDK.test.js`) only if the numbers legitimately changed.
+   DST values (`src/utils/lifeTableDK.test.js`, and the known e_x, municipality and title literals in
+   `src/lib/pseo.test.js` and `e2e/pseo.e2e.js`) only if the numbers legitimately changed. The `/restlevetid/*`
+   (HISB8) and `/forventet-levealder/*` (HISBK) pages are generated from the same files, so they follow the refresh;
+   a municipality DST stops publishing drops its page (and its sitemap entry) automatically.
 5. Check pages that mention specific figures (Denmark page, share text, snapshots).
 6. Commit the generated files together with any test/copy changes and open a PR. Deployment is manual.
 

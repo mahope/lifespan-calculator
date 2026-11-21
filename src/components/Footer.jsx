@@ -8,6 +8,8 @@ const PAGES = [
   { to: '/livsstil-og-levetid', label: 'Livsstil og levetid' },
   { to: '/pensionsalder', label: 'Hvornår kan jeg gå på pension?' },
   { to: '/levetid-beregner-danmark', label: 'Levealder i Danmark' },
+  { to: '/restlevetid', label: 'Restlevetid efter alder og køn' },
+  { to: '/forventet-levealder', label: 'Forventet levealder pr. kommune' },
 ];
 
 const Footer = () => {

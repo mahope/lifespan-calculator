@@ -6,9 +6,15 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
-import { ROUTES } from './gen-sitemap.mjs'
+import { ROUTES, PSEO_ROUTES } from './gen-sitemap.mjs'
+import { ROUTE_META, absoluteUrl } from '../src/routes.meta.js'
+import { pseoMeta } from '../src/lib/pseo.js'
 
 const FIXTURE = fileURLToPath(new URL('./fixtures/spa-parity.json', import.meta.url))
+
+// Deliberate additions to the SPA's URL set: the two hubs of the programmatic pages. They (and PSEO_ROUTES)
+// are not in the SPA reference; `checkAddedPages` verifies their own head instead.
+export const ADDED_ROUTES = ['/restlevetid', '/forventet-levealder']
 
 // Deliberate additions, nothing else may differ. /pensionsalder: the FAQPage block the SPA only added at
 // runtime (react-helmet-async) is now in the HTML itself.
@@ -54,7 +60,7 @@ export const sitemapLocs = (xml) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].ma
 
 const routeFile = (dist, route) => join(dist, route === '/' ? 'index.html' : `${route.slice(1)}/index.html`)
 
-export function snapshot(dist, routes = ROUTES) {
+export function snapshot(dist, routes = ROUTES.filter((r) => !ADDED_ROUTES.includes(r))) {
   return {
     sitemap: sitemapLocs(readFileSync(join(dist, 'sitemap.xml'), 'utf8')),
     routes: Object.fromEntries(routes.map((r) => [r, headSummary(readFileSync(routeFile(dist, r), 'utf8'))])),
@@ -64,10 +70,11 @@ export function snapshot(dist, routes = ROUTES) {
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b)
 
 // Returns a list of problems; empty means the build matches the SPA.
-export function compare(reference, dist, { added: addedByRoute = ADDED_JSON_LD } = {}) {
+export function compare(reference, dist, { added: addedByRoute = ADDED_JSON_LD, addedRoutes = ADDED_ROUTES, pseoRoutes = PSEO_ROUTES } = {}) {
   const problems = []
   const locs = sitemapLocs(readFileSync(join(dist, 'sitemap.xml'), 'utf8'))
-  if (!same(locs, reference.sitemap)) problems.push(`sitemap differs: ${JSON.stringify(locs)} vs ${JSON.stringify(reference.sitemap)}`)
+  const expected = [...reference.sitemap, ...[...addedRoutes, ...pseoRoutes].map((r) => `https://levetidsberegner.dk${r}`)]
+  if (!same(locs, expected)) problems.push(`sitemap differs: ${locs.length} URLs vs ${expected.length} expected (SPA ${reference.sitemap.length} + ${addedRoutes.length} hubs + ${pseoRoutes.length} pages)`)
   for (const [route, want] of Object.entries(reference.routes)) {
     const file = routeFile(dist, route)
     if (!existsSync(file)) {
@@ -84,7 +91,29 @@ export function compare(reference, dist, { added: addedByRoute = ADDED_JSON_LD }
     }
     if (!same(jsonLd, want.jsonLd)) problems.push(`${route}: JSON-LD differs`)
   }
-  for (const route of ROUTES) if (!(route in reference.routes)) problems.push(`${route}: not in the SPA reference`)
+  for (const route of ROUTES) {
+    if (!(route in reference.routes) && !ADDED_ROUTES.includes(route)) problems.push(`${route}: not in the SPA reference`)
+  }
+  return problems
+}
+
+// The hubs and programmatic pages have no SPA twin: each built page must exist, be indexable and carry its own
+// title, description and self-referencing canonical from the meta the sitemap and the pages are generated from.
+export function checkAddedPages(dist, routes = [...ADDED_ROUTES, ...PSEO_ROUTES]) {
+  const problems = []
+  for (const route of routes) {
+    const file = routeFile(dist, route)
+    if (!existsSync(file)) {
+      problems.push(`${route}: no ${file}`)
+      continue
+    }
+    const meta = ROUTE_META[route] ?? pseoMeta(route)
+    const got = headSummary(readFileSync(file, 'utf8'))
+    if (!same(got.title, [meta.title])) problems.push(`${route}: title ${JSON.stringify(got.title)}`)
+    if (got.meta.description !== meta.description) problems.push(`${route}: description differs`)
+    if (!same(got.canonical, [absoluteUrl(route)])) problems.push(`${route}: canonical ${JSON.stringify(got.canonical)}`)
+    if (got.meta.robots !== 'index, follow') problems.push(`${route}: robots ${got.meta.robots}`)
+  }
   return problems
 }
 
@@ -95,11 +124,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     process.stdout.write(`check-parity: wrote ${FIXTURE}\n`)
   } else {
     const dist = args[0] || fileURLToPath(new URL('../dist/', import.meta.url))
-    const problems = compare(JSON.parse(readFileSync(FIXTURE, 'utf8')), dist)
+    const problems = [...compare(JSON.parse(readFileSync(FIXTURE, 'utf8')), dist), ...checkAddedPages(dist)]
     if (problems.length) {
-      process.stderr.write(`check-parity: ${problems.length} difference(s) from the SPA:\n  ${problems.join('\n  ')}\n`)
+      process.stderr.write(`check-parity: ${problems.length} difference(s):\n  ${problems.join('\n  ')}\n`)
       process.exit(1)
     }
-    process.stdout.write(`check-parity: ${ROUTES.length} routes and the sitemap match the SPA\n`)
+    process.stdout.write(
+      `check-parity: ${ROUTES.length - ADDED_ROUTES.length} routes and the sitemap match the SPA; ` +
+        `${ADDED_ROUTES.length} hubs and ${PSEO_ROUTES.length} programmatic pages carry their own head\n`,
+    )
   }
 }

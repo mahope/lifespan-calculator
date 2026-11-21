@@ -1,0 +1,18 @@
+---
+// One static page per age 20-90 and sex (src/lib/pseo.js); unknown slugs are not generated and get the 404 page.
+import Base from '../../layouts/Base.astro'
+import Page from '../../views/RestlevetidPage.jsx'
+import { RESTLEVETID_AGES, SEXES, restlevetidSlug, parseRestlevetidSlug, restlevetidRoute } from '../../lib/pseo.js'
+
+export function getStaticPaths() {
+  return RESTLEVETID_AGES.flatMap((age) =>
+    Object.keys(SEXES).map((sex) => ({ params: { slug: restlevetidSlug(age, sex) } })),
+  )
+}
+
+const { slug } = Astro.params
+const { age, sex } = parseRestlevetidSlug(slug)
+---
+<Base route={restlevetidRoute(age, sex)}>
+  <Page age={age} sex={sex} />
+</Base>

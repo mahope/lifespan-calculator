@@ -27,7 +27,26 @@ strukturerede data og brødtekst. Kun de interaktive dele hydreres som React 19-
 | `/` | beregneren (`src/islands/HomeCalculator.jsx`) |
 | `/pensionsalder` | formularen (`src/islands/PensionFormIsland.jsx`) |
 | `/embed` | widgetten (`src/islands/EmbedWidget.jsx`) |
-| `/hvor-lang-tid-har-jeg-tilbage`, `/dodsalder-calculator`, `/livsstil-og-levetid`, `/levetid-beregner-danmark`, `/embed-levetidsberegner`, 404 | ingen scriptfiler fra eget domæne |
+| `/hvor-lang-tid-har-jeg-tilbage`, `/dodsalder-calculator`, `/livsstil-og-levetid`, `/levetid-beregner-danmark`, `/embed-levetidsberegner`, `/restlevetid`, `/forventet-levealder`, `/restlevetid/*`, `/forventet-levealder/*`, 404 | ingen scriptfiler fra eget domæne |
+
+### Programmatiske sider (tal fra Danmarks Statistik)
+
+To skabeloner, hver med en hub-side, genereres ved build ud fra de committede DST-datasæt. Alle tal læses fra
+`src/data/*.generated.js` (kilde, periode og hentedato står i filernes header og vises på siderne); der er ingen
+håndskrevne tal.
+
+| URL | Skabelon | Data |
+|-----|----------|------|
+| `/restlevetid` | hub: tabel over alle aldre og begge køn med links | HISB8 |
+| `/restlevetid/<alder>-aarig-<mand\|kvinde>` | 142 sider (alder 20-90): restlevetid, forventet alder, det andet køn, landsgennemsnit, chance for at nå senere aldre, nabo-aldre | HISB8 (e_x og l_x) |
+| `/forventet-levealder` | hub: alle kommuner rangeret | HISBK |
+| `/forventet-levealder/<kommune>` | én side pr. kommune med tal (94; DST udelader nogle små kommuner): mænd, kvinder, rang, spredning, nabo-kommuner, landstal for samme periode | HISBK |
+
+Titlen indeholder tallet, fx "Restlevetid for en 45-årig mand: 36,4 år (DST 2025)". Logikken ligger i
+`src/lib/pseo.js` (slugs, data, titler, rutelisten `PSEO_ROUTES`); `src/lib/restlevetidSlug.js` er den datafri del, som
+beregneren bruger til at linke fra et resultat til den matchende side. Siderne er `src/pages/restlevetid/[slug].astro` og
+`src/pages/forventet-levealder/[kommune].astro`. De kommer i sitemap'et via `scripts/gen-sitemap.mjs`, og fodlinjen på
+alle sider linker til de to hubs. Opdateres dataene med `node scripts/refresh-data.mjs dst`, følger siderne med.
 
 - **Sider**: `src/pages/*.astro` (én fil pr. URL) rendrer React-komponenterne i `src/views/` og `src/components/` til HTML ved build.
 - **Layout og `<head>`**: `src/layouts/Base.astro`. Værdierne kommer fra `src/routes.meta.js` via `src/lib/head.js`.

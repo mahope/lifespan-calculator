@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { ROUTES } from './gen-sitemap.mjs'
-import { compare, headSummary, sitemapLocs } from './check-parity.mjs'
+import { ADDED_ROUTES, checkAddedPages, compare, headSummary, sitemapLocs } from './check-parity.mjs'
 
 const reference = JSON.parse(readFileSync(new URL('./fixtures/spa-parity.json', import.meta.url), 'utf8'))
 // The production SPA (e2e/fixtures/legacy-prod) is an independent second copy of the old site.
@@ -12,12 +12,12 @@ const LEGACY = fileURLToPath(new URL('../e2e/fixtures/legacy-prod/', import.meta
 
 describe('the SPA reference', () => {
   it('covers every route and the sitemap', () => {
-    expect(Object.keys(reference.routes).sort()).toEqual([...ROUTES].sort())
-    expect(reference.sitemap).toHaveLength(ROUTES.length - 1)
+    expect(Object.keys(reference.routes).sort()).toEqual(ROUTES.filter((r) => !ADDED_ROUTES.includes(r)).sort())
+    expect(reference.sitemap).toHaveLength(ROUTES.length - ADDED_ROUTES.length - 1)
   })
   it('matches what production serves today (e2e/fixtures/legacy-prod)', () => {
     // The SPA had no FAQPage in its HTML, so nothing counts as added here.
-    expect(compare(reference, LEGACY, { added: {} })).toEqual([])
+    expect(compare(reference, LEGACY, { added: {}, addedRoutes: [], pseoRoutes: [] })).toEqual([])
   })
 })
 
@@ -39,7 +39,7 @@ describe('compare', () => {
     edit(dir, 'dodsalder-calculator/index.html', 'Forventet dødsalder: beregn', 'Forventet dødsalder - beregn')
     edit(dir, 'pensionsalder/index.html', 'href="https://levetidsberegner.dk/pensionsalder"', 'href="https://levetidsberegner.dk/pensionsalder/"')
     edit(dir, 'livsstil-og-levetid/index.html', '"BreadcrumbList"', '"Breadcrumbs"')
-    const problems = compare(reference, dir, { added: {} })
+    const problems = compare(reference, dir, { added: {}, addedRoutes: [], pseoRoutes: [] })
     expect(problems.some((p) => p.startsWith('/dodsalder-calculator: title'))).toBe(true)
     expect(problems.some((p) => p.startsWith('/pensionsalder: canonical'))).toBe(true)
     expect(problems.some((p) => p.startsWith('/livsstil-og-levetid: JSON-LD'))).toBe(true)
@@ -48,9 +48,16 @@ describe('compare', () => {
     const dir = copy()
     edit(dir, 'sitemap.xml', '<loc>https://levetidsberegner.dk/pensionsalder</loc>', '<loc>https://levetidsberegner.dk/pension</loc>')
     cpSync(join(dir, 'index.html'), join(dir, 'embed', 'index.html'))
-    const problems = compare(reference, dir, { added: {} })
+    const problems = compare(reference, dir, { added: {}, addedRoutes: [], pseoRoutes: [] })
     expect(problems.some((p) => p.startsWith('sitemap differs'))).toBe(true)
     expect(problems.some((p) => p.startsWith('/embed:'))).toBe(true)
+  })
+})
+
+describe('checkAddedPages', () => {
+  it('reports a missing hub page', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'parity-added-'))
+    expect(checkAddedPages(dir, ['/restlevetid'])[0]).toMatch(/^\/restlevetid: no /)
   })
 })
 

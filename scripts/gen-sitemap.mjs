@@ -4,6 +4,7 @@
 import { writeFileSync } from 'node:fs'
 import process from 'node:process'
 import { URL, fileURLToPath } from 'node:url'
+import { PSEO_ROUTES } from '../src/lib/pseo.js'
 
 export const SITE_URL = 'https://levetidsberegner.dk'
 
@@ -16,6 +17,9 @@ export const ROUTES = [
   '/pensionsalder',
   '/embed-levetidsberegner',
   '/embed',
+  // Hubs of the programmatic pages (src/lib/pseo.js); the pages under them are PSEO_ROUTES.
+  '/restlevetid',
+  '/forventet-levealder',
 ]
 
 // Standalone Astro pages outside the calculator's sitemap and SEO metadata.
@@ -23,7 +27,8 @@ export const POLICY_ROUTES = ['/privatlivspolitik', '/cookiepolitik']
 
 // Served by the app (and prerendered) but kept out of the sitemap: the iframe widget is noindex.
 export const NOINDEX_ROUTES = ['/embed']
-export const SITEMAP_ROUTES = ROUTES.filter((r) => !NOINDEX_ROUTES.includes(r))
+export { PSEO_ROUTES }
+export const SITEMAP_ROUTES = [...ROUTES.filter((r) => !NOINDEX_ROUTES.includes(r)), ...PSEO_ROUTES]
 
 export function buildSitemap(routes) {
   const urls = routes.map((r) => `  <url>\n    <loc>${SITE_URL}${r}</loc>\n  </url>`).join('\n')

@@ -26,6 +26,7 @@ import { parseShareParams, takeShareSearchParams } from '../utils/shareState';
 import { LIFESTYLE_FACTORS } from '../utils/lifestyleFactors';
 import { formatSignedYears, lifestyleTotal as sumLifestyleFactors, roundedLifestyleAdjustment, formatYears, toLocalISODate, MAX_AGE_INPUT } from '../utils/lifespanMath';
 import { track, trackCalculate } from '../utils/analytics';
+import { restlevetidPathFor } from '../lib/restlevetidSlug.js';
 import { LIFE_TABLE_META } from '../data/lifeTableDK.generated';
 import { COHORT_TABLE } from '../data/cohortTable.generated';
 import ProjectionToggle from '../components/ProjectionToggle';
@@ -172,6 +173,9 @@ export const Calculator = () => {
   // Bounded to match what the calculation actually applies (see #6).
   const rawLifestyleTotal = sumLifestyleFactors(lifestyleFactors);
   const lifestyleTotal = roundedLifestyleAdjustment(rawLifestyleTotal);
+
+  // Plain link to the DST page for this age and sex (/restlevetid/<alder>-aarig-<køn>); nothing is sent anywhere.
+  const restlevetidHref = resultData ? restlevetidPathFor(Math.floor(parseFloat(resultData.age)), resultData.gender) : null;
 
   const funFacts = [
     ['Solopgange set', resultData?.sunrises?.toLocaleString()],
@@ -418,6 +422,14 @@ export const Calculator = () => {
                 </strong>
                 .
               </p>
+              {restlevetidHref && (
+                <p className="mt-3 text-sm">
+                  <a href={restlevetidHref} className="link">
+                    Se restlevetiden for en {Math.floor(parseFloat(resultData.age))}-årig{' '}
+                    {resultData.gender === 'female' ? 'kvinde' : 'mand'} i Danmarks Statistiks tavle
+                  </a>
+                </p>
+              )}
               <div className="mt-8">
                 <Countdown key={resultData?.endTimestamp} endTimestamp={resultData?.endTimestamp} />
                 <ProjectionToggle resultData={resultData} onChange={setProjection} />

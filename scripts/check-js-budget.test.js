@@ -3,6 +3,7 @@ import { randomBytes } from 'node:crypto'
 import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
+import { PSEO_ROUTES } from '../src/lib/pseo.js'
 import { CONTENT_PAGES, ISLAND_BUDGET, checkBudget, scriptFiles } from './check-js-budget.mjs'
 
 const fileOf = (route) => (route === '/' ? 'index.html' : route === '/404' ? '404.html' : `${route.slice(1)}/index.html`)
@@ -14,7 +15,7 @@ function dist(pages = {}, files = {}) {
     writeFileSync(join(dir, name), body)
   }
   const island = '<astro-island component-url="/_astro/App.js" renderer-url="/_astro/client.js"></astro-island>'
-  for (const r of CONTENT_PAGES) write(fileOf(r), pages[r] ?? '<script>inline()</script><h1>x</h1>')
+  for (const r of [...CONTENT_PAGES, ...PSEO_ROUTES]) write(fileOf(r), pages[r] ?? '<script>inline()</script><h1>x</h1>')
   for (const r of Object.keys(ISLAND_BUDGET)) write(fileOf(r), pages[r] ?? island)
   write('_astro/App.js', 'import{a}from"./shared.js";import("./lazy.js");')
   write('_astro/shared.js', 'export const a=1')

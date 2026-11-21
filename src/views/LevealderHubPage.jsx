@@ -3,12 +3,12 @@ import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
 import AnswerFirst from '../components/AnswerFirst';
 import DataTable, { Cell } from '../components/DataTable';
-import { LEVEALDER_HUB, kommuner, kommuneRoute, kommunePeriod, fmtYears } from '../lib/pseo.js';
+import { LEVEALDER_HUB, kommuner, kommuneRoute, kommunePeriod, fmtYears, extremeNames } from '../lib/pseo.js';
 
 const LevealderHubPage = () => {
   const list = [...kommuner()].sort((a, b) => a.rank - b.rank || a.name.localeCompare(b.name, 'da'));
-  const best = list[0];
-  const worst = list.at(-1);
+  const best = extremeNames(list, 'best');
+  const worst = extremeNames(list, 'worst');
 
   return (
     <PageShell
@@ -18,7 +18,7 @@ const LevealderHubPage = () => {
     >
       <AnswerFirst
         text={
-          `Den forventede levealder er højest i ${best.name} (${fmtYears(best.total)} år) og lavest i ${worst.name} (${fmtYears(worst.total)} år) ` +
+          `Den forventede levealder er højest i ${best.names} (${fmtYears(best.total)} år) og lavest i ${worst.names} (${fmtYears(worst.total)} år) ` +
           `blandt de ${list.length} kommuner med tal (Danmarks Statistik, ${kommunePeriod()}).`
         }
         linkText="Beregn din egen levetid i levetidsberegneren"
@@ -37,7 +37,7 @@ const LevealderHubPage = () => {
                 <Cell first>
                   <a href={kommuneRoute(k.slug)} className="link">{k.name}</a>
                 </Cell>
-                <Cell>{k.rank}</Cell>
+                <Cell>{k.shared ? `delt ${k.rank}` : k.rank}</Cell>
                 <Cell>{fmtYears(k.male)}</Cell>
                 <Cell>{fmtYears(k.female)}</Cell>
                 <Cell strong>{fmtYears(k.total)}</Cell>

@@ -118,9 +118,23 @@ export function kommuner() {
         male: a.male,
         female: a.female,
       }))
-    kommunerCache = list.map((k) => ({ ...k, rank: 1 + list.filter((o) => o.total > k.total).length }))
+    kommunerCache = list.map((k) => ({
+      ...k,
+      rank: 1 + list.filter((o) => o.total > k.total).length,
+      // HISBK has one decimal, so several municipalities can share a figure and with it a rank.
+      shared: list.filter((o) => o.total === k.total).length > 1,
+    }))
   }
   return kommunerCache
+}
+
+export const rankLabel = (k) => `${k.shared ? 'delt nr.' : 'nr.'} ${k.rank}`
+
+// Names of every municipality with the highest/lowest figure, e.g. "Gentofte og Lyngby-Taarbæk".
+export function extremeNames(list, which) {
+  const value = Math[which === 'best' ? 'max' : 'min'](...list.map((k) => k.total))
+  const names = list.filter((k) => k.total === value).map((k) => k.name).sort((a, b) => a.localeCompare(b, 'da'))
+  return { names: names.length > 1 ? `${names.slice(0, -1).join(', ')} og ${names.at(-1)}` : names[0], total: value }
 }
 
 export const kommuneRoute = (slug) => `${LEVEALDER_HUB}/${slug}`
@@ -139,8 +153,8 @@ export function kommuneFacts(slug) {
   return {
     ...k,
     count: list.length,
-    best: sorted[0],
-    worst: sorted.at(-1),
+    best: extremeNames(list, 'best'),
+    worst: extremeNames(list, 'worst'),
     nearby,
     sexGap: k.female - k.male,
     period: REGIONAL_DK.municipalities.period,
@@ -156,7 +170,7 @@ export function kommuneMeta(slug) {
     title: long.length <= 60 ? long : `Forventet levealder i ${f.name}: ${fmtYears(f.total)} år`,
     description:
       `Forventet levealder i ${f.name}: mænd ${fmtYears(f.male)} år, kvinder ${fmtYears(f.female)} år ved fødslen, ` +
-      `nr. ${f.rank} af ${f.count} kommuner. Danmarks Statistik (HISBK, ${f.period}).`,
+      `${rankLabel(f)} af ${f.count} kommuner. Danmarks Statistik (HISBK, ${f.period}).`,
     keywords: `forventet levealder ${f.name}, levealder ${f.name} kommune, middellevetid ${f.name}`,
     ogTitle: `Forventet levealder i ${f.name}: ${fmtYears(f.total)} år`,
     ogDescription: `Forventet levealder for mænd og kvinder i ${f.name} Kommune, fra Danmarks Statistik.`,

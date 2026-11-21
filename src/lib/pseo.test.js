@@ -16,6 +16,7 @@ import {
   PSEO_ROUTES,
   pseoMeta,
   fmtYears,
+  rankLabel,
 } from './pseo.js'
 import { MAX_TITLE, MAX_DESCRIPTION, validateMeta } from './head.js'
 import { ROUTE_META, SITE_URL } from '../routes.meta.js'
@@ -135,6 +136,17 @@ describe('kommune data', () => {
     const f = kommuneFacts('koebenhavn')
     expect(f.rank).toBe(list.find((k) => k.slug === 'koebenhavn').rank)
     expect(f.count).toBe(94)
+  })
+
+  it('names every municipality that shares the top figure and marks shared ranks', () => {
+    const list = kommuner()
+    const top = Math.max(...list.map((k) => k.total))
+    const tops = list.filter((k) => k.total === top)
+    const f = kommuneFacts(tops[0].slug)
+    for (const k of tops) expect(f.best.names).toContain(k.name)
+    expect(f.best.total).toBe(top)
+    expect(rankLabel(tops[0])).toBe(tops.length > 1 ? 'delt nr. 1' : 'nr. 1')
+    expect(list.filter((k) => k.shared).every((k) => list.some((o) => o !== k && o.total === k.total))).toBe(true)
   })
 
   it('has one page per municipality, titled with the figure', () => {

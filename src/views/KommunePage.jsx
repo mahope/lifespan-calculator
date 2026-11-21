@@ -3,7 +3,7 @@ import PageShell from '../components/PageShell';
 import SectionHeader from '../components/SectionHeader';
 import AnswerFirst from '../components/AnswerFirst';
 import DataTable, { Cell } from '../components/DataTable';
-import { LEVEALDER_HUB, kommuneFacts, kommuneRoute, fmtYears } from '../lib/pseo.js';
+import { LEVEALDER_HUB, kommuneFacts, kommuneRoute, fmtYears, rankLabel } from '../lib/pseo.js';
 
 // One page per municipality with published HISBK figures: life expectancy at birth for men and women,
 // the municipality's rank, the spread across municipalities and the municipalities next to it in the ranking.
@@ -20,7 +20,7 @@ const KommunePage = ({ slug }) => {
       <AnswerFirst
         text={
           `I ${f.name} er den forventede levealder ved fødslen ${fmtYears(f.male)} år for mænd og ${fmtYears(f.female)} år for kvinder, ` +
-          `samlet ${fmtYears(f.total)} år. Kommunen er nr. ${f.rank} af ${f.count} kommuner med tal (Danmarks Statistik, ${f.period}).`
+          `samlet ${fmtYears(f.total)} år. Kommunen er ${rankLabel(f)} af ${f.count} kommuner med tal (Danmarks Statistik, ${f.period}).`
         }
         linkText="Beregn din egen levetid i levetidsberegneren"
       />
@@ -39,7 +39,7 @@ const KommunePage = ({ slug }) => {
           </DataTable>
           <p className="prose-page">
             Kvinder i {f.name} lever {fmtYears(f.sexGap)} år længere end mænd. Blandt de {f.count} kommuner med tal ligger
-            den højeste levealder i {f.best.name} ({fmtYears(f.best.total)} år) og den laveste i {f.worst.name} ({fmtYears(f.worst.total)} år).
+            den højeste levealder i {f.best.names} ({fmtYears(f.best.total)} år) og den laveste i {f.worst.names} ({fmtYears(f.worst.total)} år).
             Til sammenligning er tallet for hele landet {fmtYears(f.country.total)} år i samme periode ({fmtYears(f.country.male)} for mænd og{' '}
             {fmtYears(f.country.female)} for kvinder).
           </p>

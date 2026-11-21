@@ -17,6 +17,20 @@ The answer-first figures come from `LIFE_TABLE_DK` through `src/utils/answerFirs
 | `/livsstil-og-levetid` | Lifestyle and life expectancy | livsstil og levetid; motion/rygning og levetid | hvor gammel bliver jeg; levealder danmark; dødsalder |
 | `/pensionsalder` | State pension age | hvornår kan jeg gå på pension; pensionsalder beregner; folkepensionsalder | hvor gammel bliver jeg; levealder danmark; restlevetid; forventet dødsalder |
 
+Programmatic pages (one template per intent, a real answer from DST data on each page; see README):
+
+| URL pattern | Intent | Primary query | Title |
+|---|---|---|---|
+| `/restlevetid` | Years left by age and sex | restlevetid; forventet restlevetid tabel | static, in `routes.meta.js` |
+| `/restlevetid/<alder>-aarig-<mand\|kvinde>` (ages 20-90) | Years left for one age and sex | restlevetid 70 årig mand; restlevetid mænd | "Restlevetid for en 45-årig mand: 36,4 år (DST 2025)" |
+| `/forventet-levealder` | Life expectancy by municipality | forventet levealder kommune | static, in `routes.meta.js` |
+| `/forventet-levealder/<kommune>` | Life expectancy in one municipality | forventet levealder `<kommune>` | "Forventet levealder i København: 80,9 år (DST 2021-25)" |
+
+Titles and descriptions of these pages are generated in `src/lib/pseo.js` and validated (unique, within the limits)
+by the build (`astro.config.mjs`) and `src/lib/pseo.test.js`. They must not target "hvor gammel bliver jeg" (that is `/`)
+or the calculator wording of `/hvor-lang-tid-har-jeg-tilbage`; that page keeps the interactive "years left" intent
+and the hub links to it.
+
 Internal links: every landing page links to `/` with descriptive anchor text, and the calculator's
 footer links back to each landing page with an anchor matching that page's primary query.
 

@@ -7,6 +7,7 @@ import { join } from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { brotliCompressSync } from 'node:zlib'
+import { PSEO_ROUTES } from '../src/lib/pseo.js'
 
 // Pages that are text only. /pensionsalder (form) and /embed (widget) are apps, like /.
 export const CONTENT_PAGES = [
@@ -15,6 +16,8 @@ export const CONTENT_PAGES = [
   '/livsstil-og-levetid',
   '/levetid-beregner-danmark',
   '/embed-levetidsberegner',
+  '/restlevetid',
+  '/forventet-levealder',
   '/404',
 ]
 // Brotli bytes of same-origin JavaScript per page with an island (the SPA sent about 97 KB on /).
@@ -47,12 +50,13 @@ export function scriptFiles(dist, html) {
 export function checkBudget(dist) {
   const problems = []
   const report = {}
-  for (const route of [...CONTENT_PAGES, ...Object.keys(ISLAND_BUDGET)]) {
+  for (const route of [...CONTENT_PAGES, ...PSEO_ROUTES, ...Object.keys(ISLAND_BUDGET)]) {
     const html = readFileSync(join(dist, fileOf(route)), 'utf8')
     const files = scriptFiles(dist, html)
     const bytes = files.reduce((sum, f) => sum + brotliCompressSync(readFileSync(join(dist, f))).length, 0)
-    report[route] = { files: files.length, brotliBytes: bytes }
-    if (CONTENT_PAGES.includes(route)) {
+    // The programmatic pages are checked like content pages but not listed one by one in the report.
+    if (!PSEO_ROUTES.includes(route)) report[route] = { files: files.length, brotliBytes: bytes }
+    if (!(route in ISLAND_BUDGET)) {
       if (files.length) problems.push(`${route}: content page loads ${files.join(', ')}`)
       if (/<astro-island\b/.test(html)) problems.push(`${route}: content page has an island`)
     } else if (bytes > ISLAND_BUDGET[route]) {

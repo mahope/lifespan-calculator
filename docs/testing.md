@@ -14,8 +14,10 @@ Four levels, from fast to slow. All of them run on every pull request.
 - `scripts/build-sw.mjs` writes `dist/sw.js` (see "Service worker" below).
 - `scripts/check-parity.mjs` compares every built page with `scripts/fixtures/spa-parity.json`, the head of the SPA
   build of master `ddb8c1c` (title, every SEO meta tag, canonical, Open Graph, Twitter, JSON-LD) and its sitemap.
-  The only allowed difference is listed in `ADDED_JSON_LD`: the FAQPage block on `/pensionsalder`, which the SPA only
-  added at runtime and the HTML now carries. A unit test also checks the fixture against the copy of production in
+  The allowed differences are `ADDED_JSON_LD` (the FAQPage block on `/pensionsalder`, which the SPA only
+  added at runtime and the HTML now carries) and `ADDED_ROUTES` (the two hubs, `/restlevetid` and `/forventet-levealder`;
+  with the programmatic pages they are the sitemap URLs after the SPA's). `checkAddedPages` checks that each hub and
+  every programmatic page is built with its own title, description, `index, follow` and a self-referencing canonical. A unit test also checks the fixture against the copy of production in
   `e2e/fixtures/legacy-prod/`. Changing a title or description on purpose means updating the fixture in the same commit.
 - `scripts/check-js-budget.mjs` fails the build when a content page (`CONTENT_PAGES`) loads a script file from the
   site or has an island, or when `/`, `/pensionsalder` or `/embed` exceed their brotli budget (`ISLAND_BUDGET`).
@@ -23,7 +25,7 @@ Four levels, from fast to slow. All of them run on every pull request.
 
 ## Unit tests
 
-Vitest, files next to the code as `*.test.js`. Pure logic (`src/utils/*`) and a few components.
+Vitest, files next to the code as `*.test.js`. Pure logic (`src/utils/*`) and a few components. `src/lib/pseo.test.js` covers the programmatic pages: known DST values, slugs, titles, sitemap, unique meta; `src/views/pseoPages.test.jsx` renders them.
 
 ## End to end tests (`e2e/`)
 
@@ -48,6 +50,8 @@ codes, redirects and headers are exactly production's. This needs Docker. The po
   own canonical and its H1 and body text in the raw HTML; the sitemap lists the same URLs; `/x/`, `/x.html`,
   `/x/index.html` and `/index.html` still land on the page; hashed files are immutable and a missing one is a
   short uncached 404.
+- `pseo.e2e.js`: the hubs and sample programmatic pages through Caddy (200, own title, canonical, `index, follow`, no
+  script file, 404 for slugs outside the data, listed once in the sitemap) and the calculator's link to the matching page.
 - `content-parity.e2e.js`: every page shows the same visible text, links and headings as the SPA did
   (`e2e/fixtures/spa-rendered.json`, captured from the SPA build of master `ddb8c1c` in the same browser setup).
 - `sw-migration.e2e.js`: the switch from the SPA's Workbox service worker. `e2e/fixtures/legacy-prod/` is a frozen

@@ -94,7 +94,10 @@ test.describe('static contract', () => {
       expect(words.length, route).toBeGreaterThan(route === '/embed' ? 10 : 300);
     }
     const sitemap = await (await request.get('/sitemap.xml')).text();
-    expect([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])).toEqual(SPA.sitemap);
+    // The SPA's URLs first and unchanged; everything after them is a hub or a programmatic page (e2e/pseo.e2e.js).
+    const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    expect(locs.slice(0, SPA.sitemap.length)).toEqual(SPA.sitemap);
+    for (const loc of locs.slice(SPA.sitemap.length)) expect(loc).toMatch(/^https:\/\/levetidsberegner\.dk\/(restlevetid|forventet-levealder)(\/|$)/);
   });
 
   test('old address forms still land on the page: trailing slash, .html and index.html', async ({ request }) => {

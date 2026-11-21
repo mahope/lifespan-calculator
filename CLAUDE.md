@@ -48,6 +48,13 @@ The e2e suite and the budget run the Caddy image with `dist/` mounted, so they n
 - **`views/`**: Page content as React components (HomePage, HvorLangTidPage, DodsalderPage, LivsstilPage,
   DanmarkPage, PensionsalderPage, EmbedInfoPage, EmbedPage, NotFoundPage). Rendered to HTML at build time;
   links are plain `<a href>` (there is no router).
+- **Programmatic pages** (`lib/pseo.js`, `lib/restlevetidSlug.js`): `/restlevetid/<alder>-aarig-<mand|kvinde>` (20-90,
+  DST HISB8) and `/forventet-levealder/<kommune>` (DST HISBK), rendered by `views/Restlevetid*Page.jsx`,
+  `views/KommunePage.jsx`, `views/LevealderHubPage.jsx` from `pages/restlevetid/` and `pages/forventet-levealder/`
+  (`[slug].astro`/`[kommune].astro` plus a hub `index.astro` each). `pseo.js` is the single source of slugs, figures, titles
+  and `PSEO_ROUTES` (sitemap, build check, tests); it is loaded by plain Node, so it uses `.js` import extensions. Every
+  figure comes from the committed DST data; never type one into a page. `restlevetidSlug.js` has no data imports so the
+  calculator island can link to the matching page without bundling the datasets.
 - **`islands/`**: The only hydrated components (`client:load`), each wrapped in `ErrorBoundary`:
   `HomeCalculator` (the `Calculator` export of `views/HomePage.jsx`; the masthead, other-tools list and footer
   around it are static), `PensionFormIsland` (the `PensionForm` export, passed into `PensionsalderPage` as the
@@ -126,7 +133,9 @@ main color scheme uses HSL custom properties (see `:root` / `.dark`).
   (visible text, links, headings) checked by `e2e/content-parity.e2e.js`.
 - The route list lives in `scripts/gen-sitemap.mjs` (`ROUTES`); `prebuild` regenerates `public/sitemap.xml`
   from it. Adding a route means adding `src/pages/<route>.astro`, `ROUTES` and `ROUTE_META` (tests enforce
-  this), plus the parity fixtures. `/embed` (iframe widget, `EmbedPage`) is a normal route with
+  this), plus the parity fixtures. The two hubs (`/restlevetid`, `/forventet-levealder`) are in `ROUTES` but listed in
+  `ADDED_ROUTES` (`scripts/check-parity.mjs`), so they have no SPA fixture entry; the pages under them are not in `ROUTES`
+  but in `PSEO_ROUTES`, appended to the sitemap. `/embed` (iframe widget, `EmbedPage`) is a normal route with
   `noindex: true`, listed in `ROUTES` but also in `NOINDEX_ROUTES`, so it is not in the sitemap. It does not
   register the service worker. `/embed-levetidsberegner` (info page with copy-paste code and terms) is
   indexable (copy button wired by an inline script). The widget uses `computeEmbedResult`

@@ -72,6 +72,27 @@ export const ROUTE_META = {
     breadcrumbs: [HOME, { name: 'Indlej levetidsberegneren', url: '/embed-levetidsberegner' }],
     noindex: false,
   },
+  // Hubs of the programmatic pages; the pages under them get their meta from src/lib/pseo.js.
+  '/restlevetid': {
+    title: 'Restlevetid efter alder og køn: tabel for 20-90 år (DST)',
+    description:
+      'Forventet restlevetid for mænd og kvinder fra 20 til 90 år i én tabel, med forventet alder. Tal fra Danmarks Statistiks dødelighedstavler.',
+    keywords: 'restlevetid, forventet restlevetid, restlevetid tabel, restlevetid mænd, restlevetid kvinder',
+    ogTitle: 'Restlevetid efter alder og køn',
+    ogDescription: 'Se forventet restlevetid for hver alder fra 20 til 90 år, for mænd og kvinder, fra Danmarks Statistik.',
+    breadcrumbs: [HOME, { name: 'Restlevetid', url: '/restlevetid' }],
+    noindex: false,
+  },
+  '/forventet-levealder': {
+    title: 'Forventet levealder pr. kommune: alle kommuner (DST)',
+    description:
+      'Forventet levealder for mænd og kvinder i hver kommune, rangeret fra højeste til laveste. Tal fra Danmarks Statistik (HISBK).',
+    keywords: 'forventet levealder kommune, levealder kommuner, middellevetid kommune, levetid kommune',
+    ogTitle: 'Forventet levealder i din kommune',
+    ogDescription: 'Se forventet levealder for mænd og kvinder i alle kommuner, rangeret, fra Danmarks Statistik.',
+    breadcrumbs: [HOME, { name: 'Forventet levealder', url: '/forventet-levealder' }],
+    noindex: false,
+  },
   // The iframe widget: noindex, not in the sitemap (see NOINDEX_ROUTES in scripts/gen-sitemap.mjs).
   '/embed': {
     title: 'Levetidsberegner (indlejret widget)',
